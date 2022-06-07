@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "710745964607",
+    "firebase_url": "https://reverr-25fb3-default-rtdb.firebaseio.com",
+    "project_id": "reverr-25fb3",
+    "storage_bucket": "reverr-25fb3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710745964607:android:a3cd08bb4a98d68bbab88a",
+        "android_client_info": {
+          "package_name": "com.reverr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "710745964607-oiv3jlrl61v1f0v5lortvfq4tns1ldmn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT0tWXysVS-xIXKOgg1AI-Kh12ecfsACE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "710745964607-oiv3jlrl61v1f0v5lortvfq4tns1ldmn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "710745964607-agpbmr3esrvu9lti5rag5d4rgsnaren3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.reverr"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
