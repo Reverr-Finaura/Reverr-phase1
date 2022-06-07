@@ -7,19 +7,19 @@
  */
 
 import React from 'react';
-import {Text,StatusBar} from 'react-native';
+import {Text, StatusBar} from 'react-native';
 import AppLayout from './layouts/app/app.layout';
-import { AppColors } from './utils/Constants';
+import AppStack from './Navigations/AppStack';
+import BottomNavigation from './Navigations/BottomNavigation';
+import {AppColors} from './utils/Constants';
 export default function App() {
   return (
-
     <AppLayout>
-       <StatusBar
+      <StatusBar
         barStyle="light-content"
         backgroundColor={AppColors.primarycolor}
       />
-      <Text>Hello World</Text>
-      
+      <AppStack />
     </AppLayout>
   );
 }

@@ -1,21 +1,15 @@
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { AppColors } from '../../utils/Constants';
+import {AppColors} from '../../utils/Constants';
 
 const BackButton = props => {
   return (
-    <View>
-      <TouchableOpacity
-        style={{...styles.btn, ...props.style}}
-        onPress={props.onPress}>
-        <Icon
-          name="angle-left"
-          size={props.IconSize}
-          color={AppColors.FontsColor}
-        />
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity
+      style={{...styles.btn, ...props.style}}
+      onPress={props.onPress}>
+      <Icon name="angle-left" size={25} color={AppColors.FontsColor} />
+    </TouchableOpacity>
   );
 };
 
