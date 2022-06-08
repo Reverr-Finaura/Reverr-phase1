@@ -14,7 +14,7 @@ const Width = Dimensions.get('window').width;
 
 const SkipButton = props => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={props.onPress}>
       <LinearGradient
         colors={[AppColors.primarycolor, '#012437']}
         start={{x: 0, y: 1.3}}

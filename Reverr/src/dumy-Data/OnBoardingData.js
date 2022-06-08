@@ -20,7 +20,7 @@ export const OnBoardingData = [
   {
     id: 2,
     title: 'Tell us your years of experience !',
-    icon: 'work',
+    icon: 'engineering',
     options: ['0-2 years', '2-4 years', '4-6 years', '6-8 years', '8+ years'],
   },
   {
@@ -32,7 +32,7 @@ export const OnBoardingData = [
   {
     id: 4,
     title: 'Do you have a start-up?',
-    icon: 'engineering',
+    icon: 'work',
     options: ['Yes', 'No'],
   },
 ];

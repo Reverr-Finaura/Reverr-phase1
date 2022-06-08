@@ -6,7 +6,7 @@ import {
   FlatList,
   Dimensions,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {AppColors} from '../utils/Constants';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import BackButton from '../Components/Buttons/Backbutton';
@@ -18,6 +18,11 @@ const Width = Dimensions.get('window').width;
 
 const OnBoarding = () => {
   const [greeting, setGreeting] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const swipeRef = useRef(currentIndex);
+
+  const skip = index => swipeRef.current.scrollToIndex({index: index + 1});
+
   return (
     <View style={styles.screen}>
       {greeting ? (
@@ -48,20 +53,30 @@ const OnBoarding = () => {
                 setGreeting(true);
               }}
             />
-            <SkipButton style={styles.skipBtn} />
+            <SkipButton
+              onPress={() => {
+                skip(currentIndex);
+              }}
+              style={styles.skipBtn}
+            />
           </View>
           <FlatList
             horizontal
+            ref={swipeRef}
             pagingEnabled
             data={OnBoardingData}
             renderItem={({item, index}) => (
-              <View style={styles.swaiperContainer}>
+              <View key={index} style={styles.swaiperContainer}>
                 <Icon name={item.icon} color={AppColors.BtnClr} size={85} />
                 <Text style={styles.title}>{item.title}</Text>
                 <View style={styles.optionsContainer}>
                   {item.options.map((item, index) => (
-                    <TouchableOpacity style={styles.option}>
-                      <Text key={index} style={{color: AppColors.FontsColor}}>
+                    <TouchableOpacity key={index} style={styles.option}>
+                      <Text
+                        style={{
+                          color: AppColors.FontsColor,
+                          textAlign: 'center',
+                        }}>
                         {item}
                       </Text>
                     </TouchableOpacity>
