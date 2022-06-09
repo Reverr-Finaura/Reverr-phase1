@@ -1,30 +1,22 @@
 import {
   View,
   Text,
-  StyleSheet,
-  TouchableOpacity,
-  Dimensions,
   TouchableWithoutFeedback,
+  TouchableOpacity,
   Keyboard,
+  Dimensions,
 } from 'react-native';
-import React, {useContext, useState} from 'react';
-import {AppColors} from '../utils/Constants';
-import InputField from '../Components/InputField';
-import CustomButton from '../Components/Buttons/CustomButton';
+import React, {useState} from 'react';
+import {CustomButton, InputField} from '../../../Components';
+import {AppColors} from '../../../utils';
+import {styles} from './style';
+import {useNavigation} from '@react-navigation/native';
 
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
 
-import firestore from '@react-native-firebase/firestore';
-import {useNavigation} from '@react-navigation/native';
-
 const LoginScreen = () => {
-  var [isSecure, setisSecure] = useState(true);
-  const [email, setEmail] = useState('');
-  const [emailerror, setemailerror] = useState(false);
-  const [passerror, setpasserror] = useState(false);
-  const [password, setPassword] = useState('');
-
+  const [isSecure, setisSecure] = useState(false);
   const navigation = useNavigation();
   return (
     <TouchableWithoutFeedback
@@ -94,35 +86,5 @@ const LoginScreen = () => {
     </TouchableWithoutFeedback>
   );
 };
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    paddingHorizontal: '5%',
-    justifyContent: 'center',
-    backgroundColor: AppColors.primarycolor,
-  },
-  pageInfo: {
-    marginTop: '2%',
-  },
-  Text: {
-    marginEnd: '40%',
-  },
-  forgetpass: {
-    marginTop: '10%',
-    alignItems: 'center',
-  },
-  fg: {
-    color: AppColors.FontsColor,
-    fontFamily: 'Poppins-Regular',
-    fontSize: 14,
-  },
-  signuplink: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: '20%',
-    justifyContent: 'center',
-  },
-});
 
 export default LoginScreen;

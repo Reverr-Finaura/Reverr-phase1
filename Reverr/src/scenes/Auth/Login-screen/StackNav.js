@@ -1,13 +1,13 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import LoginScreen from '../Screens/LoginScreen';
-import OnBoarding from '../Screens/OnBoarding';
 import {NavigationContainer} from '@react-navigation/native';
+import LoginScreen from './LoginScreen';
+import OnBoarding from './OnBoarding';
 
 const Stack = createNativeStackNavigator();
 
-const AppStackNav = () => {
+const StackNav = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -26,4 +26,4 @@ const AppStackNav = () => {
   );
 };
 
-export default AppStackNav;
+export default StackNav;

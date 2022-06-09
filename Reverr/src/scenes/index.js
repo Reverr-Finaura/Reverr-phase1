@@ -1,2 +1,8 @@
-import {LoginScreen,SignupScreen,OtpScreen,ForgotPassword} from './Auth';
-export {LoginScreen,SignupScreen,OtpScreen,ForgotPassword};
+import {
+  LoginScreen,
+  SignupScreen,
+  OtpScreen,
+  ForgotPassword,
+  StackNav,
+} from './Auth';
+export {LoginScreen, SignupScreen, OtpScreen, ForgotPassword, StackNav};

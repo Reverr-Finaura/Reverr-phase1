@@ -35,4 +35,30 @@ export const OnBoardingData = [
     icon: 'work',
     options: ['Yes', 'No'],
   },
+  {
+    id: 5,
+    title: 'Duration you worked with the orgaisation',
+    icon: 'alarm',
+    options: ['0-2 years', '2-4 years', '4-6 years', '6-8 years', '8+ years'],
+  },
+  {
+    id: 6,
+    title: 'Tell us your previous organisation that you have worked with ',
+    icon: 'work',
+    options: ['Yes', 'No'],
+  },
+
+  {
+    id: 7,
+    title: 'What was your Designation ?',
+    icon: 'portrait',
+    options: ['Yes', 'No'],
+  },
+
+  {
+    id: 8,
+    title: 'What was your Role in  the Organisation ?',
+    icon: 'inventory',
+    options: ['Yes', 'No'],
+  },
 ];

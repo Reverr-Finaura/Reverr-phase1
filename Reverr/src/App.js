@@ -5,13 +5,11 @@
  * @format
  * @flow strict-local
  */
-
 import React from 'react';
-import {Text, StatusBar} from 'react-native';
+import {StatusBar} from 'react-native';
 import AppLayout from './layouts/app/app.layout';
-import AppStack from './Navigations/AppStack';
-import BottomNavigation from './Navigations/BottomNavigation';
 import {AppColors} from './utils/Constants';
+import {StackNav} from './scenes/Auth';
 export default function App() {
   return (
     <AppLayout>
@@ -19,7 +17,7 @@ export default function App() {
         barStyle="light-content"
         backgroundColor={AppColors.primarycolor}
       />
-      <AppStack />
+      <StackNav />
     </AppLayout>
   );
 }
