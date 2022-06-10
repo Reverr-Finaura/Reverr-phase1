@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {SafeAreaView} from 'react-native';
 
 import styles from './app.layout.styles';
 
@@ -9,6 +9,10 @@ import styles from './app.layout.styles';
  * @param {StyleSheet | {}} customStyles extensibility passed to the AppLayout component
  * @returns {JSX} the JSX AppLayout components along with the children internal to it
  */
-export default function AppLayout({children, customStyles = {}}) {
-  return <View style={[styles.container, customStyles]}>{children}</View>;
+export function AppLayout({children, customStyles = {}}) {
+  return (
+    <SafeAreaView style={[styles.container, customStyles]}>
+      {children}
+    </SafeAreaView>
+  );
 }

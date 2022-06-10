@@ -5,16 +5,21 @@
  * @format
  * @flow strict-local
  */
-
+import 'react-native-gesture-handler';
 import React from 'react';
-import {Text} from 'react-native';
+import {StatusBar} from 'react-native';
 
-import AppLayout from './layouts/app/app.layout';
+import {AppLayout} from './layouts';
+import StackNavigate from './navigation/StackNavigate';
+import {NavigationContainer} from '@react-navigation/native';
 
 export default function App() {
   return (
     <AppLayout>
-      <Text>Hello World</Text>
+      <NavigationContainer>
+        <StatusBar backgroundColor={'#000c12'} />
+        <StackNavigate />
+      </NavigationContainer>
     </AppLayout>
   );
 }
