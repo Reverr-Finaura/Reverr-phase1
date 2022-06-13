@@ -5,6 +5,12 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: AppColors.primarycolor,
     },
+    mainScreen:{
+      flex: 1,
+      backgroundColor: AppColors.primarycolor,
+      justifyContent:'center',
+      alignItems:'center',
+    },
     pageInfo: {
       marginTop: 10,
       marginStart: 30,

@@ -11,7 +11,7 @@ import {
   import { AppColors } from '../../../utils';
  import { CustomButton,BackButton,InputField } from '../../../Components';
   import firestore from '@react-native-firebase/firestore';
-  //import {useNavigation} from '@react-navigation/native';
+  import {useNavigation} from '@react-navigation/native';
   import emailjs from 'emailjs-com';
   import { styles } from './style';
   const SignupScreen = props => {
@@ -27,30 +27,16 @@ import {
     const [confirmPasswordError, setConfirmPasswordError] = useState(false);
     const [mobile, setMobile] = useState('');
     const [mobileError, setMobileError] = useState(false);
-  
+    const navigation=useNavigation();
     // Get UserType from UserSelectScreen
     const UserType = props?.route?.params?.UserType;
-  
-
-    if(UserType=='Mentor'){
     var data = {
       userType: UserType,
       Name: name,
       Email: email.trim(),
       Password: password,
       Mobile: mobile,
-      availability:[0,1,1,1,1,1,1]
-    };
-}else{
-    var data = {
-        userType: UserType,
-        Name: name,
-        Email: email.trim(),
-        Password: password,
-        Mobile: mobile,
-      };
-}
-
+    }
 
   
     //console.log(data)
@@ -83,14 +69,15 @@ import {
                   } else {
                     var OTP = EmailOtp();
                     alert('Please check your inbox');
-                    // navigation.navigate('emailVerify', {
-                    //   OTP: OTP,
-                    //   Email: email.trim(),
-                    //   Password: password,
-                    //   Name: name,
-                    //   Mobile: mobile,
-                    //   UserType: UserType,
-                    // });
+                    navigation.navigate('OtpVerification', {
+                      OTP: OTP,
+                      Email: email.trim(),
+                      Password: password,
+                      Name: name,
+                      Mobile: mobile,
+                      UserType: UserType,
+                      redirect_screen:'Test'
+                    });
                     setname('');
                     setemail('');
                     setpassword('');
@@ -139,7 +126,7 @@ import {
             <BackButton
               IconSize={30}
               onPress={() => {
-                // navigation.goBack();
+                 navigation.goBack();
               }}
             />
           </View>

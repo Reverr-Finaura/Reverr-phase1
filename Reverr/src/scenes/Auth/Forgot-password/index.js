@@ -13,16 +13,24 @@ import {
   import { styles } from './style';
   import firestore from '@react-native-firebase/firestore';
   import emailjs from 'emailjs-com';
-  
-  const ForgotPassword = () => {
+  import auth from '@react-native-firebase/auth'
+  //import {sendPasswordResetEmail} from '@react-native-firebase/auth';
+  const ForgotPassword = ({navigation}) => {
     const [email, setemail] = useState('');
-    //const navigation = useNavigation();
     var Name = '';
-    
+    var forgotPassword = async (email) => {
+      console.log(email);
+      await auth().sendPasswordResetEmail(email).then((user)=>{
+        alert('Check your inbox!')
+        console.log('mail sent to: '+user);
+      }) .catch(err=>{
+        console.log(err);
+      })
+    }
     const EmailOtp = () => {
       const OTP = Math.floor(Math.random() * 1000000 + 1);
       const msg = 'Your OTP for verification is ' + OTP;
-  
+      
       var templateParams = {
         name: Name,
         email: email,
@@ -54,7 +62,7 @@ import {
             <BackButton
               IconSize={30}
               onPress={() => {
-                //navigation.goBack();
+                navigation.goBack();
               }}
             />
           </View>
@@ -76,7 +84,7 @@ import {
             </Text>
           </View>
           <View style={styles.container}>
-            <Text style={styles.inputHeader}>Email/Phone No.</Text>
+            <Text style={styles.inputHeader}>Email</Text>
             <TextInput
               style={styles.input}
               placeholder="Your email/Phone no."
@@ -94,25 +102,29 @@ import {
                   .collection('Users')
                   .doc(email)
                   .get();
+                  //console.log(savedUser)
                 if (savedUser._data === undefined) {
                   alert('Wrong mail Id');
                 } else {
                   Name = savedUser._data.name;
                   var password = savedUser._data.password;
-                  var OTP = EmailOtp();
-                  alert('Please check your inbox');
-                //   navigation.navigate('Otp', {
-                //     Otp: OTP,
-                //     Email: email,
-                //     Password: password,
-                //   });
-                  setemail('');
+                  //var OTP = EmailOtp();
+                  //alert('Please check your inbox');
+                  // navigation.navigate('OtpVerification', {
+                  //   Otp: OTP,
+                  //   Email: email,
+                  //   Password: password,
+                  //   redirect_screen:"Login"
+                  // });
+                  await forgotPassword(email);
+                  //alert('check your inbox')
+                  //setemail('');
                 }
               }}
             />
             <TouchableOpacity
               onPress={() => {
-                //navigation.navigate('Login');
+                navigation.replace('Login');
               }}>
               <Text
                 style={[
