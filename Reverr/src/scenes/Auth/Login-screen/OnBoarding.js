@@ -8,10 +8,11 @@ import {
 } from 'react-native';
 import React, {useState, useRef} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {BackButton, InputField} from '../../../Components';
+import {BackButton, CustomButton, InputField} from '../../../components';
 import {AppColors} from '../../../utils';
 import {OnBoardingData} from '../../../dumy-Data/OnBoardingData';
 import LinearGradient from 'react-native-linear-gradient';
+import {useNavigation} from '@react-navigation/native';
 
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
@@ -19,15 +20,22 @@ const Width = Dimensions.get('window').width;
 const OnBoarding = () => {
   const [greeting, setGreeting] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
-
   const swipeRef = useRef(currentIndex);
 
-  const Skip = index => {
-    swipeRef.current.scrollToIndex({index: index + 1});
+  const navigation = useNavigation();
+
+  const Skip = () => {
+    setCurrentIndex(7);
+    swipeRef.current.scrollToIndex({index: 8});
   };
   const chooseOption = index => {
     setCurrentIndex(index);
     swipeRef.current.scrollToIndex({index: index + 1});
+  };
+
+  const itemChanged = ({item, index}) => {
+    console.log(item);
+    console.log(index);
   };
   console.log(currentIndex);
   return (
@@ -60,12 +68,12 @@ const OnBoarding = () => {
                 setGreeting(true);
               }}
             />
-            <TouchableOpacity onPress={() => Skip(currentIndex)}>
+            <TouchableOpacity onPress={() => Skip()}>
               <LinearGradient
                 colors={[AppColors.primarycolor, '#012437']}
                 start={{x: 0, y: 1.3}}
                 end={{x: 0.3, y: 0.5}}
-                style={styles.container}>
+                style={styles.skipBtn}>
                 <Text style={{color: AppColors.FontsColor}}>Skip</Text>
               </LinearGradient>
             </TouchableOpacity>
@@ -74,6 +82,14 @@ const OnBoarding = () => {
             horizontal
             ref={swipeRef}
             pagingEnabled
+            scrollEnabled={false}
+            onMomentumScrollEnd={event => {
+              const index = Math.floor(
+                event.nativeEvent.contentOffset.x /
+                  event.nativeEvent.layoutMeasurement.width,
+              );
+              setCurrentIndex(index);
+            }}
             data={OnBoardingData}
             renderItem={({item, index}) => (
               <View key={index} style={styles.swaiperContainer}>
@@ -117,6 +133,13 @@ const OnBoarding = () => {
                           {item.title}
                         </Text>
                         <InputField placeholder="Organisation’s Name" />
+                        <CustomButton
+                          onPress={() => {
+                            chooseOption(index);
+                          }}
+                          style={{marginTop: '30%'}}
+                          Title="Next"
+                        />
                       </View>
                     )}
                     {index == 7 && (
@@ -134,6 +157,13 @@ const OnBoarding = () => {
                           {item.title}
                         </Text>
                         <InputField placeholder="Designation" />
+                        <CustomButton
+                          onPress={() => {
+                            chooseOption(index);
+                          }}
+                          style={{marginTop: '30%'}}
+                          Title="Next"
+                        />
                       </View>
                     )}
                     {index == 8 && (
@@ -151,6 +181,13 @@ const OnBoarding = () => {
                           {item.title}
                         </Text>
                         <InputField placeholder="Role" />
+                        <CustomButton
+                          onPress={() => {
+                            navigation.navigate('StartupVerification');
+                          }}
+                          style={{marginTop: '30%'}}
+                          Title="Next"
+                        />
                       </View>
                     )}
                   </View>
@@ -160,7 +197,9 @@ const OnBoarding = () => {
           />
         </View>
       )}
-      <View style={styles.progressBar}></View>
+      <View style={styles.progressBar}>
+        <View style={[styles.completed, {width: currentIndex * 52.9}]}></View>
+      </View>
     </View>
   );
 };
@@ -169,16 +208,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: AppColors.primarycolor,
   },
-  container: {
-    backgroundColor: AppColors.primarycolor,
-    width: Width / 6,
 
-    alignItems: 'center',
-    borderRadius: 10,
-    justifyContent: 'center',
-    paddingHorizontal: '5%',
-    paddingVertical: '2%',
-  },
   headText: {
     fontSize: 35,
     color: AppColors.FontsColor,
@@ -205,13 +235,18 @@ const styles = StyleSheet.create({
     height: Height / 17,
   },
   skipBtn: {
-    marginRight: '3%',
-    marginTop: '5%',
+    backgroundColor: AppColors.primarycolor,
+    width: Width / 6,
+    alignItems: 'center',
+    borderRadius: 10,
+    zIndex: 20,
+    justifyContent: 'center',
+    paddingHorizontal: '5%',
+    paddingVertical: '2%',
   },
   swaiperContainer: {
     width: Width,
     alignItems: 'center',
-    marginTop: '8%',
   },
   title: {
     color: AppColors.BtnClr,
@@ -224,6 +259,11 @@ const styles = StyleSheet.create({
   option: {
     paddingVertical: '5%',
     color: AppColors.FontsColor,
+  },
+  completed: {
+    height: '100%',
+    borderRadius: 12,
+    backgroundColor: AppColors.ActiveColor,
   },
 });
 export default OnBoarding;

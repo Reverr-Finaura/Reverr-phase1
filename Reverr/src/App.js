@@ -7,17 +7,22 @@
  */
 import React from 'react';
 import {StatusBar} from 'react-native';
-import AppLayout from './layouts/app/app.layout';
+import StackNavigate from './navigation/StackNavigate';
+import {Text} from 'react-native';
+import {AppLayout} from './layouts/app/app.layout';
 import {AppColors} from './utils/Constants';
-import {StackNav} from './scenes/Auth';
+import {NavigationContainer} from '@react-navigation/native';
+
 export default function App() {
   return (
-    <AppLayout>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor={AppColors.primarycolor}
-      />
-      <StackNav />
-    </AppLayout>
+    <NavigationContainer>
+      <AppLayout>
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor={AppColors.primarycolor}
+        />
+        <StackNavigate />
+      </AppLayout>
+    </NavigationContainer>
   );
 }

@@ -7,10 +7,10 @@ import {
   Dimensions,
 } from 'react-native';
 import React, {useState} from 'react';
-import {CustomButton, InputField} from '../../../Components';
 import {AppColors} from '../../../utils';
 import {styles} from './style';
 import {useNavigation} from '@react-navigation/native';
+import {CustomButton, InputField} from '../../../components';
 
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
@@ -71,7 +71,7 @@ const LoginScreen = () => {
           </Text>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('onboarding');
+              navigation.navigate('signup');
             }}>
             <Text
               style={{

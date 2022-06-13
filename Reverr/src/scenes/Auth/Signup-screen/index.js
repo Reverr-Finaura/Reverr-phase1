@@ -9,11 +9,12 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {AppColors} from '../../../utils';
-import {CustomButton, BackButton, InputField} from '../../../Components';
+import {CustomButton, BackButton, InputField} from '../../../components';
 import firestore from '@react-native-firebase/firestore';
 //import {useNavigation} from '@react-navigation/native';
 import emailjs from 'emailjs-com';
 import {styles} from './style';
+import {useNavigation} from '@react-navigation/native';
 const SignupScreen = props => {
   var [isSecure1, setisSecure1] = useState(true);
   var [isSecure2, setisSecure2] = useState(true);
@@ -27,6 +28,7 @@ const SignupScreen = props => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const [mobile, setMobile] = useState('');
   const [mobileError, setMobileError] = useState(false);
+  const navigation = useNavigation();
 
   // Get UserType from UserSelectScreen
   const UserType = props?.route?.params?.UserType;
@@ -132,12 +134,7 @@ const SignupScreen = props => {
       }}>
       <View style={styles.screen}>
         <View style={{marginTop: 10}}>
-          <BackButton
-            IconSize={30}
-            onPress={() => {
-              // navigation.goBack();
-            }}
-          />
+          <BackButton IconSize={30} />
         </View>
         <ScrollView>
           <View style={styles.pageInfo}>
@@ -153,7 +150,7 @@ const SignupScreen = props => {
               Enter your basic information below{' '}
             </Text>
           </View>
-          <View style={{marginTop: 20}}>
+          <View style={{paddingVertical: '5%', paddingHorizontal: '2%'}}>
             <InputField
               iconName="user"
               placeholder="Your Name"
@@ -245,9 +242,11 @@ const SignupScreen = props => {
               keyboardType="number-pad"
               Title="Mobile Number"
             />
+          </View>
+          <View style={{paddingVertical: '5%'}}>
             <CustomButton
               Title="Create Account"
-              onPress={() => IsEmpty()}
+              onPress={() => navigation.navigate('onboarding')}
               style={{marginTop: 10}}
             />
             <View style={styles.signuplink}>
