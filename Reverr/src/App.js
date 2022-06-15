@@ -12,13 +12,15 @@ import {StatusBar} from 'react-native';
 import {AppLayout} from './layouts';
 import StackNavigate from './navigation/StackNavigate';
 import {NavigationContainer} from '@react-navigation/native';
+import { BottomNavigate } from './navigation/BottomNavigate';
 
 export default function App() {
   return (
     <AppLayout>
       <NavigationContainer>
         <StatusBar backgroundColor={'#000c12'} />
-        <StackNavigate />
+        {/* <StackNavigate /> */}
+        <BottomNavigate />
       </NavigationContainer>
     </AppLayout>
   );
