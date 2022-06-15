@@ -20,8 +20,11 @@ const Width = Dimensions.get('window').width;
 const OnBoarding = () => {
   const [greeting, setGreeting] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [previousOrganisation, setPreviousOrganisation] = useState('');
+  const [destination, setDestination] = useState('');
+  const [role, setRole] = useState('');
+  const [onBoardingData, setonBoardingData] = useState([]);
   const swipeRef = useRef(currentIndex);
-
   const navigation = useNavigation();
 
   const Skip = () => {
@@ -32,12 +35,7 @@ const OnBoarding = () => {
     setCurrentIndex(index);
     swipeRef.current.scrollToIndex({index: index + 1});
   };
-
-  const itemChanged = ({item, index}) => {
-    console.log(item);
-    console.log(index);
-  };
-  console.log(currentIndex);
+  //console.log(onBoardingData);
   return (
     <View style={styles.screen}>
       {greeting ? (
@@ -98,11 +96,15 @@ const OnBoarding = () => {
                     <Icon name={item.icon} color={AppColors.BtnClr} size={85} />
                     <Text style={styles.title}>{item.title}</Text>
                     <View style={styles.optionsContainer}>
-                      {item.options.map((item, index2) => (
+                      {item.options.map((options, index2) => (
                         <TouchableOpacity
                           key={index2}
                           style={styles.option}
                           onPress={() => {
+                            setonBoardingData(oldArray => [
+                              ...oldArray,
+                              options,
+                            ]);
                             chooseOption(index);
                           }}>
                           <Text
@@ -110,7 +112,7 @@ const OnBoarding = () => {
                               color: AppColors.FontsColor,
                               textAlign: 'center',
                             }}>
-                            {item}
+                            {options}
                           </Text>
                         </TouchableOpacity>
                       ))}
@@ -132,7 +134,12 @@ const OnBoarding = () => {
                           ]}>
                           {item.title}
                         </Text>
-                        <InputField placeholder="Organisation’s Name" />
+                        <InputField
+                          placeholder="Organisation’s Name"
+                          onChangeText={e => {
+                            setPreviousOrganisation(e);
+                          }}
+                        />
                         <CustomButton
                           onPress={() => {
                             chooseOption(index);
@@ -156,7 +163,12 @@ const OnBoarding = () => {
                           ]}>
                           {item.title}
                         </Text>
-                        <InputField placeholder="Designation" />
+                        <InputField
+                          placeholder="Designation"
+                          onChangeText={e => {
+                            setDestination(e);
+                          }}
+                        />
                         <CustomButton
                           onPress={() => {
                             chooseOption(index);
@@ -180,9 +192,15 @@ const OnBoarding = () => {
                           ]}>
                           {item.title}
                         </Text>
-                        <InputField placeholder="Role" />
+                        <InputField
+                          placeholder="Role"
+                          onChangeText={e => {
+                            setRole(e);
+                          }}
+                        />
                         <CustomButton
                           onPress={() => {
+                            console.table(onBoardingData);
                             navigation.navigate('StartupVerification');
                           }}
                           style={{marginTop: '30%'}}

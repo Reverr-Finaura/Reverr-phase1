@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
-
 import {CustomTextInput} from '../TextInput';
 import {CustomButton} from '../CustomButton';
 import styles from './styles';
