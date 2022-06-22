@@ -12,7 +12,7 @@ import {StatusBar} from 'react-native';
 import {AppLayout} from './layouts';
 import StackNavigate from './navigation/StackNavigate';
 import {NavigationContainer} from '@react-navigation/native';
-import { BottomNavigate } from './navigation/BottomNavigate';
+import {BottomNavigate, NestedStack} from './navigation/BottomNavigate';
 
 export default function App() {
   return (
