@@ -1,12 +1,40 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import {useNavigation} from '@react-navigation/native';
+import React from 'react';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ImageBackground,
+  ScrollView,
+} from 'react-native';
 
-import styles from '../styles'
+import {Header} from '../../components/Header';
+import {MentorCardLayout} from '../../components/Mentor-card-layout';
+import styles from './styles';
 
 export const Mentor = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Need a Mentor? You have visited the right place !!</Text>
+      <Header />
+      <Image
+        style={styles.image}
+        source={require('../../assets/images/Rectangle2.png')}
+      />
+      <Text style={styles.text}>Business Mentors</Text>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {/* navigation.navigate('MentorProfile', {msg: 'I am here'}) */}
+        <MentorCardLayout
+          name="Jatin Khurrana"
+          secondname="Raj Gupta"
+          onPress={() => navigation.navigate('MentorProfile')}
+        />
+        <MentorCardLayout name="William Vetrovs" secondname="Neetan Sachdeva" />
+        <MentorCardLayout name="Jatin Khurrana" secondname="Raj Gupta" />
+        <MentorCardLayout name="William Vetrovs" secondname="Neetan Sachdeva" />
+      </ScrollView>
     </View>
-  )
-}
+  );
+};
