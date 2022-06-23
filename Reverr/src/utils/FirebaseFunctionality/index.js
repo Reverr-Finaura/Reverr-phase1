@@ -2,8 +2,8 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import ImagePicker from 'react-native-image-crop-picker';
 import storage from '@react-native-firebase/storage';
-import {add_user,updateImage} from '../../Redux/actions';
-
+//import {add_user,updateImage} from '../../Redux/actions';
+import { updateImage } from '../../Redux/actions';
 const loginUser=async(email,password)=>{
   
     var user_request_obj={
@@ -79,6 +79,149 @@ export const ChangeDp=(loading,setLoading,dispatch,email)=>{
     setLoading(false);
   })
 }
+
+export const SavePost = async (item, email, posts) => {
+  const res = await firestore()
+    .collection('Users')
+    .doc(email)
+    .update({savedPosts: [...posts, item.id]});
+};
+
+export const RemovePost = async (item, email, posts) => {
+  const res = await firestore()
+    .collection('Users')
+    .doc(email)
+    .update({savedPosts: [...posts.filter(arti => arti != item.id)]});
+};
+
+export const AddGalleryImage = setfileUrl => {
+  ImagePicker.openPicker({
+    mediaType: 'photo',
+  }).then(image => {
+    try {
+      const url = image.path;
+      const fileUrl = url.substring(url.lastIndexOf('/') + 1);
+      storage()
+        .ref('Images/' + fileUrl)
+        .putFile(url)
+        .then(async () => {
+          var imgURL = await storage()
+            .ref('Images/' + fileUrl)
+            .getDownloadURL();
+          setfileUrl(imgURL);
+          console.log(imgURL);
+          /*  dispatch({type: 'UPDATEPHOTO', payload: imgURL});
+          await firestore().collection('Users').doc(userEmail).update({
+            image: imgURL,
+          }); */
+        }).catch(e=>{
+          console.log("error not selected file");
+        })
+    } catch (error) {
+      alert('Cancel');
+    }
+  }).catch(e=>{
+    console.log("error not selected file");
+  })
+};
+export const AddCameraImage = setfileUrl => {
+  ImagePicker.openCamera({
+    mediaType: 'photo',
+  }).then(image => {
+    try {
+      const url = image.path;
+      const fileUrl = url.substring(url.lastIndexOf('/') + 1);
+      storage()
+        .ref('Images/' + fileUrl)
+        .putFile(url)
+        .then(async () => {
+          var imgURL = await storage()
+            .ref('Images/' + fileUrl)
+            .getDownloadURL();
+          setfileUrl(imgURL);
+          console.log(imgURL);
+
+          /*  dispatch({type: 'UPDATEPHOTO', payload: imgURL});
+          await firestore().collection('Users').doc(userEmail).update({
+            image: imgURL,
+          }); */
+        }).catch(e=>{
+          console.log("error not selected file");
+        })
+    } catch (error) {
+      alert('Cancel');
+      return null;
+    }
+  }).catch(e=>{
+    console.log("error not selected file");
+  })
+};
+
+export const AddGalleryVideo = (setVideoUrl) => {
+  ImagePicker.openPicker({
+    mediaType: 'video',
+  }).then(video => {
+    try {
+      const url = video.path;
+      const fileUrl = url.substring(url.lastIndexOf('/') + 1);
+      storage()
+        .ref('Videos/' + fileUrl)
+        .putFile(url)
+        .then(async () => {
+          var vidURL = await storage()
+            .ref('Videos/' + fileUrl)
+            .getDownloadURL();
+          console.log(vidURL);
+          setVideoUrl(vidURL)
+          /*  dispatch({type: 'UPDATEPHOTO', payload: imgURL});
+          await firestore().collection('Users').doc(userEmail).update({
+            image: imgURL,
+          }); */
+        }).catch(e=>{
+          console.log("error not selected file");
+        })
+    } catch (error) {
+      alert('Cancel');
+    }
+  }).catch(e=>{
+    console.log("error not selected file");
+  })
+};
+export const AddCameraVideo = (setVideoUrl) => {
+  ImagePicker.openCamera({
+    mediaType: 'video',
+  }).then(image => {
+    try {
+      const url = image.path;
+      const fileUrl = url.substring(url.lastIndexOf('/') + 1);
+      storage()
+        .ref('Videos/' + fileUrl)
+        .putFile(url)
+        .then(async () => {
+          var imgURL = await storage()
+            .ref('Videos/' + fileUrl)
+            .getDownloadURL();
+          // console.log(imgURL);
+          return imgURL;
+          /*  dispatch({type: 'UPDATEPHOTO', payload: imgURL});
+          await firestore().collection('Users').doc(userEmail).update({
+            image: imgURL,
+          }); */
+        }).catch(e=>{
+          console.log("error not selected file");
+        })
+    } catch (error) {
+      alert('Cancel');
+      return null;
+    }
+  }).catch(e=>{
+    console.log("error not selected file");
+  })
+};
+
+
+
+
 
 
 export {loginUser};

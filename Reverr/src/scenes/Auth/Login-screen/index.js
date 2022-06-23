@@ -28,7 +28,8 @@ import { add_mentor } from '../../../Redux/MentorActions';
     const [password, setPassword] = useState('');
     const [serverError,SetServerError]=useState('');
     const [userLogedin,setUserLogedin]=useState(true);
-    const state=useSelector(state=>state.UserReducer);
+    //const state=useSelector(state=>state.UserReducer);
+    //const stateMentor=useSelector(state=>state.MentorReducer);
     var dispatch=useDispatch();
     const loginUser=async(email,password)=>{
   
@@ -59,14 +60,11 @@ import { add_mentor } from '../../../Redux/MentorActions';
                 .collection('Users')
                 .doc(email)
                 .get();
-      if(savedUser._data.userType=='individual'){
+      console.log("Its a :"+savedUser._data.userType);
         dispatch(add_user(savedUser._data));
-      }else{
-        dispatch(add_mentor(savedUser._data));
-      }
       user_request_obj.success=true;
-      user_request_obj.userType=savedUser._data.userType
-      //console.log(savedUser);
+      user_request_obj.userType=savedUser._data.userType;
+      console.log(savedUser);
       return user_request_obj;
   }
   
@@ -84,9 +82,9 @@ import { add_mentor } from '../../../Redux/MentorActions';
           if(response.success==true){
             setUserLogedin(true);
             if(response.userType=='Individual'){
-              navigation.replace('Test');
+              navigation.replace('IndividualProfile');
             }else{
-              navigation.replace('Test2');
+              navigation.replace('MentorProfile');
             }
           }else{
             setUserLogedin(true);

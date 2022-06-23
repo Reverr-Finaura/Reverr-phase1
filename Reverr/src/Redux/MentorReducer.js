@@ -1,6 +1,6 @@
 import { ADD_MENTOR,CLEAR_USER_STATE } from "./MentorActions";
 const initialState={
-    mentor:{},
+    user:{},
     availability:[],
     saved:[],
     allLoaded:false,
@@ -8,21 +8,22 @@ const initialState={
     pageNumber:1,
     news:[],
     articles:[],
-    notification:[]
+    notification:[],
+    savedPosts:[]
 }
 
 function MentorReducer(state=initialState,action){
-    console.log("hello")
+    console.log("hellome")
     switch(action.type){
         case ADD_MENTOR:
             return{
                 ...state,
-                mentor:action.payload
+                user:action.payload
             }
         case CLEAR_USER_STATE:
             return {
                 ...state,
-                mentor:{}
+                user:{}
             }
         default:
             return state;

@@ -11,9 +11,10 @@ import {
   import { BackButton } from '../../../Components';
   import { TitleCard } from '../../../Components';
   import {useNavigation} from '@react-navigation/native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import auth from '@react-native-firebase/auth';
 import { styles } from './style';
+import { set_allLoaded } from '../../../Redux/actions';
 
   
   const Width = Dimensions.get('screen').width;
@@ -24,6 +25,7 @@ import { styles } from './style';
     const navigation = useNavigation();
     
     const state=useSelector(state=>state.UserReducer);
+    const dispatch=useDispatch();
     function savedScreen() {
       //navigation.navigate('Saved');
     }
@@ -87,6 +89,15 @@ import { styles } from './style';
             style={{height: '7%', marginTop: '7%'}}>
             <TitleCard firstText="Logout" />
           </TouchableOpacity>
+          {state && state?.user && state.user.userType  && <TouchableOpacity
+            onPress={() => {
+              //logout();
+              //dispatch(set_allLoaded(false))
+              navigation.navigate('Rooms');
+            }}
+            style={{height: '7%', marginTop: '7%'}}>
+            <TitleCard firstText="Rooms" />
+          </TouchableOpacity>}
         </View>
         <View style={styles.dp}>
           <Image

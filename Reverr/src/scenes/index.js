@@ -12,7 +12,10 @@ import {Home} from './home-screen'
 import {Learn} from './learn-screen'
 import {Mentor} from './mentor-screen'
 import {Room} from './rooms-screen'
-
+import { Plans } from './Plans';
+import { Rooms } from './Room';
+import { CreatePost } from './CreatePost';
+import { CommentsScreen } from './CommentScreen';
 export {
   StartupVerification,
   SplashFirst,
@@ -33,6 +36,10 @@ export {
   IndividuaProfile,
   Settings,
   EditProfile,
-  MentorProfile
+  MentorProfile,
+  Plans,
+  Rooms,
+  CreatePost,
+  CommentsScreen
 };
 

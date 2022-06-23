@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import styles from './styles';
 
-export const YourInformation = props => {
+const YourInformation = props => {
   const {iconName, question, answers} = props;
   return (
     <View style={styles.container}>
@@ -20,3 +20,5 @@ export const YourInformation = props => {
     </View>
   );
 };
+
+export {YourInformation};

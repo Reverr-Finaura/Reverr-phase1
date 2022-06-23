@@ -8,14 +8,16 @@ import {
   SplashSecond,
   SplashThird,
   ProfileSetUp,
+  Plans,
+  Rooms,
 } from '../../scenes';
 import ThanksScreen from '../../scenes/thanks-screen';
-
+import {ForgotPassword, IndividuaProfile, LoginScreen, OtpScreen, ResetPassword, SignupScreen, Test,Settings,EditProfile,MentorProfile,CreatePost,CommentsScreen} from '../../scenes';
 const Stack = createNativeStackNavigator();
 
-const StackNavigate = () => {
+const StackNavigate = (props) => {
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='Login'>
       <Stack.Screen
         name="StartupVerification"
         component={StartupVerification}
@@ -25,8 +27,21 @@ const StackNavigate = () => {
       <Stack.Screen name="Splash3" component={SplashThird} />
       <Stack.Screen name="ProfileSetUp" component={ProfileSetUp} />
       <Stack.Screen name="Thanks" component={ThanksScreen} />
+      <Stack.Screen name="Login" component={LoginScreen}/>
+        <Stack.Screen name="SignUp" component={SignupScreen}  />
+        <Stack.Screen name="OtpVerification" component={OtpScreen}/>
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+          <Stack.Screen name="ResetPassword" component={ResetPassword} />
+        <Stack.Screen name="IndividualProfile" component={IndividuaProfile} />
+        <Stack.Screen name="MentorProfile" component={MentorProfile} />
+        <Stack.Screen name="Settings" component={Settings} />
+        <Stack.Screen name="EditIndivisualProfile" component={EditProfile}/>
+        <Stack.Screen name="Plans" component={Plans}/>
+        <Stack.Screen name="Rooms" component={Rooms}/>
+        <Stack.Screen name="CreatePost" component={CreatePost}/>
+        <Stack.Screen name="comments" component={CommentsScreen}/>
     </Stack.Navigator>
   );
 };
 
-export default StackNavigate;
+export {StackNavigate};

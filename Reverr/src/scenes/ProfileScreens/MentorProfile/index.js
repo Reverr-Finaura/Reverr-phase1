@@ -14,7 +14,7 @@ import {
   import Icon from 'react-native-vector-icons/FontAwesome5';
   import Ionic from 'react-native-vector-icons/Ionicons';
   import {useNavigation} from '@react-navigation/native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import auth from '@react-native-firebase/auth'
 import { clearMentorState } from '../../../Redux/MentorActions';
   //import {UserContext} from '../../App';
@@ -23,9 +23,9 @@ import { clearMentorState } from '../../../Redux/MentorActions';
   const Height = Dimensions.get('screen').height;
   
   const MentorProfile = props => {
-    const state=useSelector(state=>state.MentorReducer);
+    const state=useSelector(state=>state.UserReducer);
     const navigation = useNavigation();
-  
+    const dispatch=useDispatch();
     return (
         <ScrollView style={styles.screen}>
           <View style={styles.header}>
@@ -35,9 +35,9 @@ import { clearMentorState } from '../../../Redux/MentorActions';
                     onPress={async() => {
                         await auth().signOut().then(()=>{
                           dispatch(clearMentorState());
-                          navigation.navigate('Login');
+                          navigation.replace('Login');
                         }).catch(e=>{
-                          console.log("error in logout")
+                          console.log("error :" + e)
                         }) 
                         
                       }}
@@ -92,7 +92,7 @@ import { clearMentorState } from '../../../Redux/MentorActions';
                     textTransform: 'capitalize',
                   },
                 ]}>
-                {state.mentor.name}
+                {state.user.name}
               </Text>
             </View>
             <View
@@ -103,7 +103,7 @@ import { clearMentorState } from '../../../Redux/MentorActions';
                 borderBottomWidth: 1,
               }}>
               <Text style={[styles.text, {fontSize: 18}]}>About</Text>
-              <Text style={styles.about}>{state.mentor.about}</Text>
+              <Text style={styles.about}>{state.user.about}</Text>
             </View>
             <View
               style={{
@@ -123,7 +123,7 @@ import { clearMentorState } from '../../../Redux/MentorActions';
                   alignItems: 'center',
                 }}>
                 <Text style={[styles.text, {fontSize: 18, paddingRight: '5%'}]}>
-                  {state.mentor.industry}
+                  {state.user.industry}
                 </Text>
                 <Icon
                   name="angle-right"
@@ -136,32 +136,32 @@ import { clearMentorState } from '../../../Redux/MentorActions';
             <View style={styles.CompanyDetails}>
               <Text style={[styles.text, {fontSize: 18}]}>Experience</Text>
               <Text style={[styles.txt, {width: Width / 2}]}>
-                {state.mentor.experience &&
-                  state.mentor.experience.length > 0 &&
-                  state.mentor.experience.map(ex => ex)}
+                {state.user.experience &&
+                  state.user.experience.length > 0 &&
+                  state.user.experience.map(ex => ex)}
               </Text>
             </View>
             <View style={[styles.CompanyDetails, {height: Height / 9}]}>
               <Text style={[styles.text, {fontSize: 18}]}>Skills</Text>
               <Text style={[styles.txt, {width: Width / 2}]}>
-                {state.mentor.skills &&
-                  state.mentor.skills.length > 0 &&
-                  state.mentor.skills.map(sk => sk)}
+                {state.user.skills &&
+                  state.user.skills.length > 0 &&
+                  state.user.skills.map(sk => sk)}
               </Text>
             </View>
             <View style={[styles.CompanyDetails, {height: Height / 9}]}>
               <Text style={[styles.text, {fontSize: 18}]}>Education</Text>
               <Text style={[styles.txt, {width: Width / 2}]}>
-                {state.mentor.education &&
-                  state.mentor.education.length > 0 &&
-                  state.mentor.education.map(ed => ed)}
+                {state.user.education &&
+                  state.user.education.length > 0 &&
+                  state.state.education.map(ed => ed)}
               </Text>
             </View>
           </View>
           <View style={styles.dp}>
             <Image
               style={{width: '100%', height: '100%'}}
-              source={{uri: state.mentor.image}}
+              source={{uri: state.user.image}}
             />
           </View>
         </ScrollView>
