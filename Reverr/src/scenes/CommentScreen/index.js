@@ -7,13 +7,14 @@ import {
     Image,
     FlatList,
     TouchableOpacity,
+    Keyboard
   } from 'react-native';
   import React, {useState,useEffect} from 'react';
   import { AppColors } from '../../utils';
   import { BackButton } from '../../Components';
   import {useNavigation} from '@react-navigation/native';
   import Icon from 'react-native-vector-icons/MaterialIcons';
-import { useDispatch, useSelector } from 'react-redux';
+  import { useDispatch, useSelector } from 'react-redux';
   import firestore from '@react-native-firebase/firestore';
   const Width = Dimensions.get('window').width;
   const Height = Dimensions.get('window').height;
@@ -26,15 +27,43 @@ import { useDispatch, useSelector } from 'react-redux';
     const navigation = useNavigation();
     const [comment, setComment] = useState('');
     //console.log(state.pin_post.comments, 'pin_posts');
-    
+    const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+
+    useEffect(() => {
+        const keyboardDidShowListener = Keyboard.addListener(
+            'keyboardDidShow',
+        () => {
+            setKeyboardVisible(true); // or some other action
+        }
+    );
+        const keyboardDidHideListener = Keyboard.addListener(
+            'keyboardDidHide',
+        () => {
+            setKeyboardVisible(false); // or some other action
+      }
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
+
+  const inputContainerStyle={
+    flexDirection: 'row',
+    alignItems: 'center',
+    position: 'absolute',
+    backgroundColor: AppColors.BtnClr,
+    borderRadius: 9,
+    bottom: isKeyboardVisible?Height/2.3: 5,
+    height: Height / 14,
+    paddingHorizontal: '3%',
+  }
     const clickhandler=(item)=>{
         //dispatch(deleteComment(state.pin_post.id,state.pin_post,item.id));
     }
 
     const renderCard=({item})=>{
-        //console.log("yes:"+item.commentedby.image);
-        //var info=item.commentedby || state.user;
-        //console.log(item.commentedby.name);
         return (
            <View style={styles.commentCard}>
             <View style={{display:'flex',flexDirection:'row'}}>
@@ -80,6 +109,7 @@ import { useDispatch, useSelector } from 'react-redux';
     }
     return (
       <View style={styles.screen}>
+        
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <BackButton
             IconSize={30}
@@ -105,25 +135,27 @@ import { useDispatch, useSelector } from 'react-redux';
           </View>
           <Text style={styles.postText}>{state.pin_post.text}</Text>
         </View>
-        <View>
+        
           {state.pin_post.comments.length>0 && <FlatList
             data={state.pin_post.comments}
             keyExtractor={item=>item.commentid.toString()}
             renderItem={renderCard}
           />}
-        </View>
-        <View style={styles.inputContainer}>
+        <View style={{paddingVertical:40}}></View>
+        <View style={inputContainerStyle}>
           <TextInput style={styles.input} placeholder="Write Your Comments " value={comment} onChangeText={(text)=>setComment(text)}/>
           <TouchableOpacity onPress={handleComment}>
             <Icon name="send" color={AppColors.ActiveColor} size={28} />
           </TouchableOpacity>
         </View>
+        
       </View>
     );
   };
   const styles = StyleSheet.create({
     screen: {
-      flex: 1,
+    //   flex: 1,
+    height:Height/1.03,
       backgroundColor: AppColors.primarycolor,
     },
     commentCard:{

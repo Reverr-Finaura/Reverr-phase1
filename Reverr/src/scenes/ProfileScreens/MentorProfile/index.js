@@ -65,7 +65,7 @@ import { clearMentorState } from '../../../Redux/MentorActions';
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
-                  //navigation.navigate('Setting');
+                  navigation.navigate('Settings');
                 }}
                 style={{
                   alignItems: 'center',
@@ -154,7 +154,7 @@ import { clearMentorState } from '../../../Redux/MentorActions';
               <Text style={[styles.txt, {width: Width / 2}]}>
                 {state.user.education &&
                   state.user.education.length > 0 &&
-                  state.state.education.map(ed => ed)}
+                  state.user.education.map(ed => ed)}
               </Text>
             </View>
           </View>

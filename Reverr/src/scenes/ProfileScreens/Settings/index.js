@@ -68,7 +68,11 @@ import { set_allLoaded } from '../../../Redux/actions';
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('EditIndivisualProfile');
+              //if(state.user.userType=='individual'){
+                navigation.navigate('EditIndivisualProfile');
+              //}else{
+                //navigation.navigate('EditMentorProfile')
+              //}
             }}
             style={{height: '7%', marginTop: '7%'}}>
             <TitleCard firstText="Edit profile" />
