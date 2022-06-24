@@ -16,6 +16,8 @@ import { Plans } from './Plans';
 import { Rooms } from './Room';
 import { CreatePost } from './CreatePost';
 import { CommentsScreen } from './CommentScreen';
+import { CalanderScreen } from './CalenderScreen';
+import { AddedMentors } from './AddedMentors';
 export {
   StartupVerification,
   SplashFirst,
@@ -40,6 +42,8 @@ export {
   Plans,
   Rooms,
   CreatePost,
-  CommentsScreen
+  CommentsScreen,
+  CalanderScreen,
+  AddedMentors
 };
 

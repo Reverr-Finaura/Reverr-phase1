@@ -72,6 +72,7 @@ import { load_room_data,refresh_rooms_list,set_allLoaded,like_post, pin_post,del
     },[dispatch]);
 
     const _handleLoadMore=()=>{
+      console.log("on end reached dispatched")
       dispatch(load_room_data(state?.lastDocument || undefined));
     }
 
@@ -341,7 +342,7 @@ import { load_room_data,refresh_rooms_list,set_allLoaded,like_post, pin_post,del
             keyExtractor={item=>item.id.toString()}
             renderItem={renderCard}
             onEndReached={_handleLoadMore}
-            onEndReachedThreshold={0.5}
+            onEndReachedThreshold={1}
             refreshing={state.refreshing}
             onRefresh={handleRefresh}
           />}

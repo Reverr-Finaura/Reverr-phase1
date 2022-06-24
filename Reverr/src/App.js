@@ -17,6 +17,11 @@ import {store} from './Redux/store';
 //import 'react-native-gesture-handler';
 import {StatusBar} from 'react-native';
 import {AppLayout} from './layouts';
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+
+const theme = {
+  ...DefaultTheme,
+};
 
 export default function App() {
   const [user,setUser]=useState();
@@ -39,12 +44,14 @@ export default function App() {
       {/* <Text style={{color:"white"}}>Hello</Text> */}
       <Provider store={store}>
         {/* <Text>Hello</Text> */}
+      <PaperProvider theme={theme}>
       <NavigationContainer> 
       <StatusBar backgroundColor={'#000c12'} />
         {/* <Root_Navigator/> */}
         <StackNavigate/>
       {/* <Text>Hello World</Text> */} 
       </NavigationContainer>
+      </PaperProvider>
       </Provider>
     </AppLayout>
   );

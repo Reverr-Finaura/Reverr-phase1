@@ -93,6 +93,13 @@ import { set_allLoaded } from '../../../Redux/actions';
             style={{height: '7%', marginTop: '7%'}}>
             <TitleCard firstText="Logout" />
           </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Calender')
+            }}
+            style={{height: '7%', marginTop: '7%'}}>
+            <TitleCard firstText="Calender" />
+          </TouchableOpacity>
           {state && state?.user && state.user.userType  && <TouchableOpacity
             onPress={() => {
               //logout();
