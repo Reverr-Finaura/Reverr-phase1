@@ -18,6 +18,11 @@ import {SplashSecond} from './splash-screens/splash2';
 import {SplashThird} from './splash-screens/splash3';
 import {ProfileSetUp} from './profilesetup';
 
+import { Rooms } from './Room';
+import { CreatePost } from './CreatePost';
+import { CommentsScreen } from './CommentScreen';
+import { CalanderScreen } from './CalenderScreen';
+import { AddedMentors } from './AddedMentors';
 import {Funding} from './funding-screen';
 import {Home} from './home-screen';
 import {Learn} from './learn-screen';
@@ -47,4 +52,9 @@ export {
   Settings,
   EditProfile,
   MentorProfile,
+  Rooms,
+  CreatePost,
+  CommentsScreen,
+  CalanderScreen,
+  AddedMentors
 };
