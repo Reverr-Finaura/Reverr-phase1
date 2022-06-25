@@ -8,7 +8,7 @@
 
 import {NavigationContainer} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
-import StackNavigate from './navigation/StackNavigate';
+import {StackNavigate} from './navigation/StackNavigate';
 import auth from '@react-native-firebase/auth';
 import {Provider} from 'react-redux';
 import {store} from './Redux/store';
