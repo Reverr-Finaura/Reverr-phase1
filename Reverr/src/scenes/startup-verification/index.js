@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Image, Text, TouchableOpacity, ScrollView} from 'react-native';
-
 import styles from './styles';
 import {Details} from '../../Components/UserDetails';
 

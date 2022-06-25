@@ -84,7 +84,10 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
+<<<<<<< HEAD
 
+=======
+>>>>>>> ced3a9e4b575f9786bf11919f8c716b8ff4b256b
 
 /**
  * Set this to true to create two separate APKs instead of one:

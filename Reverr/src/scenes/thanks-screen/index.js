@@ -14,9 +14,7 @@ const ThanksScreen = () => {
         />
       </TouchableOpacity>
       <Text style={styles.text}>Thanks!{''} That was everything!!</Text>
-      <View
-        {...setTimeout(() => navigation.navigate('StartupVerification'), 3000)}
-      />
+      <View {...setTimeout(() => navigation.navigate('home'), 3000)} />
     </View>
   );
 };

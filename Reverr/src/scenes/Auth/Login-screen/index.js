@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
     View,
     Text,
@@ -190,3 +191,8 @@ import { add_mentor } from '../../../Redux/MentorActions';
   
  
   export {LoginScreen};
+=======
+import LoginScreen from './LoginScreen';
+
+export {LoginScreen};
+>>>>>>> ced3a9e4b575f9786bf11919f8c716b8ff4b256b

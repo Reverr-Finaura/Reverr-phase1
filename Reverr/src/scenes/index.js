@@ -3,6 +3,7 @@ import {
   SignupScreen,
   OtpScreen,
   ForgotPassword,
+<<<<<<< HEAD
   ResetPassword,
 } from './Auth';
 import {
@@ -58,3 +59,9 @@ export {
   CalanderScreen,
   AddedMentors
 };
+=======
+  OnBoarding,
+} from './Auth';
+import Home from './Home';
+export {LoginScreen, Home, SignupScreen, OtpScreen, ForgotPassword, OnBoarding};
+>>>>>>> ced3a9e4b575f9786bf11919f8c716b8ff4b256b

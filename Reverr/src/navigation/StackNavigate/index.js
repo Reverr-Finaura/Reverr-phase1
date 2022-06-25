@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {
@@ -22,6 +21,7 @@ const StackNavigate = (props) => {
         name="StartupVerification"
         component={StartupVerification}
       />
+      <Stack.Screen name="home" component={Home} />
       <Stack.Screen name="Splash1" component={SplashFirst} />
       <Stack.Screen name="Splash2" component={SplashSecond} />
       <Stack.Screen name="Splash3" component={SplashThird} />
