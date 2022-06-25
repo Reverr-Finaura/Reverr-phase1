@@ -6,11 +6,9 @@
  * @flow strict-local
  */
 
-import { NavigationContainer } from '@react-navigation/native';
-import React,{useEffect,useState} from 'react';
-//import { Root_Navigator } from './Navigator';
-import { StackNavigate } from './navigation/StackNavigate';
-import { Text } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
+import StackNavigate from './navigation/StackNavigate';
 import auth from '@react-native-firebase/auth';
 import {Provider} from 'react-redux';
 import {store} from './Redux/store';
@@ -32,11 +30,10 @@ export default function App() {
     if (initializing) setInitializing(false);
   }
   useEffect(() => {
-      const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-      return subscriber; // unsubscribe on unmount
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
   }, []);
-  if(initializing){
-    console.log("null")
+  if (initializing) {
     return null;
   }
   return (
