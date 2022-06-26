@@ -3,7 +3,6 @@ import {
   SignupScreen,
   OtpScreen,
   ForgotPassword,
-<<<<<<< HEAD
   ResetPassword,
 } from './Auth';
 import {
@@ -19,11 +18,11 @@ import {SplashSecond} from './splash-screens/splash2';
 import {SplashThird} from './splash-screens/splash3';
 import {ProfileSetUp} from './profilesetup';
 
-import { Rooms } from './Room';
-import { CreatePost } from './CreatePost';
-import { CommentsScreen } from './CommentScreen';
-import { CalanderScreen } from './CalenderScreen';
-import { AddedMentors } from './AddedMentors';
+import {Rooms} from './Room';
+import {CreatePost} from './CreatePost';
+import {CommentsScreen} from './CommentScreen';
+import {CalanderScreen} from './CalenderScreen';
+import {AddedMentors} from './AddedMentors';
 import {Funding} from './funding-screen';
 import {Home} from './home-screen';
 import {Learn} from './learn-screen';
@@ -57,11 +56,5 @@ export {
   CreatePost,
   CommentsScreen,
   CalanderScreen,
-  AddedMentors
+  AddedMentors,
 };
-=======
-  OnBoarding,
-} from './Auth';
-import Home from './Home';
-export {LoginScreen, Home, SignupScreen, OtpScreen, ForgotPassword, OnBoarding};
->>>>>>> ced3a9e4b575f9786bf11919f8c716b8ff4b256b
