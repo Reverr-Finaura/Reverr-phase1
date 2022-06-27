@@ -136,11 +136,8 @@ import {
             </TouchableOpacity>
           </View>
         </View>
-      </TouchableWithoutFeedback>
-    );
-  };
-  
- 
-  
-  export {ForgotPassword};
-  
+    </TouchableWithoutFeedback>
+  );
+};
+
+export {ForgotPassword};

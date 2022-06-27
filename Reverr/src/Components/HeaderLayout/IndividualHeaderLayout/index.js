@@ -3,11 +3,9 @@ import React, {useState} from 'react';
 import { Header } from '../../HeaderComponents';
 import { AppColors } from '../../../utils';
 import {useNavigation} from '@react-navigation/native';
-//import CalanderScreen from '../CalanderScreen/CalanderScreen';
-//import ModelView from '../../Componants/ModelView';
-//import {UserContext} from '../../App';
+import { ModelView} from '../../ModelView';
 import { useSelector,useDispatch } from 'react-redux';
-
+import {CalanderScreen} from '../../../scenes/CalenderScreen';
 const IndividualHeaderLayout = props => {
   //const {state, dispatch} = useContext(UserContext);
   const state=useSelector(state=>state.UserReducer);
@@ -25,9 +23,9 @@ const IndividualHeaderLayout = props => {
           //     ? 'MentorProfile'
           //     : 'Individual',
           // );
-          if(state && state?.user && state.user.userType=='Individual'){
+          //if(state && state?.user && state.user.userType=='Individual'){
             navigation.navigate('IndividualProfile')
-          }
+          //}
         }}
         onPressCalander={() => {
           setIsOpen(true);
@@ -38,9 +36,10 @@ const IndividualHeaderLayout = props => {
         onPressChat={() => {
           //navigation.navigate('Chat');
         }}
-        DpUrl={state && state.image}
+        DpUrl={state.user && state.user.image}
       />
-      {/* <ModelView
+      {/* <CalanderScreen /> */}
+      <ModelView
         ShowModal={isOpen}
         onCloseModal={() => {
           setIsOpen(false);
@@ -51,7 +50,7 @@ const IndividualHeaderLayout = props => {
           }}
           setModel={setIsOpen}
         />
-      </ModelView> */}
+      </ModelView>
       {props.children}
     </View>
   );

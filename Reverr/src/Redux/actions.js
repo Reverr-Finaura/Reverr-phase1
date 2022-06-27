@@ -353,14 +353,14 @@ export const like_post=(postId,post,email)=>{
     }
 }
 
-export const setUser=(email)=>{
+export const setUser=(data)=>{
     try {
         return async dispatch=>{
-            const user=await firestore().collection('Users').doc(email).get();
+            //const user=await firestore().collection('Users').doc(email).get();
             //console.log(user);
             dispatch({
                 type:'SET_USER',
-                payload:user._data
+                payload:data
             })
         }
     } catch (e) {

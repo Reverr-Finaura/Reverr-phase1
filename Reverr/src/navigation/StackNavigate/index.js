@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {
@@ -26,8 +25,10 @@ import {ForgotPassword,
         CommentsScreen,
         CalanderScreen,
         AddedMentors,
-        IntroSplash
+        IntroSplash,
+        Home
       } from '../../scenes';
+import { BottomNavigate } from '../BottomNavigate';
 const Stack = createNativeStackNavigator();
 
 const StackNavigate = (props) => {
@@ -37,6 +38,8 @@ const StackNavigate = (props) => {
         name="StartupVerification"
         component={StartupVerification}
       />
+      {/* <Stack.Screen name="home" component={Home} /> */}
+      <Stack.Screen name="IndividualTab" component={BottomNavigate}/>
       <Stack.Screen name="Splash1" component={SplashFirst} />
       <Stack.Screen name="Splash2" component={SplashSecond} />
       <Stack.Screen name="Splash3" component={SplashThird} />
@@ -58,6 +61,7 @@ const StackNavigate = (props) => {
         <Stack.Screen name="Calender" component={CalanderScreen}/>
         <Stack.Screen name="AddedMentors" component={AddedMentors} />
         <Stack.Screen name="IntroSplash" component={IntroSplash} />
+        {/* <Stack.Screen name="Home" component={Home}/> */}
     </Stack.Navigator>
   );
 };

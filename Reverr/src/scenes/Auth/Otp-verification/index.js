@@ -132,38 +132,20 @@ import {
                 }
               }}
             />
-            <View
+            <TouchableOpacity
               style={{
-                flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginTop: 30,
+                marginStart: -20,
               }}>
-              <Text
-                style={{
-                  color: AppColors.infoFonts,
-                  fontFamily: 'Poppins-Regular',
-                  fontSize: 13,
-                }}>
-                Don’t get it?{' '}
+              <Text style={[styles.inputHeader, {fontSize: 13}]}>
+                Resend code
               </Text>
-              <TouchableOpacity
-                style={{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginStart: -20,
-                }}>
-                <Text style={[styles.inputHeader, {fontSize: 13}]}>
-                  Resend code
-                </Text>
-              </TouchableOpacity>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
-      </TouchableWithoutFeedback>
-    );
-  };
- 
-  
-  export {OtpScreen};
-  
+    </TouchableWithoutFeedback>
+  );
+};
+
+export {OtpScreen};

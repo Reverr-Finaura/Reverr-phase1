@@ -5,6 +5,8 @@ import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../Redux/actions';
 import auth from '@react-native-firebase/auth'
+import { FirebaseStorageTypes } from '@react-native-firebase/storage';
+import firestore from '@react-native-firebase/firestore'
 //import { AuthContext } from '../Navigations/AuthProvider';
 
 const Height = Dimensions.get("window").height;
@@ -16,34 +18,63 @@ const IntroSplash = () => {
     const navigation = useNavigation();
     //const [user, setUser] = useState(AuthContext);
     const [initializing, setInitializing] = useState(true);
-    const [user, setuser] = useState();
+    
     const state=useSelector(state=>state.UserReducer);
+    const [user, setuser] = useState();
     const dispatch=useDispatch();
 
   // Handle user state changes
   function onAuthStateChanged(user) {
     setuser(user);
-    //console.log(user);
-    //dispatch(add_user(user))
+    // if(user){
+    //     dispatch(setUser(user.email));
+    // }
     if (initializing) setInitializing(false);
   }
 useEffect(() => {
+    // const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    //if(subscriber){ 
     setTimeout(() => {
-        auth().onAuthStateChanged(user=>{
+        auth().onAuthStateChanged(async user=>{
             if(!user){
-                //console.log("Got user");
                 navigation.replace("Login")
                 }else{
-                    dispatch(setUser(user.email));
-                    //auth().currentUser
-                    navigation.navigate('IndividualProfile');
+                    await firestore().collection('Users').doc(user.email).get().then(inst=>{
+                        //console.log(inst._data);
+                        dispatch(setUser(inst._data));
+                        if(inst._data.userType=='Mentor'){
+                            return navigation.replace('MentorProfile');
+                        }else{
+                            //console.log(inst._data)
+                            return navigation.navigate('IndividualTab')
+                        }
+                    })          
+                    
+                
                 }
         })
-        
-        //console.log("Got user");
-    }, 2000)
+    }, 2000);
+
 }, []);
-    
+
+//if (initializing) return null;
+
+    // setTimeout(() => {
+    //     auth().onAuthStateChanged(user=>{
+    //         if(!user){
+    //             navigation.replace("Login")
+    //             }else{
+    //                 dispatch(setUser(user.email));
+    //                 if(state.user.userType=='Mentor'){
+    //                     return navigation.replace('MentorProfile');
+    //                 }else{
+    //                     console.log(state.user)
+    //                     navigation.navigate('home')
+    //                 }
+                
+    //             }
+    //     })
+    // }, 2000);
 
 
     return (

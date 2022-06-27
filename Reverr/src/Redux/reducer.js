@@ -15,13 +15,14 @@ const initialState={
     savedPosts:[],
     Rooms:[],
     refreshing:false,
-    pin_post:{}
+    pin_post:{},
 }
 
 function UserReducer(state=initialState,action){
     console.log("hello")
     switch(action.type){
         case SET_USER:
+            console.log('I am setuser')
             return {
                 ...state,
                 user:action.payload,

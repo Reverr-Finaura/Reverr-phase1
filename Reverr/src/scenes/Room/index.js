@@ -71,6 +71,10 @@ import { load_room_data,refresh_rooms_list,set_allLoaded,like_post, pin_post,del
       //setLoading(false);
     },[dispatch]);
 
+    const likePost=(id,item)=>{
+      dispatch(like_post(id,item,state.user.email));
+    }
+
     const _handleLoadMore=()=>{
       console.log("on end reached dispatched")
       dispatch(load_room_data(state?.lastDocument || undefined));
@@ -177,8 +181,8 @@ import { load_room_data,refresh_rooms_list,set_allLoaded,like_post, pin_post,del
                       <TouchableOpacity onPress={() => likePost(item.id, item)}>
                         <Icon
                           name="heart"
+                          color={item.likes.includes(state.user.email)?'red':AppColors.FontsColor}
                           size={22}
-                          color={AppColors.FontsColor}
                         />
                       </TouchableOpacity>
                       <Text style={[styles.name, {marginStart: '8%'}]}>

@@ -130,8 +130,6 @@ import { useSelector } from 'react-redux';
   
     useEffect(() => {
       setCalender(getCalender(month, year));
-      // console.log(month)
-      // console.log(calender.map(week=>week))
     }, []);
   
     return (
@@ -306,7 +304,7 @@ import { useSelector } from 'react-redux';
             onPress={() => {
               console.log("hello")
               navigation.navigate('AddedMentors', {dates});
-              //props.setModel(false);
+              props.setModel(false);
             }}>
             <Text style={styles.text}>Proceed</Text>
           </TouchableOpacity>

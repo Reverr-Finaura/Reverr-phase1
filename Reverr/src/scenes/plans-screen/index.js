@@ -1,6 +1,5 @@
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
-
 import styles from './styles';
 import {Header} from '../../Components/Header';
 import {useNavigation} from '@react-navigation/native';

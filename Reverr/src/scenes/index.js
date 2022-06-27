@@ -1,10 +1,11 @@
 import {
-  LoginScreen,
   SignupScreen,
   OtpScreen,
   ForgotPassword,
   ResetPassword,
 } from './Auth';
+import { LoginScreen } from './Auth';
+//import { LoginScreen } from './Auth';
 import {
   IndividuaProfile,
   Settings,
@@ -18,18 +19,18 @@ import {SplashSecond} from './splash-screens/splash2';
 import {SplashThird} from './splash-screens/splash3';
 import {ProfileSetUp} from './profilesetup';
 
-import { Rooms } from './Room';
-import { CreatePost } from './CreatePost';
-import { CommentsScreen } from './CommentScreen';
-import { CalanderScreen } from './CalenderScreen';
-import { AddedMentors } from './AddedMentors';
-import {Funding} from './funding-screen';
-import {Home} from './home-screen';
+import {Rooms} from './Room';
+import {CreatePost} from './CreatePost';
+import {CommentsScreen} from './CommentScreen';
+import {CalanderScreen} from './CalenderScreen';
+import {AddedMentors} from './AddedMentors';
+import {Funding} from './funding-screen'; 
 import {Learn} from './learn-screen';
 import {Mentor} from './mentor-screen';
 import {Room} from './rooms-screen';
 import {Plans} from './plans-screen';
 import { IntroSplash } from './introSplashScreen';
+import { Home } from './home-screen';
 export {
   StartupVerification,
   SplashFirst,

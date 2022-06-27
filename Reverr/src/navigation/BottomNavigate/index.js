@@ -3,9 +3,9 @@ import {Image} from 'react-native';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {Funding, Home, Learn, Mentor, Room, Plans} from '../../scenes';
+import {Funding, Home, Learn, Mentor, Room, Plans,Rooms} from '../../scenes';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {MentorProfile} from '../../components/Mentor-Profile';
+import {MentorProfile} from '../../Components/Mentor-Profile';
 
 const Tab = createBottomTabNavigator();
 
@@ -78,7 +78,7 @@ export const BottomNavigate = () => {
       />
       <Tab.Screen
         name="Rooms"
-        component={Room}
+        component={Rooms}
         options={{
           tabBarIcon: ({focused}) => (
             <Image
