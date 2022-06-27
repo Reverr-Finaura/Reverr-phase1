@@ -27,7 +27,7 @@ const Header = props => {
             height: 90,
             width: 90,
           }}
-          source={require('../../../assets/images/logo.png')}
+          source={require('../../../assets/images/Logo.png')}
         />
       </View>
       <TouchableOpacity onPress={props.onPressNoti} style={styles.notification}>

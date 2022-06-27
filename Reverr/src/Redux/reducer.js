@@ -1,5 +1,5 @@
 import { Rooms } from "../scenes/Room";
-import { ADD_USER,UPDATE_IMAGE,UPDATE_USER_DATA,CLEAR_USER_STATE,LOAD_ROOM_DATA,ALL_LOADED,REFRESH_ROOMS_LIST,PIN_POST,LIKE_POST,POST_COMMENT,DELETE_POST,DELETE_POST_ACTION} from "./actions";
+import { ADD_USER,UPDATE_IMAGE,UPDATE_USER_DATA,CLEAR_USER_STATE,LOAD_ROOM_DATA,ALL_LOADED,REFRESH_ROOMS_LIST,PIN_POST,LIKE_POST,POST_COMMENT,DELETE_POST,DELETE_POST_ACTION,SET_USER} from "./actions";
 const initialState={
     user:{},
     availability:[],
@@ -21,6 +21,14 @@ const initialState={
 function UserReducer(state=initialState,action){
     console.log("hello")
     switch(action.type){
+        case SET_USER:
+            return {
+                ...state,
+                user:action.payload,
+                lastDocument:undefined,
+                refreshing:false,
+                Rooms:[]
+            }
         case ADD_USER:
             return {
                 ...state,

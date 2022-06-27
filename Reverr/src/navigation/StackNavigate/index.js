@@ -12,12 +12,27 @@ import {
   Rooms,
 } from '../../scenes';
 import ThanksScreen from '../../scenes/thanks-screen';
-import {ForgotPassword, IndividuaProfile, LoginScreen, OtpScreen, ResetPassword, SignupScreen, Test,Settings,EditProfile,MentorProfile,CreatePost,CommentsScreen,CalanderScreen,AddedMentors} from '../../scenes';
+import {ForgotPassword,
+   IndividuaProfile,
+    LoginScreen,
+     OtpScreen,
+      ResetPassword,
+       SignupScreen,
+        Test,
+        Settings,
+        EditProfile,
+        MentorProfile,
+        CreatePost,
+        CommentsScreen,
+        CalanderScreen,
+        AddedMentors,
+        IntroSplash
+      } from '../../scenes';
 const Stack = createNativeStackNavigator();
 
 const StackNavigate = (props) => {
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='Login'>
+    <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='IntroSplash'>
       <Stack.Screen
         name="StartupVerification"
         component={StartupVerification}
@@ -42,7 +57,7 @@ const StackNavigate = (props) => {
         <Stack.Screen name="comments" component={CommentsScreen}/>
         <Stack.Screen name="Calender" component={CalanderScreen}/>
         <Stack.Screen name="AddedMentors" component={AddedMentors} />
-
+        <Stack.Screen name="IntroSplash" component={IntroSplash} />
     </Stack.Navigator>
   );
 };

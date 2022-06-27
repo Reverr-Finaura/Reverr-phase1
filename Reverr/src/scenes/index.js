@@ -29,7 +29,7 @@ import {Learn} from './learn-screen';
 import {Mentor} from './mentor-screen';
 import {Room} from './rooms-screen';
 import {Plans} from './plans-screen';
-
+import { IntroSplash } from './introSplashScreen';
 export {
   StartupVerification,
   SplashFirst,
@@ -56,5 +56,6 @@ export {
   CreatePost,
   CommentsScreen,
   CalanderScreen,
-  AddedMentors
+  AddedMentors,
+  IntroSplash
 };
