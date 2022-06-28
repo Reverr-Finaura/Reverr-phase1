@@ -3,7 +3,15 @@ import {Image} from 'react-native';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {Funding, Home, Learn, Mentor, Room, Plans,Rooms} from '../../scenes';
+import {
+  Home,
+  FundingScreen,
+  Mentor,
+  Room,
+  Plans,
+  Rooms,
+  LearnScreen,
+} from '../../scenes';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {MentorProfile} from '../../Components/Mentor-Profile';
 
@@ -61,7 +69,7 @@ export const BottomNavigate = () => {
       />
       <Tab.Screen
         name="Funding"
-        component={Funding}
+        component={FundingScreen}
         options={{
           tabBarIcon: ({focused}) => (
             <Image
@@ -95,7 +103,7 @@ export const BottomNavigate = () => {
       />
       <Tab.Screen
         name="Learn"
-        component={Learn}
+        component={LearnScreen}
         options={{
           tabBarIcon: ({focused}) => (
             <Image

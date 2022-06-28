@@ -8,12 +8,12 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import React, {useState} from 'react';
-import { AppColors} from '../../../utils';
-import { InputField } from '../../../Components';
-import { CustomButton } from '../../../Components';
-import { styles } from './style';
-import { useSelector,useDispatch } from 'react-redux';
-import { add_user } from '../../../Redux/actions';
+import {AppColors} from '../../../utils';
+import {InputField} from '../../../Components';
+import {CustomButton} from '../../../Components';
+import {styles} from './style';
+import {useSelector, useDispatch} from 'react-redux';
+import {add_user} from '../../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 //import { add_mentor } from '../../../Redux/MentorActions';
@@ -26,67 +26,63 @@ const LoginScreen = ({navigation}) => {
   const [emailerror, setemailerror] = useState(false);
   const [passerror, setpasserror] = useState(false);
   const [password, setPassword] = useState('');
-  const [serverError,SetServerError]=useState('');
-  const [userLogedin,setUserLogedin]=useState(true);
+  const [serverError, SetServerError] = useState('');
+  const [userLogedin, setUserLogedin] = useState(true);
   //const state=useSelector(state=>state.UserReducer);
   //const stateMentor=useSelector(state=>state.MentorReducer);
-  var dispatch=useDispatch();
-  const loginUser=async(email,password)=>{
-
-    var user_request_obj={
-        success:false,
-        failiure:false,
-        failiure_message:null,
-        userType:'Individual'
-    }
+  var dispatch = useDispatch();
+  const loginUser = async (email, password) => {
+    var user_request_obj = {
+      success: false,
+      failiure: false,
+      failiure_message: null,
+      userType: 'Individual',
+    };
     try {
-        await auth().signInWithEmailAndPassword(email, password);
-      } catch (e) {
-        if (e.code === 'auth/wrong-password') {
-          //alert('Wrong password try again!');
-          user_request_obj.failiure=true;
-          user_request_obj.failiure_message="Wrong Password try again!";
-          return user_request_obj
-          //console.log("Wrong password try again")
-        }
-        if (e.code === 'auth/user-not-found') {
-          
-          user_request_obj.failiure=true;
-          user_request_obj.failiure_message="No user registered with this email!";
-          return user_request_obj
-        }
+      await auth().signInWithEmailAndPassword(email, password);
+    } catch (e) {
+      if (e.code === 'auth/wrong-password') {
+        //alert('Wrong password try again!');
+        user_request_obj.failiure = true;
+        user_request_obj.failiure_message = 'Wrong Password try again!';
+        return user_request_obj;
+        //console.log("Wrong password try again")
       }
-    const savedUser = await firestore()
-              .collection('Users')
-              .doc(email)
-              .get();
-    console.log("Its a :"+savedUser._data.userType);
-      dispatch(add_user(savedUser._data));
-    user_request_obj.success=true;
-    user_request_obj.userType=savedUser._data.userType;
+      if (e.code === 'auth/user-not-found') {
+        user_request_obj.failiure = true;
+        user_request_obj.failiure_message =
+          'No user registered with this email!';
+        return user_request_obj;
+      }
+    }
+    const savedUser = await firestore().collection('Users').doc(email).get();
+    console.log('Its a :' + savedUser._data.userType);
+    dispatch(add_user(savedUser._data));
+    user_request_obj.success = true;
+    user_request_obj.userType = savedUser._data.userType;
     console.log(savedUser);
     return user_request_obj;
-}
+  };
 
-  const IsEmpty = async() => {
+  const IsEmpty = async () => {
     if (!email) {
       setemailerror(true);
     } else {
       if (!password) {
         setpasserror(true);
       } else {
-       //setUserLogedin(false);
-       setUserLogedin(false);
-        var response=await loginUser(email,password);
+        //setUserLogedin(false);
+        setUserLogedin(false);
+        var response = await loginUser(email, password);
         console.log(response);
-        if(response.success==true){
+        if (response.success == true) {
           setUserLogedin(true);
-          if(response.userType=='Individual'){
-            return navigation.replace('IndividualProfile');
-          }else{
+          if (response.userType == 'Individual') {
+            return navigation.replace('IndividualTab');
+          } else {
             return navigation.replace('MentorProfile');
           }
-        }else{
+        } else {
           setUserLogedin(true);
           alert('server Error');
         }
@@ -94,8 +90,12 @@ const LoginScreen = ({navigation}) => {
     }
   };
 
-  if(!userLogedin){
-    return <View style={styles.screen}><ActivityIndicator size="large" color='purple'/></View>
+  if (!userLogedin) {
+    return (
+      <View style={styles.screen}>
+        <ActivityIndicator size="large" color="purple" />
+      </View>
+    );
   }
 
   return (
@@ -156,7 +156,11 @@ const LoginScreen = ({navigation}) => {
             }}
             Title="Password"
           />
-          <CustomButton Title="Login" onPress={()=>IsEmpty()} style={{marginTop: 20}} />
+          <CustomButton
+            Title="Login"
+            onPress={() => IsEmpty()}
+            style={{marginTop: 20}}
+          />
           <TouchableOpacity
             style={styles.forgetpass}
             onPress={() => {
@@ -187,6 +191,5 @@ const LoginScreen = ({navigation}) => {
     </TouchableWithoutFeedback>
   );
 };
-
 
 export {LoginScreen};

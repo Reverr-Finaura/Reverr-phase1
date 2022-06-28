@@ -31,4 +31,8 @@ export const styles = StyleSheet.create({
     height: Height > 684 ? '100%' : 175,
     width: 160,
   },
+  menu: {
+    alignItems: 'center',
+    marginTop: '4%',
+  },
 });

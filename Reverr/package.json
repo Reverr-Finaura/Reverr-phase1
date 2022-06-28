@@ -22,6 +22,7 @@
     "emailjs-com": "3.2.0",
     "react": "17.0.2",
     "react-native": "0.68.2",
+    "react-native-document-picker": "^8.1.1",
     "react-native-image-crop-picker": "^0.37.3",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-paper": "^4.12.1",
@@ -30,6 +31,7 @@
     "react-native-screens": "^3.13.1",
     "react-native-skeleton-placeholder": "^5.0.0",
     "react-native-vector-icons": "^9.1.0",
+    "react-native-webview": "^11.22.3",
     "react-redux": "^8.0.2",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1"
