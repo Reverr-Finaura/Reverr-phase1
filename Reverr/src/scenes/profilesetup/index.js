@@ -13,10 +13,10 @@ import styles from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import {YourInformation} from '../../Components/YourInformation';
+import {YourInformation} from '../../components/YourInformation';
 //import {ProfileHeader} from '../../components/ProfileHeader';
-import {ProfileHeader} from '../../Components/ProfileHeader'
-import {SocialHandle} from '../../Components/SocialHandles';
+import {ProfileHeader} from '../../components/ProfileHeader';
+import {SocialHandle} from '../../components/SocialHandles';
 export const ProfileSetUp = () => {
   const navigation = useNavigation();
 

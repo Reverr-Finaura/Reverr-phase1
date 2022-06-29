@@ -2,7 +2,7 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Ionic from 'react-native-vector-icons/Ionicons';
-import { AppColors } from '../../../utils';
+import {AppColors} from '../../../utils';
 
 const Header = props => {
   return (

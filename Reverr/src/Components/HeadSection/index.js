@@ -34,7 +34,7 @@ const HeaderLayout = props => {
               height: 90,
               width: 90,
             }}
-            source={require('../../assets/images/logo.png')}
+            source={require('../../assets/images/Logo.png')}
           />
         </View>
         <TouchableOpacity
@@ -81,4 +81,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HeaderLayout;
+export {HeaderLayout};

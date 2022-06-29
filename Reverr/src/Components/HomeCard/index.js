@@ -263,4 +263,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeCard;
+export {HomeCard};

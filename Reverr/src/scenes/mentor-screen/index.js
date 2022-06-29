@@ -8,7 +8,8 @@ import {
   ImageBackground,
   ScrollView,
 } from 'react-native';
-import {Header} from 'react-native/Libraries/NewAppScreen';
+
+import {Header} from '../../components/Header';
 import {MentorCardLayout} from '../../components/Mentor-card-layout';
 import styles from './styles';
 

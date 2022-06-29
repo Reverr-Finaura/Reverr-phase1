@@ -1,12 +1,4 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import {FundingScreen} from './fundingScreen';
+import {FundingForm} from './fundingForm';
 
-import styles from '../styles'
-
-export const Funding =() =>  {
-  return (
-<View style={styles.container}>
-      <Text style={styles.text}>Need funds? Apply here.</Text>
-    </View>
-  )
-}
+export {FundingForm, FundingScreen};

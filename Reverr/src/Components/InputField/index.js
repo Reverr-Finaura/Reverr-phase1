@@ -41,6 +41,13 @@ const InputField = props => {
             />
           </TouchableOpacity>
         </View>
+        <TouchableOpacity onPress={props.Eyelick}>
+          <Icon
+            name={props.showIcon}
+            size={props.showIconsize}
+            color={props.showIconolor}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -70,4 +77,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InputField;
+export {InputField};

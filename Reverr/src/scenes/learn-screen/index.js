@@ -1,12 +1,7 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import {LearnScreen} from './learnScreen';
+import {Courses} from './courses';
+import {StartCourse} from './startCourse';
+import {OpenBook} from './openBook';
+import {ReadingInstruction} from './instruction';
 
-import styles from '../styles'
-
-export const Learn = () => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Explore for courses</Text>
-    </View>
-  )
-}
+export {LearnScreen, Courses, StartCourse, OpenBook, ReadingInstruction};

@@ -12,7 +12,7 @@ export const POST_COMMENT='POST_COMMENT';
 export const PIN_POST='PIN_POST';
 export const DELETE_POST='DELETE_POST';
 export const DELETE_POST_ACTION='DELETE_POST_ACTION'
-
+export const SET_USER='SET_USER'
 
 export const add_user=(user)=>{
     try{
@@ -352,6 +352,26 @@ export const like_post=(postId,post,email)=>{
         })
     }
 }
+
+export const setUser=(data)=>{
+    try {
+        return async dispatch=>{
+            //const user=await firestore().collection('Users').doc(email).get();
+            //console.log(user);
+            dispatch({
+                type:'SET_USER',
+                payload:data
+            })
+        }
+    } catch (e) {
+        console.log("error:"+e);
+        dispatch({
+            type:'Error',
+            error:"error"
+        })
+    }
+}
+
 
 const deleteCommentPost = async (postId, post, commentid) => {
     var list = [];

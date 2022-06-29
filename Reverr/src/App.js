@@ -5,7 +5,7 @@
  * @format
  * @flow strict-local
  */
-
+import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {StackNavigate} from './navigation/StackNavigate';
@@ -15,15 +15,15 @@ import {store} from './Redux/store';
 //import 'react-native-gesture-handler';
 import {StatusBar} from 'react-native';
 import {AppLayout} from './layouts';
-import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 
 const theme = {
   ...DefaultTheme,
 };
 
 export default function App() {
-  const [user,setUser]=useState();
-  const [initializing,setInitializing]=useState(true);
+  const [user, setUser] = useState();
+  const [initializing, setInitializing] = useState(true);
   //const dispatch=useDispatch();
   function onAuthStateChanged(user) {
     setUser(user);
@@ -41,14 +41,14 @@ export default function App() {
       {/* <Text style={{color:"white"}}>Hello</Text> */}
       <Provider store={store}>
         {/* <Text>Hello</Text> */}
-      <PaperProvider theme={theme}>
-      <NavigationContainer> 
-      <StatusBar backgroundColor={'#000c12'} />
-        {/* <Root_Navigator/> */}
-        <StackNavigate/>
-      {/* <Text>Hello World</Text> */} 
-      </NavigationContainer>
-      </PaperProvider>
+        <PaperProvider theme={theme}>
+          <NavigationContainer>
+            <StatusBar backgroundColor={'#000c12'} />
+            {/* <Root_Navigator/> */}
+            <StackNavigate />
+            {/* <Text>Hello World</Text> */}
+          </NavigationContainer>
+        </PaperProvider>
       </Provider>
     </AppLayout>
   );

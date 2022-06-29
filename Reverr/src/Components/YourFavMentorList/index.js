@@ -1,0 +1,34 @@
+import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
+import React from 'react';
+
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import {AppColors} from '../../utils';
+import {Data} from '../../assets/data/dummyData';
+
+import styles from './styles';
+
+export const YourFavMentorList = () => {
+  return (
+    <View>
+      <View style={styles.Container}>
+        <View style={styles.heading}>
+          <Text style={styles.text}>Your Favourite Mentor</Text>
+          {/* <Icon name="arrow-right" size={20} color={AppColors.FontsColor} /> */}
+        </View>
+        <View>
+          <FlatList
+            data={Data}
+            horizontal
+            renderItem={({item}) => (
+              <TouchableOpacity activeOpacity={0.6} style={styles.Card}>
+                <Image style={styles.dp} source={{uri: item.image}} />
+                <Text style={styles.Name}>{item.name}</Text>
+                <Text style={styles.skills}>{item.skills}</Text>
+              </TouchableOpacity>
+            )}
+          />
+        </View>
+      </View>
+    </View>
+  );
+};
