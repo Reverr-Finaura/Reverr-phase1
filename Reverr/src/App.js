@@ -5,14 +5,13 @@
  * @format
  * @flow strict-local
  */
-
+import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {Root_Navigator} from './Navigator';
 import auth from '@react-native-firebase/auth';
 import {Provider} from 'react-redux';
 import {store} from './Redux/store';
-import 'react-native-gesture-handler';
 import {StatusBar} from 'react-native';
 import {AppLayout} from './layouts';
 

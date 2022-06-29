@@ -1,7 +1,7 @@
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { AppColors } from '../../../utils';
+import {AppColors} from '../../../utils';
 
 const BackButton = props => {
   return (

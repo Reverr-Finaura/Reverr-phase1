@@ -24,6 +24,9 @@ import {Learn} from './learn-screen';
 import {Mentor} from './mentor-screen';
 import {Room} from './rooms-screen';
 import {Plans} from './plans-screen';
+import {Messages} from './messaging-screen';
+import {ChatScreen} from './chat-screen';
+import {SavedScreen} from './saved-screen';
 
 export {
   StartupVerification,
@@ -47,4 +50,7 @@ export {
   Settings,
   EditProfile,
   MentorProfile,
+  Messages,
+  ChatScreen,
+  SavedScreen,
 };
