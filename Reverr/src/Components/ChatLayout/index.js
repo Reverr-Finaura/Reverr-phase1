@@ -19,6 +19,7 @@ export const ChatLayout = () => {
         source={require('../../assets/images/Rectangle2.png')}
       />
       <FlatList
+        style={{marginBottom: 16}}
         data={messages}
         renderItem={({item}) => <MessageContainer message={item} />}
       />

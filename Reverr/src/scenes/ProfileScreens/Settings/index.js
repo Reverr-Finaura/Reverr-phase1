@@ -1,18 +1,13 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  Dimensions,
-} from 'react-native';
+import {View, Text, Image, TouchableOpacity, Dimensions} from 'react-native';
 import React from 'react';
 import {AppColors} from '../../../utils';
-import {BackButton, TitleCard} from '../../../components/index';
+import {BackButton} from '../../../components';
+import {TitleCard} from '../../../components';
 import {useNavigation} from '@react-navigation/native';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import auth from '@react-native-firebase/auth';
 import {styles} from './style';
+import {set_allLoaded} from '../../../Redux/actions';
 
 const Width = Dimensions.get('screen').width;
 const Height = Dimensions.get('screen').height;
@@ -21,8 +16,11 @@ const Settings = props => {
   const navigation = useNavigation();
 
   const state = useSelector(state => state.UserReducer);
+  const dispatch = useDispatch();
+
   function savedScreen() {
-    navigation.navigate('Saved');
+    console.log('pressed');
+    navigation.navigate('SavedScreen');
   }
 
   const logout = async () => {
@@ -65,7 +63,11 @@ const Settings = props => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
+            //if(state.user.userType=='individual'){
             navigation.navigate('EditIndivisualProfile');
+            //}else{
+            //navigation.navigate('EditMentorProfile')
+            //}
           }}
           style={{height: '7%', marginTop: '7%'}}>
           <TitleCard firstText="Edit profile" />
@@ -86,6 +88,24 @@ const Settings = props => {
           style={{height: '7%', marginTop: '7%'}}>
           <TitleCard firstText="Logout" />
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Calender');
+          }}
+          style={{height: '7%', marginTop: '7%'}}>
+          <TitleCard firstText="Calender" />
+        </TouchableOpacity>
+        {state && state?.user && state.user.userType && (
+          <TouchableOpacity
+            onPress={() => {
+              //logout();
+              //dispatch(set_allLoaded(false))
+              navigation.navigate('Rooms');
+            }}
+            style={{height: '7%', marginTop: '7%'}}>
+            <TitleCard firstText="Rooms" />
+          </TouchableOpacity>
+        )}
       </View>
       <View style={styles.dp}>
         <Image

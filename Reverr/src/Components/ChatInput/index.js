@@ -9,7 +9,7 @@ export const ChatInput = () => {
   return (
     <View style={styles.footer}>
       <Image
-        style={{width: 316}}
+        style={{left: '8%'}}
         source={require('../../assets/images/MessageInput.png')}></Image>
       <TextInput
         style={styles.textInput}

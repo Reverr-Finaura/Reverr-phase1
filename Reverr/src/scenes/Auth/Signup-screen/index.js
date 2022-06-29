@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {AppColors} from '../../../utils';
-import {CustomButton, BackButton, InputField} from '../../../components/index';
+import {CustomButton, BackButton, InputField} from '../../../components';
 import firestore from '@react-native-firebase/firestore';
 import {useNavigation} from '@react-navigation/native';
 import emailjs from 'emailjs-com';
@@ -43,20 +43,24 @@ const SignupScreen = props => {
     if (name === '') {
       setnameerror(true);
     } else {
-      if (email === '') {
-        setemailerror(true);
+      if (password == '') {
+        setPasswordError(true);
       } else {
-        if (password == '') {
-          setPasswordError(true);
+        if (ConfirmPassword == '') {
+          setConfirmPasswordError(true);
         } else {
-          if (ConfirmPassword == '') {
-            setConfirmPasswordError(true);
+          if (mobile == '') {
+            setMobileError(true);
           } else {
-            if (mobile == '') {
-              setMobileError(true);
+            if (password != ConfirmPassword) {
+              alert('Password not matched!!');
             } else {
-              if (password != ConfirmPassword) {
-                alert('Password not matched!!');
+              const savedUser = await firestore()
+                .collection('Users')
+                .doc(email)
+                .get();
+              if (savedUser._data != undefined) {
+                alert('user already exists with that email');
               } else {
                 const savedUser = await firestore()
                   .collection('Users')
@@ -74,7 +78,7 @@ const SignupScreen = props => {
                     Name: name,
                     Mobile: mobile,
                     UserType: UserType,
-                    redirect_screen: 'Test',
+                    redirect_screen: 'IndividualTab',
                   });
                   setname('');
                   setemail('');
@@ -126,142 +130,114 @@ const SignupScreen = props => {
             onPress={() => {
               navigation.goBack();
             }}
+            style={styles.inputstyle}
+            Title="Name"
+          />
+          <InputField
+            iconName="envelope"
+            placeholder="Enter email"
+            size={25}
+            value={email}
+            error={emailerror}
+            onChangeText={e => {
+              setemail(e.toLowerCase());
+              if (e != '') {
+                setemailerror(false);
+              }
+            }}
+            style={styles.inputstyle}
+            Title="Email Adress"
+          />
+          <InputField
+            iconName="lock"
+            size={35}
+            value={password}
+            error={passwordError}
+            onChangeText={p1 => {
+              setpassword(p1);
+              if (p1 != '') {
+                setPasswordError(false);
+              }
+            }}
+            secureTextEntry={isSecure1}
+            showIcon={isSecure1 ? 'eye-slash' : 'eye'}
+            Eyelick={() => {
+              setisSecure1(prev => !prev);
+            }}
+            showIconolor={AppColors.infoFonts}
+            showIconsize={25}
+            style={styles.inputstyle}
+            placeholder="Create password"
+            Title="Password"
+          />
+          <InputField
+            iconName="lock"
+            size={35}
+            value={ConfirmPassword}
+            error={confirmPasswordError}
+            onChangeText={p2 => {
+              setConfirmPassword(p2);
+              if (p2 !== '') {
+                setConfirmPasswordError(false);
+              }
+            }}
+            style={styles.inputstyle}
+            secureTextEntry={isSecure2}
+            showIcon={isSecure2 ? 'eye-slash' : 'eye'}
+            Eyelick={() => {
+              setisSecure2(prev => !prev);
+            }}
+            showIconolor={AppColors.infoFonts}
+            showIconsize={25}
+            placeholder="**********"
+            Title=" Confirm Password"
+          />
+          <InputField
+            iconName="mobile"
+            placeholder="Your Mobile Number"
+            size={45}
+            value={mobile}
+            error={mobileError}
+            onChangeText={m => {
+              setMobile(m);
+              if (m != '') {
+                setMobileError(false);
+              }
+            }}
+            maxLength={10}
+            style={styles.inputstyle}
+            keyboardType="number-pad"
+            Title="Mobile Number"
           />
         </View>
-        <ScrollView>
-          <View style={styles.pageInfo}>
+        <View style={{paddingVertical: '5%'}}>
+          <CustomButton
+            Title="Create Account"
+            onPress={() => navigation.navigate('onboarding')}
+            style={{marginTop: 10}}
+          />
+          <View style={styles.signuplink}>
             <Text
-              style={[
-                styles.Text,
-                {fontSize: 24, color: AppColors.FontsColor, marginBottom: 5},
-              ]}>
-              Signup
+              style={{
+                color: AppColors.infoFonts,
+                fontFamily: 'Poppins-Regular',
+              }}>
+              Already a user?
             </Text>
-            <Text
-              style={[styles.Text, {fontSize: 14, color: AppColors.infoFonts}]}>
-              Enter your basic information below{' '}
-            </Text>
-          </View>
-          <View style={{marginTop: 20}}>
-            <InputField
-              iconName="user"
-              placeholder="Your Name"
-              size={35}
-              value={name}
-              error={nameerror}
-              onChangeText={n => {
-                setname(n);
-                if (n != '') {
-                  setnameerror(false);
-                }
-              }}
-              style={styles.inputstyle}
-              Title="Name"
-            />
-            <InputField
-              iconName="envelope"
-              placeholder="Enter email"
-              size={25}
-              value={email}
-              error={emailerror}
-              onChangeText={e => {
-                setemail(e.toLowerCase());
-                if (e != '') {
-                  setemailerror(false);
-                }
-              }}
-              style={styles.inputstyle}
-              Title="Email Adress"
-            />
-            <InputField
-              iconName="lock"
-              size={35}
-              value={password}
-              error={passwordError}
-              onChangeText={p1 => {
-                setpassword(p1);
-                if (p1 != '') {
-                  setPasswordError(false);
-                }
-              }}
-              secureTextEntry={isSecure1}
-              showIcon={isSecure1 ? 'eye-slash' : 'eye'}
-              Eyelick={() => {
-                setisSecure1(prev => !prev);
-              }}
-              showIconolor={AppColors.infoFonts}
-              showIconsize={25}
-              style={styles.inputstyle}
-              placeholder="Create password"
-              Title="Password"
-            />
-            <InputField
-              iconName="lock"
-              size={35}
-              value={ConfirmPassword}
-              error={confirmPasswordError}
-              onChangeText={p2 => {
-                setConfirmPassword(p2);
-                if (p2 !== '') {
-                  setConfirmPasswordError(false);
-                }
-              }}
-              style={styles.inputstyle}
-              secureTextEntry={isSecure2}
-              showIcon={isSecure2 ? 'eye-slash' : 'eye'}
-              Eyelick={() => {
-                setisSecure2(prev => !prev);
-              }}
-              showIconolor={AppColors.infoFonts}
-              showIconsize={25}
-              placeholder="**********"
-              Title=" Confirm Password"
-            />
-            <InputField
-              iconName="mobile"
-              placeholder="Your Mobile Number"
-              size={45}
-              value={mobile}
-              error={mobileError}
-              onChangeText={m => {
-                setMobile(m);
-                if (m != '') {
-                  setMobileError(false);
-                }
-              }}
-              maxLength={10}
-              style={styles.inputstyle}
-              keyboardType="number-pad"
-              Title="Mobile Number"
-            />
-            <CustomButton
-              Title="Create Account"
-              onPress={() => IsEmpty()}
-              style={{marginTop: 10}}
-            />
-            <View style={styles.signuplink}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('Login');
+              }}>
               <Text
                 style={{
-                  color: AppColors.infoFonts,
+                  color: AppColors.FontsColor,
                   fontFamily: 'Poppins-Regular',
                 }}>
-                Already a user?
+                Login Now!
               </Text>
-              <TouchableOpacity
-                onPress={() => {
-                  //navigation.navigate('Login');
-                }}>
-                <Text
-                  style={{
-                    color: AppColors.FontsColor,
-                    fontFamily: 'Poppins-Regular',
-                  }}>
-                  Login Now!
-                </Text>
-              </TouchableOpacity>
-            </View>
+            </TouchableOpacity>
           </View>
-        </ScrollView>
+        </View>
       </View>
     </TouchableWithoutFeedback>
   );

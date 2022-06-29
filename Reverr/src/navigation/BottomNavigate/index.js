@@ -3,7 +3,17 @@ import {Image} from 'react-native';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {Funding, Home, Learn, Mentor, Room, Plans} from '../../scenes';
+import {
+  Home,
+  FundingScreen,
+  Mentor,
+  Room,
+  Plans,
+  Rooms,
+  ChatScreen,
+  Messages,
+  LearnScreen,
+} from '../../scenes';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {MentorProfile} from '../../components/Mentor-Profile';
 
@@ -27,7 +37,7 @@ export const BottomNavigate = () => {
       }}>
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={HomeStack}
         options={{
           tabBarIcon: ({focused}) => (
             <Image
@@ -61,7 +71,7 @@ export const BottomNavigate = () => {
       />
       <Tab.Screen
         name="Funding"
-        component={Funding}
+        component={FundingScreen}
         options={{
           tabBarIcon: ({focused}) => (
             <Image
@@ -78,7 +88,7 @@ export const BottomNavigate = () => {
       />
       <Tab.Screen
         name="Rooms"
-        component={Room}
+        component={Rooms}
         options={{
           tabBarIcon: ({focused}) => (
             <Image
@@ -95,7 +105,7 @@ export const BottomNavigate = () => {
       />
       <Tab.Screen
         name="Learn"
-        component={Learn}
+        component={LearnScreen}
         options={{
           tabBarIcon: ({focused}) => (
             <Image
@@ -115,6 +125,17 @@ export const BottomNavigate = () => {
 };
 
 const Stack = createNativeStackNavigator();
+
+export const HomeStack = () => {
+  return (
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="HomeStack" component={Home} />
+
+      <Stack.Screen name="Messages" component={Messages} />
+      <Stack.Screen name="ChatScreen" component={ChatScreen} />
+    </Stack.Navigator>
+  );
+};
 
 export const MentorNavigator = () => {
   return (

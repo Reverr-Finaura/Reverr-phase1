@@ -121,7 +121,14 @@ const EditProfile = () => {
       .update(data)
       .then(() => {
         dispatch(updateUserData(data));
-        navigation.navigate('Test');
+        if (state.user.userType == 'Mentor') {
+          navigation.navigate('MentorProfile');
+        } else {
+          navigation.navigate('IndividualProfile');
+        }
+      })
+      .catch(err => {
+        alert('Problem while updating data!');
       })
       .catch(err => {
         alert('Problem while updating data!');

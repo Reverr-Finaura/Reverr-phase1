@@ -7,7 +7,6 @@ import MentorReducer from "./MentorReducer";
 
 const rootReducer=combineReducers({
     UserReducer,
-    MentorReducer
 });
 
 export const store = createStore(rootReducer,applyMiddleware(thunk));

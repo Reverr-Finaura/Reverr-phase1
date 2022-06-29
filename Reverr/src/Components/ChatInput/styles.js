@@ -2,24 +2,21 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   footer: {
-    left: 26,
-    // marginHorizontal: 0,
-    top: '0%',
-    // marginHorizontal: 20,
+    maxHeight: '8%',
   },
   textInput: {
     color: 'white',
     fontWeight: '500',
     fontSize: 12,
-    // backgroundColor: 'red',
-    marginLeft: 20,
+    left: '8%',
+
     bottom: 45,
     width: 316,
     height: 48,
   },
   icon: {
     position: 'absolute',
-    marginLeft: 270,
+    left: '74%',
   },
   camera: {
     backgroundColor: '#323544',
@@ -27,7 +24,8 @@ const styles = StyleSheet.create({
     bottom: 94,
     borderRadius: 10,
     alignSelf: 'center',
-    marginLeft: 289,
+    left: '44%',
+
     marginRight: 14,
 
     // position: 'absolute',

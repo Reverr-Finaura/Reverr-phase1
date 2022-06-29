@@ -77,21 +77,6 @@ const Root_Navigator = props => {
         component={EditProfile}
         options={{headerShown: false}}
       />
-      <Stack.Screen
-        name="Messages"
-        component={Messages}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ChatScreen"
-        component={ChatScreen}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Saved"
-        component={SavedScreen}
-        options={{headerShown: false}}
-      />
     </Stack.Navigator>
   );
 };

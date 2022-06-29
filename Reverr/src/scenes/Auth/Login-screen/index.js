@@ -9,13 +9,14 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {AppColors} from '../../../utils';
-import {InputField, CustomButton} from '../../../components/index';
+import {InputField} from '../../../components';
+import {CustomButton} from '../../../components';
 import {styles} from './style';
 import {useSelector, useDispatch} from 'react-redux';
 import {add_user} from '../../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
-import {add_mentor} from '../../../Redux/MentorActions';
+//import { add_mentor } from '../../../Redux/MentorActions';
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
 
@@ -27,7 +28,8 @@ const LoginScreen = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [serverError, SetServerError] = useState('');
   const [userLogedin, setUserLogedin] = useState(true);
-  const state = useSelector(state => state.UserReducer);
+  //const state=useSelector(state=>state.UserReducer);
+  //const stateMentor=useSelector(state=>state.MentorReducer);
   var dispatch = useDispatch();
   const loginUser = async (email, password) => {
     var user_request_obj = {
@@ -54,14 +56,11 @@ const LoginScreen = ({navigation}) => {
       }
     }
     const savedUser = await firestore().collection('Users').doc(email).get();
-    if (savedUser._data.userType == 'individual') {
-      dispatch(add_user(savedUser._data));
-    } else {
-      dispatch(add_mentor(savedUser._data));
-    }
+    console.log('Its a :' + savedUser._data.userType);
+    dispatch(add_user(savedUser._data));
     user_request_obj.success = true;
     user_request_obj.userType = savedUser._data.userType;
-    //console.log(savedUser);
+    console.log(savedUser);
     return user_request_obj;
   };
 
@@ -79,9 +78,9 @@ const LoginScreen = ({navigation}) => {
         if (response.success == true) {
           setUserLogedin(true);
           if (response.userType == 'Individual') {
-            navigation.replace('Test');
+            return navigation.replace('IndividualTab');
           } else {
-            navigation.replace('Test2');
+            return navigation.replace('MentorProfile');
           }
         } else {
           setUserLogedin(true);

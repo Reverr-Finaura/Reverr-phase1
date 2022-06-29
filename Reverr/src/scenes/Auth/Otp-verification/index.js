@@ -156,6 +156,32 @@ const OtpScreen = props => {
               }}>
               Don’t get it?{' '}
             </Text>
+          </View>
+          <View style={styles.container}>
+            <Text style={styles.inputHeader}>OTP</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="code"
+              placeholderTextColor={AppColors.infoFonts}
+              onChangeText={o => {
+                setOtp(o);
+              }}
+              maxLength={6}
+              keyboardType="number-pad"
+            />
+            <CustomButton
+              Title="Confirm"
+              style={{marginTop: 20}}
+              onPress={async () => {
+                if (Otp != otp) {
+                  console.log(Otp);
+                  console.log(otp);
+                  alert('wrong otp');
+                } else {
+                  const response = await SignUpUser(Email, Password);
+                }
+              }}
+            />
             <TouchableOpacity
               style={{
                 alignItems: 'center',

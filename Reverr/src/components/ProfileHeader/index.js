@@ -3,7 +3,7 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 
 import styles from './styles';
 
-export const ProfileHeader = props => {
+const ProfileHeader = props => {
   const {title} = props;
 
   return (
@@ -24,3 +24,5 @@ export const ProfileHeader = props => {
     </View>
   );
 };
+
+export {ProfileHeader};

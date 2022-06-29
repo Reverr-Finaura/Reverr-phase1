@@ -4,7 +4,7 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function SocialHandle(props) {
+const SocialHandle=(props)=> {
   const {title, iconName} = props;
   return (
     <>
@@ -16,3 +16,5 @@ export default function SocialHandle(props) {
     </>
   );
 }
+
+export {SocialHandle};

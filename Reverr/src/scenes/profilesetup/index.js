@@ -14,9 +14,9 @@ import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import {YourInformation} from '../../components/YourInformation';
+//import {ProfileHeader} from '../../components/ProfileHeader';
 import {ProfileHeader} from '../../components/ProfileHeader';
-import SocialHandle from '../../components/SocialHandles';
-
+import {SocialHandle} from '../../components/SocialHandles';
 export const ProfileSetUp = () => {
   const navigation = useNavigation();
 

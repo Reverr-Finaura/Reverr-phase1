@@ -1,12 +1,11 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
-
 import {CustomTextInput} from '../TextInput';
 import {CustomButton} from '../CustomButton';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 
-export const Details = () => {
+const Details = () => {
   const navigation = useNavigation();
 
   return (
@@ -55,3 +54,5 @@ export const Details = () => {
     </View>
   );
 };
+
+export {Details};

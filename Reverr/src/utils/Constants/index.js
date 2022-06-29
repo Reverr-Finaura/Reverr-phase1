@@ -12,5 +12,23 @@ const AppColors ={
     poupopbg: '#004971',
   };
 
+const paymentType = [
+    {
+      id: 0,
+      name: 'Hourly',
+    },
+    {
+      id: 1,
+      name: 'Monthly',
+    },
+    {
+      id: 2,
+      name: 'Quaterly',
+    },
+    {
+      id: 3,
+      name: 'Semi-Annualy',
+    },
+  ];  
 
-export {AppColors}
+export {AppColors,paymentType}

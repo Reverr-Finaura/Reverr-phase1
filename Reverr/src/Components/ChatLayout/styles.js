@@ -24,11 +24,14 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   chatContainer: {
+    // backgroundColor: 'red',
     position: 'absolute',
     width: 388,
-    height: 424,
+    height: 359,
     right: 10,
     top: 28,
+    marginBottom: '100%',
+    // paddingBottom: 20,
     borderRadius: 10,
   },
 });
