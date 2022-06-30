@@ -1,12 +1,12 @@
-import { View, Text, TouchableOpacity,Image} from 'react-native'
-import React from 'react'
+import {View, Text, TouchableOpacity, Image} from 'react-native';
+import React from 'react';
 
-export const CustomImage = ({source}) => {
+export const CustomImage = ({source, action}) => {
   return (
     <View>
-        <TouchableOpacity>
-            <Image source={source}></Image>
-        </TouchableOpacity>
+      <TouchableOpacity onPress={action}>
+        <Image source={source}></Image>
+      </TouchableOpacity>
     </View>
-  )
-}
+  );
+};

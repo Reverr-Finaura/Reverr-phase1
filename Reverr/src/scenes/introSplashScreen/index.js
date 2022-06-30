@@ -44,7 +44,7 @@ const IntroSplash = () => {
               //console.log(inst._data);
               dispatch(setUser(inst._data));
               if (inst._data.userType == 'Mentor') {
-                return navigation.replace('MentorProfile');
+                return navigation.replace('Mentor');
               } else {
                 //console.log(inst._data)
                 return navigation.replace('IndividualTab');

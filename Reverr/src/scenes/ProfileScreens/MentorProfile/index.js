@@ -17,13 +17,12 @@ import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 import auth from '@react-native-firebase/auth';
 import {clearMentorState} from '../../../Redux/MentorActions';
-//import {UserContext} from '../../App';
 
 const Width = Dimensions.get('screen').width;
 const Height = Dimensions.get('screen').height;
 
 const MentorProfile = props => {
-  const state = useSelector(state => state.MentorReducer);
+  const {user} = useSelector(state => state.UserReducer);
   const navigation = useNavigation();
 
   return (
@@ -94,7 +93,7 @@ const MentorProfile = props => {
                 textTransform: 'capitalize',
               },
             ]}>
-            {state.mentor.name}
+            {user.name}
           </Text>
         </View>
         <View
@@ -105,7 +104,7 @@ const MentorProfile = props => {
             borderBottomWidth: 1,
           }}>
           <Text style={[styles.text, {fontSize: 18}]}>About</Text>
-          <Text style={styles.about}>{state.mentor.about}</Text>
+          <Text style={styles.about}>{user.about}</Text>
         </View>
         <View
           style={{
@@ -125,7 +124,7 @@ const MentorProfile = props => {
               alignItems: 'center',
             }}>
             <Text style={[styles.text, {fontSize: 18, paddingRight: '5%'}]}>
-              {state.mentor.industry}
+              {user.industry}
             </Text>
             <Icon
               name="angle-right"
@@ -138,32 +137,30 @@ const MentorProfile = props => {
         <View style={styles.CompanyDetails}>
           <Text style={[styles.text, {fontSize: 18}]}>Experience</Text>
           <Text style={[styles.txt, {width: Width / 2}]}>
-            {state.mentor.experience &&
-              state.mentor.experience.length > 0 &&
-              state.mentor.experience.map(ex => ex)}
+            {user.experience &&
+              user.experience.length > 0 &&
+              user.experience.map(ex => ex)}
           </Text>
         </View>
         <View style={[styles.CompanyDetails, {height: Height / 9}]}>
           <Text style={[styles.text, {fontSize: 18}]}>Skills</Text>
           <Text style={[styles.txt, {width: Width / 2}]}>
-            {state.mentor.skills &&
-              state.mentor.skills.length > 0 &&
-              state.mentor.skills.map(sk => sk)}
+            {user.skills && user.skills.length > 0 && user.skills.map(sk => sk)}
           </Text>
         </View>
         <View style={[styles.CompanyDetails, {height: Height / 9}]}>
           <Text style={[styles.text, {fontSize: 18}]}>Education</Text>
           <Text style={[styles.txt, {width: Width / 2}]}>
-            {state.mentor.education &&
-              state.mentor.education.length > 0 &&
-              state.mentor.education.map(ed => ed)}
+            {user.education &&
+              user.education.length > 0 &&
+              user.education.map(ed => ed)}
           </Text>
         </View>
       </View>
       <View style={styles.dp}>
         <Image
           style={{width: '100%', height: '100%'}}
-          source={{uri: state.mentor.image}}
+          source={{uri: user.image}}
         />
       </View>
     </ScrollView>
