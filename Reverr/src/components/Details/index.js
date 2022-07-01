@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 
+import {AppColors} from '../../utils';
+import LinearGradient from 'react-native-linear-gradient';
+
 import styles from './styles';
 
 export const Details = props => {
@@ -13,7 +16,11 @@ export const Details = props => {
   };
 
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={[AppColors.primarycolor, '#012437', 'black']}
+      start={{x: -3, y: 1.3}}
+      end={{x: 3, y: 0.5}}
+      style={styles.container}>
       {buttons.map((buttonLabel, index) => {
         return (
           <TouchableOpacity
@@ -29,6 +36,6 @@ export const Details = props => {
           </TouchableOpacity>
         );
       })}
-    </View>
+    </LinearGradient>
   );
 };

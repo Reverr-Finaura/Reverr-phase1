@@ -16,7 +16,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {add_user} from '../../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
-//import { add_mentor } from '../../../Redux/MentorActions';
+
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
 
@@ -28,8 +28,7 @@ const LoginScreen = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [serverError, SetServerError] = useState('');
   const [userLogedin, setUserLogedin] = useState(true);
-  //const state=useSelector(state=>state.UserReducer);
-  //const stateMentor=useSelector(state=>state.MentorReducer);
+
   var dispatch = useDispatch();
   const loginUser = async (email, password) => {
     var user_request_obj = {
@@ -38,6 +37,7 @@ const LoginScreen = ({navigation}) => {
       failiure_message: null,
       userType: 'Individual',
     };
+
     try {
       await auth().signInWithEmailAndPassword(email, password);
     } catch (e) {
@@ -80,7 +80,7 @@ const LoginScreen = ({navigation}) => {
           if (response.userType == 'Individual') {
             return navigation.replace('IndividualTab');
           } else {
-            return navigation.replace('MentorProfile');
+            return navigation.replace('Mentor');
           }
         } else {
           setUserLogedin(true);
@@ -120,7 +120,6 @@ const LoginScreen = ({navigation}) => {
             style={[styles.Text, {fontSize: 14, color: AppColors.infoFonts}]}>
             Please login to continue
           </Text>
-          {/*  <AlertBox text="dhruv" /> */}
         </View>
         <View style={{marginTop: Height / 12}}>
           <InputField

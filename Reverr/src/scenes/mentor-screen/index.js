@@ -1,20 +1,14 @@
-import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  ImageBackground,
-  ScrollView,
-} from 'react-native';
+import {View, Text, Image, ScrollView} from 'react-native';
 
 import {Header} from '../../components/Header';
 import {MentorCardLayout} from '../../components/Mentor-card-layout';
 import styles from './styles';
 
+import {useSelector} from 'react-redux';
+
 export const Mentor = () => {
-  const navigation = useNavigation();
+  const {mentors} = useSelector(state => state.UserReducer);
 
   return (
     <View style={styles.container}>
@@ -24,16 +18,8 @@ export const Mentor = () => {
         source={require('../../assets/images/Rectangle2.png')}
       />
       <Text style={styles.text}>Business Mentors</Text>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {/* navigation.navigate('MentorProfile', {msg: 'I am here'}) */}
-        <MentorCardLayout
-          name="Jatin Khurrana"
-          secondname="Raj Gupta"
-          onPress={() => navigation.navigate('MentorProfile')}
-        />
-        <MentorCardLayout name="William Vetrovs" secondname="Neetan Sachdeva" />
-        <MentorCardLayout name="Jatin Khurrana" secondname="Raj Gupta" />
-        <MentorCardLayout name="William Vetrovs" secondname="Neetan Sachdeva" />
+      <ScrollView scrollEnabled={true}>
+        <MentorCardLayout mentors={mentors} />
       </ScrollView>
     </View>
   );
