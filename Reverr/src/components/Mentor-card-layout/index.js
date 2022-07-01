@@ -1,22 +1,22 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, FlatList} from 'react-native';
 
 import {MentorCard} from '../MentorCard';
 
-export const MentorCardLayout = props => {
-  const {name, secondname, onPress} = props;
+export const MentorCardLayout = ({mentors}) => {
   return (
-    <View style={styles.container}>
-      <MentorCard name={name} onPress={onPress} />
-      <MentorCard name={secondname} onPress={onPress} />
-    </View>
+    <FlatList
+      scrollEnabled={true}
+      contentContainerStyle={styles.container}
+      numColumns={2}
+      data={mentors}
+      renderItem={item => <MentorCard mentor={item} />}
+    />
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginBottom: 32,
+    flex: 1,
   },
 });

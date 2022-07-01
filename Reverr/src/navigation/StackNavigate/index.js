@@ -60,7 +60,7 @@ const StackNavigate = props => {
       <Stack.Screen name="ResetPassword" component={ResetPassword} />
       <Stack.Screen name="IndividualProfile" component={IndividuaProfile} />
       <Stack.Screen name="MentorProfile" component={MentorProfile} />
-      <Stack.Screen name="Mentor" component={MentorNavigator} />
+      <Stack.Screen name="Mentor" component={BottomNavigate} />
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="SavedScreen" component={SavedScreen} />
       <Stack.Screen name="EditIndivisualProfile" component={EditProfile} />

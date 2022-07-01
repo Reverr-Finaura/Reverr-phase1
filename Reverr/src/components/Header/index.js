@@ -19,7 +19,7 @@ export const Header = ({customStyles = {}}) => {
       <CustomImage source={require('../../assets/images/Calendar.png')} />
 
       <Image
-        source={require('../../assets/images/Logo.png')}
+        source={require('../../assets/images/logo.png')}
         style={{marginRight: 16}}
       />
 

@@ -13,6 +13,8 @@ import {
   DELETE_POST,
   DELETE_POST_ACTION,
   SET_USER,
+  SET_MENTORS,
+  SELECT_MENTOR,
 } from './actions';
 
 const initialState = {
@@ -26,6 +28,7 @@ const initialState = {
   news: [],
   articles: [],
   mentors: [],
+  selectedmentor: {},
   notification: [],
   savedPosts: [],
   Rooms: [],
@@ -116,6 +119,16 @@ function UserReducer(state = initialState, action) {
           industry: action.payload.industry,
           education: action.payload.education,
         },
+      };
+    case SET_MENTORS:
+      return {
+        ...state,
+        mentors: action.payload,
+      };
+    case SELECT_MENTOR:
+      return {
+        ...state,
+        selectedmentor: action.payload,
       };
     case CLEAR_USER_STATE:
       return {

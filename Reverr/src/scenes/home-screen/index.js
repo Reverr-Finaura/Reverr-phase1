@@ -1,11 +1,12 @@
 import {View, Text, Dimensions, ScrollView, Image} from 'react-native';
-import React, {useState, Suspense} from 'react';
+import React, {useState, Suspense, useEffect} from 'react';
 import {styles} from './styles';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {HomeCard, IndividualHeaderLayout, TabMenu} from '../../components';
 import {ArticalLoader} from '../../Components/ArticalLoader';
 import {ArticleList} from '../artical-screen';
 import {NewsList} from '../news-screen';
+import {mentorService} from '../../Redux/services/mentor.service';
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
 
@@ -13,6 +14,12 @@ const Home = () => {
   const state = useSelector(state => state.UserReducer);
   const [articals, setArticals] = useState(true);
   const [news, setNews] = useState(false);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(mentorService);
+  }, []);
 
   /*   const ArticalList = React.lazy(() =>
     import('../artical-screen/articalList/index'),

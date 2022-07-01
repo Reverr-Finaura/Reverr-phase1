@@ -5,9 +5,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginHorizontal: 16,
-    bottom: '11%',
-    // backgroundColor: 'red',
+    marginHorizontal: 8,
+    padding: 8,
+    marginBottom: 8,
+    bottom: 10,
+    borderRadius: 10,
   },
   button: {
     padding: 6,
@@ -22,7 +24,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '400',
   },
-  textActive: {fontSize: 16, fontWeight: '400'},
+  textActive: {fontSize: 16, fontWeight: '400', color: 'black'},
 });
 
 export default styles;

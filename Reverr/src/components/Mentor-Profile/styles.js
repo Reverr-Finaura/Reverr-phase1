@@ -47,6 +47,10 @@ const styles = StyleSheet.create({
     height: '18%',
     borderRadius: 10,
   },
+  scheduleBtn: {
+    backgroundColor: 'red',
+    bottom: 32,
+  },
 });
 
 export default styles;

@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-native-firebase/app": "^14.11.0",
     "@react-native-firebase/auth": "^14.11.0",
+    "@react-native-firebase/database": "^15.1.1",
     "@react-native-firebase/firestore": "^14.11.0",
     "@react-native-firebase/storage": "^14.11.0",
     "@react-native-masked-view/masked-view": "^0.2.6",
@@ -22,8 +23,8 @@
     "emailjs-com": "3.2.0",
     "react": "17.0.2",
     "react-native": "0.68.2",
-    "react-native-gesture-handler": "^2.4.2",
     "react-native-document-picker": "^8.1.1",
+    "react-native-gesture-handler": "^2.4.2",
     "react-native-image-crop-picker": "^0.37.3",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-paper": "^4.12.1",

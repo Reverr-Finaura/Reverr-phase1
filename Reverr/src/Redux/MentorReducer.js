@@ -1,4 +1,4 @@
-import {ADD_MENTOR, CLEAR_USER_STATE} from './MentorActions';
+import {ADD_MENTOR, CLEAR_USER_STATE, SET_MENTORS} from './MentorActions';
 const initialState = {
   user: {},
   availability: [],
@@ -24,6 +24,7 @@ function MentorReducer(state = initialState, action) {
         ...state,
         user: {},
       };
+
     default:
       return state;
   }
