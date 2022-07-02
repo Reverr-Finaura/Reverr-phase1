@@ -1,13 +1,13 @@
 import React from 'react';
 import {View, Text, SafeAreaView, FlatList, ScrollView} from 'react-native';
 
-import {Header} from '../../components/Header';
-import {MentorList} from '../../components/Mentor-list';
+import {Header} from '../../Components/Header';
+import {MentorList} from '../../Components/Mentor-list';
 
 import mentors from '../../assets/data/mentors';
 
 import styles from './styles';
-import {ChatLayout} from '../../components/ChatLayout';
+import {ChatLayout} from '../../Components/ChatLayout';
 
 export const Messages = () => {
   console.log(mentors);

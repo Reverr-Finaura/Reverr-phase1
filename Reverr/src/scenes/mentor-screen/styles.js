@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
-
+import { Dimensions } from 'react-native';
+const width=Dimensions.get('window').width;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -7,16 +8,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   image: {
-    width: '100%',
-    height: '24%',
+    width:"100%",
+    height: width>400?"24%":"20%",
     marginTop: 16,
     borderRadius: 10,
+    justifyContent:'center',
+    alignContent:'center',
+    alignItems:'center'
   },
   text: {
     color: 'white',
     bottom: '14%',
     marginHorizontal: '27%',
-    fontSize: 20,
+    fontSize:width>400?20:16,
     fontWeight: '700',
   },
 });

@@ -12,6 +12,7 @@ import {
   NewsDetails,
   Webview,
   FundingForm,
+  OnBoarding,
 } from '../../scenes';
 import ThanksScreen from '../../scenes/thanks-screen';
 import {
@@ -48,6 +49,7 @@ const StackNavigate = props => {
       />
       {/* <Stack.Screen name="home" component={Home} /> */}
       <Stack.Screen name="IndividualTab" component={BottomNavigate} />
+      <Stack.Screen name="onBoarding" component={OnBoarding} />
       <Stack.Screen name="Splash1" component={SplashFirst} />
       <Stack.Screen name="Splash2" component={SplashSecond} />
       <Stack.Screen name="Splash3" component={SplashThird} />
@@ -64,7 +66,6 @@ const StackNavigate = props => {
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="SavedScreen" component={SavedScreen} />
       <Stack.Screen name="EditIndivisualProfile" component={EditProfile} />
-      <Stack.Screen name="Plans" component={Plans} />
       <Stack.Screen name="Rooms" component={Rooms} />
       <Stack.Screen name="CreatePost" component={CreatePost} />
       <Stack.Screen name="comments" component={CommentsScreen} />

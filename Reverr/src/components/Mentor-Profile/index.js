@@ -35,7 +35,7 @@ export const MentorProfile = props => {
                 bottom: '6%',
                 marginHorizontal: 16,
               }}>
-              {selectedmentor?.bio}
+              {selectedmentor?.about}
             </Text>
           </View>
         );
@@ -49,12 +49,17 @@ export const MentorProfile = props => {
                 fontWeight: '400',
                 marginHorizontal: 16,
               }}>
-              11 years of experience in Market Research
+             {selectedmentor.experience}
             </Text>
           </View>
         );
       case 2:
-        navigaton.navigate('Plans');
+        navigaton.navigate('Plans',{
+          plans:selectedmentor.plans,
+          mentor:selectedmentor.email,
+          orders:selectedmentor.orders,
+          clients:selectedmentor.clients,
+        });
       // break;
       case 3:
         return (
@@ -77,8 +82,7 @@ export const MentorProfile = props => {
 
   return (
     selectedmentor && (
-      <View style={styles.container}>
-        <Header />
+      <ScrollView style={styles.container}>
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={() => navigaton.goBack()}>
             <Image
@@ -106,7 +110,7 @@ export const MentorProfile = props => {
           source={require('../../assets/images/MentorBig.png')}
           style={styles.mentor}
         />
-
+        
         <Image
           style={styles.image}
           source={require('../../assets/images/Rectangle2.png')}
@@ -117,7 +121,7 @@ export const MentorProfile = props => {
         <View
           style={{
             flexDirection: 'row',
-            justifyContent: 'space-around',
+            justifyContent: 'space-between',
             bottom: 60,
           }}>
           <CustomTextCard title="Industry" subTitle="Fintech" />
@@ -131,9 +135,12 @@ export const MentorProfile = props => {
             afterClickEvent={setIndex}
           />
           {renderOptions(optionIndex)}
-          <CustomButton title="Schedule" />
+          
         </View>
-      </View>
+        <View style={{paddingBottom:90}}>
+          <CustomButton title="Schedule"/>
+          </View> 
+      </ScrollView>
     )
   );
 };

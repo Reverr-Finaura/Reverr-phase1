@@ -15,7 +15,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 //import {ChangeDp} from '../../utils/fireBaseFunctions';
 import {ChangeDp} from '../../../utils/FirebaseFunctionality';
 import {useNavigation} from '@react-navigation/native';
-import {EditCard, CustomButton, BackButton} from '../../../components/index';
+import {EditCard, CustomButton, BackButton} from '../../../Components/index';
 import firestore from '@react-native-firebase/firestore';
 import {useDispatch, useSelector} from 'react-redux';
 import {styles} from './style';
@@ -26,62 +26,62 @@ const Height = Dimensions.get('screen').height;
 const EditProfile = () => {
   const state = useSelector(state => state.UserReducer);
   const dispatch = useDispatch();
-  const [Name, setName] = useState(state.user && state.user.name);
+  const [Name, setName] = useState(state?.user && state?.user?.name);
   const [About, setAbout] = useState(
-    state.user && state.user.about == '' ? '>/s<' : state.user.about,
+    state?.user && state?.user?.about == '' ? '>/s<' : state?.user?.about,
   );
   const [Industry, setIndustry] = useState(
-    state.user && state.user.industry == '' ? '>/s<' : state.user.industry,
+    state?.user && state?.user?.industry == '' ? '>/s<' : state?.user?.industry,
   );
   const [loading, setLoading] = useState(false);
 
   const [ex1, setEx1] = useState(
-    state.user && state.user.experience && state.user.experience.length > 0
+    state?.user && state?.user?.experience && state?.user?.experience.length > 0
       ? state.user.experience[0]
       : '>/s<',
   );
   const [ex2, setEx2] = useState(
-    state.user && state.user.experience && state.user.experience.length > 1
-      ? state.user.experience[1]
+    state?.user && state?.user?.experience && state?.user?.experience.length > 1
+      ? state?.user?.experience[1]
       : '>/s<',
   );
   const [ex3, setEx3] = useState(
-    state.user && state.user.experience && state.user.experience.length > 2
-      ? state.user.experience[2]
+    state?.user && state?.user?.experience && state?.user?.experience.length > 2
+      ? state?.user?.experience[2]
       : '>/s<',
   );
 
   const [sk1, setSk1] = useState(
-    state.user && state.user.skills && state.user.skills.length > 0
-      ? state.user.skills[0]
+    state?.user && state?.user?.skills && state?.user?.skills.length > 0
+      ? state?.user?.skills[0]
       : '>/s<',
   );
   const [sk2, setSk2] = useState(
-    state.user && state.user.skills && state.user.skills.length > 1
-      ? state.user.skills[1]
+    state?.user && state?.user?.skills && state?.user?.skills.length > 1
+      ? state?.user?.skills[1]
       : '>/s<',
   );
   const [sk3, setSk3] = useState(
-    state.user && state.user.skills && state.user.skills.length > 2
-      ? state.user.skills[2]
+    state?.user && state?.user?.skills && state?.user?.skills.length > 2
+      ? state?.user?.skills[2]
       : '>/s<',
   );
   // const [sk4,setSk4] = useState(state&&state.skills&&state.skills>2?state.skills[3]:'>/s<');
   // const [sk5,setSk5] = useState(state&&state.skills&&state.skills>2?state.skills[4]:'>/s<');
 
   const [ed1, setEd1] = useState(
-    state.user && state.user.education && state.user.education.length > 0
-      ? state.user.education[0]
+    state?.user && state?.user?.education && state?.user?.education.length > 0
+      ? state.user?.education[0]
       : '>/s<',
   );
   const [ed2, setEd2] = useState(
-    state.user && state.user.education && state.user.education.length > 1
+    state?.user && state?.user?.education && state?.user?.education.length > 1
       ? state.user.education[1]
       : '>/s<',
   );
   const [ed3, setEd3] = useState(
-    state.user && state.user.education && state.user.education.length > 2
-      ? state.user.education[2]
+    state?.user && state?.user?.education && state?.user?.education.length > 2
+      ? state?.user?.education[2]
       : '>/s<',
   );
 

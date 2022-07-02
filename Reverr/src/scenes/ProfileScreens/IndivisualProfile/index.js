@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import {AppColors} from '../../../utils';
-import {BackButton} from '../../../components';
+import {BackButton} from '../../../Components';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Ionic from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';

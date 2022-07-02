@@ -13,21 +13,21 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {AppColors} from '../../utils';
-import {BackButton} from '../../components';
+import {BackButton} from '../../Components';
 import {useNavigation} from '@react-navigation/native';
 import {styles} from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
-import {CustomMenuBar} from '../../components';
-import {CreatePostButton} from '../../components';
+import {CustomMenuBar} from '../../Components';
+import {CreatePostButton} from '../../Components';
 import {smallString} from '../../utils';
 import firestore from '@react-native-firebase/firestore';
 //import App, {SavedPostContext, UserContext} from '../../App';
 //import { CustomPopup } from '../../Components';
 import storage from '@react-native-firebase/storage';
-import {SkeltonLoader} from '../../components';
+import {SkeltonLoader} from '../../Components';
 import {SavePost, RemovePost} from '../../utils/FirebaseFunctionality';
 import {useDispatch, useSelector} from 'react-redux';
 import {

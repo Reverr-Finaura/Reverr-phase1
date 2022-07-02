@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {IndividualHeaderLayout, SwipeCard} from '../../../components';
+import {IndividualHeaderLayout, SwipeCard} from '../../../Components';
 import {AppColors} from '../../../utils';
 import firestore from '@react-native-firebase/firestore';
 

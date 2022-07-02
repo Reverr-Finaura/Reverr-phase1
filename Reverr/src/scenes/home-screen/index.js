@@ -2,7 +2,7 @@ import {View, Text, Dimensions, ScrollView, Image} from 'react-native';
 import React, {useState, Suspense, useEffect} from 'react';
 import {styles} from './styles';
 import {useDispatch, useSelector} from 'react-redux';
-import {HomeCard, IndividualHeaderLayout, TabMenu} from '../../components';
+import {HomeCard, IndividualHeaderLayout, TabMenu} from '../../Components';
 import {ArticalLoader} from '../../Components/ArticalLoader';
 import {ArticleList} from '../artical-screen';
 import {NewsList} from '../news-screen';
@@ -26,7 +26,7 @@ const Home = () => {
   ); */
   return (
     <IndividualHeaderLayout>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.wlcmConatiner}>
           <View>
             <Text style={styles.welcmTxt}>Hi, {state.user.name}</Text>

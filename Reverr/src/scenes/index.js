@@ -21,11 +21,12 @@ import {AddedMentors} from './AddedMentors';
 import {Funding} from './funding-screen';
 import {Mentor} from './mentor-screen';
 import {Room} from './rooms-screen';
-import {Plans} from './plans-screen';
+//import {Plans} from './plans-screen';
+import { OnBoarding } from './Onboarding';
 import {Messages} from './messaging-screen';
 import {ChatScreen} from './chat-screen';
 import {SavedScreen} from './saved-screen';
-
+import { Plans } from './Plans';
 import {IntroSplash} from './introSplashScreen';
 import {Home} from './home-screen';
 import {
@@ -79,4 +80,5 @@ export {
   CalanderScreen,
   AddedMentors,
   IntroSplash,
+  OnBoarding
 };

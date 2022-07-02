@@ -16,7 +16,7 @@ import {
   Settings,
 } from '../../scenes';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {MentorProfile} from '../../components/Mentor-Profile';
+import {MentorProfile} from '../../Components/Mentor-Profile';
 
 const Tab = createBottomTabNavigator();
 

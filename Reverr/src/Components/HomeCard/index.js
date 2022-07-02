@@ -16,11 +16,12 @@ import {AppColors} from '../../utils';
 import {cardData} from '../../dumy-Data/defaultHomeCardData';
 import {courseData} from '../../dumy-Data/courseData';
 import {AllMentors} from '../../dumy-Data/AllMentors';
-
+import { useNavigation } from '@react-navigation/native';
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
 
 const HomeCard = () => {
+  const navigation=useNavigation();
   // const [index, setIndex] = useState(0);
   // // this function gives the index of current page
   // const onViewRef = useRef(({changed}) => {
@@ -162,9 +163,12 @@ const HomeCard = () => {
                   </TouchableOpacity>
                 ))
               ) : (
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={()=>{
+                  item.id==2?navigation.navigate('Funding'):navigation.navigate('Rooms');
+                  
+                }}>
                   <Text style={styles.btntxt}>
-                    {item.id == 2 ? 'Get funded' : 'Coming soon!'}
+                    {item.id == 2 ? 'Get funded' : 'Rooms'}
                   </Text>
                 </TouchableOpacity>
               )}

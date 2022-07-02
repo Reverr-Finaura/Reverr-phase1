@@ -7,7 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 const BackButton = props => {
   const navigation = useNavigation();
   return (
-    <View>
+    <View style={{display:'flex',flexDirection:'row',width:'100%'}}>
       <TouchableOpacity
         style={{...styles.btn, ...props.style}}
         onPress={() => navigation.goBack()}>
@@ -16,7 +16,9 @@ const BackButton = props => {
           size={props.IconSize}
           color={AppColors.FontsColor}
         />
+        
       </TouchableOpacity>
+      <Text style={{color:"#fff",fontSize:18,fontWeight:'bold',marginTop:4,marginLeft:6}}>{props?.Title}</Text>
     </View>
   );
 };

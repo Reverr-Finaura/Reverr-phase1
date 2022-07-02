@@ -2,8 +2,17 @@ import { StyleSheet } from "react-native";
 import { AppColors } from "../../../utils";
 const styles = StyleSheet.create({
     screen: {
-      flex: 1,
+      paddingHorizontal:20,
+      paddingVertical:10,
       backgroundColor: AppColors.primarycolor,
+    },
+    activity:{
+      height:"100%",
+      width:"100%",
+      backgroundColor:AppColors.primarycolor,
+      justifyContent:'center',
+      alignContent:'center',
+      alignItems:'center'
     },
     mainScreen:{
       flex: 1,
@@ -21,6 +30,7 @@ const styles = StyleSheet.create({
     inputstyle: {
       marginTop: 0,
       marginBottom: -10,
+      color:'#fff'
     },
     signuplink: {
       flexDirection: 'row',

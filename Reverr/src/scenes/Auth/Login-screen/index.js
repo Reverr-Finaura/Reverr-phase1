@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {AppColors} from '../../../utils';
-import {InputField} from '../../../components';
-import {CustomButton} from '../../../components';
+import {InputField} from '../../../Components';
+import {CustomButton} from '../../../Components';
 import {styles} from './style';
 import {useSelector, useDispatch} from 'react-redux';
 import {add_user} from '../../../Redux/actions';
@@ -73,7 +73,7 @@ const LoginScreen = ({navigation}) => {
       } else {
         //setUserLogedin(false);
         setUserLogedin(false);
-        var response = await loginUser(email, password);
+        var response = await loginUser(email.trim(), password);
         console.log(response);
         if (response.success == true) {
           setUserLogedin(true);
@@ -82,9 +82,10 @@ const LoginScreen = ({navigation}) => {
           } else {
             return navigation.replace('Mentor');
           }
-        } else {
+        } else if(response.failiure==true) {
           setUserLogedin(true);
-          alert('server Error');
+          alert('Invalid Credentials!');
+          //navigation.replace('Login')
         }
       }
     }
@@ -93,7 +94,7 @@ const LoginScreen = ({navigation}) => {
   if (!userLogedin) {
     return (
       <View style={styles.screen}>
-        <ActivityIndicator size="large" color="purple" />
+        <ActivityIndicator size="large" color="#fff"/>
       </View>
     );
   }

@@ -17,8 +17,9 @@ import DocumentPicker from 'react-native-document-picker';
 import firestore from '@react-native-firebase/firestore';
 import {useSelector} from 'react-redux';
 import storage from '@react-native-firebase/storage';
-import {BackButton, CustomButton} from '../../../components';
+import {BackButton, CustomButton} from '../../../Components';
 import {AppColors} from '../../../utils';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Height = Dimensions.get('screen').height;
 const Width = Dimensions.get('screen').width;
@@ -70,6 +71,7 @@ const FundingForm = () => {
       onPress={() => {
         Keyboard.dismiss();
       }}>
+      <ScrollView showsVerticalScrollIndicator={false}>
       <SafeAreaView style={styles.screen}>
         <View style={styles.header}>
           <BackButton IconSize={30} />
@@ -88,6 +90,7 @@ const FundingForm = () => {
               setName(e);
             }}
           />
+
           <Text style={styles.title}>Company Name</Text>
           <TextInput
             value={companyName}
@@ -110,6 +113,7 @@ const FundingForm = () => {
           />
         </View>
       </SafeAreaView>
+      </ScrollView>
     </TouchableWithoutFeedback>
   );
 };

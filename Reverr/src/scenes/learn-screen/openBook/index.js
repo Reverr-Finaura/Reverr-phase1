@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React, {useRef, useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {BackButton} from '../../../components';
+import {BackButton} from '../../../Components';
 import {AppColors} from '../../../utils';
 
 const Width = Dimensions.get('window').width;

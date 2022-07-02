@@ -10,7 +10,7 @@ const Webview = props => {
       source={{
         uri: url,
       }}
-      style={{marginTop: 20}}
+      style={{paddingTop: 20}}
     />
   );
 };

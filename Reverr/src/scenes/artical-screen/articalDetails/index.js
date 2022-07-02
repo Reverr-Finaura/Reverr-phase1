@@ -10,7 +10,7 @@ import {
 import React, {useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Ionic from 'react-native-vector-icons/Ionicons';
-import {BackButton} from '../../../components';
+import {BackButton} from '../../../Components';
 import {AppColors} from '../../../utils';
 
 const Width = Dimensions.get('window').width;

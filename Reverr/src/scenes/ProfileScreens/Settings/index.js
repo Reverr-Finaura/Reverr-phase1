@@ -1,8 +1,8 @@
 import {View, Text, Image, TouchableOpacity, Dimensions} from 'react-native';
 import React from 'react';
 import {AppColors} from '../../../utils';
-import {BackButton} from '../../../components';
-import {TitleCard} from '../../../components';
+import {BackButton} from '../../../Components';
+import {TitleCard} from '../../../Components';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import auth from '@react-native-firebase/auth';
@@ -88,24 +88,7 @@ const Settings = props => {
           style={{height: '7%', marginTop: '7%'}}>
           <TitleCard firstText="Logout" />
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Calender');
-          }}
-          style={{height: '7%', marginTop: '7%'}}>
-          <TitleCard firstText="Calender" />
-        </TouchableOpacity>
-        {state && state?.user && state.user.userType && (
-          <TouchableOpacity
-            onPress={() => {
-              //logout();
-              //dispatch(set_allLoaded(false))
-              navigation.navigate('Rooms');
-            }}
-            style={{height: '7%', marginTop: '7%'}}>
-            <TitleCard firstText="Rooms" />
-          </TouchableOpacity>
-        )}
+        
       </View>
       <View style={styles.dp}>
         <Image
