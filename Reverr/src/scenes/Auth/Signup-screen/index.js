@@ -6,7 +6,7 @@ import {
   ScrollView,
   Keyboard,
   TouchableWithoutFeedback,
-  ActivityIndicator
+  ActivityIndicator,
 } from 'react-native';
 import React, {useState} from 'react';
 import {AppColors} from '../../../utils';
@@ -29,7 +29,7 @@ const SignupScreen = props => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const [mobile, setMobile] = useState('');
   const [mobileError, setMobileError] = useState(false);
-  const [loading,setLoading]=useState(false);
+  const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
   // Get UserType from UserSelectScreen
   const UserType = props?.route?.params?.UserType;
@@ -43,7 +43,7 @@ const SignupScreen = props => {
 
   //console.log(data)
   const IsEmpty = async () => {
-    console.log('i ma enpty')
+    console.log('i ma enpty');
     setLoading(true);
     if (name === '') {
       setnameerror(true);
@@ -63,7 +63,7 @@ const SignupScreen = props => {
           } else {
             if (password != ConfirmPassword) {
               setLoading(false);
-              alert('Password not matched!!');   
+              alert('Password not matched!!');
             } else {
               const savedUser = await firestore()
                 .collection('Users')
@@ -129,34 +129,30 @@ const SignupScreen = props => {
     return OTP;
   };
 
-  if(loading==true){
-    
-      return (
-        <View style={styles.activity}>
-          <ActivityIndicator size="large" color="#fff"/>
-        </View>
-      );
-}
+  if (loading == true) {
+    return (
+      <View style={styles.activity}>
+        <ActivityIndicator size="large" color="#fff" />
+      </View>
+    );
+  }
 
   return (
     <TouchableWithoutFeedback
       onPress={() => {
         Keyboard.dismiss();
       }}>
-       
       <ScrollView style={styles.screen}>
-      <BackButton
-            IconSize={30}
-            onPress={() => {
-              navigation.goBack();
-            }}
-            style={styles.inputstyle}
-            Title="Sign up"
-          />
+        <BackButton
+          IconSize={30}
+          onPress={() => {
+            navigation.goBack();
+          }}
+          style={styles.inputstyle}
+          Title="Sign up"
+        />
         <View style={{marginTop: 10}}>
-          
-
-        <InputField
+          <InputField
             placeholder="Enter-name"
             size={25}
             value={name}
@@ -172,7 +168,6 @@ const SignupScreen = props => {
           />
 
           <InputField
-            iconName="envelope"
             placeholder="Enter email"
             size={25}
             value={email}
@@ -186,6 +181,7 @@ const SignupScreen = props => {
             style={styles.inputstyle}
             Title="Email Adress"
           />
+
           <InputField
             iconName="lock"
             size={35}
@@ -198,18 +194,15 @@ const SignupScreen = props => {
               }
             }}
             secureTextEntry={isSecure1}
-            showIcon={isSecure1 ? 'eye-slash' : 'eye'}
+            PasswordIcon={isSecure1 ? 'eye-slash' : 'eye'}
             Eyelick={() => {
               setisSecure1(prev => !prev);
             }}
-            showIconolor={AppColors.infoFonts}
-            showIconsize={25}
             style={styles.inputstyle}
             placeholder="Create password"
             Title="Password"
           />
           <InputField
-            iconName="lock"
             size={35}
             value={ConfirmPassword}
             error={confirmPasswordError}
@@ -221,11 +214,10 @@ const SignupScreen = props => {
             }}
             style={styles.inputstyle}
             secureTextEntry={isSecure2}
-            showIcon={isSecure2 ? 'eye-slash' : 'eye'}
+            PasswordIcon={isSecure2 ? 'eye-slash' : 'eye'}
             Eyelick={() => {
               setisSecure2(prev => !prev);
             }}
-            showIconolor={AppColors.infoFonts}
             showIconsize={25}
             placeholder="**********"
             Title=" Confirm Password"

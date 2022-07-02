@@ -24,24 +24,24 @@ const OpenBook = props => {
   const [bcolor, setbcolor] = useState('white');
   const [ccolor, setccolor] = useState('white');
   const [dcolor, setdcolor] = useState('white');
-  /* 
-    const checkans = idx => {
-      if (idx == 0)
-        bookData[currIndex].ans == 0 ? setacolor('green') : setacolor('red');
-      if (idx == 1)
-        bookData[currIndex].ans == 1 ? setbcolor('green') : setbcolor('red');
-      if (idx == 2)
-        bookData[currIndex].ans == 2 ? setccolor('green') : setccolor('red');
-      if (idx == 3)
-        bookData[currIndex].ans == 3 ? setdcolor('green') : setdcolor('red');
-    };
-  
-    const resetans = () => {
-      setacolor('white');
-      setbcolor('white');
-      setccolor('white');
-      setdcolor('white');
-    }; */
+
+  const checkans = idx => {
+    if (idx == 0)
+      bookData[currIndex].ans == 0 ? setacolor('green') : setacolor('red');
+    if (idx == 1)
+      bookData[currIndex].ans == 1 ? setbcolor('green') : setbcolor('red');
+    if (idx == 2)
+      bookData[currIndex].ans == 2 ? setccolor('green') : setccolor('red');
+    if (idx == 3)
+      bookData[currIndex].ans == 3 ? setdcolor('green') : setdcolor('red');
+  };
+
+  const resetans = () => {
+    setacolor('white');
+    setbcolor('white');
+    setccolor('white');
+    setdcolor('white');
+  };
 
   const Next = index => {
     setCurrIndex(index + 1);
@@ -61,12 +61,7 @@ const OpenBook = props => {
 
   return (
     <View style={styles.screen}>
-      <BackButton
-        IconSize={30}
-        onPress={() => {
-          navigation.goBack();
-        }}
-      />
+      <BackButton IconSize={30} />
       {bookData && bookData.length > 0 && (
         <FlatList
           data={bookData}

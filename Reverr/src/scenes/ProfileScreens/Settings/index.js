@@ -75,7 +75,11 @@ const Settings = props => {
         <TouchableOpacity style={{height: '7%', marginTop: '7%'}}>
           <TitleCard firstText="Change password" />
         </TouchableOpacity>
-        <TouchableOpacity style={{height: '7%', marginTop: '7%'}}>
+        <TouchableOpacity
+          style={{height: '7%', marginTop: '7%'}}
+          onPress={() => {
+            navigation.navigate('TermConditions');
+          }}>
           <TitleCard firstText="Terms and conditions" />
         </TouchableOpacity>
         <TouchableOpacity style={{height: '7%', marginTop: '7%'}}>
@@ -88,7 +92,6 @@ const Settings = props => {
           style={{height: '7%', marginTop: '7%'}}>
           <TitleCard firstText="Logout" />
         </TouchableOpacity>
-        
       </View>
       <View style={styles.dp}>
         <Image

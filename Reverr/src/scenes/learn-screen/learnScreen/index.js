@@ -36,7 +36,6 @@ const LearnScreen = () => {
           pagingEnabled={true}
           overlay={styles.overlay}
           title={styles.title}
-          navigationName="StartCourse"
           description={styles.desc}
         />
         <View style={styles.Btn}>

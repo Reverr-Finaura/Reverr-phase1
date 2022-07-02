@@ -2,12 +2,13 @@ import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {BackButton} from '../../../Components';
+import {AppColors} from '../../../utils';
 
 const ReadingInstruction = props => {
   const bookData = props.route.params.BookData;
   const navigation = useNavigation();
   setTimeout(() => {
-    navigation.replace('openBook', {
+    navigation.replace('OpenBook', {
       BookData: bookData.slide,
     });
   }, 1000);

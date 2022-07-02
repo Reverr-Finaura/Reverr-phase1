@@ -82,7 +82,7 @@ const LoginScreen = ({navigation}) => {
           } else {
             return navigation.replace('Mentor');
           }
-        } else if(response.failiure==true) {
+        } else if (response.failiure == true) {
           setUserLogedin(true);
           alert('Invalid Credentials!');
           //navigation.replace('Login')
@@ -94,7 +94,7 @@ const LoginScreen = ({navigation}) => {
   if (!userLogedin) {
     return (
       <View style={styles.screen}>
-        <ActivityIndicator size="large" color="#fff"/>
+        <ActivityIndicator size="large" color="#fff" />
       </View>
     );
   }
@@ -137,11 +137,10 @@ const LoginScreen = ({navigation}) => {
             Title="Email Adress"
           />
           <InputField
-            iconName="lock"
             size={35}
             error={passerror}
             secureTextEntry={isSecure}
-            showIcon={isSecure ? 'eye-slash' : 'eye'}
+            PasswordIcon={isSecure ? 'eye-slash' : 'eye'}
             showIconolor={AppColors.infoFonts}
             showIconsize={25}
             Eyelick={() => {

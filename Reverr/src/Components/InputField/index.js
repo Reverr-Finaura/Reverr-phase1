@@ -23,7 +23,7 @@ const InputField = props => {
             style={{
               color: AppColors.FontsColor,
               paddingStart: '2%',
-              width: '85%',
+              width: '88%',
             }}
             placeholder={props.placeholder}
             placeholderTextColor={AppColors.infoFonts}
@@ -36,18 +36,11 @@ const InputField = props => {
           <TouchableOpacity onPress={props.Eyelick}>
             <Icon
               name={props.PasswordIcon}
-              color={AppColors.FontsColor}
+              color={AppColors.BtnClr}
               size={24}
             />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity onPress={props.Eyelick}>
-          <Icon
-            name={props.showIcon}
-            size={props.showIconsize}
-            color={props.showIconolor}
-          />
-        </TouchableOpacity>
       </View>
     </View>
   );
