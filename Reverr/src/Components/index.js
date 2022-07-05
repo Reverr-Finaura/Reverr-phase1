@@ -14,9 +14,14 @@ import {IndividualHeaderLayout} from './HeaderLayout';
 import {ModelView} from './ModelView';
 import {SwipeCard} from './swipeCard';
 import {TabMenu} from './TabMenu';
+import {ArticalLoader, CourseLoader, NewsLoader} from './loaders';
+
 export {
   BackButton,
   CustomButton,
+  ArticalLoader,
+  NewsLoader,
+  CourseLoader,
   InputField,
   TitleCard,
   EditCard,

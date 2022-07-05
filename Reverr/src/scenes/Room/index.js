@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {AppColors} from '../../utils';
-import {BackButton} from '../../Components';
+import {BackButton, CustomPopup} from '../../Components';
 import {useNavigation} from '@react-navigation/native';
 import {styles} from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -212,80 +212,65 @@ const Rooms = () => {
           </View>
         </View>
 
-        {/* <CustomPopup
-                    key={item.id}
-                    open={popup}
-                    closeOnTouchOutside={true}
-                    postId={id}
-                    id={item.id}
-                    owner={owner}
-                    modalDidClose={() => {
-                      setPopup(false);
-                    }}
-                    overlayStyle={{
-                      backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                      flex: 1,
-                    }}
-                    modalStyle={{
-                      borderRadius: 20,
-                      width: Width / 2,
-                      alignSelf: 'center',
-                      backgroundColor: AppColors.primarycolor,
-                    }}
-                    style={{alignItems: 'center'}}>
-                    {owner && (
-                      <View
-                        style={{
-                          borderBottomColor: AppColors.FontsColor,
-                          borderBottomWidth: 2,
-                          paddingVertical: '4%',
-                          alignItems: 'center',
-                        }}>
-                        <TouchableOpacity onPress={() => handleDelete(item)}>
-                          <Text style={{color: AppColors.FontsColor}}>
-                            Delete
-                          </Text>
-                        </TouchableOpacity>
-                      </View>
-                    )}
+        <CustomPopup
+          key={item.id}
+          visible={popup}
+          postId={id}
+          id={item.id}
+          owner={owner}
+          hideModal={() => {
+            setPopup(false);
+          }}>
+          {owner && (
+            <View
+              style={{
+                borderBottomColor: AppColors.FontsColor,
+                borderBottomWidth: 2,
+                paddingVertical: '4%',
+                alignItems: 'center',
+              }}>
+              <TouchableOpacity onPress={() => handleDelete(item)}>
+                <Text style={{color: AppColors.FontsColor}}>Delete</Text>
+              </TouchableOpacity>
+            </View>
+          )}
 
-                    <View
-                      style={{
-                        borderBottomColor: AppColors.FontsColor,
-                        borderBottomWidth: 2,
-                        alignItems: 'center',
-                        paddingVertical: '4%',
-                      }}>
-                      <TouchableOpacity>
-                        <Text style={{color: AppColors.FontsColor}}>Share</Text>
-                      </TouchableOpacity>
-                    </View>
-                    <View
-                      style={{
-                        borderBottomColor: AppColors.FontsColor,
-                        borderBottomWidth: 2,
-                        alignItems: 'center',
-                        paddingVertical: '4%',
-                      }}>
-                      <TouchableOpacity onPress={() => savePost(item)}>
-                        <Text style={{color: AppColors.FontsColor}}>
-                          {state.savedPosts &&
-                          state.savedPosts.includes(item.id)
-                            ? 'Unsave'
-                            : 'Save'}
-                        </Text>
-                      </TouchableOpacity>
-                    </View>
-                    <View
-                      style={{
-                        paddingVertical: '4%',
-                        alignItems: 'center',
-                      }}>
-                      <TouchableOpacity onPress={() => setPopup(false)}>
-                        <Text style={{color: AppColors.FontsColor}}>close</Text>
-                      </TouchableOpacity>
-                    </View>
-                  </CustomPopup> */}
+          <View
+            style={{
+              borderBottomColor: AppColors.FontsColor,
+              borderBottomWidth: 2,
+              alignItems: 'center',
+              paddingVertical: '4%',
+            }}>
+            <TouchableOpacity>
+              <Text style={{color: AppColors.FontsColor}}>Share</Text>
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              borderBottomColor: AppColors.FontsColor,
+              borderBottomWidth: 2,
+              alignItems: 'center',
+              paddingVertical: '4%',
+            }}>
+            <TouchableOpacity onPress={() => savePost(item)}>
+              <Text style={{color: AppColors.FontsColor}}>
+                {state.savedPosts && state.savedPosts.includes(item.id)
+                  ? 'Unsave'
+                  : 'Save'}
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              paddingVertical: '4%',
+              alignItems: 'center',
+            }}>
+            <TouchableOpacity onPress={() => setPopup(false)}>
+              <Text style={{color: AppColors.FontsColor}}>close</Text>
+            </TouchableOpacity>
+          </View>
+        </CustomPopup>
       </LinearGradient>
     );
   };

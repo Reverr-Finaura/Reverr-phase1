@@ -1,8 +1,8 @@
 import {View, Text, Dimensions, ScrollView} from 'react-native';
 import React from 'react';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
-import {AppColors} from '../../utils';
 import LinearGradient from 'react-native-linear-gradient';
+import {AppColors} from '../../../utils';
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
 

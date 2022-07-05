@@ -11,14 +11,22 @@ import Ionic from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
 import {AppColors, smallString} from '../../../utils';
 import {useNavigation} from '@react-navigation/native';
+import {ArticalLoader} from '../../../Components';
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
 
 const ArticleList = props => {
   const [articalData, setArticalData] = useState();
+  const [loading, setLoading] = useState(false);
   async function getArticles() {
-    const snapshot = await firestore().collection('Blogs').get();
-    setArticalData(snapshot.docs.map(doc => doc.data()));
+    setLoading(true);
+    const snapshot = await firestore()
+      .collection('Blogs')
+      .get()
+      .then(res => {
+        setArticalData(res.docs.map(doc => doc.data()));
+        setLoading(false);
+      });
   }
 
   const navigation = useNavigation();
@@ -29,43 +37,49 @@ const ArticleList = props => {
 
   return (
     <View style={styles.screen}>
-      <View style={styles.ListContainer}>
-        <View style={{marginTop: '2%'}}>
-          <FlatList
-            data={articalData}
-            nestedScrollEnabled={true}
-            showsVerticalScrollIndicator={false}
-            renderItem={({item}) => (
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate('ArticalDetails', {
-                    articalData: item,
-                  });
-                }}>
-                <View style={styles.line}></View>
-                <View style={styles.title}>
-                  <Text style={styles.text}>{item.heading}</Text>
-                  <TouchableOpacity
-                    onPress={() => saveArticle(item)}
-                    style={{justifyContent: 'center', alignItems: 'center'}}>
-                    <Ionic
-                      name="heart"
-                      size={20}
-                      color="gray"
-                      /*   color={
+      {loading ? (
+        <ArticalLoader />
+      ) : (
+        <View style={styles.ListContainer}>
+          <View style={{marginTop: '2%'}}>
+            <FlatList
+              data={articalData}
+              nestedScrollEnabled={true}
+              showsVerticalScrollIndicator={false}
+              renderItem={({item}) => (
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate('ArticalDetails', {
+                      articalData: item,
+                    });
+                  }}>
+                  <View style={styles.line}></View>
+                  <View style={styles.title}>
+                    <Text style={styles.text}>{item.heading}</Text>
+                    <TouchableOpacity
+                      onPress={() => saveArticle(item)}
+                      style={{justifyContent: 'center', alignItems: 'center'}}>
+                      <Ionic
+                        name="heart"
+                        size={20}
+                        color="gray"
+                        /*   color={
                             state.savedArticles.includes(item.id) ? 'red' : 'grey'
                           } */
-                    />
-                  </TouchableOpacity>
-                </View>
-                <View style={styles.description}>
-                  <Text style={styles.desc}>{smallString(item.body, 100)}</Text>
-                </View>
-              </TouchableOpacity>
-            )}
-          />
+                      />
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.description}>
+                    <Text style={styles.desc}>
+                      {smallString(item.body, 100)}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              )}
+            />
+          </View>
         </View>
-      </View>
+      )}
     </View>
   );
 };

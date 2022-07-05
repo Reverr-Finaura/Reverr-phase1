@@ -20,6 +20,7 @@ const NewsList = () => {
   const [newsData, setNewsData] = useState();
   const [clmn, setClmn] = useState(3);
   const navigation = useNavigation();
+  const [loading, setLoading] = useState(false);
 
   const options = {
     method: 'GET',
@@ -32,24 +33,26 @@ const NewsList = () => {
   };
 
   async function getNews() {
+    setLoading(true);
     try {
-      const response = await axios.request(options);
-      setNewsData(response.data.value);
+      await axios.request(options).then(res => {
+        setNewsData(res.data.value);
+        setLoading(false);
+      });
     } catch (err) {
       console.log(err);
     }
   }
-  var count = 5;
   useEffect(() => {
     getNews();
     console.log(newsData, 'newsData');
   }, []);
 
-  const scrollX = useRef(new Animated.Value(0)).current;
-
   return (
     <View style={styles.screen}>
-      <View>
+      {loading ? (
+        <Text>Loading....</Text>
+      ) : (
         <View style={{height: Height > 684 ? Height / 1.3 : Height / 1.35}}>
           <View>
             <Text style={styles.news}>News</Text>
@@ -88,7 +91,7 @@ const NewsList = () => {
             }}
           />
         </View>
-      </View>
+      )}
     </View>
   );
 };
