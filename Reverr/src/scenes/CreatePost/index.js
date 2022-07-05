@@ -13,7 +13,7 @@ import React, {useState, useContext} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import {AppColors} from '../../utils';
-import {CustomButton} from '../../components';
+import {CustomButton} from '../../Components';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
@@ -24,7 +24,7 @@ import {
   AddGalleryVideo,
 } from '../../utils/FirebaseFunctionality';
 //import {UserContext} from '../../App';
-import {BottomPopup} from '../../components';
+import {BottomPopup} from '../../Components';
 import {useDispatch, useSelector} from 'react-redux';
 
 const Width = Dimensions.get('window').width;

@@ -1,18 +1,6 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  card: {
-    flexWrap: 'wrap',
-    width: 175,
-    height: 175,
-    borderRadius: 10,
-    marginHorizontal: 8,
-  },
-  buttonContainer: {
-    maxHeight: 175,
-    maxWidth: 175,
-    alignItems: 'center',
-  },
   mentorProfile: {
     position: 'absolute',
     top: 8,
@@ -24,19 +12,21 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     alignSelf: 'center',
     lineHeight: 24,
-    bottom: '48%',
+    top: 92,
+
     // backgroundColor: 'blue',
   },
   mentorProfession: {
     color: 'gray',
     alignSelf: 'center',
-    bottom: '48%',
+    top: 94,
     // backgroundColor: 'green',
   },
   reviewContainer: {
     alignItems: 'center',
     flexDirection: 'row',
-    bottom: '42%',
+    top: 95,
+    marginHorizontal: 8,
     // backgroundColor: 'blue',
   },
   reviews: {

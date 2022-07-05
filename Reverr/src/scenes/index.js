@@ -21,11 +21,12 @@ import {AddedMentors} from './AddedMentors';
 import {Funding} from './funding-screen';
 import {Mentor} from './mentor-screen';
 import {Room} from './rooms-screen';
-import {Plans} from './plans-screen';
+//import {Plans} from './plans-screen';
+import {OnBoarding} from './Onboarding';
 import {Messages} from './messaging-screen';
 import {ChatScreen} from './chat-screen';
 import {SavedScreen} from './saved-screen';
-
+import {Plans} from './Plans';
 import {IntroSplash} from './introSplashScreen';
 import {Home} from './home-screen';
 import {
@@ -39,6 +40,7 @@ import {ArticalDetails} from './artical-screen';
 import {NewsDetails} from './news-screen';
 import {Webview} from './news-screen';
 import {FundingScreen, FundingForm} from './funding-screen';
+import {TermConditions} from './term&Conditions-Screen';
 export {
   ArticalDetails,
   FundingScreen,
@@ -50,7 +52,6 @@ export {
   SplashThird,
   NewsDetails,
   ProfileSetUp,
-  Funding,
   Home,
   LearnScreen,
   Courses,
@@ -58,6 +59,7 @@ export {
   ReadingInstruction,
   OpenBook,
   Mentor,
+  TermConditions,
   Room,
   Plans,
   LoginScreen,
@@ -79,4 +81,5 @@ export {
   CalanderScreen,
   AddedMentors,
   IntroSplash,
+  OnBoarding,
 };

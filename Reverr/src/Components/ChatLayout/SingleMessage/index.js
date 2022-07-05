@@ -11,16 +11,16 @@ export const MessageContainer = props => {
     <TouchableOpacity
       style={styles.container}
       onPress={() => navigation.navigate('ChatScreen')}>
-      <Image style={styles.image} source={image} />
-      <Text style={styles.name}>{name}</Text>
+      <View style={{flexDirection: 'row'}}>
+        <Image style={styles.image} source={image} />
+        <Text style={styles.name}>{name}</Text>
+      </View>
       <View
         style={{
-          //   backgroundColor: 'red',
           flexDirection: 'row',
-          justifyContent: 'space-between',
-          bottom: 40,
-          left: 24,
-          marginHorizontal: 40,
+          justifyContent: 'space-around',
+          bottom: 24,
+          left: 16,
         }}>
         <Text numberOfLines={1} style={styles.message}>
           {message}

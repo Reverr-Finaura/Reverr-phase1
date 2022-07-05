@@ -8,7 +8,7 @@ import {
   Dimensions,
 } from 'react-native';
 import React, {useState} from 'react';
-import {BackButton} from '../../../components/index';
+import {BackButton} from '../../../Components/index';
 import {AppColors} from '../../../utils';
 import {styles} from './style';
 import Icon from 'react-native-vector-icons/FontAwesome5';

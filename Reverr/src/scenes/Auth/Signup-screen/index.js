@@ -6,14 +6,16 @@ import {
   ScrollView,
   Keyboard,
   TouchableWithoutFeedback,
+  ActivityIndicator,
 } from 'react-native';
 import React, {useState} from 'react';
 import {AppColors} from '../../../utils';
-import {CustomButton, BackButton, InputField} from '../../../components';
+import {CustomButton, BackButton, InputField} from '../../../Components';
 import firestore from '@react-native-firebase/firestore';
 import {useNavigation} from '@react-navigation/native';
 import emailjs from 'emailjs-com';
 import {styles} from './style';
+
 const SignupScreen = props => {
   var [isSecure1, setisSecure1] = useState(true);
   var [isSecure2, setisSecure2] = useState(true);
@@ -27,6 +29,7 @@ const SignupScreen = props => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const [mobile, setMobile] = useState('');
   const [mobileError, setMobileError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
   // Get UserType from UserSelectScreen
   const UserType = props?.route?.params?.UserType;
@@ -40,19 +43,26 @@ const SignupScreen = props => {
 
   //console.log(data)
   const IsEmpty = async () => {
+    console.log('i ma enpty');
+    setLoading(true);
     if (name === '') {
       setnameerror(true);
+      setLoading(false);
     } else {
       if (password == '') {
         setPasswordError(true);
+        setLoading(false);
       } else {
         if (ConfirmPassword == '') {
           setConfirmPasswordError(true);
+          setLoading(false);
         } else {
           if (mobile == '') {
             setMobileError(true);
+            setLoading(false);
           } else {
             if (password != ConfirmPassword) {
+              setLoading(false);
               alert('Password not matched!!');
             } else {
               const savedUser = await firestore()
@@ -67,10 +77,12 @@ const SignupScreen = props => {
                   .doc(email)
                   .get();
                 if (savedUser._data != undefined) {
+                  setLoading(false);
                   alert('user already exists with that email');
                 } else {
                   var OTP = EmailOtp();
                   alert('Please check your inbox');
+                  setLoading(false);
                   navigation.navigate('OtpVerification', {
                     OTP: OTP,
                     Email: email.trim(),
@@ -78,7 +90,6 @@ const SignupScreen = props => {
                     Name: name,
                     Mobile: mobile,
                     UserType: UserType,
-                    redirect_screen: 'IndividualTab',
                   });
                   setname('');
                   setemail('');
@@ -118,23 +129,45 @@ const SignupScreen = props => {
     return OTP;
   };
 
+  if (loading == true) {
+    return (
+      <View style={styles.activity}>
+        <ActivityIndicator size="large" color="#fff" />
+      </View>
+    );
+  }
+
   return (
     <TouchableWithoutFeedback
       onPress={() => {
         Keyboard.dismiss();
       }}>
-      <View style={styles.screen}>
+      <ScrollView style={styles.screen}>
+        <BackButton
+          IconSize={30}
+          onPress={() => {
+            navigation.goBack();
+          }}
+          style={styles.inputstyle}
+          Title="Sign up"
+        />
         <View style={{marginTop: 10}}>
-          <BackButton
-            IconSize={30}
-            onPress={() => {
-              navigation.goBack();
+          <InputField
+            placeholder="Enter-name"
+            size={25}
+            value={name}
+            error={nameerror}
+            onChangeText={e => {
+              setname(e.toLowerCase());
+              if (e != '') {
+                setnameerror(false);
+              }
             }}
             style={styles.inputstyle}
             Title="Name"
           />
+
           <InputField
-            iconName="envelope"
             placeholder="Enter email"
             size={25}
             value={email}
@@ -148,6 +181,7 @@ const SignupScreen = props => {
             style={styles.inputstyle}
             Title="Email Adress"
           />
+
           <InputField
             iconName="lock"
             size={35}
@@ -160,18 +194,15 @@ const SignupScreen = props => {
               }
             }}
             secureTextEntry={isSecure1}
-            showIcon={isSecure1 ? 'eye-slash' : 'eye'}
+            PasswordIcon={isSecure1 ? 'eye-slash' : 'eye'}
             Eyelick={() => {
               setisSecure1(prev => !prev);
             }}
-            showIconolor={AppColors.infoFonts}
-            showIconsize={25}
             style={styles.inputstyle}
             placeholder="Create password"
             Title="Password"
           />
           <InputField
-            iconName="lock"
             size={35}
             value={ConfirmPassword}
             error={confirmPasswordError}
@@ -183,11 +214,10 @@ const SignupScreen = props => {
             }}
             style={styles.inputstyle}
             secureTextEntry={isSecure2}
-            showIcon={isSecure2 ? 'eye-slash' : 'eye'}
+            PasswordIcon={isSecure2 ? 'eye-slash' : 'eye'}
             Eyelick={() => {
               setisSecure2(prev => !prev);
             }}
-            showIconolor={AppColors.infoFonts}
             showIconsize={25}
             placeholder="**********"
             Title=" Confirm Password"
@@ -213,7 +243,7 @@ const SignupScreen = props => {
         <View style={{paddingVertical: '5%'}}>
           <CustomButton
             Title="Create Account"
-            onPress={() => navigation.navigate('onboarding')}
+            onPress={IsEmpty}
             style={{marginTop: 10}}
           />
           <View style={styles.signuplink}>
@@ -238,7 +268,7 @@ const SignupScreen = props => {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </TouchableWithoutFeedback>
   );
 };

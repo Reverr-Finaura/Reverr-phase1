@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {AppColors} from '../../utils';
-import {BackButton} from '../../components';
+import {BackButton} from '../../Components';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useDispatch, useSelector} from 'react-redux';

@@ -14,7 +14,10 @@ export const MessageHeader = props => {
           <Image source={require('../../assets/images/Back.png')} />
         </TouchableOpacity>
 
-        <Image style={{marginLeft: 8}} source={profile} />
+        <Image
+          style={{marginLeft: 8, width: 40, height: 40, borderRadius: 40}}
+          source={profile}
+        />
 
         <Text style={styles.text}>{name}</Text>
 

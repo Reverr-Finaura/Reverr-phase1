@@ -7,18 +7,17 @@ export const mentorService = async dispatch => {
   try {
     const mentors = [];
     await firestore()
-      .collection('Mentors')
+      .collection('Users')
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          const {name, industry, bio, domain} = doc.data();
+          const data=doc.data();
+          if(data.userType=='Mentor'){
           mentors.push({
-            id: doc.id,
-            name,
-            industry,
-            bio,
-            domain,
+            ...data,
+            id:data.email
           });
+        }
         });
       });
     dispatch(setMentorList(mentors));

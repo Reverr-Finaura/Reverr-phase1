@@ -12,6 +12,8 @@ import {
   NewsDetails,
   Webview,
   FundingForm,
+  OnBoarding,
+  TermConditions,
 } from '../../scenes';
 import ThanksScreen from '../../scenes/thanks-screen';
 import {
@@ -31,6 +33,10 @@ import {
   AddedMentors,
   IntroSplash,
   SavedScreen,
+  StartCourse,
+  ReadingInstruction,
+  Courses,
+  OpenBook,
   Home,
 } from '../../scenes';
 import {BottomNavigate, MentorNavigator} from '../BottomNavigate';
@@ -48,6 +54,7 @@ const StackNavigate = props => {
       />
       {/* <Stack.Screen name="home" component={Home} /> */}
       <Stack.Screen name="IndividualTab" component={BottomNavigate} />
+      <Stack.Screen name="onBoarding" component={OnBoarding} />
       <Stack.Screen name="Splash1" component={SplashFirst} />
       <Stack.Screen name="Splash2" component={SplashSecond} />
       <Stack.Screen name="Splash3" component={SplashThird} />
@@ -64,7 +71,6 @@ const StackNavigate = props => {
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="SavedScreen" component={SavedScreen} />
       <Stack.Screen name="EditIndivisualProfile" component={EditProfile} />
-      <Stack.Screen name="Plans" component={Plans} />
       <Stack.Screen name="Rooms" component={Rooms} />
       <Stack.Screen name="CreatePost" component={CreatePost} />
       <Stack.Screen name="comments" component={CommentsScreen} />
@@ -74,7 +80,10 @@ const StackNavigate = props => {
       <Stack.Screen name="ArticalDetails" component={ArticalDetails} />
       <Stack.Screen name="NewsDetails" component={NewsDetails} />
       <Stack.Screen name="WebView" component={Webview} />
-
+      <Stack.Screen name="StartCourse" component={StartCourse} />
+      <Stack.Screen name="Instruction" component={ReadingInstruction} />
+      <Stack.Screen name="OpenBook" component={OpenBook} />
+      <Stack.Screen name="TermConditions" component={TermConditions} />
       <Stack.Screen name="FundingForm" component={FundingForm} />
 
       {/* <Stack.Screen name="Home" component={Home}/> */}

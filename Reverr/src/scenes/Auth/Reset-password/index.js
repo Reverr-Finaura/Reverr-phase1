@@ -9,7 +9,7 @@ import React, {useState} from 'react';
 import {AppColors} from '../../../utils';
 import {useNavigation} from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
-import {CustomButton, BackButton} from '../../../components/index';
+import {CustomButton, BackButton} from '../../../Components/index';
 import {styles} from './style';
 import auth from '@react-native-firebase/auth';
 const ResetPassword = props => {

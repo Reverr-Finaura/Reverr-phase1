@@ -4,20 +4,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#000c12',
-    paddingHorizontal: 8,
   },
-  image: {
-    width: '100%',
-    height: '24%',
-    marginTop: 16,
+  textContainer: {
+    marginVertical: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 150,
     borderRadius: 10,
   },
   text: {
     color: 'white',
-    bottom: '14%',
-    marginHorizontal: '27%',
-    fontSize: 20,
     fontWeight: '700',
+    fontSize: 16,
   },
 });
 

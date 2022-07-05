@@ -39,10 +39,10 @@ import axios from 'axios';
     const mentor = props?.route?.params?.mentor || 'jatin.dsquare@gmail.com';
     const mentorOrders = props?.route?.params?.orders ;
     const mentorClients = props?.route?.params?.clients;
+    const timeArray=['Hourly','Monthly','Quaterly','Semi-Annual']
     const plans = props?.route?.params?.plans || ['1','200','300','400'];
     const [column, setColumn] = useState(2);
     //const {state, dispatch} = useContext(UserContext);
-  
     const payment = async (plan) => {
       if (state.user.mentors.includes(mentor)) {
         alert('go to appoinment ');
@@ -161,8 +161,9 @@ import axios from 'axios';
     };
   
     return (
-      <HeaderLayout>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      // <HeaderLayout>
+      <View styles={styles.main}>
+        <View style={{flexDirection: 'row', alignItems: 'center',backgroundColor: AppColors.primarycolor,}}>
           <BackButton
             IconSize={30}
             onPress={() => {
@@ -173,7 +174,7 @@ import axios from 'axios';
         </View>
         <View style={styles.screen}>
           <FlatList
-            data={paymentType}
+            data={plans}
             numColumns={column}
             renderItem={({item, index}) => (
               <TouchableOpacity
@@ -188,22 +189,36 @@ import axios from 'axios';
                   start={{x: 0.5, y: 1.3}}
                   end={{x: 1, y: 0.5}}
                   style={styles.Card}>
-                  <Text style={styles.name}>{item.name}</Text>
+                  <Text style={styles.time}>{timeArray[index]}</Text>
                   <Text style={styles.name}>₹{plans[index]}</Text>
                 </LinearGradient>
               </TouchableOpacity>
             )}
           />
         </View>
-      </HeaderLayout>
+        </View>
+      //  </HeaderLayout>
+      
     );
   };
   const styles = StyleSheet.create({
     screen: {
-      flex: 1,
+      // flex: 1,
+      height:'100%',
+      width:'100%',
       alignItems: 'center',
       justifyContent: 'center',
       paddingTop: '20%',
+      //marginHorizontal:10,
+      paddingHorizontal:10,
+      backgroundColor: AppColors.primarycolor,
+    },
+    main:{
+      flex:1,
+      height:"100%",
+      backgroundColor: AppColors.primarycolor,
+      width:'100%',
+      paddingTop:10
     },
     headerText: {
       color: AppColors.FontsColor,
@@ -224,6 +239,12 @@ import axios from 'axios';
       color: AppColors.FontsColor,
       fontFamily: 'Poppins-SemiBold',
     },
+    time:{
+      color: AppColors.FontsColor,
+      fontFamily: 'Poppins-SemiBold',
+      fontWeight:'bold',
+      fontSize:20
+    }
   });
   export {Plans};
   

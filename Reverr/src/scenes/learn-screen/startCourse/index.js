@@ -12,7 +12,7 @@ import React, {useContext, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
-import {BackButton} from '../../../components';
+import {BackButton} from '../../../Components';
 import {AppColors} from '../../../utils';
 
 const Width = Dimensions.get('window').width;
@@ -20,23 +20,9 @@ const Height = Dimensions.get('window').height;
 const StartCourse = props => {
   const courseData = props.route.params.CourseDetails;
   const navigation = useNavigation();
-  /* const {savedcoursestate, savedcoursedispatch} =
-      useContext(SavedCourseContext); */
-  /*  const {state, dispatch} = useContext(UserContext); */
   const [chp, setchp] = useState(0);
   const [slide, setslide] = useState(0);
 
-  /* const SaveCourses = () => {
-      if (state.savedCourses.includes(courseData.id)) {
-        dispatch({type: 'REMOVECOURSE', payload: courseData.id});
-        savedcoursedispatch({type: 'REMOVE', payload: courseData});
-        RemoveCourse(courseData, state.email, state.savedCourses);
-      } else {
-        dispatch({type: 'SAVECOURSE', payload: courseData.id});
-        savedcoursedispatch({type: 'UPDATE', payload: courseData});
-        SaveCourse(courseData, state.email, state.savedCourses);
-      }
-    }; */
   return (
     <View style={styles.screen}>
       <ImageBackground
@@ -70,7 +56,14 @@ const StartCourse = props => {
         <TouchableOpacity style={styles.circle}>
           <Icon name="link" size={28} color={AppColors.ActiveColor} />
         </TouchableOpacity>
-        {state.savedCourses.includes(courseData.id) ? (
+
+        <TouchableOpacity
+          activeOpacity={0.6}
+          style={styles.circle}
+          onPress={() => SaveCourses()}>
+          <Icon2 name="bookmark" size={28} color="#0077B7" />
+        </TouchableOpacity>
+        {/*  {state.savedCourses.includes(courseData.id) ? (
           <TouchableOpacity
             activeOpacity={0.6}
             style={styles.circle}
@@ -84,12 +77,12 @@ const StartCourse = props => {
             onPress={() => SaveCourses()}>
             <Icon2 name="bookmark-outline" size={28} color="#0077B7" />
           </TouchableOpacity>
-        )}
+        )} */}
 
         <TouchableOpacity
           style={styles.ContinueButton}
           onPress={() => {
-            navigation.navigate('instruction', {
+            navigation.navigate('Instruction', {
               BookData: courseData.chapter[chp],
             });
           }}>
@@ -101,24 +94,20 @@ const StartCourse = props => {
         <FlatList
           data={courseData.chapter}
           renderItem={({item, index}) => (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('instruction', {
-                  BookData: item,
-                });
-              }}
-              key={index}
-              style={styles.ChapterCard}>
+            <View key={index} style={styles.ChapterCard}>
               <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                }}>
                 <View>
                   <Text style={styles.chapter}>Chapter - {index + 1}</Text>
-                  <Text>{item.name}</Text>
                 </View>
                 <TouchableOpacity
                   onPress={() => {
                     setchp(index);
-                    navigation.navigate('instruction', {
+                    navigation.navigate('Instruction', {
                       BookData: item,
                     });
                   }}
@@ -133,7 +122,7 @@ const StartCourse = props => {
                   />
                 </TouchableOpacity>
               </View>
-            </TouchableOpacity>
+            </View>
           )}
         />
       </ScrollView>
@@ -190,7 +179,7 @@ const styles = StyleSheet.create({
   chapter: {
     color: AppColors.CardColor,
     fontFamily: 'Poppins-Regular',
-    fontSize: 14,
+    fontSize: 18,
   },
   progressContainer: {
     height: 5,

@@ -3,9 +3,9 @@ import React from 'react';
 
 import styles from './styles';
 
-import {YourFavMentorList} from '../../components/YourFavMentorList';
-import {YourLibrary} from '../../components/YourLibrary';
-import {SavedCourses} from '../../components/SavedCourses';
+import {YourFavMentorList} from '../../Components/YourFavMentorList';
+import {YourLibrary} from '../../Components/YourLibrary';
+import {SavedCourses} from '../../Components/SavedCourses';
 import {useNavigation} from '@react-navigation/native';
 
 export const SavedScreen = () => {
