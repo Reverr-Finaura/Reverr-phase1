@@ -18,7 +18,7 @@ export const ChatScreen = () => {
       style={styles.container}>
       <MessageHeader
         name="William Vetrovs"
-        profile={require('../../assets/images/Profile.png')}
+        profile={require('../../assets/images/MentorProfile.png')}
       />
       <MessageList />
       <ChatInput />

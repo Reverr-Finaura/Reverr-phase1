@@ -7,8 +7,8 @@ export default [
   },
   {
     image: require('../images/MentorProfile.png'),
-    name: 'William Vertrovs',
-    message: 'How are you doing?',
+    name: 'William Vertrovs ',
+    message: 'How are you doing? AHHJKK BBJJJJ',
     time: '18:10',
   },
   {
