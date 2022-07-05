@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {AppColors} from '../../../utils';
-import {CustomButton, BackButton, InputField} from '../../../components';
+import {CustomButton, BackButton, InputField} from '../../../Components';
 import firestore from '@react-native-firebase/firestore';
 import {useNavigation} from '@react-navigation/native';
 import emailjs from 'emailjs-com';

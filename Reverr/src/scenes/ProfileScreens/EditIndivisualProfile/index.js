@@ -15,7 +15,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 //import {ChangeDp} from '../../utils/fireBaseFunctions';
 import {ChangeDp} from '../../../utils/FirebaseFunctionality';
 import {useNavigation} from '@react-navigation/native';
-import {EditCard, CustomButton, BackButton} from '../../../components/index';
+import {EditCard, CustomButton, BackButton} from '../../../Components/index';
 import firestore from '@react-native-firebase/firestore';
 import {useDispatch, useSelector} from 'react-redux';
 import {styles} from './style';

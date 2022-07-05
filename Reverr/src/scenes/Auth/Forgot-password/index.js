@@ -8,7 +8,7 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import React, {useState} from 'react';
-import {BackButton, CustomButton} from '../../../components/index';
+import {BackButton, CustomButton} from '../../../Components/index';
 import {AppColors} from '../../../utils';
 import {styles} from './style';
 import firestore from '@react-native-firebase/firestore';

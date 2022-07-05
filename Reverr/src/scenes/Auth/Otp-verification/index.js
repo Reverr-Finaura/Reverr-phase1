@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {AppColors} from '../../../utils';
-import {CustomButton, BackButton} from '../../../components/index';
+import {CustomButton, BackButton} from '../../../Components/index';
 import {styles} from './style';
 import {useNavigation} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';

@@ -10,7 +10,7 @@ import {
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {AppColors} from '../../../utils';
-import {BackButton} from '../../../components';
+import {BackButton} from '../../../Components';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;

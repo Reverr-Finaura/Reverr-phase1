@@ -1,8 +1,8 @@
 import {View, Text, Image, TouchableOpacity, Dimensions} from 'react-native';
 import React from 'react';
 import {AppColors} from '../../../utils';
-import {BackButton} from '../../../components';
-import {TitleCard} from '../../../components';
+import {BackButton} from '../../../Components';
+import {TitleCard} from '../../../Components';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import auth from '@react-native-firebase/auth';

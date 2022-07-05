@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, Text, Image, ScrollView} from 'react-native';
 
-import {Header} from '../../components/Header';
-import {MentorCardLayout} from '../../components/Mentor-card-layout';
+import {Header} from '../../Components/Header';
+import {MentorCardLayout} from '../../Components/Mentor-card-layout';
 import styles from './styles';
 
 import {useSelector} from 'react-redux';

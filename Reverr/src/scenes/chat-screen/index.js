@@ -3,9 +3,9 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
-import {MessageHeader} from '../../components/MessageHeader';
-import {ChatInput} from '../../components/ChatInput';
-import {MessageList} from '../../components/MessageList';
+import {MessageHeader} from '../../Components/MessageHeader';
+import {ChatInput} from '../../Components/ChatInput';
+import {MessageList} from '../../Components/MessageList';
 
 export const ChatScreen = () => {
   const navigation = useNavigation();

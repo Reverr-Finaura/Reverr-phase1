@@ -1,9 +1,9 @@
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import styles from './styles';
-import {Header} from '../../components/Header';
+import {Header} from '../../Components/Header';
 import {useNavigation} from '@react-navigation/native';
-import {PlansCard} from '../../components/PlansCard';
+import {PlansCard} from '../../Components/PlansCard';
 
 export const Plans = () => {
   const navigation = useNavigation();

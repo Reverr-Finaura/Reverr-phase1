@@ -2,7 +2,7 @@ import {View, Text, StyleSheet, ScrollView, Dimensions} from 'react-native';
 import React from 'react';
 import {AppColors} from '../../../utils';
 import {useNavigation} from '@react-navigation/native';
-import {BackButton, SwipeCard} from '../../../components';
+import {BackButton, SwipeCard} from '../../../Components';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;

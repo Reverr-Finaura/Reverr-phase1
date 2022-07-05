@@ -2,7 +2,7 @@ import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
-import {CustomButton} from '../../../components';
+import {CustomButton} from '../../../Components';
 import {AppColors} from '../../../utils';
 
 const Width = Dimensions.get('screen').width;

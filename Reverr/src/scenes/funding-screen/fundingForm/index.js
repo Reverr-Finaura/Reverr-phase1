@@ -17,7 +17,7 @@ import DocumentPicker from 'react-native-document-picker';
 import firestore from '@react-native-firebase/firestore';
 import {useSelector} from 'react-redux';
 import storage from '@react-native-firebase/storage';
-import {BackButton, CustomButton} from '../../../components';
+import {BackButton, CustomButton} from '../../../Components';
 import {AppColors} from '../../../utils';
 
 const Height = Dimensions.get('screen').height;

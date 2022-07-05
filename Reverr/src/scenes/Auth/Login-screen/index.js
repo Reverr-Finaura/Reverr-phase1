@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {AppColors} from '../../../utils';
-import {InputField} from '../../../components';
-import {CustomButton} from '../../../components';
+import {InputField} from '../../../Components';
+import {CustomButton} from '../../../Components';
 import {styles} from './style';
 import {useSelector, useDispatch} from 'react-redux';
 import {add_user} from '../../../Redux/actions';
