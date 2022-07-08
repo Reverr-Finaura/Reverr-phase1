@@ -95,7 +95,7 @@ import { useSelector } from 'react-redux';
     }
   
     useEffect(()=>{
-      const user=firestore().collection("Users").doc(props.route.params.mentor.key).onSnapshot(documentSnapshot => {
+      const user=firestore().collection("Users").doc(props.route.params.mentor.email).onSnapshot(documentSnapshot => {
         console.log('User data: ', documentSnapshot.data());
         setAvailability(documentSnapshot.data().availability);
         console.log(availability);
@@ -154,7 +154,7 @@ import { useSelector } from 'react-redux';
     return (
       <View style={styles.screen}>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Backbtn
+          <BackButton
             IconSize={30}
             onPress={() => {
               navigation.goBack();
@@ -186,7 +186,7 @@ import { useSelector } from 'react-redux';
             </View>
           </View>
   
-          <CustomBtn Title="Today" style={styles.btn} />
+          <CustomButton Title="Today" style={styles.btn} />
         </View>
         <View
           style={{

@@ -14,6 +14,7 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
 import {useSelector} from 'react-redux';
+import { FirebaseStorageTypes } from '@react-native-firebase/storage';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
@@ -71,7 +72,7 @@ const AddedMentors = props => {
                   onPress={() => {
                     //console.log(dates)
                     // console.log(item);
-                    navigation.navigate('apointment', {
+                    navigation.navigate('CalanderAppointments', {
                       dates: dates,
                       mentor: item,
                     });

@@ -168,7 +168,7 @@ const Rooms = () => {
         <View style={styles.IconContainer}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <TouchableOpacity onPress={() => likePost(item.id, item)}>
-              <Icon
+              <Icon2
                 name="heart"
                 color={
                   item.likes.includes(state.user.email)

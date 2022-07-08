@@ -34,16 +34,16 @@ const IntroSplash = () => {
     setTimeout(() => {
       auth().onAuthStateChanged(async user => {
         if (!user) {
-          navigation.replace('Login');
+          return navigation.replace('Login');
         } else {
           await firestore()
             .collection('Users')
             .doc(user.email)
             .get()
             .then(inst => {
-              //console.log(inst._data);
+              console.log(inst);
               dispatch(setUser(inst._data));
-              if (inst._data.userType == 'Mentor') {
+              if (inst?._data?.userType == 'Mentor') {
                 return navigation.replace('Mentor');
               } else {
                 //console.log(inst._data)

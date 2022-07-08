@@ -80,6 +80,7 @@ const LoginScreen = ({navigation}) => {
           if (response.userType == 'Individual') {
             return navigation.replace('IndividualTab');
           } else {
+            console.log("I am an Mentor")
             return navigation.replace('Mentor');
           }
         } else if (response.failiure == true) {

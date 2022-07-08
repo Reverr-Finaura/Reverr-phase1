@@ -38,6 +38,9 @@ import {
   Courses,
   OpenBook,
   Home,
+  ChatScreen,
+  VideoCall,
+  CalanderAppointments
 } from '../../scenes';
 import {BottomNavigate, MentorNavigator} from '../BottomNavigate';
 import {ArticalDetails} from '../../scenes';
@@ -85,7 +88,10 @@ const StackNavigate = props => {
       <Stack.Screen name="OpenBook" component={OpenBook} />
       <Stack.Screen name="TermConditions" component={TermConditions} />
       <Stack.Screen name="FundingForm" component={FundingForm} />
-
+      <Stack.Screen name="ChatScreen" component={ChatScreen} />
+      <Stack.Screen name="VideoCall" component={VideoCall} />
+      <Stack.Screen name='CalanderAppointments' component={CalanderAppointments}/>
+    
       {/* <Stack.Screen name="Home" component={Home}/> */}
     </Stack.Navigator>
   );

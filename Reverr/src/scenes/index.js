@@ -7,6 +7,7 @@ import {
   EditProfile,
   MentorProfile,
 } from './ProfileScreens';
+import { VideoCall } from './videoCall';
 import {Test} from './Test';
 import {StartupVerification} from './startup-verification';
 import {SplashFirst} from './splash-screens/splash1';
@@ -29,6 +30,7 @@ import {SavedScreen} from './saved-screen';
 import {Plans} from './Plans';
 import {IntroSplash} from './introSplashScreen';
 import {Home} from './home-screen';
+import { CalanderAppointments } from './CalenderAppointments';
 import {
   LearnScreen,
   Courses,
@@ -82,4 +84,6 @@ export {
   AddedMentors,
   IntroSplash,
   OnBoarding,
+  VideoCall,
+  CalanderAppointments
 };

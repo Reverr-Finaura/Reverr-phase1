@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   footer: {
     maxHeight: '8%',
+    marginBottom:18
   },
   textInput: {
     color: 'white',

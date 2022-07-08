@@ -131,9 +131,9 @@ export const HomeStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="HomeStack" component={Home} />
-      <Stack.Screen name="Messages" component={Messages} />
+      <Stack.Screen name="Messages" component={Messages}/>
       <Stack.Screen name="Settings" component={Settings} />
-      <Stack.Screen name="ChatScreen" component={ChatScreen} />
+      {/* <Stack.Screen name="ChatScreen" component={ChatScreen} /> */}
     </Stack.Navigator>
   );
 };

@@ -49,7 +49,9 @@ const OtpScreen = props => {
       linkedin: '',
       orders: [],
       reviews: [],
-      phone:Mobile
+      phone:Mobile,
+      mobile:Mobile,
+      mentors:[]
     }
     console.log(user_object);
     await auth()
@@ -68,7 +70,6 @@ const OtpScreen = props => {
               Email:Email,
               user_object:user_object
           })})
-
           .catch(e => {
             setIsUserSignedUp(true);
             alert(e);

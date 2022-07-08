@@ -42,7 +42,7 @@ function UserReducer(state = initialState, action) {
       console.log('I am setuser');
       return {
         ...state,
-        user: action.payload,
+        user:{...action.payload.data,mentors:action.payload.udata},
         lastDocument: undefined,
         refreshing: false,
         Rooms: [],
@@ -50,9 +50,10 @@ function UserReducer(state = initialState, action) {
     case ADD_USER:
       return {
         ...state,
-        user: action.payload,
+        user: {...action.payload.user,mentors:action.payload.basket},
         lastDocument: undefined,
         refreshing: false,
+
       };
     case LIKE_POST:
       var list = [];

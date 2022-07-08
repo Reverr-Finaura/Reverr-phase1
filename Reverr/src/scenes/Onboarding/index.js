@@ -17,6 +17,7 @@ import {OnBoardingData} from '../../dumy-Data/OnBoardingData';
 import firestore from '@react-native-firebase/firestore';
 import { useDispatch } from 'react-redux';
 import { add_user } from '../../Redux/actions';
+import { ActivityIndicator } from 'react-native-paper';
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
 
@@ -30,6 +31,7 @@ const OnBoarding = (props) => {
   const [onBoardingData, setonBoardingData] = useState([]);
   const swipeRef = useRef(currentIndex);
   const navigation = useNavigation();
+  const [loading,setLoading]=useState(false);
   const Email = props?.route?.params?.Email;
   const dispatch=useDispatch();
   const Skip = () => {
@@ -40,6 +42,13 @@ const OnBoarding = (props) => {
     setCurrentIndex(index);
     swipeRef.current.scrollToIndex({index: index + 1});
   };
+  if(loading){
+    return (
+      <View style={styles.screen}>
+        <ActivityIndicator size="large" color="#fff" />
+      </View>
+    )
+  }
   //console.log(onBoardingData);
   return (
     <View style={styles.screen}>
@@ -205,11 +214,19 @@ const OnBoarding = (props) => {
                           }}
                         />
                         <CustomButton
-                          onPress={() => {
+                          onPress={async() => {
                             console.table(onBoardingData);
                             if(localstate==true){
-                              dispatch(add_user(props.route.params.user_object));
-                              navigation.replace('IndividualTab')
+                              setLoading(true);
+                              await firestore().collection('Users').doc(Email).update(props.route.params.user_object).then(()=>{
+                                dispatch(add_user(props.route.params.user_object));
+                                setLoading(false);
+                                navigation.replace('IndividualTab')
+                              }).catch(e=>{
+                                console.log("Error on onboarding");
+                                navigation.replace('Login');
+                              })
+                              
                             }
                           }}
                           style={{marginTop: '30%'}}

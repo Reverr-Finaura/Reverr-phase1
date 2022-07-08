@@ -4,6 +4,11 @@ import ImagePicker from 'react-native-image-crop-picker';
 import storage from '@react-native-firebase/storage';
 //import {add_user,updateImage} from '../../Redux/actions';
 import {updateImage} from '../../Redux/actions';
+
+var date = new Date().getDate();
+var month = new Date().getMonth() + 1;
+var year = new Date().getFullYear();
+
 const loginUser = async (email, password) => {
   var user_request_obj = {
     success: false,
@@ -227,5 +232,54 @@ export const AddCameraVideo = setVideoUrl => {
       console.log('error not selected file');
     });
 };
+
+export const SendMessage = (currentcUser, sendTo, message) => {
+  firestore()
+    .collection('Messages')
+    .doc(currentcUser.email)
+    .collection(
+      currentcUser && currentcUser.userType == 'Mentor'
+        ? 'YourClients'
+        : 'YourMentors',
+    )
+    .doc(sendTo.email)
+    .update({
+      messages: firestore.FieldValue.arrayUnion({
+        msg: message,
+        createdAt: date + '-' + month + '-' + year,
+        sendBy: currentcUser.email,
+      }),
+    })
+    .then(() => {
+      firestore()
+        .collection('Messages')
+        .doc(sendTo.email)
+        .collection(
+          sendTo && sendTo.userType == 'Mentor' ? 'YourClients' : 'YourMentors',
+        )
+        .doc(currentcUser.email)
+        .update({
+          messages: firestore.FieldValue.arrayUnion({
+            msg: message,
+            createdAt: date + '-' + month + '-' + year,
+            sendBy: currentcUser.email,
+          }),
+        });
+    });
+};
+export const ReciveMessage = async (currentcUser, sendTo, setmsg) => {
+  const Allmsg = await firestore()
+    .collection('Messages')
+    .doc(currentcUser.email)
+    .collection(
+      currentcUser && currentcUser.userType == 'Mentor'
+        ? 'YourClients'
+        : 'YourMentors',
+    )
+    .doc(sendTo.email)
+    .get();
+  setmsg(Allmsg._data.messages);
+};
+
 
 export {loginUser};

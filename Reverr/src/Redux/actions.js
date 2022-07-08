@@ -1,3 +1,4 @@
+import { firebase } from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import {Alert} from 'react-native';
 export const ADD_USER = 'ADD_USER';
@@ -20,7 +21,12 @@ export const add_user = user => {
   try {
     return async dispatch => {
       console.log('add_user:' + user);
-      dispatch(updateUserState(user));
+      var udata=[];
+      for(var i=0;i<user.mentors.length;i++){
+      const basket=await firestore().collection('Users').doc(user?.mentors[i]).get();
+        udata.push(basket._data);
+      }
+      dispatch(updateUserState(user,udata));
     };
   } catch (e) {
     dispatch({
@@ -367,9 +373,14 @@ export const setUser = data => {
     return async dispatch => {
       //const user=await firestore().collection('Users').doc(email).get();
       //console.log(user);
+      var udata=[];
+      for(var i=0;i<data.mentors.length;i++){
+      const basket=await firestore().collection('Users').doc(data?.mentors[i]).get();
+        udata.push(basket._data);
+      }
       dispatch({
         type: 'SET_USER',
-        payload: data,
+        payload: {data,udata},
       });
     };
   } catch (e) {
@@ -502,6 +513,6 @@ export const load_Data = obj => {
 export const updateUserState = user => {
   return {
     type: 'ADD_USER',
-    payload: user,
+    payload: {user,basket},
   };
 };
