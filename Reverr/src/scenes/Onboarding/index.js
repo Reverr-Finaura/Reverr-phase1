@@ -218,7 +218,7 @@ const OnBoarding = (props) => {
                             console.table(onBoardingData);
                             if(localstate==true){
                               setLoading(true);
-                              await firestore().collection('Users').doc(Email).update(props.route.params.user_object).then(()=>{
+                              await firestore().collection('Users').doc(Email).update({...props.route.params.user_object,previousOrganisation:previousOrganisation,destination:destination,role:role}).then(()=>{
                                 dispatch(add_user(props.route.params.user_object));
                                 setLoading(false);
                                 navigation.replace('IndividualTab')

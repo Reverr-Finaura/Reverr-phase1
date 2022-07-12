@@ -14,6 +14,8 @@ import {
   FundingForm,
   OnBoarding,
   TermConditions,
+  DashBoard,
+  EditCalender,
 } from '../../scenes';
 import ThanksScreen from '../../scenes/thanks-screen';
 import {
@@ -91,8 +93,8 @@ const StackNavigate = props => {
       <Stack.Screen name="ChatScreen" component={ChatScreen} />
       <Stack.Screen name="VideoCall" component={VideoCall} />
       <Stack.Screen name='CalanderAppointments' component={CalanderAppointments}/>
-    
-      {/* <Stack.Screen name="Home" component={Home}/> */}
+      <Stack.Screen name="EditCalender" component={EditCalender} />
+      <Stack.Screen name="videoCall" component={VideoCall} />
     </Stack.Navigator>
   );
 };

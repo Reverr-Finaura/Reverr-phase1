@@ -15,8 +15,8 @@ const CallEnded = () => {
 
 const VideoCall = (props)=>{
     const navigation = useNavigation();
-    const token = props.route.params.token;
-    const userData = props.route.params.userData;
+    const token = props?.route?.params?.token
+    const userData = props?.route?.params?.userData
     //const {state,dispatch} = useContext(UserContext);
     console.log("token:"+token);
     const state=useSelector(state=>state.UserReducer);
@@ -40,7 +40,9 @@ const VideoCall = (props)=>{
     }
 
     const [vc,setvc] = useState(true)
-    return vc?(
+    return (
+        <>
+        {vc ? (
         <AgoraUiKit
             rtcProps={{
                 appId:'904538e9e76546c49aabef629237f0fd',
@@ -49,7 +51,9 @@ const VideoCall = (props)=>{
             }}
             callbacks = {{EndCall:()=>meetingEnded()}}
         />    
-    ):<CallEnded/>
+    ):null}
+    </>
+    )
 };
 
 export {VideoCall};

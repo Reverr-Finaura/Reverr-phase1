@@ -77,16 +77,7 @@ const ChatScreen = props => {
             <Icon name="send" color={AppColors.FontsColor} size={25} />
           </TouchableOpacity>
         </View>
-        {/* <TouchableOpacity
-          style={{
-            backgroundColor: AppColors.CardColor,
-            padding: 8,
-            borderRadius: 5,
-            marginStart: '3.5%',
-          }} 
-          >
-          <Icon2 name="camera" color={AppColors.FontsColor} size={23} />
-        </TouchableOpacity> */}
+        
       </View>
       {loading==false ? <View>
         <FlatList

@@ -7,14 +7,17 @@ import {ArticalLoader} from '../../Components/ArticalLoader';
 import {ArticleList} from '../artical-screen';
 import {NewsList} from '../news-screen';
 import {mentorService} from '../../Redux/services/mentor.service';
+import { Button } from 'react-native-paper';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Color } from 'react-native-agora';
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
-
+import { useNavigation } from '@react-navigation/native';
 const Home = () => {
   const state = useSelector(state => state.UserReducer);
   const [articals, setArticals] = useState(true);
   const [news, setNews] = useState(false);
-
+  const navigation=useNavigation();
   const dispatch = useDispatch();
 
   useEffect(() => {

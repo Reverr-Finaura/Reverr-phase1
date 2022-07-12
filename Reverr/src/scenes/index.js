@@ -43,6 +43,8 @@ import {NewsDetails} from './news-screen';
 import {Webview} from './news-screen';
 import {FundingScreen, FundingForm} from './funding-screen';
 import {TermConditions} from './term&Conditions-Screen';
+import { DashBoard } from './dashboard';
+import { EditCalender } from './EditCalender';
 export {
   ArticalDetails,
   FundingScreen,
@@ -85,5 +87,7 @@ export {
   IntroSplash,
   OnBoarding,
   VideoCall,
-  CalanderAppointments
+  CalanderAppointments,
+  DashBoard,
+  EditCalender
 };

@@ -32,10 +32,10 @@ export const MessageHeader = props => {
     await firestore().collection('Users').doc(userData.email).update(data);
 
     //dispatch({type: 'MEETING', payload: data});
-
+    const token_main=await gettoken(channelName,host);
     navigation.navigate('videoCall', {
-      token: await gettoken(channelName, host),
-      userData: userData,
+      token:token_main,
+      userData:userData,
     });
   };
 
@@ -44,14 +44,15 @@ export const MessageHeader = props => {
     const meeting = data._data.meeting;
 
     //dispatch({type: 'MEETING', payload: data._data});
-    console.log(meeting)
+    console.log(userData)
     const channelName = meeting.channelName;
     const host = meeting.host == state.user.email ? true : false;
-
+    const token_main=await gettoken(channelName,host);
     navigation.navigate('videoCall', {
-      token: await gettoken(channelName, host),
-      userData: userData,
+      token:token_main,
+      userData:userData,
     });
+    //navigation.navigate('videoCall')
   };
   var token;
 
@@ -71,13 +72,12 @@ export const MessageHeader = props => {
     };
     token = await postData(
       'https://reverrserver.herokuapp.com/accesstoken',
-      data,
+      data
     ).then(data => {
       return data.token;
-    }).catch(e=>{
-      alert('Video Call functionality has been disabled!')
     })
-    console.log(token);
+    //console.log(token);
+    //return "006904538e9e76546c49aabef629237f0fdIAD2p3lHk/pCbrcu8+9Yb2Uf2+mVVNSc9OP2mEppl3cElaDfQtYAAAAAEABk0eMrZDXNYgEAAQD08cti";
     return token;
   };
   const navigation = useNavigation();

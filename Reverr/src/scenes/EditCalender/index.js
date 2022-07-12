@@ -5,11 +5,13 @@ import {
     Dimensions,
     TouchableOpacity,
     Switch,
-    ToastAndroid
+    ToastAndroid,
+    Platform
   } from 'react-native';
-  import React, {useState,useEffect,useContext} from 'react';
+  import React, {useState,useEffect,useRef} from 'react';
   import { AppColors } from '../../utils';
   import { BackButton } from '../../Components';
+  // import TimePicker from 'react-native-simple-time-picker';
   import LinearGradient from 'react-native-linear-gradient';
   import { CustomButton } from '../../Components';
   import {useNavigation} from '@react-navigation/native';
@@ -17,12 +19,18 @@ import {
   import firestore from '@react-native-firebase/firestore';
   import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
+import { CalanderScreen } from '..';
+import auth from '@react-native-firebase/auth';
+//import RBSheet from "react-native-raw-bottom-sheet";
+import DateTimePicker from '@react-native-community/datetimepicker';
+//import RNDateTimePicker from '@react-native-community/datetimepicker';
   //import { UserContext } from '../../App';
   const Width = Dimensions.get('window').width;
   const Height = Dimensions.get('window').height;
   
   const EditCalender = () => {
-    //const {state, dispatch} = useContext(UserContext);
+    const [selectedHours, setSelectedHours] = useState(0);
+    const [selectedMinutes, setSelectedMinutes] = useState(0);
     const state=useSelector(state=>state.UserReducer);
     const [workingHour, setworkingHour] = useState(true);
     const [calendar, setCalendar] = useState(false);
@@ -36,11 +44,56 @@ import { useSelector } from 'react-redux';
     const [availability,setAvailability]=useState([0,1,1,1,1,1,1]);
     const [change,setChange]=useState(1);
     const navigation = useNavigation();
-  
-  
+    const [day,setDay]=useState('');
+    const [From, setFrom] = useState(new Date());
+  const [To, setTo] = useState(new Date());
+  const [mode, setMode] = useState('time');
+  const [show, setShow] = useState(false);
+  const [currentSetting, setcurrentSetting] = useState('from');
+    const [time,setTime]=useState('00:00am');
+  const dayarr=['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+  const [timearr,setTimeArray]=useState(['9:00am','9:00am','9:00am','9:00am','9:00am','9:00am','9:00am']);
     const showToast = (msg) => {
       ToastAndroid.show(msg, ToastAndroid.SHORT);
     };
+
+
+    const showMode=(currentMode)=>{
+      setShow(true);
+      setMode(currentMode);
+    }
+    
+  const onChange = (event, selectedDate) => {
+    if (currentSetting === 'from') {
+      const currentDate = selectedDate || From;
+      setShow(Platform.OS === 'ios');
+      setFrom(currentDate);
+      var time_selected=currentDate.toLocaleTimeString().toString().split(":");
+      var abriviation=time_selected[0]>12 && time_selected[1]>0?"pm":"am";
+      const t=time_selected[0]%12 +":"+ time_selected[1]+abriviation;
+      console.log(t);
+      var time_basket=[];
+      for(let i=0;i<7;i++){
+        if(dayarr.indexOf(day)==i){
+            time_basket.push(t);
+        }else{
+          time_basket.push(timearr[i]);
+        }
+      }
+      setTimeArray(time_basket);
+      console.log(time_basket);
+      console.log(timearr)
+    } else {
+      const currentDate = selectedDate || To;
+      setShow(Platform.OS === 'ios');
+      setTo(currentDate);
+    }
+  };
+
+  const showTimePicker = (current) => {
+    setShow(true);
+    setcurrentSetting(current);
+  };
   
     useEffect(() => {
       var switchChangeRecorder=[];
@@ -55,16 +108,24 @@ import { useSelector } from 'react-redux';
     }, [change]);
     const handleSaveState=()=>{
         console.log('I am clicked')
+        //console.log(state.user.email);
         firestore().collection("Users").doc(state.user.email).update({
           availability:availability
         }).then(()=>{
           console.log("success");
           showToast("Availability saved succerssfully!");
         }).catch(e=>{
+          console.log(e.message);
           showToast("Error in updating availability!");
+          //auth().signOut()
         })
         //console.log(state.email)
     }
+    // takeTime=(event,time)=>{
+    //   setTime(time);
+    //   console.log(time);
+    // }
+    //const refRBSheet = useRef();
     return (
       <View style={styles.screen}>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -72,6 +133,7 @@ import { useSelector } from 'react-redux';
             IconSize={30}
             onPress={() => {
               navigation.goBack();
+              // auth().signOut()
             }}
           />
           <Text style={styles.headerTitle}>Availability</Text>
@@ -142,10 +204,15 @@ import { useSelector } from 'react-redux';
                 start={{x: -0.7, y: 1.3}}
                 end={{x: 1, y: 0.5}}
                 style={styles.Container}>
+                
                 {sunday ? (
+                  <TouchableOpacity onPress={()=>{
+                    setDay('sunday');
+                    showTimePicker('from')}}>
                   <Text style={{color: AppColors.ActiveColor}}>
-                    9:00am-5:00pm
+                    {timearr[0]}-5:00pm
                   </Text>
+                  </TouchableOpacity>
                 ) : (
                   <Text style={{color: AppColors.FontsColor}}>Unavailable</Text>
                 )}
@@ -174,13 +241,17 @@ import { useSelector } from 'react-redux';
                 start={{x: -0.7, y: 1.3}}
                 end={{x: 1, y: 0.5}}
                 style={styles.Container}>
-                {monday ? (
+                  {monday ? (
+                    <TouchableOpacity onPress={()=>{
+                      setDay('monday');
+                      showTimePicker('from')}}>
                   <Text style={{color: AppColors.ActiveColor}}>
-                    9:00am-5:00pm
-                  </Text>
+                    {timearr[1]}-5:00pm
+                  </Text></TouchableOpacity>
                 ) : (
                   <Text style={{color: AppColors.FontsColor}}>Unavailable</Text>
                 )}
+                
               </LinearGradient>
             </View>
             <View
@@ -206,10 +277,14 @@ import { useSelector } from 'react-redux';
                 start={{x: -0.7, y: 1.3}}
                 end={{x: 1, y: 0.5}}
                 style={styles.Container}>
+                
                 {tuesday ? (
+                  <TouchableOpacity onPress={()=>{
+                    setDay('tuesday');
+                    showTimePicker('from')}}>
                   <Text style={{color: AppColors.ActiveColor}}>
-                    9:00am-5:00pm
-                  </Text>
+                    {timearr[2]}-5:00pm
+                  </Text></TouchableOpacity>
                 ) : (
                   <Text style={{color: AppColors.FontsColor}}>Unavailable</Text>
                 )}
@@ -238,13 +313,18 @@ import { useSelector } from 'react-redux';
                 start={{x: -0.7, y: 1.3}}
                 end={{x: 1, y: 0.5}}
                 style={styles.Container}>
+                  
                 {wednesday ? (
+                  <TouchableOpacity onPress={()=>{
+                    setDay('wednesday');
+                    showTimePicker('from')}}>
                   <Text style={{color: AppColors.ActiveColor}}>
-                    9:00am-5:00pm
-                  </Text>
+                    {timearr[3]}-5:00pm
+                  </Text></TouchableOpacity>
                 ) : (
                   <Text style={{color: AppColors.FontsColor}}>Unavailable</Text>
                 )}
+                
               </LinearGradient>
             </View>
             <View
@@ -270,13 +350,19 @@ import { useSelector } from 'react-redux';
                 start={{x: -0.7, y: 1.3}}
                 end={{x: 1, y: 0.5}}
                 style={styles.Container}>
+                  
                 {thrusday ? (
+                  <TouchableOpacity onPress={()=>{
+                    setDay('thursday');
+                    showTimePicker('from')}}>
                   <Text style={{color: AppColors.ActiveColor}}>
-                    9:00am-5:00pm
+                    {timearr[4]}-5:00pm
                   </Text>
+                  </TouchableOpacity>
                 ) : (
                   <Text style={{color: AppColors.FontsColor}}>Unavailable</Text>
                 )}
+                
               </LinearGradient>
             </View>
             <View
@@ -302,13 +388,19 @@ import { useSelector } from 'react-redux';
                 start={{x: -0.7, y: 1.3}}
                 end={{x: 1, y: 0.5}}
                 style={styles.Container}>
+                
                 {friday ? (
+                  <TouchableOpacity onPress={()=>{
+                    setDay('friday');
+                    showTimePicker('from')}}>
                   <Text style={{color: AppColors.ActiveColor}}>
-                    9:00am-5:00pm
+                    {timearr[5]}-5:00pm
                   </Text>
+                  </TouchableOpacity>
                 ) : (
                   <Text style={{color: AppColors.FontsColor}}>Unavailable</Text>
                 )}
+                
               </LinearGradient>
             </View>
             <View
@@ -334,26 +426,38 @@ import { useSelector } from 'react-redux';
                 start={{x: -0.7, y: 1.3}}
                 end={{x: 1, y: 0.5}}
                 style={styles.Container}>
+                
                 {satuarday ? (
+                  <TouchableOpacity onPress={()=>{
+                    setDay('saturday');
+                    showTimePicker('from')}}>
                   <Text style={{color: AppColors.ActiveColor}}>
-                    9:00am-5:00pm
-                  </Text>
+                    {timearr[6]}-5:00pm
+                  </Text></TouchableOpacity>
                 ) : (
                   <Text style={{color: AppColors.FontsColor}}>Unavailable</Text>
                 )}
+                
               </LinearGradient>
             </View>
           </View>
         ) : (
           <View>
-            <Text style={styles.headerTitle}>Here Write code For Calendar</Text>
+            <CalanderScreen iseditCalender={true}/>
           </View>
         )}
-         <View>
+         {workingHour && <View>
           <Button onPress={handleSaveState}>Save</Button>
-        </View>
+        </View>}
         </ScrollView>
-        
+        {/* <RNDateTimePicker mode='time' display='spinner' onChange={(t)=>setTime(t)} value={time} open={show}/> */}
+      {show && <DateTimePicker
+        testID='dateTimePicker'
+        value={From}
+        mode={mode}
+        display="default"
+        onChange={onChange}
+      />}
       </View>
     );
   };

@@ -14,6 +14,7 @@ import {
   Messages,
   LearnScreen,
   Settings,
+  DashBoard,
 } from '../../scenes';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {MentorProfile} from '../../Components/Mentor-Profile';
