@@ -45,6 +45,7 @@ import {FundingScreen, FundingForm} from './funding-screen';
 import {TermConditions} from './term&Conditions-Screen';
 import { DashBoard } from './dashboard';
 import { EditCalender } from './EditCalender';
+import { MentorHomeScreen } from './mentorPovScreens';
 export {
   ArticalDetails,
   FundingScreen,
@@ -89,5 +90,7 @@ export {
   VideoCall,
   CalanderAppointments,
   DashBoard,
-  EditCalender
+  EditCalender,
+  MentorHomeScreen
+  
 };

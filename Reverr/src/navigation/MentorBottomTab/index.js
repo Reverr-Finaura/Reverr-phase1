@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image } from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import { DashBoard } from '../../scenes';
+import { DashBoard, MentorHomeScreen } from '../../scenes';
 import { EditCalender } from '../../scenes';
 import { Test } from '../../scenes';
 import { Messages } from '../../scenes';
@@ -86,7 +86,7 @@ export const MentorBottomTab = () => {
 export const MentorHome = () => {
     return (
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Home" component={Test} />
+        <Stack.Screen name="Home" component={MentorHomeScreen} />
         <Stack.Screen name="Messages" component={Messages}/>
       </Stack.Navigator>
     );
