@@ -308,7 +308,9 @@ import { useSelector } from 'react-redux';
             onPress={() => {
               console.log("hello")
               if(state.user.userType=='Mentor'){
+                props.setModel(false);
                 navigation.navigate('EditCalender')
+
               }
               else{
                 props.setModel(false); 

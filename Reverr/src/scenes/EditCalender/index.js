@@ -121,11 +121,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
         })
         //console.log(state.email)
     }
-    // takeTime=(event,time)=>{
-    //   setTime(time);
-    //   console.log(time);
-    // }
-    //const refRBSheet = useRef();
+    
     return (
       <View style={styles.screen}>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>

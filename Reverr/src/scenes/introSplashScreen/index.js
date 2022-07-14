@@ -44,7 +44,7 @@ const IntroSplash = () => {
               console.log(inst);
               dispatch(setUser(inst._data));
               if (inst?._data?.userType == 'Mentor') {
-                return navigation.replace('EditCalender');
+                return navigation.replace("MentorBottomTab");
               } else {
                 //console.log(inst._data)
                 return navigation.replace('IndividualTab');

@@ -3,6 +3,7 @@ import {View, StyleSheet,Text,Button} from 'react-native';
 import auth from '@react-native-firebase/auth'
 //import { NavigationContainer } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
+import { IndividualHeaderLayout } from '../Components';
 const Test = ({navigation}) => {
     const state=useSelector(state=>state.UserReducer);
     const[user,setUser]=useState();
@@ -21,10 +22,10 @@ const Test = ({navigation}) => {
   );
     }
     return (
-        <View>
-           <Text>Hello Test screen</Text> 
+        <IndividualHeaderLayout>
+           <Text style={{color:'red'}}>Hello Test screen</Text> 
            <Button title='logout' onPress={handlepress}/>
-        </View>
+        </IndividualHeaderLayout>
     );
 }
 

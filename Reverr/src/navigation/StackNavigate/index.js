@@ -46,6 +46,7 @@ import {
 } from '../../scenes';
 import {BottomNavigate, MentorNavigator} from '../BottomNavigate';
 import {ArticalDetails} from '../../scenes';
+import { MentorBottomTab } from '../MentorBottomTab';
 const Stack = createNativeStackNavigator();
 
 const StackNavigate = props => {
@@ -94,6 +95,8 @@ const StackNavigate = props => {
       <Stack.Screen name="VideoCall" component={VideoCall} />
       <Stack.Screen name='CalanderAppointments' component={CalanderAppointments}/>
       <Stack.Screen name="EditCalender" component={EditCalender} />
+      {/* <Stack.Screen name="Messages" component={}/> */}
+      <Stack.Screen name="MentorBottomTab" component={MentorBottomTab} />
       <Stack.Screen name="videoCall" component={VideoCall} />
     </Stack.Navigator>
   );

@@ -23,7 +23,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(mentorService);
   }, []);
-
+  console.log("state at home:"+state.user.name);
   /*   const ArticalList = React.lazy(() =>
     import('../artical-screen/articalList/index'),
   ); */

@@ -4,18 +4,20 @@ import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
-export const MessageContainer = props => {
-  const {image, name, message, time} = props.message;
+export const MessageContainer = (props) => {
+  //console.log(message+":"+index);
+  const item = props.message;
   const navigation = useNavigation();
   const state=useSelector(state=>state.UserReducer)
   return (
+  
     <TouchableOpacity
       style={styles.container}
       onPress={() => navigation.navigate('ChatScreen',{
-        userData:state.user.mentors[0]
+        userData:item
       })}>
-      <Image style={styles.image} source={image} />
-      <Text style={styles.name}>{name}</Text>
+      <Image style={styles.image} source={{uri:item.image}} />
+      <Text style={styles.name}>{item.name}</Text>
       <View
         style={{
           //   backgroundColor: 'red',
@@ -26,9 +28,9 @@ export const MessageContainer = props => {
           marginHorizontal: 40,
         }}>
         <Text numberOfLines={1} style={styles.message}>
-          {message}
+          Tap to Chat
         </Text>
-        <Text style={styles.time}>{time}</Text>
+        {/* <Text style={styles.time}>{time}</Text> */}
       </View>
     </TouchableOpacity>
   );

@@ -81,7 +81,7 @@ const LoginScreen = ({navigation}) => {
             return navigation.replace('IndividualTab');
           } else {
             console.log("I am an Mentor")
-            return navigation.replace('EditCalender');
+            return navigation.replace("MentorBottomTab");
           }
         } else if (response.failiure == true) {
           setUserLogedin(true);

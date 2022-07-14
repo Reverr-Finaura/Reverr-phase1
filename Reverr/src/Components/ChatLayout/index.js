@@ -5,8 +5,10 @@ import {MessageContainer} from './SingleMessage';
 import messages from '../../assets/data/messages';
 
 import styles from './styles';
+import { useSelector } from 'react-redux';
 
 export const ChatLayout = () => {
+  const state=useSelector(state=>state.UserReducer);
   return (
     <View style={styles.container}>
       <Image
@@ -20,8 +22,8 @@ export const ChatLayout = () => {
       />
       <FlatList
         style={{marginBottom: 16}}
-        data={messages}
-        renderItem={({item}) => <MessageContainer message={item} />}
+        data={state.user.userType=='Mentor'?state.user.clients:state.user.mentors}
+        renderItem={({item}) => <MessageContainer message={item}/>}
       />
     </View>
   );

@@ -19,7 +19,7 @@ export const Messages = () => {
     <SafeAreaView style={styles.container}>
       <IndividualHeaderLayout>
       <Text style={styles.title}>Messages</Text>
-      <Text style={styles.subTitle}>Mentors</Text>
+      {state?.user?.userType=='Mentor'?<Text style={styles.subTitle}>Clients</Text>:<Text style={styles.subTitle}>Mentors</Text>}
       {state?.user?.mentors?.length>0 ? <FlatList
         showsHorizontalScrollIndicator={false}
         horizontal={true}

@@ -22,10 +22,18 @@ export const add_user = user => {
     return async dispatch => {
       console.log('add_user:' + user);
       var udata=[];
-      for(var i=0;i<user.mentors.length;i++){
-      const basket=await firestore().collection('Users').doc(user?.mentors[i]).get();
+      var basket;
+      if(user.userType=='Mentor'){
+        for(var i=0;i<user?.clients?.length;i++){
+          basket=await firestore().collection('Users').doc(user?.clients[i]).get();
+            udata.push(basket._data);
+          }  
+      }else{
+      for(var i=0;i<user?.mentors?.length;i++){
+      basket=await firestore().collection('Users').doc(user?.mentors[i]).get();
         udata.push(basket._data);
       }
+    }
       dispatch(updateUserState(user,udata));
     };
   } catch (e) {
@@ -374,10 +382,18 @@ export const setUser = data => {
       //const user=await firestore().collection('Users').doc(email).get();
       //console.log(user);
       var udata=[];
+      var basket;
+      if(data.userType=='Mentor'){
+        for(var i=0;i<data?.clients?.length;i++){
+          basket=await firestore().collection('Users').doc(data?.clients[i]).get();
+            udata.push(basket._data);
+          }  
+      }else{
       for(var i=0;i<data.mentors.length;i++){
-      const basket=await firestore().collection('Users').doc(data?.mentors[i]).get();
+      basket=await firestore().collection('Users').doc(data?.mentors[i]).get();
         udata.push(basket._data);
       }
+    }
       dispatch({
         type: 'SET_USER',
         payload: {data,udata},
@@ -510,9 +526,9 @@ export const load_Data = obj => {
   };
 };
 
-export const updateUserState = user => {
+export const updateUserState = (user,udata) => {
   return {
     type: 'ADD_USER',
-    payload: {user,basket},
+    payload: {user,udata},
   };
 };
