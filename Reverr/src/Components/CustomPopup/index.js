@@ -2,15 +2,16 @@ import {View, Text, StyleSheet} from 'react-native';
 import React, {Children} from 'react';
 import {Modal, Portal} from 'react-native-paper';
 
-const CustomPopup = ({visible, hideModal, children}) => {
+const CustomPopup = (props) => {
+   console.log(props.visible);
   return (
     <View>
       <Portal>
         <Modal
-          visible={visible}
-          onDismiss={hideModal}
+          visible={props.visible}
+          onDismiss={props.hideModal}
           contentContainerStyle={{backgroundColor: 'white', padding: 20}}>
-          {children}
+          {props.children}
         </Modal>
       </Portal>
     </View>

@@ -43,6 +43,7 @@ const Height = Dimensions.get('window').height;
 
 const Rooms = () => {
   //const userType=props?.route?.params?.userType || 'Individual';
+  const [_id,set_Id]=useState("");
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [deleted, setDeleted] = useState(false);
@@ -60,9 +61,10 @@ const Rooms = () => {
   const [id, setId] = useState();
   const [owner, setOwner] = useState(false);
 
-  const clickhandler = post => {
-    //dispatch(deletePost(post,post.id));
-  };
+
+  const handleDelete=post=>{
+    dispatch(deletePost(post,post.id)); 
+  }
 
   useEffect(() => {
     if (state.lastDocument == undefined) {
@@ -106,7 +108,12 @@ const Rooms = () => {
               <Text style={styles.company}>{item.postedby.designation}</Text>
             </View>
           </View>
-          <TouchableOpacity onPress={() => clickhandler(item)}>
+          <TouchableOpacity onPress={()=>{
+            setPopup(true);
+            set_Id(item.id);
+            setOwner(state.user.email==item.postedby.email?true:false);
+            
+            }}>
             <Icon2
               name="ellipsis-vertical"
               size={22}
@@ -213,7 +220,8 @@ const Rooms = () => {
         </View>
 
         <CustomPopup
-          key={item.id}
+          key={_id}
+          // key={item.id}
           visible={popup}
           postId={id}
           id={item.id}

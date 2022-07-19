@@ -5,6 +5,7 @@ import {
     FlatList,
     Dimensions,
     TouchableOpacity,
+    ActivityIndicator
   } from 'react-native';
   import React, {useState} from 'react';
   import { IndividualHeaderLayout as HeaderLayout } from '../../Components';
@@ -35,6 +36,7 @@ import axios from 'axios';
   
   const Plans = props => {
     const navigation = useNavigation();
+    const [loading,setLoading]=useState(false); 
     const state=useSelector(state=>state.UserReducer);
     const mentor = props?.route?.params?.mentor || 'jatin.dsquare@gmail.com';
     const mentorOrders = props?.route?.params?.orders ;
@@ -67,6 +69,7 @@ import axios from 'axios';
             //console.log(res.data)
             order.token =res.data.cftoken;
             cashfree(order);
+            setLoading(false);
              //console.log(order); 
           })
           // .then(data => {
@@ -76,6 +79,7 @@ import axios from 'axios';
           // }).catch(e=>{
           //   alert('Error in payment gateway!')
           // });
+          
       }
     };
   
@@ -159,7 +163,13 @@ import axios from 'axios';
         //create msg path here;
       }
     };
-  
+  if(loading){
+    return(
+    <View style={styles.main}>
+      <ActivityIndicator size="large" color="#fff"  style={{marginHorizontal:50,marginVertical:80}}/>
+    </View>
+    );
+  }
     return (
       // <HeaderLayout>
       <View styles={styles.main}>
@@ -180,6 +190,7 @@ import axios from 'axios';
               <TouchableOpacity
                 onPress={() => {
                   // navigation.navigate('PlanDetails', {PlanType: item.name});
+                  setLoading(true);
                   payment(plans[index]);
                   // const res = {"paymentMode":"UPI","orderId":"yPrUaDcq8snr","txTime":"2022-05-18 18:12:43","referenceId":"961363226","type":"CashFreeResponse","txMsg":"00::Transaction Success","signature":"nRtL0g23HVsQIWBbzvnbuiUu8As13v4YxQmRk+23L0A=","orderAmount":"1.00","txStatus":"SUCCESS"} ;
                   // handleResponse(res);
