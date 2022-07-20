@@ -16,7 +16,7 @@ export const Mentor = () => {
         source={require('../../assets/images/Rectangle2.png')}
       />
       <Text style={styles.text}>Business Mentors</Text>
-      <ScrollView scrollEnabled={true}   style={{marginHorizontal:8}}>
+      <ScrollView scrollEnabled={true}   style={{marginHorizontal:4 ,width:Dimensions.get('window').width}}>
         <MentorCardLayout mentors={mentors} />
       </ScrollView>
       </IndividualHeaderLayout>

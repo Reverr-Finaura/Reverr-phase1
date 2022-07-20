@@ -10,6 +10,7 @@ import React, {useRef, useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {BackButton} from '../../../Components';
 import {AppColors} from '../../../utils';
+// import { black } from 'react-native-paper/lib/typescript/styles/colors';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
@@ -306,7 +307,7 @@ const styles = StyleSheet.create({
   body: {
     marginTop: '10%',
     fontFamily: 'Poppins-Regular',
-    color: AppColors.infoFonts,
+    color: 'black',
     paddingHorizontal: '4%',
     fontSize: 16,
     alignSelf: 'center',

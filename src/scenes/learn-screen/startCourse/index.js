@@ -7,6 +7,7 @@ import {
   ScrollView,
   FlatList,
   Dimensions,
+  ToastAndroid
 } from 'react-native';
 import React, {useContext, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
@@ -14,7 +15,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import {BackButton} from '../../../Components';
 import {AppColors} from '../../../utils';
-
+import { useSelector,useDispatch } from 'react-redux';
+import firestore from '@react-native-firebase/firestore';
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 const StartCourse = props => {
@@ -22,6 +24,38 @@ const StartCourse = props => {
   const navigation = useNavigation();
   const [chp, setchp] = useState(0);
   const [slide, setslide] = useState(0);
+  const state=useSelector(state=>state.UserReducer);
+  const dispatch=useDispatch();
+  const showToast = (msg) => {
+    ToastAndroid.show(msg, ToastAndroid.SHORT);
+  };
+  const SaveCourses=async(id)=>{
+    //dispatch(saveCourse(id))
+    await firestore().collection('Users').doc(state.user.email).update({
+      savedCourses:[...state.user.savedCourses,id]
+    }).then(()=>{
+      showToast("Course Saved Successfully")
+    }).catch(err=>{
+      showToast("Error while saving the course!")
+    })
+  }
+
+  const RemoveCourse=async(id)=>{
+    var bucket=[];
+    for(var i=0;i<state.user.savedCourses.length;i++){
+      if(id!=state.user.savedCourses[i]){
+        bucket.push(state.user.savedCourses[i]);
+      }
+    }
+    await firestore().collection('Users').doc(state.user.email).update({
+      savedCourses:bucket
+    }).then(()=>{
+      showToast("Course Removed Successfully")
+    }).catch(err=>{
+      showToast("Error while removing the course!")
+    })
+    //dispatch(removeCourse(id));
+  }
 
   return (
     <View style={styles.screen}>
@@ -60,24 +94,16 @@ const StartCourse = props => {
         <TouchableOpacity
           activeOpacity={0.6}
           style={styles.circle}
-          onPress={() => SaveCourses()}>
-          <Icon2 name="bookmark" size={28} color="#0077B7" />
+          onPress={() => {
+            if(state.user.savedCourses.includes(courseData.id)){
+              RemoveCourse(courseData.id);
+            }else{
+              SaveCourses(courseData.id)
+            }
+            }}>
+          <Icon2 name={state.user.savedCourses.includes(courseData.id)?"bookmark":'bookmark-outline'} size={28} color="#0077B7" />
         </TouchableOpacity>
-        {/*  {state.savedCourses.includes(courseData.id) ? (
-          <TouchableOpacity
-            activeOpacity={0.6}
-            style={styles.circle}
-            onPress={() => SaveCourses()}>
-            <Icon2 name="bookmark" size={28} color="#0077B7" />
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            activeOpacity={0.6}
-            style={styles.circle}
-            onPress={() => SaveCourses()}>
-            <Icon2 name="bookmark-outline" size={28} color="#0077B7" />
-          </TouchableOpacity>
-        )} */}
+        
 
         <TouchableOpacity
           style={styles.ContinueButton}

@@ -1,6 +1,7 @@
 import { firebase } from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import {Alert} from 'react-native';
+// import { SavedCourses } from '../Components/SavedCourses';
 export const ADD_USER = 'ADD_USER';
 export const UPDATE_IMAGE = 'UPDATE_IMAGE';
 export const UPDATE_USER_DATA = 'UPDATE_USER_DATA';
@@ -16,6 +17,116 @@ export const DELETE_POST_ACTION = 'DELETE_POST_ACTION';
 export const SET_USER = 'SET_USER';
 export const SET_MENTORS = 'SET_MENTORS';
 export const SELECT_MENTOR = 'SELECT_MENTOR';
+export const LIKE_MENTOR='LIKE_MENTOR';
+export const UNLIKE_MENTOR='UNLIKE_MENTOR'
+export const REMOVE_ARTICLE='REMOVE_ARTICLE';
+export const SAVE_ARTICLE='SAVE_ARTICLE';
+export const REMOVE_COURSE='REMOVE_COURSE'
+export const SAVE_COURSE='SAVE_COURSE'
+
+
+export const removeCourse=(id)=>{
+  try{
+    return async dispatch=>{
+      dispatch({
+        type:'REMOVE_COURSE',
+        payload:id
+      })
+    }
+
+  }catch(e){
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+}
+
+export const saveCourse=(id)=>{
+  try{
+    return async dispatch=>{
+      dispatch({
+        type:'SAVE_COURSE',
+        payload:id
+      })
+    }
+
+  }catch(e){
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+}
+
+export const SaveArticle=(id)=>{
+  try{
+    return async dispatch=>{
+      dispatch({
+        type:'SAVE_ARTICLE',
+        payload:id
+      })
+    }
+
+  }catch(e){
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+}
+
+export const RemoveArticle=(id)=>{
+  try{
+    return async dispatch=>{
+      dispatch({
+        type:'REMOVE_ARTICLE',
+        payload:id
+      })
+    }
+
+  }catch(e){
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+} 
+
+export const LikeMentor=(email)=>{
+  try{
+    return async dispatch=>{
+      dispatch({
+        type:'LIKE_MENTOR',
+        payload:email
+      })
+    }
+
+  }catch(e){
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+}
+
+export const UnLikeMentor=(email)=>{
+  try{
+    return async dispatch=>{
+      dispatch({
+        type:'UNLIKE_MENTOR',
+        payload:email
+      })
+    }
+
+  }catch(e){
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+}
+
 
 export const add_user = user => {
   try {

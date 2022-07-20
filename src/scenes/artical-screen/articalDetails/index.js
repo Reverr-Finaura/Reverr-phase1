@@ -106,9 +106,10 @@ const styles = StyleSheet.create({
   },
   body: {
     paddingHorizontal: '8%',
+    // color:AppColors.FontsColor
   },
   text: {
-    color: AppColors.infoFonts,
+    color: AppColors.FontsColor,
     fontFamily: 'Poppins-Regular',
   },
 });

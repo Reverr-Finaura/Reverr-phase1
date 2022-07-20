@@ -15,6 +15,12 @@ import {
   SET_USER,
   SET_MENTORS,
   SELECT_MENTOR,
+  LIKE_MENTOR,
+  UNLIKE_MENTOR,
+  SAVE_ARTICLE,
+  REMOVE_ARTICLE,
+  REMOVE_COURSE,
+  SAVE_COURSE
 } from './actions';
 
 const initialState = {
@@ -205,6 +211,68 @@ function UserReducer(state = initialState, action) {
           ...state.pin_post,
           comments: [],
         },
+      };
+      case LIKE_MENTOR:
+        return{
+          ...state,
+          user:{
+            ...state.user,savedMentors:[...state.user.savedMentors,action.payload]
+          }
+        };
+    case UNLIKE_MENTOR:
+      var bucket=[];
+      for(var i=0;i<state.user.savedMentors.length;i++){
+        if(action.payload!=state.user.savedMentors[i]){
+          bucket.push(state.user.savedMentors[i]);
+        }
+      }
+      return {
+        ...state,
+        user:{
+          ...state.user,savedMentors:bucket
+        }
+      };
+    case SAVE_ARTICLE:
+    return {
+      ...state,
+      user:{
+        ...state.user,savedArticles:[...state.user.savedArticles,action.payload]
+      }
+    };
+    case REMOVE_ARTICLE:
+      var bucket=[];
+      for(var i=0;i<state.user.savedArticles.length;i++){
+        if(action.payload!=state.user.savedArticles[i]){
+          bucket.push(state.user.savedArticles[i]);
+        }
+      }
+      return{
+        ...state,
+        user:{
+          ...state.user,savedArticles:bucket
+        }
+
+      };
+    case SAVE_COURSE:
+      return {
+        ...state,
+        user:{
+          ...state.user,savedCourses:[...state.user.savedCourses,action.payload]
+        }
+      };
+    case REMOVE_COURSE:
+      var bucket=[];
+      for(var i=0;i<state.user.savedCourses.length;i++){
+        if(action.payload!=state.user.savedCourses[i]){
+          bucket.push(state.user.savedCourses[i]);
+        }
+      }
+      return{
+        ...state,
+        user:{
+          ...state.user,savedCourses:bucket
+        }
+
       };
     default:
       return state;
