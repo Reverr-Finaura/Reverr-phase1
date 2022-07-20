@@ -1,19 +1,10 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  ScrollView,
-  ToastAndroid,
-} from 'react-native';
-
+import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
 import styles from './styles';
-
 import {CustomTextCard} from '../CustomTextCard';
 import {Details} from '../Details';
-import {Header} from '../Header';
+import {useSelector} from 'react-redux';
 import {Rating} from '../Ratings';
 import {CustomButton} from '../CustomButton';
 
@@ -21,7 +12,7 @@ export const MentorDetails = props => {
   const navigaton = useNavigation();
   const [optionIndex, setIndex] = useState(0);
   const [pressed, setPressed] = useState(false);
-  // const {selectedmentor} = useSelector(state => state.UserReducer);
+  const state = useSelector(state => state.UserReducer);
   const selectedmentor = props.route.params.mentorDetails;
 
   const Ratings = () => {
@@ -97,16 +88,8 @@ export const MentorDetails = props => {
             />
           </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={() => {
-              if (!state.user.savedMentors.includes(selectedmentor.email)) {
-                add_mentor_to_favourites(selectedmentor.email);
-              } else {
-                remove_mentor_from_favourites(selectedmentor.email);
-              }
-              //setPressed(!pressed)
-            }}>
-            {!state.user.savedMentors.includes(selectedmentor.email) ? (
+          <TouchableOpacity onPress={() => setPressed(!pressed)}>
+            {!pressed ? (
               <Image
                 source={require('../../assets/images/Heart-Outline.png')}
                 style={styles.button}
