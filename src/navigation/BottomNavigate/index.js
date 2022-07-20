@@ -17,7 +17,7 @@ import {
   DashBoard,
 } from '../../scenes';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {MentorProfile} from '../../Components/Mentor-Profile';
+import {MentorDetails} from '../../Components';
 
 const Tab = createBottomTabNavigator();
 
@@ -132,7 +132,7 @@ export const HomeStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="HomeStack" component={Home} />
-      <Stack.Screen name="Messages" component={Messages}/>
+      <Stack.Screen name="Messages" component={Messages} />
       <Stack.Screen name="Settings" component={Settings} />
       {/* <Stack.Screen name="ChatScreen" component={ChatScreen} /> */}
     </Stack.Navigator>
@@ -144,7 +144,7 @@ export const MentorNavigator = () => {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="MentorStack" component={Mentor} />
       <Stack.Screen name="Settings" component={Settings} />
-      <Stack.Screen name="MentorProfile" component={MentorProfile} />
+      <Stack.Screen name="MentorDetails" component={MentorDetails} />
       <Stack.Screen name="Plans" component={Plans} />
     </Stack.Navigator>
   );

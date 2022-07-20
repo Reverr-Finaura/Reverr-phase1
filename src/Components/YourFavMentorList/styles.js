@@ -22,10 +22,8 @@ const styles = StyleSheet.create({
     backgroundColor: AppColors.CardColor,
     padding: 8,
     marginHorizontal: 8,
-    marginVertical: 12,
     paddingVertical: 8,
     borderRadius: 10,
-    marginBottom: 20,
   },
   dp: {
     width: 100,

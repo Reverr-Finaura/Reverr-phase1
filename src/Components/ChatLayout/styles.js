@@ -16,13 +16,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#0077b7',
     alignSelf: 'center',
     borderRadius: 10,
-    width: 85,
-    height: 25,
+    width: '25%',
+    height: 27,
     textAlign: 'center',
     bottom: 66,
     paddingHorizontal: 18,
+    paddingVertical: '1%',
     color: 'white',
-    marginVertical:5
   },
   chatContainer: {
     // backgroundColor: 'red',

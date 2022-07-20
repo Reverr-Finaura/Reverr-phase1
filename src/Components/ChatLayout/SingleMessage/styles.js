@@ -7,15 +7,13 @@ const styles = StyleSheet.create({
     left: 8,
   },
   image: {
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
   },
   name: {
-    bottom: '54%',
-    right: 70,
     fontSize: 14,
     fontWeight: '400',
-    alignSelf: 'center',
+    marginVertical: '2%',
     color: 'white',
     // backgroundColor: 'blue',
   },

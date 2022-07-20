@@ -7,11 +7,7 @@ const Width = Dimensions.get('screen').width;
 const Height = Dimensions.get('screen').height;
 const EditCard = props => {
   return (
-    <LinearGradient
-      colors={[AppColors.primarycolor, '#012437', 'white']}
-      start={{x: 0, y: 1.3}}
-      end={{x: 0.3, y: 0.5}}
-      style={{...styles.Card, ...props.style}}>
+    <View style={{...styles.Card, ...props.style}}>
       <Text
         style={{
           color: AppColors.FontsColor,
@@ -30,7 +26,7 @@ const EditCard = props => {
         onChangeText={props.onChangeText}
         value={props.value}
       />
-    </LinearGradient>
+    </View>
   );
 };
 const styles = StyleSheet.create({

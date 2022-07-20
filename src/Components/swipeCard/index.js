@@ -20,7 +20,8 @@ const SwipeCard = props => {
     <View>
       <FlatList
         data={props.data}
-        horizontal
+        horizontal={props.horizontal}
+        numColumns={props.numColumns}
         pagingEnabled={props.pagingEnabled}
         onScroll={props.onScroll}
         renderItem={({item}) => (
