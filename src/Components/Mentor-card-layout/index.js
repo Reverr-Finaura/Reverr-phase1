@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, FlatList} from 'react-native';
+import {View, StyleSheet, FlatList, Dimensions} from 'react-native';
 
 import {MentorCard} from '../MentorCard';
 
@@ -18,5 +18,6 @@ export const MentorCardLayout = ({mentors}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width:Dimensions.get('window').width/1.1
   },
 });

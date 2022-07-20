@@ -8,6 +8,7 @@ import {
   Dimensions,
   Alert,
   Video,
+  ToastAndroid
 } from 'react-native';
 import React, {useState, useContext} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -42,18 +43,10 @@ const CreatePost = props => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   //const {setPosts, fetchPosts2} = props.route.params;
-
-  const submitPost = async () => {
-    var post = {
-      postedby: firestore().collection('Users').doc(state.user.email),
-      image: imageUrl,
-      comments: [],
-      likes: [],
-      text,
-      createdat: firestore.Timestamp.fromDate(new Date()),
-    };
-    //  console.log('Post: ', post);
-
+  const showToast = (msg) => {
+    ToastAndroid.show(msg, ToastAndroid.SHORT);
+  };
+  const postData=async(post)=>{
     await firestore()
       .collection('Posts')
       .add(post)
@@ -63,29 +56,25 @@ const CreatePost = props => {
         //dispatch(add_post_to_rooms(post));
         //fetchPosts2();
         console.log('Post Added!');
-        Alert.alert(
-          'Post published!',
-          'Your post has been published Successfully!',
-          [
-            {
-              text: 'Cancel',
-              onPress: () => console.log('Cancel Pressed!'),
-              style: 'cancel',
-            },
-            {
-              text: 'okay',
-              //onPress: () => navigation.navigate('Rooms'),
-            },
-          ],
-          {cancelable: false},
-        );
+      
+      showToast("Your post has been posted.")
       })
       .catch(error => {
-        console.log(
-          'Something went wrong with added post to firestore.',
-          error,
-        );
+        showToast("Error in posting!.")
       });
+  }
+  const submitPost = async () => {
+    var post = {
+      postedby: firestore().collection('Users').doc(state.user.email),
+      image: imageUrl,
+      comments: [],
+      likes: [],
+      text,
+      createdat: firestore.Timestamp.fromDate(new Date()),
+    };
+    postData(post);
+    navigation.navigate('Rooms');  
+
   };
   return (
     <View style={styles.screen}>

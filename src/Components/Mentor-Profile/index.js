@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
-import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
+import {View, Text, Image, TouchableOpacity, ScrollView,ToastAndroid} from 'react-native';
 
 import styles from './styles';
 
@@ -9,6 +9,7 @@ import {Details} from '../Details';
 import {Header} from '../Header';
 import {Rating} from '../Ratings';
 import {CustomButton} from '../CustomButton';
+<<<<<<< HEAD
 
 export const MentorDetails = props => {
   const navigaton = useNavigation();
@@ -16,6 +17,51 @@ export const MentorDetails = props => {
   const [pressed, setPressed] = useState(false);
   // const {selectedmentor} = useSelector(state => state.UserReducer);
   const selectedmentor = props.route.params.mentorDetails;
+=======
+import firestore from '@react-native-firebase/firestore';
+import {useDispatch, useSelector} from 'react-redux';
+import { LikeMentor,UnLikeMentor } from '../../Redux/actions';
+export const MentorProfile = props => {
+  const navigaton = useNavigation();
+  const [optionIndex, setIndex] = useState(0);
+  const [pressed, setPressed] = useState(false);
+  const {selectedmentor} = useSelector(state => state.UserReducer);
+  const state=useSelector(state=>state.UserReducer);
+  console.log(state.user.savedMentors)
+  const dispatch=useDispatch();
+  const showToast = (msg) => {
+    ToastAndroid.show(msg, ToastAndroid.SHORT);
+  };
+
+  const add_mentor_to_favourites=async(id)=>{
+    dispatch(LikeMentor(id));
+    await firestore().collection('Users').doc(state.user.email).update({
+      savedMentors:[...state.user.savedMentors,id]
+    }).then(()=>{
+        showToast("Mentor Added Successfully!")
+    }).catch(err=>{
+      showToast("Error while saving Mentor!");
+    })
+  }
+
+  const remove_mentor_from_favourites=async(id)=>{
+    //dispatch(UnLikeMentor(id));
+    var bucket=[];
+    for(var i=0;i<state.user.savedMentors.length;i++){
+      if(id!=state.user.savedMentors[i]){
+        bucket.push(state.user.savedMentors[i]);
+      }
+    }
+    dispatch(UnLikeMentor(id));
+    await firestore().collection('Users').doc(state.user.email).update({
+      savedMentors:bucket
+    }).then(()=>{
+        showToast("Mentor Removed Successfully!")
+    }).catch(err=>{
+      showToast("Error while removing Mentor!");
+    })
+  }
+>>>>>>> faede99420c721bf6af5544651697ecf2f48724e
 
   const Ratings = () => {
     return <Rating />;
@@ -90,8 +136,15 @@ export const MentorDetails = props => {
             />
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => setPressed(!pressed)}>
-            {!pressed ? (
+          <TouchableOpacity onPress={() =>{
+            if(!state.user.savedMentors.includes(selectedmentor.email)){
+              add_mentor_to_favourites(selectedmentor.email);
+            }else{
+              remove_mentor_from_favourites(selectedmentor.email);
+            }
+            //setPressed(!pressed)
+            }}>
+            { !state.user.savedMentors.includes(selectedmentor.email) ? (
               <Image
                 source={require('../../assets/images/Heart-Outline.png')}
                 style={styles.button}
