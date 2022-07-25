@@ -13,18 +13,22 @@ export const MentorCard = ({mentor}) => {
   const {name, industry, reviews, id} = mentor?.item;
   const {mentors} = useSelector(state => state.UserReducer);
   const dispatch = useDispatch();
-
-  const onPress = id => {
+  console.log(mentor, 'mm');
+  /* const onPress = id => {
     const mentor = mentors.filter(mentor => mentor.id == id)[0];
     dispatch(setMentorProfile(mentor));
-    navigation.navigate('MentorProfile');
-  };
+    navigation.navigate('MentorDetails');
+  }; */
 
   return (
     <View style={{marginVertical: 8, marginHorizontal: 8}}>
       <TouchableOpacity
         style={styles.buttonContainer}
-        onPress={() => onPress(id)}>
+        onPress={() =>
+          navigation.navigate('MentorDetails', {
+            mentorDetails: mentor.item,
+          })
+        }>
         <Image
           style={styles.card}
           source={require('../../assets/images/Rectangle.png')}

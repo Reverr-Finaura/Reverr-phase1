@@ -22,6 +22,7 @@ const Height = Dimensions.get('window').height;
 const LearnScreen = () => {
   const [courseData, setCourseData] = useState();
   const [loading, setLoading] = useState(false);
+  const [column, setColumn] = useState(2);
 
   const getCourses = async () => {
     setLoading(true);
@@ -46,6 +47,7 @@ const LearnScreen = () => {
         <ScrollView>
           <SwipeCard
             data={courseData}
+            horizontal={true}
             maxString={130}
             pagingEnabled={true}
             overlay={styles.overlay}
@@ -123,16 +125,20 @@ const LearnScreen = () => {
           </View>
           <View
             style={{
-              marginHorizontal: '4%',
               paddingVertical: '8%',
               paddingTop: '3%',
             }}>
             <Text
-              style={{color: AppColors.FontsColor, fontFamily: 'Poppins-Bold'}}>
-              Popular now{' '}
+              style={{
+                marginStart: '3%',
+                color: AppColors.FontsColor,
+                fontFamily: 'Poppins-Bold',
+              }}>
+              Popular now
             </Text>
             <SwipeCard
               data={courseData}
+              numColumns={column}
               maxString={30}
               style={styles.popularCard}
               overlay={{
@@ -162,7 +168,7 @@ const styles = StyleSheet.create({
     width: '85%',
     marginTop: '3%',
     justifyContent: 'space-between',
-    height: '10%',
+    height: 80,
     borderRadius: 20,
     alignSelf: 'center',
     flexDirection: 'row',
@@ -179,7 +185,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '4%',
   },
   popularCard: {
-    width: Width / 2.1,
+    width: Width / 2.3,
     height: Height > 684 ? Height / 4 : Height / 5,
   },
 });

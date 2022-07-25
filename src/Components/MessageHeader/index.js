@@ -1,17 +1,20 @@
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
-import { useSelector,useDispatch } from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import ShortUniqueId from 'short-unique-id';
 import firestore from '@react-native-firebase/firestore';
 export const MessageHeader = props => {
   const {userData} = props;
-  const state=useSelector(state=>state.UserReducer);
-  const dispatch=useDispatch();
+  const state = useSelector(state => state.UserReducer);
+  const dispatch = useDispatch();
   const MakeCall = async () => {
-    console.log("Making call");
-    const udata = await firestore().collection('Users').doc(state.user.email).get();
+    console.log('Making call');
+    const udata = await firestore()
+      .collection('Users')
+      .doc(state.user.email)
+      .get();
     const meeting = udata._data.meeting;
 
     if (meeting != undefined && meeting.host != '') {
@@ -32,25 +35,28 @@ export const MessageHeader = props => {
     await firestore().collection('Users').doc(userData.email).update(data);
 
     //dispatch({type: 'MEETING', payload: data});
-    const token_main=await gettoken(channelName,host);
+    const token_main = await gettoken(channelName, host);
     navigation.navigate('videoCall', {
-      token:token_main,
-      userData:userData,
+      token: token_main,
+      userData: userData,
     });
   };
 
   const JoinCall = async () => {
-    const data = await firestore().collection('Users').doc(state.user.email).get();
+    const data = await firestore()
+      .collection('Users')
+      .doc(state.user.email)
+      .get();
     const meeting = data._data.meeting;
 
     //dispatch({type: 'MEETING', payload: data._data});
-    console.log(userData)
+    console.log(userData);
     const channelName = meeting.channelName;
     const host = meeting.host == state.user.email ? true : false;
-    const token_main=await gettoken(channelName,host);
+    const token_main = await gettoken(channelName, host);
     navigation.navigate('videoCall', {
-      token:token_main,
-      userData:userData,
+      token: token_main,
+      userData: userData,
     });
     //navigation.navigate('videoCall')
   };
@@ -61,7 +67,12 @@ export const MessageHeader = props => {
       method: 'POST',
       body: JSON.stringify(data.channelName, data.host),
     });
-    console.log("res:"+Object.keys(response.json())+"->"+Object.values(response.json()));
+    console.log(
+      'res:' +
+        Object.keys(response.json()) +
+        '->' +
+        Object.values(response.json()),
+    );
     return response.json();
   }
 
@@ -72,10 +83,10 @@ export const MessageHeader = props => {
     };
     token = await postData(
       'https://reverrserver.herokuapp.com/accesstoken',
-      data
+      data,
     ).then(data => {
       return data.token;
-    })
+    });
     //console.log(token);
     //return "006904538e9e76546c49aabef629237f0fdIAD2p3lHk/pCbrcu8+9Yb2Uf2+mVVNSc9OP2mEppl3cElaDfQtYAAAAAEABk0eMrZDXNYgEAAQD08cti";
     return token;
@@ -88,7 +99,10 @@ export const MessageHeader = props => {
           <Image source={require('../../assets/images/Back.png')} />
         </TouchableOpacity>
 
-        <Image style={{marginLeft: 5,height:30,width:30}} source={{uri:userData.image}} />
+        <Image
+          style={{marginLeft: 5, height: 30, width: 30}}
+          source={{uri: userData.image}}
+        />
 
         <Text style={styles.text}>{userData.name}</Text>
 
