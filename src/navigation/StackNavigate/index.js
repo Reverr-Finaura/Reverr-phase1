@@ -16,6 +16,7 @@ import {
   TermConditions,
   DashBoard,
   EditCalender,
+  Notifications,
 } from '../../scenes';
 import ThanksScreen from '../../scenes/thanks-screen';
 import {
@@ -92,6 +93,7 @@ const StackNavigate = props => {
       <Stack.Screen name="TermConditions" component={TermConditions} />
       <Stack.Screen name="FundingForm" component={FundingForm} />
       <Stack.Screen name="ChatScreen" component={ChatScreen} />
+      <Stack.Screen name="Notification" component={Notifications} />
       <Stack.Screen name="VideoCall" component={VideoCall} />
       <Stack.Screen name='CalanderAppointments' component={CalanderAppointments}/>
       <Stack.Screen name="EditCalender" component={EditCalender} />

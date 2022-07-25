@@ -34,6 +34,17 @@ const ChatScreen = props => {
   const [loading,setLoading]=useState(true);
   const navigation = useNavigation();
 
+  const sendNotification=async(toemail,fromemail,messaage)=>{
+    const obj={
+      subject:state.user.email,
+      message:messaage,
+      email:toemail,
+      type:"chat"
+    }
+    await firestore().collection('Users').doc(toemail).update({
+      notifications:firestore.FieldValue.arrayUnion(obj),
+    })
+  }
   
   useEffect(() => {
     ReciveMessage(state.user, userData, setRecive);
@@ -71,8 +82,10 @@ const ChatScreen = props => {
               borderRadius: 5,
             }}
             onPress={() => {
+              
               SendMessage(state.user, userData, message);
               setmessage('');
+              return sendNotification(userData.email,state.user.email,"you have a new Message");
             }}>
             <Icon name="send" color={AppColors.FontsColor} size={25} />
           </TouchableOpacity>

@@ -47,9 +47,9 @@ const ArticleList = props => {
 
   const removeArticleFromSaves=async(item)=>{
     var bucket=[];
-    for(var i=0;i<state.user.savedArticles.length;i++){
-      if(item.id!=state.user.savedArticles[i]){
-        bucket.push(state.user.savedArticles[i]);
+    for(var i=0;i<state?.user?.savedArticles.length;i++){
+      if(item.id!=state?.user?.savedArticles[i]){
+        bucket.push(state?.user?.savedArticles[i]);
       }
     }
     //console.log("bucket:"+bucket);
@@ -67,7 +67,7 @@ const ArticleList = props => {
     //console.log(item);
     dispatch(SaveArticle(item.id)) 
     await firestore().collection('Users').doc(state.user.email).update({
-      savedArticles:[...state.user.savedArticles,item.id]
+      savedArticles:[...state?.user?.savedArticles,item.id]
     }).then(()=>{
       showToast('Article saved Successfully!')
     }).catch(err=>{
@@ -98,7 +98,7 @@ const ArticleList = props => {
                     <Text style={styles.text}>{item.heading}</Text>
                     <TouchableOpacity
                       onPress={() =>{
-                        if(state.user.savedArticles.includes(item.id)){
+                        if(state?.user?.savedArticles?.includes(item.id)){
                           removeArticleFromSaves(item); 
                         }else{
                           saveArticle(item)
@@ -111,7 +111,7 @@ const ArticleList = props => {
                         size={20}
                         // color="gray"
                            color={
-                            state.user.savedArticles.includes(item.id) ? 'red' : 'gray'
+                            state?.user?.savedArticles?.includes(item.id) ? 'red' : 'gray'
                           }
                           
                       />

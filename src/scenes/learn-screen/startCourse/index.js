@@ -16,6 +16,7 @@ import Icon2 from 'react-native-vector-icons/Ionicons';
 import {BackButton} from '../../../Components';
 import {AppColors} from '../../../utils';
 import { useSelector,useDispatch } from 'react-redux';
+import { saveCourse,removeCourse } from '../../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
@@ -30,7 +31,7 @@ const StartCourse = props => {
     ToastAndroid.show(msg, ToastAndroid.SHORT);
   };
   const SaveCourses=async(id)=>{
-    //dispatch(saveCourse(id))
+    dispatch(saveCourse(id))
     await firestore().collection('Users').doc(state.user.email).update({
       savedCourses:[...state.user.savedCourses,id]
     }).then(()=>{
@@ -42,11 +43,12 @@ const StartCourse = props => {
 
   const RemoveCourse=async(id)=>{
     var bucket=[];
-    for(var i=0;i<state.user.savedCourses.length;i++){
-      if(id!=state.user.savedCourses[i]){
-        bucket.push(state.user.savedCourses[i]);
+    for(var i=0;i<state?.user?.savedCourses.length;i++){
+      if(id!=state?.user?.savedCourses[i]){
+        bucket.push(state?.user?.savedCourses[i]);
       }
     }
+    dispatch(removeCourse(id));
     await firestore().collection('Users').doc(state.user.email).update({
       savedCourses:bucket
     }).then(()=>{
@@ -54,7 +56,7 @@ const StartCourse = props => {
     }).catch(err=>{
       showToast("Error while removing the course!")
     })
-    //dispatch(removeCourse(id));
+    
   }
 
   return (
@@ -95,7 +97,7 @@ const StartCourse = props => {
           activeOpacity={0.6}
           style={styles.circle}
           onPress={() => {
-            if(state.user.savedCourses.includes(courseData.id)){
+            if(state?.user?.savedCourses.includes(courseData.id)){
               RemoveCourse(courseData.id);
             }else{
               SaveCourses(courseData.id)
