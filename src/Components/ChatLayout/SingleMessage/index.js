@@ -4,9 +4,10 @@ import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 
-export const MessageContainer = props => {
-  //console.log(message+":"+index);
+export const MessageContainer = (props) => {
+  //console.log(message+":"+props.item);
   const item = props.message;
+  //console.log("Hello:   "+Object.keys(item))
   const navigation = useNavigation();
   const state = useSelector(state => state.UserReducer);
   return (

@@ -20,7 +20,9 @@ import {
   SAVE_ARTICLE,
   REMOVE_ARTICLE,
   REMOVE_COURSE,
-  SAVE_COURSE
+  SAVE_COURSE,
+  REMOVE_NOTIFICATION,
+  REMOVE_NOTIFICATION_INSTANCE
 } from './actions';
 
 const initialState = {
@@ -273,6 +275,28 @@ function UserReducer(state = initialState, action) {
           ...state.user,savedCourses:bucket
         }
 
+      };
+    case REMOVE_NOTIFICATION:
+      var basket=[];
+      for(var i=0;i<state?.user?.notifications;i++){
+        if(i!=action.payload){
+          basket.push(state?.user?.notifications[i]);
+        }
+      }
+      return {
+        ...state,
+        user:{...state.user,notifications:basket}
+      };
+    case REMOVE_NOTIFICATION_INSTANCE:
+      var basket=[];
+      for(var i=0;i<state?.user?.notifications;i++){
+        if(i!=action.payload){
+          basket.push(state?.user?.notifications[i]);
+        }
+      }
+      return {
+        ...state,
+        user:{...state.user,notifications:basket}
       };
     default:
       return state;

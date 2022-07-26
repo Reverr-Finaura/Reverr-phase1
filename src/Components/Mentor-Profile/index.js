@@ -97,8 +97,15 @@ export const MentorDetails = props => {
             />
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => setPressed(!pressed)}>
-            {!pressed ? (
+          <TouchableOpacity onPress={() =>{
+            if(!state?.user?.savedMentors.includes(selectedmentor.email)){
+              add_mentor_to_favourites(selectedmentor.email);
+            }else{
+              remove_mentor_from_favourites(selectedmentor.email);
+            }
+            //setPressed(!pressed)
+            }}>
+            { !state?.user?.savedMentors.includes(selectedmentor.email) ? (
               <Image
                 source={require('../../assets/images/Heart-Outline.png')}
                 style={styles.button}

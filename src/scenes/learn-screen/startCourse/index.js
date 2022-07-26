@@ -43,9 +43,9 @@ const StartCourse = props => {
 
   const RemoveCourse=async(id)=>{
     var bucket=[];
-    for(var i=0;i<state.user.savedCourses.length;i++){
-      if(id!=state.user.savedCourses[i]){
-        bucket.push(state.user.savedCourses[i]);
+    for(var i=0;i<state?.user?.savedCourses.length;i++){
+      if(id!=state?.user?.savedCourses[i]){
+        bucket.push(state?.user?.savedCourses[i]);
       }
     }
     dispatch(removeCourse(id));
@@ -97,7 +97,7 @@ const StartCourse = props => {
           activeOpacity={0.6}
           style={styles.circle}
           onPress={() => {
-            if(state.user.savedCourses.includes(courseData.id)){
+            if(state?.user?.savedCourses.includes(courseData.id)){
               RemoveCourse(courseData.id);
             }else{
               SaveCourses(courseData.id)

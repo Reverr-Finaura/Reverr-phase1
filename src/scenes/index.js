@@ -46,6 +46,7 @@ import {TermConditions} from './term&Conditions-Screen';
 import { DashBoard } from './dashboard';
 import { EditCalender } from './EditCalender';
 import { MentorHomeScreen } from './mentorPovScreens';
+import { Notifications } from './notifications';
 export {
   ArticalDetails,
   FundingScreen,
@@ -91,6 +92,6 @@ export {
   CalanderAppointments,
   DashBoard,
   EditCalender,
-  MentorHomeScreen
-  
+  MentorHomeScreen,
+  Notifications
 };

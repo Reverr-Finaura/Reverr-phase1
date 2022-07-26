@@ -23,7 +23,46 @@ export const REMOVE_ARTICLE='REMOVE_ARTICLE';
 export const SAVE_ARTICLE='SAVE_ARTICLE';
 export const REMOVE_COURSE='REMOVE_COURSE'
 export const SAVE_COURSE='SAVE_COURSE'
+export const REMOVE_NOTIFICATION='REMOVE_NOTIFICATION';
+export const REMOVE_NOTIFICATION_INSTANCE='REMOVE_NOTIFICATION_INSTANCE';
 
+export const RemoveNotificationInstance=(index)=>{
+  try{
+    return async dispatch=>{
+      
+      dispatch({
+        type:'REMOVE_NOTIFICATION_INSTANCE',
+        payload:index
+      })
+    }
+    
+  }catch(e){
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+}
+
+export const RemoveNotification=(email,obj,index)=>{
+  try{
+    return async dispatch=>{
+      await firestore().collection('Users').doc(email).update({
+        notifications:firestore.FieldValue.arrayRemove(obj)
+      });
+      dispatch({
+        type:'REMOVE_NOTIFICATION',
+        payload:index
+      })
+    }
+    
+  }catch(e){
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+}
 
 export const removeCourse=(id)=>{
   try{
