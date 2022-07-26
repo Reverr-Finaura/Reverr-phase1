@@ -1,12 +1,21 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
-import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  ImageBackground,
+} from 'react-native';
 import styles from './styles';
 import {CustomTextCard} from '../CustomTextCard';
 import {Details} from '../Details';
 import {useSelector} from 'react-redux';
 import {Rating} from '../Ratings';
 import {CustomButton} from '../CustomButton';
+import App from '../../App';
+import {AppColors} from '../../utils';
 
 export const MentorDetails = props => {
   const navigaton = useNavigation();
@@ -133,7 +142,28 @@ export const MentorDetails = props => {
             subTitle={selectedmentor?.industry}
           />
           <CustomTextCard title="Appoinment" subTitle="$1000/Hr" />
-          <CustomTextCard title="Ratings" subTitle={Ratings()} />
+          <TouchableOpacity
+            style={{
+              marginTop: '-7.6%',
+              width: '30%',
+              height: '100%',
+              overflow: 'hidden',
+              borderRadius: 12,
+              marginRight: '2%',
+            }}>
+            <ImageBackground
+              style={{
+                paddingHorizontal: '5%',
+                paddingVertical: '5%',
+                borderRadius: 12,
+              }}
+              source={require('../../assets/images/Rectangle2.png')}>
+              <Text style={{color: AppColors.FontsColor, marginBottom: '4%'}}>
+                Rating
+              </Text>
+              <Rating />
+            </ImageBackground>
+          </TouchableOpacity>
         </View>
 
         <View style={{}}>

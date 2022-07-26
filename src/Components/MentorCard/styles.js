@@ -1,43 +1,35 @@
-import {StyleSheet} from 'react-native';
-
+import {StyleSheet, Dimensions} from 'react-native';
+const With = Dimensions.get('window').width;
+const Height = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   card: {
-    flexWrap: 'wrap',
-    width: 175,
-    height: 175,
-    borderRadius: 10,
-    marginHorizontal: 8,
+    width: With / 2.25,
+    height: Height / 4.3,
+    borderRadius: 12,
+    marginHorizontal: 10,
+    alignItems: 'center',
+    overflow: 'hidden',
+    paddingVertical: '5%',
+    paddingHorizontal: '3%',
   },
   buttonContainer: {
     maxHeight: 175,
     maxWidth: 175,
     alignItems: 'center',
   },
-  mentorProfile: {
-    position: 'absolute',
-    top: 8,
-    alignSelf: 'center',
-  },
   mentorName: {
     color: 'white',
     fontSize: 18,
-    fontWeight: '500',
+    fontWeight: '400',
     alignSelf: 'center',
-    lineHeight: 24,
-    bottom: '48%',
-    // backgroundColor: 'blue',
+    marginVertical: '3%',
   },
   mentorProfession: {
     color: 'gray',
     alignSelf: 'center',
-    bottom: '48%',
-    // backgroundColor: 'green',
   },
   reviewContainer: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    bottom: '42%',
-    // backgroundColor: 'blue',
+    marginTop: '5%',
   },
   reviews: {
     color: '#2b67f6',
