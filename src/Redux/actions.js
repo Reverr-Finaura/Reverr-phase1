@@ -1,4 +1,4 @@
-import { firebase } from '@react-native-firebase/auth';
+import {firebase} from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import {Alert} from 'react-native';
 // import { SavedCourses } from '../Components/SavedCourses';
@@ -17,174 +17,190 @@ export const DELETE_POST_ACTION = 'DELETE_POST_ACTION';
 export const SET_USER = 'SET_USER';
 export const SET_MENTORS = 'SET_MENTORS';
 export const SELECT_MENTOR = 'SELECT_MENTOR';
-export const LIKE_MENTOR='LIKE_MENTOR';
-export const UNLIKE_MENTOR='UNLIKE_MENTOR'
-export const REMOVE_ARTICLE='REMOVE_ARTICLE';
-export const SAVE_ARTICLE='SAVE_ARTICLE';
-export const REMOVE_COURSE='REMOVE_COURSE'
-export const SAVE_COURSE='SAVE_COURSE'
-export const REMOVE_NOTIFICATION='REMOVE_NOTIFICATION';
-export const REMOVE_NOTIFICATION_INSTANCE='REMOVE_NOTIFICATION_INSTANCE';
+export const LIKE_MENTOR = 'LIKE_MENTOR';
+export const UNLIKE_MENTOR = 'UNLIKE_MENTOR';
+export const REMOVE_ARTICLE = 'REMOVE_ARTICLE';
+export const SAVE_ARTICLE = 'SAVE_ARTICLE';
+export const REMOVE_COURSE = 'REMOVE_COURSE';
+export const SAVE_COURSE = 'SAVE_COURSE';
+export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION';
+export const REMOVE_NOTIFICATION_INSTANCE = 'REMOVE_NOTIFICATION_INSTANCE';
+export const UPDATE_APPOINTMENT_INSTANCE = 'UPDATE_APPOINTMENT_INSTANCE';
 
-export const RemoveNotificationInstance=(index)=>{
-  try{
-    return async dispatch=>{
-      
+export const RemoveNotificationInstance = index => {
+  try {
+    return async dispatch => {
       dispatch({
-        type:'REMOVE_NOTIFICATION_INSTANCE',
-        payload:index
-      })
-    }
-    
-  }catch(e){
-    dispatch({
-      type: Error,
-      error: 'error',
-    });
-  }
-}
-
-export const RemoveNotification=(email,obj,index)=>{
-  try{
-    return async dispatch=>{
-      await firestore().collection('Users').doc(email).update({
-        notifications:firestore.FieldValue.arrayRemove(obj)
+        type: 'REMOVE_NOTIFICATION_INSTANCE',
+        payload: index,
       });
-      dispatch({
-        type:'REMOVE_NOTIFICATION',
-        payload:index
-      })
-    }
-    
-  }catch(e){
+    };
+  } catch (e) {
     dispatch({
       type: Error,
       error: 'error',
     });
   }
-}
+};
 
-export const removeCourse=(id)=>{
-  try{
-    return async dispatch=>{
+export const UpdateApointmentInstance = index => {
+  try {
+    return async dispatch => {
       dispatch({
-        type:'REMOVE_COURSE',
-        payload:id
-      })
-    }
-
-  }catch(e){
+        type: 'UPDATE_APPOINTMENT_INSTANCE',
+        payload: index,
+      });
+    };
+  } catch (e) {
     dispatch({
       type: Error,
       error: 'error',
     });
   }
-}
+};
 
-export const saveCourse=(id)=>{
-  try{
-    return async dispatch=>{
+export const RemoveNotification = (email, obj, index) => {
+  try {
+    return async dispatch => {
+      await firestore()
+        .collection('Users')
+        .doc(email)
+        .update({
+          notifications: firestore.FieldValue.arrayRemove(obj),
+        });
       dispatch({
-        type:'SAVE_COURSE',
-        payload:id
-      })
-    }
-
-  }catch(e){
+        type: 'REMOVE_NOTIFICATION',
+        payload: index,
+      });
+    };
+  } catch (e) {
     dispatch({
       type: Error,
       error: 'error',
     });
   }
-}
+};
 
-export const SaveArticle=(id)=>{
-  try{
-    return async dispatch=>{
+export const removeCourse = id => {
+  try {
+    return async dispatch => {
       dispatch({
-        type:'SAVE_ARTICLE',
-        payload:id
-      })
-    }
-
-  }catch(e){
+        type: 'REMOVE_COURSE',
+        payload: id,
+      });
+    };
+  } catch (e) {
     dispatch({
       type: Error,
       error: 'error',
     });
   }
-}
+};
 
-export const RemoveArticle=(id)=>{
-  try{
-    return async dispatch=>{
+export const saveCourse = id => {
+  try {
+    return async dispatch => {
       dispatch({
-        type:'REMOVE_ARTICLE',
-        payload:id
-      })
-    }
-
-  }catch(e){
+        type: 'SAVE_COURSE',
+        payload: id,
+      });
+    };
+  } catch (e) {
     dispatch({
       type: Error,
       error: 'error',
     });
   }
-} 
+};
 
-export const LikeMentor=(email)=>{
-  try{
-    return async dispatch=>{
+export const SaveArticle = id => {
+  try {
+    return async dispatch => {
       dispatch({
-        type:'LIKE_MENTOR',
-        payload:email
-      })
-    }
-
-  }catch(e){
+        type: 'SAVE_ARTICLE',
+        payload: id,
+      });
+    };
+  } catch (e) {
     dispatch({
       type: Error,
       error: 'error',
     });
   }
-}
+};
 
-export const UnLikeMentor=(email)=>{
-  try{
-    return async dispatch=>{
+export const RemoveArticle = id => {
+  try {
+    return async dispatch => {
       dispatch({
-        type:'UNLIKE_MENTOR',
-        payload:email
-      })
-    }
-
-  }catch(e){
+        type: 'REMOVE_ARTICLE',
+        payload: id,
+      });
+    };
+  } catch (e) {
     dispatch({
       type: Error,
       error: 'error',
     });
   }
-}
+};
 
+export const LikeMentor = email => {
+  try {
+    return async dispatch => {
+      dispatch({
+        type: 'LIKE_MENTOR',
+        payload: email,
+      });
+    };
+  } catch (e) {
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+};
+
+export const UnLikeMentor = email => {
+  try {
+    return async dispatch => {
+      dispatch({
+        type: 'UNLIKE_MENTOR',
+        payload: email,
+      });
+    };
+  } catch (e) {
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+};
 
 export const add_user = user => {
   try {
     return async dispatch => {
       console.log('add_user:' + user);
-      var udata=[];
+      var udata = [];
       var basket;
-      if(user.userType=='Mentor'){
-        for(var i=0;i<user?.clients?.length;i++){
-          basket=await firestore().collection('Users').doc(user?.clients[i]).get();
-            udata.push(basket.data());
-          }  
-      }else{
-      for(var i=0;i<user?.mentors?.length;i++){
-      basket=await firestore().collection('Users').doc(user?.mentors[i]).get();
-        udata.push(basket.data());
+      if (user.userType == 'Mentor') {
+        for (var i = 0; i < user?.clients?.length; i++) {
+          basket = await firestore()
+            .collection('Users')
+            .doc(user?.clients[i])
+            .get();
+          udata.push(basket.data());
+        }
+      } else {
+        for (var i = 0; i < user?.mentors?.length; i++) {
+          basket = await firestore()
+            .collection('Users')
+            .doc(user?.mentors[i])
+            .get();
+          udata.push(basket.data());
+        }
       }
-    }
-      dispatch(updateUserState(user,udata));
+      dispatch(updateUserState(user, udata));
     };
   } catch (e) {
     dispatch({
@@ -531,22 +547,28 @@ export const setUser = data => {
     return async dispatch => {
       //const user=await firestore().collection('Users').doc(email).get();
       //console.log(user);
-      var udata=[];
+      var udata = [];
       var basket;
-      if(data.userType=='Mentor'){
-        for(var i=0;i<data?.clients?.length;i++){
-          basket=await firestore().collection('Users').doc(data?.clients[i]).get();
-            udata.push(basket.data());
-          }  
-      }else{
-      for(var i=0;i<data.mentors.length;i++){
-      basket=await firestore().collection('Users').doc(data?.mentors[i]).get();
-        udata.push(basket.data());
+      if (data.userType == 'Mentor') {
+        for (var i = 0; i < data?.clients?.length; i++) {
+          basket = await firestore()
+            .collection('Users')
+            .doc(data?.clients[i])
+            .get();
+          udata.push(basket.data());
+        }
+      } else {
+        for (var i = 0; i < data.mentors.length; i++) {
+          basket = await firestore()
+            .collection('Users')
+            .doc(data?.mentors[i])
+            .get();
+          udata.push(basket.data());
+        }
       }
-    }
       dispatch({
         type: 'SET_USER',
-        payload: {data,udata},
+        payload: {data, udata},
       });
     };
   } catch (e) {
@@ -676,9 +698,9 @@ export const load_Data = obj => {
   };
 };
 
-export const updateUserState = (user,udata) => {
+export const updateUserState = (user, udata) => {
   return {
     type: 'ADD_USER',
-    payload: {user,udata},
+    payload: {user, udata},
   };
 };

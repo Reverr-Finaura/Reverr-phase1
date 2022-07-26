@@ -22,7 +22,8 @@ import {
   REMOVE_COURSE,
   SAVE_COURSE,
   REMOVE_NOTIFICATION,
-  REMOVE_NOTIFICATION_INSTANCE
+  REMOVE_NOTIFICATION_INSTANCE,
+  UPDATE_APPOINTMENT_INSTANCE,
 } from './actions';
 
 const initialState = {
@@ -50,7 +51,11 @@ function UserReducer(state = initialState, action) {
       console.log('I am setuser');
       return {
         ...state,
-        user:{...action.payload.data,mentors:action?.payload?.udata,clients:action?.payload?.udata},
+        user: {
+          ...action.payload.data,
+          mentors: action?.payload?.udata,
+          clients: action?.payload?.udata,
+        },
         lastDocument: undefined,
         refreshing: false,
         Rooms: [],
@@ -58,7 +63,11 @@ function UserReducer(state = initialState, action) {
     case ADD_USER:
       return {
         ...state,
-        user: {...action.payload.user,mentors:action?.payload?.udata,clients:action?.payload?.udata},
+        user: {
+          ...action.payload.user,
+          mentors: action?.payload?.udata,
+          clients: action?.payload?.udata,
+        },
         lastDocument: undefined,
         refreshing: false,
       };
@@ -214,89 +223,104 @@ function UserReducer(state = initialState, action) {
           comments: [],
         },
       };
-      case LIKE_MENTOR:
-        return{
-          ...state,
-          user:{
-            ...state.user,savedMentors:[...state.user.savedMentors,action.payload]
-          }
-        };
+    case LIKE_MENTOR:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          savedMentors: [...state.user.savedMentors, action.payload],
+        },
+      };
     case UNLIKE_MENTOR:
-      var bucket=[];
-      for(var i=0;i<state.user.savedMentors.length;i++){
-        if(action.payload!=state.user.savedMentors[i]){
+      var bucket = [];
+      for (var i = 0; i < state.user.savedMentors.length; i++) {
+        if (action.payload != state.user.savedMentors[i]) {
           bucket.push(state.user.savedMentors[i]);
         }
       }
       return {
         ...state,
-        user:{
-          ...state.user,savedMentors:bucket
-        }
+        user: {
+          ...state.user,
+          savedMentors: bucket,
+        },
       };
     case SAVE_ARTICLE:
-    return {
-      ...state,
-      user:{
-        ...state.user,savedArticles:[...state.user.savedArticles,action.payload]
-      }
-    };
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          savedArticles: [...state.user.savedArticles, action.payload],
+        },
+      };
     case REMOVE_ARTICLE:
-      var bucket=[];
-      for(var i=0;i<state.user.savedArticles.length;i++){
-        if(action.payload!=state.user.savedArticles[i]){
+      var bucket = [];
+      for (var i = 0; i < state.user.savedArticles.length; i++) {
+        if (action.payload != state.user.savedArticles[i]) {
           bucket.push(state.user.savedArticles[i]);
         }
       }
-      return{
+      return {
         ...state,
-        user:{
-          ...state.user,savedArticles:bucket
-        }
-
+        user: {
+          ...state.user,
+          savedArticles: bucket,
+        },
       };
     case SAVE_COURSE:
       return {
         ...state,
-        user:{
-          ...state.user,savedCourses:[...state.user.savedCourses,action.payload]
-        }
+        user: {
+          ...state.user,
+          savedCourses: [...state.user.savedCourses, action.payload],
+        },
       };
     case REMOVE_COURSE:
-      var bucket=[];
-      for(var i=0;i<state.user.savedCourses.length;i++){
-        if(action.payload!=state.user.savedCourses[i]){
+      var bucket = [];
+      for (var i = 0; i < state.user.savedCourses.length; i++) {
+        if (action.payload != state.user.savedCourses[i]) {
           bucket.push(state.user.savedCourses[i]);
         }
       }
-      return{
+      return {
         ...state,
-        user:{
-          ...state.user,savedCourses:bucket
-        }
-
+        user: {
+          ...state.user,
+          savedCourses: bucket,
+        },
       };
     case REMOVE_NOTIFICATION:
-      var basket=[];
-      for(var i=0;i<state?.user?.notifications;i++){
-        if(i!=action.payload){
+      var basket = [];
+      for (var i = 0; i < state?.user?.notifications; i++) {
+        if (i != action.payload) {
           basket.push(state?.user?.notifications[i]);
         }
       }
       return {
         ...state,
-        user:{...state.user,notifications:basket}
+        user: {...state.user, notifications: basket},
       };
     case REMOVE_NOTIFICATION_INSTANCE:
-      var basket=[];
-      for(var i=0;i<state?.user?.notifications;i++){
-        if(i!=action.payload){
+      var basket = [];
+      for (var i = 0; i < state?.user?.notifications; i++) {
+        if (i != action.payload) {
           basket.push(state?.user?.notifications[i]);
         }
       }
       return {
         ...state,
-        user:{...state.user,notifications:basket}
+        user: {...state.user, notifications: basket},
+      };
+    case UPDATE_APPOINTMENT_INSTANCE:
+      var basket = [];
+      for (var i = 0; i < state?.user?.Appointement_request; i++) {
+        if (i != action.payload) {
+          basket.push(state?.user?.Appointement_request[i]);
+        }
+      }
+      return {
+        ...state,
+        user: {...state.user, Appointement_request: basket},
       };
     default:
       return state;
