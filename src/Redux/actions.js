@@ -176,12 +176,12 @@ export const add_user = user => {
       if(user.userType=='Mentor'){
         for(var i=0;i<user?.clients?.length;i++){
           basket=await firestore().collection('Users').doc(user?.clients[i]).get();
-            udata.push(basket._data);
+            udata.push(basket.data());
           }  
       }else{
       for(var i=0;i<user?.mentors?.length;i++){
       basket=await firestore().collection('Users').doc(user?.mentors[i]).get();
-        udata.push(basket._data);
+        udata.push(basket.data());
       }
     }
       dispatch(updateUserState(user,udata));
@@ -536,12 +536,12 @@ export const setUser = data => {
       if(data.userType=='Mentor'){
         for(var i=0;i<data?.clients?.length;i++){
           basket=await firestore().collection('Users').doc(data?.clients[i]).get();
-            udata.push(basket._data);
+            udata.push(basket.data());
           }  
       }else{
       for(var i=0;i<data.mentors.length;i++){
       basket=await firestore().collection('Users').doc(data?.mentors[i]).get();
-        udata.push(basket._data);
+        udata.push(basket.data());
       }
     }
       dispatch({

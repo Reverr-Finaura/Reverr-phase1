@@ -7,6 +7,7 @@ import ShortUniqueId from 'short-unique-id';
 import firestore from '@react-native-firebase/firestore';
 export const MessageHeader = props => {
   const {userData} = props;
+  //console.log(userData)
   const state = useSelector(state => state.UserReducer);
   const dispatch = useDispatch();
   const MakeCall = async () => {
@@ -35,9 +36,8 @@ export const MessageHeader = props => {
     await firestore().collection('Users').doc(userData.email).update(data);
 
     //dispatch({type: 'MEETING', payload: data});
-    const token_main = await gettoken(channelName, host);
     navigation.navigate('videoCall', {
-      token: token_main,
+      token: await gettoken(channelName, host),
       userData: userData,
     });
   };
@@ -53,9 +53,9 @@ export const MessageHeader = props => {
     console.log(userData);
     const channelName = meeting.channelName;
     const host = meeting.host == state.user.email ? true : false;
-    const token_main = await gettoken(channelName, host);
+    //const token_main = await gettoken(channelName, host);
     navigation.navigate('videoCall', {
-      token: token_main,
+      token: await gettoken(channelName, host),
       userData: userData,
     });
     //navigation.navigate('videoCall')
@@ -67,12 +67,8 @@ export const MessageHeader = props => {
       method: 'POST',
       body: JSON.stringify(data.channelName, data.host),
     });
-    console.log(
-      'res:' +
-        Object.keys(response.json()) +
-        '->' +
-        Object.values(response.json()),
-    );
+    console.log("res:"+response);
+    
     return response.json();
   }
 
