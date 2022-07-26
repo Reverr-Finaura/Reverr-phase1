@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
 import { RemoveNotification,RemoveNotificationInstance } from '../../Redux/actions';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 //import { grey100 } from 'react-native-paper/lib/typescript/styles/colors';
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
@@ -64,6 +66,11 @@ const Notifications = () => {
         })
     }
 
+    const deleteNotify=(item,index)=>{
+        console.log("pressed")
+        dispatch(RemoveNotification(state.user.email,item,index));
+    }
+
     return (
     <IndividualHeaderLayout>
       <ScrollView>
@@ -73,7 +80,12 @@ const Notifications = () => {
             state.user.notifications.length > 0 &&
             state.user.notifications.map((item, index) => (
               <View key={index} style={styles.container}>
+                <View style={{display:'flex',flexDirection:'row',justifyContent:'space-between',paddingHorizontal:10}}>
                 <Text style={styles.notihead}>{item?.subject}</Text>
+                {item.type=='notify' && <TouchableOpacity onPress={()=>deleteNotify(item,index)}>
+                <Icon name="close" color={AppColors.FontsColor} size={25}/>
+                </TouchableOpacity>}
+                </View>
                 <Text style={styles.noti}>{item?.message}</Text>
                 {item?.type=='chat' && <CustomButton
                   style={styles.btn}
@@ -106,6 +118,7 @@ const Notifications = () => {
                 }}
                 />
                     </View>}
+                {item.type=='notify' && <View style={{width:Dimensions.get('window').width}}></View>}
               </View>
             ))}
         </View>
@@ -124,11 +137,13 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingVertical: '2%',
+    paddingHorizontal:10
   },
   noti: {
     color:'grey',
     fontFamily: 'Poppins-thin',
     fontSize: 14,
+    marginLeft:20
   },
   notihead: {
     color: AppColors.FontsColor,
