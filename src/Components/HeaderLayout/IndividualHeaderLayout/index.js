@@ -31,7 +31,7 @@ const IndividualHeaderLayout = props => {
           setIsOpen(true);
         }}
         onPressNoti={() => {
-          navigation.navigate('Notification')
+          navigation.navigate('Notification');
         }}
         onPressChat={() => {
           navigation.navigate('Messages');
