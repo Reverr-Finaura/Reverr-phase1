@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
-import { Dimensions } from 'react-native';
-const width=Dimensions.get('window').width;
+import {Dimensions} from 'react-native';
+const width = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -8,20 +8,22 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   image: {
-    width:"100%",
-    height: width>400?"24%":"20%",
-    marginTop: 16,
+    width: '100%',
+    height: '100%',
     borderRadius: 10,
-    justifyContent:'center',
-    alignContent:'center',
-    alignItems:'center'
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
   },
   text: {
     color: 'white',
-    bottom: '14%',
     marginHorizontal: '27%',
-    fontSize:width>400?20:16,
+    fontSize: width > 400 ? 20 : 16,
     fontWeight: '700',
+  },
+  card: {
+    flex: 1,
+    width: Dimensions.get('window').width / 1.1,
   },
 });
 

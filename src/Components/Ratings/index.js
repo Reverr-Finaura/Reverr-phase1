@@ -6,27 +6,27 @@ export const Rating = () => {
     <View
       style={{
         flexDirection: 'row',
-        marginRight: 16,
+        marginLeft: '8%',
       }}>
       <Image
         source={require('../../assets/images/FilledStar.png')}
-        style={{marginRight: 4}}
+        style={{marginHorizontal: '2%'}}
       />
       <Image
         source={require('../../assets/images/FilledStar.png')}
-        style={{marginRight: 4}}
+        style={{marginHorizontal: '2%'}}
       />
       <Image
         source={require('../../assets/images/FilledStar.png')}
-        style={{marginRight: 4}}
+        style={{marginHorizontal: '2%'}}
       />
       <Image
         source={require('../../assets/images/UnfilledStar.png')}
-        style={{marginRight: 4}}
+        style={{marginHorizontal: '2%'}}
       />
       <Image
         source={require('../../assets/images/UnfilledStar.png')}
-        style={{marginRight: 4}}
+        style={{marginHorizontal: '2%'}}
       />
     </View>
   );

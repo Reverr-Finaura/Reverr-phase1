@@ -1,5 +1,11 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  ImageBackground,
+} from 'react-native';
 
 import styles from './styles';
 import {Rating} from '../Ratings';
@@ -7,6 +13,7 @@ import {Rating} from '../Ratings';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {setMentorProfile} from '../../Redux/actions';
+import {smallString} from '../../utils';
 
 export const MentorCard = ({mentor}) => {
   const navigation = useNavigation();
@@ -21,32 +28,31 @@ export const MentorCard = ({mentor}) => {
   }; */
 
   return (
-    <View style={{marginVertical: 8, marginHorizontal: 8}}>
+    <View style={{marginVertical: 12, marginHorizontal: 8}}>
       <TouchableOpacity
         style={styles.buttonContainer}
+        activeOpacity={0.6}
         onPress={() =>
           navigation.navigate('MentorDetails', {
             mentorDetails: mentor.item,
           })
         }>
-        <Image
+        <ImageBackground
           style={styles.card}
-          source={require('../../assets/images/Rectangle.png')}
-        />
-        <Image
-          style={styles.mentorProfile}
-          source={require('../../assets/images/MentorProfile.png')}
-        />
-        <Text style={styles.mentorName}>{name}</Text>
-        <Text style={styles.mentorProfession} numberOfLines={1}>
-          {industry}
-        </Text>
-
-        <View style={styles.reviewContainer}>
-          <Rating />
-
-          <Text style={styles.reviews}>{reviews}</Text>
-        </View>
+          source={require('../../assets/images/Rectangle.png')}>
+          <Image
+            style={styles.mentorProfile}
+            source={require('../../assets/images/MentorProfile.png')}
+          />
+          <Text style={styles.mentorName}>{name}</Text>
+          <Text style={styles.mentorProfession}>
+            {smallString(industry, 20)}
+          </Text>
+          <View style={styles.reviewContainer}>
+            <Rating />
+            {/*   <Text style={styles.reviews}>{reviews}</Text> */}
+          </View>
+        </ImageBackground>
       </TouchableOpacity>
     </View>
   );
