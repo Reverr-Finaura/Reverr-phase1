@@ -82,9 +82,8 @@ const Notifications = () => {
               <View key={index} style={styles.container}>
                 <View style={{display:'flex',flexDirection:'row',justifyContent:'space-between',paddingHorizontal:10}}>
                 <Text style={styles.notihead}>{item?.subject}</Text>
-                {item.type=='notify' && <TouchableOpacity onPress={()=>deleteNotify(item,index)}>
-                <Icon name="close" color={AppColors.FontsColor} size={25}/>
-                </TouchableOpacity>}
+                {item.type=='notify'?
+                <Icon name="close" color={AppColors.FontsColor} size={25} onPress={()=>deleteNotify(item,index)}/>:null}
                 </View>
                 <Text style={styles.noti}>{item?.message}</Text>
                 {item?.type=='chat' && <CustomButton

@@ -7,16 +7,20 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  ToastAndroid
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {AppColors} from '../../../utils/Constants';
 import {IndividualHeaderLayout} from '../../../Components';
 import mentors from '../../../assets/data/mentors';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import { UpdateApointmentInstance } from '../../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
 
 const AppoinmentScreen = () => {
   const state = useSelector(state => state.UserReducer);
+  //console.log("Head:"+state.user.Appointement_request);
+  const dispatch=useDispatch();
   const [reRender, setReRender] = useState(false);
   var montharr = [
     'January',
@@ -33,19 +37,31 @@ const AppoinmentScreen = () => {
     'December',
   ];
 
+  const showToast = (msg) => {
+    ToastAndroid.show(msg, ToastAndroid.SHORT);
+  };
+
   const Accept = async (item, index) => {
+    //console.log(index);
+    
+    //console.log("ref:"+state.user.Appointement_request)
     var basket = [];
-    for (var i = 0; i < state?.user?.Appointement_request?.length; i++) {
-      if (i == index) {
+    for (let i = 0; i < state?.user?.Appointement_request.length; i++) {
+      //console.log(state.user.Appointement_request[i]);
+      if (item==state.user.Appointement_request[i]) {
         var obj = {
           ...state.user.Appointement_request[i],
           approved: true,
         };
         basket.push(obj);
       } else {
-        basket.push(item);
+        basket.push(state.user.Appointement_request[i]);
       }
+     //console.log(basket[i]) 
     }
+
+    //dispatch(UpdateApointmentInstance(index))
+    //console.log("basket:"+basket);
     await firestore()
       .collection('Users')
       .doc(state.user.email)
@@ -53,6 +69,7 @@ const AppoinmentScreen = () => {
         Appointement_request: basket,
       })
       .then(async () => {
+        dispatch(UpdateApointmentInstance(index))
         await firestore()
           .collection('Users')
           .doc(item.client_email)
@@ -65,13 +82,14 @@ const AppoinmentScreen = () => {
             }),
           })
           .then(() => {
-            alert('Accepted');
+            //alert('Accepted');
+            showToast("Event Accepted!")
             setReRender(true);
           });
       });
   };
 
-  useEffect(() => {}, [reRender]);
+  //useEffect(() => {}, [reRender]);
 
   return (
     <View style={Styles.screen}>
