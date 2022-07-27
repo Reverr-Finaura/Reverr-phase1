@@ -291,7 +291,7 @@ function UserReducer(state = initialState, action) {
       };
     case REMOVE_NOTIFICATION:
       var basket = [];
-      for (var i = 0; i < state?.user?.notifications; i++) {
+      for (var i = 0; i < state?.user?.notifications.length; i++) {
         if (i != action.payload) {
           basket.push(state?.user?.notifications[i]);
         }
@@ -302,7 +302,7 @@ function UserReducer(state = initialState, action) {
       };
     case REMOVE_NOTIFICATION_INSTANCE:
       var basket = [];
-      for (var i = 0; i < state?.user?.notifications; i++) {
+      for (var i = 0; i < state?.user?.notifications.length; i++) {
         if (i != action.payload) {
           basket.push(state?.user?.notifications[i]);
         }
@@ -312,15 +312,17 @@ function UserReducer(state = initialState, action) {
         user: {...state.user, notifications: basket},
       };
     case UPDATE_APPOINTMENT_INSTANCE:
-      var basket = [];
-      for (var i = 0; i < state?.user?.Appointement_request; i++) {
-        if (i != action.payload) {
-          basket.push(state?.user?.Appointement_request[i]);
+      var baskets = [];
+      for (var i = 0; i < state?.user?.Appointement_request.length; i++) {
+        if (i == action.payload) {
+          baskets.push({...state.user?.Appointement_request[i],approved:true});
+        }else{
+          baskets.push(state?.user?.Appointement_request[i]);
         }
       }
       return {
         ...state,
-        user: {...state.user, Appointement_request: basket},
+        user: {...state.user, Appointement_request: baskets},
       };
     default:
       return state;
