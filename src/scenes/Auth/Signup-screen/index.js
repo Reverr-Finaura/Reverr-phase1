@@ -85,9 +85,9 @@ const SignupScreen = props => {
                   setLoading(false);
                   navigation.navigate('OtpVerification', {
                     OTP: OTP,
-                    Email: email.trim(),
+                    Email: email.toLowerCase().trim(),
                     Password: password,
-                    Name: name,
+                    Name: name.toLowerCase(),
                     Mobile: mobile,
                     UserType: UserType,
                   });
@@ -158,7 +158,7 @@ const SignupScreen = props => {
             value={name}
             error={nameerror}
             onChangeText={e => {
-              setname(e.toLowerCase());
+              setname(e);
               if (e != '') {
                 setnameerror(false);
               }
@@ -173,7 +173,7 @@ const SignupScreen = props => {
             value={email}
             error={emailerror}
             onChangeText={e => {
-              setemail(e.toLowerCase());
+              setemail(e);
               if (e != '') {
                 setemailerror(false);
               }
