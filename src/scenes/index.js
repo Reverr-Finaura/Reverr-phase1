@@ -47,6 +47,7 @@ import {DashBoard} from './dashboard';
 import {EditCalender} from './EditCalender';
 import {MentorHomeScreen, AppoinmentScreen} from './mentorPovScreens';
 import {Notifications} from './notifications';
+import { Vibe } from './VibeScreen';
 export {
   ArticalDetails,
   FundingScreen,
@@ -95,4 +96,5 @@ export {
   MentorHomeScreen,
   Notifications,
   AppoinmentScreen,
+  Vibe
 };

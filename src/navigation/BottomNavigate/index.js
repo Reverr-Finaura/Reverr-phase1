@@ -15,6 +15,7 @@ import {
   LearnScreen,
   Settings,
   DashBoard,
+  Vibe,
 } from '../../scenes';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {MentorDetails} from '../../Components';
@@ -118,6 +119,23 @@ export const BottomNavigate = () => {
                 tintColor: focused ? '#0077b7' : 'gray',
               }}
               source={require('../../assets/images/Learn.png')}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Vibe"
+        component={Vibe}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <Image
+              style={{
+                width: 32,
+                height: 32,
+                marginTop: 8,
+                tintColor: focused ? '#0077b7' : 'gray',
+              }}
+              source={require('../../assets/images/threepeople.png')}
             />
           ),
         }}

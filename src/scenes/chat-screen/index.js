@@ -162,6 +162,7 @@ const styles = StyleSheet.create({
     width: '85%',
     height: 40,
     marginStart: '2%',
+    zIndex:3
   },
   input: {
     paddingStart: 8,
