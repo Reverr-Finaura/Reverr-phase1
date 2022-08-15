@@ -26,6 +26,70 @@ export const SAVE_COURSE = 'SAVE_COURSE';
 export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION';
 export const REMOVE_NOTIFICATION_INSTANCE = 'REMOVE_NOTIFICATION_INSTANCE';
 export const UPDATE_APPOINTMENT_INSTANCE = 'UPDATE_APPOINTMENT_INSTANCE';
+export const LOAD_CARDS='LOAD_CARDS';
+export const REMOVE_TOP_CARD='REMOVE_TOP_CARD';
+export const RemoveTopCard=()=>{
+  try {
+    return async dispatch => {
+      dispatch({
+        type: 'REMOVE_TOP_CARD',
+      });
+    };
+  } catch (e) {
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+}
+export const Load_Card=(lastDocument,email,na)=>{
+  try {
+    //var lastcard=undefined;
+    return async dispatch => {
+      var list4=[];
+      let query=await firestore().collection('Users').orderBy('createdAt', 'desc');
+      if (lastDocument !== undefined) {
+        query = query.startAfter(lastDocument);
+        console.log("last->"+lastDocument.name);
+      }
+      // if (lastcard !== undefined) {
+      //   query = query.startAfter(lastDocument);
+      //   console.log("last->"+lastDocument.name);
+      // }
+      await query
+        .limit(5)
+        .get()
+        // .onSna
+        .then(async querySnapshot => {
+          var lastdoc = querySnapshot.docs[querySnapshot.docs.length - 1];
+          querySnapshot.forEach(doc => {
+            let card = doc.data();
+            card.id = doc.id;
+            list4.push(card);
+            //console.log(list3);
+          });
+          console.log("list4"+list4)
+          
+          dispatch({
+            type: 'LOAD_CARDS',
+            payload:{list4,lastDocument:lastdoc},
+          })
+          await firestore().collection('Users').doc(email).update({
+            no_of_swipe:na+5
+          })
+        }).catch(e=>{
+          console.log(e.message);
+            throw new Error("Error at vibe");
+          })
+      
+    }
+  } catch (e) {
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+};
 
 export const RemoveNotificationInstance = index => {
   try {

@@ -24,6 +24,8 @@ import {
   REMOVE_NOTIFICATION,
   REMOVE_NOTIFICATION_INSTANCE,
   UPDATE_APPOINTMENT_INSTANCE,
+  LOAD_CARDS,
+  REMOVE_TOP_CARD
 } from './actions';
 
 const initialState = {
@@ -43,10 +45,39 @@ const initialState = {
   Rooms: [],
   refreshing: false,
   pin_post: {},
+  vibe:[],
+  last_card:{},
 };
 
 function UserReducer(state = initialState, action) {
   switch (action.type) {
+    case REMOVE_TOP_CARD:
+      const mem=state.vibe.slice(1);
+      //console.log("mem"+mem);
+      return{
+        ...state,
+        vibe:mem
+      };
+    case LOAD_CARDS:
+      //console.log("Card Data"+ action.payload);
+      let buckets=[];
+      if(action.payload.lastDocument!=undefined){
+        bucket=[...state.vibe];
+      }
+      
+      for(let i=0;i<action.payload.list4.length;i++){
+        if(buckets.indexOf(action.payload.list4[i])==-1){
+          buckets.push(action.payload.list4[i]);
+          console.log(action.payload.list4[i].name);
+        }
+      }
+      //buckets=[...buckets,...action.payload.list4]
+      return {
+        ...state,
+        user:{...state.user,no_of_swipe:state?.user?.no_of_swipe+5},
+        vibe:buckets,
+        last_card:action.payload.lastDocument
+      };
     case SET_USER:
       console.log('I am setuser');
       return {

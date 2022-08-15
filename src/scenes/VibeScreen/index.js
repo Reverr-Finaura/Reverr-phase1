@@ -1,12 +1,13 @@
-import React,{useCallback, useRef, useState} from 'react';
-import {View, StyleSheet,Text, Dimensions,Image,Animated,PanResponder, ActionSheetIOS} from 'react-native';
-//import { Color } from 'react-native-agora
+import React,{useCallback, useRef, useState,useEffect} from 'react';
+import {View, StyleSheet,Text, Dimensions,Image,Animated,PanResponder,ActivityIndicator} from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-//import { Item } from 'react-native-paper/lib/typescript/components/List/List';
+import { useDispatch, useSelector } from 'react-redux';
 import { IndividualHeaderLayout } from '../../Components';
 import { Choice } from '../../Components';
-// import { Value } from 'react-native-reanimated';
-//import { IndividuaProfile } from '../ProfileScreens';
+import { AppColors } from '../../utils';
+import { Load_Card,RemoveTopCard } from '../../Redux/actions';
+import firestore from '@react-native-firebase/firestore';
+
 
 
 
@@ -16,71 +17,87 @@ const [demoData,setDemoData]=useState([
     {
         id:'123',
         name:"Jatin Khurana",
-        designation:'CEO Reverr and Fintech',
+        designation:'CEO and Fintech',
         country:'India',
         city:'Delhi',
         image:'../../assets/images/dp.png',
         quote:"Don't ship it. Don't settle for good enough. Do better work than you did yesterday. Get out of your comfort zone and give it your all"
-    },
-    {
-        id:'125',
-        name:"Gautam Kohli",
-        designation:'CEO Reverr and Fintech',
-        country:'India',
-        city:'Delhi',
-        image:'../../assets/images/dp.png',
-        quote:"Don't ship it. Don't settle for good enough. Do better work than you did yesterday. Get out of your comfort zone and give it your all"
-    },
-    {
-        id:'165',
-        name:"Bhavya Kohli",
-        designation:'CEO Reverr and Fintech',
-        country:'India',
-        city:'delhi',
-        image:'../../assets/images/dp.png',
-        quote:"Don't ship it. Don't settle for good enough. Do better work than you did yesterday. Get out of your comfort zone and give it your all"
-    },
-    {
-        id:'456',
-        name:"Sangeeta Kohli",
-        designation:'CEO Reverr and Fintech',
-        country:'India',
-        city:'delhi',
-        image:'../../assets/images/dp.png',
-        quote:"Don't ship it. Don't settle for good enough. Do better work than you did yesterday. Get out of your comfort zone and give it your all"
-    },
-    {
-        id:'789',
-        name:"Maurice Rana",
-        designation:'CEO Reverr and Fintech',
-        country:'India',
-        city:'Delhi',
-        image:'../../assets/images/dp.png',
-        quote:"Don't ship it. Don't settle for good enough. Do better work than you did yesterday. Get out of your comfort zone and give it your all"
-    },
-    {
-        id:'190',
-        name:"Dhruv Sharma",
-        designation:'CEO Reverr and Fintech',
-        country:'India',
-        city:'Delhi',
-        image:'../../assets/images/dp.png',
-        quote:"Don't ship it. Don't settle for good enough. Do better work than you did yesterday. Get out of your comfort zone and give it your all"
-    },
+    }
 ]);
+        const [loading,setLoading]=useState(true);
+        const [mainDialog,setMainDialog]=useState(false);
+        const[idx,setIdx]=useState(0);
+        const state=useSelector(state=>state.UserReducer);
+        const dispatch=useDispatch();
+        useEffect(()=>{
+            setIdx(0);
+            setLoading(true);
+            //setIdx(0);
+            console.log(idx);
+        if(state.user.no_of_swipe<50){
+            if(state.vibe.length==0 || idx==0){
+            dispatch(Load_Card(undefined,state.user.email,state.user.no_of_swipe));
+            }else if(idx%3==0){
+                console.log("yes");
+                dispatch(Load_Card(state.last_card,state.user.email,state.user.no_of_swipe));
+            }
+            
+        }
+        setLoading(false);
+           
+        }, []);
+        useEffect(() => {
+            setLoading(true);
+            //setIdx(0);
+            console.log(idx);
+        if(state.user.no_of_swipe<50){
+            if(state.vibe.length==0){
+            dispatch(Load_Card(undefined,state.user.email,state.user.no_of_swipe));
+            }else if(idx%3==0){
+                console.log("yes");
+                dispatch(Load_Card(state.last_card,state.user.email,state.user.no_of_swipe));
+            }
+        }
+        setLoading(false);
+        }, [idx]);
         const [finish,setFinished]=useState(false);
         const {width,height}=Dimensions.get('window');
         const swipe=useRef(new Animated.ValueXY()).current;
         const titleSign=useRef(new Animated.Value(1)).current;
-
+        const Add_to_likes=async(prev)=>{
+            const item=prev.email
+            console.log(item);
+            await firestore().collection('Users').doc(state.user.email).update({
+                liked_people:firestore.FieldValue.arrayUnion(item)
+            }).then(async()=>{
+                await firestore().collection('Users').doc(item).get().then((user)=>{
+                    const d=user._data;
+                    //console.log(d);
+                    if( d && d.liked_people && d.liked_people.indexOf(state.user.email)!=-1){
+                        console.log("show model with item and state user");
+                        //call Model here.
+                    
+                    }
+                })
+                
+            }).catch(err=>{
+                console.log(err.message);
+                console.log("please check your internet connection");
+            })
+        }
         const panResponder=PanResponder.create({
             onMoveShouldSetPanResponder:()=>true,
             onPanResponderMove:(_,{dx,dy,y0})=>{
-                //console.log(gesture)
+            
                 swipe.setValue({x:dx,y:dy});
-                //console.log(y0+":"+Dimensions.get('window').height/2.40);
-                //console.log(y0+" :  "+Dimensions.get('window').height/1.8);
-                titleSign.setValue(y0>Dimensions.get('window').height/1.8?1:-1);
+                
+                if(dx>80){
+                    
+                        setMainDialog(true);
+                        Add_to_likes(state?.vibe[0]);
+                    
+                }
+                titleSign.setValue(y0>Dimensions.get('window').height/2?1:-1);
             },
             onPanResponderRelease:(_,{dx,dy})=>{
                 const direction=Math.sign(dx);
@@ -109,8 +126,11 @@ const [demoData,setDemoData]=useState([
         });
 
     const removeTopCard=useCallback(()=>{
-        setDemoData((prevstate)=>prevstate.slice(1));
+        
+        dispatch(RemoveTopCard());
+        setIdx(idx=>idx+1);
         swipe.setValue({x:0,y:0});
+        
     },[swipe]);
     const rotate=Animated.multiply(swipe.x,titleSign).interpolate({
         inputRange:[-100,0,100],
@@ -159,15 +179,15 @@ const [demoData,setDemoData]=useState([
             return (
                 
                 <Animated.View style={[styles.card,isFirst && animatedCardStyle]} {...dragHandler}>
-                    {/* <Animated.View dragHandler> */}
+                    
                 {isFirst && renderChoice()}
                 <Image style={styles.image} source={require('../../assets/images/dp.jpg')}/>
                 <Text style={{color:'white',fontSize:22,position:'absolute',top:80,left:40,fontFamily:'poppins',fontWeight:'bold',zIndex:3}}>{item.name}</Text>
-                <Text style={{color:'#fff',fontSize:14,position:'absolute',top:110,left:60,fontWeight:'400'}}>{item.designation}</Text>
-                <Text style={{color:'#fff',fontSize:14,position:'absolute',top:150,left:40,fontWeight:'400'}}>{item.city}{" ,"}{item.country}</Text>
-                {/* </ImageBackground> */}
+                <Text style={{color:'#fff',fontSize:14,position:'absolute',top:110,left:60,fontWeight:'400'}}>{item.designation || demoData[0].designation}</Text>
+                <Text style={{color:'#fff',fontSize:14,position:'absolute',top:150,left:40,fontWeight:'400'}}>{item.city || demoData[0].city}{" ,"}{item.country || demoData[0].country}</Text>
+                
                 <View>
-                <Text style={{color:'#fff',fontSize:14,fontWeight:'bold',marginTop:10,marginHorizontal:10}}>{item.quote}</Text>
+                <Text style={{color:'#fff',fontSize:14,fontWeight:'bold',marginTop:10,marginHorizontal:10}}>{item.quote || demoData[0].quote}</Text>
                 <Text style={{color:'dodgerblue',fontSize:20,fontWeight:'bold',marginTop:20,marginHorizontal:10,marginBottom:20}}>What I'm here for</Text>
                 <View style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
                     <View style={{height:100,width:100,borderRadius:50,backgroundColor:'#012437',justifyContent:'center',alignItems:'center'}}>
@@ -181,12 +201,12 @@ const [demoData,setDemoData]=useState([
                     </View>
                 </View>
                 </View>
-                {/* </Animated.View> */}
+                
                 
                 </Animated.View>
-                // </Animated.View>
+                
             )
-        //</View>
+        
     }
 
     const PremiumTab=()=>{
@@ -209,21 +229,21 @@ const [demoData,setDemoData]=useState([
     </View>
         );
     }
+    if(loading){
+        return (
+      <View style={styles.screen}>
+        <ActivityIndicator size="large" color="#fff" />
+      </View>
+    );
+    }
     return (
-        // <FlatList
-        //     data={demoData}
-        //     horizontal={true}
-        //     showsHorizontalScrollIndicator={false}
-        //     keyExtractor={item=>item.id.toString()}
-        //     renderItem={renderCard}
-        // />
+        
         <IndividualHeaderLayout>
         {demoData.length==0 && <PremiumTab/>}
             
-        {!finish && demoData.length>0 ?<View style={{flex:1}}>
+        {!finish && state.vibe.length>0 ?<View style={{flex:1}}>
         {
-            demoData.map((item,index)=>{
-                //console.log(item+":"+index);
+            state.vibe.map((item,index)=>{
                 const isFirst=index===0;
                  return <RenderCard item={item} index={index} key={item.id.toString()} isFirst={isFirst} titleSign={titleSign}/>
             }).reverse()
@@ -235,9 +255,14 @@ const [demoData,setDemoData]=useState([
 }
 
 const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+        paddingHorizontal: '5%',
+        justifyContent: 'center',
+        backgroundColor: AppColors.primarycolor,
+      },
     card:{
-        // elevation:5,
-        // zIndex:1,
+        
         position:'absolute',
         bottom:-70,
         width:Dimensions.get('window').width/1.15,
@@ -257,7 +282,7 @@ const styles = StyleSheet.create({
     height:Dimensions.get('window').height/2.5,
     borderTopRightRadius:50,
     borderTopLeftRadius:50,
-    opacity:0.6,
+    opacity:0.9,
     resizeMode:'cover'
     },
     heading:{
@@ -283,13 +308,15 @@ const styles = StyleSheet.create({
         left:45,
         top:Dimensions.get('window').height/14,
         position:'absolute',
-        transform:[{rotate:'-30deg'}]
+        transform:[{rotate:'-30deg'}],
+        zIndex:3
     },
     unlikeContainer:{
         right:45,
         top:Dimensions.get('window').height/14,
         position:'absolute',
-        transform:[{rotate:'30deg'}]
+        transform:[{rotate:'30deg'}],
+        zIndex:3
     }
 });
 
