@@ -66,7 +66,7 @@ function UserReducer(state = initialState, action) {
       }
       
       for(let i=0;i<action.payload.list4.length;i++){
-        if(buckets.indexOf(action.payload.list4[i])==-1){
+        if(buckets.indexOf(action.payload.list4[i])==-1 && action.payload.list4[i].email!=state.user.email){
           buckets.push(action.payload.list4[i]);
           console.log(action.payload.list4[i].name);
         }

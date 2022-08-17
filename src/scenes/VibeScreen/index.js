@@ -53,7 +53,7 @@ const [demoData,setDemoData]=useState([
         if(state.user.no_of_swipe<50){
             if(state.vibe.length==0){
             dispatch(Load_Card(undefined,state.user.email,state.user.no_of_swipe));
-            }else if(idx%3==0){
+            }else if(idx%4==0){
                 console.log("yes");
                 dispatch(Load_Card(state.last_card,state.user.email,state.user.no_of_swipe));
             }
@@ -68,9 +68,14 @@ const [demoData,setDemoData]=useState([
             const item=prev.email
             console.log(item);
             await firestore().collection('Users').doc(state.user.email).update({
-                liked_people:firestore.FieldValue.arrayUnion(item)
+                liked_people:firestore.FieldValue.arrayUnion(item),
             }).then(async()=>{
+                await firestore().collection('Users').doc(item).update({
+                    people_liked_me:firestore.FieldValue.arrayUnion(state.user.email),
+                });
                 await firestore().collection('Users').doc(item).get().then((user)=>{
+
+                
                     const d=user._data;
                     //console.log(d);
                     if( d && d.liked_people && d.liked_people.indexOf(state.user.email)!=-1){
@@ -78,7 +83,7 @@ const [demoData,setDemoData]=useState([
                         //call Model here.
                     
                     }
-                })
+                });
                 
             }).catch(err=>{
                 console.log(err.message);
