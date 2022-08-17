@@ -181,7 +181,7 @@ const [demoData,setDemoData]=useState([
                 <Animated.View style={[styles.card,isFirst && animatedCardStyle]} {...dragHandler}>
                     
                 {isFirst && renderChoice()}
-                <Image style={styles.image} source={require('../../assets/images/dp.jpg')}/>
+                <Image style={styles.image} source={{uri:item.image}}/>
                 <Text style={{color:'white',fontSize:22,position:'absolute',top:80,left:40,fontFamily:'poppins',fontWeight:'bold',zIndex:3}}>{item.name}</Text>
                 <Text style={{color:'#fff',fontSize:14,position:'absolute',top:110,left:60,fontWeight:'400'}}>{item.designation || demoData[0].designation}</Text>
                 <Text style={{color:'#fff',fontSize:14,position:'absolute',top:150,left:40,fontWeight:'400'}}>{item.city || demoData[0].city}{" ,"}{item.country || demoData[0].country}</Text>
