@@ -23,6 +23,7 @@ export const MentorDetails = props => {
   const [pressed, setPressed] = useState(false);
   const state = useSelector(state => state.UserReducer);
   const selectedmentor = props.route.params.mentorDetails;
+  console.log(selectedmentor, 'selected');
 
   const Ratings = () => {
     return <Rating />;
@@ -97,15 +98,16 @@ export const MentorDetails = props => {
             />
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() =>{
-            if(!state?.user?.savedMentors.includes(selectedmentor.email)){
-              add_mentor_to_favourites(selectedmentor.email);
-            }else{
-              remove_mentor_from_favourites(selectedmentor.email);
-            }
-            //setPressed(!pressed)
+          <TouchableOpacity
+            onPress={() => {
+              if (!state?.user?.savedMentors.includes(selectedmentor.email)) {
+                add_mentor_to_favourites(selectedmentor.email);
+              } else {
+                remove_mentor_from_favourites(selectedmentor.email);
+              }
+              //setPressed(!pressed)
             }}>
-            { !state?.user?.savedMentors.includes(selectedmentor.email) ? (
+            {!state?.user?.savedMentors.includes(selectedmentor.email) ? (
               <Image
                 source={require('../../assets/images/Heart-Outline.png')}
                 style={styles.button}

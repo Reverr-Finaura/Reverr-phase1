@@ -1,5 +1,6 @@
 import {firebase} from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import storage from '@react-native-firebase/storage';
 import {Alert} from 'react-native';
 // import { SavedCourses } from '../Components/SavedCourses';
 export const ADD_USER = 'ADD_USER';

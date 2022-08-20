@@ -8,7 +8,7 @@ const formateDate = date => {
 };
 
 const smallString = (str, num) => {
-  if (str.length > num) {
+  if (str && str.length > num) {
     return str.slice(0, num) + '...';
   } else {
     return str;

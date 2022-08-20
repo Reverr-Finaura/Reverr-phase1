@@ -5,15 +5,15 @@ import {
   TouchableOpacity,
   Image,
   ImageBackground,
+  StyleSheet,
 } from 'react-native';
-
-import styles from './styles';
+//import styles from './styles';
 import {Rating} from '../Ratings';
-
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {setMentorProfile} from '../../Redux/actions';
-import {smallString} from '../../utils';
+import {AppColors, smallString} from '../../utils';
+import LinearGradient from 'react-native-linear-gradient';
 
 export const MentorCard = ({mentor}) => {
   const navigation = useNavigation();
@@ -28,32 +28,50 @@ export const MentorCard = ({mentor}) => {
   }; */
 
   return (
-    <View style={{marginVertical: 12, marginHorizontal: 8}}>
-      <TouchableOpacity
-        style={styles.buttonContainer}
-        activeOpacity={0.6}
-        onPress={() =>
-          navigation.navigate('MentorDetails', {
-            mentorDetails: mentor.item,
-          })
-        }>
-        <ImageBackground
-          style={styles.card}
-          source={require('../../assets/images/Rectangle.png')}>
-          <Image
-            style={styles.mentorProfile}
-            source={require('../../assets/images/MentorProfile.png')}
-          />
-          <Text style={styles.mentorName}>{name}</Text>
-          <Text style={styles.mentorProfession}>
-            {smallString(industry, 20)}
-          </Text>
-          <View style={styles.reviewContainer}>
-            <Rating />
-            {/*   <Text style={styles.reviews}>{reviews}</Text> */}
-          </View>
-        </ImageBackground>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity
+      activeOpacity={0.6}
+      style={{
+        width: '47%',
+        marginVertical: '2%',
+        marginHorizontal: '2%',
+        alignItems: 'center',
+      }}
+      onPress={() => {
+        navigation.navigate('MentorDetails', {
+          mentorDetails: mentor.item,
+        });
+      }}>
+      <LinearGradient
+        colors={[AppColors.primarycolor, '#012437']}
+        start={{x: 0, y: 1}}
+        end={{x: 1, y: 0.5}}
+        style={styles.Card}>
+        <Image
+          source={require('../../assets/images/MentorProfile.png')}
+          style={styles.dp}
+        />
+        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.industry}>{smallString(industry, 20)}</Text>
+        <Rating />
+      </LinearGradient>
+    </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create({
+  Card: {
+    width: '100%',
+    alignItems: 'center',
+    borderRadius: 6,
+    paddingVertical: '8%',
+  },
+  name: {
+    color: AppColors.FontsColor,
+    marginTop: '5%',
+    fontSize: 18,
+  },
+  industry: {
+    color: AppColors.infoFonts,
+    marginVertical: '5%',
+  },
+});

@@ -18,14 +18,7 @@ const IndividualHeaderLayout = props => {
     <View style={styles.screen}>
       <Header
         onPressDp={() => {
-          // navigation.navigate(
-          //   mentorstate && mentorstate?.mentor && mentorstate.mentor.userType === 'Mentor'
-          //     ? 'MentorProfile'
-          //     : 'Individual',
-          // );
-          //if(state && state?.user && state.user.userType=='Individual'){
-          navigation.navigate('IndividualProfile');
-          //}
+          navigation.openDrawer();
         }}
         onPressCalander={() => {
           setIsOpen(true);

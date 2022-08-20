@@ -49,6 +49,7 @@ import {BottomNavigate, MentorNavigator} from '../BottomNavigate';
 import {ArticalDetails} from '../../scenes';
 import {MentorBottomTab} from '../MentorBottomTab';
 import {MentorDetails} from '../../Components';
+import {DrawerNavigation} from '../drawerNavigation';
 const Stack = createNativeStackNavigator();
 
 const StackNavigate = props => {
@@ -61,7 +62,7 @@ const StackNavigate = props => {
         component={StartupVerification}
       />
       {/* <Stack.Screen name="home" component={Home} /> */}
-      <Stack.Screen name="IndividualTab" component={BottomNavigate} />
+      <Stack.Screen name="IndividualTab" component={DrawerNavigation} />
       <Stack.Screen name="onBoarding" component={OnBoarding} />
       <Stack.Screen name="Splash1" component={SplashFirst} />
       <Stack.Screen name="Splash2" component={SplashSecond} />

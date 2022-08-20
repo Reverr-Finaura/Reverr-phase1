@@ -6,8 +6,10 @@ const Width = Dimensions.get('window').width;
 
 export const styles = StyleSheet.create({
   wlcmConatiner: {
-    paddingTop: Height / 25,
-    paddingStart: Width / 13,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingTop: '5%',
+    paddingStart: '5%',
   },
   welcmTxt: {
     textTransform: 'capitalize',
@@ -15,24 +17,8 @@ export const styles = StyleSheet.create({
     fontSize: 22,
     fontFamily: 'Poppins-Bold',
   },
-  subText: {
-    color: AppColors.infoFonts,
-    fontFamily: 'Poppins-Regular',
-    width: Width / 2,
-  },
-  vectorContainer: {
-    position: 'absolute',
-    zIndex: 2,
-    width: 180,
-    height: Height / 4.5,
-    marginStart: Width / 1.6,
-  },
-  vector: {
-    height: Height > 684 ? '100%' : 175,
-    width: 160,
-  },
-  menu: {
-    alignItems: 'center',
-    marginTop: '4%',
+  dp: {
+    width: '40%',
+    height: '30%',
   },
 });

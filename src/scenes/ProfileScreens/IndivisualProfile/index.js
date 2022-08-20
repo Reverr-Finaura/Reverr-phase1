@@ -3,21 +3,24 @@ import {
   Text,
   StyleSheet,
   Image,
+  ImageBackground,
   ScrollView,
   TouchableOpacity,
   Dimensions,
   ActivityIndicator,
+  StatusBar,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {AppColors} from '../../../utils';
-import {BackButton} from '../../../Components';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import {BackButton, ProfileDetailsBox} from '../../../Components';
+import Icon2 from 'react-native-vector-icons/FontAwesome5';
 import Ionic from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {styles} from './style';
 import auth from '@react-native-firebase/auth';
-import {clearUserState} from '../../../Redux/actions';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Width = Dimensions.get('screen').width;
 const Height = Dimensions.get('screen').height;
@@ -25,6 +28,8 @@ const Height = Dimensions.get('screen').height;
 const IndividuaProfile = props => {
   const navigation = useNavigation();
   const state = useSelector(state => state.UserReducer);
+  const [posts, setPosts] = useState(false);
+  const [about, setAbout] = useState(true);
   const dispatch = useDispatch();
 
   if (!state) {
@@ -35,159 +40,251 @@ const IndividuaProfile = props => {
     );
   }
   return (
-    <ScrollView style={styles.screen}>
-      <View style={styles.header}>
-        <View style={{width: '40%'}}>
-          <BackButton
-            IconSize={30}
-            onPress={async () => {
-              await auth()
-                .signOut()
-                .then(() => {
-                  dispatch(clearUserState());
-                  navigation.navigate('Login');
-                })
-                .catch(e => {
-                  console.log('error in logout');
-                });
-            }}
-          />
-        </View>
-        <Text
-          style={{
-            color: AppColors.FontsColor,
-            fontFamily: 'Poppins-Regular',
-            marginStart: Width / 30,
-            fontSize: 22,
-          }}>
-          Profile
-        </Text>
-      </View>
-      <View style={styles.mainContainer}>
-        <View style={styles.topIcons}>
-          <TouchableOpacity
-            onPress={() => {
-              //navigation.navigate('Subscription');
-            }}
-            style={{alignItems: 'center', justifyContent: 'center'}}>
-            <Icon name="star" size={25} color={AppColors.ActiveColor} />
-            <Text style={styles.text}>Membership</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('Settings');
-            }}
-            style={{
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginStart: Width / 1.83,
-            }}>
-            <Ionic
-              name="settings-outline"
-              size={28}
-              color={AppColors.ActiveColor}
-            />
-            <Text style={styles.text}>Setting</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={{height: '12%'}}>
-          <Text
-            style={[
-              styles.text,
-              {
-                width: '100%',
-                textAlign: 'center',
-                marginLeft: 10,
-                marginTop: Height / 82,
-                fontSize: 18,
-                textTransform: 'capitalize',
-              },
-            ]}>
-            {state.user && state.user.name}
-          </Text>
-          <Text
-            style={[
-              styles.text,
-              {
-                width: '100%',
-                textAlign: 'center',
-                marginLeft: 10,
-                color: AppColors.infoFonts,
-                fontSize: 18,
-                textTransform: 'capitalize',
-              },
-            ]}>
-            {state.user && state.user.designation}
-          </Text>
-        </View>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      style={{flex: 1, backgroundColor: AppColors.primarycolor}}>
+      <View style={{height: Height / 2.4, width: '100%'}}>
         <View
           style={{
-            height: '17%',
-            marginTop: '2%',
-            borderBottomColor: AppColors.FontsColor,
-            borderBottomWidth: 1,
+            backgroundColor: '#093B6A80',
+            height: '70%',
+            marginTop: '4%',
+            marginHorizontal: '3%',
+            borderRadius: 10,
           }}>
-          <Text style={[styles.text, {fontSize: 18}]}>About</Text>
-          <Text style={styles.about}>{state.user && state.user.about}</Text>
-        </View>
-        <View
-          style={{
-            height: '9%',
-            flexDirection: 'row',
-            marginTop: '2%',
-            alignItems: 'center',
-            paddingBottom: '4%',
-            justifyContent: 'space-between',
-            borderBottomColor: AppColors.FontsColor,
-            borderBottomWidth: 1,
-          }}>
-          <Text style={[styles.text, {fontSize: 18}]}>Industry</Text>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
+              paddingHorizontal: '8%',
+              paddingVertical: '2%',
             }}>
-            <Text style={[styles.text, {fontSize: 18, paddingRight: '5%'}]}>
-              {state.user && state.user.industry}
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Icon2 name="angle-left" size={29} color={AppColors.FontsColor} />
+            </TouchableOpacity>
+            <Text
+              style={{
+                color: AppColors.FontsColor,
+                marginStart: '35%',
+                fontSize: 20,
+                fontWeight: 'bold',
+              }}>
+              Profile
             </Text>
-            <Icon
-              name="angle-right"
-              size={25}
-              color={AppColors.FontsColor}
-              style={{paddingRight: '2%', marginTop: '1%'}}
-            />
           </View>
         </View>
-        <View style={styles.CompanyDetails}>
-          <Text style={[styles.text, {fontSize: 18}]}>Experience</Text>
-          <Text style={[styles.txt, {width: Width / 2}]}>
-            {state.user.experience &&
-              state.user.experience.length > 0 &&
-              state.user.experience.map(ex => ex)}
-          </Text>
-        </View>
-        <View style={[styles.CompanyDetails, {height: Height / 9}]}>
-          <Text style={[styles.text, {fontSize: 18}]}>Skills</Text>
-          <Text style={[styles.txt, {width: Width / 2}]}>
-            {state.user.skills &&
-              state.user.skills.length > 0 &&
-              state.user.skills.map(sk => sk)}
-          </Text>
-        </View>
-        <View style={[styles.CompanyDetails]}>
-          <Text style={[styles.text, {fontSize: 18}]}>Education</Text>
-          <Text style={[styles.txt]}>
-            {state.user.education &&
-              state.user.education.length > 0 &&
-              state.user.education.map(ed => ed)}
-          </Text>
+
+        <LinearGradient
+          colors={[AppColors.ActiveColor, '#012437']}
+          start={{x: 0.3, y: 1.3}}
+          end={{x: 2, y: 0.9}}
+          style={{
+            position: 'absolute',
+            top: '40%',
+            height: Height / 3.1,
+            left: '8%',
+            right: '8%',
+            borderRadius: 10,
+            alignItems: 'center',
+            elevation: 10,
+            zIndex: 5,
+          }}>
+          <View style={{marginTop: '20%'}}>
+            <Text
+              style={{
+                fontSize: 18,
+                fontWeight: 'bold',
+                color: AppColors.FontsColor,
+                letterSpacing: 1,
+                textAlign: 'center',
+              }}>
+              {state.user.name}
+            </Text>
+            <Text
+              style={{
+                fontSize: 13,
+                color: AppColors.BtnClr,
+                textAlign: 'center',
+              }}>
+              @ {state.user.name}
+            </Text>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+                marginTop: '2%',
+              }}>
+              <Image source={require('../../../assets/images/linkdin.png')} />
+              <Image source={require('../../../assets/images/twitter.png')} />
+            </View>
+            <View
+              style={{
+                width: '100%',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                paddingStart: '12%',
+                marginTop: '5%',
+              }}>
+              <View style={{alignItems: 'center'}}>
+                <Text style={{color: AppColors.FontsColor}}>Gender</Text>
+                <Text style={{color: AppColors.FontsColor}}>Male</Text>
+              </View>
+              <View style={{alignItems: 'center'}}>
+                <Text style={{color: AppColors.FontsColor}}>Hometown</Text>
+                <Text style={{color: AppColors.FontsColor}}>
+                  New Delhi, India
+                </Text>
+              </View>
+              <View style={{alignItems: 'center'}}>
+                <Text style={{color: AppColors.FontsColor}}>Location</Text>
+                <Text style={{color: AppColors.FontsColor}}>New Delhi</Text>
+              </View>
+            </View>
+          </View>
+        </LinearGradient>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            zIndex: 10,
+            position: 'absolute',
+            left: '16%',
+            right: '16%',
+            top: '22%',
+          }}>
+          <TouchableOpacity>
+            <ImageBackground
+              source={require('../../../assets/images/shadow.png')}
+              style={{
+                width: 40,
+                height: 40,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Icon name="camera" size={22} color={AppColors.FontsColor} />
+            </ImageBackground>
+          </TouchableOpacity>
+          <Image
+            source={{uri: state.user.image}}
+            style={{
+              width: 110,
+              height: 110,
+              borderRadius: 80,
+              borderWidth: 5,
+              borderColor: AppColors.FontsColor,
+            }}
+          />
+          <TouchableOpacity>
+            <ImageBackground
+              source={require('../../../assets/images/shadow.png')}
+              style={{
+                width: 40,
+                height: 40,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Icon name="cog" size={22} color={AppColors.FontsColor} />
+            </ImageBackground>
+          </TouchableOpacity>
         </View>
       </View>
-      <View style={styles.dp}>
-        <Image
-          style={{width: '100%', height: '100%'}}
-          source={{uri: state.user.image}}
-        />
+      <View>
+        <View
+          style={{
+            flexDirection: 'row',
+            borderBottomColor: AppColors.CardColor,
+            borderBottomWidth: 2,
+            justifyContent: 'space-around',
+            marginHorizontal: '8%',
+            marginTop: '20%',
+            paddingHorizontal: '5%',
+          }}>
+          <TouchableOpacity
+            style={{
+              paddingBottom: '4%',
+              borderBottomColor: posts
+                ? AppColors.ActiveColor
+                : AppColors.primarycolor,
+              borderBottomWidth: 4,
+            }}
+            onPress={() => {
+              setPosts(true);
+              setAbout(false);
+            }}>
+            <Text
+              style={[
+                styles.text,
+                {
+                  fontSize: 18,
+                  fontWeight: 'bold',
+                  color: posts ? AppColors.ActiveColor : AppColors.FontsColor,
+                },
+              ]}>
+              Posts
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              paddingBottom: '4%',
+              borderBottomColor: about
+                ? AppColors.ActiveColor
+                : AppColors.primarycolor,
+              borderBottomWidth: 4,
+            }}
+            onPress={() => {
+              setPosts(false);
+              setAbout(true);
+            }}>
+            <Text
+              style={[
+                styles.text,
+                {
+                  fontSize: 18,
+                  fontWeight: 'bold',
+                  color: about ? AppColors.ActiveColor : AppColors.FontsColor,
+                },
+              ]}>
+              About
+            </Text>
+          </TouchableOpacity>
+        </View>
+        {posts && (
+          <View>
+            <Text>skhsjfj</Text>
+          </View>
+        )}
+        {about && (
+          <View>
+            <LinearGradient
+              colors={[AppColors.primarycolor, AppColors.poupopbg]}
+              start={{x: 0, y: 0.8}}
+              end={{x: 0.9, y: 0}}
+              style={{
+                marginHorizontal: '5%',
+                borderRadius: 40,
+                alignItems: 'center',
+                paddingVertical: '3%',
+                marginTop: '3%',
+                paddingHorizontal: '2%',
+              }}>
+              <Text style={[styles.text, {fontWeight: 'bold', fontSize: 15}]}>
+                “I like being aware of new things around me ”
+              </Text>
+              <Text
+                style={{
+                  color: AppColors.ActiveColor,
+                  fontSize: 14,
+                  textAlign: 'center',
+                  paddingHorizontal: '5%',
+                }}>
+                I am a marketing research , looking for mentorship, I am an IIM
+                Bangalore graduate and have worked with Fintech for 5 years.
+              </Text>
+            </LinearGradient>
+            <ProfileDetailsBox />
+          </View>
+        )}
       </View>
     </ScrollView>
   );
