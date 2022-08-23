@@ -81,7 +81,7 @@ const [demoData,setDemoData]=useState([
                     if( d && d.liked_people && d.liked_people.indexOf(state.user.email)!=-1){
                         console.log("show model with item and state user");
                         //call Model here.
-                    
+                        
                     }
                 });
                 
