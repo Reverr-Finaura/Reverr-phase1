@@ -7,7 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 const BackButton = props => {
   const navigation = useNavigation();
   return (
-    <View style={{display: 'flex', flexDirection: 'row', width: '100%'}}>
+    <View style={{display: 'flex', flexDirection: 'row'}}>
       <TouchableOpacity
         style={{...styles.btn, ...props.style}}
         onPress={() => navigation.goBack()}>

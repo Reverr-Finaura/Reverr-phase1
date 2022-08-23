@@ -17,7 +17,9 @@ import {TabMenu} from './TabMenu';
 import {ArticalLoader, CourseLoader, NewsLoader} from './loaders';
 import {MentorHomeCard} from './mentorHomeCard';
 import {MentorDetails} from './Mentor-Profile';
-import { Choice } from './Choice';
+import {ProfileDetailsBox} from '../Components/profileDetailsBox';
+import {DrawerContent} from './drawerContent';
+import {Choice} from './Choice'
 export {
   BackButton,
   CustomButton,
@@ -39,5 +41,7 @@ export {
   ModelView,
   MentorHomeCard,
   MentorDetails,
+  ProfileDetailsBox,
+  DrawerContent,
   Choice
 };

@@ -63,9 +63,10 @@ const styles = StyleSheet.create({
     color: AppColors.FontsColor,
     overflow: 'hidden',
     borderRadius: 6,
+    paddingStart: '2.5%',
     backgroundColor: AppColors.inputFieldColor,
     fontFamily: 'Poppins-Regular',
-    height: Height / 14,
+    height: Height / 12,
     width: '100%',
   },
 });

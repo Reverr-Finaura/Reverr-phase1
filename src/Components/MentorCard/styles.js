@@ -3,7 +3,7 @@ const With = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   card: {
-    width: With / 2.25,
+    width: With / 2.44,
     height: Height / 4.3,
     borderRadius: 12,
     marginHorizontal: 10,
@@ -12,11 +12,7 @@ const styles = StyleSheet.create({
     paddingVertical: '5%',
     paddingHorizontal: '3%',
   },
-  buttonContainer: {
-    maxHeight: 175,
-    maxWidth: 175,
-    alignItems: 'center',
-  },
+
   mentorName: {
     color: 'white',
     fontSize: 18,

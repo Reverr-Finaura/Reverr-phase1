@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   Btn: {
     borderRadius: 20,
     width: Width / 1.1,
-    paddingVertical: Height > 684 ? '4.5%' : '2%',
+    paddingVertical: '4%',
     justifyContent: 'center',
     alignItems: 'center',
   },

@@ -38,6 +38,7 @@ import {
   pin_post,
   deletePost,
 } from '../../Redux/actions';
+import {Modal, Portal, Button, Provider} from 'react-native-paper';
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
@@ -47,8 +48,9 @@ const Rooms = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [deleted, setDeleted] = useState(false);
-  const [features, setFeatures] = useState(true);
-  const [subs, setSubs] = useState(false);
+  const [features, setFeatures] = useState(false);
+  const [discussion, setDiscussion] = useState(true);
+  const [patch, setPatch] = useState(false);
   const [message, setMessage] = useState();
   const navigation = useNavigation();
   //const {state, dispatch} = useContext(UserContext);
@@ -62,6 +64,7 @@ const Rooms = () => {
   const [owner, setOwner] = useState(false);
 
   const handleDelete = post => {
+    console.log(post.id, 'postdetails');
     dispatch(deletePost(post, post.id));
   };
 
@@ -91,95 +94,116 @@ const Rooms = () => {
 
   const renderCard = ({item}) => {
     //console.log("Hey!")
-    //console.log(item);
+    // console.log(state.Rooms[0], 'userdta');
     return (
       <LinearGradient
         key={item.id}
-        colors={[AppColors.primarycolor, '#012437']}
+        colors={[AppColors.CardColor, AppColors.CardColor]}
         start={{x: -3, y: 1.3}}
         end={{x: 3, y: 0.5}}
         style={styles.postCard}>
         <View style={styles.creatorDetails}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Image style={styles.dp} source={{uri: item.postedby.image}} />
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('IndividualProfile');
+              }}>
+              <Image style={styles.dp} source={{uri: item.postedby.image}} />
+            </TouchableOpacity>
             <View style={{marginStart: '3%'}}>
               <Text style={styles.name}>{item.postedby.name}</Text>
-              <Text style={styles.company}>{item.postedby.designation}</Text>
+              <Text style={styles.company}>@{item.postedby.name}</Text>
             </View>
           </View>
-          <TouchableOpacity
-            onPress={() => {
-              setPopup(true);
-              set_Id(item.id);
-              setOwner(state.user.email == item.postedby.email ? true : false);
-            }}>
-            <Icon2
-              name="ellipsis-vertical"
-              size={22}
-              color={AppColors.FontsColor}
-            />
-          </TouchableOpacity>
+          <View style={{flexDirection: 'row'}}>
+            <Text
+              style={{
+                color: AppColors.BtnClr,
+                fontWeight: 'bold',
+                marginTop: '-5%',
+                marginRight: '4%',
+              }}>
+              12/08/2022
+            </Text>
+            <TouchableOpacity
+              onPress={() => {
+                setPopup(true);
+                set_Id(item.id);
+                setOwner(
+                  state.user.email == item.postedby.email ? true : false,
+                );
+                // alert(item.id);
+              }}>
+              <Icon2
+                name="ellipsis-vertical"
+                size={22}
+                color={AppColors.ActiveColor}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
-        <CustomPopup
-          modalVisible={popup}
-          onRequestClose={() => setPopup(false)}
-          setModalVisible={setPopup}>
-          <View style={{backgroundColor: AppColors.primarycolor}}>
-            {owner && (
+        {item.id === _id && (
+          <CustomPopup
+            modalVisible={popup}
+            setModalVisible={setPopup}
+            onRequestClose={() => setPopup(false)}>
+            <View>
+              {owner && (
+                <View
+                  style={{
+                    borderBottomColor: AppColors.FontsColor,
+                    borderBottomWidth: 1,
+                    paddingVertical: '4%',
+                    alignItems: 'center',
+                  }}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      handleDelete(item);
+                      // alert(item.id);
+                      setPopup(false);
+                    }}>
+                    <Text style={{color: AppColors.FontsColor}}>Delete</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
               <View
                 style={{
                   borderBottomColor: AppColors.FontsColor,
                   borderBottomWidth: 1,
+                  alignItems: 'center',
+                  paddingVertical: '4%',
+                }}>
+                <TouchableOpacity>
+                  <Text style={{color: AppColors.FontsColor}}>Share</Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  borderBottomColor: AppColors.FontsColor,
+                  borderBottomWidth: 1,
+                  alignItems: 'center',
+                  paddingVertical: '4%',
+                }}>
+                <TouchableOpacity onPress={() => savePost(item)}>
+                  <Text style={{color: AppColors.FontsColor}}>
+                    {state.savedPosts && state.savedPosts.includes(item.id)
+                      ? 'Unsave'
+                      : 'Save'}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
                   paddingVertical: '4%',
                   alignItems: 'center',
                 }}>
-                <TouchableOpacity
-                  onPress={() => {
-                    handleDelete(item);
-                    setPopup(false);
-                  }}>
-                  <Text style={{color: AppColors.FontsColor}}>Delete</Text>
+                <TouchableOpacity onPress={() => setPopup(false)}>
+                  <Text style={{color: AppColors.FontsColor}}>close</Text>
                 </TouchableOpacity>
               </View>
-            )}
-
-            <View
-              style={{
-                borderBottomColor: AppColors.FontsColor,
-                borderBottomWidth: 1,
-                alignItems: 'center',
-                paddingVertical: '4%',
-              }}>
-              <TouchableOpacity>
-                <Text style={{color: AppColors.FontsColor}}>Share</Text>
-              </TouchableOpacity>
             </View>
-            <View
-              style={{
-                borderBottomColor: AppColors.FontsColor,
-                borderBottomWidth: 1,
-                alignItems: 'center',
-                paddingVertical: '4%',
-              }}>
-              <TouchableOpacity onPress={() => savePost(item)}>
-                <Text style={{color: AppColors.FontsColor}}>
-                  {state.savedPosts && state.savedPosts.includes(item.id)
-                    ? 'Unsave'
-                    : 'Save'}
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                paddingVertical: '4%',
-                alignItems: 'center',
-              }}>
-              <TouchableOpacity onPress={() => setPopup(false)}>
-                <Text style={{color: AppColors.FontsColor}}>close</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </CustomPopup>
+          </CustomPopup>
+        )}
         <View style={styles.postContainer}>
           {item.image !== '' && item.image !== undefined ? (
             <View>
@@ -232,23 +256,33 @@ const Rooms = () => {
           )}
         </View>
         <View style={styles.IconContainer}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <View>
             <TouchableOpacity onPress={() => likePost(item.id, item)}>
               <Icon2
-                name="heart"
+                name="happy-outline"
                 color={
                   item.likes.includes(state.user.email)
                     ? 'red'
-                    : AppColors.FontsColor
+                    : AppColors.ActiveColor
                 }
-                size={22}
+                size={28}
+              />
+              <Icon2
+                name="add-outline"
+                size={23}
+                color={
+                  item.likes.includes(state.user.email)
+                    ? 'red'
+                    : AppColors.ActiveColor
+                }
+                style={{position: 'absolute', right: 50, top: -4}}
               />
             </TouchableOpacity>
-            <Text style={[styles.name, {marginStart: '8%'}]}>
-              {item.likes.length}
+            <Text style={{marginStart: '8%', color: AppColors.BtnClr}}>
+              {item.likes.length} reactions
             </Text>
           </View>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <View>
             <TouchableOpacity
               onPress={() => {
                 dispatch(pin_post(item));
@@ -257,24 +291,18 @@ const Rooms = () => {
                 // });
                 navigation.navigate('comments');
               }}>
-              <Icon name="comment" size={22} color={AppColors.FontsColor} />
-            </TouchableOpacity>
-            <Text style={[styles.name, {marginStart: '8%'}]}>
-              {item.comments.length}
-            </Text>
-          </View>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('demo');
-              }}>
-              <Icon
-                name="share-square"
-                size={22}
-                color={AppColors.FontsColor}
+              <Image
+                source={require('../../assets/images/comment.png')}
+                style={{
+                  tintColor: AppColors.ActiveColor,
+                  height: 27,
+                  width: 27,
+                }}
               />
             </TouchableOpacity>
-            <Text style={[styles.name, {marginStart: '8%'}]}>{item.share}</Text>
+            <Text style={{marginStart: '8%', color: AppColors.BtnClr}}>
+              {item.comments.length} comments
+            </Text>
           </View>
         </View>
       </LinearGradient>
@@ -286,34 +314,26 @@ const Rooms = () => {
   } else {
     return (
       <View style={styles.screen}>
-        <View style={styles.header}>
-          <BackButton
-            IconSize={30}
-            onPress={() => {
-              navigation.goBack();
-            }}
-          />
-          <Text
-            style={{
-              color: AppColors.FontsColor,
-              marginStart: Width / 3.5,
-              fontFamily: 'Poppins-SemiBold',
-              fontSize: 21,
-            }}>
-            Room
-          </Text>
-        </View>
         <CustomMenuBar
           Item1="Featured"
           Item2="Discussion"
+          Item3="Patch"
           active1={features}
-          active2={subs}
+          active2={discussion}
+          active3={patch}
           ClickOnItem1={() => {
             setFeatures(true);
-            setSubs(false);
+            setDiscussion(false);
+            setPatch(false);
           }}
           ClickOnItem2={() => {
-            setSubs(true);
+            setDiscussion(true);
+            setFeatures(false);
+            setPatch(false);
+          }}
+          ClickOnItem3={() => {
+            setPatch(true);
+            setDiscussion(false);
             setFeatures(false);
           }}
         />

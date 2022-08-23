@@ -89,7 +89,7 @@ export const BottomNavigate = () => {
           ),
         }}
       />
-      <Tab.Screen
+      {/*       <Tab.Screen
         name="Rooms"
         component={Rooms}
         options={{
@@ -105,7 +105,7 @@ export const BottomNavigate = () => {
             />
           ),
         }}
-      />
+      /> */}
       <Tab.Screen
         name="Learn"
         component={LearnScreen}
