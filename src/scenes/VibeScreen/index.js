@@ -42,7 +42,7 @@ const Vibe = () => {
     setLoading(true);
     //setIdx(0);
     console.log(idx);
-    if (state.user.no_of_swipe < 50) {
+    if (state.user.no_of_swipe < 15) {
       if (state.vibe.length == 0 || idx == 0) {
         dispatch(
           Load_Card(undefined, state.user.email, state.user.no_of_swipe),
@@ -60,7 +60,7 @@ const Vibe = () => {
     setLoading(true);
     //setIdx(0);
     console.log(idx);
-    if (state.user.no_of_swipe < 50) {
+    if (state.user.no_of_swipe < 15) {
       if (state.vibe.length == 0) {
         dispatch(
           Load_Card(undefined, state.user.email, state.user.no_of_swipe),
