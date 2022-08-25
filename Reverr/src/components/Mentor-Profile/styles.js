@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#000c12',
-    paddingTop:10,
+    paddingTop: 10,
   },
   buttonContainer: {
     alignItems: 'center',
@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
   image: {
     width: '90%',
     alignSelf: 'center',
-    justifyContent:'center',
-    padding:10,
+    justifyContent: 'center',
+    padding: 10,
     height: '14%',
     marginTop: 16,
     borderRadius: 24,
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   mentorName: {
     color: 'white',
     alignSelf: 'center',
-    justifyContent:'center',
+    justifyContent: 'center',
     bottom: '16%',
     fontSize: 24,
     fontWeight: '600',
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     bottom: '16%',
-    paddingBottom:10
+    paddingBottom: 10,
   },
   details: {
     position: 'relative',

@@ -171,7 +171,7 @@ const EditProfile = () => {
           value={About == '>/s<' ? 'Enter About' : About}
         />
         <EditCard
-          Title="Position"
+          Title="Industry"
           value={Industry == '>/s<' ? 'Enter Your Industry' : Industry}
           style={[
             styles.name,
@@ -256,7 +256,7 @@ const EditProfile = () => {
       <CustomButton
         Title="Save Changes"
         onPress={() => saveChanges()}
-        style={{marginTop: '5%'}}
+        style={{marginBottom: '4%'}}
       />
       <View style={styles.dp}>
         <Image

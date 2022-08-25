@@ -14,6 +14,9 @@ import {
   FundingForm,
   OnBoarding,
   TermConditions,
+  DashBoard,
+  EditCalender,
+  Notifications,
 } from '../../scenes';
 import ThanksScreen from '../../scenes/thanks-screen';
 import {
@@ -38,9 +41,15 @@ import {
   Courses,
   OpenBook,
   Home,
+  ChatScreen,
+  VideoCall,
+  CalanderAppointments,
 } from '../../scenes';
 import {BottomNavigate, MentorNavigator} from '../BottomNavigate';
 import {ArticalDetails} from '../../scenes';
+import {MentorBottomTab} from '../MentorBottomTab';
+import {MentorDetails} from '../../Components';
+import {DrawerNavigation} from '../drawerNavigation';
 const Stack = createNativeStackNavigator();
 
 const StackNavigate = props => {
@@ -53,7 +62,7 @@ const StackNavigate = props => {
         component={StartupVerification}
       />
       {/* <Stack.Screen name="home" component={Home} /> */}
-      <Stack.Screen name="IndividualTab" component={BottomNavigate} />
+      <Stack.Screen name="IndividualTab" component={DrawerNavigation} />
       <Stack.Screen name="onBoarding" component={OnBoarding} />
       <Stack.Screen name="Splash1" component={SplashFirst} />
       <Stack.Screen name="Splash2" component={SplashSecond} />
@@ -85,8 +94,18 @@ const StackNavigate = props => {
       <Stack.Screen name="OpenBook" component={OpenBook} />
       <Stack.Screen name="TermConditions" component={TermConditions} />
       <Stack.Screen name="FundingForm" component={FundingForm} />
-
-      {/* <Stack.Screen name="Home" component={Home}/> */}
+      <Stack.Screen name="ChatScreen" component={ChatScreen} />
+      <Stack.Screen name="Notification" component={Notifications} />
+      <Stack.Screen name="VideoCall" component={VideoCall} />
+      <Stack.Screen name="MentorDetails" component={MentorDetails} />
+      <Stack.Screen
+        name="CalanderAppointments"
+        component={CalanderAppointments}
+      />
+      <Stack.Screen name="EditCalender" component={EditCalender} />
+      {/* <Stack.Screen name="Messages" component={}/> */}
+      <Stack.Screen name="MentorBottomTab" component={MentorBottomTab} />
+      <Stack.Screen name="videoCall" component={VideoCall} />
     </Stack.Navigator>
   );
 };

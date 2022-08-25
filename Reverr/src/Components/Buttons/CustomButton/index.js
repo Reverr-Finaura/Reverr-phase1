@@ -31,18 +31,19 @@ const CustomButton = props => {
 const styles = StyleSheet.create({
   screen: {
     alignItems: 'center',
+    marginTop: '5%',
   },
   Btn: {
     borderRadius: 20,
     width: Width / 1.1,
-    paddingVertical: Height > 684 ? '3%' : '2%',
+    paddingVertical: '4%',
     justifyContent: 'center',
     alignItems: 'center',
   },
   txt: {
     fontFamily: 'Poppins-SemiBold',
     color: AppColors.FontsColor,
-    fontSize: 18,
+    fontSize: 20,
   },
 });
 

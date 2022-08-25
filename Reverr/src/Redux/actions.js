@@ -1,5 +1,8 @@
+import {firebase} from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import storage from '@react-native-firebase/storage';
 import {Alert} from 'react-native';
+// import { SavedCourses } from '../Components/SavedCourses';
 export const ADD_USER = 'ADD_USER';
 export const UPDATE_IMAGE = 'UPDATE_IMAGE';
 export const UPDATE_USER_DATA = 'UPDATE_USER_DATA';
@@ -15,12 +18,254 @@ export const DELETE_POST_ACTION = 'DELETE_POST_ACTION';
 export const SET_USER = 'SET_USER';
 export const SET_MENTORS = 'SET_MENTORS';
 export const SELECT_MENTOR = 'SELECT_MENTOR';
+export const LIKE_MENTOR = 'LIKE_MENTOR';
+export const UNLIKE_MENTOR = 'UNLIKE_MENTOR';
+export const REMOVE_ARTICLE = 'REMOVE_ARTICLE';
+export const SAVE_ARTICLE = 'SAVE_ARTICLE';
+export const REMOVE_COURSE = 'REMOVE_COURSE';
+export const SAVE_COURSE = 'SAVE_COURSE';
+export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION';
+export const REMOVE_NOTIFICATION_INSTANCE = 'REMOVE_NOTIFICATION_INSTANCE';
+export const UPDATE_APPOINTMENT_INSTANCE = 'UPDATE_APPOINTMENT_INSTANCE';
+export const LOAD_CARDS='LOAD_CARDS';
+export const REMOVE_TOP_CARD='REMOVE_TOP_CARD';
+export const RemoveTopCard=()=>{
+  try {
+    return async dispatch => {
+      dispatch({
+        type: 'REMOVE_TOP_CARD',
+      });
+    };
+  } catch (e) {
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+}
+export const Load_Card=(lastDocument,email,na)=>{
+  try {
+    //var lastcard=undefined;
+    return async dispatch => {
+      var list4=[];
+      let query=await firestore().collection('Users').orderBy('createdAt', 'desc');
+      if (lastDocument !== undefined) {
+        query = query.startAfter(lastDocument);
+        console.log("last->"+lastDocument.name);
+      }
+      // if (lastcard !== undefined) {
+      //   query = query.startAfter(lastDocument);
+      //   console.log("last->"+lastDocument.name);
+      // }
+      await query
+        .limit(5)
+        .get()
+        // .onSna
+        .then(async querySnapshot => {
+          var lastdoc = querySnapshot.docs[querySnapshot.docs.length - 1];
+          querySnapshot.forEach(doc => {
+            let card = doc.data();
+            card.id = doc.id;
+            list4.push(card);
+            //console.log(list3);
+          });
+          console.log("list4"+list4)
+          
+          dispatch({
+            type: 'LOAD_CARDS',
+            payload:{list4,lastDocument:lastdoc},
+          })
+          await firestore().collection('Users').doc(email).update({
+            no_of_swipe:na+5
+          })
+        }).catch(e=>{
+          console.log(e.message);
+            throw new Error("Error at vibe");
+          })
+      
+    }
+  } catch (e) {
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+};
+
+export const RemoveNotificationInstance = index => {
+  try {
+    return async dispatch => {
+      dispatch({
+        type: 'REMOVE_NOTIFICATION_INSTANCE',
+        payload: index,
+      });
+    };
+  } catch (e) {
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+};
+
+export const UpdateApointmentInstance = index => {
+  try {
+    return async dispatch => {
+      dispatch({
+        type: 'UPDATE_APPOINTMENT_INSTANCE',
+        payload: index,
+      });
+    };
+  } catch (e) {
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+};
+
+export const RemoveNotification = (email, obj, index) => {
+  try {
+    return async dispatch => {
+      await firestore()
+        .collection('Users')
+        .doc(email)
+        .update({
+          notifications: firestore.FieldValue.arrayRemove(obj),
+        });
+      dispatch({
+        type: 'REMOVE_NOTIFICATION',
+        payload: index,
+      });
+    };
+  } catch (e) {
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+};
+
+export const removeCourse = id => {
+  try {
+    return async dispatch => {
+      dispatch({
+        type: 'REMOVE_COURSE',
+        payload: id,
+      });
+    };
+  } catch (e) {
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+};
+
+export const saveCourse = id => {
+  try {
+    return async dispatch => {
+      dispatch({
+        type: 'SAVE_COURSE',
+        payload: id,
+      });
+    };
+  } catch (e) {
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+};
+
+export const SaveArticle = id => {
+  try {
+    return async dispatch => {
+      dispatch({
+        type: 'SAVE_ARTICLE',
+        payload: id,
+      });
+    };
+  } catch (e) {
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+};
+
+export const RemoveArticle = id => {
+  try {
+    return async dispatch => {
+      dispatch({
+        type: 'REMOVE_ARTICLE',
+        payload: id,
+      });
+    };
+  } catch (e) {
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+};
+
+export const LikeMentor = email => {
+  try {
+    return async dispatch => {
+      dispatch({
+        type: 'LIKE_MENTOR',
+        payload: email,
+      });
+    };
+  } catch (e) {
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+};
+
+export const UnLikeMentor = email => {
+  try {
+    return async dispatch => {
+      dispatch({
+        type: 'UNLIKE_MENTOR',
+        payload: email,
+      });
+    };
+  } catch (e) {
+    dispatch({
+      type: Error,
+      error: 'error',
+    });
+  }
+};
 
 export const add_user = user => {
   try {
     return async dispatch => {
       console.log('add_user:' + user);
-      dispatch(updateUserState(user));
+      var udata = [];
+      var basket;
+      if (user.userType == 'Mentor') {
+        for (var i = 0; i < user?.clients?.length; i++) {
+          basket = await firestore()
+            .collection('Users')
+            .doc(user?.clients[i])
+            .get();
+          udata.push(basket.data());
+        }
+      } else {
+        for (var i = 0; i < user?.mentors?.length; i++) {
+          basket = await firestore()
+            .collection('Users')
+            .doc(user?.mentors[i])
+            .get();
+          udata.push(basket.data());
+        }
+      }
+      dispatch(updateUserState(user, udata));
     };
   } catch (e) {
     dispatch({
@@ -367,9 +612,28 @@ export const setUser = data => {
     return async dispatch => {
       //const user=await firestore().collection('Users').doc(email).get();
       //console.log(user);
+      var udata = [];
+      var basket;
+      if (data.userType == 'Mentor') {
+        for (var i = 0; i < data?.clients?.length; i++) {
+          basket = await firestore()
+            .collection('Users')
+            .doc(data?.clients[i])
+            .get();
+          udata.push(basket.data());
+        }
+      } else {
+        for (var i = 0; i < data.mentors.length; i++) {
+          basket = await firestore()
+            .collection('Users')
+            .doc(data?.mentors[i])
+            .get();
+          udata.push(basket.data());
+        }
+      }
       dispatch({
         type: 'SET_USER',
-        payload: data,
+        payload: {data, udata},
       });
     };
   } catch (e) {
@@ -499,9 +763,9 @@ export const load_Data = obj => {
   };
 };
 
-export const updateUserState = user => {
+export const updateUserState = (user, udata) => {
   return {
     type: 'ADD_USER',
-    payload: user,
+    payload: {user, udata},
   };
 };

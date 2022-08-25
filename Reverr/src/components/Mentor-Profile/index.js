@@ -1,22 +1,29 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
-import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
-
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  ImageBackground,
+} from 'react-native';
 import styles from './styles';
-
 import {CustomTextCard} from '../CustomTextCard';
 import {Details} from '../Details';
-import {Header} from '../Header';
+import {useSelector} from 'react-redux';
 import {Rating} from '../Ratings';
 import {CustomButton} from '../CustomButton';
-import firestore from '@react-native-firebase/firestore';
-import {useSelector} from 'react-redux';
+import App from '../../App';
+import {AppColors} from '../../utils';
 
-export const MentorProfile = props => {
+export const MentorDetails = props => {
   const navigaton = useNavigation();
   const [optionIndex, setIndex] = useState(0);
   const [pressed, setPressed] = useState(false);
-  const {selectedmentor} = useSelector(state => state.UserReducer);
+  const state = useSelector(state => state.UserReducer);
+  const selectedmentor = props.route.params.mentorDetails;
+  console.log(selectedmentor, 'selected');
 
   const Ratings = () => {
     return <Rating />;
@@ -49,16 +56,16 @@ export const MentorProfile = props => {
                 fontWeight: '400',
                 marginHorizontal: 16,
               }}>
-             {selectedmentor.experience}
+              {selectedmentor?.experience}
             </Text>
           </View>
         );
       case 2:
-        navigaton.navigate('Plans',{
-          plans:selectedmentor.plans,
-          mentor:selectedmentor.email,
-          orders:selectedmentor.orders,
-          clients:selectedmentor.clients,
+        navigaton.navigate('Plans', {
+          plans: selectedmentor.plans,
+          mentor: selectedmentor.email,
+          orders: selectedmentor.orders,
+          clients: selectedmentor.clients,
         });
       // break;
       case 3:
@@ -91,8 +98,16 @@ export const MentorProfile = props => {
             />
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => setPressed(!pressed)}>
-            {!pressed ? (
+          <TouchableOpacity
+            onPress={() => {
+              if (!state?.user?.savedMentors.includes(selectedmentor.email)) {
+                add_mentor_to_favourites(selectedmentor.email);
+              } else {
+                remove_mentor_from_favourites(selectedmentor.email);
+              }
+              //setPressed(!pressed)
+            }}>
+            {!state?.user?.savedMentors.includes(selectedmentor.email) ? (
               <Image
                 source={require('../../assets/images/Heart-Outline.png')}
                 style={styles.button}
@@ -110,7 +125,7 @@ export const MentorProfile = props => {
           source={require('../../assets/images/MentorBig.png')}
           style={styles.mentor}
         />
-        
+
         <Image
           style={styles.image}
           source={require('../../assets/images/Rectangle2.png')}
@@ -122,24 +137,47 @@ export const MentorProfile = props => {
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
-            bottom: 60,
+            marginTop: '-14%',
           }}>
-          <CustomTextCard title="Industry" subTitle="Fintech" />
+          <CustomTextCard
+            title="Industry"
+            subTitle={selectedmentor?.industry}
+          />
           <CustomTextCard title="Appoinment" subTitle="$1000/Hr" />
-          <CustomTextCard title="Ratings" subTitle={Ratings()} />
+          <TouchableOpacity
+            style={{
+              marginTop: '-7.6%',
+              width: '30%',
+              height: '100%',
+              overflow: 'hidden',
+              borderRadius: 12,
+              marginRight: '2%',
+            }}>
+            <ImageBackground
+              style={{
+                paddingHorizontal: '5%',
+                paddingVertical: '5%',
+                borderRadius: 12,
+              }}
+              source={require('../../assets/images/Rectangle2.png')}>
+              <Text style={{color: AppColors.FontsColor, marginBottom: '4%'}}>
+                Rating
+              </Text>
+              <Rating />
+            </ImageBackground>
+          </TouchableOpacity>
         </View>
 
-        <View style={{bottom: 72, maxHeight: 200}}>
+        <View style={{}}>
           <Details
             buttons={['About', 'Experience', 'Plans', 'Domain']}
             afterClickEvent={setIndex}
           />
           {renderOptions(optionIndex)}
-          
         </View>
-        <View style={{paddingBottom:90}}>
-          <CustomButton title="Schedule"/>
-          </View> 
+        <View style={{paddingBottom: 90}}>
+          <CustomButton title="Schedule" />
+        </View>
       </ScrollView>
     )
   );

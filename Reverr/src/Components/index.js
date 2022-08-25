@@ -14,9 +14,18 @@ import {IndividualHeaderLayout} from './HeaderLayout';
 import {ModelView} from './ModelView';
 import {SwipeCard} from './swipeCard';
 import {TabMenu} from './TabMenu';
+import {ArticalLoader, CourseLoader, NewsLoader} from './loaders';
+import {MentorHomeCard} from './mentorHomeCard';
+import {MentorDetails} from './Mentor-Profile';
+import {ProfileDetailsBox} from '../Components/profileDetailsBox';
+import {DrawerContent} from './drawerContent';
+import {Choice} from './Choice'
 export {
   BackButton,
   CustomButton,
+  ArticalLoader,
+  NewsLoader,
+  CourseLoader,
   InputField,
   TitleCard,
   EditCard,
@@ -30,4 +39,9 @@ export {
   BottomPopup,
   HomeCard,
   ModelView,
+  MentorHomeCard,
+  MentorDetails,
+  ProfileDetailsBox,
+  DrawerContent,
+  Choice
 };

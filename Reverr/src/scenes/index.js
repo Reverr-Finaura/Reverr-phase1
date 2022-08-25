@@ -7,6 +7,7 @@ import {
   EditProfile,
   MentorProfile,
 } from './ProfileScreens';
+import {VideoCall} from './videoCall';
 import {Test} from './Test';
 import {StartupVerification} from './startup-verification';
 import {SplashFirst} from './splash-screens/splash1';
@@ -29,6 +30,7 @@ import {SavedScreen} from './saved-screen';
 import {Plans} from './Plans';
 import {IntroSplash} from './introSplashScreen';
 import {Home} from './home-screen';
+import {CalanderAppointments} from './CalenderAppointments';
 import {
   LearnScreen,
   Courses,
@@ -41,6 +43,11 @@ import {NewsDetails} from './news-screen';
 import {Webview} from './news-screen';
 import {FundingScreen, FundingForm} from './funding-screen';
 import {TermConditions} from './term&Conditions-Screen';
+import {DashBoard} from './dashboard';
+import {EditCalender} from './EditCalender';
+import {MentorHomeScreen, AppoinmentScreen} from './mentorPovScreens';
+import {Notifications} from './notifications';
+import { Vibe } from './VibeScreen';
 export {
   ArticalDetails,
   FundingScreen,
@@ -82,4 +89,12 @@ export {
   AddedMentors,
   IntroSplash,
   OnBoarding,
+  VideoCall,
+  CalanderAppointments,
+  DashBoard,
+  EditCalender,
+  MentorHomeScreen,
+  Notifications,
+  AppoinmentScreen,
+  Vibe
 };

@@ -17,23 +17,9 @@ const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
 const ArticalDetails = props => {
-  //const {state, dispatch} = useContext(UserContext);
   const navigation = useNavigation();
   const articaldetails = props.route.params.articalData;
-  /*  const {savedarticlestate, savedarticledispatch} =
-      useContext(SavedArticleContext);
-    // console.log(articaldetails);
-    function saveArticle(item) {
-      if (state.savedArticles.includes(item.id)) {
-        dispatch({type: 'REMOVEARTICLE', payload: item.id});
-        savedarticledispatch({type: 'REMOVE', payload: item});
-        RemoveArticle(item, state.email, state.savedArticles);
-      } else {
-        dispatch({type: 'SAVEARTICLE', payload: item.id});
-        savedarticledispatch({type: 'UPDATE', payload: item});
-        SaveArticle(item, state.email, state.savedArticles);
-      }
-    }*/
+
   return (
     <View style={{flex: 1, backgroundColor: AppColors.primarycolor}}>
       <View style={styles.header}>
@@ -106,9 +92,10 @@ const styles = StyleSheet.create({
   },
   body: {
     paddingHorizontal: '8%',
+    // color:AppColors.FontsColor
   },
   text: {
-    color: AppColors.infoFonts,
+    color: AppColors.FontsColor,
     fontFamily: 'Poppins-Regular',
   },
 });

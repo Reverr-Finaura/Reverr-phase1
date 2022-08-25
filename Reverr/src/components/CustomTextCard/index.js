@@ -1,5 +1,7 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {smallString} from '../../utils';
+import {Rating} from '../Ratings';
 
 import styles from './styles';
 
@@ -17,7 +19,8 @@ export const CustomTextCard = props => {
         source={require('../../assets/images/Rectangle2.png')}
       />
       <Text style={styles.fieldName}>{title}</Text>
-      <Text style={styles.fieldSubName}>{subTitle}</Text>
+      <Text style={styles.fieldSubName}>{smallString(subTitle, 20)}</Text>
+      {props.rating && <Rating />}
     </TouchableOpacity>
   );
 };

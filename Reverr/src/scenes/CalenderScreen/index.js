@@ -139,22 +139,26 @@ import { useSelector } from 'react-redux';
           height: Height / 2,
           borderBottomEndRadius: 50,
           borderBottomStartRadius: 50,
-          backgroundColor: AppColors.poupopbg,
+          backgroundColor:props?.iseditCalender==true?AppColors.primarycolor:AppColors.poupopbg,
         }}>
-        <TouchableOpacity onPress={props.onClose} style={styles.close}>
+        {props?.iseditCalender==true && <View style={{borderBottomColor:'#fff',borderWidth:2,borderTopColor:'#fff',paddingHorizontal:20,paddingVertical:10,display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
+          <Text style={{color:'#fff',fontWeight:'bold',fontSize:16,height:24,width:79}}>{montharr[month]} {date.getFullYear()}</Text>
+          <Text style={{color:'#fff',fontWeight:'bold',fontSize:16,height:24,width:79}}>Today</Text>
+          </View>}
+        {props?.iseditCalender==true?null: <TouchableOpacity onPress={props.onClose} style={styles.close}>
           <Icon name="times" size={25} color="black" />
-        </TouchableOpacity>
+        </TouchableOpacity>}
         <View style={styles.header}>
-          <TouchableOpacity onPress={() => Prev()}>
+        {props?.iseditCalender==true?null: <TouchableOpacity onPress={() => Prev()}>
             <Icon2 name="arrow-back-circle-outline" size={28} color="black" />
-          </TouchableOpacity>
-          <View style={{flexDirection: 'row'}}>
+          </TouchableOpacity>}
+          {props?.iseditCalender==true?null: <View style={{flexDirection: 'row'}}>
             <Text style={styles.txt}>{montharr[month]}</Text>
             <Text style={styles.txt}>{year}</Text>
-          </View>
-          <TouchableOpacity onPress={() => Next()}>
+          </View>}
+          {props?.iseditCalender==true?null: <TouchableOpacity onPress={() => Next()}>
             <Icon2 name="arrow-forward-circle-outline" size={28} color="black" />
-          </TouchableOpacity>
+          </TouchableOpacity>}
         </View>
         <View style={{width: '100%', marginStart: '9%', marginTop: '3%'}}>
           <DataTable style={{overflow: 'hidden'}}>
@@ -298,16 +302,24 @@ import { useSelector } from 'react-redux';
               />
             </DataTable.Row>
           </DataTable>
-          <TouchableOpacity
+          {props?.iseditCalender==true?null: <TouchableOpacity
             style={styles.btn}
             activeOpacity={0.7}
             onPress={() => {
               console.log("hello")
-              navigation.navigate('AddedMentors', {dates});
-              props.setModel(false);
+              if(state.user.userType=='Mentor'){
+                props.setModel(false);
+                navigation.navigate('EditCalender')
+
+              }
+              else{
+                props.setModel(false); 
+                navigation.navigate('AddedMentors', {dates});
+                
+              }
             }}>
             <Text style={styles.text}>Proceed</Text>
-          </TouchableOpacity>
+          </TouchableOpacity>}
         </View>
       </View>
     );

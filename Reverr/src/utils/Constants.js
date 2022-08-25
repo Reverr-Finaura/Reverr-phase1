@@ -8,6 +8,6 @@ export const AppColors = {
   FontsColor: '#FFFFFF',
   infoFonts: '#8B8B8B',
   ActiveColor: '#0077B7',
-  CardColor: '#323544',
+  CardColor: '#393939',
   poupopbg: '#004971',
 };

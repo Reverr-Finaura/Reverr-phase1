@@ -95,7 +95,7 @@ import { useSelector } from 'react-redux';
     }
   
     useEffect(()=>{
-      const user=firestore().collection("Users").doc(props.route.params.mentor.key).onSnapshot(documentSnapshot => {
+      const user=firestore().collection("Users").doc(props.route.params.mentor.email).onSnapshot(documentSnapshot => {
         console.log('User data: ', documentSnapshot.data());
         setAvailability(documentSnapshot.data().availability);
         console.log(availability);
@@ -121,7 +121,7 @@ import { useSelector } from 'react-redux';
         date,
         time,
         approved:false,
-        mentor_email:props.route.params.mentor.key
+        mentor_email:props.route.params.mentor.email
       }
       var mentor_event={
         month,
@@ -129,6 +129,15 @@ import { useSelector } from 'react-redux';
         time,
         approved:false,
         client_email:state.user.email
+      }
+      var notification_obj={
+        subject:state.user.email,
+        message:'You have an appointment request',
+        type:'appointment',
+        email:props.route.params.mentor.email,
+        month,
+        date,
+        time
       }
       //Put this code section into Redux
       //dispatch({type: 'NEWEVENT', payload: event})
@@ -139,8 +148,8 @@ import { useSelector } from 'react-redux';
         ] 
       }).then(()=>{
         firestore().collection("Users").doc(event.mentor_email).update({
-          Appointement_request:firestore.FieldValue.arrayUnion(mentor_event),
-          notification:firestore.FieldValue.arrayUnion(mentor_event)
+          Appointement_request:firestore.FieldValue.arrayUnion(mentor_event), 
+          notifications:firestore.FieldValue.arrayUnion(notification_obj)
         }).then(()=>{
           console.log("added event")
           showToast("Event added succerssfully!");
@@ -154,7 +163,7 @@ import { useSelector } from 'react-redux';
     return (
       <View style={styles.screen}>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Backbtn
+          <BackButton
             IconSize={30}
             onPress={() => {
               navigation.goBack();
@@ -186,7 +195,7 @@ import { useSelector } from 'react-redux';
             </View>
           </View>
   
-          <CustomBtn Title="Today" style={styles.btn} />
+          <CustomButton Title="Today" style={styles.btn} />
         </View>
         <View
           style={{

@@ -14,9 +14,11 @@ import {
   Messages,
   LearnScreen,
   Settings,
+  DashBoard,
+  Vibe,
 } from '../../scenes';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {MentorProfile} from '../../Components/Mentor-Profile';
+import {MentorDetails} from '../../Components';
 
 const Tab = createBottomTabNavigator();
 
@@ -87,7 +89,7 @@ export const BottomNavigate = () => {
           ),
         }}
       />
-      <Tab.Screen
+      {/*       <Tab.Screen
         name="Rooms"
         component={Rooms}
         options={{
@@ -103,7 +105,7 @@ export const BottomNavigate = () => {
             />
           ),
         }}
-      />
+      /> */}
       <Tab.Screen
         name="Learn"
         component={LearnScreen}
@@ -121,6 +123,23 @@ export const BottomNavigate = () => {
           ),
         }}
       />
+      <Tab.Screen
+        name="Vibe"
+        component={Vibe}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <Image
+              style={{
+                width: 32,
+                height: 32,
+                marginTop: 8,
+                tintColor: focused ? '#0077b7' : 'gray',
+              }}
+              source={require('../../assets/images/threepeople.png')}
+            />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };
@@ -133,7 +152,7 @@ export const HomeStack = () => {
       <Stack.Screen name="HomeStack" component={Home} />
       <Stack.Screen name="Messages" component={Messages} />
       <Stack.Screen name="Settings" component={Settings} />
-      <Stack.Screen name="ChatScreen" component={ChatScreen} />
+      {/* <Stack.Screen name="ChatScreen" component={ChatScreen} /> */}
     </Stack.Navigator>
   );
 };
@@ -143,7 +162,7 @@ export const MentorNavigator = () => {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="MentorStack" component={Mentor} />
       <Stack.Screen name="Settings" component={Settings} />
-      <Stack.Screen name="MentorProfile" component={MentorProfile} />
+      <Stack.Screen name="MentorDetails" component={MentorDetails} />
       <Stack.Screen name="Plans" component={Plans} />
     </Stack.Navigator>
   );

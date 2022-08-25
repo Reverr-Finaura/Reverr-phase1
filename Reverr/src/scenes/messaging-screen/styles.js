@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginHorizontal: 24,
     marginVertical: 16,
+    marginTop:10,
   },
   subTitle: {
     bottom: 20,
