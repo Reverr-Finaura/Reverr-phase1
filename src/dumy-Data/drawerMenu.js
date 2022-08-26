@@ -1,27 +1,22 @@
 export const Menu = [
   {
     title: 'Edit Profile',
-    icon: require('../assets/images/editprofile.png'),
+    icon: require('../assets/images/edit.png'),
     path: 'EditIndivisualProfile',
   },
   {
     title: 'Calender',
-    icon: require('../assets/images/Calendar.png'),
+    icon: require('../assets/images/calendarIcon.png'),
     path: 'Calender',
   },
   {
     title: 'Books',
-    icon: require('../assets/images/book.png'),
-    path: 'Books',
+    icon: require('../assets/images/openbook.png'),
+    path: 'Learn',
   },
   {
     title: 'Settings',
-    icon: require('../assets/images/cog.png'),
+    icon: require('../assets/images/settings.png'),
     path: 'Settings',
-  },
-  {
-    title: 'Courses',
-    icon: require('../assets/images/course.png'),
-    path: 'Course',
   },
 ];
