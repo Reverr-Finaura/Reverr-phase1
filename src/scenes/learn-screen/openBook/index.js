@@ -59,7 +59,7 @@ const OpenBook = props => {
   const navigation = useNavigation();
 
   useEffect(() => {}, [currIndex]);
-
+  console.log(bookData, 'bookData');
   return (
     <View style={styles.screen}>
       <BackButton IconSize={30} />
@@ -275,7 +275,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   page: {
-    backgroundColor: AppColors.BtnClr,
+    backgroundColor: AppColors.FontsColor,
     width: Width / 1.05,
     height: Height / 1.3,
     paddingHorizontal: '5%',

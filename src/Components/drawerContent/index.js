@@ -8,13 +8,13 @@ import {
 } from 'react-native';
 import React from 'react';
 import {AppColors} from '../../utils';
-import {Item} from 'react-native-paper/lib/typescript/components/List/List';
 import {Menu} from '../../dumy-Data/drawerMenu';
-import {CustomButton} from '../CustomButton';
 import {useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 
 const DrawerContent = () => {
   const state = useSelector(state => state.UserReducer);
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Text
@@ -26,16 +26,19 @@ const DrawerContent = () => {
         }}>
         Profile
       </Text>
-      <Image
-        source={{uri: state.user.image}}
-        style={{
-          width: 90,
-          height: 90,
-          borderRadius: 90,
-          marginTop: '3%',
-          alignSelf: 'center',
-        }}
-      />
+      <TouchableOpacity
+        onPress={() => navigation.navigate('IndividualProfile')}>
+        <Image
+          source={{uri: state.user.image}}
+          style={{
+            width: 90,
+            height: 90,
+            borderRadius: 90,
+            marginTop: '3%',
+            alignSelf: 'center',
+          }}
+        />
+      </TouchableOpacity>
       <Text
         style={{
           textAlign: 'center',
@@ -55,8 +58,14 @@ const DrawerContent = () => {
                 flexDirection: 'row',
                 alignItems: 'center',
                 marginVertical: '4%',
+              }}
+              onPress={() => {
+                navigation.navigate(item.path);
               }}>
-              <Image source={item.icon} style={{tintColor: AppColors.BtnClr}} />
+              <Image
+                source={item.icon}
+                style={{tintColor: AppColors.BtnClr, width: 27, height: 27}}
+              />
               <Text
                 style={{
                   color: AppColors.BtnClr,

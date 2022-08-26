@@ -1,15 +1,8 @@
-import React, {Children, useState} from 'react';
-import {
-  StyleSheet,
-  Modal,
-  Text,
-  View,
-  Pressable,
-  TouchableOpacity,
-} from 'react-native';
+import React from 'react';
+import {StyleSheet, Modal, View, Pressable} from 'react-native';
 import {AppColors} from '../../utils';
 
-const CustomPopup = ({
+const OptionsPopup = ({
   modalVisible,
   onRequestClose,
   children,
@@ -38,26 +31,17 @@ const CustomPopup = ({
 
 const styles = StyleSheet.create({
   modal: {
-    margin: '9%',
-    marginTop: '60%',
-    padding: 5,
-    backgroundColor: AppColors.primarycolor,
-    shadowColor: 'black',
-    overflow: 'hidden',
-    borderRadius: 40,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+    backgroundColor: AppColors.ActiveColor,
+    width: '40%',
+    borderRadius: 5,
   },
   /* The content of the modal takes all the vertical space not used by the header. */
   outsideModal: {
     backgroundColor: 'rgba(1, 1, 1, 0.08)',
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
-export {CustomPopup};
+export {OptionsPopup};

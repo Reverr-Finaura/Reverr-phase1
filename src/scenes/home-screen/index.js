@@ -33,7 +33,6 @@ import {useNavigation} from '@react-navigation/native';
 import {AppColors} from '../../utils';
 import {cardData} from '../../dumy-Data/defaultHomeCardData';
 import LinearGradient from 'react-native-linear-gradient';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {Room} from '../rooms-screen';
 import {Rooms} from '../Room';
 import {styles2} from '../Room/styles';
@@ -50,7 +49,7 @@ const Home = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const renderCard = ({item}) => {
+  const renderCard = ({item, index}) => {
     //console.log("Hey!")
     // console.log(state.Rooms[0], 'userdta');
     return (
@@ -216,25 +215,17 @@ const Home = () => {
         <View style={styles2.IconContainer}>
           <View>
             <TouchableOpacity onPress={() => likePost(item.id, item)}>
-              <Icon2
-                name="happy-outline"
-                color={
-                  item.likes.includes(state.user.email)
-                    ? 'red'
-                    : AppColors.ActiveColor
-                }
-                size={28}
-              />
-              <Icon2
-                name="add-outline"
-                size={23}
-                color={
-                  item.likes.includes(state.user.email)
-                    ? 'red'
-                    : AppColors.ActiveColor
-                }
-                style={{position: 'absolute', right: 50, top: -4}}
-              />
+              {item.likes.includes(state.user.email) ? (
+                <Image
+                  source={require('../../assets/images/likedone.png')}
+                  style={{tintColor: 'blue', width: 30, height: 30}}
+                />
+              ) : (
+                <Image
+                  source={require('../../assets/images/like.png')}
+                  style={{tintColor: 'blue', width: 30, height: 30}}
+                />
+              )}
             </TouchableOpacity>
             <Text style={{marginStart: '8%', color: AppColors.BtnClr}}>
               {item.likes.length} reactions
@@ -314,9 +305,9 @@ const Home = () => {
         <HomeCard />
         <View style={{}}>
           <CustomMenuBar
-            Item1="Featured"
+            /*  Item1="Featured" */
             Item2="Discussion"
-            Item3="Patch"
+            /*  Item3="Patch" */
             active1={features}
             active2={discussion}
             active3={patch}
@@ -340,7 +331,7 @@ const Home = () => {
             {state.Rooms.length > 0 && (
               <FlatList
                 data={state.Rooms}
-                keyExtractor={item => item.id.toString()}
+                keyExtractor={item => item.id}
                 renderItem={renderCard}
                 onEndReached={_handleLoadMore}
                 onEndReachedThreshold={1}

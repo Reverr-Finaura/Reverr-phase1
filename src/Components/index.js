@@ -19,7 +19,8 @@ import {MentorHomeCard} from './mentorHomeCard';
 import {MentorDetails} from './Mentor-Profile';
 import {ProfileDetailsBox} from '../Components/profileDetailsBox';
 import {DrawerContent} from './drawerContent';
-import {Choice} from './Choice'
+import {Choice} from './Choice';
+import {OptionsPopup} from './optionPopup';
 export {
   BackButton,
   CustomButton,
@@ -43,5 +44,6 @@ export {
   MentorDetails,
   ProfileDetailsBox,
   DrawerContent,
-  Choice
+  Choice,
+  OptionsPopup,
 };
