@@ -14,10 +14,12 @@ import styles from './styles';
 
 import {useSelector} from 'react-redux';
 import {MentorCard} from '../../Components/MentorCard';
+import { Button } from 'react-native-paper';
+
 
 export const Mentor = () => {
   const {mentors} = useSelector(state => state.UserReducer);
-
+  
   return (
     <View style={styles.container}>
       <IndividualHeaderLayout>
@@ -46,7 +48,9 @@ export const Mentor = () => {
             renderItem={item => <MentorCard mentor={item} />}
           />
         </ScrollView>
+      
       </IndividualHeaderLayout>
+   
     </View>
   );
 };

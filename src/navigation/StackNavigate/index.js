@@ -50,6 +50,7 @@ import {ArticalDetails} from '../../scenes';
 import {MentorBottomTab} from '../MentorBottomTab';
 import {MentorDetails} from '../../Components';
 import {DrawerNavigation} from '../drawerNavigation';
+import { MatchScreen } from '../../scenes/MatchScreen';
 const Stack = createNativeStackNavigator();
 
 const StackNavigate = props => {
@@ -106,6 +107,7 @@ const StackNavigate = props => {
       {/* <Stack.Screen name="Messages" component={}/> */}
       <Stack.Screen name="MentorBottomTab" component={MentorBottomTab} />
       <Stack.Screen name="videoCall" component={VideoCall} />
+      <Stack.Screen name="MatchScreen" component={MatchScreen}/>
     </Stack.Navigator>
   );
 };
