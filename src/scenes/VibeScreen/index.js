@@ -8,7 +8,10 @@ import {
   Animated,
   PanResponder,
   ActivityIndicator,
+  Button,
+  ImageBackground,
 } from 'react-native';
+// import { useNavigation } from '@react-navigation/native';
 import {FlatList} from 'react-native-gesture-handler';
 import {useDispatch, useSelector} from 'react-redux';
 import {CustomPopup, IndividualHeaderLayout} from '../../Components';
@@ -16,8 +19,10 @@ import {Choice} from '../../Components';
 import {AppColors} from '../../utils';
 import {Load_Card, RemoveTopCard} from '../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
+import {useNavigation} from '@react-navigation/native';
 
 const Vibe = () => {
+  const navigation = useNavigation();
   const [demoData, setDemoData] = useState([
     {
       id: '123',
@@ -56,6 +61,7 @@ const Vibe = () => {
     }
     setLoading(false);
   }, []);
+
   useEffect(() => {
     setLoading(true);
     //setIdx(0);
@@ -101,14 +107,21 @@ const Vibe = () => {
           .get()
           .then(user => {
             const d = user._data;
-            //console.log(d);
+
             if (
               d &&
               d.liked_people &&
               d.liked_people.indexOf(state.user.email) != -1
             ) {
-              console.log('show model with item and state user');
               //call Model here.
+
+              console.log('show model with item and state user');
+
+              navigation.navigate('MatchScreen', {
+                prev,
+                d,
+              });
+
               setPrevDailog(true);
               setPrevData(prev);
             }
@@ -185,7 +198,8 @@ const Vibe = () => {
             styles.choiceContainer,
             styles.likeContainer,
             {opacity: likeOpacity},
-          ]}>
+          ]}
+        >
           <Choice type="Like" />
         </Animated.View>
         <Animated.View
@@ -193,7 +207,8 @@ const Vibe = () => {
             styles.choiceContainer,
             styles.unlikeContainer,
             {opacity: unlikeOpacity},
-          ]}>
+          ]}
+        >
           <Choice type="UnLike" />
         </Animated.View>
       </>
@@ -214,56 +229,57 @@ const Vibe = () => {
     return (
       <Animated.View
         style={[styles.card, isFirst && animatedCardStyle]}
-        {...dragHandler}>
+        {...dragHandler}
+      >
         {isFirst && renderChoice()}
-        <Image style={styles.image} source={{uri: item.image}} />
-        <Text
-          style={{
-            color: 'white',
-            fontSize: 22,
-            position: 'absolute',
-            top: 80,
-            left: 40,
-            fontFamily: 'poppins',
-            fontWeight: 'bold',
-            zIndex: 3,
-          }}>
-          {item.name}
-        </Text>
-        <Text
-          style={{
-            color: '#fff',
-            fontSize: 14,
-            position: 'absolute',
-            top: 110,
-            left: 60,
-            fontWeight: '400',
-          }}>
-          {item.designation || demoData[0].designation}
-        </Text>
-        <Text
-          style={{
-            color: '#fff',
-            fontSize: 14,
-            position: 'absolute',
-            top: 150,
-            left: 40,
-            fontWeight: '400',
-          }}>
-          {item.city || demoData[0].city}
-          {' ,'}
-          {item.country || demoData[0].country}
-        </Text>
+
+        <ImageBackground style={styles.image} source={{uri: item.image}}>
+          <Text
+            style={{
+              color: 'white',
+              fontSize: 22,
+              paddingLeft: 25,
+              fontFamily: 'poppins',
+              fontWeight: 'bold',
+            }}
+          >
+            {item.name}
+          </Text>
+          <Text
+            style={{
+              color: '#fff',
+              fontSize: 14,
+              marginLeft: 25,
+              fontWeight: '400',
+            }}
+          >
+            {item.designation || demoData[0].designation}
+          </Text>
+          <Text
+            style={{
+              color: '#fff',
+              fontSize: 14,
+              marginLeft: 25,
+              fontWeight: '400',
+            }}
+          >
+            {item.city || demoData[0].city}
+            {' ,'}
+            {item.country || demoData[0].country}
+          </Text>
+        </ImageBackground>
 
         <View>
           <Text
             style={{
+              marginTop: 5,
               color: '#fff',
               fontSize: 14,
               fontWeight: 'bold',
               marginTop: 10,
               marginHorizontal: 10,
-            }}>
+            }}
+          >
             {item.quote || demoData[0].quote}
           </Text>
           <Text
@@ -274,7 +290,8 @@ const Vibe = () => {
               marginTop: 20,
               marginHorizontal: 10,
               marginBottom: 20,
-            }}>
+            }}
+          >
             What I'm here for
           </Text>
           <View
@@ -282,23 +299,28 @@ const Vibe = () => {
               display: 'flex',
               flexDirection: 'row',
               justifyContent: 'space-between',
-            }}>
+            }}
+          >
             <View
               style={{
                 height: 100,
                 width: 100,
-                borderRadius: 50,
+                borderRadius: 80,
                 backgroundColor: '#012437',
                 justifyContent: 'center',
                 alignItems: 'center',
-              }}>
+              }}
+            >
               <Text
                 style={{
+                  textAlign: 'center',
                   color: 'grey',
-                  fontSize: 16,
+                  fontSize: 12,
+                  overflow: 'hidden',
                   fontWeight: 'bold',
                   width: 80,
-                }}>
+                }}
+              >
                 Hire Employees
               </Text>
             </View>
@@ -306,18 +328,22 @@ const Vibe = () => {
               style={{
                 height: 100,
                 width: 100,
-                borderRadius: 50,
+                borderRadius: 80,
                 backgroundColor: '#012437',
                 justifyContent: 'center',
                 alignItems: 'center',
-              }}>
+              }}
+            >
               <Text
                 style={{
+                  textAlign: 'center',
                   color: 'grey',
-                  fontSize: 16,
+                  overflow: 'hidden',
+                  fontSize: 12,
                   fontWeight: 'bold',
-                  width: 80,
-                }}>
+                  width: 50,
+                }}
+              >
                 Hire Mentors
               </Text>
             </View>
@@ -325,18 +351,22 @@ const Vibe = () => {
               style={{
                 height: 100,
                 width: 100,
-                borderRadius: 50,
+                borderRadius: 80,
                 backgroundColor: '#012437',
                 justifyContent: 'center',
                 alignItems: 'center',
-              }}>
+              }}
+            >
               <Text
                 style={{
+                  textAlign: 'center',
                   color: 'grey',
-                  fontSize: 16,
+                  fontSize: 12,
+                  overflow: 'hidden',
                   fontWeight: 'bold',
                   width: 80,
-                }}>
+                }}
+              >
                 Find Investors
               </Text>
             </View>
@@ -355,7 +385,8 @@ const Vibe = () => {
           justifyContent: 'center',
           alignItems: 'center',
           alignContent: 'center',
-        }}>
+        }}
+      >
         <Text style={styles.heading}>
           Buy Premium to connect with people who are interested in your profile.
         </Text>
@@ -365,7 +396,8 @@ const Vibe = () => {
             marginTop: 20,
             fontSize: 16,
             fontWeight: 'bold',
-          }}>
+          }}
+        >
           Many people viewed your profile
         </Text>
         <View
@@ -376,7 +408,8 @@ const Vibe = () => {
             marginVertical: 20,
             alignContent: 'center',
             alignItems: 'center',
-          }}>
+          }}
+        >
           <View
             style={{
               borderWidth: 2,
@@ -386,7 +419,8 @@ const Vibe = () => {
               justifyContent: 'center',
               alignContent: 'center',
               alignItems: 'center',
-            }}>
+            }}
+          >
             <Image
               style={{width: 100, height: 100}}
               source={require('../../assets/images/MentorCard.png')}
@@ -424,7 +458,8 @@ const Vibe = () => {
     <IndividualHeaderLayout>
       <CustomPopup
         modalVisible={prevDailog}
-        setModalVisible={() => setPrevDailog(false)}>
+        setModalVisible={() => setPrevDailog(false)}
+      >
         <View>
           <Text>Prev Data Show Here</Text>
         </View>
@@ -463,10 +498,11 @@ const styles = StyleSheet.create({
     backgroundColor: AppColors.primarycolor,
   },
   card: {
+    alignSelf: 'center',
     position: 'absolute',
-    bottom: -70,
+    bottom: -20,
     width: Dimensions.get('window').width / 1.15,
-    height: Dimensions.get('window').height / 1.2,
+    height: Dimensions.get('window').height / 1.35,
     marginHorizontal: 35,
     marginVertical: 20,
     borderTopRightRadius: 50,
@@ -483,8 +519,11 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 50,
     borderTopLeftRadius: 50,
     opacity: 0.9,
+    display: 'flex',
+    justifyContent: 'flex-end',
     resizeMode: 'cover',
   },
+
   heading: {
     color: '#0077B7',
     fontWeight: 'bold',
