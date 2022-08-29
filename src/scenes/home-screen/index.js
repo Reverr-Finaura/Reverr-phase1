@@ -16,6 +16,7 @@ import {
   HomeCard,
   IndividualHeaderLayout,
 } from '../../Components';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import {mentorService} from '../../Redux/services/mentor.service';
 import {
@@ -26,16 +27,14 @@ import {
   pin_post,
   deletePost,
 } from '../../Redux/actions';
-
-const Height = Dimensions.get('window').height;
-const Width = Dimensions.get('window').width;
 import {useNavigation} from '@react-navigation/native';
 import {AppColors} from '../../utils';
 import {cardData} from '../../dumy-Data/defaultHomeCardData';
 import LinearGradient from 'react-native-linear-gradient';
-import {Room} from '../rooms-screen';
-import {Rooms} from '../Room';
 import {styles2} from '../Room/styles';
+
+const Height = Dimensions.get('window').height;
+const Width = Dimensions.get('window').width;
 const Home = () => {
   const state = useSelector(state => state.UserReducer);
   const [features, setFeatures] = useState(false);
@@ -327,7 +326,7 @@ const Home = () => {
               setFeatures(false);
             }}
           />
-          <ScrollView>
+          <ScrollView style={{paddingBottom: '5%'}}>
             {state.Rooms.length > 0 && (
               <FlatList
                 data={state.Rooms}
@@ -342,6 +341,20 @@ const Home = () => {
           </ScrollView>
         </View>
       </ScrollView>
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => navigation.navigate('CreatePost')}
+        style={{
+          position: 'absolute',
+          backgroundColor: AppColors.ActiveColor,
+          borderRadius: 50,
+          right: 0,
+          bottom: 20,
+          padding: 10,
+          paddingHorizontal: 13,
+        }}>
+        <Icon name="plus" size={50} color={AppColors.FontsColor} />
+      </TouchableOpacity>
     </IndividualHeaderLayout>
   );
 };
