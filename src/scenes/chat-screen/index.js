@@ -92,7 +92,7 @@ const ChatScreen = props => {
         </View>
         
       </View>
-      {loading==false ? <View>
+      {loading==false ? <View style={{marginBottom:5,paddingBottom:100}}>
         <FlatList
           data={Recive}
           renderItem={({item}) => (
