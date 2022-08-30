@@ -13,10 +13,10 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 const MatchScreen = () => {
   const navigation = useNavigation();
   const {params} = useRoute();
-  const {prev, d} = params;
+  const {data} = params;
 
-  const userimage = prev.image;
-  const matchedimage = d.image;
+  const userimage = data.image;
+  const matchedimage = data.image;
   return (
     <View
       style={{
@@ -103,7 +103,7 @@ const MatchScreen = () => {
             color: 'white',
           }}
         >
-          You and {d.name} matched. Go send a hello !
+          You and {data.name} matched. Go send a hello !
         </Text>
       </View>
       <View
