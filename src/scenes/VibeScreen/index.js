@@ -8,16 +8,21 @@ import {
   Animated,
   PanResponder,
   ActivityIndicator,
+  Button,
+  ImageBackground,
 } from 'react-native';
+// import { useNavigation } from '@react-navigation/native';
 import {FlatList} from 'react-native-gesture-handler';
 import {useDispatch, useSelector} from 'react-redux';
 import {CustomPopup, IndividualHeaderLayout} from '../../Components';
 import {Choice} from '../../Components';
 import {AppColors} from '../../utils';
-import {Load_Card, RemoveTopCard} from '../../Redux/actions';
+import {Load_Card, matchedpeople, passedUser, Passed_User, RemoveTopCard} from '../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
+import {useNavigation} from '@react-navigation/native';
 
 const Vibe = () => {
+  const navigation = useNavigation();
   const [demoData, setDemoData] = useState([
     {
       id: '123',
@@ -42,33 +47,36 @@ const Vibe = () => {
     setLoading(true);
     //setIdx(0);
     console.log(idx);
-    if (state.user.no_of_swipe < 15) {
+    if (state.user.no_of_swipe<1115) {
       if (state.vibe.length == 0 || idx == 0) {
         dispatch(
-          Load_Card(undefined, state.user.email, state.user.no_of_swipe),
+          Load_Card(undefined, state.user.email, state.user.no_of_swipe,state.passed_userArray,state.Matched_userArray),
         );
+        //
       } else if (idx % 3 == 0) {
-        console.log('yes');
+        console.log('yes coming from %3');
         dispatch(
-          Load_Card(state.last_card, state.user.email, state.user.no_of_swipe),
+          Load_Card(state.last_card, state.user.email, state.user.no_of_swipe,state.passed_userArray,state.Matched_userArray),
         );
       }
     }
     setLoading(false);
   }, []);
+
   useEffect(() => {
-    setLoading(true);
+    setLoading(state.vibe.length);
     //setIdx(0);
-    console.log(idx);
-    if (state.user.no_of_swipe < 15) {
+    console.log('this is changing at idx',idx);
+    if (state.user.no_of_swipe<1115) {
       if (state.vibe.length == 0) {
         dispatch(
-          Load_Card(undefined, state.user.email, state.user.no_of_swipe),
+          Load_Card(undefined, state.user.email, state.user.no_of_swipe,state.passed_userArray,state.Matched_userArray),
         );
+        //
       } else if (idx % 4 == 0) {
-        console.log('yes');
+        console.log('yes I am here at index');
         dispatch(
-          Load_Card(state.last_card, state.user.email, state.user.no_of_swipe),
+          Load_Card(state.last_card, state.user.email, state.user.no_of_swipe,state.passed_userArray,state.Matched_userArray),
         );
       }
     }
@@ -79,54 +87,100 @@ const Vibe = () => {
   const swipe = useRef(new Animated.ValueXY()).current;
   const titleSign = useRef(new Animated.Value(1)).current;
 
-  const Add_to_likes = async prev => {
-    const item = prev.email;
-    console.log(item);
-    await firestore()
-      .collection('Users')
-      .doc(state.user.email)
-      .update({
-        liked_people: firestore.FieldValue.arrayUnion(item),
-      })
-      .then(async () => {
+  const Add_To_Passed=async(cardData)=>{  
+ 
+  let CardEmail=cardData.email
+  if(CardEmail){
+  dispatch( passedUser(CardEmail),)
+  console.log("passed email is",CardEmail)
+  console.log("anything hdddddere")
+  await firestore()
+  .collection('Users')
+  .doc(state.user.email)
+  .update({
+   Passed_Email: firestore.FieldValue.arrayUnion(CardEmail),
+  });
+  // console.log("passed_Array is",state.passed_userArray)
+
+  // Passed array in firestore get function
+  // var docRef = firestore().collection("Users").doc(state.user.email);
+
+  // docRef.get().then((doc) => {
+  //     if (doc.exists) {
+  //         console.log("Document data:", doc.data().Passed_Email);
+  //         var Passed_User_array= doc.data().Passed_Email
+          
+  //     } else {
+  //         // doc.data() will be undefined in this case
+  //         console.log("No such document!");
+  //     }
+  // }).catch((error) => {
+  //     console.log("Error getting document:", error);
+  // });
+  }
+  }
+  const Add_to_Match = async data => {
+    // console.log('data is', data);
+    var Liked_Email = data.email;
+    var My_Email = state.user.email;
+    var Liked_People = data.liked_people;
+    if (Liked_People) {
+      var check = Liked_People.includes(My_Email);
+      if (check) {
+      
         await firestore()
           .collection('Users')
-          .doc(item)
+          .doc(state.user.email)
           .update({
-            people_liked_me: firestore.FieldValue.arrayUnion(state.user.email),
+            Matched_People: firestore.FieldValue.arrayUnion(Liked_Email),
           });
-        await firestore()
-          .collection('Users')
-          .doc(item)
-          .get()
-          .then(user => {
-            const d = user._data;
-            //console.log(d);
-            if (
-              d &&
-              d.liked_people &&
-              d.liked_people.indexOf(state.user.email) != -1
-            ) {
-              console.log('show model with item and state user');
-              //call Model here.
-              setPrevDailog(true);
-              setPrevData(prev);
-            }
-          });
-      })
-      .catch(err => {
-        console.log(err.message);
-        console.log('please check your internet connection');
-      });
+          // action dispacthed to store matchedpeople
+          dispatch(matchedpeople(Liked_Email))
+        // Match screen is called here
+        navigation.navigate('MatchScreen', {
+          data,
+        });
+
+        setPrevDailog(true);
+        setPrevData(prev);
+      }
+    } else {
+      await firestore()
+        .collection('Users')
+        .doc(state.user.email)
+        .update({
+          liked_people: firestore.FieldValue.arrayUnion(Liked_Email),
+        })
+        .then(async () => {
+          await firestore()
+            .collection('Users')
+            .doc(Liked_Email)
+            .update({
+              people_liked_me: firestore.FieldValue.arrayUnion(
+                state.user.email,
+              ),
+            });
+        })
+        .catch(err => {
+          console.log(err.message);
+          console.log('please check your internet connection');
+        });
+    }
   };
   const panResponder = PanResponder.create({
     onMoveShouldSetPanResponder: () => true,
     onPanResponderMove: (_, {dx, dy, y0}) => {
       swipe.setValue({x: dx, y: dy});
-
+      if(dx<-140){
+        console.log("I am calling from here")
+        Add_To_Passed(state?.vibe[0])
+      
+      
+      }
       if (dx > 80) {
         setMainDialog(true);
-        Add_to_likes(state?.vibe[0]);
+        Add_to_Match(state?.vibe[0]);
+        // Add_to_likes(state?.vibe[0]);
       }
       titleSign.setValue(y0 > Dimensions.get('window').height / 2 ? 1 : -1);
     },
@@ -185,7 +239,8 @@ const Vibe = () => {
             styles.choiceContainer,
             styles.likeContainer,
             {opacity: likeOpacity},
-          ]}>
+          ]}
+        >
           <Choice type="Like" />
         </Animated.View>
         <Animated.View
@@ -193,7 +248,8 @@ const Vibe = () => {
             styles.choiceContainer,
             styles.unlikeContainer,
             {opacity: unlikeOpacity},
-          ]}>
+          ]}
+        >
           <Choice type="UnLike" />
         </Animated.View>
       </>
@@ -214,132 +270,60 @@ const Vibe = () => {
     return (
       <Animated.View
         style={[styles.card, isFirst && animatedCardStyle]}
-        {...dragHandler}>
+        {...dragHandler}
+      >
         {isFirst && renderChoice()}
-        <Image style={styles.image} source={{uri: item.image}} />
-        <Text
-          style={{
-            color: 'white',
-            fontSize: 22,
-            position: 'absolute',
-            top: 80,
-            left: 40,
-            fontFamily: 'poppins',
-            fontWeight: 'bold',
-            zIndex: 3,
-          }}>
-          {item.name}
-        </Text>
-        <Text
-          style={{
-            color: '#fff',
-            fontSize: 14,
-            position: 'absolute',
-            top: 110,
-            left: 60,
-            fontWeight: '400',
-          }}>
-          {item.designation || demoData[0].designation}
-        </Text>
-        <Text
-          style={{
-            color: '#fff',
-            fontSize: 14,
-            position: 'absolute',
-            top: 150,
-            left: 40,
-            fontWeight: '400',
-          }}>
-          {item.city || demoData[0].city}
-          {' ,'}
-          {item.country || demoData[0].country}
-        </Text>
 
-        <View>
-          <Text
-            style={{
-              color: '#fff',
-              fontSize: 14,
-              fontWeight: 'bold',
-              marginTop: 10,
-              marginHorizontal: 10,
-            }}>
-            {item.quote || demoData[0].quote}
-          </Text>
-          <Text
-            style={{
-              color: 'dodgerblue',
-              fontSize: 20,
-              fontWeight: 'bold',
-              marginTop: 20,
-              marginHorizontal: 10,
-              marginBottom: 20,
-            }}>
-            What I'm here for
-          </Text>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}>
-            <View
+        <ImageBackground
+          style={styles.image}
+          source={{uri: item.image}}
+        ></ImageBackground>
+        <View style={{display: 'flex'}}>
+          <View style={{marginHorizontal: 10, marginTop: 20}}>
+            <Text
               style={{
-                height: 100,
-                width: 100,
-                borderRadius: 50,
-                backgroundColor: '#012437',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <Text
-                style={{
-                  color: 'grey',
-                  fontSize: 16,
-                  fontWeight: 'bold',
-                  width: 80,
-                }}>
-                Hire Employees
-              </Text>
-            </View>
-            <View
+                color: 'white',
+                fontSize: 22,
+                fontFamily: 'poppins',
+                fontWeight: 'bold',
+              }}
+            >
+              {item.name}
+            </Text>
+            <Text
               style={{
-                height: 100,
-                width: 100,
-                borderRadius: 50,
-                backgroundColor: '#012437',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <Text
-                style={{
-                  color: 'grey',
-                  fontSize: 16,
-                  fontWeight: 'bold',
-                  width: 80,
-                }}>
-                Hire Mentors
-              </Text>
-            </View>
-            <View
+                color: '#fff',
+                fontSize: 14,
+                fontWeight: '400',
+              }}
+            >
+              {item.designation || demoData[0].designation}
+            </Text>
+            <Text
               style={{
-                height: 100,
-                width: 100,
-                borderRadius: 50,
-                backgroundColor: '#012437',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <Text
-                style={{
-                  color: 'grey',
-                  fontSize: 16,
-                  fontWeight: 'bold',
-                  width: 80,
-                }}>
-                Find Investors
-              </Text>
-            </View>
+                color: '#fff',
+                fontSize: 14,
+                fontWeight: '400',
+              }}
+            >
+              {item.city || demoData[0].city}
+              {' ,'}
+              {item.country || demoData[0].country}
+            </Text>
+          </View>
+
+          <View style={{marginTop: 35}}>
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: 14,
+                fontWeight: 'bold',
+                marginTop: 10,
+                marginHorizontal: 10,
+              }}
+            >
+              {item.quote || demoData[0].quote}
+            </Text>
           </View>
         </View>
       </Animated.View>
@@ -355,7 +339,8 @@ const Vibe = () => {
           justifyContent: 'center',
           alignItems: 'center',
           alignContent: 'center',
-        }}>
+        }}
+      >
         <Text style={styles.heading}>
           Buy Premium to connect with people who are interested in your profile.
         </Text>
@@ -365,7 +350,8 @@ const Vibe = () => {
             marginTop: 20,
             fontSize: 16,
             fontWeight: 'bold',
-          }}>
+          }}
+        >
           Many people viewed your profile
         </Text>
         <View
@@ -376,7 +362,8 @@ const Vibe = () => {
             marginVertical: 20,
             alignContent: 'center',
             alignItems: 'center',
-          }}>
+          }}
+        >
           <View
             style={{
               borderWidth: 2,
@@ -386,7 +373,8 @@ const Vibe = () => {
               justifyContent: 'center',
               alignContent: 'center',
               alignItems: 'center',
-            }}>
+            }}
+          >
             <Image
               style={{width: 100, height: 100}}
               source={require('../../assets/images/MentorCard.png')}
@@ -424,7 +412,8 @@ const Vibe = () => {
     <IndividualHeaderLayout>
       <CustomPopup
         modalVisible={prevDailog}
-        setModalVisible={() => setPrevDailog(false)}>
+        setModalVisible={() => setPrevDailog(false)}
+      >
         <View>
           <Text>Prev Data Show Here</Text>
         </View>
@@ -463,10 +452,11 @@ const styles = StyleSheet.create({
     backgroundColor: AppColors.primarycolor,
   },
   card: {
+    alignSelf: 'center',
     position: 'absolute',
-    bottom: -70,
+    bottom: -20,
     width: Dimensions.get('window').width / 1.15,
-    height: Dimensions.get('window').height / 1.2,
+    height: Dimensions.get('window').height / 1.35,
     marginHorizontal: 35,
     marginVertical: 20,
     borderTopRightRadius: 50,
@@ -474,6 +464,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 50,
     borderBottomRightRadius: 50,
     padding: 2,
+    backgroundColor: 'black',
     borderWidth: 2,
     borderColor: 'dodgerblue',
   },
@@ -483,8 +474,11 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 50,
     borderTopLeftRadius: 50,
     opacity: 0.9,
+    display: 'flex',
+    justifyContent: 'flex-end',
     resizeMode: 'cover',
   },
+
   heading: {
     color: '#0077B7',
     fontWeight: 'bold',

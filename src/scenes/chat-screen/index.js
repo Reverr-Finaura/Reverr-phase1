@@ -92,7 +92,7 @@ const ChatScreen = props => {
         </View>
         
       </View>
-      {loading==false ? <View>
+      {loading==false ? <View style={{marginBottom:5,paddingBottom:100}}>
         <FlatList
           data={Recive}
           renderItem={({item}) => (
@@ -104,7 +104,7 @@ const ChatScreen = props => {
               }}>
               <Text
                 style={{
-                  color: item.sendBy == userData.email ? '#fff' : 'yellow',
+                  color: item.sendBy == userData.email ? '#fff' : '#fff',
                   width: '30%',
                   justifyContent: 'center',
                   borderRadius: 15,

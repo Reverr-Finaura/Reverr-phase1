@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {AppColors} from '../../utils';
-import {BackButton} from '../../Components';
+import {BackButton, CustomPopup, OptionsPopup} from '../../Components';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useDispatch, useSelector} from 'react-redux';
@@ -26,6 +26,8 @@ const CommentsScreen = props => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [comment, setComment] = useState('');
+  const [options, setOptions] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('');
   //console.log(state.pin_post.comments, 'pin_posts');
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
@@ -59,13 +61,46 @@ const CommentsScreen = props => {
     height: Height / 14,
     paddingHorizontal: '3%',
   };
-  const clickhandler = item => {
-    //dispatch(deleteComment(state.pin_post.id,state.pin_post,item.id));
+  const deleteComment = () => {
+    //here write delete comment functionality
   };
 
   const renderCard = ({item}) => {
     return (
-      <View style={styles.commentCard}>
+      <View style={[styles.commentCard, {position: 'relative'}]}>
+        {item.id == selectedOption && (
+          <OptionsPopup
+            modalVisible={options}
+            setModalVisible={() => setOptions(false)}>
+            <View
+              style={{
+                alignItems: 'center',
+                borderRadius: 15,
+              }}>
+              <TouchableOpacity
+                style={{
+                  alignItems: 'center',
+                }}>
+                <Text
+                  style={{color: AppColors.FontsColor, marginVertical: '5%'}}>
+                  Edit
+                </Text>
+              </TouchableOpacity>
+              <View
+                style={{
+                  borderBottomWidth: 1,
+                  borderColor: 'white',
+                  width: '100%',
+                }}></View>
+              <TouchableOpacity>
+                <Text
+                  style={{color: AppColors.FontsColor, marginVertical: '5%'}}>
+                  Delete
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </OptionsPopup>
+        )}
         <View style={{display: 'flex', flexDirection: 'row'}}>
           <Image
             style={styles.dpsmall}
@@ -82,7 +117,11 @@ const CommentsScreen = props => {
             {item.commentedby.name || state.user.name}
           </Text>
           <View style={{marginLeft: 180}}>
-            <TouchableOpacity onPress={() => clickhandler(item)}>
+            <TouchableOpacity
+              onPress={() => {
+                setOptions(true);
+                setSelectedOption(item.id);
+              }}>
               <Icon2
                 name="ellipsis-vertical"
                 size={22}
