@@ -17,7 +17,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import {CustomPopup, IndividualHeaderLayout} from '../../Components';
 import {Choice} from '../../Components';
 import {AppColors} from '../../utils';
-import {Load_Card, matchedpeople, passedUser, Passed_User, RemoveTopCard} from '../../Redux/actions';
+import {
+  Load_Card,
+  matchedpeople,
+  passedUser,
+  Passed_User,
+  RemoveTopCard,
+} from '../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
 import {useNavigation} from '@react-navigation/native';
 
@@ -47,16 +53,28 @@ const Vibe = () => {
     setLoading(true);
     //setIdx(0);
     console.log(idx);
-    if (state.user.no_of_swipe<1115) {
+    if (state.user.no_of_swipe < 15) {
       if (state.vibe.length == 0 || idx == 0) {
         dispatch(
-          Load_Card(undefined, state.user.email, state.user.no_of_swipe,state.passed_userArray,state.Matched_userArray),
+          Load_Card(
+            undefined,
+            state.user.email,
+            state.user.no_of_swipe,
+            state.passed_userArray,
+            state.Matched_userArray,
+          ),
         );
         //
       } else if (idx % 3 == 0) {
         console.log('yes coming from %3');
         dispatch(
-          Load_Card(state.last_card, state.user.email, state.user.no_of_swipe,state.passed_userArray,state.Matched_userArray),
+          Load_Card(
+            state.last_card,
+            state.user.email,
+            state.user.no_of_swipe,
+            state.passed_userArray,
+            state.Matched_userArray,
+          ),
         );
       }
     }
@@ -66,17 +84,29 @@ const Vibe = () => {
   useEffect(() => {
     setLoading(state.vibe.length);
     //setIdx(0);
-    console.log('this is changing at idx',idx);
-    if (state.user.no_of_swipe<1115) {
+    console.log('this is changing at idx', idx);
+    if (state.user.no_of_swipe < 15) {
       if (state.vibe.length == 0) {
         dispatch(
-          Load_Card(undefined, state.user.email, state.user.no_of_swipe,state.passed_userArray,state.Matched_userArray),
+          Load_Card(
+            undefined,
+            state.user.email,
+            state.user.no_of_swipe,
+            state.passed_userArray,
+            state.Matched_userArray,
+          ),
         );
         //
       } else if (idx % 4 == 0) {
         console.log('yes I am here at index');
         dispatch(
-          Load_Card(state.last_card, state.user.email, state.user.no_of_swipe,state.passed_userArray,state.Matched_userArray),
+          Load_Card(
+            state.last_card,
+            state.user.email,
+            state.user.no_of_swipe,
+            state.passed_userArray,
+            state.Matched_userArray,
+          ),
         );
       }
     }
@@ -87,38 +117,37 @@ const Vibe = () => {
   const swipe = useRef(new Animated.ValueXY()).current;
   const titleSign = useRef(new Animated.Value(1)).current;
 
-  const Add_To_Passed=async(cardData)=>{  
- 
-  let CardEmail=cardData.email
-  if(CardEmail){
-  dispatch( passedUser(CardEmail),)
-  console.log("passed email is",CardEmail)
-  console.log("anything hdddddere")
-  await firestore()
-  .collection('Users')
-  .doc(state.user.email)
-  .update({
-   Passed_Email: firestore.FieldValue.arrayUnion(CardEmail),
-  });
-  // console.log("passed_Array is",state.passed_userArray)
+  const Add_To_Passed = async cardData => {
+    let CardEmail = cardData.email;
+    if (CardEmail) {
+      dispatch(passedUser(CardEmail));
+      console.log('passed email is', CardEmail);
+      console.log('anything hdddddere');
+      await firestore()
+        .collection('Users')
+        .doc(state.user.email)
+        .update({
+          Passed_Email: firestore.FieldValue.arrayUnion(CardEmail),
+        });
+      // console.log("passed_Array is",state.passed_userArray)
 
-  // Passed array in firestore get function
-  // var docRef = firestore().collection("Users").doc(state.user.email);
+      // Passed array in firestore get function->
+      // var docRef = firestore().collection("Users").doc(state.user.email);
 
-  // docRef.get().then((doc) => {
-  //     if (doc.exists) {
-  //         console.log("Document data:", doc.data().Passed_Email);
-  //         var Passed_User_array= doc.data().Passed_Email
-          
-  //     } else {
-  //         // doc.data() will be undefined in this case
-  //         console.log("No such document!");
-  //     }
-  // }).catch((error) => {
-  //     console.log("Error getting document:", error);
-  // });
-  }
-  }
+      // docRef.get().then((doc) => {
+      //     if (doc.exists) {
+      //         console.log("Document data:", doc.data().Passed_Email);
+      //         var Passed_User_array= doc.data().Passed_Email
+
+      //     } else {
+      //         // doc.data() will be undefined in this case
+      //         console.log("No such document!");
+      //     }
+      // }).catch((error) => {
+      //     console.log("Error getting document:", error);
+      // });
+    }
+  };
   const Add_to_Match = async data => {
     // console.log('data is', data);
     var Liked_Email = data.email;
@@ -127,15 +156,14 @@ const Vibe = () => {
     if (Liked_People) {
       var check = Liked_People.includes(My_Email);
       if (check) {
-      
         await firestore()
           .collection('Users')
           .doc(state.user.email)
           .update({
             Matched_People: firestore.FieldValue.arrayUnion(Liked_Email),
           });
-          // action dispacthed to store matchedpeople
-          dispatch(matchedpeople(Liked_Email))
+        // action dispacthed to store matchedpeople
+        dispatch(matchedpeople(Liked_Email));
         // Match screen is called here
         navigation.navigate('MatchScreen', {
           data,
@@ -171,11 +199,9 @@ const Vibe = () => {
     onMoveShouldSetPanResponder: () => true,
     onPanResponderMove: (_, {dx, dy, y0}) => {
       swipe.setValue({x: dx, y: dy});
-      if(dx<-140){
-        console.log("I am calling from here")
-        Add_To_Passed(state?.vibe[0])
-      
-      
+      if (dx < -140) {
+        console.log('I am calling from here');
+        Add_To_Passed(state?.vibe[0]);
       }
       if (dx > 80) {
         setMainDialog(true);
