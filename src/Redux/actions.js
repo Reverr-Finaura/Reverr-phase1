@@ -5,6 +5,7 @@ import {Alert} from 'react-native';
 // import { SavedCourses } from '../Components/SavedCourses';
 export const ADD_USER = 'ADD_USER';
 export const UPDATE_IMAGE = 'UPDATE_IMAGE';
+export const  Passed_User= 'Passed_User';
 export const UPDATE_USER_DATA = 'UPDATE_USER_DATA';
 export const CLEAR_USER_STATE = 'CLEAR_USER_STATE';
 export const LOAD_ROOM_DATA = 'LOAD_ROOM_DATA';
@@ -20,6 +21,7 @@ export const SET_MENTORS = 'SET_MENTORS';
 export const SELECT_MENTOR = 'SELECT_MENTOR';
 export const LIKE_MENTOR = 'LIKE_MENTOR';
 export const UNLIKE_MENTOR = 'UNLIKE_MENTOR';
+export const Matched_People='Matched_People'
 export const REMOVE_ARTICLE = 'REMOVE_ARTICLE';
 export const SAVE_ARTICLE = 'SAVE_ARTICLE';
 export const REMOVE_COURSE = 'REMOVE_COURSE';
@@ -43,20 +45,28 @@ export const RemoveTopCard=()=>{
     });
   }
 }
-export const Load_Card=(lastDocument,email,na)=>{
+export const Load_Card=(lastDocument,email,na,passedEmails,matchedpeople)=>{
   try {
+    if(passedEmails.length==0||matchedpeople.length==0){
+      passedEmails.push(email),
+      matchedpeople.push(email)
+    }
+
     //var lastcard=undefined;
     return async dispatch => {
       var list4=[];
-      let query=await firestore().collection('Users').orderBy('createdAt', 'desc');
+    //  await firestore().collection('Users').orderBy('createdAt', 'desc');
+    // filtering data by email here     
+      let query = await firestore().collection("Users").orderBy('email').where("email", "not-in", [...passedEmails,...matchedpeople])
       if (lastDocument !== undefined) {
         query = query.startAfter(lastDocument);
         console.log("last->"+lastDocument.name);
+        
       }
       // if (lastcard !== undefined) {
       //   query = query.startAfter(lastDocument);
       //   console.log("last->"+lastDocument.name);
-      // }
+      // } 
       await query
         .limit(5)
         .get()
@@ -69,7 +79,7 @@ export const Load_Card=(lastDocument,email,na)=>{
             list4.push(card);
             //console.log(list3);
           });
-          console.log("list4"+list4)
+          // console.log("list4",list4)
           
           dispatch({
             type: 'LOAD_CARDS',
@@ -78,6 +88,7 @@ export const Load_Card=(lastDocument,email,na)=>{
           await firestore().collection('Users').doc(email).update({
             no_of_swipe:na+5
           })
+          // console.log("Card has benn called")
         }).catch(e=>{
           console.log(e.message);
             throw new Error("Error at vibe");
@@ -769,3 +780,20 @@ export const updateUserState = (user, udata) => {
     payload: {user, udata},
   };
 };
+export const passedUser=(data)=>{
+  console.log("data of array is",data)
+ 
+  return{
+  type:'Passed_User',
+  payload:data,
+  }
+  
+  }
+
+  export const matchedpeople=(matchedarray)=>{
+return{
+  type:'Matched_People',
+  payload:matchedarray,
+}
+
+  }
