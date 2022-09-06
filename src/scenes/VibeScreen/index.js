@@ -11,6 +11,8 @@ import {
   Button,
   ImageBackground,
 } from 'react-native';
+
+
 // import { useNavigation } from '@react-navigation/native';
 import {FlatList} from 'react-native-gesture-handler';
 import {useDispatch, useSelector} from 'react-redux';
@@ -52,7 +54,7 @@ const Vibe = () => {
     setIdx(0);
     setLoading(true);
     //setIdx(0);
-    console.log(idx);
+    console.log(idx); 
     if (state.user.no_of_swipe < 15) {
       if (state.vibe.length == 0 || idx == 0) {
         dispatch(
@@ -112,6 +114,46 @@ const Vibe = () => {
     }
     setLoading(false);
   }, [idx]);
+//To Rest No_of_swipe
+useEffect(()=>{
+console.log("I am inside no of swipe")
+if(state.user.no_of_swipe>=15){const ExpiredDate= new Date;
+  console.log(ExpiredDate)
+  console.log(ExpiredDate.getTime())
+  const ExpiredTime =ExpiredDate.getTime()
+  const UpdatedTime= ExpiredTime+86400000 
+  // It is 24 hrrs in milli second
+  const ToChecKAfter= 86397500
+  console.log("updated time",UpdatedTime)
+
+  setTimeout(async()=>{
+
+    const UpdateDate=new Date
+    const NewUpdatedTime =UpdateDate.getTime()
+    console.log("New update time",NewUpdatedTime)
+  if(UpdatedTime>NewUpdatedTime){
+    await firestore()
+    .collection('Users')
+    .doc(state.user.email)
+    .update({
+      no_of_swipe: 0,
+    });
+    // console.log(" called here")
+  }
+  else{
+  
+    console.log("I am not here")
+  }
+  
+  },ToChecKAfter)
+
+}
+
+
+
+},[state.user.no_of_swipe])
+console.log("no of swipe",state.user.no_of_swipe)
+
   const [finish, setFinished] = useState(false);
   const {width, height} = Dimensions.get('window');
   const swipe = useRef(new Animated.ValueXY()).current;
