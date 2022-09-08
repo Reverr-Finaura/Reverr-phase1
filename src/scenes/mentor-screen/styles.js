@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {Dimensions} from 'react-native';
 const width = Dimensions.get('window').width;
+const Height = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -24,6 +25,14 @@ const styles = StyleSheet.create({
   card: {
     flex: 1,
     width: Dimensions.get('window').width / 1.1,
+  },
+  Card: {
+    width: '46%',
+    height: Height / 6.3,
+    margin: '2%',
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

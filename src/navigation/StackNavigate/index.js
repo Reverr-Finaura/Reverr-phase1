@@ -17,6 +17,7 @@ import {
   DashBoard,
   EditCalender,
   Notifications,
+  MentorList,
 } from '../../scenes';
 import ThanksScreen from '../../scenes/thanks-screen';
 import {
@@ -50,7 +51,8 @@ import {ArticalDetails} from '../../scenes';
 import {MentorBottomTab} from '../MentorBottomTab';
 import {MentorDetails} from '../../Components';
 import {DrawerNavigation} from '../drawerNavigation';
-import { MatchScreen } from '../../scenes/MatchScreen';
+import {MatchScreen} from '../../scenes/MatchScreen';
+import {CourseList} from '../../scenes/learn-screen';
 const Stack = createNativeStackNavigator();
 
 const StackNavigate = props => {
@@ -96,8 +98,10 @@ const StackNavigate = props => {
       <Stack.Screen name="TermConditions" component={TermConditions} />
       <Stack.Screen name="FundingForm" component={FundingForm} />
       <Stack.Screen name="ChatScreen" component={ChatScreen} />
+      <Stack.Screen name="CourseList" component={CourseList} />
       <Stack.Screen name="Notification" component={Notifications} />
       <Stack.Screen name="VideoCall" component={VideoCall} />
+      <Stack.Screen name="MentorList" component={MentorList} />
       <Stack.Screen name="MentorDetails" component={MentorDetails} />
       <Stack.Screen
         name="CalanderAppointments"
@@ -107,7 +111,7 @@ const StackNavigate = props => {
       {/* <Stack.Screen name="Messages" component={}/> */}
       <Stack.Screen name="MentorBottomTab" component={MentorBottomTab} />
       <Stack.Screen name="videoCall" component={VideoCall} />
-      <Stack.Screen name="MatchScreen" component={MatchScreen}/>
+      <Stack.Screen name="MatchScreen" component={MatchScreen} />
     </Stack.Navigator>
   );
 };

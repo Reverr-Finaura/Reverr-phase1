@@ -72,6 +72,24 @@ export const BottomNavigate = () => {
           ),
         }}
       />
+
+      <Tab.Screen
+        name="Vibe"
+        component={Vibe}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <Image
+              style={{
+                width: 32,
+                height: 32,
+                marginTop: 8,
+                tintColor: focused ? '#0077b7' : 'gray',
+              }}
+              source={require('../../assets/images/threepeople.png')}
+            />
+          ),
+        }}
+      />
       <Tab.Screen
         name="Funding"
         component={FundingScreen}
@@ -89,23 +107,6 @@ export const BottomNavigate = () => {
           ),
         }}
       />
-      {/*       <Tab.Screen
-        name="Rooms"
-        component={Rooms}
-        options={{
-          tabBarIcon: ({focused}) => (
-            <Image
-              style={{
-                width: 32,
-                height: 32,
-                marginTop: 8,
-                tintColor: focused ? '#0077b7' : 'gray',
-              }}
-              source={require('../../assets/images/Room.png')}
-            />
-          ),
-        }}
-      /> */}
       <Tab.Screen
         name="Learn"
         component={LearnScreen}
@@ -119,23 +120,6 @@ export const BottomNavigate = () => {
                 tintColor: focused ? '#0077b7' : 'gray',
               }}
               source={require('../../assets/images/Learn.png')}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Vibe"
-        component={Vibe}
-        options={{
-          tabBarIcon: ({focused}) => (
-            <Image
-              style={{
-                width: 32,
-                height: 32,
-                marginTop: 8,
-                tintColor: focused ? '#0077b7' : 'gray',
-              }}
-              source={require('../../assets/images/threepeople.png')}
             />
           ),
         }}

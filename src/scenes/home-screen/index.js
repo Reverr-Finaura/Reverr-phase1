@@ -217,12 +217,20 @@ const Home = () => {
               {item.likes.includes(state.user.email) ? (
                 <Image
                   source={require('../../assets/images/likedone.png')}
-                  style={{tintColor: 'blue', width: 30, height: 30}}
+                  style={{
+                    tintColor: AppColors.ActiveColor,
+                    width: 30,
+                    height: 30,
+                  }}
                 />
               ) : (
                 <Image
                   source={require('../../assets/images/like.png')}
-                  style={{tintColor: 'blue', width: 30, height: 30}}
+                  style={{
+                    tintColor: AppColors.ActiveColor,
+                    width: 30,
+                    height: 30,
+                  }}
                 />
               )}
             </TouchableOpacity>
@@ -353,7 +361,7 @@ const Home = () => {
           padding: 10,
           paddingHorizontal: 13,
         }}>
-        <Icon name="plus" size={50} color={AppColors.FontsColor} />
+        <Icon name="plus" size={30} color={AppColors.FontsColor} />
       </TouchableOpacity>
     </IndividualHeaderLayout>
   );

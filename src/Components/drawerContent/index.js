@@ -27,7 +27,8 @@ const DrawerContent = () => {
         Profile
       </Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate('IndividualProfile')}>
+        onPress={() => navigation.navigate('IndividualProfile')}
+        style={{marginTop: '10%'}}>
         <Image
           source={{uri: state.user.image}}
           style={{
@@ -49,7 +50,7 @@ const DrawerContent = () => {
         }}>
         {state.user.name}
       </Text>
-      <View style={{marginVertical: '5%', paddingHorizontal: '9%'}}>
+      <View style={{marginVertical: '15%', paddingHorizontal: '9%'}}>
         <FlatList
           data={Menu}
           renderItem={({item, index}) => (
@@ -105,8 +106,8 @@ const DrawerContent = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: AppColors.poupopbg,
-    borderRadius: 30,
     paddingTop: '5%',
+    height: '100%',
   },
   text: {
     color: AppColors.FontsColor,
