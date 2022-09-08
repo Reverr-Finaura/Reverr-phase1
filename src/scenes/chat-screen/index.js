@@ -104,7 +104,7 @@ const ChatScreen = props => {
               }}>
               <Text
                 style={{
-                  color: item.sendBy == userData.email ? '#fff' : 'yellow',
+                  color: item.sendBy == userData.email ? '#fff' : '#fff',
                   width: '30%',
                   justifyContent: 'center',
                   borderRadius: 15,

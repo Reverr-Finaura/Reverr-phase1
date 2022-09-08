@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import {Rooms} from '../scenes/Room';
 import {
   ADD_USER,
@@ -25,7 +26,9 @@ import {
   REMOVE_NOTIFICATION_INSTANCE,
   UPDATE_APPOINTMENT_INSTANCE,
   LOAD_CARDS,
-  REMOVE_TOP_CARD
+  REMOVE_TOP_CARD,
+  Passed_User,
+  Matched_People,
 } from './actions';
 
 const initialState = {
@@ -45,28 +48,35 @@ const initialState = {
   Rooms: [],
   refreshing: false,
   pin_post: {},
-  vibe:[],
-  last_card:{},
+  vibe: [],
+  last_card: {},
+  passed_userArray: [],
+  Matched_userArray: [],
 };
-
+var PassedPeople = [];
+var MatchedPeople = [];
 function UserReducer(state = initialState, action) {
+  // const[intialuser,setintialuser]=useState([])
   switch (action.type) {
     case REMOVE_TOP_CARD:
-      const mem=state.vibe.slice(1);
+      const mem = state.vibe.slice(1);
       //console.log("mem"+mem);
-      return{
+      return {
         ...state,
-        vibe:mem
+        vibe: mem,
       };
     case LOAD_CARDS:
       //console.log("Card Data"+ action.payload);
-      let buckets=[];
-      if(action.payload.lastDocument!=undefined){
-        bucket=[...state.vibe];
+      let buckets = [];
+      if (action.payload.lastDocument != undefined) {
+        bucket = [...state.vibe];
       }
-      
-      for(let i=0;i<action.payload.list4.length;i++){
-        if(buckets.indexOf(action.payload.list4[i])==-1 && action.payload.list4[i].email!=state.user.email){
+
+      for (let i = 0; i < action.payload.list4.length; i++) {
+        if (
+          buckets.indexOf(action.payload.list4[i]) == -1 &&
+          action.payload.list4[i].email != state.user.email
+        ) {
           buckets.push(action.payload.list4[i]);
           console.log(action.payload.list4[i].name);
         }
@@ -74,9 +84,9 @@ function UserReducer(state = initialState, action) {
       //buckets=[...buckets,...action.payload.list4]
       return {
         ...state,
-        user:{...state.user,no_of_swipe:state?.user?.no_of_swipe+5},
-        vibe:buckets,
-        last_card:action.payload.lastDocument
+        user: {...state.user, no_of_swipe: state?.user?.no_of_swipe + 5},
+        vibe: buckets,
+        last_card: action.payload.lastDocument,
       };
     case SET_USER:
       console.log('I am setuser');
@@ -276,6 +286,27 @@ function UserReducer(state = initialState, action) {
           savedMentors: bucket,
         },
       };
+    case Passed_User:
+      // storing passedPeople array here
+      PassedPeople.push(action.payload);
+
+      console.log('spreading passed array is', [...PassedPeople]);
+
+      return {
+        ...state,
+
+        passed_userArray: [...PassedPeople],
+      };
+
+    case Matched_People:
+        // storingMatchedPeople array here
+      MatchedPeople.push(action.payload);
+      return {
+        ...state,
+
+        Matched_userArray: [...MatchedPeople],
+      };
+
     case SAVE_ARTICLE:
       return {
         ...state,
@@ -346,8 +377,11 @@ function UserReducer(state = initialState, action) {
       var baskets = [];
       for (var i = 0; i < state?.user?.Appointement_request.length; i++) {
         if (i == action.payload) {
-          baskets.push({...state.user?.Appointement_request[i],approved:true});
-        }else{
+          baskets.push({
+            ...state.user?.Appointement_request[i],
+            approved: true,
+          });
+        } else {
           baskets.push(state?.user?.Appointement_request[i]);
         }
       }
