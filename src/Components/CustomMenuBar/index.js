@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
-    marginVertical: '10%',
+    marginTop: '5%',
   },
   text: {
     color: AppColors.FontsColor,

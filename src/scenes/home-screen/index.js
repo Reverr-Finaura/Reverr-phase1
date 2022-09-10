@@ -32,14 +32,16 @@ import {AppColors} from '../../utils';
 import {cardData} from '../../dumy-Data/defaultHomeCardData';
 import LinearGradient from 'react-native-linear-gradient';
 import {styles2} from '../Room/styles';
+import {ArticleList} from '../artical-screen';
+import {NewsList} from '../news-screen';
 
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
 const Home = () => {
   const state = useSelector(state => state.UserReducer);
-  const [features, setFeatures] = useState(false);
+  const [articles, setArticles] = useState(false);
   const [discussion, setDiscussion] = useState(true);
-  const [patch, setPatch] = useState(false);
+  const [news, setNews] = useState(false);
   const [popup, setPopup] = useState(false);
   const [seeMore, setSeeMore] = useState(false);
   const [seemoreId, setSeemoreId] = useState();
@@ -312,57 +314,71 @@ const Home = () => {
         <HomeCard />
         <View style={{}}>
           <CustomMenuBar
-            /*  Item1="Featured" */
+            Item1="Articles"
             Item2="Discussion"
-            /*  Item3="Patch" */
-            active1={features}
+            Item3="News"
+            active1={articles}
             active2={discussion}
-            active3={patch}
+            active3={news}
             ClickOnItem1={() => {
-              setFeatures(true);
+              setArticles(true);
               setDiscussion(false);
-              setPatch(false);
+              setNews(false);
             }}
             ClickOnItem2={() => {
               setDiscussion(true);
-              setFeatures(false);
-              setPatch(false);
+              setArticles(false);
+              setNews(false);
             }}
             ClickOnItem3={() => {
-              setPatch(true);
+              setNews(true);
               setDiscussion(false);
-              setFeatures(false);
+              setArticles(false);
             }}
           />
-          <ScrollView style={{paddingBottom: '5%'}}>
-            {state.Rooms.length > 0 && (
-              <FlatList
-                data={state.Rooms}
-                keyExtractor={item => item.id}
-                renderItem={renderCard}
-                onEndReached={_handleLoadMore}
-                onEndReachedThreshold={1}
-                refreshing={state.refreshing}
-                onRefresh={handleRefresh}
-              />
-            )}
-          </ScrollView>
+          {discussion && (
+            <View>
+              {state.Rooms.length > 0 && (
+                <FlatList
+                  data={state.Rooms}
+                  keyExtractor={item => item.id}
+                  renderItem={renderCard}
+                  onEndReached={_handleLoadMore}
+                  onEndReachedThreshold={1}
+                  refreshing={state.refreshing}
+                  onRefresh={handleRefresh}
+                />
+              )}
+            </View>
+          )}
+          {articles && (
+            <View>
+              <ArticleList />
+            </View>
+          )}
+          {news && (
+            <View>
+              <NewsList />
+            </View>
+          )}
         </View>
       </ScrollView>
-      <TouchableOpacity
-        activeOpacity={0.6}
-        onPress={() => navigation.navigate('CreatePost')}
-        style={{
-          position: 'absolute',
-          backgroundColor: AppColors.ActiveColor,
-          borderRadius: 50,
-          right: 0,
-          bottom: 20,
-          padding: 10,
-          paddingHorizontal: 13,
-        }}>
-        <Icon name="plus" size={30} color={AppColors.FontsColor} />
-      </TouchableOpacity>
+      {discussion && (
+        <TouchableOpacity
+          activeOpacity={0.6}
+          onPress={() => navigation.navigate('CreatePost')}
+          style={{
+            position: 'absolute',
+            backgroundColor: AppColors.ActiveColor,
+            borderRadius: 50,
+            right: 0,
+            bottom: 20,
+            padding: 10,
+            paddingHorizontal: 13,
+          }}>
+          <Icon name="plus" size={30} color={AppColors.FontsColor} />
+        </TouchableOpacity>
+      )}
     </IndividualHeaderLayout>
   );
 };

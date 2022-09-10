@@ -53,10 +53,11 @@ const NewsList = () => {
       {loading ? (
         <Text>Loading....</Text>
       ) : (
-        <View style={{height: Height > 684 ? Height / 1.3 : Height / 1.35}}>
-          <View>
-            <Text style={styles.news}>News</Text>
-          </View>
+        <View
+          style={{
+            height: Height > 684 ? Height / 1.3 : Height / 1.35,
+            paddingTop: '5%',
+          }}>
           <FlatList
             data={newsData}
             nestedScrollEnabled={true}

@@ -5,7 +5,7 @@ import {
   FlatList,
   Text,
   TouchableOpacity,
-  ToastAndroid
+  ToastAndroid,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import Ionic from 'react-native-vector-icons/Ionicons';
@@ -13,14 +13,14 @@ import firestore from '@react-native-firebase/firestore';
 import {AppColors, smallString} from '../../../utils';
 import {useNavigation} from '@react-navigation/native';
 import {ArticalLoader} from '../../../Components';
-import { useSelector,useDispatch } from 'react-redux';
-import { RemoveArticle,SaveArticle } from '../../../Redux/actions';
+import {useSelector, useDispatch} from 'react-redux';
+import {RemoveArticle, SaveArticle} from '../../../Redux/actions';
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
 
 const ArticleList = props => {
-  const state=useSelector(state=>state.UserReducer);
-  const dispatch=useDispatch();
+  const state = useSelector(state => state.UserReducer);
+  const dispatch = useDispatch();
   const [articalData, setArticalData] = useState();
   const [loading, setLoading] = useState(false);
   //console.log(state.user.savedArticles);
@@ -41,39 +41,49 @@ const ArticleList = props => {
     getArticles();
   }, []);
 
-  const showToast = (msg) => {
+  const showToast = msg => {
     ToastAndroid.show(msg, ToastAndroid.SHORT);
   };
 
-  const removeArticleFromSaves=async(item)=>{
-    var bucket=[];
-    for(var i=0;i<state?.user?.savedArticles.length;i++){
-      if(item.id!=state?.user?.savedArticles[i]){
+  const removeArticleFromSaves = async item => {
+    var bucket = [];
+    for (var i = 0; i < state?.user?.savedArticles.length; i++) {
+      if (item.id != state?.user?.savedArticles[i]) {
         bucket.push(state?.user?.savedArticles[i]);
       }
     }
     //console.log("bucket:"+bucket);
     dispatch(RemoveArticle(item.id));
-    await firestore().collection('Users').doc(state.user.email).update({
-      savedArticles:bucket
-    }).then(()=>{
-      showToast('Article Removed Successfully!')
-    }).catch(err=>{
-      showToast('Problem in removing Article!')
-    })
-  }
+    await firestore()
+      .collection('Users')
+      .doc(state.user.email)
+      .update({
+        savedArticles: bucket,
+      })
+      .then(() => {
+        showToast('Article Removed Successfully!');
+      })
+      .catch(err => {
+        showToast('Problem in removing Article!');
+      });
+  };
 
-  const saveArticle=async(item)=>{
+  const saveArticle = async item => {
     //console.log(item);
-    dispatch(SaveArticle(item.id)) 
-    await firestore().collection('Users').doc(state.user.email).update({
-      savedArticles:[...state?.user?.savedArticles,item.id]
-    }).then(()=>{
-      showToast('Article saved Successfully!')
-    }).catch(err=>{
-      showToast('Problem in saving Article!')
-    })
-  }
+    dispatch(SaveArticle(item.id));
+    await firestore()
+      .collection('Users')
+      .doc(state.user.email)
+      .update({
+        savedArticles: [...state?.user?.savedArticles, item.id],
+      })
+      .then(() => {
+        showToast('Article saved Successfully!');
+      })
+      .catch(err => {
+        showToast('Problem in saving Article!');
+      });
+  };
 
   return (
     <View style={styles.screen}>
@@ -92,28 +102,31 @@ const ArticleList = props => {
                     navigation.navigate('ArticalDetails', {
                       articalData: item,
                     });
-                  }}>
+                  }}
+                  style={{paddingHorizontal: '2%'}}>
                   <View style={styles.line}></View>
                   <View style={styles.title}>
-                    <Text style={styles.text}>{item.heading}</Text>
+                    <Text style={[styles.text, {width: Width / 1.3}]}>
+                      {item.heading}
+                    </Text>
                     <TouchableOpacity
-                      onPress={() =>{
-                        if(state?.user?.savedArticles?.includes(item.id)){
-                          removeArticleFromSaves(item); 
-                        }else{
-                          saveArticle(item)
+                      onPress={() => {
+                        if (state?.user?.savedArticles?.includes(item.id)) {
+                          removeArticleFromSaves(item);
+                        } else {
+                          saveArticle(item);
                         }
-                      }
-                    }
+                      }}
                       style={{justifyContent: 'center', alignItems: 'center'}}>
                       <Ionic
                         name="heart"
                         size={20}
                         // color="gray"
-                           color={
-                            state?.user?.savedArticles?.includes(item.id) ? 'red' : 'gray'
-                          }
-                          
+                        color={
+                          state?.user?.savedArticles?.includes(item.id)
+                            ? 'red'
+                            : 'gray'
+                        }
                       />
                     </TouchableOpacity>
                   </View>
@@ -136,7 +149,7 @@ const styles = StyleSheet.create({
     height: Height > 684 ? Height / 1.32 : Height / 1.41,
   },
   ListContainer: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
     marginTop: Height > 684 ? 20 : 10,
 
     width: '100%',
@@ -163,7 +176,7 @@ const styles = StyleSheet.create({
     paddingStart: 5,
   },
   desc: {
-    color: AppColors.FontsColor,
+    color: AppColors.BtnClr,
     fontFamily: 'Poppins-Regular',
   },
 });

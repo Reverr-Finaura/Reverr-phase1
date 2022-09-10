@@ -24,10 +24,14 @@ const MentorList = props => {
   const getMentors = async () => {
     setLoading(true);
     const snapshot = await firestore()
-      .collection('Mentors')
+      .collection('Users')
       .get()
       .then(res => {
-        let mentors = res.docs.map(doc => doc.data());
+        let AllUsers = res.docs.map(doc => doc.data());
+
+        let mentors = AllUsers.filter(item => item.userType === 'Mentor');
+        console.log(mentors.length, 'mentors');
+        console.log(AllUsers.length, 'ALlUSERS');
         setMentorsList(
           mentors.filter(item => item.industry === mentorCategory),
         ),

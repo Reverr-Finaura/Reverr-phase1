@@ -23,7 +23,7 @@ export const MentorDetails = props => {
   const [pressed, setPressed] = useState(false);
   const state = useSelector(state => state.UserReducer);
   const selectedmentor = props.route.params.mentorDetails;
-  console.log(selectedmentor, 'selected');
+  // console.log(selectedmentor, 'selected');
 
   const Ratings = () => {
     return <Rating />;
@@ -61,14 +61,6 @@ export const MentorDetails = props => {
           </View>
         );
       case 2:
-        navigaton.navigate('Plans', {
-          plans: selectedmentor.plans,
-          mentor: selectedmentor.email,
-          orders: selectedmentor.orders,
-          clients: selectedmentor.clients,
-        });
-      // break;
-      case 3:
         return (
           <View style={{height: 90}}>
             <Text
@@ -170,13 +162,20 @@ export const MentorDetails = props => {
 
         <View style={{}}>
           <Details
-            buttons={['About', 'Experience', 'Plans', 'Domain']}
+            buttons={['About', 'Experience', 'Domain']}
             afterClickEvent={setIndex}
           />
           {renderOptions(optionIndex)}
         </View>
         <View style={{paddingBottom: 90}}>
-          <CustomButton title="Schedule" />
+          <CustomButton
+            onPress={() => {
+              navigaton.navigate('CalanderAppointments', {
+                mentor: selectedmentor,
+              });
+            }}
+            title="Schedule"
+          />
         </View>
       </ScrollView>
     )
