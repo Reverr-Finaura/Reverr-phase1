@@ -119,6 +119,7 @@ const Rooms = () => {
             <Text
               style={{
                 color: AppColors.BtnClr,
+               alignSelf:'center',
                 fontWeight: 'bold',
                 marginTop: '-5%',
                 marginRight: '4%',

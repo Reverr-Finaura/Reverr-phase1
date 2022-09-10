@@ -8,6 +8,7 @@ import {
   TextInput,
   Button,
   Alert,
+  Modal,
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import {AppColors} from '../../utils';
@@ -48,10 +49,13 @@ const DrawerContent = () => {
     console.log(password);
     const UserDetails = auth();
     const provider = firebase.auth.EmailAuthProvider;
-    const authCredential = provider.credential(
-      UserDetails.currentUser.email,
-      password,
-    );
+    if(password){
+      const authCredential = provider.credential(
+        UserDetails.currentUser.email,
+       password,
+      );
+    }
+  
     console.log(UserDetails.currentUser.uid);
     await UserDetails.currentUser.reauthenticateWithCredential(authCredential);
     console.log(password);
