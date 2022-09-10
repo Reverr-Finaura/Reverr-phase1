@@ -8,6 +8,7 @@ import {
   Dimensions,
   ScrollView,
   KeyboardAvoidingView,
+  PermissionsAndroid,
 } from 'react-native';
 import React, {useState, useContext} from 'react';
 import {AppColors} from '../../../utils';
@@ -85,6 +86,31 @@ const EditProfile = () => {
       : '>/s<',
   );
 
+  const AllowPermission = async () => {
+    console.log('call here');
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+        {
+          title: 'Camera Permission',
+          message:
+            'Reverr App needs access to your camera ' +
+            'so you can  post pictures.',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('You can use the camera');
+      } else {
+        console.log('Camera permission denied');
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  };
+
   const navigation = useNavigation();
 
   const saveChanges = async () => {
@@ -150,7 +176,8 @@ const EditProfile = () => {
             fontFamily: 'Poppins-Regular',
             marginStart: Width / 4.5,
             fontSize: 22,
-          }}>
+          }}
+        >
           Edit Profile
         </Text>
       </View>
@@ -275,8 +302,16 @@ const EditProfile = () => {
         onPress={() => {
           setLoading(true);
           ChangeDp(loading, setLoading, dispatch, state?.user?.email);
-        }}>
-        <Icon name="camera" size={15} color="black" />
+        }}
+      >
+        <Icon
+          name="camera"
+          onPress={() => {
+            AllowPermission();
+          }}
+          size={15}
+          color="black"
+        />
       </TouchableOpacity>
     </View>
   );

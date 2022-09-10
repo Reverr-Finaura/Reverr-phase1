@@ -48,6 +48,7 @@ export const ChangeDp = (loading, setLoading, dispatch, email) => {
     .then(image => {
       try {
         //loading;
+        
         const url = image.path;
         const fileUrl = url.substring(url.lastIndexOf('/') + 1);
         storage()
