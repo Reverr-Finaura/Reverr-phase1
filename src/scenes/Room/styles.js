@@ -22,7 +22,9 @@ const styles2 = StyleSheet.create({
   },
   postCard: {
     marginTop: '4%',
-    borderRadius: 20,
+    alignSelf:'center',
+    width:325,
+    borderRadius: 10,
     marginHorizontal: '2%',
     paddingHorizontal: '3%',
     paddingVertical: '3%',
@@ -36,8 +38,8 @@ const styles2 = StyleSheet.create({
     justifyContent: 'space-between',
   },
   dp: {
-    height: Height / 14,
-    width: Width / 7,
+    height: Height / 16,
+    width: Width / 10,
     borderRadius: 56,
   },
   name: {
@@ -45,9 +47,11 @@ const styles2 = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
     fontWeight: 'bold',
     fontSize: 19,
+    marginLeft:12,
   },
   company: {
-    color: AppColors.infoFonts,
+    marginLeft:12,
+        color: AppColors.infoFonts,
     fontFamily: 'Poppins-Regular',
   },
   image: {
@@ -60,6 +64,7 @@ const styles2 = StyleSheet.create({
     color: AppColors.FontsColor,
     fontFamily: 'Poppins-Regular',
     fontSize: 16,
+    marginLeft:60,
   },
   createBtn: {
     bottom: 20,
@@ -67,9 +72,9 @@ const styles2 = StyleSheet.create({
   },
   IconContainer: {
     flexDirection: 'row',
+    alignSelf:'center',
     paddingVertical: '2%',
     justifyContent: 'space-between',
-    paddingRight: '20%',
   },
 });
 

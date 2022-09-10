@@ -78,6 +78,7 @@ const Home = () => {
               style={{
                 color: AppColors.BtnClr,
                 fontWeight: 'bold',
+               alignSelf:'center',
                 marginTop: '-5%',
                 marginRight: '4%',
               }}>
