@@ -215,7 +215,7 @@ const Home = () => {
           )}
         </View>
         <View style={styles2.IconContainer}>
-          <View>
+          <View style={{flexDirection:'row',alignItems:'center'}}>
             <TouchableOpacity onPress={() => likePost(item.id, item)}>
               {item.likes.includes(state.user.email) ? (
                 <Image
@@ -227,12 +227,13 @@ const Home = () => {
                   }}
                 />
               ) : (
+            
                 <Image
                   source={require('../../assets/images/like.png')}
                   style={{
                     tintColor: AppColors.ActiveColor,
-                    width: 30,
-                    height: 30,
+                    width: 20,
+                    height: 22,
                   }}
                 />
               )}
@@ -241,7 +242,7 @@ const Home = () => {
               {item.likes.length} reactions
             </Text>
           </View>
-          <View>
+          <View style={{flexDirection:'row',alignItems:'center'}}>
             <TouchableOpacity
               onPress={() => {
                 dispatch(pin_post(item));
@@ -250,18 +251,20 @@ const Home = () => {
                 // });
                 navigation.navigate('comments');
               }}>
+
               <Image
                 source={require('../../assets/images/comment.png')}
                 style={{
                   tintColor: AppColors.ActiveColor,
-                  height: 27,
-                  width: 27,
+                  height: 22,
+                  width: 20,
                 }}
               />
             </TouchableOpacity>
             <Text style={{marginStart: '8%', color: AppColors.BtnClr}}>
               {item.comments.length} comments
             </Text>
+            
           </View>
         </View>
       </LinearGradient>

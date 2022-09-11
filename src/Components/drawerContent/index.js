@@ -22,60 +22,7 @@ const DrawerContent = () => {
   const state = useSelector(state => state.UserReducer);
   const navigation = useNavigation();
 
-  const [password, setpasword] = useState('');
-  const [visible, setVisible] = useState(false);
-  const [text, onTextChange] = useState('');
-  const createTwoButtonAlert = () =>
-    Alert.alert(' Delete Permanetly', 'Are you sure want to delete Account', [
-      {
-        text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
-        style: 'cancel',
-      },
-      {
-        text: 'OK',
-        onPress: () => {
-          HandleDelete();
-        },
-      },
-    ]);
-  // calling when password changes
-  useEffect(() => {
-    DeleteFunction();
-  }, [password]);
-
-  // Deleting user frrom auth
-  const DeleteFunction = async () => {
-    console.log(password);
-    const UserDetails = auth();
-    const provider = firebase.auth.EmailAuthProvider;
-    if(password){
-      const authCredential = provider.credential(
-        UserDetails.currentUser.email,
-       password,
-      );
-    }
-  
-    console.log(UserDetails.currentUser.uid);
-    await UserDetails.currentUser.reauthenticateWithCredential(authCredential);
-    console.log(password);
-    UserDetails.currentUser.delete().then(console.log('delete perm'));
-  };
-  // Deleting  user document here
-  const HandleDelete = async () => {
-    console.log('At delete');
-    const UserDetail = auth();
-    console.log(UserDetail);
-    console.log(UserDetail.currentUser);
-    await firestore()
-      .collection('Users')
-      .doc(state.user.email)
-      .delete()
-      .then(() => {
-        console.log('User deleted!');
-      });
-    setVisible(true);
-  };
+ 
 
 
   return (
@@ -143,39 +90,7 @@ const DrawerContent = () => {
           )}
         />
 
-<View style={{alignSelf: 'center'}}>
-          <TouchableOpacity onPress={createTwoButtonAlert}>
-            <Text style={{color: 'red', fontSize: 18, fontWeight: 'bold'}}>
-              Delete Account
-            </Text>
-          </TouchableOpacity>
 
-          <Modal
-            visible={visible}
-            transparent={true}
-            style={{justifyContent: 'center'}}
-          >
-            <View
-              style={{
-                height: 100,
-                padding: 20,
-                width: '80%',
-                alignSelf: 'center',
-                justifyContent: 'center',
-                backgroundColor: 'white',
-              }}
-            >
-              <TextInput
-                value={Text}
-                onChangeText={newtext => setpasword(newtext)}
-                placeholder={'Enter Your Password'}
-              />
-              <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-                <Button title="close" onPress={() => setVisible(false)} />
-              </View>
-            </View>
-          </Modal>
-        </View>
 
       </View>
       <View
