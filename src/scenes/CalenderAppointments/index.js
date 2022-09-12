@@ -94,9 +94,8 @@ const CalanderAppointments = props => {
     /* if (state.user.mentors.includes(props.route.params.mentor)) {
       alert('go to appoinment ');
     } else { */
-    //console.log(plan, 'plans');
-    var oId = makeid(12);
-    // console.log("oid: ",oId[0]);
+  
+  var oId = makeid(12);
     var amt = plan[0] / 2;
     if (amt < 501) {
       amt = 500;
@@ -107,7 +106,7 @@ const CalanderAppointments = props => {
         amt = 1000;
       }
     }
-    console.log(plan[0] / 2, amt, 'plans');
+console.log(plan[0] / 2, amt, 'plans');
     const order = {
       orderId: oId,
       currency: 'INR',
@@ -115,36 +114,32 @@ const CalanderAppointments = props => {
       secret: '$2b$10$wu8ujbqHIaelkAQ.MfmRE.eVx.7iVOBfbyIbsD1zRSWvgzsFf4goe',
     };
 
+    console.log(order);
+
     const headers = {
       'Content-Type': 'application/json',
     };
+
+
+    //<--- set true loader --->
+
 
     const res = await axios
       .post('https://reverrserver.herokuapp.com/cftoken', order, {
         headers: headers,
       })
       .then(res => {
-        //console.log(res.data)
         order.token = res.data.cftoken;
-        // console.log(order, 'order');
         cashfree(order);
-      });
-    // .then(data => {
-    //   order.token = data.cftoken;
-    //   //cashfree(order);
-    //   console.log(order);
-    // }).catch(e=>{
-    //   alert('Error in payment gateway!')
-    // });
-    /*  } */
+      }).catch(err=>{
+        console.log(err);
+      })
   };
 
   const cashfree = order => {
-    var env = 'TEST';
-    //console.log(order.amount, 'amnt');
     var map = {
       orderId: order.orderId,
-      orderAmount: order.amount,
+      orderAmount: order.amount.toString(),
       appId: '21235619dae90a7c71fa82b24c653212',
       tokenData: order.token,
       orderCurrency: order.currency,
@@ -154,8 +149,14 @@ const CalanderAppointments = props => {
       customerPhone: state.user.mobile,
       customerEmail: state.user.email,
     };
+    console.log(map);
     RNPgReactNativeSDK.startPaymentWEB(map, 'PROD', result => {
       //console.log('openUI');
+
+
+      //<---- set false loader here ---->
+
+
       var payment = {
         paymentMode: '',
         orderId: '',

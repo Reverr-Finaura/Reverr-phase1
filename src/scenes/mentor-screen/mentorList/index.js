@@ -70,7 +70,7 @@ const MentorList = props => {
               paddingTop: '60%',
             }}>
             <Text style={{color: AppColors.FontsColor, fontSize: 20}}>
-              🤨 We Have No Mentors In This Categry 🤨
+              We Have No Mentors In This Categry 
             </Text>
           </View>
         ) : (

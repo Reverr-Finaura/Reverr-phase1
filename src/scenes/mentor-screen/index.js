@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -20,9 +20,42 @@ import LinearGradient from 'react-native-linear-gradient';
 import {mentorCategory} from '../../dumy-Data/mentorsCategory';
 import {AppColors} from '../../utils';
 import {useNavigation} from '@react-navigation/native';
+import firestore from '@react-native-firebase/firestore';
 
 export const Mentor = () => {
   const [column, setColumn] = useState(2);
+  const [mentorsList, setMentorsList] = useState();
+  var mc = mentorCategory;
+  var newlist=[];
+  const getMentors = async () => {
+    // setLoading(true);
+    const snapshot = await firestore()
+      .collection('Users')
+      .get()
+      .then(res => {
+        let AllUsers = res.docs.map(doc => doc.data());
+
+        let mentors = AllUsers.filter(item => item.userType === 'Mentor');
+        console.log(mentors.length, 'mentors');
+        console.log(AllUsers.length, 'ALlUSERS');
+        mentors.map((mentor)=>{
+          if(newlist.includes(mentor.industry)){
+            console.log("included")
+          }
+          else{
+            newlist.push(mentor.industry);
+          }
+        }),
+          // setLoading(false);
+          console.log(newlist);
+          console.log(newlist.length)
+          console.log(mentorCategory.length)
+      });
+  };
+
+  useEffect(()=>{
+    // getMentors();
+  },[])
 
   const navigation = useNavigation();
 
