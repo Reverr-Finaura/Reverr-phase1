@@ -23,9 +23,9 @@ const styles2 = StyleSheet.create({
   postCard: {
     marginTop: '4%',
     alignSelf: 'center',
-    width: 325,
+    width: 365,
     borderRadius: 10,
-    marginHorizontal: '2%',
+
     paddingHorizontal: '3%',
     paddingVertical: '3%',
   },

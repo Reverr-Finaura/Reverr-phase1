@@ -347,7 +347,7 @@ const Home = () => {
               {state.Rooms.length == 0 ? (
                 <SkeltonLoader />
               ) : (
-                <View>
+                <View style={{width: '100%', marginBottom: '3%'}}>
                   {state.Rooms.length > 0 && (
                     <FlatList
                       data={state.Rooms}
