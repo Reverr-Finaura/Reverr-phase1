@@ -5,10 +5,12 @@ import {
   TouchableOpacity,
   Dimensions,
   ToastAndroid,
+  ActivityIndicator,
+  Modal,
 } from 'react-native';
 import React, {useState, useEffect, useContext} from 'react';
 import {AppColors} from '../../utils';
-import {BackButton} from '../../Components';
+import {BackButton, CustomPopup} from '../../Components';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {CustomButton} from '../../Components';
@@ -75,6 +77,7 @@ const CalanderAppointments = props => {
   const [availability, setAvailability] = useState([0, 1, 1, 1, 1, 1, 1]);
   const [pointDay, setPointDay] = useState(0);
   const [count, setCount] = useState(0);
+  const [loader, setLoader] = useState(false);
   var daylist = [
     'Sunday',
     'Monday',
@@ -94,8 +97,8 @@ const CalanderAppointments = props => {
     /* if (state.user.mentors.includes(props.route.params.mentor)) {
       alert('go to appoinment ');
     } else { */
-  
-  var oId = makeid(12);
+
+    var oId = makeid(12);
     var amt = plan[0] / 2;
     if (amt < 501) {
       amt = 500;
@@ -106,7 +109,7 @@ const CalanderAppointments = props => {
         amt = 1000;
       }
     }
-console.log(plan[0] / 2, amt, 'plans');
+    console.log(plan[0] / 2, amt, 'plans');
     const order = {
       orderId: oId,
       currency: 'INR',
@@ -119,10 +122,8 @@ console.log(plan[0] / 2, amt, 'plans');
     const headers = {
       'Content-Type': 'application/json',
     };
-
-
+    setLoader(true);
     //<--- set true loader --->
-
 
     const res = await axios
       .post('https://reverrserver.herokuapp.com/cftoken', order, {
@@ -131,9 +132,10 @@ console.log(plan[0] / 2, amt, 'plans');
       .then(res => {
         order.token = res.data.cftoken;
         cashfree(order);
-      }).catch(err=>{
-        console.log(err);
       })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   const cashfree = order => {
@@ -152,10 +154,8 @@ console.log(plan[0] / 2, amt, 'plans');
     console.log(map);
     RNPgReactNativeSDK.startPaymentWEB(map, 'PROD', result => {
       //console.log('openUI');
-
-
+      setLoader(false);
       //<---- set false loader here ---->
-
 
       var payment = {
         paymentMode: '',
@@ -841,6 +841,43 @@ console.log(plan[0] / 2, amt, 'plans');
             </Text>
           </LinearGradient>
         </TouchableOpacity>
+        <Modal
+          visible={loader}
+          onRequestClose={() => {
+            setLoader(false);
+          }}
+          transparent={true}>
+          <View
+            style={{
+              flex: 1,
+              backgroundColor: 'rgba(1, 1, 1, 0.08)',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <View
+              style={{
+                backgroundColor: AppColors.FontsColor,
+                width: '90%',
+                alignItems: 'center',
+                paddingVertical: '5%',
+                borderRadius: 20,
+              }}>
+              <Text
+                style={{
+                  color: AppColors.primarycolor,
+                  fontSize: 19,
+                  marginVertical: '10%',
+                }}>
+                Please Wait..
+              </Text>
+              <ActivityIndicator
+                color={AppColors.ActiveColor}
+                size={45}
+                style={{marginBottom: '5%'}}
+              />
+            </View>
+          </View>
+        </Modal>
       </View>
     </View>
   );

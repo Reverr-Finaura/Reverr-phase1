@@ -205,10 +205,11 @@ function UserReducer(state = initialState, action) {
       });
       console.log(newposts.length);
       return {
+        allLoaded: true,
         ...state,
         lastDocument: action.payload.lastdoc,
         Rooms: [...state.Rooms, ...newposts],
-        allLoaded: true,
+        allLoaded: false,
       };
     case REFRESH_ROOMS_LIST:
       return {
@@ -299,7 +300,7 @@ function UserReducer(state = initialState, action) {
       };
 
     case Matched_People:
-        // storingMatchedPeople array here
+      // storingMatchedPeople array here
       MatchedPeople.push(action.payload);
       return {
         ...state,

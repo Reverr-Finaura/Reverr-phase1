@@ -15,6 +15,7 @@ import {
   CustomPopup,
   HomeCard,
   IndividualHeaderLayout,
+  SkeltonLoader,
 } from '../../Components';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icon2 from 'react-native-vector-icons/Ionicons';
@@ -39,6 +40,7 @@ const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
 const Home = () => {
   const state = useSelector(state => state.UserReducer);
+  const loader = useSelector(state => state.UserReducer);
   const [articles, setArticles] = useState(false);
   const [discussion, setDiscussion] = useState(true);
   const [news, setNews] = useState(false);
@@ -51,7 +53,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const renderCard = ({item, index}) => {
-    //console.log("Hey!")
+    console.log(state.allLoaded, 'Hey!');
     // console.log(state.Rooms[0], 'userdta');
     return (
       <LinearGradient
@@ -78,7 +80,7 @@ const Home = () => {
               style={{
                 color: AppColors.BtnClr,
                 fontWeight: 'bold',
-               alignSelf:'center',
+                alignSelf: 'center',
                 marginTop: '-5%',
                 marginRight: '4%',
               }}>
@@ -215,7 +217,7 @@ const Home = () => {
           )}
         </View>
         <View style={styles2.IconContainer}>
-          <View style={{flexDirection:'row',alignItems:'center'}}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <TouchableOpacity onPress={() => likePost(item.id, item)}>
               {item.likes.includes(state.user.email) ? (
                 <Image
@@ -227,7 +229,6 @@ const Home = () => {
                   }}
                 />
               ) : (
-            
                 <Image
                   source={require('../../assets/images/like.png')}
                   style={{
@@ -242,7 +243,7 @@ const Home = () => {
               {item.likes.length} reactions
             </Text>
           </View>
-          <View style={{flexDirection:'row',alignItems:'center'}}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <TouchableOpacity
               onPress={() => {
                 dispatch(pin_post(item));
@@ -251,7 +252,6 @@ const Home = () => {
                 // });
                 navigation.navigate('comments');
               }}>
-
               <Image
                 source={require('../../assets/images/comment.png')}
                 style={{
@@ -264,12 +264,12 @@ const Home = () => {
             <Text style={{marginStart: '8%', color: AppColors.BtnClr}}>
               {item.comments.length} comments
             </Text>
-            
           </View>
         </View>
       </LinearGradient>
     );
   };
+  const [postloader, setPostloader] = useState(false);
 
   useEffect(() => {
     dispatch(mentorService);
@@ -277,7 +277,9 @@ const Home = () => {
       dispatch(set_allLoaded(false));
       dispatch(load_room_data(undefined));
     } else {
+      setPostloader(true);
       dispatch(load_room_data(state.lastDocument));
+      setPostloader(false);
     }
   }, []);
 
@@ -298,8 +300,8 @@ const Home = () => {
     dispatch(set_allLoaded(false));
     dispatch(refresh_rooms_list());
   };
-  const [pos, setPos] = React.useState(0);
-  console.log(pos, '');
+  // console.log(state.user, 'postaloader');
+  console.log(state.loading, 'loader');
   return (
     <IndividualHeaderLayout>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -342,16 +344,22 @@ const Home = () => {
           />
           {discussion && (
             <View>
-              {state.Rooms.length > 0 && (
-                <FlatList
-                  data={state.Rooms}
-                  keyExtractor={item => item.id}
-                  renderItem={renderCard}
-                  onEndReached={_handleLoadMore}
-                  onEndReachedThreshold={1}
-                  refreshing={state.refreshing}
-                  onRefresh={handleRefresh}
-                />
+              {state.Rooms.length == 0 ? (
+                <SkeltonLoader />
+              ) : (
+                <View>
+                  {state.Rooms.length > 0 && (
+                    <FlatList
+                      data={state.Rooms}
+                      keyExtractor={item => item.id}
+                      renderItem={renderCard}
+                      onEndReached={_handleLoadMore}
+                      onEndReachedThreshold={1}
+                      refreshing={state.refreshing}
+                      onRefresh={handleRefresh}
+                    />
+                  )}
+                </View>
               )}
             </View>
           )}
