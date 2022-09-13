@@ -50,12 +50,7 @@ const CourseList = props => {
           alignItems: 'center',
         }}>
         <BackButton IconSize={27} />
-      </View>
-      <View
-        style={{
-          marginTop: '5%',
-          paddingBottom: '20%',
-        }}>
+
         <Text
           style={{
             marginStart: '3%',
@@ -64,6 +59,12 @@ const CourseList = props => {
           }}>
           {courseCategory}
         </Text>
+      </View>
+      <View
+        style={{
+          marginTop: '5%',
+          paddingBottom: '20%',
+        }}>
         {loading ? (
           <View
             style={{

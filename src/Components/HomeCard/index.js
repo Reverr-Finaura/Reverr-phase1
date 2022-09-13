@@ -9,7 +9,7 @@ import {
   ImageBackground,
   Image,
 } from 'react-native';
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import LinearGradient from 'react-native-linear-gradient';
 import {AppColors} from '../../utils';
@@ -22,47 +22,49 @@ const Width = Dimensions.get('window').width;
 
 const HomeCard = () => {
   const navigation = useNavigation();
-  // const [index, setIndex] = useState(0);
-  // // this function gives the index of current page
-  // const onViewRef = useRef(({changed}) => {
-  //   setIndex(changed[0].item.id);
-  // });
-  // //it helps the above funtion in getting proper index
+  //  const [index, setIndex] = useState(0);
+  // this function gives the index of current page
+  /* const onViewRef = useRef(({changed}) => {
+    setIndex(changed[0].item.id);
+  }); */
+  //it helps the above funtion in getting proper index
   // const viewConfigRef = useRef({viewAreaCoveragePercentThreshold: 50});
-  // //aded ref to flatlist to chaange index
-  // const flatListRef = useRef(null);
-  // //function to move to next page
-  // let nextPage = () => {
-  //   if (index === 0) {
-  //     flatListRef.current?.scrollToIndex({index: 1});
-  //   } else if (index === 1) {
-  //     flatListRef.current?.scrollToIndex({index: 2});
-  //   } else if (index === 2) {
-  //     flatListRef.current?.scrollToIndex({index: 3});
-  //   } else {
-  //     flatListRef.current?.scrollToIndex({index: 0});
-  //   }
-  // };
+  //aded ref to flatlist to chaange index
+  //const flatListRef = useRef(null);
+  //function to move to next page
 
-  // //auto scroll initiater after every 3 seconds
-  // let value = setTimeout(nextPage, 3000);
+  /* useEffect(() => {
+    const nextPage = () => {
+      if (index === 0) {
+        flatListRef.current?.scrollToIndex({index: 1});
+      } else if (index === 1) {
+        flatListRef.current?.scrollToIndex({index: 2});
+      } else if (index === 2) {
+        flatListRef.current?.scrollToIndex({index: 3});
+      } else {
+        flatListRef.current?.scrollToIndex({index: 0});
+      }
+    };
+    nextPage();
+  }, []); */
 
   return (
     <View style={styles.CardContainer}>
       <FlatList
         data={cardData}
-        // ref={flatListRef}
-        // onViewableItemsChanged={onViewRef.current}
-        // viewabilityConfig={viewConfigRef.current}
         pagingEnabled
+        /*  ref={flatListRef}
+       
+        onViewableItemsChanged={onViewRef.current}
+        viewabilityConfig={viewConfigRef.current} */
         showsHorizontalScrollIndicator={false}
         horizontal
-        // onMomentumScrollEnd={(event) => {
-        //   const index = Math.floor(
-        //       event.nativeEvent.contentOffset.x /
-        //           event.nativeEvent.layoutMeasurement.width
-        //   );
-        // }}
+        /*  onMomentumScrollEnd={event => {
+          const index = Math.floor(
+            event.nativeEvent.contentOffset.x /
+              event.nativeEvent.layoutMeasurement.width,
+          );
+        }} */
         renderItem={({item}) => (
           <LinearGradient
             colors={[AppColors.primarycolor, '#012437']}
@@ -76,106 +78,33 @@ const HomeCard = () => {
                 alignItems: 'center',
               }}>
               <Text style={styles.subheading}>{item.subHeading}</Text>
-              {item.id == 2 ? (
+              {item.id == 0 && (
+                <Image source={require('../../assets/images/Mentor.png')} />
+              )}
+              {item.id == 1 && (
+                <Image source={require('../../assets/images/Learn.png')} />
+              )}
+              {item.id == 2 && (
                 <Icon
                   name="dollar-sign"
                   size={20}
                   color={AppColors.infoFonts}
                 />
-              ) : null}
-              {item.id == 3 ? (
-                <Icon
-                  name="comment-dots"
-                  size={20}
-                  color={AppColors.infoFonts}
-                />
-              ) : null}
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                marginTop: Width / 50,
-              }}>
-              {item.id == 0 ? (
-                AllMentors.map(item2 => (
-                  <TouchableOpacity
-                    key={item2.id}
-                    style={{
-                      marginStart: Width / 35,
-                      marginBottom: 5,
-
-                      alignItems: 'center',
-                    }}>
-                    <Image
-                      style={styles.mentorDp}
-                      source={{uri: item2.image}}
-                    />
-                    <Text style={styles.name}>{item2.name}</Text>
-                    <Text style={styles.skill}>{item2.skills}</Text>
-                  </TouchableOpacity>
-                ))
-              ) : item.id == 1 ? (
-                courseData.map(item3 => (
-                  <TouchableOpacity key={item3.id}>
-                    <ImageBackground
-                      key={item3.id}
-                      style={styles.courseimage}
-                      source={{uri: item3.image}}>
-                      <View
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          backgroundColor: 'rgba(0, 0, 0, 0.4)',
-                        }}>
-                        <Text style={styles.title}>{item3.title}</Text>
-                        <View
-                          style={[
-                            styles.overlay,
-                            {
-                              backgroundColor:
-                                item3.id == 2 ? 'rgba(0, 0, 0, 0.5)' : '',
-                            },
-                          ]}>
-                          {item3.id == 2 ? (
-                            <Icon
-                              name="lock"
-                              size={25}
-                              style={{
-                                alignSelf: 'center',
-                                marginTop: '50%',
-                              }}
-                              color={AppColors.FontsColor}
-                            />
-                          ) : null}
-                          <Icon
-                            name="arrow-right"
-                            size={25}
-                            style={{
-                              marginTop:
-                                item3.id == 2 ? Height / 70 : Height / 7.5,
-                              marginStart: Width / 30,
-                            }}
-                            color={AppColors.FontsColor}
-                          />
-                        </View>
-                      </View>
-                    </ImageBackground>
-                  </TouchableOpacity>
-                ))
-              ) : (
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => {
-                    item.id == 2
-                      ? navigation.navigate('Funding')
-                      : navigation.navigate('Rooms');
-                  }}>
-                  <Text style={styles.btntxt}>
-                    {item.id == 2 ? 'Get funded' : 'Rooms'}
-                  </Text>
-                </TouchableOpacity>
               )}
             </View>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
+                item.id == 0 && navigation.navigate('Mentor');
+                item.id == 1 && navigation.navigate('Learn');
+                item.id == 2 && navigation.navigate('Funding');
+              }}>
+              <Text style={styles.btntxt}>
+                {item.id == 0 && 'Find Mentors'}
+                {item.id == 1 && 'Start Reading'}
+                {item.id == 2 && 'Get Funded'}
+              </Text>
+            </TouchableOpacity>
           </LinearGradient>
         )}
       />

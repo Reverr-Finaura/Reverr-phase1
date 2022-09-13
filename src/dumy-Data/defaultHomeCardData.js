@@ -7,16 +7,11 @@ export const cardData = [
   {
     id: 1,
     heading: 'Start your learning with courses !',
-    subHeading: '',
+    subHeading: 'Get your Courses',
   },
   {
     id: 2,
     heading: 'Are you a start-up looking for funding?',
     subHeading: 'Get funded now',
-  },
-  {
-    id: 3,
-    heading: 'Get premium feel with our chat rooms !!',
-    subHeading: 'Join a chat room',
   },
 ];
