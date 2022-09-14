@@ -192,10 +192,22 @@ const CalanderAppointments = props => {
       .then(data => {
         // console.log("added successfully",data._documentPath._parts[1])
         id = data._documentPath._parts[1];
-        //console.log('payemnt:' + id);
-        console.log(res, 'res');
+        // console.log('payment:' + id);
+        // console.log(res, 'res');
         //updateUser(id, res);
       });
+
+    if(res.txStatus=="SUCCESS"){
+      
+      //<--- add id to mentor's orders array --->
+      //<--- add user's email to mentor's client --->
+      //<--- add mentor's email to user's mentor's --->
+    
+    }else{
+      
+      //<--- Payment failed! try again --->
+
+    }
   };
   var dt = new Date();
   var today = dt.getDate();

@@ -33,11 +33,11 @@ export const MentorDetails = props => {
     switch (index) {
       case 0:
         return (
-          <View style={{height: 90}}>
+          <View style={{display:"flex"}}>
             <Text
               style={{
-                color: '#838282',
-                fontSize: 10,
+                color: 'white',
+                fontSize: 16,
                 fontWeight: '400',
                 bottom: '6%',
                 marginHorizontal: 16,
@@ -48,11 +48,11 @@ export const MentorDetails = props => {
         );
       case 1:
         return (
-          <View style={{height: 90}}>
+          <View style={{display:"flex"}}>
             <Text
               style={{
-                color: '#838282',
-                fontSize: 10,
+                color: 'white',
+                fontSize: 16,
                 fontWeight: '400',
                 marginHorizontal: 16,
               }}>
@@ -62,11 +62,11 @@ export const MentorDetails = props => {
         );
       case 2:
         return (
-          <View style={{height: 90}}>
+          <View style={{display:"flex"}}>
             <Text
               style={{
-                color: '#838282',
-                fontSize: 10,
+                color: 'white',
+                fontSize: 16,
                 fontWeight: '400',
                 marginHorizontal: 16,
               }}>
@@ -90,27 +90,7 @@ export const MentorDetails = props => {
             />
           </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={() => {
-              if (!state?.user?.savedMentors.includes(selectedmentor.email)) {
-                add_mentor_to_favourites(selectedmentor.email);
-              } else {
-                remove_mentor_from_favourites(selectedmentor.email);
-              }
-              //setPressed(!pressed)
-            }}>
-            {!state?.user?.savedMentors.includes(selectedmentor.email) ? (
-              <Image
-                source={require('../../assets/images/Heart-Outline.png')}
-                style={styles.button}
-              />
-            ) : (
-              <Image
-                source={require('../../assets/images/Heart.png')}
-                style={styles.button}
-              />
-            )}
-          </TouchableOpacity>
+         
         </View>
 
         <Image
@@ -135,7 +115,7 @@ export const MentorDetails = props => {
             title="Industry"
             subTitle={selectedmentor?.industry}
           />
-          <CustomTextCard title="Appoinment" subTitle="$1000/Hr" />
+          <CustomTextCard title="Appoinment" subTitle={"₹ "+selectedmentor?.plans[0] + "/Hr"} />
           <TouchableOpacity
             style={{
               marginTop: '-7.6%',
