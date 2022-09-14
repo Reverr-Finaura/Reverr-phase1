@@ -6,6 +6,7 @@ import {
   Image,
   FlatList,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {styles} from './styles';
@@ -29,8 +30,7 @@ import {
   deletePost,
 } from '../../Redux/actions';
 import {useNavigation} from '@react-navigation/native';
-import {AppColors} from '../../utils';
-import {cardData} from '../../dumy-Data/defaultHomeCardData';
+import {AppColors, smallString} from '../../utils';
 import LinearGradient from 'react-native-linear-gradient';
 import {styles2} from '../Room/styles';
 import {ArticleList} from '../artical-screen';
@@ -312,7 +312,7 @@ const Home = () => {
             paddingHorizontal: '5%',
             marginVertical: '2%',
           }}>
-          <Text style={styles.welcmTxt}>Hi,</Text>
+          <Text style={styles.welcmTxt}>Hey </Text>
           <Text style={[styles.welcmTxt, {color: AppColors.ActiveColor}]}>
             {state.user.name}
           </Text>

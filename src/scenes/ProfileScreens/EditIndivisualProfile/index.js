@@ -103,7 +103,7 @@ const EditProfile = () => {
         },
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log('You can use the camera');
+        ChangeDp(setLoading, dispatch, state?.user?.email);
       } else {
         console.log('Camera permission denied');
       }
@@ -175,8 +175,7 @@ const EditProfile = () => {
             fontFamily: 'Poppins-Regular',
             marginStart: Width / 4.5,
             fontSize: 22,
-          }}
-        >
+          }}>
           Edit Profile
         </Text>
       </View>
@@ -299,18 +298,9 @@ const EditProfile = () => {
       <TouchableOpacity
         style={styles.camera}
         onPress={() => {
-          setLoading(true);
-          ChangeDp(loading, setLoading, dispatch, state?.user?.email);
-        }}
-      >
-        <Icon
-          name="camera"
-          onPress={() => {
-            AllowPermission();
-          }}
-          size={15}
-          color="black"
-        />
+          AllowPermission();
+        }}>
+        <Icon name="camera" size={15} color="black" />
       </TouchableOpacity>
     </View>
   );
