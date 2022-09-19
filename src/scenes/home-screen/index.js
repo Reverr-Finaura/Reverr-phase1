@@ -66,7 +66,9 @@ const Home = () => {
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('IndividualProfile');
+                navigation.navigate('ViewProfile', {
+                  postData: item,
+                });
               }}>
               <Image style={styles2.dp} source={{uri: item.postedby.image}} />
             </TouchableOpacity>
@@ -212,7 +214,7 @@ const Home = () => {
             </View>
           ) : (
             <View>
-              <Text style={styles2.details}>{item.text}</Text>
+              <Text style={[styles2.details]}>{item.text}</Text>
             </View>
           )}
         </View>
@@ -247,10 +249,9 @@ const Home = () => {
             <TouchableOpacity
               onPress={() => {
                 dispatch(pin_post(item));
-                // navigation.navigate('comments', {
-                //   postData: item,
-                // });
-                navigation.navigate('comments');
+                navigation.navigate('comments', {
+                  postData: item,
+                });
               }}>
               <Image
                 source={require('../../assets/images/comment.png')}

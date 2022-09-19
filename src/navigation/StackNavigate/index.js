@@ -18,6 +18,7 @@ import {
   EditCalender,
   Notifications,
   MentorList,
+  ViewProfile,
 } from '../../scenes';
 import ThanksScreen from '../../scenes/thanks-screen';
 import {
@@ -112,6 +113,7 @@ const StackNavigate = props => {
       <Stack.Screen name="MentorBottomTab" component={MentorBottomTab} />
       <Stack.Screen name="videoCall" component={VideoCall} />
       <Stack.Screen name="MatchScreen" component={MatchScreen} />
+      <Stack.Screen name="ViewProfile" component={ViewProfile} />
     </Stack.Navigator>
   );
 };

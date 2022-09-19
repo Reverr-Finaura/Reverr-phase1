@@ -6,6 +6,7 @@ import {
   Settings,
   EditProfile,
   MentorProfile,
+  ViewProfile,
 } from './ProfileScreens';
 import {VideoCall} from './videoCall';
 import {Test} from './Test';
@@ -99,4 +100,5 @@ export {
   AppoinmentScreen,
   Vibe,
   MentorList,
+  ViewProfile,
 };

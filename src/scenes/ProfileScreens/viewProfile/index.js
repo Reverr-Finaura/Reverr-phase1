@@ -9,26 +9,28 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import React, {useState} from 'react';
-import {AppColors} from '../../../utils';
 import {BackButton, ProfileDetailsBox} from '../../../Components';
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
 import Ionic from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
-import {styles} from '../viewProfile/style';
-import auth from '@react-native-firebase/auth';
+import {styles} from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
+import {AppColors} from '../../../utils';
 
 const Width = Dimensions.get('screen').width;
 const Height = Dimensions.get('screen').height;
 
-const IndividuaProfile = props => {
+const ViewProfile = props => {
   const navigation = useNavigation();
   const state = useSelector(state => state.UserReducer);
   const [posts, setPosts] = useState(false);
   const [about, setAbout] = useState(true);
   const dispatch = useDispatch();
+  const userDetails = props.route.params.postData.postedby;
+
+  console.log(userDetails, 'postByName');
 
   if (!state) {
     return (
@@ -96,7 +98,7 @@ const IndividuaProfile = props => {
                 letterSpacing: 1,
                 textAlign: 'center',
               }}>
-              {state.user.name}
+              {userDetails.name}
             </Text>
             <Text
               style={{
@@ -104,7 +106,7 @@ const IndividuaProfile = props => {
                 color: AppColors.BtnClr,
                 textAlign: 'center',
               }}>
-              @ {state.user.name}
+              @ {userDetails.name}
             </Text>
             <View
               style={{
@@ -164,7 +166,7 @@ const IndividuaProfile = props => {
             </ImageBackground>
           </TouchableOpacity>
           <Image
-            source={{uri: state.user.image}}
+            source={{uri: userDetails.image}}
             style={{
               width: 110,
               height: 110,
@@ -288,4 +290,4 @@ const IndividuaProfile = props => {
   );
 };
 
-export {IndividuaProfile};
+export {ViewProfile};

@@ -7,6 +7,7 @@ import {
   ToastAndroid,
   ActivityIndicator,
   Modal,
+  Alert,
 } from 'react-native';
 import React, {useState, useEffect, useContext} from 'react';
 import {AppColors} from '../../utils';
@@ -184,29 +185,56 @@ const CalanderAppointments = props => {
     });
   };
 
-  const handleResponse = res => {
+  const handleResponse = async res => {
     var id;
-    firestore()
+    await firestore()
       .collection('Payments')
       .add(res)
       .then(data => {
         // console.log("added successfully",data._documentPath._parts[1])
         id = data._documentPath._parts[1];
-        // console.log('payment:' + id);
+        //console.log('payment:' + id);
         // console.log(res, 'res');
         //updateUser(id, res);
       });
 
-    if(res.txStatus=="SUCCESS"){
-      
+    if (res.txStatus == 'SUCCESS') {
+      firestore()
+        .collection('Users')
+        .doc(props.route.params.mentor.email)
+        .update({
+          orders: firestore.FieldValue.arrayUnion(id),
+        })
+        .then(() => {
+          firestore()
+            .collection('Users')
+            .doc(props.route.params.mentor.email)
+            .update({
+              clients: firestore.FieldValue.arrayUnion(state.user.email),
+            })
+            .then(() => {
+              firestore()
+                .collection('Users')
+                .doc(state.user.email)
+                .update({
+                  mentors: firestore.FieldValue.arrayUnion(
+                    props.route.params.mentor.email,
+                  ),
+                })
+                .then(() => {
+                  console.log('All Information stored');
+                });
+            });
+        });
       //<--- add id to mentor's orders array --->
       //<--- add user's email to mentor's client --->
       //<--- add mentor's email to user's mentor's --->
-    
-    }else{
-      
+    } else {
+      // console.log('payment:' + id);
+      Alert.alert('Payment failed!', 'try again ' + id, [
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]);
       //<--- Payment failed! try again --->
-
     }
   };
   var dt = new Date();

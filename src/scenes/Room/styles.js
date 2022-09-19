@@ -48,10 +48,9 @@ const styles2 = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
     fontWeight: 'bold',
     fontSize: 19,
-    marginLeft: 12,
+    marginLeft: '3%',
   },
   company: {
-    marginLeft: 12,
     color: AppColors.infoFonts,
     fontFamily: 'Poppins-Regular',
   },
@@ -65,7 +64,6 @@ const styles2 = StyleSheet.create({
     color: AppColors.FontsColor,
     fontFamily: 'Poppins-Regular',
     fontSize: 16,
-    marginLeft: 64,
   },
   createBtn: {
     bottom: 20,
@@ -75,7 +73,8 @@ const styles2 = StyleSheet.create({
     flexDirection: 'row',
     alignSelf: 'center',
     paddingVertical: '2%',
-    justifyContent: 'space-around',
+    width: '100%',
+    justifyContent: 'space-between',
   },
 });
 
