@@ -82,6 +82,7 @@ function UserReducer(state = initialState, action) {
         }
       }
       //buckets=[...buckets,...action.payload.list4]
+      // console.log("buckets from reducer is",buckets)
       return {
         ...state,
         user: {...state.user, no_of_swipe: state?.user?.no_of_swipe + 5},

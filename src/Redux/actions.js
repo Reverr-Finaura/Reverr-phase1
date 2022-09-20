@@ -5,7 +5,7 @@ import {Alert} from 'react-native';
 // import { SavedCourses } from '../Components/SavedCourses';
 export const ADD_USER = 'ADD_USER';
 export const UPDATE_IMAGE = 'UPDATE_IMAGE';
-export const  Passed_User= 'Passed_User';
+export const Passed_User = 'Passed_User';
 export const UPDATE_USER_DATA = 'UPDATE_USER_DATA';
 export const CLEAR_USER_STATE = 'CLEAR_USER_STATE';
 export const LOAD_ROOM_DATA = 'LOAD_ROOM_DATA';
@@ -21,7 +21,7 @@ export const SET_MENTORS = 'SET_MENTORS';
 export const SELECT_MENTOR = 'SELECT_MENTOR';
 export const LIKE_MENTOR = 'LIKE_MENTOR';
 export const UNLIKE_MENTOR = 'UNLIKE_MENTOR';
-export const Matched_People='Matched_People'
+export const Matched_People = 'Matched_People';
 export const REMOVE_ARTICLE = 'REMOVE_ARTICLE';
 export const SAVE_ARTICLE = 'SAVE_ARTICLE';
 export const REMOVE_COURSE = 'REMOVE_COURSE';
@@ -29,9 +29,9 @@ export const SAVE_COURSE = 'SAVE_COURSE';
 export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION';
 export const REMOVE_NOTIFICATION_INSTANCE = 'REMOVE_NOTIFICATION_INSTANCE';
 export const UPDATE_APPOINTMENT_INSTANCE = 'UPDATE_APPOINTMENT_INSTANCE';
-export const LOAD_CARDS='LOAD_CARDS';
-export const REMOVE_TOP_CARD='REMOVE_TOP_CARD';
-export const RemoveTopCard=()=>{
+export const LOAD_CARDS = 'LOAD_CARDS';
+export const REMOVE_TOP_CARD = 'REMOVE_TOP_CARD';
+export const RemoveTopCard = () => {
   try {
     return async dispatch => {
       dispatch({
@@ -44,31 +44,38 @@ export const RemoveTopCard=()=>{
       error: 'error',
     });
   }
-}
-export const Load_Card=(lastDocument,email,na,passedEmails,matchedpeople)=>{
+};
+export const Load_Card = (
+  lastDocument,
+  email,
+  na,
+  passedEmails,
+  matchedpeople,
+) => {
   try {
-    if(passedEmails.length==0||matchedpeople.length==0){
-      passedEmails.push(email),
-      matchedpeople.push(email)
+    if (passedEmails.length == 0 || matchedpeople.length == 0) {
+      passedEmails.push(email), matchedpeople.push(email);
     }
 
     //var lastcard=undefined;
     return async dispatch => {
-      var list4=[];
-    //  await firestore().collection('Users').orderBy('createdAt', 'desc');
-    // filtering data by email here     
-      let query = await firestore().collection("Users").orderBy('email').where("email", "not-in", [...passedEmails,...matchedpeople])
+      var list4 = [];
+      //  await firestore().collection('Users').orderBy('createdAt', 'desc');
+      // filtering data by email here
+      let query = await firestore()
+        .collection('Users')
+        .orderBy('email')
+        .where('email', 'not-in', [...passedEmails, ...matchedpeople]);
       if (lastDocument !== undefined) {
         query = query.startAfter(lastDocument);
-        console.log("last->"+lastDocument.name);
-        
+        console.log('last->' + lastDocument.name);
       }
       // if (lastcard !== undefined) {
       //   query = query.startAfter(lastDocument);
       //   console.log("last->"+lastDocument.name);
-      // } 
+      // }
       await query
-        .limit(5)
+        .limit(15)
         .get()
         // .onSna
         .then(async querySnapshot => {
@@ -76,25 +83,35 @@ export const Load_Card=(lastDocument,email,na,passedEmails,matchedpeople)=>{
           querySnapshot.forEach(doc => {
             let card = doc.data();
             card.id = doc.id;
-            list4.push(card);
+            // console.log("what is card ",card)
+            if (card) {
+              list4.push(card);
+            }
+
             //console.log(list3);
           });
           // console.log("list4",list4)
-          
+          // console.log("list 4 is",list4)
           dispatch({
             type: 'LOAD_CARDS',
-            payload:{list4,lastDocument:lastdoc},
-          })
-          await firestore().collection('Users').doc(email).update({
-            no_of_swipe:na+5
-          })
+            payload: {list4, lastDocument: lastdoc},
+          });
+
+
+       
+          await firestore()
+            .collection('Users')
+            .doc(email)
+            .update({
+              no_of_swipe: na + 5,
+            });
           // console.log("Card has benn called")
-        }).catch(e=>{
+        })
+        .catch(e => {
           console.log(e.message);
-            throw new Error("Error at vibe");
-          })
-      
-    }
+          throw new Error('Error at vibe');
+        });
+    };
   } catch (e) {
     dispatch({
       type: Error,
@@ -780,20 +797,18 @@ export const updateUserState = (user, udata) => {
     payload: {user, udata},
   };
 };
-export const passedUser=(data)=>{
-  console.log("data of array is",data)
- 
-  return{
-  type:'Passed_User',
-  payload:data,
-  }
-  
-  }
+export const passedUser = data => {
+  console.log('data of array is', data);
 
-  export const matchedpeople=(matchedarray)=>{
-return{
-  type:'Matched_People',
-  payload:matchedarray,
-}
+  return {
+    type: 'Passed_User',
+    payload: data,
+  };
+};
 
-  }
+export const matchedpeople = matchedarray => {
+  return {
+    type: 'Matched_People',
+    payload: matchedarray,
+  };
+};
