@@ -8,6 +8,7 @@ import {
   FlatList,
   TouchableOpacity,
   Keyboard,
+  KeyboardAvoidingView,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {AppColors} from '../../utils';
@@ -61,7 +62,7 @@ const CommentsScreen = props => {
     position: 'absolute',
     backgroundColor: AppColors.BtnClr,
     borderRadius: 9,
-    bottom: isKeyboardVisible ? Height / 2.3 : 5,
+    bottom: isKeyboardVisible ? Height / 2.8 : 5,
     height: Height / 14,
     paddingHorizontal: '3%',
   };
@@ -181,7 +182,7 @@ const CommentsScreen = props => {
     setRefresh(true);
   };
   return (
-    <View style={styles.screen}>
+    <KeyboardAvoidingView style={styles.screen}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <BackButton
           IconSize={30}
@@ -220,7 +221,6 @@ const CommentsScreen = props => {
           renderItem={renderCard}
         />
       )}
-      <View style={{paddingVertical: 40}}></View>
       <View style={inputContainerStyle}>
         <TextInput
           style={styles.input}
@@ -232,7 +232,7 @@ const CommentsScreen = props => {
           <Icon name="send" color={AppColors.ActiveColor} size={28} />
         </TouchableOpacity>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 const styles = StyleSheet.create({

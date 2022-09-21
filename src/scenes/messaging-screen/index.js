@@ -1,11 +1,6 @@
 import React from 'react';
 import {View, Text, SafeAreaView, FlatList, ScrollView} from 'react-native';
-
-import {Header} from '../../Components/Header';
 import {MentorList} from '../../Components/Mentor-list';
-
-import mentors from '../../assets/data/mentors';
-
 import styles from './styles';
 import {ChatLayout} from '../../Components/ChatLayout';
 import {IndividualHeaderLayout} from '../../Components';

@@ -28,19 +28,16 @@ const MentorList = props => {
       .get()
       .then(res => {
         let AllUsers = res.docs.map(doc => doc.data());
-
         let mentors = AllUsers.filter(item => item.userType === 'Mentor');
-        console.log(mentors.length, 'mentors');
-        console.log(AllUsers.length, 'ALlUSERS');
         setMentorsList(
-          mentors.filter(item => item.industry === mentorCategory),
-        ),
-          setLoading(false);
+          mentors.filter(item => item.domain.includes(mentorCategory)),
+        );
+        setLoading(false);
       });
   };
   useEffect(() => {
     getMentors();
-    console.log(mentorsList, 'lea');
+    //console.log(mentorsList, 'lea');
   }, []);
 
   return (
@@ -70,7 +67,7 @@ const MentorList = props => {
               paddingTop: '60%',
             }}>
             <Text style={{color: AppColors.FontsColor, fontSize: 20}}>
-              We Have No Mentors In This Categry 
+              We Have No Mentors In This Categry
             </Text>
           </View>
         ) : (

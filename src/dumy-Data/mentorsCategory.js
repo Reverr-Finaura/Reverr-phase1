@@ -19,3 +19,25 @@ export const mentorCategory = [
   'Travel and tourism',
   'Waste management',
 ];
+
+export const mentorsDomains = [
+  ' Branding and Public Relations',
+  'Career Advice and Self-Mastery',
+  'Culture',
+  'Data Science and Analysis',
+  'Finance and Accounting',
+  'Human Resources and Recruiting',
+  'Leadership and Management',
+  'Legal, Risk Management and Compliance',
+  'Marketing and Growth',
+  'Product Management',
+  'Sales',
+  'Social Entrepreneurship and Charity',
+  'Software Engineering and IT',
+  'Start-up: Founding and Funding',
+  'Strategy and Business Development',
+  'Sustainability',
+  'Team Structure and Work Methodologies',
+  'Business Transformation',
+  'UX, Design and User Research',
+];

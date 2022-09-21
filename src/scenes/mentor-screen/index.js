@@ -17,7 +17,7 @@ import {useSelector} from 'react-redux';
 import {MentorCard} from '../../Components/MentorCard';
 import {Button} from 'react-native-paper';
 import LinearGradient from 'react-native-linear-gradient';
-import {mentorCategory} from '../../dumy-Data/mentorsCategory';
+import {mentorCategory, mentorsDomains} from '../../dumy-Data/mentorsCategory';
 import {AppColors} from '../../utils';
 import {useNavigation} from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
@@ -25,9 +25,10 @@ import firestore from '@react-native-firebase/firestore';
 export const Mentor = () => {
   const [column, setColumn] = useState(2);
   const [mentorsList, setMentorsList] = useState();
+  const state = useSelector(state => state.UserReducer);
   var mc = mentorCategory;
-  var newlist=[];
-  const getMentors = async () => {
+  var newlist = [];
+  /*  const getMentors = async () => {
     // setLoading(true);
     const snapshot = await firestore()
       .collection('Users')
@@ -55,9 +56,11 @@ export const Mentor = () => {
 
   useEffect(()=>{
     // getMentors();
-  },[])
+  },[]) */
 
   const navigation = useNavigation();
+
+  console.log(state.user.domain, 'dhuj');
 
   return (
     <View style={styles.container}>
@@ -70,7 +73,7 @@ export const Mentor = () => {
           </View>
           <FlatList
             numColumns={column}
-            data={mentorCategory}
+            data={mentorsDomains}
             renderItem={({item, index}) => (
               <TouchableOpacity
                 key={index}

@@ -234,7 +234,7 @@ export const AddCameraVideo = setVideoUrl => {
     });
 };
 
-export const SendMessage = (currentcUser, sendTo, message) => {
+export const SendMessage = (currentcUser, sendTo, message, ref) => {
   firestore()
     .collection('Messages')
     .doc(currentcUser.email)
@@ -252,6 +252,7 @@ export const SendMessage = (currentcUser, sendTo, message) => {
       }),
     })
     .then(() => {
+      ref.current.scrollToEnd();
       firestore()
         .collection('Messages')
         .doc(sendTo.email)

@@ -167,7 +167,7 @@ const Home = () => {
             </View>
           </CustomPopup>
         )}
-        <View style={styles2.postContainer}>
+        {/*  <View style={styles2.postContainer}>
           {item.image !== '' && item.image !== undefined ? (
             <View>
               {item.text !== '' ? (
@@ -215,6 +215,24 @@ const Home = () => {
           ) : (
             <View>
               <Text style={[styles2.details]}>{item.text}</Text>
+            </View>
+          )}
+        </View> */}
+        <View>
+          {item.image == '' ? (
+            <View style={{paddingHorizontal: '5%'}}>
+              <Text style={styles2.details}>{item.text}</Text>
+            </View>
+          ) : (
+            <View
+              style={[styles2.image, {overflow: 'hidden', marginTop: '4%'}]}>
+              <ImageBackground
+                style={{width: '100%', height: '100%'}}
+                source={{uri: item.image}}>
+                <View style={{paddingHorizontal: '5%'}}>
+                  <Text style={styles2.details}>{item.text}</Text>
+                </View>
+              </ImageBackground>
             </View>
           )}
         </View>
