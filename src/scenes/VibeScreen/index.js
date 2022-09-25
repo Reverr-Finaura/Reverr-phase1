@@ -838,7 +838,7 @@ const Vibe = () => {
             Passed_Email: firestore.FieldValue.arrayUnion(CardEmail),
           });
       }
-      console.log(currCard.text + ' got swipped left');
+      
       // var docRef = firestore().collection('Users').doc(state.user.email);
 
       // docRef
