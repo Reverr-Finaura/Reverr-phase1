@@ -23,15 +23,15 @@ const styles = StyleSheet.create({
     display: 'flex',
     flex: 1,
     paddingHorizontal: '4%',
-    marginTop: '25%',
+    marginTop: '30%',
   },
   dp: {
-    height: 100,
-    width: 40,
+    height: 80,
+    width: 28,
     overflow: 'hidden',
     borderRadius: 200,
     marginStart: '35%',
-    marginTop: '10%',
+    marginTop: '15%',
     position: 'absolute',
     backgroundColor: AppColors.CardColor,
   },
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: AppColors.infoFonts,
     padding: 5,
-    top: '15%',
+    top: '18%',
     left: '56%',
     borderRadius: 20,
   },
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     marginStart: Width / 2.15,
   },
   name: {
-    marginTop: Height / 13,
+    marginTop: '2%',
   },
 });
 

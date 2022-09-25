@@ -33,7 +33,7 @@ const ChatScreen = props => {
   const [Recive, setRecive] = useState();
   const [loading, setLoading] = useState(true);
   const navigation = useNavigation();
-  const chatRef = useRef(null);
+  const chatRef = useRef();
 
   const sendNotification = async (toemail, fromemail, messaage) => {
     const obj = {
@@ -100,6 +100,8 @@ const ChatScreen = props => {
           <FlatList
             data={Recive}
             ref={chatRef}
+            inverted
+            contentContainerStyle={{flexDirection: 'column-reverse'}}
             renderItem={({item}) => (
               <View
                 style={{

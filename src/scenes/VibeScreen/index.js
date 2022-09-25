@@ -13,6 +13,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Swiper from 'react-native-deck-swiper';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 // import { useNavigation } from '@react-navigation/native';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
@@ -30,7 +31,7 @@ import {
 import firestore from '@react-native-firebase/firestore';
 import {useNavigation} from '@react-navigation/native';
 import {cardData} from '../../dumy-Data/defaultHomeCardData';
-import { VibeBoarding } from '../../Components/VibeBoarding';
+import {VibeBoarding} from '../../Components/VibeBoarding';
 const Vibe = () => {
   const [prevDailog, setPrevDailog] = useState(false);
   const [allswiped, setAllswiped] = useState(false);
@@ -50,8 +51,7 @@ const Vibe = () => {
           justifyContent: 'center',
           alignItems: 'center',
           alignContent: 'center',
-        }}
-      >
+        }}>
         <Text style={styles.heading}>
           Buy Premium to connect with people who are interested in your profile.
         </Text>
@@ -61,8 +61,7 @@ const Vibe = () => {
             marginTop: 20,
             fontSize: 16,
             fontWeight: 'bold',
-          }}
-        >
+          }}>
           Many people viewed your profile
         </Text>
         <View
@@ -73,8 +72,7 @@ const Vibe = () => {
             marginVertical: 20,
             alignContent: 'center',
             alignItems: 'center',
-          }}
-        >
+          }}>
           <View
             style={{
               borderWidth: 2,
@@ -84,8 +82,7 @@ const Vibe = () => {
               justifyContent: 'center',
               alignContent: 'center',
               alignItems: 'center',
-            }}
-          >
+            }}>
             <Image
               style={{width: 100, height: 100}}
               source={require('../../assets/images/MentorCard.png')}
@@ -115,8 +112,7 @@ const Vibe = () => {
                 bottom: -45,
                 alignItems: 'center',
               }}
-              onPress={() => LoadMoreVibeCard()}
-            >
+              onPress={() => LoadMoreVibeCard()}>
               <View style={{alignSelf: 'center'}}>
                 <Text
                   style={{
@@ -126,8 +122,7 @@ const Vibe = () => {
                     fontWeight: '700',
                     marginTop: 6,
                     textAlign: 'center',
-                  }}
-                >
+                  }}>
                   More Card
                 </Text>
               </View>
@@ -192,8 +187,7 @@ const Vibe = () => {
                     fontSize: 18,
                     fontWeight: '700',
                     marginLeft: 15,
-                  }}
-                >
+                  }}>
                   What I am here for
                 </Text>
                 <View
@@ -201,8 +195,7 @@ const Vibe = () => {
                     marginTop: 5,
                     flexDirection: 'row',
                     justifyContent: 'space-around',
-                  }}
-                >
+                  }}>
                   <View
                     style={{
                       boxShadow: '4px -5px 5px 0px #00000040 inset',
@@ -214,8 +207,7 @@ const Vibe = () => {
                       borderWidth: 3,
                       borderColor: 'white',
                       backgroundColor: '#0077B7',
-                    }}
-                  >
+                    }}>
                     <Text
                       style={{
                         color: 'white',
@@ -223,8 +215,7 @@ const Vibe = () => {
                         fontFamily: 'Poppins',
                         fontSize: 16,
                         fontWeight: '500',
-                      }}
-                    >
+                      }}>
                       Hire Employee
                     </Text>
                   </View>
@@ -240,8 +231,7 @@ const Vibe = () => {
                       borderWidth: 3,
                       borderColor: 'white',
                       backgroundColor: '#0077B7',
-                    }}
-                  >
+                    }}>
                     <Text
                       style={{
                         color: 'white',
@@ -249,8 +239,7 @@ const Vibe = () => {
                         fontFamily: 'Poppins',
                         fontSize: 16,
                         fontWeight: '500',
-                      }}
-                    >
+                      }}>
                       Hire Employee
                     </Text>
                   </View>
@@ -266,8 +255,7 @@ const Vibe = () => {
                       borderWidth: 3,
                       borderColor: 'white',
                       backgroundColor: '#0077B7',
-                    }}
-                  >
+                    }}>
                     <Text
                       style={{
                         color: 'white',
@@ -275,8 +263,7 @@ const Vibe = () => {
                         fontFamily: 'Poppins',
                         fontSize: 16,
                         fontWeight: '500',
-                      }}
-                    >
+                      }}>
                       Hire Employee
                     </Text>
                   </View>
@@ -292,8 +279,7 @@ const Vibe = () => {
                   fontWeight: '700',
                   marginTop: 6,
                   marginLeft: 15,
-                }}
-              >
+                }}>
                 How can we meet
               </Text>
             </View>
@@ -302,22 +288,25 @@ const Vibe = () => {
                 marginTop: 3,
                 flexDirection: 'row',
                 justifyContent: 'space-around',
-              }}
-            >
+              }}>
               <View
                 style={{
                   flexDirection: 'row',
                   justifyContent: 'center',
                   alignItems: 'center',
-                }}
-              >
-                <ImageBackground
+                }}>
+                {/* <ImageBackground
                   style={{width: 20, height: 20, borderRadius: 10}}
                   source={{
                     uri:
                       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
                   }}
-                ></ImageBackground>
+                ></ImageBackground> */}
+                <Icon
+                  name="check-circle"
+                  color={AppColors.ActiveColor}
+                  size={20}
+                />
 
                 <Text
                   style={{
@@ -326,8 +315,7 @@ const Vibe = () => {
                     fontFamily: 'Poppins',
                     fontSize: 16,
                     fontWeight: '400',
-                  }}
-                >
+                  }}>
                   At Coffee
                 </Text>
               </View>
@@ -336,16 +324,17 @@ const Vibe = () => {
                   flexDirection: 'row',
                   justifyContent: 'center',
                   alignItems: 'center',
-                }}
-              >
-                <ImageBackground
+                }}>
+                {/* <ImageBackground
                   style={{width: 20, height: 20, borderRadius: 10}}
                   source={{
-                    uri:
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                  }}
-                ></ImageBackground>
-
+                    uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                  }}></ImageBackground> */}
+                <Icon
+                  name="check-circle"
+                  color={AppColors.ActiveColor}
+                  size={20}
+                />
                 <Text
                   style={{
                     marginLeft: 4,
@@ -353,8 +342,7 @@ const Vibe = () => {
                     fontFamily: 'Poppins',
                     fontSize: 16,
                     fontWeight: '400',
-                  }}
-                >
+                  }}>
                   At Coffee
                 </Text>
               </View>
@@ -363,16 +351,17 @@ const Vibe = () => {
                   flexDirection: 'row',
                   justifyContent: 'center',
                   alignItems: 'center',
-                }}
-              >
-                <ImageBackground
+                }}>
+                {/*  <ImageBackground
                   style={{width: 20, height: 20, borderRadius: 10}}
                   source={{
-                    uri:
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                  }}
-                ></ImageBackground>
-
+                    uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                  }}></ImageBackground> */}
+                <Icon
+                  name="check-circle"
+                  color={AppColors.ActiveColor}
+                  size={20}
+                />
                 <Text
                   style={{
                     marginLeft: 4,
@@ -380,8 +369,7 @@ const Vibe = () => {
                     fontFamily: 'Poppins',
                     fontSize: 16,
                     fontWeight: '400',
-                  }}
-                >
+                  }}>
                   At Coffee
                 </Text>
               </View>
@@ -395,30 +383,30 @@ const Vibe = () => {
                   fontWeight: '700',
                   marginTop: 4,
                   marginLeft: 15,
-                }}
-              >
+                }}>
                 About Me
               </Text>
             </View>
 
             <View
-              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}
-            >
+              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
               <View>
                 <View
                   style={{
                     flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'center',
-                  }}
-                >
-                  <ImageBackground
+                  }}>
+                  {/*  <ImageBackground
                     style={{width: 20, height: 20, borderRadius: 10}}
                     source={{
-                      uri:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                    }}
-                  ></ImageBackground>
+                      uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                    }}></ImageBackground> */}
+                  <Icon
+                    name="check-circle"
+                    color={AppColors.ActiveColor}
+                    size={20}
+                  />
                   <Text
                     style={{
                       color: '#8AB9FF',
@@ -428,8 +416,7 @@ const Vibe = () => {
                       marginLeft: 4,
                       fontWeight: '500',
                       marginTop: 4,
-                    }}
-                  >
+                    }}>
                     What am I looking for{' '}
                   </Text>
                 </View>
@@ -441,8 +428,7 @@ const Vibe = () => {
                     textAlign: 'center',
                     fontWeight: '400',
                     marginTop: 1,
-                  }}
-                >
+                  }}>
                   Mentor ship {''} Get Inspired{' '}
                 </Text>
               </View>
@@ -453,15 +439,17 @@ const Vibe = () => {
                     flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'center',
-                  }}
-                >
-                  <ImageBackground
+                  }}>
+                  {/*  <ImageBackground
                     style={{width: 20, height: 20, borderRadius: 10}}
                     source={{
-                      uri:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                    }}
-                  ></ImageBackground>
+                      uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                    }}></ImageBackground> */}
+                  <Icon
+                    name="check-circle"
+                    color={AppColors.ActiveColor}
+                    size={20}
+                  />
                   <Text
                     style={{
                       color: '#8AB9FF',
@@ -470,8 +458,7 @@ const Vibe = () => {
                       fontWeight: '500',
                       marginTop: 4,
                       marginLeft: 4,
-                    }}
-                  >
+                    }}>
                     Past Experience
                   </Text>
                 </View>
@@ -483,30 +470,30 @@ const Vibe = () => {
                     textAlign: 'center',
                     fontWeight: '400',
                     marginTop: 1,
-                  }}
-                >
+                  }}>
                   Amazon
                 </Text>
               </View>
             </View>
             <View
-              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}
-            >
+              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
               <View>
                 <View
                   style={{
                     flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'center',
-                  }}
-                >
-                  <ImageBackground
+                  }}>
+                  {/* <ImageBackground
                     style={{width: 20, height: 20, borderRadius: 10}}
                     source={{
-                      uri:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                    }}
-                  ></ImageBackground>
+                      uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                    }}></ImageBackground> */}
+                  <Icon
+                    name="check-circle"
+                    color={AppColors.ActiveColor}
+                    size={20}
+                  />
                   <Text
                     style={{
                       color: '#8AB9FF',
@@ -516,8 +503,7 @@ const Vibe = () => {
                       marginLeft: 4,
                       fontWeight: '500',
                       marginTop: 4,
-                    }}
-                  >
+                    }}>
                     What am I looking for{' '}
                   </Text>
                 </View>
@@ -529,8 +515,7 @@ const Vibe = () => {
                     textAlign: 'center',
                     fontWeight: '400',
                     marginTop: 1,
-                  }}
-                >
+                  }}>
                   Mentor ship {''} Get Inspired{' '}
                 </Text>
               </View>
@@ -541,15 +526,17 @@ const Vibe = () => {
                     flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'center',
-                  }}
-                >
-                  <ImageBackground
+                  }}>
+                  {/* <ImageBackground
                     style={{width: 20, height: 20, borderRadius: 10}}
                     source={{
-                      uri:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                    }}
-                  ></ImageBackground>
+                      uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                    }}></ImageBackground> */}
+                  <Icon
+                    name="check-circle"
+                    color={AppColors.ActiveColor}
+                    size={20}
+                  />
                   <Text
                     style={{
                       color: '#8AB9FF',
@@ -558,8 +545,7 @@ const Vibe = () => {
                       fontWeight: '500',
                       marginTop: 4,
                       marginLeft: 4,
-                    }}
-                  >
+                    }}>
                     Past Experience
                   </Text>
                 </View>
@@ -571,30 +557,30 @@ const Vibe = () => {
                     textAlign: 'center',
                     fontWeight: '400',
                     marginTop: 1,
-                  }}
-                >
+                  }}>
                   Amazon
                 </Text>
               </View>
             </View>
             <View
-              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}
-            >
+              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
               <View>
                 <View
                   style={{
                     flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'center',
-                  }}
-                >
-                  <ImageBackground
+                  }}>
+                  {/*  <ImageBackground
                     style={{width: 20, height: 20, borderRadius: 10}}
                     source={{
-                      uri:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                    }}
-                  ></ImageBackground>
+                      uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                    }}></ImageBackground> */}
+                  <Icon
+                    name="check-circle"
+                    color={AppColors.ActiveColor}
+                    size={20}
+                  />
                   <Text
                     style={{
                       color: '#8AB9FF',
@@ -604,8 +590,7 @@ const Vibe = () => {
                       marginLeft: 4,
                       fontWeight: '500',
                       marginTop: 4,
-                    }}
-                  >
+                    }}>
                     What am I looking for{' '}
                   </Text>
                 </View>
@@ -617,8 +602,7 @@ const Vibe = () => {
                     textAlign: 'center',
                     fontWeight: '400',
                     marginTop: 1,
-                  }}
-                >
+                  }}>
                   Mentor ship {''} Get Inspired{' '}
                 </Text>
               </View>
@@ -629,15 +613,17 @@ const Vibe = () => {
                     flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'center',
-                  }}
-                >
-                  <ImageBackground
+                  }}>
+                  {/*  <ImageBackground
                     style={{width: 20, height: 20, borderRadius: 10}}
                     source={{
-                      uri:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                    }}
-                  ></ImageBackground>
+                      uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                    }}></ImageBackground> */}
+                  <Icon
+                    name="check-circle"
+                    color={AppColors.ActiveColor}
+                    size={20}
+                  />
                   <Text
                     style={{
                       color: '#8AB9FF',
@@ -646,8 +632,7 @@ const Vibe = () => {
                       fontWeight: '500',
                       marginTop: 4,
                       marginLeft: 4,
-                    }}
-                  >
+                    }}>
                     Past Experience
                   </Text>
                 </View>
@@ -659,30 +644,30 @@ const Vibe = () => {
                     textAlign: 'center',
                     fontWeight: '400',
                     marginTop: 1,
-                  }}
-                >
+                  }}>
                   Amazon
                 </Text>
               </View>
             </View>
             <View
-              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}
-            >
+              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
               <View>
                 <View
                   style={{
                     flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'center',
-                  }}
-                >
-                  <ImageBackground
+                  }}>
+                  {/*  <ImageBackground
                     style={{width: 20, height: 20, borderRadius: 10}}
                     source={{
-                      uri:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                    }}
-                  ></ImageBackground>
+                      uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                    }}></ImageBackground> */}
+                  <Icon
+                    name="check-circle"
+                    color={AppColors.ActiveColor}
+                    size={20}
+                  />
                   <Text
                     style={{
                       color: '#8AB9FF',
@@ -692,8 +677,7 @@ const Vibe = () => {
                       marginLeft: 4,
                       fontWeight: '500',
                       marginTop: 4,
-                    }}
-                  >
+                    }}>
                     What am I looking for{' '}
                   </Text>
                 </View>
@@ -705,8 +689,7 @@ const Vibe = () => {
                     textAlign: 'center',
                     fontWeight: '400',
                     marginTop: 1,
-                  }}
-                >
+                  }}>
                   Mentor ship {''} Get Inspired{' '}
                 </Text>
               </View>
@@ -717,15 +700,17 @@ const Vibe = () => {
                     flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'center',
-                  }}
-                >
-                  <ImageBackground
+                  }}>
+                  {/* <ImageBackground
                     style={{width: 20, height: 20, borderRadius: 10}}
                     source={{
-                      uri:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                    }}
-                  ></ImageBackground>
+                      uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                    }}></ImageBackground> */}
+                  <Icon
+                    name="check-circle"
+                    color={AppColors.ActiveColor}
+                    size={20}
+                  />
                   <Text
                     style={{
                       color: '#8AB9FF',
@@ -734,8 +719,7 @@ const Vibe = () => {
                       fontWeight: '500',
                       marginTop: 4,
                       marginLeft: 4,
-                    }}
-                  >
+                    }}>
                     Past Experience
                   </Text>
                 </View>
@@ -747,8 +731,7 @@ const Vibe = () => {
                     textAlign: 'center',
                     fontWeight: '400',
                     marginTop: 1,
-                  }}
-                >
+                  }}>
                   Amazon
                 </Text>
               </View>
@@ -768,8 +751,7 @@ const Vibe = () => {
             backgroundColor: '#2A72DE',
             borderRadius: 11,
           }}
-          onPress={() => setId(item.id)}
-        >
+          onPress={() => setId(item.id)}>
           <Text
             style={{
               color: 'white',
@@ -777,8 +759,7 @@ const Vibe = () => {
               fontSize: 18,
               fontWeight: '700',
               textAlign: 'center',
-            }}
-          >
+            }}>
             {' '}
             Tap For More
           </Text>
@@ -838,7 +819,7 @@ const Vibe = () => {
             Passed_Email: firestore.FieldValue.arrayUnion(CardEmail),
           });
       }
-      
+
       // var docRef = firestore().collection('Users').doc(state.user.email);
 
       // docRef
@@ -1032,8 +1013,7 @@ const Vibe = () => {
                             borderRadius: 100,
                           }}
                           source={{
-                            uri:
-                              'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
+                            uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
                           }}
                         />
                       </View>
@@ -1046,8 +1026,7 @@ const Vibe = () => {
                               fontSize: 22,
                               fontFamily: 'poppins',
                               fontWeight: 'bold',
-                            }}
-                          >
+                            }}>
                             {item?.name}
                           </Text>
                           <Text
@@ -1055,8 +1034,7 @@ const Vibe = () => {
                               color: '#fff',
                               fontSize: 14,
                               fontWeight: '400',
-                            }}
-                          >
+                            }}>
                             {item.designation || demoData[0].designation}
                           </Text>
                           <Text
@@ -1064,8 +1042,7 @@ const Vibe = () => {
                               color: '#fff',
                               fontSize: 14,
                               fontWeight: '400',
-                            }}
-                          >
+                            }}>
                             {item?.city || demoData[0].city}
                             {' ,'}
                             {item?.country || demoData[0].country}
@@ -1080,8 +1057,7 @@ const Vibe = () => {
                               fontWeight: 'bold',
                               marginTop: 10,
                               marginHorizontal: 10,
-                            }}
-                          >
+                            }}>
                             {item?.quote || demoData[0].quote}
                           </Text>
                         </View>
@@ -1098,8 +1074,7 @@ const Vibe = () => {
                                 marginTop: 6,
                                 fontWeight: '700',
                                 marginLeft: 15,
-                              }}
-                            >
+                              }}>
                               What I am here for
                             </Text>
                             <View
@@ -1108,8 +1083,7 @@ const Vibe = () => {
                                 flexDirection: 'row',
                                 justifyContent: 'space-evenly',
                                 flexWrap: 'wrap',
-                              }}
-                            >
+                              }}>
                               <View
                                 style={{
                                   boxShadow: '4px -5px 5px 0px #00000040 inset',
@@ -1121,8 +1095,7 @@ const Vibe = () => {
                                   borderWidth: 3,
                                   borderColor: 'white',
                                   backgroundColor: '#0077B7',
-                                }}
-                              >
+                                }}>
                                 <Text
                                   style={{
                                     color: 'white',
@@ -1130,8 +1103,7 @@ const Vibe = () => {
                                     fontFamily: 'Poppins',
                                     fontSize: 16,
                                     fontWeight: '500',
-                                  }}
-                                >
+                                  }}>
                                   {item?.Here_for?.[0]} {'Find Investors'}
                                 </Text>
                               </View>
@@ -1147,8 +1119,7 @@ const Vibe = () => {
                                   borderWidth: 3,
                                   borderColor: 'white',
                                   backgroundColor: '#0077B7',
-                                }}
-                              >
+                                }}>
                                 <Text
                                   style={{
                                     color: 'white',
@@ -1156,8 +1127,7 @@ const Vibe = () => {
                                     fontFamily: 'Poppins',
                                     fontSize: 16,
                                     fontWeight: '500',
-                                  }}
-                                >
+                                  }}>
                                   {item?.Here_for?.[1]} {'Hire Employees'}
                                 </Text>
                               </View>
@@ -1173,8 +1143,7 @@ const Vibe = () => {
                                   borderWidth: 3,
                                   borderColor: 'white',
                                   backgroundColor: '#0077B7',
-                                }}
-                              >
+                                }}>
                                 <Text
                                   style={{
                                     color: 'white',
@@ -1182,8 +1151,7 @@ const Vibe = () => {
                                     fontFamily: 'Poppins',
                                     fontSize: 16,
                                     fontWeight: '500',
-                                  }}
-                                >
+                                  }}>
                                   {item?.Here_for?.[1]} {'Find Mentors'}
                                 </Text>
                               </View>
@@ -1199,8 +1167,7 @@ const Vibe = () => {
                               fontWeight: '700',
                               marginTop: 6,
                               marginLeft: 15,
-                            }}
-                          >
+                            }}>
                             How can we meet
                           </Text>
                         </View>
@@ -1209,26 +1176,18 @@ const Vibe = () => {
                             marginTop: 3,
                             flexDirection: 'row',
                             justifyContent: 'space-around',
-                          }}
-                        >
+                          }}>
                           <View
                             style={{
                               flexDirection: 'row',
                               justifyContent: 'center',
                               alignItems: 'center',
-                            }}
-                          >
-                            <ImageBackground
-                              style={{
-                                width: 20,
-                                height: 20,
-                                borderRadius: 10,
-                              }}
-                              source={{
-                                uri:
-                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                              }}
-                            ></ImageBackground>
+                            }}>
+                            <Icon
+                              name="check-circle"
+                              color={AppColors.ActiveColor}
+                              size={20}
+                            />
 
                             <Text
                               style={{
@@ -1237,8 +1196,7 @@ const Vibe = () => {
                                 fontFamily: 'Poppins',
                                 fontSize: 16,
                                 fontWeight: '400',
-                              }}
-                            >
+                              }}>
                               {item?.How_To_Meet?.[0]} {'At Coffe'}
                             </Text>
                           </View>
@@ -1247,19 +1205,12 @@ const Vibe = () => {
                               flexDirection: 'row',
                               justifyContent: 'center',
                               alignItems: 'center',
-                            }}
-                          >
-                            <ImageBackground
-                              style={{
-                                width: 20,
-                                height: 20,
-                                borderRadius: 10,
-                              }}
-                              source={{
-                                uri:
-                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                              }}
-                            ></ImageBackground>
+                            }}>
+                            <Icon
+                              name="check-circle"
+                              color={AppColors.ActiveColor}
+                              size={20}
+                            />
 
                             <Text
                               style={{
@@ -1268,8 +1219,7 @@ const Vibe = () => {
                                 fontFamily: 'Poppins',
                                 fontSize: 16,
                                 fontWeight: '400',
-                              }}
-                            >
+                              }}>
                               {item?.How_To_Meet?.[1]} {' At Local Cafe'}
                             </Text>
                           </View>
@@ -1278,19 +1228,12 @@ const Vibe = () => {
                               flexDirection: 'row',
                               justifyContent: 'center',
                               alignItems: 'center',
-                            }}
-                          >
-                            <ImageBackground
-                              style={{
-                                width: 20,
-                                height: 20,
-                                borderRadius: 10,
-                              }}
-                              source={{
-                                uri:
-                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                              }}
-                            ></ImageBackground>
+                            }}>
+                            <Icon
+                              name="check-circle"
+                              color={AppColors.ActiveColor}
+                              size={20}
+                            />
 
                             <Text
                               style={{
@@ -1299,8 +1242,7 @@ const Vibe = () => {
                                 fontFamily: 'Poppins',
                                 fontSize: 16,
                                 fontWeight: '400',
-                              }}
-                            >
+                              }}>
                               {item?.How_To_Meet?.[2]} {' Video Call'}
                             </Text>
                           </View>
@@ -1314,8 +1256,7 @@ const Vibe = () => {
                               fontWeight: '700',
                               marginTop: 4,
                               marginLeft: 15,
-                            }}
-                          >
+                            }}>
                             About Me
                           </Text>
                         </View>
@@ -1325,27 +1266,19 @@ const Vibe = () => {
                             style={{
                               flexDirection: 'row',
                               justifyContent: 'space-between',
-                            }}
-                          >
+                            }}>
                             <View>
                               <View
                                 style={{
                                   flexDirection: 'row',
                                   alignItems: 'center',
                                   justifyContent: 'center',
-                                }}
-                              >
-                                <ImageBackground
-                                  style={{
-                                    width: 20,
-                                    height: 20,
-                                    borderRadius: 10,
-                                  }}
-                                  source={{
-                                    uri:
-                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                                  }}
-                                ></ImageBackground>
+                                }}>
+                                <Icon
+                                  name="check-circle"
+                                  color={AppColors.ActiveColor}
+                                  size={20}
+                                />
                                 <Text
                                   style={{
                                     color: '#8AB9FF',
@@ -1355,8 +1288,7 @@ const Vibe = () => {
                                     marginLeft: 4,
                                     fontWeight: '500',
                                     marginTop: 4,
-                                  }}
-                                >
+                                  }}>
                                   What am I looking for{' '}
                                 </Text>
                               </View>
@@ -1368,8 +1300,7 @@ const Vibe = () => {
                                   textAlign: 'center',
                                   fontWeight: '400',
                                   marginTop: 1,
-                                }}
-                              >
+                                }}>
                                 Mentor ship {''} Get Inspired{' '}
                               </Text>
                             </View>
@@ -1381,19 +1312,12 @@ const Vibe = () => {
                                   alignItems: 'center',
                                   alignSelf: 'flex-start',
                                   justifyContent: 'space-between',
-                                }}
-                              >
-                                <ImageBackground
-                                  style={{
-                                    width: 20,
-                                    height: 20,
-                                    borderRadius: 10,
-                                  }}
-                                  source={{
-                                    uri:
-                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                                  }}
-                                ></ImageBackground>
+                                }}>
+                                <Icon
+                                  name="check-circle"
+                                  color={AppColors.ActiveColor}
+                                  size={20}
+                                />
                                 <Text
                                   style={{
                                     color: '#8AB9FF',
@@ -1402,8 +1326,7 @@ const Vibe = () => {
                                     fontWeight: '500',
                                     marginTop: 4,
                                     marginLeft: 4,
-                                  }}
-                                >
+                                  }}>
                                   Past Experience
                                 </Text>
                               </View>
@@ -1415,8 +1338,7 @@ const Vibe = () => {
                                   textAlign: 'center',
                                   fontWeight: '400',
                                   marginTop: 1,
-                                }}
-                              >
+                                }}>
                                 {item?.Prev_org} {' AMAZON'}
                               </Text>
                             </View>
@@ -1425,8 +1347,7 @@ const Vibe = () => {
                             style={{
                               flexDirection: 'row',
                               justifyContent: 'space-between',
-                            }}
-                          >
+                            }}>
                             <View>
                               <View
                                 style={{
@@ -1434,19 +1355,12 @@ const Vibe = () => {
                                   alignItems: 'center',
 
                                   justifyContent: 'center',
-                                }}
-                              >
-                                <ImageBackground
-                                  style={{
-                                    width: 20,
-                                    height: 20,
-                                    borderRadius: 10,
-                                  }}
-                                  source={{
-                                    uri:
-                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                                  }}
-                                ></ImageBackground>
+                                }}>
+                                <Icon
+                                  name="check-circle"
+                                  color={AppColors.ActiveColor}
+                                  size={20}
+                                />
                                 <Text
                                   style={{
                                     color: '#8AB9FF',
@@ -1456,8 +1370,7 @@ const Vibe = () => {
                                     marginLeft: 4,
                                     fontWeight: '500',
                                     marginTop: 4,
-                                  }}
-                                >
+                                  }}>
                                   Previous Designation
                                 </Text>
                               </View>
@@ -1469,8 +1382,7 @@ const Vibe = () => {
                                   textAlign: 'center',
                                   fontWeight: '400',
                                   marginTop: 1,
-                                }}
-                              >
+                                }}>
                                 {item?.Previous_Designation} {'SDE'}
                               </Text>
                             </View>
@@ -1481,19 +1393,12 @@ const Vibe = () => {
                                   flexDirection: 'row',
                                   alignItems: 'center',
                                   justifyContent: 'center',
-                                }}
-                              >
-                                <ImageBackground
-                                  style={{
-                                    width: 20,
-                                    height: 20,
-                                    borderRadius: 10,
-                                  }}
-                                  source={{
-                                    uri:
-                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                                  }}
-                                ></ImageBackground>
+                                }}>
+                                <Icon
+                                  name="check-circle"
+                                  color={AppColors.ActiveColor}
+                                  size={20}
+                                />
                                 <Text
                                   style={{
                                     color: '#8AB9FF',
@@ -1502,8 +1407,7 @@ const Vibe = () => {
                                     fontWeight: '500',
                                     marginTop: 4,
                                     marginLeft: 4,
-                                  }}
-                                >
+                                  }}>
                                   Prev. Experience
                                 </Text>
                               </View>
@@ -1515,8 +1419,7 @@ const Vibe = () => {
                                   textAlign: 'center',
                                   fontWeight: '400',
                                   marginTop: 1,
-                                }}
-                              >
+                                }}>
                                 {item?.Previous_org_Duration?.[0]} {' 3 '}
                               </Text>
                             </View>
@@ -1562,8 +1465,7 @@ const Vibe = () => {
             verticalSwipe={false}
             showSecondCard={true}
             backgroundColor={'#000C12'}
-            stackSize={2}
-          ></Swiper>
+            stackSize={2}></Swiper>
         )}
       </View>
     );
@@ -1573,8 +1475,7 @@ const Vibe = () => {
     <IndividualHeaderLayout style={{flex: 1}}>
       <CustomPopup
         modalVisible={prevDailog}
-        setModalVisible={() => setPrevDailog(false)}
-      >
+        setModalVisible={() => setPrevDailog(false)}>
         <View>
           <Text>Prev Data Show Here</Text>
         </View>

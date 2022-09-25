@@ -45,16 +45,14 @@ const Home = () => {
   const [discussion, setDiscussion] = useState(true);
   const [news, setNews] = useState(false);
   const [popup, setPopup] = useState(false);
-  const [seeMore, setSeeMore] = useState(false);
-  const [seemoreId, setSeemoreId] = useState();
   const [_id, set_Id] = useState('');
   const [owner, setOwner] = useState(false);
+  const [postdata, setPostdata] = useState('');
+
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
   const renderCard = ({item, index}) => {
-    console.log(state.allLoaded, 'Hey!');
-    // console.log(state.Rooms[0], 'userdta');
     return (
       <LinearGradient
         key={item.id}
@@ -224,15 +222,15 @@ const Home = () => {
               <Text style={styles2.details}>{item.text}</Text>
             </View>
           ) : (
-            <View
-              style={[styles2.image, {overflow: 'hidden', marginTop: '4%'}]}>
-              <ImageBackground
-                style={{width: '100%', height: '100%'}}
-                source={{uri: item.image}}>
-                <View style={{paddingHorizontal: '5%'}}>
-                  <Text style={styles2.details}>{item.text}</Text>
-                </View>
-              </ImageBackground>
+            <View>
+              <Text style={styles2.details}>{item.text}</Text>
+              <View
+                style={[styles2.image, {overflow: 'hidden', marginTop: '2%'}]}>
+                <Image
+                  style={{width: '100%', height: '100%'}}
+                  source={{uri: item.image}}
+                />
+              </View>
             </View>
           )}
         </View>
@@ -288,7 +286,6 @@ const Home = () => {
       </LinearGradient>
     );
   };
-  const [postloader, setPostloader] = useState(false);
 
   useEffect(() => {
     dispatch(mentorService);
@@ -296,9 +293,7 @@ const Home = () => {
       dispatch(set_allLoaded(false));
       dispatch(load_room_data(undefined));
     } else {
-      setPostloader(true);
       dispatch(load_room_data(state.lastDocument));
-      setPostloader(false);
     }
   }, []);
 
@@ -320,7 +315,7 @@ const Home = () => {
     dispatch(refresh_rooms_list());
   };
   // console.log(state.user, 'postaloader');
-  console.log(state.loading, 'loader');
+
   return (
     <IndividualHeaderLayout>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -367,17 +362,15 @@ const Home = () => {
                 <SkeltonLoader />
               ) : (
                 <View style={{width: '100%', marginBottom: '3%'}}>
-                  {state.Rooms.length > 0 && (
-                    <FlatList
-                      data={state.Rooms}
-                      keyExtractor={item => item.id}
-                      renderItem={renderCard}
-                      onEndReached={_handleLoadMore}
-                      onEndReachedThreshold={1}
-                      refreshing={state.refreshing}
-                      onRefresh={handleRefresh}
-                    />
-                  )}
+                  <FlatList
+                    data={state.Rooms}
+                    keyExtractor={item => item.id}
+                    renderItem={renderCard}
+                    onEndReached={_handleLoadMore}
+                    onEndReachedThreshold={1}
+                    refreshing={state.refreshing}
+                    onRefresh={handleRefresh}
+                  />
                 </View>
               )}
             </View>

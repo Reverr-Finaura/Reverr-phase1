@@ -43,7 +43,7 @@ const SignupScreen = props => {
 
   //console.log(data)
   const IsEmpty = async () => {
-    console.log('i ma enpty');
+    // console.log('i ma enpty');
     setLoading(true);
     if (name === '') {
       setnameerror(true);

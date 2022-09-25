@@ -9,8 +9,10 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   PermissionsAndroid,
+  FlatList,
+  TextInput,
 } from 'react-native';
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {AppColors} from '../../../utils';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 //import {ChangeDp} from '../../utils/fireBaseFunctions';
@@ -21,6 +23,7 @@ import firestore from '@react-native-firebase/firestore';
 import {useDispatch, useSelector} from 'react-redux';
 import {styles} from './style';
 import {updateUserData} from '../../../Redux/actions';
+import {Item} from 'react-native-paper/lib/typescript/components/List/List';
 const Width = Dimensions.get('screen').width;
 const Height = Dimensions.get('screen').height;
 
@@ -35,6 +38,8 @@ const EditProfile = () => {
     state?.user && state?.user?.industry == '' ? '>/s<' : state?.user?.industry,
   );
   const [loading, setLoading] = useState(false);
+  const [addMoreExperience, setAddMoreExperience] = useState(false);
+  const [educationlist, setEducationlist] = useState([{school: ''}]);
 
   const [ex1, setEx1] = useState(
     state?.user && state?.user?.experience && state?.user?.experience.length > 0
@@ -160,6 +165,7 @@ const EditProfile = () => {
       });
     //dispatch({type: 'UPDATE', payload: data});
   };
+
   return (
     <View style={styles.screen}>
       <View style={styles.header}>
@@ -206,25 +212,91 @@ const EditProfile = () => {
             setIndustry(i);
           }}
         />
-        <EditCard
-          Title="Experience"
-          onChangeText={e => {
-            setEx1(e);
-          }}
-          value={ex1 == '>/s<' ? 'Enter Experience' : ex1}
-        />
-        <EditCard
-          onChangeText={e => {
-            setEx2(e);
-          }}
-          value={ex2 == '>/s<' ? 'Enter Experience' : ex2}
-        />
-        <EditCard
-          onChangeText={e => {
-            setEx3(e);
-          }}
-          value={ex3 == '>/s<' ? 'Enter Experience' : ex3}
-        />
+        <View>
+          <Text
+            style={{
+              color: AppColors.FontsColor,
+              paddingVertical: '2%',
+              fontFamily: 'Poppins-Regular',
+            }}>
+            Experience
+          </Text>
+          <TextInput
+            style={{
+              backgroundColor: AppColors.inputFieldColor,
+              paddingStart: '3%',
+              paddingVertical: 6,
+              color: AppColors.infoFonts,
+              fontFamily: 'Poppins-Regular',
+              borderRadius: 5,
+              marginVertical: '3%',
+              marginStart: '10%',
+            }}
+            value={ex1 == '>/s<' ? 'Enter Company' : ex1}
+          />
+          <TextInput
+            style={{
+              backgroundColor: AppColors.inputFieldColor,
+              paddingStart: '3%',
+              paddingVertical: 6,
+              color: AppColors.infoFonts,
+              fontFamily: 'Poppins-Regular',
+              borderRadius: 5,
+              marginVertical: '3%',
+              marginStart: '10%',
+            }}
+            value={ex2 == '>/s<' ? 'years' : ex1}
+          />
+          <TouchableOpacity
+            onPress={() => setAddMoreExperience(!addMoreExperience)}
+            style={{
+              width: '20%',
+              alignItems: 'center',
+              justifyContent: 'center',
+              paddingVertical: '2%',
+              marginStart: '80%',
+            }}>
+            <Text
+              style={{
+                color: AppColors.ActiveColor,
+                paddingVertical: '2%',
+                fontFamily: 'Poppins-Regular',
+              }}>
+              {addMoreExperience ? 'Remove' : 'Add More'}
+            </Text>
+          </TouchableOpacity>
+        </View>
+        {addMoreExperience && (
+          <View>
+            <TextInput
+              style={{
+                backgroundColor: AppColors.inputFieldColor,
+                paddingStart: '3%',
+                paddingVertical: 6,
+                color: AppColors.infoFonts,
+                fontFamily: 'Poppins-Regular',
+                borderRadius: 5,
+                marginVertical: '3%',
+                marginStart: '10%',
+              }}
+              value={ex3 == '>/s<' ? 'Enter Company' : ex1}
+            />
+            <TextInput
+              style={{
+                backgroundColor: AppColors.inputFieldColor,
+                paddingStart: '3%',
+                paddingVertical: 6,
+                color: AppColors.infoFonts,
+                fontFamily: 'Poppins-Regular',
+                borderRadius: 5,
+                marginVertical: '3%',
+                marginStart: '10%',
+              }}
+              value={ex2 == '>/s<' ? 'years' : ex1}
+            />
+          </View>
+        )}
+
         <EditCard
           Title="Skills"
           onChangeText={e => {
@@ -244,38 +316,122 @@ const EditProfile = () => {
           }}
           value={sk3 == '>/s<' ? 'Enter Skill' : sk3}
         />
-        {/* <EditCard
-           
-           onChangeText={e => {
-             setSk4(e);
-           }}
-           value={sk4 == '>/s<' ? 'Enter Skill' :  sk4}
-         />
-         <EditCard
-           
-           onChangeText={e => {
-             setSk5(e);
-           }}
-           value={sk5 == '>/s<' ? 'Enter Skill' :  sk5}
-         /> */}
+
+        <View>
+          <Text
+            style={{
+              color: AppColors.FontsColor,
+              paddingVertical: '2%',
+              fontFamily: 'Poppins-Regular',
+            }}>
+            Education
+          </Text>
+          <FlatList
+            data={educationlist}
+            renderItem={({item, index}) => (
+              <View>
+                {index > 0 && (
+                  <TouchableOpacity
+                    onPress={() => {
+                      let list = [...educationlist];
+                      list.splice(index, 1);
+                      setEducationlist(list);
+                    }}
+                    style={{marginStart: '85%'}}>
+                    <Text
+                      style={{
+                        color: AppColors.ActiveColor,
+
+                        fontFamily: 'Poppins-Regular',
+                      }}>
+                      Remove
+                    </Text>
+                  </TouchableOpacity>
+                )}
+                <TextInput
+                  style={{
+                    backgroundColor: AppColors.inputFieldColor,
+                    paddingStart: '3%',
+                    paddingVertical: 6,
+                    color: AppColors.infoFonts,
+                    fontFamily: 'Poppins-Regular',
+                    borderRadius: 5,
+                    marginVertical: '3%',
+                    marginStart: '10%',
+                    marginRight: '1.5%',
+                  }}
+                  value="School/Collage"
+                />
+                <View
+                  style={{
+                    flexDirection: 'row',
+                  }}>
+                  <TextInput
+                    style={{
+                      backgroundColor: AppColors.inputFieldColor,
+                      paddingStart: '3%',
+                      paddingVertical: 6,
+                      color: AppColors.infoFonts,
+                      fontFamily: 'Poppins-Regular',
+                      borderRadius: 5,
+                      marginVertical: '3%',
+                      marginStart: '10%',
+                      width: '40%',
+                    }}
+                    value="From"
+                  />
+                  <TextInput
+                    style={{
+                      backgroundColor: AppColors.inputFieldColor,
+                      paddingStart: '3%',
+                      paddingVertical: 6,
+                      color: AppColors.infoFonts,
+                      fontFamily: 'Poppins-Regular',
+                      borderRadius: 5,
+                      marginVertical: '3%',
+                      marginStart: '10%',
+                      width: '40%',
+                    }}
+                    value="To"
+                  />
+                </View>
+              </View>
+            )}
+          />
+
+          <TouchableOpacity
+            onPress={() => setEducationlist([...educationlist, {school: ''}])}
+            style={{
+              width: '20%',
+              alignItems: 'center',
+              justifyContent: 'center',
+              paddingVertical: '2%',
+              marginStart: '80%',
+            }}>
+            <Text
+              style={{
+                color: AppColors.ActiveColor,
+                paddingVertical: '2%',
+                fontFamily: 'Poppins-Regular',
+              }}>
+              Add More
+            </Text>
+          </TouchableOpacity>
+        </View>
+
         <EditCard
-          Title="Education"
-          onChangeText={e => {
-            setEd1(e);
-          }}
-          value={ed1 == '>/s<' ? 'Enter Education' : ed1}
-        />
-        <EditCard
+          Title="Linkdin"
           onChangeText={e => {
             setEd2(e);
           }}
-          value={ed2 == '>/s<' ? 'Enter Education' : ed2}
+          //value={ed2 == '>/s<' ? 'Enter Education' : ed2}
         />
         <EditCard
+          Title="Twitter"
           onChangeText={e => {
             setEd3(e);
           }}
-          value={ed3 == '>/s<' ? 'Enter Education' : ed3}
+          //value={ed3 == '>/s<' ? 'Enter Education' : ed3}
         />
       </ScrollView>
       <CustomButton

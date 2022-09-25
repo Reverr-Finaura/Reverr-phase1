@@ -23,29 +23,6 @@ const ProfileDetailsBox = ({userData}) => {
               styles.text,
               {color: AppColors.ActiveColor, paddingHorizontal: '2%'},
             ]}>
-            Work
-          </Text>
-        </View>
-        <Text
-          style={{
-            color: AppColors.FontsColor,
-            fontSize: 13,
-            marginStart: '7%',
-            marginVertical: '2%',
-          }}>
-          Marketing research at Fintech
-        </Text>
-      </View>
-      <View style={styles.container}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={[styles.text, {color: AppColors.FontsColor}]}>
-            Current
-          </Text>
-          <Text
-            style={[
-              styles.text,
-              {color: AppColors.ActiveColor, paddingHorizontal: '2%'},
-            ]}>
             Title
           </Text>
         </View>
@@ -59,7 +36,7 @@ const ProfileDetailsBox = ({userData}) => {
           Director of Market reserch
         </Text>
       </View>
-      <View style={styles.container}>
+      {/* <View style={styles.container}>
         <View style={{flexDirection: 'row'}}>
           <View style={{width: '45%', paddingStart: '12%'}}>
             <Text style={[styles.text, {color: AppColors.FontsColor}]}>
@@ -78,7 +55,7 @@ const ProfileDetailsBox = ({userData}) => {
             </Text>
           </View>
         </View>
-      </View>
+      </View> */}
       <View style={styles.container}>
         <Text style={[styles.text, {color: AppColors.FontsColor}]}>
           Experience

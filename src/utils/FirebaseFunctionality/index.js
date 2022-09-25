@@ -283,4 +283,11 @@ export const ReciveMessage = async (currentcUser, sendTo, setmsg) => {
   setmsg(Allmsg._data.messages);
 };
 
+export const getPost = async () => {
+  let postdata = '';
+  let t = await firestore().collection('Posts').get();
+
+  return t._docs;
+};
+
 export {loginUser};

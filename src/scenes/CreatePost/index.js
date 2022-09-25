@@ -27,6 +27,7 @@ import {
 //import {UserContext} from '../../App';
 import {BottomPopup} from '../../Components';
 import {useDispatch, useSelector} from 'react-redux';
+import axios from 'axios';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
@@ -51,11 +52,10 @@ const CreatePost = props => {
       .collection('Posts')
       .add(post)
       .then(p => {
-        console.log(p);
         //setPosts([]);
         //dispatch(add_post_to_rooms(post));
         //fetchPosts2();
-        console.log('Post Added!');
+        console.log(p, 'Post Added!');
 
         showToast('Your post has been posted.');
       })

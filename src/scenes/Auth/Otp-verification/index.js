@@ -15,23 +15,23 @@ import {styles} from './style';
 import {useNavigation} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import { useDispatch } from 'react-redux';
-import { add_user } from '../../../Redux/actions';
+import {useDispatch} from 'react-redux';
+import {add_user} from '../../../Redux/actions';
 
 const OtpScreen = props => {
   const navigation = useNavigation();
   const [otp, setOtp] = React.useState('');
   const Otp = props?.route?.params?.OTP;
   //weather via forgot password or signup
-  const Name=props?.route?.params?.Name;
-  const Mobile=props?.route?.params?.Mobile;
+  const Name = props?.route?.params?.Name;
+  const Mobile = props?.route?.params?.Mobile;
   const Email = props?.route?.params?.Email;
   const Password = props?.route?.params?.Password;
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   const [isUserSignedUp, setIsUserSignedUp] = useState(true);
   const SignUpUser = async () => {
     setIsUserSignedUp(false);
-    const user_object={
+    const user_object = {
       Appointement_request: [],
       saved: [],
       rating: 0,
@@ -40,20 +40,24 @@ const OtpScreen = props => {
       password: Password,
       about: '',
       totalRating: 0,
-      userType:'Individual',
+      userType: 'Individual',
       notification: [],
-      experience: '',
-      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6',
-      experience: '',
+      experience: [{company: '', position: ''}],
+      education: [{school: '', from: '', to: ''}],
+      linkdinLink: '',
+      twitterLink: '',
+      image:
+        'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6',
+
       industry: '',
       linkedin: '',
       orders: [],
       reviews: [],
-      phone:Mobile,
-      mobile:Mobile,
-      mentors:[]
-    }
-    console.log(user_object);
+      phone: Mobile,
+      mobile: Mobile,
+      mentors: [],
+    };
+    // console.log(user_object);
     await auth()
       .createUserWithEmailAndPassword(Email, Password)
       .then(async () => {
@@ -65,11 +69,12 @@ const OtpScreen = props => {
           .then(() => {
             setIsUserSignedUp(true);
             //console.log(user)
-            
-            navigation.navigate('onBoarding',{
-              Email:Email,
-              user_object:user_object
-          })})
+
+            navigation.navigate('onBoarding', {
+              Email: Email,
+              user_object: user_object,
+            });
+          })
           .catch(e => {
             setIsUserSignedUp(true);
             alert(e);
@@ -168,7 +173,6 @@ const OtpScreen = props => {
               Don’t get it?{' '}
             </Text>
           </View>
-          
         </View>
       </View>
     </TouchableWithoutFeedback>
