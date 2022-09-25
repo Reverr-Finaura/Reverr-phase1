@@ -141,42 +141,6 @@ const Vibe = () => {
     if (id == item.id) {
       return (
         <TouchableOpacity onPress={() => setId('')}>
-          {/* <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text> */}
-
           <View>
             <View>
               <View>
