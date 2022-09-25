@@ -4,11 +4,11 @@ export const Menu = [
     icon: require('../assets/images/edit.png'),
     path: 'EditIndivisualProfile',
   },
-  {
+  /*  {
     title: 'Calender',
     icon: require('../assets/images/calendarIcon.png'),
     path: 'Calender',
-  },
+  }, */
   {
     title: 'Books',
     icon: require('../assets/images/openbook.png'),
