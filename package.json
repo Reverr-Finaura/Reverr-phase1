@@ -33,6 +33,7 @@
     "react-native-gesture-handler": "^2.4.2",
     "react-native-image-crop-picker": "^0.37.3",
     "react-native-linear-gradient": "^2.5.6",
+    "react-native-multiple-select": "^0.5.11",
     "react-native-paper": "^4.12.1",
     "react-native-pg-react-native-sdk": "^2.1.8",
     "react-native-raw-bottom-sheet": "^2.2.0",

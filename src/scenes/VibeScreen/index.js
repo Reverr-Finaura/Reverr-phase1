@@ -30,13 +30,13 @@ import {
 import firestore from '@react-native-firebase/firestore';
 import {useNavigation} from '@react-navigation/native';
 import {cardData} from '../../dumy-Data/defaultHomeCardData';
-;
+import { VibeBoarding } from '../../Components/VibeBoarding';
 const Vibe = () => {
   const [prevDailog, setPrevDailog] = useState(false);
   const [allswiped, setAllswiped] = useState(false);
-  const[more,setMore]=useState(false)
+  const [more, setMore] = useState(false);
   const LoadMoreVibeCard = () => {
-    setMore(false)
+    setMore(false);
     setTimeout(() => {
       setAllswiped(false);
     }, 1500);
@@ -108,7 +108,7 @@ const Vibe = () => {
           <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 20}}>
             Buy premium
           </Text>
-          {true? (
+          {true ? (
             <TouchableOpacity
               style={{
                 flexDirection: 'column',
@@ -788,11 +788,10 @@ const Vibe = () => {
   };
 
   const Vibes = () => {
-
     const navigation = useNavigation();
     const state = useSelector(state => state.UserReducer);
     const dispatch = useDispatch();
-    
+
     const [moreInfo, setMoreInfo] = useState(-1);
     const [bool, setBool] = useState(false);
     const [cardindex, setcardindex] = useState(0);
@@ -839,7 +838,7 @@ const Vibe = () => {
             Passed_Email: firestore.FieldValue.arrayUnion(CardEmail),
           });
       }
-      console.log(currCard.text + ' got swipped left');
+      
       // var docRef = firestore().collection('Users').doc(state.user.email);
 
       // docRef
@@ -919,7 +918,28 @@ const Vibe = () => {
     };
 
     useEffect(() => {
-      setMore(false)
+      setMore(false);
+
+      // var docRef = firestore().collection('Users').doc(state.user.email);
+
+      // docRef
+      //   .get()
+      //   .then(doc => {
+      //     if (doc.exists) {
+      //       if (doc.data().Vibe_Data) {
+      //         console.log('Document data:', doc.data().Vibe_Data);
+      //         console.log('yoooi');
+      //       }
+      //     } else {
+      //       // doc.data() will be undefined in this case
+      //       console.log('No such document!');
+      //       <VibeBoarding />;
+      //     }
+      //   })
+      //   .catch(error => {
+      //     console.log('Error getting document:', error);
+      //   });
+
       // console.log('loadingCard intially');
       if (state.vibe.length == 0 || cardindex == 0) {
         dispatch(
@@ -958,7 +978,7 @@ const Vibe = () => {
         const ExpiredTime = ExpiredDate.getTime();
         const UpdatedTime = ExpiredTime + 86400000;
         // It is 24 hrrs in milli second 86400000;86397500;
-        const ToChecKAfter = 86397500
+        const ToChecKAfter = 86397500;
         console.log('updated time', UpdatedTime);
 
         setTimeout(() => {
@@ -967,7 +987,7 @@ const Vibe = () => {
           console.log('New update time', NewUpdatedTime);
           if (UpdatedTime > NewUpdatedTime) {
             console.log(' called here', UpdatedTime);
-            setMore(true)
+            setMore(true);
             setcards([]);
             dispatch(
               Load_Card(
@@ -1001,61 +1021,509 @@ const Vibe = () => {
               console.log('What is item dddd', item);
               if (item && cards) {
                 return (
-                  <View style={styles.card}>
-                    <ImageBackground
-                      style={styles.image}
-                      source={{uri: item?.image}}
-                    ></ImageBackground>
-                    <View style={{display: 'flex'}}>
-                      <View style={{marginHorizontal: 10, marginTop: 20}}>
-                        <Text
+                  <View style={[styles.card, {flex: 1}]}>
+                    <ScrollView>
+                      <View style={{alignSelf: 'center'}}>
+                        <Image
                           style={{
-                            color: 'white',
-                            fontSize: 22,
-                            fontFamily: 'poppins',
-                            fontWeight: 'bold',
+                            width: 160,
+                            alignSelf: 'center',
+                            height: 160,
+                            borderRadius: 100,
                           }}
-                        >
-                          {item?.name}
-                        </Text>
-                        <Text
-                          style={{
-                            color: '#fff',
-                            fontSize: 14,
-                            fontWeight: '400',
+                          source={{
+                            uri:
+                              'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
                           }}
-                        >
-                          {item.designation || demoData[0].designation}
-                        </Text>
-                        <Text
-                          style={{
-                            color: '#fff',
-                            fontSize: 14,
-                            fontWeight: '400',
-                          }}
-                        >
-                          {item?.city || demoData[0].city}
-                          {' ,'}
-                          {item?.country || demoData[0].country}
-                        </Text>
+                        />
                       </View>
 
-                      <View style={{marginTop: 35}}>
-                        <Text
+                      <View style={{display: 'flex'}}>
+                        <View style={{marginHorizontal: 10, marginTop: 10}}>
+                          <Text
+                            style={{
+                              color: 'white',
+                              fontSize: 22,
+                              fontFamily: 'poppins',
+                              fontWeight: 'bold',
+                            }}
+                          >
+                            {item?.name}
+                          </Text>
+                          <Text
+                            style={{
+                              color: '#fff',
+                              fontSize: 14,
+                              fontWeight: '400',
+                            }}
+                          >
+                            {item.designation || demoData[0].designation}
+                          </Text>
+                          <Text
+                            style={{
+                              color: '#fff',
+                              fontSize: 14,
+                              fontWeight: '400',
+                            }}
+                          >
+                            {item?.city || demoData[0].city}
+                            {' ,'}
+                            {item?.country || demoData[0].country}
+                          </Text>
+                        </View>
+
+                        <View style={{marginTop: 25}}>
+                          <Text
+                            style={{
+                              color: '#fff',
+                              fontSize: 14,
+                              fontWeight: 'bold',
+                              marginTop: 10,
+                              marginHorizontal: 10,
+                            }}
+                          >
+                            {item?.quote || demoData[0].quote}
+                          </Text>
+                        </View>
+                      </View>
+
+                      <View style={{flex: 1}}>
+                        <View>
+                          <View>
+                            <Text
+                              style={{
+                                color: '#0077B7',
+                                fontFamily: 'Poppins',
+                                fontSize: 18,
+                                marginTop: 6,
+                                fontWeight: '700',
+                                marginLeft: 15,
+                              }}
+                            >
+                              What I am here for
+                            </Text>
+                            <View
+                              style={{
+                                marginTop: 8,
+                                flexDirection: 'row',
+                                justifyContent: 'space-evenly',
+                                flexWrap: 'wrap',
+                              }}
+                            >
+                              <View
+                                style={{
+                                  boxShadow: '4px -5px 5px 0px #00000040 inset',
+                                  height: 91,
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  width: 91,
+                                  borderRadius: 91 / 2,
+                                  borderWidth: 3,
+                                  borderColor: 'white',
+                                  backgroundColor: '#0077B7',
+                                }}
+                              >
+                                <Text
+                                  style={{
+                                    color: 'white',
+                                    textAlign: 'center',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    fontWeight: '500',
+                                  }}
+                                >
+                                  {item?.Here_for?.[0]} {'Find Investors'}
+                                </Text>
+                              </View>
+
+                              <View
+                                style={{
+                                  boxShadow: '4px -5px 5px 0px #00000040 inset',
+                                  height: 91,
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  width: 91,
+                                  borderRadius: 91 / 2,
+                                  borderWidth: 3,
+                                  borderColor: 'white',
+                                  backgroundColor: '#0077B7',
+                                }}
+                              >
+                                <Text
+                                  style={{
+                                    color: 'white',
+                                    textAlign: 'center',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    fontWeight: '500',
+                                  }}
+                                >
+                                  {item?.Here_for?.[1]} {'Hire Employees'}
+                                </Text>
+                              </View>
+
+                              <View
+                                style={{
+                                  boxShadow: '4px -5px 5px 0px #00000040 inset',
+                                  height: 91,
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  width: 91,
+                                  borderRadius: 91 / 2,
+                                  borderWidth: 3,
+                                  borderColor: 'white',
+                                  backgroundColor: '#0077B7',
+                                }}
+                              >
+                                <Text
+                                  style={{
+                                    color: 'white',
+                                    textAlign: 'center',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    fontWeight: '500',
+                                  }}
+                                >
+                                  {item?.Here_for?.[1]} {'Find Mentors'}
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                        <View>
+                          <Text
+                            style={{
+                              color: '#0077B7',
+                              fontFamily: 'Poppins',
+                              fontSize: 18,
+                              fontWeight: '700',
+                              marginTop: 6,
+                              marginLeft: 15,
+                            }}
+                          >
+                            How can we meet
+                          </Text>
+                        </View>
+                        <View
                           style={{
-                            color: '#fff',
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            marginTop: 10,
-                            marginHorizontal: 10,
+                            marginTop: 3,
+                            flexDirection: 'row',
+                            justifyContent: 'space-around',
                           }}
                         >
-                          {item?.quote || demoData[0].quote}
-                        </Text>
-                      </View>
-                    </View>
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <ImageBackground
+                              style={{
+                                width: 20,
+                                height: 20,
+                                borderRadius: 10,
+                              }}
+                              source={{
+                                uri:
+                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                              }}
+                            ></ImageBackground>
 
-                    <MoreInfo item={item} />
+                            <Text
+                              style={{
+                                marginLeft: 4,
+                                color: 'white',
+                                fontFamily: 'Poppins',
+                                fontSize: 16,
+                                fontWeight: '400',
+                              }}
+                            >
+                              {item?.How_To_Meet?.[0]} {'At Coffe'}
+                            </Text>
+                          </View>
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <ImageBackground
+                              style={{
+                                width: 20,
+                                height: 20,
+                                borderRadius: 10,
+                              }}
+                              source={{
+                                uri:
+                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                              }}
+                            ></ImageBackground>
+
+                            <Text
+                              style={{
+                                marginLeft: 4,
+                                color: 'white',
+                                fontFamily: 'Poppins',
+                                fontSize: 16,
+                                fontWeight: '400',
+                              }}
+                            >
+                              {item?.How_To_Meet?.[1]} {' At Local Cafe'}
+                            </Text>
+                          </View>
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <ImageBackground
+                              style={{
+                                width: 20,
+                                height: 20,
+                                borderRadius: 10,
+                              }}
+                              source={{
+                                uri:
+                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                              }}
+                            ></ImageBackground>
+
+                            <Text
+                              style={{
+                                marginLeft: 4,
+                                color: 'white',
+                                fontFamily: 'Poppins',
+                                fontSize: 16,
+                                fontWeight: '400',
+                              }}
+                            >
+                              {item?.How_To_Meet?.[2]} {' Video Call'}
+                            </Text>
+                          </View>
+                        </View>
+                        <View>
+                          <Text
+                            style={{
+                              color: '#0077B7',
+                              fontFamily: 'Poppins',
+                              fontSize: 18,
+                              fontWeight: '700',
+                              marginTop: 4,
+                              marginLeft: 15,
+                            }}
+                          >
+                            About Me
+                          </Text>
+                        </View>
+
+                        <View style={{flex: 1}}>
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              justifyContent: 'space-between',
+                            }}
+                          >
+                            <View>
+                              <View
+                                style={{
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                }}
+                              >
+                                <ImageBackground
+                                  style={{
+                                    width: 20,
+                                    height: 20,
+                                    borderRadius: 10,
+                                  }}
+                                  source={{
+                                    uri:
+                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                                  }}
+                                ></ImageBackground>
+                                <Text
+                                  style={{
+                                    color: '#8AB9FF',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+
+                                    marginLeft: 4,
+                                    fontWeight: '500',
+                                    marginTop: 4,
+                                  }}
+                                >
+                                  What am I looking for{' '}
+                                </Text>
+                              </View>
+                              <Text
+                                style={{
+                                  color: '#FFFFFF',
+                                  fontFamily: 'Inter',
+                                  fontSize: 14,
+                                  textAlign: 'center',
+                                  fontWeight: '400',
+                                  marginTop: 1,
+                                }}
+                              >
+                                Mentor ship {''} Get Inspired{' '}
+                              </Text>
+                            </View>
+
+                            <View>
+                              <View
+                                style={{
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  alignSelf: 'flex-start',
+                                  justifyContent: 'space-between',
+                                }}
+                              >
+                                <ImageBackground
+                                  style={{
+                                    width: 20,
+                                    height: 20,
+                                    borderRadius: 10,
+                                  }}
+                                  source={{
+                                    uri:
+                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                                  }}
+                                ></ImageBackground>
+                                <Text
+                                  style={{
+                                    color: '#8AB9FF',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    fontWeight: '500',
+                                    marginTop: 4,
+                                    marginLeft: 4,
+                                  }}
+                                >
+                                  Past Experience
+                                </Text>
+                              </View>
+                              <Text
+                                style={{
+                                  color: '#FFFFFF',
+                                  fontFamily: 'Inter',
+                                  fontSize: 14,
+                                  textAlign: 'center',
+                                  fontWeight: '400',
+                                  marginTop: 1,
+                                }}
+                              >
+                                {item?.Prev_org} {' AMAZON'}
+                              </Text>
+                            </View>
+                          </View>
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              justifyContent: 'space-between',
+                            }}
+                          >
+                            <View>
+                              <View
+                                style={{
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+
+                                  justifyContent: 'center',
+                                }}
+                              >
+                                <ImageBackground
+                                  style={{
+                                    width: 20,
+                                    height: 20,
+                                    borderRadius: 10,
+                                  }}
+                                  source={{
+                                    uri:
+                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                                  }}
+                                ></ImageBackground>
+                                <Text
+                                  style={{
+                                    color: '#8AB9FF',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+
+                                    marginLeft: 4,
+                                    fontWeight: '500',
+                                    marginTop: 4,
+                                  }}
+                                >
+                                  Previous Designation
+                                </Text>
+                              </View>
+                              <Text
+                                style={{
+                                  color: '#FFFFFF',
+                                  fontFamily: 'Inter',
+                                  fontSize: 14,
+                                  textAlign: 'center',
+                                  fontWeight: '400',
+                                  marginTop: 1,
+                                }}
+                              >
+                                {item?.Previous_Designation} {'SDE'}
+                              </Text>
+                            </View>
+
+                            <View>
+                              <View
+                                style={{
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                }}
+                              >
+                                <ImageBackground
+                                  style={{
+                                    width: 20,
+                                    height: 20,
+                                    borderRadius: 10,
+                                  }}
+                                  source={{
+                                    uri:
+                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                                  }}
+                                ></ImageBackground>
+                                <Text
+                                  style={{
+                                    color: '#8AB9FF',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    fontWeight: '500',
+                                    marginTop: 4,
+                                    marginLeft: 4,
+                                  }}
+                                >
+                                  Prev. Experience
+                                </Text>
+                              </View>
+                              <Text
+                                style={{
+                                  color: '#FFFFFF',
+                                  fontFamily: 'Inter',
+                                  fontSize: 14,
+                                  textAlign: 'center',
+                                  fontWeight: '400',
+                                  marginTop: 1,
+                                }}
+                              >
+                                {item?.Previous_org_Duration?.[0]} {' 3 '}
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </ScrollView>
                   </View>
                 );
               }
@@ -1131,9 +1599,9 @@ const styles = StyleSheet.create({
   card: {
     alignSelf: 'center',
     position: 'absolute',
-    bottom: 55,
+    bottom: 75,
     width: Dimensions.get('window').width / 1.15,
-    flex: 1,
+    height: 550,
     marginHorizontal: 35,
     marginVertical: 20,
     borderTopRightRadius: 50,
