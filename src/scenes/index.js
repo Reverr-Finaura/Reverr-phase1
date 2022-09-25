@@ -6,6 +6,7 @@ import {
   Settings,
   EditProfile,
   MentorProfile,
+  ViewProfile,
 } from './ProfileScreens';
 import {VideoCall} from './videoCall';
 import {Test} from './Test';
@@ -47,7 +48,8 @@ import {DashBoard} from './dashboard';
 import {EditCalender} from './EditCalender';
 import {MentorHomeScreen, AppoinmentScreen} from './mentorPovScreens';
 import {Notifications} from './notifications';
-import { Vibe } from './VibeScreen';
+import {Vibe} from './VibeScreen';
+import {MentorList} from './mentor-screen/mentorList';
 export {
   ArticalDetails,
   FundingScreen,
@@ -96,5 +98,7 @@ export {
   MentorHomeScreen,
   Notifications,
   AppoinmentScreen,
-  Vibe
+  Vibe,
+  MentorList,
+  ViewProfile,
 };

@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     borderRadius: 200,
     marginStart: '35%',
-    marginTop: '7%',
+    marginTop: '10%',
     position: 'absolute',
     backgroundColor: AppColors.CardColor,
   },

@@ -8,7 +8,7 @@ import {
   Dimensions,
   Alert,
   Video,
-  ToastAndroid
+  ToastAndroid,
 } from 'react-native';
 import React, {useState, useContext} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -43,10 +43,10 @@ const CreatePost = props => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   //const {setPosts, fetchPosts2} = props.route.params;
-  const showToast = (msg) => {
+  const showToast = msg => {
     ToastAndroid.show(msg, ToastAndroid.SHORT);
   };
-  const postData=async(post)=>{
+  const postData = async post => {
     await firestore()
       .collection('Posts')
       .add(post)
@@ -56,13 +56,13 @@ const CreatePost = props => {
         //dispatch(add_post_to_rooms(post));
         //fetchPosts2();
         console.log('Post Added!');
-      
-      showToast("Your post has been posted.")
+
+        showToast('Your post has been posted.');
       })
       .catch(error => {
-        showToast("Error in posting!.")
+        showToast('Error in posting!.');
       });
-  }
+  };
   const submitPost = async () => {
     var post = {
       postedby: firestore().collection('Users').doc(state.user.email),
@@ -73,8 +73,7 @@ const CreatePost = props => {
       createdat: firestore.Timestamp.fromDate(new Date()),
     };
     postData(post);
-    navigation.navigate('Rooms');  
-
+    navigation.goBack();
   };
   return (
     <View style={styles.screen}>
@@ -149,7 +148,7 @@ const CreatePost = props => {
               flexDirection: 'row',
               alignItems: 'center',
               paddingHorizontal: '5%',
-              marginTop: '50%',
+              paddingVertical: '5%',
             }}>
             <TouchableOpacity
               onPress={() => {
@@ -194,9 +193,11 @@ const CreatePost = props => {
             onPress={() => {
               if (image) {
                 AddCameraImage(setImageUrl);
+                setPopup(false);
               }
               if (video) {
                 AddCameraVideo(setVideoUrl);
+                setPopup(false);
               }
             }}
             style={{
@@ -212,9 +213,11 @@ const CreatePost = props => {
             onPress={() => {
               if (image) {
                 AddGalleryImage(setImageUrl);
+                setPopup(false);
               }
               if (video) {
                 AddGalleryVideo(setVideoUrl);
+                setPopup(false);
               }
             }}
             style={{
@@ -265,7 +268,6 @@ const styles = StyleSheet.create({
   },
   card: {
     width: '100%',
-    height: '85%',
     borderRadius: 12,
     backgroundColor: AppColors.CardColor,
   },
@@ -294,7 +296,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingHorizontal: 9,
     fontFamily: 'Poppins-Regular',
-    height: Height / 3,
     lineHeight: 23,
     textAlignVertical: 'top',
   },

@@ -20,7 +20,7 @@ const DrawerNavigation = () => {
         drawerStyle: {
           backgroundColor: 'transparent',
           width: '69%',
-          paddingTop: '19%',
+          justifyContent: 'center',
         },
       }}>
       <Drawer.Screen name=" drawer" component={BottomNavigate} />

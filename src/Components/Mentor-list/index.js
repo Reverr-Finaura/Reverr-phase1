@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
@@ -5,9 +6,16 @@ import styles from './styles';
 export const MentorList = props => {
   //const {image, name, profession} = props.mentor;
   //console.log("mentor:"+Object.keys(props.mentor));
+  const navigation = useNavigation();
   return (
     <>
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('MentorDetails', {
+            mentorDetails: props.mentor,
+          });
+        }}
+        style={styles.container}>
         <Image
           style={styles.image}
           source={require('../../assets/images/Rectangle3.png')}

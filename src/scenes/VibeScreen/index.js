@@ -10,326 +10,37 @@ import {
   ActivityIndicator,
   Button,
   ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
+import Swiper from 'react-native-deck-swiper';
+
 // import { useNavigation } from '@react-navigation/native';
-import {FlatList} from 'react-native-gesture-handler';
+import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import {useDispatch, useSelector} from 'react-redux';
 import {CustomPopup, IndividualHeaderLayout} from '../../Components';
 import {Choice} from '../../Components';
 import {AppColors} from '../../utils';
-import {Load_Card, matchedpeople, passedUser, Passed_User, RemoveTopCard} from '../../Redux/actions';
+import {
+  Load_Card,
+  matchedpeople,
+  passedUser,
+  Passed_User,
+  RemoveTopCard,
+} from '../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
 import {useNavigation} from '@react-navigation/native';
-
+import {cardData} from '../../dumy-Data/defaultHomeCardData';
+import { VibeBoarding } from '../../Components/VibeBoarding';
 const Vibe = () => {
-  const navigation = useNavigation();
-  const [demoData, setDemoData] = useState([
-    {
-      id: '123',
-      name: 'Jatin Khurana',
-      designation: 'CEO and Fintech',
-      country: 'India',
-      city: 'Delhi',
-      image: '../../assets/images/dp.png',
-      quote:
-        "Don't ship it. Don't settle for good enough. Do better work than you did yesterday. Get out of your comfort zone and give it your all",
-    },
-  ]);
-  const [loading, setLoading] = useState(true);
-  const [mainDialog, setMainDialog] = useState(false);
   const [prevDailog, setPrevDailog] = useState(false);
-  const [prevData, setPrevData] = useState();
-  const [idx, setIdx] = useState(0);
-  const state = useSelector(state => state.UserReducer);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    setIdx(0);
-    setLoading(true);
-    //setIdx(0);
-    console.log(idx);
-    if (state.user.no_of_swipe<1115) {
-      if (state.vibe.length == 0 || idx == 0) {
-        dispatch(
-          Load_Card(undefined, state.user.email, state.user.no_of_swipe,state.passed_userArray,state.Matched_userArray),
-        );
-        //
-      } else if (idx % 3 == 0) {
-        console.log('yes coming from %3');
-        dispatch(
-          Load_Card(state.last_card, state.user.email, state.user.no_of_swipe,state.passed_userArray,state.Matched_userArray),
-        );
-      }
-    }
-    setLoading(false);
-  }, []);
-
-  useEffect(() => {
-    setLoading(state.vibe.length);
-    //setIdx(0);
-    console.log('this is changing at idx',idx);
-    if (state.user.no_of_swipe<1115) {
-      if (state.vibe.length == 0) {
-        dispatch(
-          Load_Card(undefined, state.user.email, state.user.no_of_swipe,state.passed_userArray,state.Matched_userArray),
-        );
-        //
-      } else if (idx % 4 == 0) {
-        console.log('yes I am here at index');
-        dispatch(
-          Load_Card(state.last_card, state.user.email, state.user.no_of_swipe,state.passed_userArray,state.Matched_userArray),
-        );
-      }
-    }
-    setLoading(false);
-  }, [idx]);
-  const [finish, setFinished] = useState(false);
-  const {width, height} = Dimensions.get('window');
-  const swipe = useRef(new Animated.ValueXY()).current;
-  const titleSign = useRef(new Animated.Value(1)).current;
-
-  const Add_To_Passed=async(cardData)=>{  
- 
-  let CardEmail=cardData.email
-  if(CardEmail){
-  dispatch( passedUser(CardEmail),)
-  console.log("passed email is",CardEmail)
-  console.log("anything hdddddere")
-  await firestore()
-  .collection('Users')
-  .doc(state.user.email)
-  .update({
-   Passed_Email: firestore.FieldValue.arrayUnion(CardEmail),
-  });
-  // console.log("passed_Array is",state.passed_userArray)
-
-  // Passed array in firestore get function
-  // var docRef = firestore().collection("Users").doc(state.user.email);
-
-  // docRef.get().then((doc) => {
-  //     if (doc.exists) {
-  //         console.log("Document data:", doc.data().Passed_Email);
-  //         var Passed_User_array= doc.data().Passed_Email
-          
-  //     } else {
-  //         // doc.data() will be undefined in this case
-  //         console.log("No such document!");
-  //     }
-  // }).catch((error) => {
-  //     console.log("Error getting document:", error);
-  // });
-  }
-  }
-  const Add_to_Match = async data => {
-    // console.log('data is', data);
-    var Liked_Email = data.email;
-    var My_Email = state.user.email;
-    var Liked_People = data.liked_people;
-    if (Liked_People) {
-      var check = Liked_People.includes(My_Email);
-      if (check) {
-      
-        await firestore()
-          .collection('Users')
-          .doc(state.user.email)
-          .update({
-            Matched_People: firestore.FieldValue.arrayUnion(Liked_Email),
-          });
-          // action dispacthed to store matchedpeople
-          dispatch(matchedpeople(Liked_Email))
-        // Match screen is called here
-        navigation.navigate('MatchScreen', {
-          data,
-        });
-
-        setPrevDailog(true);
-        setPrevData(prev);
-      }
-    } else {
-      await firestore()
-        .collection('Users')
-        .doc(state.user.email)
-        .update({
-          liked_people: firestore.FieldValue.arrayUnion(Liked_Email),
-        })
-        .then(async () => {
-          await firestore()
-            .collection('Users')
-            .doc(Liked_Email)
-            .update({
-              people_liked_me: firestore.FieldValue.arrayUnion(
-                state.user.email,
-              ),
-            });
-        })
-        .catch(err => {
-          console.log(err.message);
-          console.log('please check your internet connection');
-        });
-    }
+  const [allswiped, setAllswiped] = useState(false);
+  const [more, setMore] = useState(false);
+  const LoadMoreVibeCard = () => {
+    setMore(false);
+    setTimeout(() => {
+      setAllswiped(false);
+    }, 1500);
   };
-  const panResponder = PanResponder.create({
-    onMoveShouldSetPanResponder: () => true,
-    onPanResponderMove: (_, {dx, dy, y0}) => {
-      swipe.setValue({x: dx, y: dy});
-      if(dx<-140){
-        console.log("I am calling from here")
-        Add_To_Passed(state?.vibe[0])
-      
-      
-      }
-      if (dx > 80) {
-        setMainDialog(true);
-        Add_to_Match(state?.vibe[0]);
-        // Add_to_likes(state?.vibe[0]);
-      }
-      titleSign.setValue(y0 > Dimensions.get('window').height / 2 ? 1 : -1);
-    },
-    onPanResponderRelease: (_, {dx, dy}) => {
-      const direction = Math.sign(dx);
-      const isActionActive = Math.abs(dx) > 100;
-      if (isActionActive) {
-        Animated.timing(swipe, {
-          duration: 200,
-          toValue: {
-            x: direction * 500,
-            y: dy,
-          },
-          useNativeDriver: true,
-        }).start(removeTopCard);
-      } else {
-        Animated.spring(swipe, {
-          toValue: {
-            x: 0,
-            y: 0,
-          },
-          useNativeDriver: true,
-          friction: 5,
-        }).start();
-      }
-    },
-  });
-
-  const removeTopCard = useCallback(() => {
-    dispatch(RemoveTopCard());
-    setIdx(idx => idx + 1);
-    swipe.setValue({x: 0, y: 0});
-  }, [swipe]);
-  const rotate = Animated.multiply(swipe.x, titleSign).interpolate({
-    inputRange: [-100, 0, 100],
-    outputRange: ['8deg', '0deg', '-8deg'],
-  });
-
-  const likeOpacity = swipe.x.interpolate({
-    inputRange: [25, 100],
-    outputRange: [0, 1],
-    extrapolate: 'clamp',
-  });
-
-  const unlikeOpacity = swipe.x.interpolate({
-    inputRange: [-100, -25],
-    outputRange: [1, 0],
-    extrapolate: 'clamp',
-  });
-
-  const renderChoice = useCallback(() => {
-    return (
-      <>
-        <Animated.View
-          style={[
-            styles.choiceContainer,
-            styles.likeContainer,
-            {opacity: likeOpacity},
-          ]}
-        >
-          <Choice type="Like" />
-        </Animated.View>
-        <Animated.View
-          style={[
-            styles.choiceContainer,
-            styles.unlikeContainer,
-            {opacity: unlikeOpacity},
-          ]}
-        >
-          <Choice type="UnLike" />
-        </Animated.View>
-      </>
-    );
-  }, []);
-
-  const animatedCardStyle = {
-    transform: [...swipe.getTranslateTransform(), {rotate}],
-  };
-  const RenderCard = ({item, index, isFirst, titleSign}) => {
-    // let isFirst=false;
-    let dragHandler;
-    if (index == 0) {
-      isFirst = true;
-      dragHandler = isFirst ? panResponder.panHandlers : {};
-    }
-
-    return (
-      <Animated.View
-        style={[styles.card, isFirst && animatedCardStyle]}
-        {...dragHandler}
-      >
-        {isFirst && renderChoice()}
-
-        <ImageBackground
-          style={styles.image}
-          source={{uri: item.image}}
-        ></ImageBackground>
-        <View style={{display: 'flex'}}>
-          <View style={{marginHorizontal: 10, marginTop: 20}}>
-            <Text
-              style={{
-                color: 'white',
-                fontSize: 22,
-                fontFamily: 'poppins',
-                fontWeight: 'bold',
-              }}
-            >
-              {item.name}
-            </Text>
-            <Text
-              style={{
-                color: '#fff',
-                fontSize: 14,
-                fontWeight: '400',
-              }}
-            >
-              {item.designation || demoData[0].designation}
-            </Text>
-            <Text
-              style={{
-                color: '#fff',
-                fontSize: 14,
-                fontWeight: '400',
-              }}
-            >
-              {item.city || demoData[0].city}
-              {' ,'}
-              {item.country || demoData[0].country}
-            </Text>
-          </View>
-
-          <View style={{marginTop: 35}}>
-            <Text
-              style={{
-                color: '#fff',
-                fontSize: 14,
-                fontWeight: 'bold',
-                marginTop: 10,
-                marginHorizontal: 10,
-              }}
-            >
-              {item.quote || demoData[0].quote}
-            </Text>
-          </View>
-        </View>
-      </Animated.View>
-    );
-  };
-
   const PremiumTab = () => {
     return (
       <View
@@ -397,19 +108,1469 @@ const Vibe = () => {
           <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 20}}>
             Buy premium
           </Text>
+          {true ? (
+            <TouchableOpacity
+              style={{
+                flexDirection: 'column',
+                bottom: -45,
+                alignItems: 'center',
+              }}
+              onPress={() => LoadMoreVibeCard()}
+            >
+              <View style={{alignSelf: 'center'}}>
+                <Text
+                  style={{
+                    color: '#0077B7',
+                    fontFamily: 'Poppins',
+                    fontSize: 18,
+                    fontWeight: '700',
+                    marginTop: 6,
+                    textAlign: 'center',
+                  }}
+                >
+                  More Card
+                </Text>
+              </View>
+            </TouchableOpacity>
+          ) : (
+            <Text>wait...</Text>
+          )}
         </View>
       </View>
     );
   };
-  if (loading) {
+
+  const MoreInfo = item => {
+    const [id, setId] = useState('');
+
+    if (id == item.id) {
+      return (
+        <TouchableOpacity onPress={() => setId('')}>
+          {/* <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text>
+        <Text> MORE INFO</Text> */}
+
+          <View>
+            <View>
+              <View>
+                <Text
+                  style={{
+                    color: '#0077B7',
+                    fontFamily: 'Poppins',
+                    fontSize: 18,
+                    fontWeight: '700',
+                    marginLeft: 15,
+                  }}
+                >
+                  What I am here for
+                </Text>
+                <View
+                  style={{
+                    marginTop: 5,
+                    flexDirection: 'row',
+                    justifyContent: 'space-around',
+                  }}
+                >
+                  <View
+                    style={{
+                      boxShadow: '4px -5px 5px 0px #00000040 inset',
+                      height: 91,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: 91,
+                      borderRadius: 91 / 2,
+                      borderWidth: 3,
+                      borderColor: 'white',
+                      backgroundColor: '#0077B7',
+                    }}
+                  >
+                    <Text
+                      style={{
+                        color: 'white',
+                        textAlign: 'center',
+                        fontFamily: 'Poppins',
+                        fontSize: 16,
+                        fontWeight: '500',
+                      }}
+                    >
+                      Hire Employee
+                    </Text>
+                  </View>
+
+                  <View
+                    style={{
+                      boxShadow: '4px -5px 5px 0px #00000040 inset',
+                      height: 91,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: 91,
+                      borderRadius: 91 / 2,
+                      borderWidth: 3,
+                      borderColor: 'white',
+                      backgroundColor: '#0077B7',
+                    }}
+                  >
+                    <Text
+                      style={{
+                        color: 'white',
+                        textAlign: 'center',
+                        fontFamily: 'Poppins',
+                        fontSize: 16,
+                        fontWeight: '500',
+                      }}
+                    >
+                      Hire Employee
+                    </Text>
+                  </View>
+
+                  <View
+                    style={{
+                      boxShadow: '4px -5px 5px 0px #00000040 inset',
+                      height: 91,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: 91,
+                      borderRadius: 91 / 2,
+                      borderWidth: 3,
+                      borderColor: 'white',
+                      backgroundColor: '#0077B7',
+                    }}
+                  >
+                    <Text
+                      style={{
+                        color: 'white',
+                        textAlign: 'center',
+                        fontFamily: 'Poppins',
+                        fontSize: 16,
+                        fontWeight: '500',
+                      }}
+                    >
+                      Hire Employee
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View>
+              <Text
+                style={{
+                  color: '#0077B7',
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                  fontWeight: '700',
+                  marginTop: 6,
+                  marginLeft: 15,
+                }}
+              >
+                How can we meet
+              </Text>
+            </View>
+            <View
+              style={{
+                marginTop: 3,
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+              }}
+            >
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <ImageBackground
+                  style={{width: 20, height: 20, borderRadius: 10}}
+                  source={{
+                    uri:
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                  }}
+                ></ImageBackground>
+
+                <Text
+                  style={{
+                    marginLeft: 4,
+                    color: 'white',
+                    fontFamily: 'Poppins',
+                    fontSize: 16,
+                    fontWeight: '400',
+                  }}
+                >
+                  At Coffee
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <ImageBackground
+                  style={{width: 20, height: 20, borderRadius: 10}}
+                  source={{
+                    uri:
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                  }}
+                ></ImageBackground>
+
+                <Text
+                  style={{
+                    marginLeft: 4,
+                    color: 'white',
+                    fontFamily: 'Poppins',
+                    fontSize: 16,
+                    fontWeight: '400',
+                  }}
+                >
+                  At Coffee
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <ImageBackground
+                  style={{width: 20, height: 20, borderRadius: 10}}
+                  source={{
+                    uri:
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                  }}
+                ></ImageBackground>
+
+                <Text
+                  style={{
+                    marginLeft: 4,
+                    color: 'white',
+                    fontFamily: 'Poppins',
+                    fontSize: 16,
+                    fontWeight: '400',
+                  }}
+                >
+                  At Coffee
+                </Text>
+              </View>
+            </View>
+            <View>
+              <Text
+                style={{
+                  color: '#0077B7',
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                  fontWeight: '700',
+                  marginTop: 4,
+                  marginLeft: 15,
+                }}
+              >
+                About Me
+              </Text>
+            </View>
+
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}
+            >
+              <View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <ImageBackground
+                    style={{width: 20, height: 20, borderRadius: 10}}
+                    source={{
+                      uri:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                    }}
+                  ></ImageBackground>
+                  <Text
+                    style={{
+                      color: '#8AB9FF',
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+
+                      marginLeft: 4,
+                      fontWeight: '500',
+                      marginTop: 4,
+                    }}
+                  >
+                    What am I looking for{' '}
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    color: '#FFFFFF',
+                    fontFamily: 'Inter',
+                    fontSize: 14,
+                    textAlign: 'center',
+                    fontWeight: '400',
+                    marginTop: 1,
+                  }}
+                >
+                  Mentor ship {''} Get Inspired{' '}
+                </Text>
+              </View>
+
+              <View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <ImageBackground
+                    style={{width: 20, height: 20, borderRadius: 10}}
+                    source={{
+                      uri:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                    }}
+                  ></ImageBackground>
+                  <Text
+                    style={{
+                      color: '#8AB9FF',
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+                      fontWeight: '500',
+                      marginTop: 4,
+                      marginLeft: 4,
+                    }}
+                  >
+                    Past Experience
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    color: '#FFFFFF',
+                    fontFamily: 'Inter',
+                    fontSize: 14,
+                    textAlign: 'center',
+                    fontWeight: '400',
+                    marginTop: 1,
+                  }}
+                >
+                  Amazon
+                </Text>
+              </View>
+            </View>
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}
+            >
+              <View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <ImageBackground
+                    style={{width: 20, height: 20, borderRadius: 10}}
+                    source={{
+                      uri:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                    }}
+                  ></ImageBackground>
+                  <Text
+                    style={{
+                      color: '#8AB9FF',
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+
+                      marginLeft: 4,
+                      fontWeight: '500',
+                      marginTop: 4,
+                    }}
+                  >
+                    What am I looking for{' '}
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    color: '#FFFFFF',
+                    fontFamily: 'Inter',
+                    fontSize: 14,
+                    textAlign: 'center',
+                    fontWeight: '400',
+                    marginTop: 1,
+                  }}
+                >
+                  Mentor ship {''} Get Inspired{' '}
+                </Text>
+              </View>
+
+              <View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <ImageBackground
+                    style={{width: 20, height: 20, borderRadius: 10}}
+                    source={{
+                      uri:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                    }}
+                  ></ImageBackground>
+                  <Text
+                    style={{
+                      color: '#8AB9FF',
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+                      fontWeight: '500',
+                      marginTop: 4,
+                      marginLeft: 4,
+                    }}
+                  >
+                    Past Experience
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    color: '#FFFFFF',
+                    fontFamily: 'Inter',
+                    fontSize: 14,
+                    textAlign: 'center',
+                    fontWeight: '400',
+                    marginTop: 1,
+                  }}
+                >
+                  Amazon
+                </Text>
+              </View>
+            </View>
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}
+            >
+              <View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <ImageBackground
+                    style={{width: 20, height: 20, borderRadius: 10}}
+                    source={{
+                      uri:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                    }}
+                  ></ImageBackground>
+                  <Text
+                    style={{
+                      color: '#8AB9FF',
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+
+                      marginLeft: 4,
+                      fontWeight: '500',
+                      marginTop: 4,
+                    }}
+                  >
+                    What am I looking for{' '}
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    color: '#FFFFFF',
+                    fontFamily: 'Inter',
+                    fontSize: 14,
+                    textAlign: 'center',
+                    fontWeight: '400',
+                    marginTop: 1,
+                  }}
+                >
+                  Mentor ship {''} Get Inspired{' '}
+                </Text>
+              </View>
+
+              <View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <ImageBackground
+                    style={{width: 20, height: 20, borderRadius: 10}}
+                    source={{
+                      uri:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                    }}
+                  ></ImageBackground>
+                  <Text
+                    style={{
+                      color: '#8AB9FF',
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+                      fontWeight: '500',
+                      marginTop: 4,
+                      marginLeft: 4,
+                    }}
+                  >
+                    Past Experience
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    color: '#FFFFFF',
+                    fontFamily: 'Inter',
+                    fontSize: 14,
+                    textAlign: 'center',
+                    fontWeight: '400',
+                    marginTop: 1,
+                  }}
+                >
+                  Amazon
+                </Text>
+              </View>
+            </View>
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}
+            >
+              <View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <ImageBackground
+                    style={{width: 20, height: 20, borderRadius: 10}}
+                    source={{
+                      uri:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                    }}
+                  ></ImageBackground>
+                  <Text
+                    style={{
+                      color: '#8AB9FF',
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+
+                      marginLeft: 4,
+                      fontWeight: '500',
+                      marginTop: 4,
+                    }}
+                  >
+                    What am I looking for{' '}
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    color: '#FFFFFF',
+                    fontFamily: 'Inter',
+                    fontSize: 14,
+                    textAlign: 'center',
+                    fontWeight: '400',
+                    marginTop: 1,
+                  }}
+                >
+                  Mentor ship {''} Get Inspired{' '}
+                </Text>
+              </View>
+
+              <View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <ImageBackground
+                    style={{width: 20, height: 20, borderRadius: 10}}
+                    source={{
+                      uri:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                    }}
+                  ></ImageBackground>
+                  <Text
+                    style={{
+                      color: '#8AB9FF',
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+                      fontWeight: '500',
+                      marginTop: 4,
+                      marginLeft: 4,
+                    }}
+                  >
+                    Past Experience
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    color: '#FFFFFF',
+                    fontFamily: 'Inter',
+                    fontSize: 14,
+                    textAlign: 'center',
+                    fontWeight: '400',
+                    marginTop: 1,
+                  }}
+                >
+                  Amazon
+                </Text>
+              </View>
+            </View>
+          </View>
+        </TouchableOpacity>
+      );
+    } else {
+      return (
+        <TouchableOpacity
+          style={{
+            marginVertical: 12,
+            width: 150,
+            height: 43,
+            justifyContent: 'center',
+            alignSelf: 'center',
+            backgroundColor: '#2A72DE',
+            borderRadius: 11,
+          }}
+          onPress={() => setId(item.id)}
+        >
+          <Text
+            style={{
+              color: 'white',
+              fontFamily: 'Poppins',
+              fontSize: 18,
+              fontWeight: '700',
+              textAlign: 'center',
+            }}
+          >
+            {' '}
+            Tap For More
+          </Text>
+        </TouchableOpacity>
+      );
+    }
+  };
+
+  const Vibes = () => {
+    const navigation = useNavigation();
+    const state = useSelector(state => state.UserReducer);
+    const dispatch = useDispatch();
+
+    const [moreInfo, setMoreInfo] = useState(-1);
+    const [bool, setBool] = useState(false);
+    const [cardindex, setcardindex] = useState(0);
+
+    const [loading, setLoading] = useState(true);
+    const [mainDialog, setMainDialog] = useState(false);
+    const [prevDailog, setPrevDailog] = useState(false);
+    const [prevData, setPrevData] = useState();
+    const [demoData, setDemoData] = useState([
+      {
+        id: '123',
+        name: 'Jatin Khurana',
+        designation: 'CEO and Fintech',
+        country: 'India',
+        city: 'Delhi',
+        image: '../../assets/images/dp.png',
+        quote:
+          "Don't ship it. Don't settle for good enough. Do better work than you did yesterday. Get out of your comfort zone and give it your all",
+      },
+    ]);
+    const [getcard, setgetcards] = useState(0);
+    const [show, setshow] = useState(false);
+    const [vertical, setvertical] = useState(false);
+
+    const HandleShow = async () => {
+      console.log('at shoiww');
+      console.log(show);
+      setshow(() => !show);
+      setvertical(() => !vertical);
+      console.log('after', show);
+    };
+    const swipeLeft = async cardData => {
+      // var currCard = cards[idx];
+      dispatch(RemoveTopCard());
+
+      let CardEmail = cardData.email;
+
+      if (CardEmail) {
+        console.log('passed email is', CardEmail);
+        await firestore()
+          .collection('Users')
+          .doc(state.user.email)
+          .update({
+            Passed_Email: firestore.FieldValue.arrayUnion(CardEmail),
+          });
+      }
+      console.log(currCard.text + ' got swipped left');
+      // var docRef = firestore().collection('Users').doc(state.user.email);
+
+      // docRef
+      //   .get()
+      //   .then(doc => {
+      //     if (doc.exists) {
+      //       console.log('Document data:', doc.data().Passed_Email);
+      //       const Passed_User_array = doc.data().Passed_Email;
+      //       console.log(Passed_User_array);
+      //     } else {
+      //       // doc.data() will be undefined in this case
+      //       console.log('No such document!');
+      //     }
+      //   })
+      //   .catch(error => {
+      //     console.log('Error getting document:', error);
+      //   });
+    };
+
+    const swipeRight = async data => {
+      // var currCard = cards[idx];
+      console.log('what is data', data);
+      dispatch(RemoveTopCard());
+      // console.log('stae  vibe swipe right isss', state.vibe);
+      // console.log('data is', data);
+      var Liked_Email = data.email;
+      var My_Email = state.user.email;
+      var Liked_People = data.liked_people;
+      if (Liked_People) {
+        var check = Liked_People.includes(My_Email);
+        if (check) {
+          await firestore()
+            .collection('Users')
+            .doc(state.user.email)
+            .update({
+              Matched_People: firestore.FieldValue.arrayUnion(Liked_Email),
+            });
+          // action dispacthed to store matchedpeople
+          dispatch(matchedpeople(Liked_Email));
+          // Match screen is called here
+          navigation.navigate('MatchScreen', {
+            data,
+          });
+
+          setPrevDailog(true);
+          setPrevData(prev);
+        }
+      } else {
+        await firestore()
+          .collection('Users')
+          .doc(state.user.email)
+          .update({
+            liked_people: firestore.FieldValue.arrayUnion(Liked_Email),
+          })
+          .then(async () => {
+            firestore()
+              .collection('Users')
+              .doc(Liked_Email)
+              .update({
+                people_liked_me: firestore.FieldValue.arrayUnion(
+                  state.user.email,
+                ),
+              });
+            console.log('userswiped');
+          })
+          .catch(err => {
+            console.log(err.message);
+            console.log('please check your internet connection');
+          });
+      }
+    };
+
+    const [cards, setcards] = useState([]);
+    const swipedAll = () => {
+      console.log('swiped all');
+      setAllswiped(true);
+    };
+
+    useEffect(() => {
+      setMore(false);
+
+      // var docRef = firestore().collection('Users').doc(state.user.email);
+
+      // docRef
+      //   .get()
+      //   .then(doc => {
+      //     if (doc.exists) {
+      //       if (doc.data().Vibe_Data) {
+      //         console.log('Document data:', doc.data().Vibe_Data);
+      //         console.log('yoooi');
+      //       }
+      //     } else {
+      //       // doc.data() will be undefined in this case
+      //       console.log('No such document!');
+      //       <VibeBoarding />;
+      //     }
+      //   })
+      //   .catch(error => {
+      //     console.log('Error getting document:', error);
+      //   });
+
+      // console.log('loadingCard intially');
+      if (state.vibe.length == 0 || cardindex == 0) {
+        dispatch(
+          Load_Card(
+            undefined,
+            state.user.email,
+            state.user.no_of_swipe,
+            state.passed_userArray,
+            state.Matched_userArray,
+          ),
+        );
+
+        setcards(state.vibe);
+
+        // console.log('stae  vibe 0000 isss', state.vibe);
+      }
+
+      setLoading(false);
+    }, []);
+    useEffect(() => {
+      if (state.vibe.length == 15) {
+        setcards(state.vibe);
+      } else {
+        return;
+      }
+    }, [state.vibe.length]);
+    console.log('state card is', cards);
+    useEffect(() => {
+      console.log('state vibe chaning', state.vibe.length);
+      if (state.vibe.length === 1) {
+        setAllswiped(true);
+
+        const ExpiredDate = new Date();
+        console.log(ExpiredDate);
+        console.log(ExpiredDate.getTime());
+        const ExpiredTime = ExpiredDate.getTime();
+        const UpdatedTime = ExpiredTime + 86400000;
+        // It is 24 hrrs in milli second 86400000;86397500;
+        const ToChecKAfter = 86397500;
+        console.log('updated time', UpdatedTime);
+
+        setTimeout(() => {
+          const UpdateDate = new Date();
+          const NewUpdatedTime = UpdateDate.getTime();
+          console.log('New update time', NewUpdatedTime);
+          if (UpdatedTime > NewUpdatedTime) {
+            console.log(' called here', UpdatedTime);
+            setMore(true);
+            setcards([]);
+            dispatch(
+              Load_Card(
+                state.last_card,
+                state.user.email,
+                state.user.no_of_swipe,
+                state.passed_userArray,
+                state.Matched_userArray,
+              ),
+            );
+
+            console.log('State vibe coming from settimeout', cards);
+            setcards(state.vibe);
+          } else {
+            console.log('I am not here');
+          }
+        }, ToChecKAfter);
+      }
+    }, [state.vibe]);
+
     return (
-      <View style={styles.screen}>
-        <ActivityIndicator size="large" color="#fff" />
+      <View style={styles.container}>
+        {allswiped ? (
+          <View>
+            <PremiumTab />
+          </View>
+        ) : (
+          <Swiper
+            cards={cards}
+            renderCard={item => {
+              console.log('What is item dddd', item);
+              if (item && cards) {
+                return (
+                  <View style={[styles.card, {flex: 1}]}>
+                    <ScrollView>
+                      <View style={{alignSelf: 'center'}}>
+                        <Image
+                          style={{
+                            width: 160,
+                            alignSelf: 'center',
+                            height: 160,
+                            borderRadius: 100,
+                          }}
+                          source={{
+                            uri:
+                              'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
+                          }}
+                        />
+                      </View>
+
+                      <View style={{display: 'flex'}}>
+                        <View style={{marginHorizontal: 10, marginTop: 10}}>
+                          <Text
+                            style={{
+                              color: 'white',
+                              fontSize: 22,
+                              fontFamily: 'poppins',
+                              fontWeight: 'bold',
+                            }}
+                          >
+                            {item?.name}
+                          </Text>
+                          <Text
+                            style={{
+                              color: '#fff',
+                              fontSize: 14,
+                              fontWeight: '400',
+                            }}
+                          >
+                            {item.designation || demoData[0].designation}
+                          </Text>
+                          <Text
+                            style={{
+                              color: '#fff',
+                              fontSize: 14,
+                              fontWeight: '400',
+                            }}
+                          >
+                            {item?.city || demoData[0].city}
+                            {' ,'}
+                            {item?.country || demoData[0].country}
+                          </Text>
+                        </View>
+
+                        <View style={{marginTop: 25}}>
+                          <Text
+                            style={{
+                              color: '#fff',
+                              fontSize: 14,
+                              fontWeight: 'bold',
+                              marginTop: 10,
+                              marginHorizontal: 10,
+                            }}
+                          >
+                            {item?.quote || demoData[0].quote}
+                          </Text>
+                        </View>
+                      </View>
+
+                      <View style={{flex: 1}}>
+                        <View>
+                          <View>
+                            <Text
+                              style={{
+                                color: '#0077B7',
+                                fontFamily: 'Poppins',
+                                fontSize: 18,
+                                marginTop: 6,
+                                fontWeight: '700',
+                                marginLeft: 15,
+                              }}
+                            >
+                              What I am here for
+                            </Text>
+                            <View
+                              style={{
+                                marginTop: 8,
+                                flexDirection: 'row',
+                                justifyContent: 'space-evenly',
+                                flexWrap: 'wrap',
+                              }}
+                            >
+                              <View
+                                style={{
+                                  boxShadow: '4px -5px 5px 0px #00000040 inset',
+                                  height: 91,
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  width: 91,
+                                  borderRadius: 91 / 2,
+                                  borderWidth: 3,
+                                  borderColor: 'white',
+                                  backgroundColor: '#0077B7',
+                                }}
+                              >
+                                <Text
+                                  style={{
+                                    color: 'white',
+                                    textAlign: 'center',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    fontWeight: '500',
+                                  }}
+                                >
+                                  {item?.Here_for?.[0]} {'Find Investors'}
+                                </Text>
+                              </View>
+
+                              <View
+                                style={{
+                                  boxShadow: '4px -5px 5px 0px #00000040 inset',
+                                  height: 91,
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  width: 91,
+                                  borderRadius: 91 / 2,
+                                  borderWidth: 3,
+                                  borderColor: 'white',
+                                  backgroundColor: '#0077B7',
+                                }}
+                              >
+                                <Text
+                                  style={{
+                                    color: 'white',
+                                    textAlign: 'center',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    fontWeight: '500',
+                                  }}
+                                >
+                                  {item?.Here_for?.[1]} {'Hire Employees'}
+                                </Text>
+                              </View>
+
+                              <View
+                                style={{
+                                  boxShadow: '4px -5px 5px 0px #00000040 inset',
+                                  height: 91,
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  width: 91,
+                                  borderRadius: 91 / 2,
+                                  borderWidth: 3,
+                                  borderColor: 'white',
+                                  backgroundColor: '#0077B7',
+                                }}
+                              >
+                                <Text
+                                  style={{
+                                    color: 'white',
+                                    textAlign: 'center',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    fontWeight: '500',
+                                  }}
+                                >
+                                  {item?.Here_for?.[1]} {'Find Mentors'}
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                        <View>
+                          <Text
+                            style={{
+                              color: '#0077B7',
+                              fontFamily: 'Poppins',
+                              fontSize: 18,
+                              fontWeight: '700',
+                              marginTop: 6,
+                              marginLeft: 15,
+                            }}
+                          >
+                            How can we meet
+                          </Text>
+                        </View>
+                        <View
+                          style={{
+                            marginTop: 3,
+                            flexDirection: 'row',
+                            justifyContent: 'space-around',
+                          }}
+                        >
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <ImageBackground
+                              style={{
+                                width: 20,
+                                height: 20,
+                                borderRadius: 10,
+                              }}
+                              source={{
+                                uri:
+                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                              }}
+                            ></ImageBackground>
+
+                            <Text
+                              style={{
+                                marginLeft: 4,
+                                color: 'white',
+                                fontFamily: 'Poppins',
+                                fontSize: 16,
+                                fontWeight: '400',
+                              }}
+                            >
+                              {item?.How_To_Meet?.[0]} {'At Coffe'}
+                            </Text>
+                          </View>
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <ImageBackground
+                              style={{
+                                width: 20,
+                                height: 20,
+                                borderRadius: 10,
+                              }}
+                              source={{
+                                uri:
+                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                              }}
+                            ></ImageBackground>
+
+                            <Text
+                              style={{
+                                marginLeft: 4,
+                                color: 'white',
+                                fontFamily: 'Poppins',
+                                fontSize: 16,
+                                fontWeight: '400',
+                              }}
+                            >
+                              {item?.How_To_Meet?.[1]} {' At Local Cafe'}
+                            </Text>
+                          </View>
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <ImageBackground
+                              style={{
+                                width: 20,
+                                height: 20,
+                                borderRadius: 10,
+                              }}
+                              source={{
+                                uri:
+                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                              }}
+                            ></ImageBackground>
+
+                            <Text
+                              style={{
+                                marginLeft: 4,
+                                color: 'white',
+                                fontFamily: 'Poppins',
+                                fontSize: 16,
+                                fontWeight: '400',
+                              }}
+                            >
+                              {item?.How_To_Meet?.[2]} {' Video Call'}
+                            </Text>
+                          </View>
+                        </View>
+                        <View>
+                          <Text
+                            style={{
+                              color: '#0077B7',
+                              fontFamily: 'Poppins',
+                              fontSize: 18,
+                              fontWeight: '700',
+                              marginTop: 4,
+                              marginLeft: 15,
+                            }}
+                          >
+                            About Me
+                          </Text>
+                        </View>
+
+                        <View style={{flex: 1}}>
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              justifyContent: 'space-between',
+                            }}
+                          >
+                            <View>
+                              <View
+                                style={{
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                }}
+                              >
+                                <ImageBackground
+                                  style={{
+                                    width: 20,
+                                    height: 20,
+                                    borderRadius: 10,
+                                  }}
+                                  source={{
+                                    uri:
+                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                                  }}
+                                ></ImageBackground>
+                                <Text
+                                  style={{
+                                    color: '#8AB9FF',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+
+                                    marginLeft: 4,
+                                    fontWeight: '500',
+                                    marginTop: 4,
+                                  }}
+                                >
+                                  What am I looking for{' '}
+                                </Text>
+                              </View>
+                              <Text
+                                style={{
+                                  color: '#FFFFFF',
+                                  fontFamily: 'Inter',
+                                  fontSize: 14,
+                                  textAlign: 'center',
+                                  fontWeight: '400',
+                                  marginTop: 1,
+                                }}
+                              >
+                                Mentor ship {''} Get Inspired{' '}
+                              </Text>
+                            </View>
+
+                            <View>
+                              <View
+                                style={{
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  alignSelf: 'flex-start',
+                                  justifyContent: 'space-between',
+                                }}
+                              >
+                                <ImageBackground
+                                  style={{
+                                    width: 20,
+                                    height: 20,
+                                    borderRadius: 10,
+                                  }}
+                                  source={{
+                                    uri:
+                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                                  }}
+                                ></ImageBackground>
+                                <Text
+                                  style={{
+                                    color: '#8AB9FF',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    fontWeight: '500',
+                                    marginTop: 4,
+                                    marginLeft: 4,
+                                  }}
+                                >
+                                  Past Experience
+                                </Text>
+                              </View>
+                              <Text
+                                style={{
+                                  color: '#FFFFFF',
+                                  fontFamily: 'Inter',
+                                  fontSize: 14,
+                                  textAlign: 'center',
+                                  fontWeight: '400',
+                                  marginTop: 1,
+                                }}
+                              >
+                                {item?.Prev_org} {' AMAZON'}
+                              </Text>
+                            </View>
+                          </View>
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              justifyContent: 'space-between',
+                            }}
+                          >
+                            <View>
+                              <View
+                                style={{
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+
+                                  justifyContent: 'center',
+                                }}
+                              >
+                                <ImageBackground
+                                  style={{
+                                    width: 20,
+                                    height: 20,
+                                    borderRadius: 10,
+                                  }}
+                                  source={{
+                                    uri:
+                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                                  }}
+                                ></ImageBackground>
+                                <Text
+                                  style={{
+                                    color: '#8AB9FF',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+
+                                    marginLeft: 4,
+                                    fontWeight: '500',
+                                    marginTop: 4,
+                                  }}
+                                >
+                                  Previous Designation
+                                </Text>
+                              </View>
+                              <Text
+                                style={{
+                                  color: '#FFFFFF',
+                                  fontFamily: 'Inter',
+                                  fontSize: 14,
+                                  textAlign: 'center',
+                                  fontWeight: '400',
+                                  marginTop: 1,
+                                }}
+                              >
+                                {item?.Previous_Designation} {'SDE'}
+                              </Text>
+                            </View>
+
+                            <View>
+                              <View
+                                style={{
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                }}
+                              >
+                                <ImageBackground
+                                  style={{
+                                    width: 20,
+                                    height: 20,
+                                    borderRadius: 10,
+                                  }}
+                                  source={{
+                                    uri:
+                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
+                                  }}
+                                ></ImageBackground>
+                                <Text
+                                  style={{
+                                    color: '#8AB9FF',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    fontWeight: '500',
+                                    marginTop: 4,
+                                    marginLeft: 4,
+                                  }}
+                                >
+                                  Prev. Experience
+                                </Text>
+                              </View>
+                              <Text
+                                style={{
+                                  color: '#FFFFFF',
+                                  fontFamily: 'Inter',
+                                  fontSize: 14,
+                                  textAlign: 'center',
+                                  fontWeight: '400',
+                                  marginTop: 1,
+                                }}
+                              >
+                                {item?.Previous_org_Duration?.[0]} {' 3 '}
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </ScrollView>
+                  </View>
+                );
+              }
+            }}
+            onSwiped={cardindex => {
+              setcardindex(cardindex + 1);
+            }}
+            onSwipedLeft={() => swipeLeft(state?.vibe[0])}
+            onSwipedRight={() => swipeRight(state?.vibe[0])}
+            onSwipedAll={() => swipedAll()}
+            cardIndex={cardindex}
+            overlayLabels={{
+              left: {
+                title: 'NOPE',
+                style: {
+                  label: {
+                    textAlign: 'right',
+                    color: 'red',
+                    transform: [{rotate: '25deg'}],
+                  },
+                },
+              },
+
+              right: {
+                title: 'LIKE',
+
+                style: {
+                  label: {
+                    textAlign: 'left',
+                    color: 'green',
+                    transform: [{rotate: '-25deg'}],
+                  },
+                },
+              },
+            }}
+            verticalSwipe={false}
+            showSecondCard={true}
+            backgroundColor={'#000C12'}
+            stackSize={2}
+          ></Swiper>
+        )}
       </View>
     );
-  }
+  };
+
   return (
-    <IndividualHeaderLayout>
+    <IndividualHeaderLayout style={{flex: 1}}>
       <CustomPopup
         modalVisible={prevDailog}
         setModalVisible={() => setPrevDailog(false)}
@@ -418,33 +1579,17 @@ const Vibe = () => {
           <Text>Prev Data Show Here</Text>
         </View>
       </CustomPopup>
-      {demoData.length == 0 && <PremiumTab />}
 
-      {!finish && state.vibe.length > 0 ? (
-        <View style={{flex: 1}}>
-          {state.vibe
-            .map((item, index) => {
-              const isFirst = index === 0;
-              return (
-                <RenderCard
-                  item={item}
-                  index={index}
-                  key={item.id.toString()}
-                  isFirst={isFirst}
-                  titleSign={titleSign}
-                />
-              );
-            })
-            .reverse()}
-        </View>
-      ) : (
-        <PremiumTab />
-      )}
+      <Vibes />
     </IndividualHeaderLayout>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#000C12',
+  },
   screen: {
     flex: 1,
     paddingHorizontal: '5%',
@@ -454,9 +1599,9 @@ const styles = StyleSheet.create({
   card: {
     alignSelf: 'center',
     position: 'absolute',
-    bottom: -20,
+    bottom: 75,
     width: Dimensions.get('window').width / 1.15,
-    height: Dimensions.get('window').height / 1.35,
+    height: 550,
     marginHorizontal: 35,
     marginVertical: 20,
     borderTopRightRadius: 50,

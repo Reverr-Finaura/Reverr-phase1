@@ -5,16 +5,26 @@ import {
   Image,
   FlatList,
   TouchableOpacity,
+  TextInput,
+  Button,
+  Alert,
+  Modal,
 } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {AppColors} from '../../utils';
 import {Menu} from '../../dumy-Data/drawerMenu';
 import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
+import firestore from '@react-native-firebase/firestore';
+import auth, {deleteUser, firebase} from '@react-native-firebase/auth';
 
 const DrawerContent = () => {
   const state = useSelector(state => state.UserReducer);
   const navigation = useNavigation();
+
+ 
+
+
   return (
     <View style={styles.container}>
       <Text
@@ -27,7 +37,8 @@ const DrawerContent = () => {
         Profile
       </Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate('IndividualProfile')}>
+        onPress={() => navigation.navigate('IndividualProfile')}
+        style={{marginTop: '10%'}}>
         <Image
           source={{uri: state.user.image}}
           style={{
@@ -49,7 +60,7 @@ const DrawerContent = () => {
         }}>
         {state.user.name}
       </Text>
-      <View style={{marginVertical: '5%', paddingHorizontal: '9%'}}>
+      <View style={{marginVertical: '15%', paddingHorizontal: '9%'}}>
         <FlatList
           data={Menu}
           renderItem={({item, index}) => (
@@ -78,6 +89,9 @@ const DrawerContent = () => {
             </TouchableOpacity>
           )}
         />
+
+
+
       </View>
       <View
         style={{
@@ -105,8 +119,8 @@ const DrawerContent = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: AppColors.poupopbg,
-    borderRadius: 30,
     paddingTop: '5%',
+    height: '100%',
   },
   text: {
     color: AppColors.FontsColor,

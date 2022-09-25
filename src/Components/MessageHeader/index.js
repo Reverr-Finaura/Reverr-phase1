@@ -67,8 +67,8 @@ export const MessageHeader = props => {
       method: 'POST',
       body: JSON.stringify(data.channelName, data.host),
     });
-    console.log("res:"+response);
-    
+    console.log('res:' + response);
+
     return response.json();
   }
 
@@ -91,27 +91,43 @@ export const MessageHeader = props => {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.headerComponents}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Image source={require('../../assets/images/Back.png')} />
-        </TouchableOpacity>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            width: '40%',
+            alignItems: 'center',
+            marginStart: '5%',
+          }}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image source={require('../../assets/images/Back.png')} />
+          </TouchableOpacity>
 
-        <Image
-          style={{marginLeft: 5, height: 30, width: 30}}
-          source={{uri: userData.image}}
-        />
-
-        <Text style={styles.text}>{userData.name}</Text>
-
-        <TouchableOpacity onPress={MakeCall}>
           <Image
-            source={require('../../assets/images/Call.png')}
-            style={styles.call}
+            style={{marginLeft: 5, height: 30, width: 30}}
+            source={{uri: userData.image}}
           />
-        </TouchableOpacity>
 
-        <TouchableOpacity>
-          <Image source={require('../../assets/images/Options.png')} />
-        </TouchableOpacity>
+          <Text style={styles.text}>{userData.name}</Text>
+        </View>
+
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginStart: '15%',
+          }}>
+          <TouchableOpacity onPress={MakeCall}>
+            <Image
+              source={require('../../assets/images/Call.png')}
+              style={styles.call}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <Image source={require('../../assets/images/Options.png')} />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

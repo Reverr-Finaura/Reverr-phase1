@@ -19,14 +19,14 @@ const Height = Dimensions.get('window').height;
 const ArticalDetails = props => {
   const navigation = useNavigation();
   const articaldetails = props.route.params.articalData;
-
+  console.log(articaldetails, 'articaldetails');
   return (
     <View style={{flex: 1, backgroundColor: AppColors.primarycolor}}>
       <View style={styles.header}>
         <ImageBackground
           style={styles.articalImage}
           source={{
-            uri: articaldetails && articaldetails.image,
+            uri: articaldetails && articaldetails.image.imageUrl,
           }}>
           <View style={styles.overlay}>
             <View
@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
   },
   body: {
     paddingHorizontal: '8%',
+    marginTop: '4%',
     // color:AppColors.FontsColor
   },
   text: {

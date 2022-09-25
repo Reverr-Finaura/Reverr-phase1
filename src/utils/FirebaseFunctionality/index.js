@@ -41,13 +41,14 @@ const loginUser = async (email, password) => {
   return user_request_obj;
 };
 
-export const ChangeDp = (loading, setLoading, dispatch, email) => {
+export const ChangeDp = (setLoading, dispatch, email) => {
   ImagePicker.openPicker({
     mediaType: 'photo',
   })
     .then(image => {
+      console.log(image);
       try {
-        //loading;
+        setLoading(true);
         const url = image.path;
         const fileUrl = url.substring(url.lastIndexOf('/') + 1);
         storage()
@@ -233,7 +234,7 @@ export const AddCameraVideo = setVideoUrl => {
     });
 };
 
-export const SendMessage = (currentcUser, sendTo, message) => {
+export const SendMessage = (currentcUser, sendTo, message, ref) => {
   firestore()
     .collection('Messages')
     .doc(currentcUser.email)
@@ -251,6 +252,7 @@ export const SendMessage = (currentcUser, sendTo, message) => {
       }),
     })
     .then(() => {
+      ref.current.scrollToEnd();
       firestore()
         .collection('Messages')
         .doc(sendTo.email)
@@ -280,6 +282,5 @@ export const ReciveMessage = async (currentcUser, sendTo, setmsg) => {
     .get();
   setmsg(Allmsg._data.messages);
 };
-
 
 export {loginUser};

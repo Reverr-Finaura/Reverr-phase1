@@ -1,10 +1,10 @@
 import {View, Text, Dimensions, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
-import { AppColors } from '../../utils';
-import { postData } from './postData';
-import { BackButton } from '../Buttons';
-import { CustomMenuBar } from '../CustomMenuBar';
+import {AppColors} from '../../utils';
+import {postData} from './postData';
+import {BackButton} from '../Buttons';
+import {CustomMenuBar} from '../CustomMenuBar';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
 
@@ -17,29 +17,6 @@ const SkeltonLoader = () => {
   const navigation = useNavigation();
   return (
     <View style={{backgroundColor: AppColors.primarycolor, flex: 1}}>
-      <View style={styles.header}>
-        <BackButton
-          IconSize={30}
-          onPress={() => {
-            navigation.goBack();
-          }}
-        />
-        <Text
-          style={{
-            color: AppColors.FontsColor,
-            marginStart: Width / 3.5,
-            fontFamily: 'Poppins-SemiBold',
-            fontSize: 21,
-          }}>
-          Room
-        </Text>
-      </View>
-      <CustomMenuBar
-        Item1="Featured"
-        Item2="Discussion"
-        active1={features}
-        active2={subs}
-      />
       {postData &&
         postData.length > 0 &&
         postData.map((item, index) => {

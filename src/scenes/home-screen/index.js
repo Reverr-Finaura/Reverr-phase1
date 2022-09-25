@@ -6,6 +6,7 @@ import {
   Image,
   FlatList,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {styles} from './styles';
@@ -15,6 +16,7 @@ import {
   CustomPopup,
   HomeCard,
   IndividualHeaderLayout,
+  SkeltonLoader,
 } from '../../Components';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icon2 from 'react-native-vector-icons/Ionicons';
@@ -28,18 +30,20 @@ import {
   deletePost,
 } from '../../Redux/actions';
 import {useNavigation} from '@react-navigation/native';
-import {AppColors} from '../../utils';
-import {cardData} from '../../dumy-Data/defaultHomeCardData';
+import {AppColors, smallString} from '../../utils';
 import LinearGradient from 'react-native-linear-gradient';
 import {styles2} from '../Room/styles';
+import {ArticleList} from '../artical-screen';
+import {NewsList} from '../news-screen';
 
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
 const Home = () => {
   const state = useSelector(state => state.UserReducer);
-  const [features, setFeatures] = useState(false);
+  const loader = useSelector(state => state.UserReducer);
+  const [articles, setArticles] = useState(false);
   const [discussion, setDiscussion] = useState(true);
-  const [patch, setPatch] = useState(false);
+  const [news, setNews] = useState(false);
   const [popup, setPopup] = useState(false);
   const [seeMore, setSeeMore] = useState(false);
   const [seemoreId, setSeemoreId] = useState();
@@ -49,7 +53,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const renderCard = ({item, index}) => {
-    //console.log("Hey!")
+    console.log(state.allLoaded, 'Hey!');
     // console.log(state.Rooms[0], 'userdta');
     return (
       <LinearGradient
@@ -62,7 +66,9 @@ const Home = () => {
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('IndividualProfile');
+                navigation.navigate('ViewProfile', {
+                  postData: item,
+                });
               }}>
               <Image style={styles2.dp} source={{uri: item.postedby.image}} />
             </TouchableOpacity>
@@ -76,6 +82,7 @@ const Home = () => {
               style={{
                 color: AppColors.BtnClr,
                 fontWeight: 'bold',
+                alignSelf: 'center',
                 marginTop: '-5%',
                 marginRight: '4%',
               }}>
@@ -160,7 +167,7 @@ const Home = () => {
             </View>
           </CustomPopup>
         )}
-        <View style={styles2.postContainer}>
+        {/*  <View style={styles2.postContainer}>
           {item.image !== '' && item.image !== undefined ? (
             <View>
               {item.text !== '' ? (
@@ -207,22 +214,48 @@ const Home = () => {
             </View>
           ) : (
             <View>
+              <Text style={[styles2.details]}>{item.text}</Text>
+            </View>
+          )}
+        </View> */}
+        <View>
+          {item.image == '' ? (
+            <View style={{paddingHorizontal: '5%'}}>
               <Text style={styles2.details}>{item.text}</Text>
+            </View>
+          ) : (
+            <View
+              style={[styles2.image, {overflow: 'hidden', marginTop: '4%'}]}>
+              <ImageBackground
+                style={{width: '100%', height: '100%'}}
+                source={{uri: item.image}}>
+                <View style={{paddingHorizontal: '5%'}}>
+                  <Text style={styles2.details}>{item.text}</Text>
+                </View>
+              </ImageBackground>
             </View>
           )}
         </View>
         <View style={styles2.IconContainer}>
-          <View>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <TouchableOpacity onPress={() => likePost(item.id, item)}>
               {item.likes.includes(state.user.email) ? (
                 <Image
                   source={require('../../assets/images/likedone.png')}
-                  style={{tintColor: 'blue', width: 30, height: 30}}
+                  style={{
+                    tintColor: AppColors.ActiveColor,
+                    width: 30,
+                    height: 30,
+                  }}
                 />
               ) : (
                 <Image
                   source={require('../../assets/images/like.png')}
-                  style={{tintColor: 'blue', width: 30, height: 30}}
+                  style={{
+                    tintColor: AppColors.ActiveColor,
+                    width: 20,
+                    height: 22,
+                  }}
                 />
               )}
             </TouchableOpacity>
@@ -230,21 +263,20 @@ const Home = () => {
               {item.likes.length} reactions
             </Text>
           </View>
-          <View>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <TouchableOpacity
               onPress={() => {
                 dispatch(pin_post(item));
-                // navigation.navigate('comments', {
-                //   postData: item,
-                // });
-                navigation.navigate('comments');
+                navigation.navigate('comments', {
+                  postData: item,
+                });
               }}>
               <Image
                 source={require('../../assets/images/comment.png')}
                 style={{
                   tintColor: AppColors.ActiveColor,
-                  height: 27,
-                  width: 27,
+                  height: 22,
+                  width: 20,
                 }}
               />
             </TouchableOpacity>
@@ -256,6 +288,7 @@ const Home = () => {
       </LinearGradient>
     );
   };
+  const [postloader, setPostloader] = useState(false);
 
   useEffect(() => {
     dispatch(mentorService);
@@ -263,7 +296,9 @@ const Home = () => {
       dispatch(set_allLoaded(false));
       dispatch(load_room_data(undefined));
     } else {
+      setPostloader(true);
       dispatch(load_room_data(state.lastDocument));
+      setPostloader(false);
     }
   }, []);
 
@@ -284,8 +319,8 @@ const Home = () => {
     dispatch(set_allLoaded(false));
     dispatch(refresh_rooms_list());
   };
-  const [pos, setPos] = React.useState(0);
-  console.log(pos, '');
+  // console.log(state.user, 'postaloader');
+  console.log(state.loading, 'loader');
   return (
     <IndividualHeaderLayout>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -296,7 +331,7 @@ const Home = () => {
             paddingHorizontal: '5%',
             marginVertical: '2%',
           }}>
-          <Text style={styles.welcmTxt}>Hi,</Text>
+          <Text style={styles.welcmTxt}>Hey </Text>
           <Text style={[styles.welcmTxt, {color: AppColors.ActiveColor}]}>
             {state.user.name}
           </Text>
@@ -304,57 +339,77 @@ const Home = () => {
         <HomeCard />
         <View style={{}}>
           <CustomMenuBar
-            /*  Item1="Featured" */
+            Item1="Articles"
             Item2="Discussion"
-            /*  Item3="Patch" */
-            active1={features}
+            Item3="News"
+            active1={articles}
             active2={discussion}
-            active3={patch}
+            active3={news}
             ClickOnItem1={() => {
-              setFeatures(true);
+              setArticles(true);
               setDiscussion(false);
-              setPatch(false);
+              setNews(false);
             }}
             ClickOnItem2={() => {
               setDiscussion(true);
-              setFeatures(false);
-              setPatch(false);
+              setArticles(false);
+              setNews(false);
             }}
             ClickOnItem3={() => {
-              setPatch(true);
+              setNews(true);
               setDiscussion(false);
-              setFeatures(false);
+              setArticles(false);
             }}
           />
-          <ScrollView style={{paddingBottom: '5%'}}>
-            {state.Rooms.length > 0 && (
-              <FlatList
-                data={state.Rooms}
-                keyExtractor={item => item.id}
-                renderItem={renderCard}
-                onEndReached={_handleLoadMore}
-                onEndReachedThreshold={1}
-                refreshing={state.refreshing}
-                onRefresh={handleRefresh}
-              />
-            )}
-          </ScrollView>
+          {discussion && (
+            <View>
+              {state.Rooms.length == 0 ? (
+                <SkeltonLoader />
+              ) : (
+                <View style={{width: '100%', marginBottom: '3%'}}>
+                  {state.Rooms.length > 0 && (
+                    <FlatList
+                      data={state.Rooms}
+                      keyExtractor={item => item.id}
+                      renderItem={renderCard}
+                      onEndReached={_handleLoadMore}
+                      onEndReachedThreshold={1}
+                      refreshing={state.refreshing}
+                      onRefresh={handleRefresh}
+                    />
+                  )}
+                </View>
+              )}
+            </View>
+          )}
+          {articles && (
+            <View>
+              <ArticleList />
+            </View>
+          )}
+          {news && (
+            <View>
+              <NewsList />
+            </View>
+          )}
         </View>
       </ScrollView>
-      <TouchableOpacity
-        activeOpacity={0.6}
-        onPress={() => navigation.navigate('CreatePost')}
-        style={{
-          position: 'absolute',
-          backgroundColor: AppColors.ActiveColor,
-          borderRadius: 50,
-          right: 0,
-          bottom: 20,
-          padding: 10,
-          paddingHorizontal: 13,
-        }}>
-        <Icon name="plus" size={50} color={AppColors.FontsColor} />
-      </TouchableOpacity>
+      {discussion && (
+        <TouchableOpacity
+          activeOpacity={0.6}
+          onPress={() => navigation.navigate('CreatePost')}
+          style={{
+            position: 'absolute',
+            backgroundColor: AppColors.ActiveColor,
+            borderRadius: 50,
+            right: 0,
+            bottom: 20,
+            padding: 10,
+            paddingHorizontal: 13,
+          }}>
+          <Icon name="plus" size={30} color={AppColors.FontsColor} />
+        </TouchableOpacity>
+      )}
     </IndividualHeaderLayout>
   );
 };

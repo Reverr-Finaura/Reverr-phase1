@@ -12,6 +12,7 @@ import React, {useEffect, useState, useRef, useContext} from 'react';
 import {AppColors, smallString} from '../../../utils';
 import axios from 'axios';
 import {useNavigation} from '@react-navigation/native';
+import {NewsLoader} from '../../../Components';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
@@ -51,12 +52,12 @@ const NewsList = () => {
   return (
     <View style={styles.screen}>
       {loading ? (
-        <Text>Loading....</Text>
+        <NewsLoader />
       ) : (
-        <View style={{height: Height > 684 ? Height / 1.3 : Height / 1.35}}>
-          <View>
-            <Text style={styles.news}>News</Text>
-          </View>
+        <View
+          style={{
+            paddingTop: '5%',
+          }}>
           <FlatList
             data={newsData}
             nestedScrollEnabled={true}
