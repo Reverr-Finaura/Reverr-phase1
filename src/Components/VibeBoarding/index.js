@@ -196,7 +196,7 @@ const meetdata = [
   {id: 'Video Call', name: 'Video Call'},
   {id: 'Local Cafe', name: 'Local Cafe'},
 ];
-const VibeBoarding = ({vibeboarding},setvibeboarding) => {
+const VibeBoarding = ({showboarding,setshowboarding}) => {
   const state = useSelector(state => state.UserReducer);
   const dispatch = useDispatch();
   const [selected, setselected] = useState([]);
@@ -241,17 +241,22 @@ const VibeBoarding = ({vibeboarding},setvibeboarding) => {
     console.log('predesig', prevdesignation);
     console.log('industry', industry);
     console.log('preorg', prevorg);
-    await firestore().collection('Users').doc(state.user.email).update({
-    Vibe_Data: { Years_Of_Experience: selected,
-      Previous_org_Duration: selected1,
-      Education: text,
-      Previous_Designation: prevdesignation,
-      Industry: industry,
-      Previous_Org: prevorg,
-      Here_for: selected2,
-      How_To_Meet: selected3,}
-    });
-  setvibeboarding(fasle)
+    await firestore()
+      .collection('Users')
+      .doc(state.user.email)
+      .update({
+        Vibe_Data: {
+          Years_Of_Experience: selected,
+          Previous_org_Duration: selected1,
+          Education: text,
+          Previous_Designation: prevdesignation,
+          Industry: industry,
+          Previous_Org: prevorg,
+          Here_for: selected2,
+          How_To_Meet: selected3,
+        },
+      });
+   setshowboarding(false)
   };
   return (
     <IndividualHeaderLayout>
