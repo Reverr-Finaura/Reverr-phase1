@@ -10,6 +10,7 @@ import {AppColors} from '../../utils';
 import {ScrollView} from 'react-native-gesture-handler';
 import firestore from '@react-native-firebase/firestore';
 import {useDispatch, useSelector} from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
 const K_OPTIONS = [
   {
@@ -197,6 +198,8 @@ const meetdata = [
   {id: 'Local Cafe', name: 'Local Cafe'},
 ];
 const VibeBoarding = ({showboarding,setshowboarding}) => {
+  const navigation = useNavigation();
+  
   const state = useSelector(state => state.UserReducer);
   const dispatch = useDispatch();
   const [selected, setselected] = useState([]);
@@ -256,7 +259,7 @@ const VibeBoarding = ({showboarding,setshowboarding}) => {
           How_To_Meet: selected3,
         },
       });
-   setshowboarding(false)
+navigation.navigate("Vibe")
   };
   return (
     <IndividualHeaderLayout>
