@@ -55,6 +55,8 @@ import {MentorDetails} from '../../Components';
 import {DrawerNavigation} from '../drawerNavigation';
 import {MatchScreen} from '../../scenes/MatchScreen';
 import {CourseList} from '../../scenes/learn-screen';
+import { CountdownTimer } from '../../scenes/CountdownTimer';
+import { VibeBoarding } from '../../Components/VibeBoarding';
 const Stack = createNativeStackNavigator();
 
 const StackNavigate = props => {
@@ -116,6 +118,8 @@ const StackNavigate = props => {
       <Stack.Screen name="videoCall" component={VideoCall} />
       <Stack.Screen name="MatchScreen" component={MatchScreen} />
       <Stack.Screen name="ViewProfile" component={ViewProfile} />
+      <Stack.Screen name="Countdown" component={CountdownTimer} />
+      <Stack.Screen name="VibeBoarding" component={VibeBoarding} />
     </Stack.Navigator>
   );
 };
