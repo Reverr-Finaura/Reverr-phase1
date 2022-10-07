@@ -69,6 +69,12 @@ const styles = StyleSheet.create({
   about: {
     color: AppColors.infoFonts,
   },
+  button: {
+    backgroundColor: 'green',
+    paddingHorizontal: '7%',
+    paddingVertical: '3%',
+    borderRadius: 5,
+  },
 });
 
 export {styles};

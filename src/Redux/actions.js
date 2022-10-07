@@ -97,8 +97,6 @@ export const Load_Card = (
             payload: {list4, lastDocument: lastdoc},
           });
 
-
-       
           await firestore()
             .collection('Users')
             .doc(email)
@@ -389,7 +387,7 @@ export const updateUserData = data => {
   }
 };
 export const update_data = data => {
-  console.log('data: ' + data.name);
+  //console.log('data: ' + data.name);
   return {
     type: 'UPDATE_USER_DATA',
     payload: data,

@@ -5,12 +5,14 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
+  FlatList,
 } from 'react-native';
 import React from 'react';
 import {AppColors} from '../../utils';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const ProfileDetailsBox = ({userData}) => {
+  console.log(userData, 'jhjh');
   return (
     <View style={{marginHorizontal: '5%'}}>
       <View style={styles.container}>
@@ -33,7 +35,7 @@ const ProfileDetailsBox = ({userData}) => {
             marginStart: '7%',
             marginVertical: '2%',
           }}>
-          Director of Market reserch
+          {userData.designation}
         </Text>
       </View>
       {/* <View style={styles.container}>
@@ -56,78 +58,69 @@ const ProfileDetailsBox = ({userData}) => {
           </View>
         </View>
       </View> */}
-      <View style={styles.container}>
-        <Text style={[styles.text, {color: AppColors.FontsColor}]}>
-          Experience
-        </Text>
-        <View style={{paddingHorizontal: '10%', marginTop: '2.5%'}}>
-          <Text
-            style={{
-              color: AppColors.FontsColor,
-              fontWeight: 'bold',
-              fontSize: 16,
-            }}>
-            Fintech
+      {userData.experience.length > 0 && (
+        <View style={styles.container}>
+          <Text style={[styles.text, {color: AppColors.FontsColor}]}>
+            Experience
           </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginStart: '4%',
-              marginTop: '2%',
-            }}>
-            <Icon name="ellipse" size={10} color={AppColors.ActiveColor} />
-            <Text style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
-              Marketing research
-            </Text>
-          </View>
+          <FlatList
+            data={userData.experience}
+            renderItem={({item, index}) => (
+              <View style={{paddingHorizontal: '10%', marginTop: '2.5%'}}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginStart: '4%',
+                    marginTop: '2%',
+                  }}>
+                  <Icon
+                    name="ellipse"
+                    size={10}
+                    color={AppColors.ActiveColor}
+                  />
+                  <Text
+                    style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
+                    {item}
+                  </Text>
+                </View>
+              </View>
+            )}
+          />
         </View>
-        <View style={{paddingHorizontal: '10%', marginTop: '2.5%'}}>
-          <Text
-            style={{
-              color: AppColors.FontsColor,
-              fontWeight: 'bold',
-              fontSize: 16,
-            }}>
-            Microsoft
+      )}
+      {userData.education.length > 0 && (
+        <View style={styles.container}>
+          <Text style={[styles.text, {color: AppColors.FontsColor}]}>
+            Education
           </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginStart: '4%',
-              marginTop: '2%',
-            }}>
-            <Icon name="ellipse" size={10} color={AppColors.ActiveColor} />
-            <Text style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
-              Full stack developer
-            </Text>
-          </View>
+          <FlatList
+            data={userData.education}
+            renderItem={({item, index}) => (
+              <View style={{paddingHorizontal: '10%', marginTop: '2.5%'}}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginStart: '4%',
+                    marginTop: '2%',
+                  }}>
+                  <Icon
+                    name="ellipse"
+                    size={10}
+                    color={AppColors.ActiveColor}
+                  />
+                  <Text
+                    style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
+                    {item}
+                  </Text>
+                </View>
+              </View>
+            )}
+          />
         </View>
-        <View style={{paddingHorizontal: '10%', marginTop: '2.5%'}}>
-          <Text
-            style={{
-              color: AppColors.FontsColor,
-              fontWeight: 'bold',
-              fontSize: 16,
-            }}>
-            Kery solutions lt.
-          </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginStart: '4%',
-              marginTop: '2%',
-            }}>
-            <Icon name="ellipse" size={10} color={AppColors.ActiveColor} />
-            <Text style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
-              Graphic designer - Intern
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View style={styles.container}>
+      )}
+      {/* <View style={styles.container}>
         <Text style={[styles.text, {color: AppColors.FontsColor}]}>
           Education
         </Text>
@@ -197,7 +190,7 @@ const ProfileDetailsBox = ({userData}) => {
             </Text>
           </View>
         </View>
-      </View>
+      </View> */}
       <View style={styles.container}>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Text style={[styles.text, {color: AppColors.FontsColor}]}>
@@ -211,7 +204,7 @@ const ProfileDetailsBox = ({userData}) => {
             marginStart: '7%',
             marginVertical: '2%',
           }}>
-          Marketing research
+          {userData.industry}
         </Text>
       </View>
       <View style={styles.container}>

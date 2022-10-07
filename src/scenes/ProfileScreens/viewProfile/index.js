@@ -18,6 +18,15 @@ import {styles} from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
 import {AppColors} from '../../../utils';
+import {
+  ApprovedReq,
+  CancelRequest,
+  ConnectToSocial,
+  rejectRequest,
+} from '../../../utils/FirebaseFunctionality';
+import {useEffect} from 'react';
+import {add_user} from '../../../Redux/actions';
+import firestore from '@react-native-firebase/firestore';
 
 const Width = Dimensions.get('screen').width;
 const Height = Dimensions.get('screen').height;
@@ -27,10 +36,32 @@ const ViewProfile = props => {
   const state = useSelector(state => state.UserReducer);
   const [posts, setPosts] = useState(false);
   const [about, setAbout] = useState(true);
+  const [connectLoading, setConnectLoading] = useState(false);
+  const [cancelLoading, setCancelLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const userDetails = props.route.params.postData.postedby;
 
-  console.log(userDetails, 'postByName');
+  useEffect(() => {
+    firestore()
+      .collection('Users')
+      .doc(state.user.email)
+      .get()
+      .then(res => {
+        console.log(res._data, 'resAdd');
+        dispatch(add_user(res._data));
+      });
+  }, [dispatch, connectLoading, loading]);
+
+  console.log(state.user.sendRequests);
+
+  const connectToNetwork = async () => {
+    ConnectToSocial(state.user.email, userDetails.email, setConnectLoading);
+  };
+
+  const removeToNetwork = async () => {
+    CancelRequest(state.user.email, userDetails.email, setConnectLoading);
+  };
 
   if (!state) {
     return (
@@ -114,8 +145,102 @@ const ViewProfile = props => {
                 justifyContent: 'center',
                 marginTop: '2%',
               }}>
-              <Image source={require('../../../assets/images/linkdin.png')} />
-              <Image source={require('../../../assets/images/twitter.png')} />
+              {state.user.network.includes(userDetails.email) ? (
+                <View>
+                  <TouchableOpacity>
+                    <Text
+                      style={{
+                        color: AppColors.primarycolor,
+                        fontSize: 19,
+                        fontWeight: 'bold',
+                      }}>
+                      Connected
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              ) : (
+                <View>
+                  {state &&
+                  state.user.recivedRequests.includes(userDetails.email) ? (
+                    <View style={{paddingVertical: '2%'}}>
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          width: '100%',
+                          justifyContent: 'space-around',
+                          paddingHorizontal: '15%',
+                        }}>
+                        <TouchableOpacity
+                          onPress={() => {
+                            ApprovedReq(
+                              state.user.email,
+                              userDetails.email,
+                              setLoading,
+                            );
+                          }}
+                          style={styles.button}>
+                          <Text style={{color: AppColors.FontsColor}}>
+                            Approve
+                          </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                          onPress={() => {
+                            rejectRequest(
+                              state.user.email,
+                              userDetails.email,
+                              setLoading,
+                            );
+                          }}
+                          style={[styles.button, {backgroundColor: 'red'}]}>
+                          <Text style={{color: AppColors.FontsColor}}>
+                            Reject
+                          </Text>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                  ) : (
+                    <View>
+                      {connectLoading ? (
+                        <View>
+                          <ActivityIndicator
+                            size={30}
+                            color={AppColors.primarycolor}
+                          />
+                        </View>
+                      ) : (
+                        <>
+                          {state &&
+                          state.user.sendRequests.includes(
+                            userDetails.email,
+                          ) ? (
+                            <TouchableOpacity onPress={removeToNetwork}>
+                              <Text
+                                style={{
+                                  fontWeight: 'bold',
+                                  color: AppColors.primarycolor,
+                                  fontSize: 22,
+                                }}>
+                                Cancel Request
+                              </Text>
+                            </TouchableOpacity>
+                          ) : (
+                            <TouchableOpacity onPress={connectToNetwork}>
+                              <Text
+                                style={{
+                                  fontWeight: 'bold',
+                                  color: AppColors.primarycolor,
+                                  fontSize: 22,
+                                }}>
+                                Connect +
+                              </Text>
+                            </TouchableOpacity>
+                          )}
+                        </>
+                      )}
+                    </View>
+                  )}
+                </View>
+              )}
             </View>
             <View
               style={{
@@ -146,14 +271,14 @@ const ViewProfile = props => {
           style={{
             flexDirection: 'row',
             alignItems: 'center',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
             zIndex: 10,
             position: 'absolute',
             left: '16%',
             right: '16%',
             top: '22%',
           }}>
-          <TouchableOpacity>
+          {/* <TouchableOpacity>
             <ImageBackground
               source={require('../../../assets/images/shadow.png')}
               style={{
@@ -164,7 +289,7 @@ const ViewProfile = props => {
               }}>
               <Icon name="camera" size={22} color={AppColors.FontsColor} />
             </ImageBackground>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <Image
             source={{uri: userDetails.image}}
             style={{
@@ -175,7 +300,7 @@ const ViewProfile = props => {
               borderColor: AppColors.FontsColor,
             }}
           />
-          <TouchableOpacity>
+          {/*   <TouchableOpacity>
             <ImageBackground
               source={require('../../../assets/images/shadow.png')}
               style={{
@@ -186,7 +311,7 @@ const ViewProfile = props => {
               }}>
               <Icon name="cog" size={22} color={AppColors.FontsColor} />
             </ImageBackground>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </View>
       <View>

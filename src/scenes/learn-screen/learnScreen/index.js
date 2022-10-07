@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   FlatList,
   ImageBackground,
+  ToastAndroid,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -80,6 +81,15 @@ const LearnScreen = () => {
             </Text>
           </View>
           <TouchableOpacity
+            onPress={() => {
+              ToastAndroid.showWithGravityAndOffset(
+                ' Quiz Not Available ',
+                ToastAndroid.LONG,
+                ToastAndroid.BOTTOM,
+                25,
+                50,
+              );
+            }}
             activeOpacity={0.7}
             style={{
               backgroundColor: AppColors.ActiveColor,

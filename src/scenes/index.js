@@ -50,6 +50,7 @@ import {MentorHomeScreen, AppoinmentScreen} from './mentorPovScreens';
 import {Notifications} from './notifications';
 import {Vibe} from './VibeScreen';
 import {MentorList} from './mentor-screen/mentorList';
+import {Requests} from './requests';
 export {
   ArticalDetails,
   FundingScreen,
@@ -101,4 +102,5 @@ export {
   Vibe,
   MentorList,
   ViewProfile,
+  Requests,
 };

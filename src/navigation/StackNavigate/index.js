@@ -19,6 +19,7 @@ import {
   Notifications,
   MentorList,
   ViewProfile,
+  Requests,
 } from '../../scenes';
 import ThanksScreen from '../../scenes/thanks-screen';
 import {
@@ -104,6 +105,7 @@ const StackNavigate = props => {
       <Stack.Screen name="VideoCall" component={VideoCall} />
       <Stack.Screen name="MentorList" component={MentorList} />
       <Stack.Screen name="MentorDetails" component={MentorDetails} />
+      <Stack.Screen name="Requests" component={Requests} />
       <Stack.Screen
         name="CalanderAppointments"
         component={CalanderAppointments}

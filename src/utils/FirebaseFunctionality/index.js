@@ -3,7 +3,8 @@ import firestore from '@react-native-firebase/firestore';
 import ImagePicker from 'react-native-image-crop-picker';
 import storage from '@react-native-firebase/storage';
 //import {add_user,updateImage} from '../../Redux/actions';
-import {updateImage} from '../../Redux/actions';
+import {updateImage, updateUserState} from '../../Redux/actions';
+import {useDispatch} from 'react-redux';
 
 var date = new Date().getDate();
 var month = new Date().getMonth() + 1;
@@ -288,6 +289,120 @@ export const getPost = async () => {
   let t = await firestore().collection('Posts').get();
 
   return t._docs;
+};
+
+export const ConnectToSocial = async (
+  currentcUseremail,
+  toUserEmail,
+  setLoading,
+) => {
+  setLoading(true);
+  await firestore()
+    .collection('Users')
+    .doc(currentcUseremail)
+    .update({
+      sendRequests: firestore.FieldValue.arrayUnion(toUserEmail),
+    })
+    .then(async () => {
+      await firestore()
+        .collection('Users')
+        .doc(toUserEmail)
+        .update({
+          recivedRequests: firestore.FieldValue.arrayUnion(currentcUseremail),
+        });
+    })
+    .then(() => {
+      setLoading(false);
+    });
+};
+
+export const CancelRequest = async (
+  currentcUseremail,
+  toUserEmail,
+  setLoading,
+) => {
+  setLoading(true);
+  await firestore()
+    .collection('Users')
+    .doc(currentcUseremail)
+    .update({
+      sendRequests: firestore.FieldValue.arrayRemove(toUserEmail),
+    })
+    .then(async () => {
+      await firestore()
+        .collection('Users')
+        .doc(toUserEmail)
+        .update({
+          recivedRequests: firestore.FieldValue.arrayRemove(currentcUseremail),
+        });
+    })
+    .then(() => {
+      setLoading(false);
+    });
+};
+export const rejectRequest = async (
+  currentcUseremail,
+  toUserEmail,
+  setLoading,
+) => {
+  setLoading(true);
+  await firestore()
+    .collection('Users')
+    .doc(currentcUseremail)
+    .update({
+      recivedRequests: firestore.FieldValue.arrayRemove(toUserEmail),
+    })
+    .then(async () => {
+      await firestore()
+        .collection('Users')
+        .doc(toUserEmail)
+        .update({
+          sendRequests: firestore.FieldValue.arrayRemove(currentcUseremail),
+        });
+    })
+    .then(() => {
+      setLoading(false);
+    });
+};
+export const ApprovedReq = async (
+  currentcUseremail,
+  toUserEmail,
+  setLoading,
+) => {
+  setLoading(true);
+  await firestore()
+    .collection('Users')
+    .doc(currentcUseremail)
+    .update({
+      network: firestore.FieldValue.arrayUnion(toUserEmail),
+    })
+    .then(async () => {
+      await firestore()
+        .collection('Users')
+        .doc(toUserEmail)
+        .update({
+          network: firestore.FieldValue.arrayUnion(currentcUseremail),
+        });
+    })
+    .then(async () => {
+      await firestore()
+        .collection('Users')
+        .doc(currentcUseremail)
+        .update({
+          recivedRequests: firestore.FieldValue.arrayRemove(toUserEmail),
+        });
+    })
+    .then(async () => {
+      await firestore()
+        .collection('Users')
+        .doc(toUserEmail)
+        .update({
+          sendRequests: firestore.FieldValue.arrayRemove(currentcUseremail),
+        });
+    })
+    .then(() => {
+      setLoading(false);
+    });
 };
 
 export {loginUser};

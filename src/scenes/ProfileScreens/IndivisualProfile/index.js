@@ -533,7 +533,7 @@ const IndividuaProfile = props => {
                 Bangalore graduate and have worked with Fintech for 5 years.
               </Text>
             </LinearGradient>
-            <ProfileDetailsBox />
+            <ProfileDetailsBox userData={state.user} />
           </View>
         )}
       </View>

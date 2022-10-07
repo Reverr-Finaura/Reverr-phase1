@@ -33,7 +33,7 @@ export const MentorDetails = props => {
     switch (index) {
       case 0:
         return (
-          <View style={{display:"flex"}}>
+          <View style={{display: 'flex'}}>
             <Text
               style={{
                 color: 'white',
@@ -48,7 +48,7 @@ export const MentorDetails = props => {
         );
       case 1:
         return (
-          <View style={{display:"flex"}}>
+          <View style={{display: 'flex'}}>
             <Text
               style={{
                 color: 'white',
@@ -62,7 +62,7 @@ export const MentorDetails = props => {
         );
       case 2:
         return (
-          <View style={{display:"flex"}}>
+          <View style={{display: 'flex'}}>
             <Text
               style={{
                 color: 'white',
@@ -81,7 +81,7 @@ export const MentorDetails = props => {
 
   return (
     selectedmentor && (
-      <ScrollView style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={() => navigaton.goBack()}>
             <Image
@@ -89,8 +89,6 @@ export const MentorDetails = props => {
               style={styles.button}
             />
           </TouchableOpacity>
-
-         
         </View>
 
         <Image
@@ -115,7 +113,10 @@ export const MentorDetails = props => {
             title="Industry"
             subTitle={selectedmentor?.industry}
           />
-          <CustomTextCard title="Appoinment" subTitle={"₹ "+selectedmentor?.plans[0] + "/Hr"} />
+          <CustomTextCard
+            title="Appoinment"
+            subTitle={'₹ ' + selectedmentor?.plans[0] + '/Hr'}
+          />
           <TouchableOpacity
             style={{
               marginTop: '-7.6%',

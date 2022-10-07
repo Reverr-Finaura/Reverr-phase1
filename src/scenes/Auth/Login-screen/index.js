@@ -56,7 +56,7 @@ const LoginScreen = ({navigation}) => {
       }
     }
     const savedUser = await firestore().collection('Users').doc(email).get();
-    console.log('Its a :' + savedUser._data.userType);
+    //  console.log('Its a :' + savedUser._data.userType);
     dispatch(add_user(savedUser._data));
     user_request_obj.success = true;
     user_request_obj.userType = savedUser._data.userType;
@@ -80,8 +80,8 @@ const LoginScreen = ({navigation}) => {
           if (response.userType == 'Individual') {
             return navigation.replace('IndividualTab');
           } else {
-            console.log("I am an Mentor")
-            return navigation.replace("MentorBottomTab");
+            console.log('I am an Mentor');
+            return navigation.replace('MentorBottomTab');
           }
         } else if (response.failiure == true) {
           setUserLogedin(true);

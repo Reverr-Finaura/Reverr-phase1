@@ -64,9 +64,13 @@ const Home = () => {
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('ViewProfile', {
-                  postData: item,
-                });
+                if (item.postedby.email == state.user.email) {
+                  navigation.navigate('IndividualProfile');
+                } else {
+                  navigation.navigate('ViewProfile', {
+                    postData: item,
+                  });
+                }
               }}>
               <Image style={styles2.dp} source={{uri: item.postedby.image}} />
             </TouchableOpacity>
@@ -251,8 +255,8 @@ const Home = () => {
                   source={require('../../assets/images/like.png')}
                   style={{
                     tintColor: AppColors.ActiveColor,
-                    width: 20,
-                    height: 22,
+                    width: 30,
+                    height: 30,
                   }}
                 />
               )}
