@@ -51,6 +51,7 @@ import {Notifications} from './notifications';
 import {Vibe} from './VibeScreen';
 import {MentorList} from './mentor-screen/mentorList';
 import {Requests} from './requests';
+import {CountdownTimer} from './CountdownTimer';
 export {
   ArticalDetails,
   FundingScreen,
@@ -103,4 +104,5 @@ export {
   MentorList,
   ViewProfile,
   Requests,
+  CountdownTimer,
 };

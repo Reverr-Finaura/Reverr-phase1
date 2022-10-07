@@ -20,6 +20,7 @@ import {
   MentorList,
   ViewProfile,
   Requests,
+  CountdownTimer,
 } from '../../scenes';
 import ThanksScreen from '../../scenes/thanks-screen';
 import {
@@ -55,8 +56,7 @@ import {MentorDetails} from '../../Components';
 import {DrawerNavigation} from '../drawerNavigation';
 import {MatchScreen} from '../../scenes/MatchScreen';
 import {CourseList} from '../../scenes/learn-screen';
-import { CountdownTimer } from '../../scenes/CountdownTimer';
-import { VibeBoarding } from '../../Components/VibeBoarding';
+import {VibeBoarding} from '../../Components/VibeBoarding';
 const Stack = createNativeStackNavigator();
 
 const StackNavigate = props => {
