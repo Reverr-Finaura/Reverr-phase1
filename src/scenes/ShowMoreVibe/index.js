@@ -119,6 +119,200 @@ const ShowMoreVibe = () => {
                 color: '#0077B7',
                 fontFamily: 'Poppins',
                 fontSize: 18,
+                fontWeight: '700',
+                marginTop: 4,
+                marginLeft: 15,
+              }}
+            >
+              About Me
+            </Text>
+          </View>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+            }}
+          >
+            <View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignparamss: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Icon
+                  name="search"
+                  color={AppColors.ActiveColor}
+                  size={20}
+                />
+                <Text
+                  style={{
+                    color: '#8AB9FF',
+                    fontFamily: 'Poppins',
+                    fontSize: 16,
+                    marginLeft: 4,
+                    fontWeight: '500',
+                    marginTop: 4,
+                  }}
+                >
+                  What am I looking for{' '}
+                </Text>
+              </View>
+              <Text
+                style={{
+                  color: '#FFFFFF',
+                  fontFamily: 'Inter',
+                  fontSize: 14,
+                  textAlign: 'center',
+                  fontWeight: '400',
+                  marginTop: 1,
+                }}
+              >
+                Mentor ship {''} Get Inspired{' '}
+              </Text>
+            </View>
+
+            <View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignparamss: 'center',
+                  alignSelf: 'flex-start',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <Icon
+                  name="industry"
+                  color={AppColors.ActiveColor}
+                  size={20}
+                />
+                <Text
+                  style={{
+                    color: '#8AB9FF',
+                    fontFamily: 'Poppins',
+                    fontSize: 16,
+                    fontWeight: '500',
+                    marginTop: 4,
+                    marginLeft: 4,
+                  }}
+                >
+                  Past Experience
+                </Text>
+              </View>
+              <Text
+                style={{
+                  color: '#FFFFFF',
+                  fontFamily: 'Inter',
+                  fontSize: 14,
+                  textAlign: 'center',
+                  fontWeight: '400',
+                  marginTop: 1,
+                }}
+              >
+                {checkingdata?.Previous_Designation}
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+            }}
+          >
+            <View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignparamss: 'center',
+
+                  justifyContent: 'center',
+                }}
+              >
+                <Icon
+                  name="industry"
+                  color={AppColors.ActiveColor}
+                  size={20}
+                />
+                <Text
+                  style={{
+                    color: '#8AB9FF',
+                    fontFamily: 'Poppins',
+                    fontSize: 16,
+
+                    marginLeft: 4,
+                    fontWeight: '500',
+                    marginTop: 4,
+                  }}
+                >
+                  Previous Designation
+                </Text>
+              </View>
+              <Text
+                style={{
+                  color: '#FFFFFF',
+                  fontFamily: 'Inter',
+                  fontSize: 14,
+                  textAlign: 'center',
+                  fontWeight: '400',
+                  marginTop: 1,
+                }}
+              >
+                {params?.Vibe_Data
+                  ? params?.Vibe_Data?.Previous_Org
+                  : checkingdata?.Previous_Org}
+              </Text>
+            </View>
+
+            <View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignparamss: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Icon
+                  name="check-circle"
+                  color={AppColors.ActiveColor}
+                  size={20}
+                />
+                <Text
+                  style={{
+                    color: '#8AB9FF',
+                    fontFamily: 'Poppins',
+                    fontSize: 16,
+                    fontWeight: '500',
+                    marginTop: 4,
+                    marginLeft: 4,
+                  }}
+                >
+                  Prev. Experience
+                </Text>
+              </View>
+              <Text
+                style={{
+                  color: '#FFFFFF',
+                  fontFamily: 'Inter',
+                  fontSize: 14,
+                  textAlign: 'center',
+                  fontWeight: '400',
+                  marginTop: 1,
+                }}
+              >
+                {params?.Vibe_Data
+                  ? params?.Vibe_Data?.Previous_org_Duration
+                  : checkingdata?.Previous_org_Duration}
+              </Text>
+            </View>
+          </View>
+          <View>
+            <Text
+              style={{
+                color: '#0077B7',
+                fontFamily: 'Poppins',
+                fontSize: 18,
                 marginTop: 6,
                 fontWeight: '700',
                 marginLeft: 15,
@@ -233,6 +427,7 @@ const ShowMoreVibe = () => {
             {params?.Vibe_Data
               ? params?.Vibe_Data?.How_To_Meet.map(params => {
                   console.log(params);
+
                   return (
                     <View
                       style={{
@@ -263,6 +458,18 @@ const ShowMoreVibe = () => {
                 })
               : checkingdata?.How_To_Meet.map(params => {
                   console.log(params);
+                  if (params) {
+                    if (params === 'At Coffee') {
+                      var icon = 'coffee';
+                    } else if (params === 'Video Call') {
+                      var icon = 'tick';
+                    } else if (params === 'Local Cafee') {
+                      var icon = 'coffee';
+                    } else {
+                      var icon = 'check-circle';
+                    }
+                  }
+                  console.log(icon);
                   return (
                     <View
                       style={{
@@ -272,7 +479,7 @@ const ShowMoreVibe = () => {
                       }}
                     >
                       <Icon
-                        name="check-circle"
+                        name={icon}
                         color={AppColors.ActiveColor}
                         size={20}
                       />
@@ -292,201 +499,7 @@ const ShowMoreVibe = () => {
                   );
                 })}
           </View>
-          <View>
-            <Text
-              style={{
-                color: '#0077B7',
-                fontFamily: 'Poppins',
-                fontSize: 18,
-                fontWeight: '700',
-                marginTop: 4,
-                marginLeft: 15,
-              }}
-            >
-              About Me
-            </Text>
-          </View>
-
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}
-          >
-            <View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignparamss: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <Icon
-                  name="check-circle"
-                  color={AppColors.ActiveColor}
-                  size={20}
-                />
-                <Text
-                  style={{
-                    color: '#8AB9FF',
-                    fontFamily: 'Poppins',
-                    fontSize: 16,
-
-                    marginLeft: 4,
-                    fontWeight: '500',
-                    marginTop: 4,
-                  }}
-                >
-                  What am I looking for{' '}
-                </Text>
-              </View>
-              <Text
-                style={{
-                  color: '#FFFFFF',
-                  fontFamily: 'Inter',
-                  fontSize: 14,
-                  textAlign: 'center',
-                  fontWeight: '400',
-                  marginTop: 1,
-                }}
-              >
-                Mentor ship {''} Get Inspired{' '}
-              </Text>
-            </View>
-
-            <View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignparamss: 'center',
-                  alignSelf: 'flex-start',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <Icon
-                  name="check-circle"
-                  color={AppColors.ActiveColor}
-                  size={20}
-                />
-                <Text
-                  style={{
-                    color: '#8AB9FF',
-                    fontFamily: 'Poppins',
-                    fontSize: 16,
-                    fontWeight: '500',
-                    marginTop: 4,
-                    marginLeft: 4,
-                  }}
-                >
-                  Past Experience
-                </Text>
-              </View>
-              <Text
-                style={{
-                  color: '#FFFFFF',
-                  fontFamily: 'Inter',
-                  fontSize: 14,
-                  textAlign: 'center',
-                  fontWeight: '400',
-                  marginTop: 1,
-                }}
-              >
-                {checkingdata?.Previous_Designation}
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}
-          >
-            <View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignparamss: 'center',
-
-                  justifyContent: 'center',
-                }}
-              >
-                <Icon
-                  name="check-circle"
-                  color={AppColors.ActiveColor}
-                  size={20}
-                />
-                <Text
-                  style={{
-                    color: '#8AB9FF',
-                    fontFamily: 'Poppins',
-                    fontSize: 16,
-
-                    marginLeft: 4,
-                    fontWeight: '500',
-                    marginTop: 4,
-                  }}
-                >
-                  Previous Designation
-                </Text>
-              </View>
-              <Text
-                style={{
-                  color: '#FFFFFF',
-                  fontFamily: 'Inter',
-                  fontSize: 14,
-                  textAlign: 'center',
-                  fontWeight: '400',
-                  marginTop: 1,
-                }}
-              >
-                {params?.Vibe_Data
-                  ? params?.Vibe_Data?.Previous_Org
-                  : checkingdata?.Previous_Org}
-              </Text>
-            </View>
-
-            <View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignparamss: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <Icon
-                  name="check-circle"
-                  color={AppColors.ActiveColor}
-                  size={20}
-                />
-                <Text
-                  style={{
-                    color: '#8AB9FF',
-                    fontFamily: 'Poppins',
-                    fontSize: 16,
-                    fontWeight: '500',
-                    marginTop: 4,
-                    marginLeft: 4,
-                  }}
-                >
-                  Prev. Experience
-                </Text>
-              </View>
-              <Text
-                style={{
-                  color: '#FFFFFF',
-                  fontFamily: 'Inter',
-                  fontSize: 14,
-                  textAlign: 'center',
-                  fontWeight: '400',
-                  marginTop: 1,
-                }}
-              >
-                {params?.Vibe_Data
-                  ? params?.Vibe_Data?.Previous_org_Duration
-                  : checkingdata?.Previous_org_Duration}
-              </Text>
-            </View>
-          </View>
+        
         </View>
       </ScrollView>
     </IndividualHeaderLayout>
