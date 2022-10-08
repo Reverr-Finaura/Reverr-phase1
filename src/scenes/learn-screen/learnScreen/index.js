@@ -75,28 +75,23 @@ const LearnScreen = () => {
           <View
             style={{
               height: '100%',
+              width: '100%',
               alignItems: 'center',
               paddingHorizontal: '15%',
               justifyContent: 'center',
             }}>
             <Text
               style={{
+                width: '100%',
                 color: 'black',
                 fontFamily: 'Poppins-Bold',
                 fontSize: 18,
+                textAlign: 'center',
               }}>
-              Take today’s quiz
-            </Text>
-            <Text
-              style={{
-                color: AppColors.CardColor,
-                fontFamily: 'Poppins-Regular',
-                fontSize: 14,
-              }}>
-              Or continue taking one
+              The Journey
             </Text>
           </View>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={() => {
               ToastAndroid.showWithGravityAndOffset(
                 ' Quiz Not Available ',
@@ -117,7 +112,7 @@ const LearnScreen = () => {
               justifyContent: 'center',
             }}>
             <Icon name="angle-right" size={55} color={AppColors.FontsColor} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
 
         <View
