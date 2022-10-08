@@ -21,6 +21,7 @@ import {
   ViewProfile,
   Requests,
   CountdownTimer,
+  LikeScreen,
 } from '../../scenes';
 import ThanksScreen from '../../scenes/thanks-screen';
 import {
@@ -57,8 +58,7 @@ import {DrawerNavigation} from '../drawerNavigation';
 import {MatchScreen} from '../../scenes/MatchScreen';
 import {CourseList} from '../../scenes/learn-screen';
 import {VibeBoarding} from '../../Components/VibeBoarding';
-import { ShowMoreVibe } from '../../scenes/ShowMoreVibe';
-import { LikeScreen } from '../../scenes/LikesScreen';
+import {ShowMoreVibe} from '../../scenes/ShowMoreVibe';
 const Stack = createNativeStackNavigator();
 
 const StackNavigate = props => {

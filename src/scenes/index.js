@@ -52,6 +52,7 @@ import {Vibe} from './VibeScreen';
 import {MentorList} from './mentor-screen/mentorList';
 import {Requests} from './requests';
 import {CountdownTimer} from './CountdownTimer';
+import {LikeScreen} from './LikesScreen';
 export {
   ArticalDetails,
   FundingScreen,
@@ -105,4 +106,5 @@ export {
   ViewProfile,
   Requests,
   CountdownTimer,
+  LikeScreen,
 };
