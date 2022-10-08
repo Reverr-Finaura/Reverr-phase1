@@ -8,6 +8,7 @@ import {
   FlatList,
   ImageBackground,
   ToastAndroid,
+  ActivityIndicator,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -21,6 +22,7 @@ import {AppColors} from '../../../utils';
 import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import {courseCategory} from '../../../dumy-Data/courseCategory';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
@@ -37,24 +39,38 @@ const LearnScreen = () => {
       .collection('Courses')
       .get()
       .then(res => {
-        setCourseData(res.docs.map(doc => doc.data()));
+        let courses = res.docs.map(doc => doc.data());
+        // setCourseData(res.docs.map(doc => doc.data()));
+        setCourseData(courses.filter(item => item.course === 'The Journey'));
         setLoading(false);
       });
   };
   useEffect(() => {
     getCourses();
-    console.log(courseData, 'lea');
   }, []);
 
   return (
     <IndividualHeaderLayout>
       <ScrollView style={{paddingTop: '5%'}}>
-        <SwipeCard
-          data={courseData}
-          pagingEnabled={true}
-          showsHorizontalScrollIndicator={false}
-          horizontal={true}
-        />
+        {loading ? (
+          <SkeletonPlaceholder backgroundColor="#012437">
+            <View
+              style={{
+                width: '95%',
+                height: 170,
+                marginHorizontal: '2%',
+                marginVertical: '2%',
+                borderRadius: 10,
+              }}></View>
+          </SkeletonPlaceholder>
+        ) : (
+          <SwipeCard
+            data={courseData}
+            pagingEnabled={true}
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+          />
+        )}
         <View style={styles.Btn}>
           <View
             style={{

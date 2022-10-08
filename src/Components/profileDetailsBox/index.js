@@ -35,7 +35,7 @@ const ProfileDetailsBox = ({userData}) => {
             marginStart: '7%',
             marginVertical: '2%',
           }}>
-          {userData.designation}
+          {userData.designation && userData.designation}
         </Text>
       </View>
       {/* <View style={styles.container}>
