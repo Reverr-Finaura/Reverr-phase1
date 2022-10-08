@@ -1,4 +1,4 @@
-import {View, Text, Dimensions} from 'react-native';
+import {View, Text, Dimensions, Image} from 'react-native';
 import React from 'react';
 import CountDown from 'react-native-countdown-component';
 import {IndividualHeaderLayout} from '../../Components';
@@ -46,9 +46,75 @@ const CountdownTimer = ({toshowtimer, settoshowtimer}) => {
               alignContent: 'center',
             }}
           >
+            <Text
+              style={{
+                color: '#0077B7',
+                fontWeight: 'bold',
+                maxWidth: Dimensions.get('window').width / 1.2,
+                fontSize: 22,
+              }}
+            >
+              Buy Premium to connect with people who are interested in your
+              profile.
+            </Text>
+            <Text
+              style={{
+                color: '#fff',
+                marginTop: 20,
+                fontSize: 16,
+                fontWeight: 'bold',
+              }}
+            >
+              Many people viewed your profile
+            </Text>
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                paddingLeft: 180,
+                marginVertical: 20,
+                alignContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <View
+                style={{
+                  borderWidth: 2,
+                  borderColor: 'dodgerblue',
+                  width: 180,
+                  height: 180,
+                  justifyContent: 'center',
+                  alignContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <Image
+                  style={{width: 100, height: 100}}
+                  source={require('../../assets/images/MentorCard.png')}
+                />
+                <Text style={{color: 'grey'}}>Alice</Text>
+              </View>
+              <Image
+                style={{width: 250, height: 100}}
+                source={require('../../assets/images/Rectangleimg.png')}
+              />
+            </View>
+            <Text style={{color: 'grey', marginLeft: 40}}>
+              Explore more options with our premium service. or Wait 24 Hours
+            </Text>
+          </View>
+          <View
+            style={{
+              width: Dimensions.get('window').width / 1.1,
+              padding: 20,
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignContent: 'center',
+            }}
+          >
             <View>
               <CountDown
-                until={20}
+                until={Tostart}
                 size={25}
                 timeToShow={['H', 'M', 'S']}
                 timeLabel={{d: 'Days', h: 'Hours', m: 'Minutes', s: 'Seconds'}}

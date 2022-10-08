@@ -158,7 +158,34 @@ const Vibe = () => {
   //     </View>
   //   );
   // };
-
+  const LikeTab = () => {
+    return (
+      <View>
+        <TouchableOpacity onPress={() => navigation.navigate('LikeScreen')}>
+          <View
+            style={{
+              backgroundColor: 'black',
+              width: 68,
+              height: 42,
+              left: 20,
+              justifyContent: 'center',
+              borderBottomEndRadius: 10,
+              borderBottomLeftRadius: 10,
+              borderBottomRightRadius: 10,
+              borderTopLeftRadius: 10,
+              borderTopRightRadius: 10,
+            }}
+          >
+            <Text
+              style={{color: 'white', textAlign: 'center', alignSelf: 'center'}}
+            >
+              Likes
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    );
+  };
   const Vibes = () => {
     const navigation = useNavigation();
     const state = useSelector(state => state.UserReducer);
@@ -217,6 +244,12 @@ const Vibe = () => {
         .collection('passeduser')
         .doc(LeftSwiped.id)
         .set(LeftSwiped);
+    };
+
+    const Tapanywhere = cardindex => {
+      const data = cards[cardindex];
+      console.log('Tap anywhere', data);
+      navigation.navigate('ShowMoreVibe', data);
     };
 
     const swipeRight = async CurrentIndex => {
@@ -280,8 +313,6 @@ const Vibe = () => {
       setAllswiped(true);
     };
 
-   
-
     const HandleOnSwiped = async cardindex => {
       setcardindex(prev => prev + 1);
       setswipe(prev => prev + 1);
@@ -299,8 +330,6 @@ const Vibe = () => {
 
     console.log('state card is', state.vibe.length);
 
-   
-    
     const CheckIfBoarding = async () => {
       await firestore()
         .collection('Users')
@@ -323,6 +352,7 @@ const Vibe = () => {
     };
     // Intial setting  here
     useEffect(() => {
+  
       if (state.user.AllCardsSwiped) {
         console.log(state.user, 'what is this');
         const NewExpiredDate = new Date();
@@ -480,7 +510,6 @@ const Vibe = () => {
     }, [cardindex]);
     console.log('card index changing', cardindex);
 
-   
     //   console.log('after', cardindex);
 
     //   if (cardindex === 10) {
@@ -578,28 +607,45 @@ const Vibe = () => {
       <>
         {true ? (
           <View style={styles.container}>
+            <Text style={{color: 'white'}}>HELOO</Text>
             <Swiper
               cards={cards}
               renderCard={item => {
                 console.log('What is item dddd', item);
+              
                 if (item && cards) {
                   return (
                     <View style={[styles.card]}>
                       <ScrollView scrollEnabled={true} style={{flexGrow: 1}}>
                         <View style={{flex: 1}}>
                           <View style={{alignSelf: 'center'}}>
-                            <Image
-                              style={{
-                                width: 160,
-                                alignSelf: 'center',
-                                height: 160,
-                                borderRadius: 100,
-                              }}
-                              source={{
-                                uri:
-                                  'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
-                              }}
-                            />
+                            {item.image ? (
+                              <Image
+                                style={{
+                                  width: 160,
+                                  alignSelf: 'center',
+                                  height: 160,
+                                  borderRadius: 100,
+                                }}
+                                source={{
+                                  uri:item.image,
+                                }}
+                              />
+                            ) : (
+                              <Image
+                                style={{
+                                  width: 160,
+                                  alignSelf: 'center',
+                                  height: 160,
+                                  borderRadius: 100,
+                                }}
+                                source={{
+                                  uri:
+                                    'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
+                                }}
+                              />
+                            )}
+                       
                           </View>
 
                           <View style={{display: 'flex'}}>
@@ -718,16 +764,29 @@ const Vibe = () => {
                                             style={{
                                               boxShadow:
                                                 '4px -5px 5px 0px #00000040 inset',
-                                              width:
-                                                Dimensions.get('window').width /
-                                                4.3,
-                                              height:
-                                                Dimensions.get('window')
-                                                  .height / 7.5,
+                                              // width:
+                                              //   Dimensions.get('window').width /
+                                              //   4.3,
+                                              // height:
+                                              //   Dimensions.get('window')
+                                              //     .height / 7.5,
                                               alignItems: 'center',
                                               justifyContent: 'center',
 
-                                              borderRadius: 100 / 2,
+                                              // borderRadius: 100 / 2,
+                                              borderRadius:
+                                                Math.round(
+                                                  Dimensions.get('window')
+                                                    .width +
+                                                    Dimensions.get('window')
+                                                      .height,
+                                                ) / 2,
+                                              width:
+                                                Dimensions.get('window').width *
+                                                0.2,
+                                              height:
+                                                Dimensions.get('window').width *
+                                                0.2,
                                               borderWidth: 3,
                                               borderColor: 'white',
                                               backgroundColor: '#0077B7',
@@ -747,113 +806,23 @@ const Vibe = () => {
                                           </View>
                                         );
                                       })}
-                                  {/* <View
-                                      style={{
-                                        boxShadow:
-                                          '4px -5px 5px 0px #00000040 inset',
-                                        width:
-                                          Dimensions.get('window').width / 4.5,
-                                        height:
-                                          Dimensions.get('window').height / 7.5,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-
-                                        borderRadius: 91 / 2,
-                                        borderWidth: 3,
-                                        borderColor: 'white',
-                                        backgroundColor: '#0077B7',
-                                      }}
-                                    >
-                                      <Text
-                                        style={{
-                                          color: 'white',
-                                          textAlign: 'center',
-                                          fontFamily: 'Poppins',
-                                          fontSize: 16,
-                                          fontWeight: '500',
-                                        }}
-                                      >
-                                        {item?.Here_for?.[0]} {'Find Investors'}
-                                      </Text>
-                                    </View>
-
-                                    <View
-                                      style={{
-                                        boxShadow:
-                                          '4px -5px 5px 0px #00000040 inset',
-                                        width:
-                                          Dimensions.get('window').width / 4.5,
-                                        height:
-                                          Dimensions.get('window').height / 7.5,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-
-                                        borderRadius: 91 / 2,
-                                        borderWidth: 3,
-                                        borderColor: 'white',
-                                        backgroundColor: '#0077B7',
-                                      }}
-                                    >
-                                      <Text
-                                        style={{
-                                          color: 'white',
-                                          textAlign: 'center',
-                                          fontFamily: 'Poppins',
-                                          fontSize: 16,
-                                          fontWeight: '500',
-                                        }}
-                                      >
-                                        {item?.Here_for?.[1]} {'Hire Employees'}
-                                      </Text>
-                                    </View>
-
-                                    <View
-                                      style={{
-                                        boxShadow:
-                                          '4px -5px 5px 0px #00000040 inset',
-                                        width:
-                                          Dimensions.get('window').width / 4.5,
-                                        height:
-                                          Dimensions.get('window').height / 7.5,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-
-                                        borderRadius: 91 / 2,
-                                        borderWidth: 3,
-                                        borderColor: 'white',
-                                        backgroundColor: '#0077B7',
-                                      }}
-                                    >
-                                      <Text
-                                        style={{
-                                          color: 'white',
-                                          textAlign: 'center',
-                                          fontFamily: 'Poppins',
-                                          fontSize: 16,
-                                          fontWeight: '500',
-                                        }}
-                                      >
-                                        {item?.Here_for?.[1]} {'Find Mentors'}
-                                      </Text>
-                                    </View> */}
                                 </View>
                               </View>
                             </View>
                             <View>
-                              <Text
-                                style={{
-                                  color: '#0077B7',
-                                  fontFamily: 'Poppins',
-                                  fontSize: 18,
-                                  fontWeight: '700',
-                                  marginTop: 8,
-                                  marginLeft: 15,
-                                }}
+                              {/* <TouchableOpacity
+                                onPress={() =>
+                                  navigation.navigate('ShowMoreVibe', item)
+                                }
                               >
-                                How can we meet
-                              </Text>
+                                <Text style={{color: 'white'}}>
+                                  Tap FOR MORE
+                                </Text>
+                              </TouchableOpacity> */}
+
+                              
                             </View>
-                            <View
+                            {/* <View
                               style={{
                                 marginTop: 3,
                                 flexDirection: 'row',
@@ -921,81 +890,6 @@ const Vibe = () => {
                                       </View>
                                     );
                                   })}
-                              {/* <View
-                                  style={{
-                                    flexDirection: 'row',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                  }}
-                                >
-                                  <Icon
-                                    name="check-circle"
-                                    color={AppColors.ActiveColor}
-                                    size={20}
-                                  />
-
-                                  <Text
-                                    style={{
-                                      marginLeft: 4,
-                                      color: 'white',
-                                      fontFamily: 'Poppins',
-                                      fontSize: 16,
-                                      fontWeight: '400',
-                                    }}
-                                  >
-                                    {item?.How_To_Meet?.[0]} {'At Coffe'}
-                                  </Text>
-                                </View>
-                                <View
-                                  style={{
-                                    flexDirection: 'row',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                  }}
-                                >
-                                  <Icon
-                                    name="check-circle"
-                                    color={AppColors.ActiveColor}
-                                    size={20}
-                                  />
-
-                                  <Text
-                                    style={{
-                                      marginLeft: 4,
-                                      color: 'white',
-                                      fontFamily: 'Poppins',
-                                      fontSize: 16,
-                                      fontWeight: '400',
-                                    }}
-                                  >
-                                    {item?.How_To_Meet?.[1]} {' At Local Cafe'}
-                                  </Text>
-                                </View>
-                                <View
-                                  style={{
-                                    flexDirection: 'row',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                  }}
-                                >
-                                  <Icon
-                                    name="check-circle"
-                                    color={AppColors.ActiveColor}
-                                    size={20}
-                                  />
-
-                                  <Text
-                                    style={{
-                                      marginLeft: 4,
-                                      color: 'white',
-                                      fontFamily: 'Poppins',
-                                      fontSize: 16,
-                                      fontWeight: '400',
-                                    }}
-                                  >
-                                    {item?.How_To_Meet?.[2]} {' Video Call'}
-                                  </Text>
-                                </View> */}
                             </View>
                             <View>
                               <Text
@@ -1193,7 +1087,7 @@ const Vibe = () => {
                                   </Text>
                                 </View>
                               </View>
-                            </View>
+                            </View> */}
                           </View>
                         </View>
                       </ScrollView>
@@ -1207,6 +1101,7 @@ const Vibe = () => {
               onSwipedLeft={() => swipeLeft(cardindex)}
               onSwipedRight={() => swipeRight(cardindex)}
               onSwipedAll={() => swipedAll()}
+              onTapCard={() => Tapanywhere(cardindex)}
               cardIndex={cardindex}
               overlayLabels={{
                 left: {
@@ -1267,7 +1162,7 @@ const Vibe = () => {
                 <Text>Prev Data Show Here</Text>
               </View>
             </CustomPopup>
-
+            <LikeTab />
             <Vibes />
           </IndividualHeaderLayout>
         </>
@@ -1290,15 +1185,18 @@ const styles = StyleSheet.create({
   card: {
     alignSelf: 'center',
     position: 'absolute',
-    bottom: 75,
+    bottom: 125,
     width: Dimensions.get('window').width / 1.12,
-    height: Dimensions.get('window').height / 1.29,
+    height: Dimensions.get('window').height / 1.49,
+    // flex:1,
     marginHorizontal: 35,
     marginVertical: 20,
     borderTopRightRadius: 50,
     borderTopLeftRadius: 50,
-    borderBottomLeftRadius: 15,
-    borderBottomRightRadius: 15,
+    borderBottomLeftRadius: 45,
+    borderBottomRightRadius: 45,
+
+
     padding: 2,
     backgroundColor: 'black',
     borderWidth: 2,
