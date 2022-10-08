@@ -352,6 +352,7 @@ const Vibe = () => {
     };
     // Intial setting  here
     useEffect(() => {
+  
       if (state.user.AllCardsSwiped) {
         console.log(state.user, 'what is this');
         const NewExpiredDate = new Date();
