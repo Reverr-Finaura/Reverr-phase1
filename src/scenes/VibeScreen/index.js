@@ -290,7 +290,7 @@ const Vibe = () => {
             liked_people: firestore.FieldValue.arrayUnion(Liked_Email),
           })
           .then(async () => {
-            firestore()
+            await firestore()
               .collection('Users')
               .doc(Liked_Email)
               .update({
@@ -352,7 +352,6 @@ const Vibe = () => {
     };
     // Intial setting  here
     useEffect(() => {
-  
       if (state.user.AllCardsSwiped) {
         console.log(state.user, 'what is this');
         const NewExpiredDate = new Date();
@@ -378,7 +377,7 @@ const Vibe = () => {
         if (To_Show_Vibe_Screen) {
           return;
         }
-
+        console.log(TotalSwipe);
         const passeduserdata = await firestore()
           .collection('Users')
           .doc(state.user.email)
@@ -403,6 +402,7 @@ const Vibe = () => {
         console.log('what is passed user after ids', passeduserids);
         // const data=["rgupta.success@gmail.com",'kunnugarg2@gmail.com','kohlibhavya18@gmail.com','19103098@mail.jiit.ac.in']
         if (TotalSwipe == 0) {
+          console.log('heree at 0');
           let Intialquery = await firestore()
             .collection('Users')
             .where('email', 'not-in', [...passeduserids]);
@@ -612,7 +612,7 @@ const Vibe = () => {
               cards={cards}
               renderCard={item => {
                 console.log('What is item dddd', item);
-              
+
                 if (item && cards) {
                   return (
                     <View style={[styles.card]}>
@@ -628,7 +628,7 @@ const Vibe = () => {
                                   borderRadius: 100,
                                 }}
                                 source={{
-                                  uri:item.image,
+                                  uri: item.image,
                                 }}
                               />
                             ) : (
@@ -645,7 +645,6 @@ const Vibe = () => {
                                 }}
                               />
                             )}
-                       
                           </View>
 
                           <View style={{display: 'flex'}}>
@@ -819,8 +818,6 @@ const Vibe = () => {
                                   Tap FOR MORE
                                 </Text>
                               </TouchableOpacity> */}
-
-                              
                             </View>
                             {/* <View
                               style={{
@@ -1195,7 +1192,6 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 50,
     borderBottomLeftRadius: 45,
     borderBottomRightRadius: 45,
-
 
     padding: 2,
     backgroundColor: 'black',

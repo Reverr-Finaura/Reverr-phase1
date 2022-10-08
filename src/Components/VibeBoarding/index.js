@@ -259,6 +259,10 @@ const VibeBoarding = ({showboarding,setshowboarding}) => {
           How_To_Meet: selected3,
         },
       });
+      await firestore().collection('Users').doc(state.user.email).update({
+        Number_Of_Swips_Done: 0,
+      });
+
 navigation.navigate("Vibe")
   };
   return (
