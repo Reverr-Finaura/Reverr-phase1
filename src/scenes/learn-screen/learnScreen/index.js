@@ -115,7 +115,86 @@ const LearnScreen = () => {
           </TouchableOpacity> */}
         </View>
 
-        <View
+        <View>
+          {loading ? (
+            <View style={{width: '100%', marginTop: '8%'}}>
+              <FlatList
+                data={courseData}
+                numColumns={column}
+                showsVerticalScrollIndicator={false}
+                renderItem={({item}) => (
+                  <View style={{width: '50%'}}>
+                    <SkeletonPlaceholder backgroundColor="#012437">
+                      <View
+                        style={{
+                          width: '95%',
+                          height: 170,
+                          marginHorizontal: '2%',
+                          marginVertical: '2%',
+                          borderRadius: 10,
+                        }}></View>
+                    </SkeletonPlaceholder>
+                  </View>
+                )}
+              />
+            </View>
+          ) : (
+            <View style={{marginTop: '8%'}}>
+              <FlatList
+                data={courseData}
+                numColumns={column}
+                showsVerticalScrollIndicator={false}
+                renderItem={({item}) => (
+                  <View
+                    style={{
+                      width: Width / 2.2,
+
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      margin: '2%',
+                    }}>
+                    <TouchableOpacity
+                      activeOpacity={0.6}
+                      onPress={() => {
+                        navigation.navigate('StartCourse', {
+                          CourseDetails: item,
+                        });
+                      }}
+                      style={{
+                        borderRadius: 20,
+                        overflow: 'hidden',
+                        width: Width / 2.2,
+                      }}>
+                      <ImageBackground
+                        source={{uri: item.image}}
+                        style={{
+                          width: Width / 2.2,
+                          height: Height / 4,
+                          borderRadius: 20,
+                        }}>
+                        <View
+                          style={{
+                            backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                            marginTop: '70%',
+                            height: '100%',
+                            alignItems: 'center',
+                            paddingTop: '2%',
+                          }}>
+                          <Text
+                            style={{color: AppColors.FontsColor, fontSize: 17}}>
+                            {item.course}
+                          </Text>
+                        </View>
+                      </ImageBackground>
+                    </TouchableOpacity>
+                  </View>
+                )}
+              />
+            </View>
+          )}
+        </View>
+
+        {/*  <View
           style={{
             paddingVertical: '8%',
             paddingTop: '3%',
@@ -166,7 +245,7 @@ const LearnScreen = () => {
               </TouchableOpacity>
             )}
           />
-        </View>
+        </View> */}
       </ScrollView>
     </IndividualHeaderLayout>
   );
