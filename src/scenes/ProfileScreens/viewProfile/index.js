@@ -27,6 +27,7 @@ import {
 import {useEffect} from 'react';
 import {add_user} from '../../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
+import PostCard from '../../../Components/postCard';
 
 const Width = Dimensions.get('screen').width;
 const Height = Dimensions.get('screen').height;
@@ -41,6 +42,7 @@ const ViewProfile = props => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const userDetails = props.route.params.postData.postedby;
+  const [postData, setPostData] = useState('');
 
   useEffect(() => {
     firestore()
@@ -51,6 +53,11 @@ const ViewProfile = props => {
         console.log(res._data, 'resAdd');
         dispatch(add_user(res._data));
       });
+    let t = state.Rooms.filter(
+      item => item.postedby.email == userDetails.email,
+    );
+    setPostData(t);
+    //console.log(state.Rooms, 'filtered');
   }, [dispatch, connectLoading, loading]);
 
   console.log(state.user.sendRequests);
@@ -374,11 +381,7 @@ const ViewProfile = props => {
             </Text>
           </TouchableOpacity>
         </View>
-        {posts && (
-          <View>
-            <Text>skhsjfj</Text>
-          </View>
-        )}
+        {posts && <PostCard postData={postData} />}
         {about && (
           <View>
             <LinearGradient
