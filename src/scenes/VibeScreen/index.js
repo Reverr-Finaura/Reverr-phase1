@@ -29,7 +29,7 @@ import {
   RemoveTopCard,
 } from '../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
-import {useNavigation} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 import {cardData} from '../../dumy-Data/defaultHomeCardData';
 import {VibeBoarding} from '../../Components/VibeBoarding';
 import CountDown from 'react-native-countdown-component';
@@ -45,7 +45,10 @@ const Vibe = () => {
   const [LoadingScreen, setLoadingScreen] = useState(false);
   const [toshowtimer, settoshowtimer] = useState(false);
   const Card_FireBase_Update = useRef(0);
+  const [TotalSwipe, setTotalswipe] = useState(0);
+  const [showCards, setshowCards] = useState(true);
   const navigation = useNavigation();
+  const isFocused = useIsFocused();
 
   // const PremiumTab = () => {
   //   return (
@@ -342,6 +345,7 @@ const Vibe = () => {
             console.log('yoooi');
           } else {
             // doc.data() will be undefined in this case
+            setshowCards(false);
             console.log('No such document!');
             navigation.navigate('VibeBoarding');
           }
@@ -352,32 +356,45 @@ const Vibe = () => {
     };
     // Intial setting  here
     useEffect(() => {
-      if (state.user.AllCardsSwiped) {
-        console.log(state.user, 'what is this');
-        const NewExpiredDate = new Date();
-        console.log(NewExpiredDate);
-        console.log('Expiredtime', NewExpiredDate.getTime());
-        const NewExpiredTime = NewExpiredDate.getTime();
-        if (NewExpiredTime <= state.user.CardsUpdatedTime) {
-          console.log('hello');
-          settoshowtimer(true);
-        }
-      }
       const FetchUsersCard = async () => {
+        if (state.user.AllCardsSwiped) {
+          console.log(state.user, 'what is this');
+          const NewExpiredDate = new Date();
+          console.log(NewExpiredDate);
+          console.log('Expiredtime', NewExpiredDate.getTime());
+          const NewExpiredTime = NewExpiredDate.getTime();
+          if (NewExpiredTime <= state.user.CardsUpdatedTime) {
+            console.log('hello');
+            settoshowtimer(true);
+          }
+        }
         let unsubscribe;
         CheckIfBoarding();
-        const No_Of_Swipes = await firestore()
+        console.log('after boarding');
+        // if(state.user.Vibe_Data){
+        //   setshowCards(true)
+        //   console.log('show card is true or false')
+        // }
+
+        await firestore()
           .collection('Users')
           .doc(state.user.email)
-          .get();
-
-        const TotalSwipe = No_Of_Swipes.data().Number_Of_Swips_Done;
-        const LastEmailSwipe = No_Of_Swipes.data().Last_Card_Email_Swiped;
-        const To_Show_Vibe_Screen = No_Of_Swipes.data().Swipes_Finished;
-        if (To_Show_Vibe_Screen) {
-          return;
-        }
-        console.log(TotalSwipe);
+          .get()
+          .then(doc => {
+            if (doc.data().Vibe_Data) {
+              setshowCards(true);
+              setTotalswipe(doc.data().Number_Of_Swips_Done);
+              console.log('yoooi', showCards);
+            }
+          });
+        console.log('noo');
+        // const TotalSwipe = state.user.Number_Of_Swips_Done;
+        const LastEmailSwipe = state.user.Last_Card_Email_Swiped;
+        // const To_Show_Vibe_Screen = No_Of_Swipes.data().Vibe;
+        // if (To_Show_Vibe_Screen) {
+        //   return;
+        // }
+        console.log('what is total swipe', TotalSwipe);
         const passeduserdata = await firestore()
           .collection('Users')
           .doc(state.user.email)
@@ -389,26 +406,27 @@ const Vibe = () => {
               //  data=>   console.log('what is .dta.', typeof(data.data().id)),
             ),
           );
-        console.log('what is passed data', passeduserdata);
+        // console.log('what is passed data', passeduserdata);
 
         const passeduserids =
           passeduserdata.length > 0 ? passeduserdata : ['test'];
-        console.log('what is passed user ids', passeduserids);
+        // console.log('what is passed user ids', passeduserids);
         {
           if (passeduserids.length >= 10) {
             passeduserids.splice(0, 3);
           }
         }
-        console.log('what is passed user after ids', passeduserids);
+        // console.log('what is passed user after ids', passeduserids);
         // const data=["rgupta.success@gmail.com",'kunnugarg2@gmail.com','kohlibhavya18@gmail.com','19103098@mail.jiit.ac.in']
         if (TotalSwipe == 0) {
           console.log('heree at 0');
           let Intialquery = await firestore()
             .collection('Users')
+           
             .where('email', 'not-in', [...passeduserids]);
 
           Intialquery.onSnapshot(snapshot => {
-            console.log('value of snap', snapshot.docs.length);
+            // console.log('value of snap', snapshot.docs.length);
             setcards(
               snapshot.docs
                 // .filter(doc => doc.id !== state.user.email)
@@ -455,7 +473,10 @@ const Vibe = () => {
         //   );
         // });
       };
-      FetchUsersCard();
+      if (isFocused) {
+        console.log('at focused');
+        FetchUsersCard();
+      }
     }, []);
 
     useEffect(() => {
@@ -605,7 +626,7 @@ const Vibe = () => {
     // useEffect(() => {
     return (
       <>
-        {true ? (
+        {showCards ? (
           <View style={styles.container}>
             <Text style={{color: 'white'}}>HELOO</Text>
             <Swiper

@@ -10,7 +10,7 @@ import {AppColors} from '../../utils';
 import {ScrollView} from 'react-native-gesture-handler';
 import firestore from '@react-native-firebase/firestore';
 import {useDispatch, useSelector} from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 const K_OPTIONS = [
   {
@@ -199,7 +199,8 @@ const meetdata = [
 ];
 const VibeBoarding = ({showboarding,setshowboarding}) => {
   const navigation = useNavigation();
-  
+  const {params} = useRoute();
+  console.log('paraamss is',params)
   const state = useSelector(state => state.UserReducer);
   const dispatch = useDispatch();
   const [selected, setselected] = useState([]);
@@ -235,6 +236,7 @@ const VibeBoarding = ({showboarding,setshowboarding}) => {
     console.warn(selected3);
   };
   const HandleSubmit = async () => {
+
     console.log('at submit');
     console.log('selected is', selected);
     console.log('selected1 is', selected1);
@@ -263,7 +265,8 @@ const VibeBoarding = ({showboarding,setshowboarding}) => {
         Number_Of_Swips_Done: 0,
       });
 
-navigation.navigate("Vibe")
+setTimeout(()=>{navigation.navigate("Vibe")},10)
+
   };
   return (
     <IndividualHeaderLayout>
