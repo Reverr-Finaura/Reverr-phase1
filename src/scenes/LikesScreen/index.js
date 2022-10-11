@@ -1,4 +1,4 @@
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, Dimensions} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import firestore from '@react-native-firebase/firestore';
 import {BackButton, IndividualHeaderLayout} from '../../Components';
@@ -16,12 +16,14 @@ const LikeScreen = () => {
   console.log('liked datta', LikedData.length);
   useEffect(() => {
     const GetLikedPeople = async () => {
-      
       const Data = state.user.people_liked_me;
       if (Data) {
         Data.map(async item => {
-          const dataliked = await firestore().collection('Users').doc(item).get();
-       
+          const dataliked = await firestore()
+            .collection('Users')
+            .doc(item)
+            .get();
+
           const RecievedData = dataliked.data();
           setLikedData(prev => [...prev, RecievedData]);
         });
@@ -36,7 +38,7 @@ const LikeScreen = () => {
   return (
     <IndividualHeaderLayout>
       <View>
-        <BackButton/>
+        <BackButton />
       </View>
       <View>
         <View
@@ -84,12 +86,12 @@ const LikeScreen = () => {
                 key={data.id}
                 style={{
                   marginTop: 20,
-                  height: 99,
-                  width: 348,
-                  borderBottomRightRadius:10,
-                  borderTopRightRadius:10,
-                  borderBottomLeftRadius:10,
-                  borderTopLeftRadius:10,
+                  height: '20%',
+                  width: '75%',
+                  borderBottomRightRadius: 10,
+                  borderTopRightRadius: 10,
+                  borderBottomLeftRadius: 10,
+                  borderTopLeftRadius: 10,
                   left: 42,
                   backgroundColor: '#0077B7',
                 }}
@@ -99,9 +101,11 @@ const LikeScreen = () => {
                     <Image
                       style={{
                         resizeMode: 'cover',
-                        width: 99,
+                        // width: 90,
                         alignSelf: 'center',
-                        height: 99,
+                        // height: 95,
+                        width: Dimensions.get('window').width / 4.3,
+                        height: Dimensions.get('window').height / 7.5,
                         borderRadius: 5,
                       }}
                       source={{
@@ -109,10 +113,9 @@ const LikeScreen = () => {
                       }}
                     />
                   </View>
-                  <View style={{alignContent:'center',marginLeft:25,}}>
+                  <View style={{alignContent: 'center', marginLeft: 25}}>
                     <Text
                       style={{
-                        
                         color: 'white',
                         textAlign: 'center',
                         fontFamily: 'Poppins',
@@ -122,20 +125,20 @@ const LikeScreen = () => {
                     >
                       {data.name}
                     </Text>
-                    <View style={{flexDirection:'row'}}>
-                    <Text
-                      style={{
-                        color: 'white',
-                        textAlign: 'center',
-                        fontFamily: 'Poppins',
-                        fontSize: 14,
-                        flex: 2,
-                        flexWrap: 'wrap',
-                        fontWeight: '600',
-                      }}
-                    >
-                      {data.about}
-                    </Text>
+                    <View style={{flexDirection: 'row'}}>
+                      <Text
+                        style={{
+                          color: 'white',
+                          textAlign: 'center',
+                          fontFamily: 'Poppins',
+                          fontSize: 14,
+                          flex: 2,
+                          flexWrap: 'wrap',
+                          fontWeight: '600',
+                        }}
+                      >
+                        {data.about}
+                      </Text>
                     </View>
                   </View>
                 </View>

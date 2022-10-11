@@ -191,6 +191,14 @@ const herefor = [
     id: 'Find Mentors',
     name: 'Find Mentors',
   },
+  {
+    id: 'For Networking',
+    name: 'For Networking',
+  },
+  {
+    id: 'Find Cofounder',
+    name: 'Find Cofunder',
+  },
 ];
 const meetdata = [
   {id: 'At Coffe', name: 'At Coffe'},
