@@ -217,7 +217,7 @@ const Vibe = () => {
     const [checkingdata, setcheckingdata] = useState({
       Education: 'MBA',
       Here_for: ['Find Investors', 'FIND MENTORS', 'FIND EMPLYOYEE'],
-      How_To_Meet: ['At Coffee', ' Video Call', 'Local Cafee'],
+      How_To_Meet: ['At Coffee', ' Video Call', 'Local Cafe'],
       Industry: 'FINTECH',
       Previous_Designation: 'GOOGLE',
       Previous_Org: 'GOOGLE SWE',
@@ -422,7 +422,7 @@ const Vibe = () => {
           console.log('heree at 0');
           let Intialquery = await firestore()
             .collection('Users')
-           
+
             .where('email', 'not-in', [...passeduserids]);
 
           Intialquery.onSnapshot(snapshot => {

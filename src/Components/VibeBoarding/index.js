@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Dimensions} from 'react-native';
 import React from 'react';
 import {IndividualHeaderLayout} from '../HeaderLayout';
 import MultiSelect from 'react-native-multiple-select';
@@ -10,63 +10,8 @@ import {AppColors} from '../../utils';
 import {ScrollView} from 'react-native-gesture-handler';
 import firestore from '@react-native-firebase/firestore';
 import {useDispatch, useSelector} from 'react-redux';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
-const K_OPTIONS = [
-  {
-    item: 'Juventus',
-    id: 'JUVE',
-  },
-  {
-    item: 'Real Madrid',
-    id: 'RM',
-  },
-  {
-    item: 'Barcelona',
-    id: 'BR',
-  },
-  {
-    item: 'PSG',
-    id: 'PSG',
-  },
-  {
-    item: 'FC Bayern Munich',
-    id: 'FBM',
-  },
-  {
-    item: 'Manchester United FC',
-    id: 'MUN',
-  },
-  {
-    item: 'Manchester City FC',
-    id: 'MCI',
-  },
-  {
-    item: 'Everton FC',
-    id: 'EVE',
-  },
-  {
-    item: 'Tottenham Hotspur FC',
-    id: 'TOT',
-  },
-  {
-    item: 'Chelsea FC',
-    id: 'CHE',
-  },
-  {
-    item: 'Liverpool FC',
-    id: 'LIV',
-  },
-  {
-    item: 'Arsenal FC',
-    id: 'ARS',
-  },
-
-  {
-    item: 'Leicester City FC',
-    id: 'LEI',
-  },
-];
 const items = [
   {
     id: '92iijs7yta',
@@ -191,16 +136,24 @@ const herefor = [
     id: 'Find Mentors',
     name: 'Find Mentors',
   },
+  {
+    id: 'For Networking',
+    name: 'For Networking',
+  },
+  {
+    id: 'Find Cofounder',
+    name: 'Find Cofunder',
+  },
 ];
 const meetdata = [
-  {id: 'At Coffe', name: 'At Coffe'},
+  {id: 'At Coffee', name: 'At Coffee'},
   {id: 'Video Call', name: 'Video Call'},
   {id: 'Local Cafe', name: 'Local Cafe'},
 ];
-const VibeBoarding = ({showboarding,setshowboarding}) => {
+const VibeBoarding = ({showboarding, setshowboarding}) => {
   const navigation = useNavigation();
   const {params} = useRoute();
-  console.log('paraamss is',params)
+  console.log('paraamss is', params);
   const state = useSelector(state => state.UserReducer);
   const dispatch = useDispatch();
   const [selected, setselected] = useState([]);
@@ -236,7 +189,6 @@ const VibeBoarding = ({showboarding,setshowboarding}) => {
     console.warn(selected3);
   };
   const HandleSubmit = async () => {
-
     console.log('at submit');
     console.log('selected is', selected);
     console.log('selected1 is', selected1);
@@ -261,19 +213,21 @@ const VibeBoarding = ({showboarding,setshowboarding}) => {
           How_To_Meet: selected3,
         },
       });
-      await firestore().collection('Users').doc(state.user.email).update({
-        Number_Of_Swips_Done: 0,
-      });
+    await firestore().collection('Users').doc(state.user.email).update({
+      Number_Of_Swips_Done: 0,
+    });
 
-setTimeout(()=>{navigation.navigate("Vibe")},10)
-
+    setTimeout(() => {
+      navigation.navigate('Vibe');
+    }, 10);
   };
   return (
     <IndividualHeaderLayout>
       <View
         style={{
           backgroundColor: 'white',
-          width: 380,
+          width:  Dimensions.get('window').width /
+          1.1,
           alignSelf: 'center',
           borderRadius: 15,
           flex: 1,
@@ -551,6 +505,10 @@ setTimeout(()=>{navigation.navigate("Vibe")},10)
                   onSelectedItemsChange={data => onSelectedItemsChange2(data)}
                   selectedItems={selected2}
                   selectText="Choose"
+                  tagContainerStyle={{
+                    backgroundColor: '#0077B7',
+                    width: Dimensions.get('window').width / 2.7,
+                  }}
                   searchInputPlaceholderText="Search Items..."
                   onChangeInput={text => console.log(text)}
                   tagRemoveIconColor="#CCC"
@@ -602,6 +560,10 @@ setTimeout(()=>{navigation.navigate("Vibe")},10)
                   selectedItemIconColor="#CCC"
                   itemTextColor="#000"
                   displayKey="name"
+                  tagContainerStyle={{
+                    backgroundColor: '#0077B7',
+                    width: Dimensions.get('window').width / 2.7,
+                  }}
                   searchInputStyle={{color: '#CCC'}}
                   submitButtonColor="#CCC"
                   submitButtonText="Submit"

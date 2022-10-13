@@ -118,6 +118,7 @@ const MatchScreen = () => {
           backgroundColor: '#2A72DE',
         }}
       >
+        <View style={{alignSelf:'center'}}>
         <Text
           style={{
             fontFamily: 'Poppins',
@@ -131,6 +132,7 @@ const MatchScreen = () => {
         >
           Start messaging
         </Text>
+        </View>
       </View>
     </View>
   );
