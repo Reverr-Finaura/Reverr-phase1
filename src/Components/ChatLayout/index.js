@@ -13,7 +13,7 @@ import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {AppColors} from '../../utils';
 
-export const ChatLayout = () => {
+export const ChatLayout = ({usersArray}) => {
   const state = useSelector(state => state.UserReducer);
   const navigation = useNavigation();
   return (
@@ -34,11 +34,7 @@ export const ChatLayout = () => {
         source={require('../../assets/images/Rectangle2.png')}>
         <FlatList
           style={{marginBottom: 16}}
-          data={
-            state.user.userType == 'Mentor'
-              ? state.user.clients
-              : state.user.mentors
-          }
+          data={usersArray}
           renderItem={({item}) => (
             <TouchableOpacity
               style={styles2.container}

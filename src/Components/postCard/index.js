@@ -196,8 +196,8 @@ const PostCard = ({postData}) => {
                   source={require('../../assets/images/like.png')}
                   style={{
                     tintColor: AppColors.ActiveColor,
-                    width: 20,
-                    height: 22,
+                    width: 30,
+                    height: 30,
                   }}
                 />
               )}

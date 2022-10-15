@@ -45,7 +45,7 @@ const Requests = () => {
         console.log(res._data, 'resAdd');
         dispatch(add_user(res._data));
       });
-  }, [, dispatch, loading]);
+  }, [dispatch, loading]);
 
   return (
     <View style={styles.screen}>

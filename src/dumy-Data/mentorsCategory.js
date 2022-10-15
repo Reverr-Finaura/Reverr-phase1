@@ -21,7 +21,7 @@ export const mentorCategory = [
 ];
 
 export const mentorsDomains = [
-  ' Branding and Public Relations',
+  'Branding and Public Relations',
   'Career Advice and Self-Mastery',
   'Culture',
   'Data Science and Analysis',

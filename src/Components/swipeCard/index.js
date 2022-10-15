@@ -63,10 +63,10 @@ const SwipeCard = ({
                     marginTop: '30%',
                     height: '100%',
                     alignItems: 'center',
-                    paddingTop: '2%',
+                    paddingTop: '8%',
                   }}>
                   <Text style={{color: AppColors.FontsColor, fontSize: 17}}>
-                    {item.course}
+                    {item.name}
                   </Text>
                 </View>
               </ImageBackground>

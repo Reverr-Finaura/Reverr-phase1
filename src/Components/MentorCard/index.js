@@ -20,7 +20,7 @@ export const MentorCard = ({mentor}) => {
   const {name, industry, reviews, id} = mentor?.item;
   const {mentors} = useSelector(state => state.UserReducer);
   const dispatch = useDispatch();
-  console.log(mentor, 'mm');
+  // console.log(mentor, 'mm');
   /* const onPress = id => {
     const mentor = mentors.filter(mentor => mentor.id == id)[0];
     dispatch(setMentorProfile(mentor));

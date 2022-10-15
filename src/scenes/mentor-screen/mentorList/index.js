@@ -37,7 +37,7 @@ const MentorList = props => {
   };
   useEffect(() => {
     getMentors();
-    //console.log(mentorsList, 'lea');
+    // console.log(mentorsList[4].email, 'mentors');
   }, []);
 
   return (

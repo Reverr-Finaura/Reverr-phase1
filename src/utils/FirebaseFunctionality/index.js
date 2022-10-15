@@ -402,6 +402,36 @@ export const ApprovedReq = async (
     })
     .then(() => {
       setLoading(false);
+      firestore()
+        .collection('Messages')
+        .doc(currentcUseremail)
+        .collection('Networks')
+        .doc(toUserEmail)
+        .set({
+          messages: [
+            {
+              createdAt: '',
+              msg: '',
+              sendBy: '',
+            },
+          ],
+        })
+        .then(() => {
+          firestore()
+            .collection('Messages')
+            .doc(toUserEmail)
+            .collection('Networks')
+            .doc(currentcUseremail)
+            .set({
+              messages: [
+                {
+                  createdAt: '',
+                  msg: '',
+                  sendBy: '',
+                },
+              ],
+            });
+        });
     });
 };
 

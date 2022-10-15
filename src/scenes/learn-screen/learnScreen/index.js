@@ -139,7 +139,7 @@ const LearnScreen = () => {
               />
             </View>
           ) : (
-            <View style={{marginTop: '8%'}}>
+            <View style={{marginVertical: '8%'}}>
               <FlatList
                 data={courseData}
                 numColumns={column}
@@ -178,13 +178,34 @@ const LearnScreen = () => {
                             marginTop: '70%',
                             height: '100%',
                             alignItems: 'center',
-                            paddingTop: '2%',
+                            paddingTop: '4%',
+                            paddingHorizontal: '3%',
                           }}>
                           <Text
-                            style={{color: AppColors.FontsColor, fontSize: 17}}>
-                            {item.course}
+                            style={{
+                              color: AppColors.FontsColor,
+                              fontSize: 17,
+                              textAlign: 'center',
+                            }}>
+                            {item.name}
                           </Text>
                         </View>
+                        {/* <ImageBackground
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            marginTop: '70%',
+                          }}
+                          source={require('../../../assets/images/blurBg.png')}>
+                          <Text
+                            style={{
+                              color: AppColors.ActiveColor,
+                              fontSize: 17,
+                              textAlign: 'center',
+                            }}>
+                            {item.name}
+                          </Text>
+                        </ImageBackground> */}
                       </ImageBackground>
                     </TouchableOpacity>
                   </View>
