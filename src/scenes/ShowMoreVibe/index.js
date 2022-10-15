@@ -1,7 +1,7 @@
 import {View, Text, Image, Dimensions, ScrollView} from 'react-native';
 import React from 'react';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {IndividualHeaderLayout} from '../../Components';
+import {BackButton, IndividualHeaderLayout} from '../../Components';
 import {useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {AppColors} from '../../utils';
@@ -36,6 +36,7 @@ const ShowMoreVibe = () => {
     <IndividualHeaderLayout>
       <View>{console.log('datata from show more', params)}</View>
       <ScrollView>
+        <BackButton />
         <View>
           <View style={{alignSelf: 'center'}}>
             {params.image ? (
@@ -98,8 +99,21 @@ const ShowMoreVibe = () => {
                 {params?.country || demoData[0].country}
               </Text>
             </View>
-
-            <View style={{marginTop: 25}}>
+            <View>
+              <Text
+                style={{
+                  color: '#0077B7',
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                  fontWeight: '700',
+                  marginTop: 4,
+                  marginLeft: 15,
+                }}
+              >
+                About Me
+              </Text>
+            </View>
+            <View style={{marginTop: 5}}>
               <Text
                 style={{
                   color: '#fff',
@@ -112,20 +126,6 @@ const ShowMoreVibe = () => {
                 {params?.quote || demoData[0].quote}
               </Text>
             </View>
-          </View>
-          <View>
-            <Text
-              style={{
-                color: '#0077B7',
-                fontFamily: 'Poppins',
-                fontSize: 18,
-                fontWeight: '700',
-                marginTop: 4,
-                marginLeft: 15,
-              }}
-            >
-              About Me
-            </Text>
           </View>
 
           <View>
@@ -322,17 +322,18 @@ const ShowMoreVibe = () => {
           </View>
           <View
             style={{
-              marginTop:10,
+              marginRight:30,
+              marginTop: 10,
               flexDirection: 'row',
-              justifyContent: 'space-evenly',
+              justifyContent: 'space-around',
             }}
           >
-        
-            <View >
+            <View>
               <View
                 style={{
+          
                   flexDirection: 'row',
-                  alignparamss: 'center',
+                  alignItems: 'center',
                   justifyContent: 'center',
                 }}
               >
@@ -400,96 +401,96 @@ const ShowMoreVibe = () => {
                 {checkingdata?.Previous_Designation}
               </Text>
             </View>
-            </View>
           </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-evenly',
-            }}
-          >
-            <View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignparamss: 'center',
+        </View>
+        <View
+          style={{
+            marginRight:30,
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+          }}
+        >
+          <View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignparamss: 'center',
 
-                  justifyContent: 'center',
-                }}
-              >
-                <Icon name="industry" color={AppColors.ActiveColor} size={20} />
-                <Text
-                  style={{
-                    color: '#8AB9FF',
-                    fontFamily: 'Poppins',
-                    fontSize: 16,
-
-                    marginLeft: 4,
-                    fontWeight: '500',
-                    marginTop: 4,
-                  }}
-                >
-                  Previous Designation
-                </Text>
-              </View>
+                justifyContent: 'center',
+              }}
+            >
+              <Icon name="industry" color={AppColors.ActiveColor} size={20} />
               <Text
                 style={{
-                  color: '#FFFFFF',
-                  fontFamily: 'Inter',
-                  fontSize: 14,
-                  textAlign: 'center',
-                  fontWeight: '400',
-                  marginTop: 1,
+                  color: '#8AB9FF',
+                  fontFamily: 'Poppins',
+                  fontSize: 16,
+
+                  marginLeft: 4,
+                  fontWeight: '500',
+                  marginTop: 4,
                 }}
               >
-                {params?.Vibe_Data
-                  ? params?.Vibe_Data?.Previous_Org
-                  : checkingdata?.Previous_Org}
+                Previous Designation
               </Text>
             </View>
+            <Text
+              style={{
+                color: '#FFFFFF',
+                fontFamily: 'Inter',
+                fontSize: 14,
+                textAlign: 'center',
+                fontWeight: '400',
+                marginTop: 1,
+              }}
+            >
+              {params?.Vibe_Data
+                ? params?.Vibe_Data?.Previous_Org
+                : checkingdata?.Previous_Org}
+            </Text>
+          </View>
 
-            <View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignparamss: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <Icon
-                  name="check-circle"
-                  color={AppColors.ActiveColor}
-                  size={20}
-                />
-                <Text
-                  style={{
-                    color: '#8AB9FF',
-                    fontFamily: 'Poppins',
-                    fontSize: 16,
-                    fontWeight: '500',
-                    marginTop: 4,
-                    marginLeft: 4,
-                  }}
-                >
-                  Prev. Experience
-                </Text>
-              </View>
+          <View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignparamss: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Icon
+                name="check-circle"
+                color={AppColors.ActiveColor}
+                size={20}
+              />
               <Text
                 style={{
-                  color: '#FFFFFF',
-                  fontFamily: 'Inter',
-                  fontSize: 14,
-                  textAlign: 'center',
-                  fontWeight: '400',
-                  marginTop: 1,
+                  color: '#8AB9FF',
+                  fontFamily: 'Poppins',
+                  fontSize: 16,
+                  fontWeight: '500',
+                  marginTop: 4,
+                  marginLeft: 4,
                 }}
               >
-                {params?.Vibe_Data
-                  ? params?.Vibe_Data?.Previous_org_Duration
-                  : checkingdata?.Previous_org_Duration}
+                Prev. Experience
               </Text>
             </View>
-        
+            <Text
+              style={{
+                color: '#FFFFFF',
+                fontFamily: 'Inter',
+                fontSize: 14,
+                textAlign: 'center',
+                fontWeight: '400',
+                marginTop: 1,
+              }}
+            >
+              {params?.Vibe_Data
+                ? params?.Vibe_Data?.Previous_org_Duration
+                : checkingdata?.Previous_org_Duration}
+            </Text>
+          </View>
         </View>
       </ScrollView>
     </IndividualHeaderLayout>
