@@ -141,7 +141,7 @@ const Settings = props => {
         >
           <TitleCard firstText="Edit profile" />
         </TouchableOpacity>
-        <TouchableOpacity style={{height: '7%', marginTop: '7%'}}>
+        <TouchableOpacity onPress={()=> navigation.navigate('ChangePassword')} style={{height: '7%', marginTop: '7%'}}>
           <TitleCard firstText="Change password" />
         </TouchableOpacity>
         <TouchableOpacity
