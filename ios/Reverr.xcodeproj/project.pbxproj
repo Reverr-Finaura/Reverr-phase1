@@ -8,6 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* ReverrTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ReverrTests.m */; };
+		0463449E2901F35400C831C1 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 207F2B9C98054001B0378F7A /* Poppins-Black.ttf */; };
+		0463449F2901F35400C831C1 /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C06ABD339A324026A0DFDC4E /* Poppins-BlackItalic.ttf */; };
+		046344A02901F35400C831C1 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D7A591E766246BCA7CF0AAE /* Poppins-Bold.ttf */; };
+		046344A12901F35400C831C1 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D106F21F9A4D0785C30803 /* Poppins-BoldItalic.ttf */; };
+		046344A22901F35400C831C1 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A9B913D7AD346F9B0D356C8 /* Poppins-ExtraBold.ttf */; };
+		046344A32901F35400C831C1 /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F122DD0EC6DA4B6E83B774A5 /* Poppins-ExtraBoldItalic.ttf */; };
+		046344A42901F35400C831C1 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D03A1C80D8AD45C2953C7974 /* Poppins-ExtraLight.ttf */; };
+		046344A52901F35400C831C1 /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E55DCCB5AD7A40C58B77A479 /* Poppins-ExtraLightItalic.ttf */; };
+		046344A62901F35400C831C1 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29F3642365A04C1E9CDF5ED6 /* Poppins-Italic.ttf */; };
+		046344A72901F35400C831C1 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C625E2D8CE774722BDDF24D5 /* Poppins-Light.ttf */; };
+		046344A82901F35400C831C1 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCFA88F3EBA64D00ADF09FBF /* Poppins-LightItalic.ttf */; };
+		046344A92901F35400C831C1 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F497922813D4F16A44FA35A /* Poppins-Medium.ttf */; };
+		046344AA2901F35400C831C1 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03D2610072514B96B633A1B3 /* Poppins-MediumItalic.ttf */; };
+		046344AB2901F35400C831C1 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B09409067ED49D5B11F32E5 /* Poppins-Regular.ttf */; };
+		046344AC2901F35400C831C1 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 202676D1ADC04638A4FA30D4 /* Poppins-SemiBold.ttf */; };
+		046344AD2901F35400C831C1 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C54C3CE87E134550B1FA99E1 /* Poppins-SemiBoldItalic.ttf */; };
+		046344AE2901F35400C831C1 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 594158B227A8443FBA1F86A2 /* Poppins-Thin.ttf */; };
+		046344AF2901F35400C831C1 /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2F2E9E1DDC24851AA9546D5 /* Poppins-ThinItalic.ttf */; };
 		04D585282899DCBE00338767 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04D585272899DCBE00338767 /* GoogleService-Info.plist */; };
 		04D5852A2899DDBD00338767 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 04D585292899DDBD00338767 /* Fonts */; };
 		0C80B921A6F3F58F76C31292 /* libPods-Reverr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-Reverr.a */; };
@@ -361,6 +379,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0463449E2901F35400C831C1 /* Poppins-Black.ttf in Resources */,
+				0463449F2901F35400C831C1 /* Poppins-BlackItalic.ttf in Resources */,
+				046344A02901F35400C831C1 /* Poppins-Bold.ttf in Resources */,
+				046344A12901F35400C831C1 /* Poppins-BoldItalic.ttf in Resources */,
+				046344A22901F35400C831C1 /* Poppins-ExtraBold.ttf in Resources */,
+				046344A32901F35400C831C1 /* Poppins-ExtraBoldItalic.ttf in Resources */,
+				046344A42901F35400C831C1 /* Poppins-ExtraLight.ttf in Resources */,
+				046344A52901F35400C831C1 /* Poppins-ExtraLightItalic.ttf in Resources */,
+				046344A62901F35400C831C1 /* Poppins-Italic.ttf in Resources */,
+				046344A72901F35400C831C1 /* Poppins-Light.ttf in Resources */,
+				046344A82901F35400C831C1 /* Poppins-LightItalic.ttf in Resources */,
+				046344A92901F35400C831C1 /* Poppins-Medium.ttf in Resources */,
+				046344AA2901F35400C831C1 /* Poppins-MediumItalic.ttf in Resources */,
+				046344AB2901F35400C831C1 /* Poppins-Regular.ttf in Resources */,
+				046344AC2901F35400C831C1 /* Poppins-SemiBold.ttf in Resources */,
+				046344AD2901F35400C831C1 /* Poppins-SemiBoldItalic.ttf in Resources */,
+				046344AE2901F35400C831C1 /* Poppins-Thin.ttf in Resources */,
+				046344AF2901F35400C831C1 /* Poppins-ThinItalic.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				04D5852A2899DDBD00338767 /* Fonts in Resources */,
@@ -617,7 +653,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = UVP67G7C62;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Reverr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -629,7 +666,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.reverr;
 				PRODUCT_NAME = Reverr;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -643,7 +680,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = UVP67G7C62;
 				INFOPLIST_FILE = Reverr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -654,7 +692,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.reverr;
 				PRODUCT_NAME = Reverr;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
