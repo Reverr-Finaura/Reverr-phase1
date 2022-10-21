@@ -748,12 +748,7 @@ const Vibe = () => {
                                             style={{
                                               boxShadow:
                                                 '4px -5px 5px 0px #00000040 inset',
-                                              width:
-                                                Dimensions.get('window').width /
-                                                4.3,
-                                              height:
-                                                Dimensions.get('window')
-                                                  .height / 7.5,
+                                             
                                               alignItems: 'center',
                                               justifyContent: 'center',
 
