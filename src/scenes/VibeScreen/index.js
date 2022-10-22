@@ -29,7 +29,12 @@ import {
   RemoveTopCard,
 } from '../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
-import {useIsFocused, useNavigation} from '@react-navigation/native';
+import {
+  useFocusEffect,
+  useIsFocused,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
 import {cardData} from '../../dumy-Data/defaultHomeCardData';
 import {VibeBoarding} from '../../Components/VibeBoarding';
 import CountDown from 'react-native-countdown-component';
@@ -48,119 +53,8 @@ const Vibe = () => {
   const [TotalSwipe, setTotalswipe] = useState(0);
   const [showCards, setshowCards] = useState(true);
   const navigation = useNavigation();
-  const isFocused = useIsFocused();
+  // const isFocused = useIsFocused();
 
-  // const PremiumTab = () => {
-  //   return (
-  //     <View
-  //       style={{
-  //         width: Dimensions.get('window').width / 1.1,
-  //         padding: 20,
-  //         justifyContent: 'center',
-  //         alignItems: 'center',
-  //         alignContent: 'center',
-  //       }}
-  //     >
-  //       <Text style={styles.heading}>
-  //         Buy Premium to connect with people who are interested in your profile.
-  //       </Text>
-  //       {/* <Text
-  //         style={{
-  //           color: '#fff',
-  //           marginTop: 20,
-  //           fontSize: 16,
-  //           fontWeight: 'bold',
-  //         }}
-  //       >
-  //         Many people viewed your profile
-  //       </Text> */}
-  //       {/* <View
-  //         style={{
-  //           display: 'flex',
-  //           flexDirection: 'row',
-  //           paddingLeft: 180,
-  //           marginVertical: 20,
-  //           alignContent: 'center',
-  //           alignItems: 'center',
-  //         }}
-  //       >
-  //         <View
-  //           style={{
-  //             borderWidth: 2,
-  //             borderColor: 'dodgerblue',
-  //             width: 180,
-  //             height: 180,
-  //             justifyContent: 'center',
-  //             alignContent: 'center',
-  //             alignItems: 'center',
-  //           }}
-  //         >
-  //           <Image
-  //             style={{width: 100, height: 100}}
-  //             source={require('../../assets/images/MentorCard.png')}
-  //           />
-  //           <Text style={{color: 'grey'}}>Alice</Text>
-  //         </View>
-  //         <Image
-  //           style={{width: 250, height: 100}}
-  //           source={require('../../assets/images/Rectangleimg.png')}
-  //         />
-  //       </View> */}
-  //       {/* <Text style={{color: 'grey', marginLeft: 40}}>
-  //         Explore more options with our premium service.
-  //       </Text> */}
-
-  //       <View>
-  //         <CountDown
-  //           until={160}
-  //           size={25}
-  //           timeToShow={['H', 'M', 'S']}
-  //           timeLabel={{d: 'Days', h: 'Hours', m: 'Minutes', s: 'Seconds'}}
-  //           timeLabelStyle={{backgroundColor: 'black', color: 'white'}}
-  //           digitStyle={{backgroundColor: '#0077B7'}}
-  //           onFinish={() => LoadMoreVibeCard()}
-  //         />
-  //       </View>
-
-  //       <View style={styles.button}>
-  //         <Image
-  //           style={{marginRight: 40}}
-  //           source={require('../../assets/images/badge.png')}
-  //         />
-  //         <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 20}}>
-  //           Buy premium
-  //         </Text>
-  //         {/* {more ? (
-  //           <TouchableOpacity
-  //             style={{
-  //               flexDirection: 'column',
-  //               bottom: -45,
-  //               alignItems: 'center',
-  //             }}
-  //             onPress={() => LoadMoreVibeCard()}
-  //           >
-  //             <View style={{alignSelf: 'center'}}>
-  //               <Text
-  //                 style={{
-  //                   color: '#0077B7',
-  //                   fontFamily: 'Poppins',
-  //                   fontSize: 18,
-  //                   fontWeight: '700',
-  //                   marginTop: 6,
-  //                   textAlign: 'center',
-  //                 }}
-  //               >
-  //                 More Card
-  //               </Text>
-  //             </View>
-  //           </TouchableOpacity>
-  //         ) : (
-  //           <Text>Wait 24 hrs...</Text>
-  //         )} */}
-  //       </View>
-  //     </View>
-  //   );
-  // };
   const LikeTab = () => {
     return (
       <View>
@@ -190,6 +84,11 @@ const Vibe = () => {
     );
   };
   const Vibes = () => {
+    const {params} = useRoute();
+const data="abc"
+    console.log('data paraams ',params)
+
+
     const navigation = useNavigation();
     const state = useSelector(state => state.UserReducer);
     const dispatch = useDispatch();
@@ -332,7 +231,7 @@ const Vibe = () => {
     };
 
     console.log('state card is', state.vibe.length);
-
+console.log('datta coming from boarding',data)
     const CheckIfBoarding = async () => {
       await firestore()
         .collection('Users')
@@ -354,8 +253,17 @@ const Vibe = () => {
           console.log('Error getting document:', error);
         });
     };
+    
+    // This will run after VibeBoarding screen
+if(params){
+  console.log('after boarding screen here')
+ setshowCards(true)
+
+}
+    
     // Intial setting  here
     useEffect(() => {
+      let Afterquery;
       const FetchUsersCard = async () => {
         if (state.user.AllCardsSwiped) {
           console.log(state.user, 'what is this');
@@ -368,13 +276,9 @@ const Vibe = () => {
             settoshowtimer(true);
           }
         }
-        let unsubscribe;
+
         CheckIfBoarding();
         console.log('after boarding');
-        // if(state.user.Vibe_Data){
-        //   setshowCards(true)
-        //   console.log('show card is true or false')
-        // }
 
         await firestore()
           .collection('Users')
@@ -436,47 +340,29 @@ const Vibe = () => {
                 })),
             );
           });
-        } else if (TotalSwipe > 0 && continueshowingcard) {
-          let Afterquery = await firestore()
+        }
+
+        if (TotalSwipe > 0 && continueshowingcard) {
+          Afterquery = await firestore()
             .collection('Users')
             .orderBy('email')
             .where('email', 'not-in', [...passeduserids])
-            .startAfter(LastEmailSwipe);
-
-          Afterquery.onSnapshot(snapshot => {
-            setcards(
-              snapshot.docs.map(doc => ({
-                // console.log(doc.id,'doc id is')
-                // console.log('doc new data is', doc.data());
-                id: doc.id,
-                ...doc.data(),
-              })),
-            );
-          });
+            .startAfter(LastEmailSwipe)
+            .onSnapshot(snapshot => {
+              setcards(
+                snapshot.docs.map(doc => ({
+                  // console.log(doc.id,'doc id is')
+                  // console.log('doc new data is', doc.data());
+                  id: doc.id,
+                  ...doc.data(),
+                })),
+              );
+            });
         }
-
-        // let Intialquery = await firestore()
-        //   .collection('Users')
-        //   .where('email', 'not-in', ['jatin.khurana1704@gmail.com']);
-
-        // Intialquery.onSnapshot(snapshot => {
-        //   console.log('value of snap', snapshot.docs.length);
-        //   setcards(
-        //     snapshot.docs
-        //       .filter(doc => doc.id !== state.user.email)
-        //       .map(doc => ({
-        //         // console.log(doc.id,'doc id is')
-        //         // console.log('doc new data is', doc.data());
-        //         id: doc.id,
-        //         ...doc.data(),
-        //       })),
-        //   );
-        // });
       };
-      if (isFocused) {
-        console.log('at focused');
-        FetchUsersCard();
-      }
+
+      FetchUsersCard();
+      return Afterquery;
     }, []);
 
     useEffect(() => {
@@ -531,99 +417,6 @@ const Vibe = () => {
     }, [cardindex]);
     console.log('card index changing', cardindex);
 
-    //   console.log('after', cardindex);
-
-    //   if (cardindex === 10) {
-    //     console.log('inside');
-    //     let unsubscribeafter;
-    //     ardAfter = async () => {
-    //       const passeduserdataafter = await firestore()
-    //         .collection('Users')
-    //         .doc(state.user.email)
-    //         .collection('passeduser')
-    //         .get()
-    //         .then(snapshot =>
-    //           snapshot.docs.map(data =>data.data().id
-    //             // console.log('what is .dta. after', data.data()),
-    //           ),
-    //         );
-    //       console.log('what is passed data after', passeduserdataafter);
-    //       const passeduseridsafter =
-    //         passeduserdataafter.length > 0 ? passeduserdataafter : ['test'];
-    //       console.log('what is passed user ids after', passeduseridsafter);
-    //       unsubscribeafter = firestore()
-    //         .collection('Users')
-    //         .orderBy('email')
-    //         .where('email', 'not-in', ['prasagatre260@gmail.com'])
-    //         .limit(10)
-    //         .onSnapshot(snapshot => {
-    //           console.log('value of snap after', snapshot.docs.length);
-    //           setcards(
-    //             snapshot.docs
-    //               .filter(doc => doc.id !== state.user.email)
-    //               .map(doc => (
-
-    //                 {
-    //           // console.log('doc new data is', doc.data())
-    //                 id: doc.id,
-    //                 ...doc.data(),
-    //                } )),
-    //           );
-    //         });
-    //     };
-    //     FetchUsersCardAfter();
-
-    //   }
-    // }, [cardindex]);
-    // console.log('cards after', cards);
-
-    // useEffect(
-    //   (() => {
-    //     console.log('after', cardindex);
-
-    //     if (cardindex === 10) {
-    //       console.log('inside');
-    //       let unsubscribeafter;
-    //       ardAfter = async () => {
-    //         const passeduserdataafter = await firestore()
-    //           .collection('Users')
-    //           .doc(state.user.email)
-    //           .collection('passeduser')
-    //           .get()
-    //           .then(snapshot =>
-    //             snapshot.docs.map(
-    //               data => data.data().id,
-    //               // console.log('what is .dta. after', data.data()),
-    //             ),
-    //           );
-    //         console.log('what is passed data after', passeduserdataafter);
-    //         const passeduseridsafter =
-    //           passeduserdataafter.length > 0 ? passeduserdataafter : ['test'];
-    //         console.log('what is passed user ids after', passeduseridsafter);
-    //         unsubscribeafter = firestore()
-    //           .collection('Users')
-    //           .orderBy('email')
-    //           .where('email', 'not-in', ['prasagatre260@gmail.com'])
-    //           .limit(10)
-    //           .onSnapshot(snapshot => {
-    //             console.log('value of snap after', snapshot.docs.length);
-    //             setcards(
-    //               snapshot.docs
-    //                 .filter(doc => doc.id !== state.user.email)
-    //                 .map(doc => ({
-    //                   // console.log('doc new data is', doc.data())
-    //                   id: doc.id,
-    //                   ...doc.data(),
-    //                 })),
-    //             );
-    //           });
-    //       };
-    //       FetchUsersCardAfter();
-    //     }
-    //   })[cardindex],
-    // );
-    // useEffect(() => {
-    // useEffect(() => {
     return (
       <>
         {showCards ? (
@@ -748,7 +541,7 @@ const Vibe = () => {
                                             style={{
                                               boxShadow:
                                                 '4px -5px 5px 0px #00000040 inset',
-                                             
+
                                               alignItems: 'center',
                                               justifyContent: 'center',
 
