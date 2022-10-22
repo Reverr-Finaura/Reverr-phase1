@@ -11,8 +11,13 @@ const CountdownTimer = ({toshowtimer, settoshowtimer}) => {
   const dispatch = useDispatch();
   const [Tostart, settostart] = useState(0);
   const [show, setshow] = useState(false);
-  useEffect(() => {
-    const ExpiredMilliSecond = state.user.CardsUpdatedTime;
+  const TimerCalculation=async ()=>{
+ const data = await firestore()
+.collection('Users')
+.doc(state.user.email)
+.get();
+
+    const ExpiredMilliSecond = data.data().CardsUpdatedTime;
     console.log('expired', ExpiredMilliSecond);
     const CurrentTime = new Date();
     const CurrentTimeInMilliSecond = CurrentTime.getTime();
@@ -21,7 +26,11 @@ const CountdownTimer = ({toshowtimer, settoshowtimer}) => {
     console.log('yo', ToStartFrom);
     const ToSecond = Math.abs(ToStartFrom / 1000);
     settostart(ToSecond);
-    setshow(true);
+    setshow(true);}
+  useEffect(() => {
+    
+    TimerCalculation()
+    return () => TimerCalculation()
   }, []);
   console.log(Tostart);
   const LoadMoreVibeCard = async () => {

@@ -164,6 +164,7 @@ const VibeBoarding = ({showboarding, setshowboarding}) => {
   const [prevdesignation, setprevdesignation] = useState('');
   const [industry, setindustry] = useState('');
   const [prevorg, setprevorg] = useState('');
+  const [refresh, setrefresh] = useState(true);
   const onSelectedItemsChange = data => {
     console.log('here', data);
     setselected(data);
@@ -216,9 +217,14 @@ const VibeBoarding = ({showboarding, setshowboarding}) => {
     await firestore().collection('Users').doc(state.user.email).update({
       Number_Of_Swips_Done: 0,
     });
-
+    setrefresh(true);
+    const inntialrefresh=true
     setTimeout(() => {
-      navigation.navigate('Vibe');
+      navigation.navigate(
+        'Vibe',
+        inntialrefresh
+       
+      );
     }, 10);
   };
   return (
@@ -226,8 +232,7 @@ const VibeBoarding = ({showboarding, setshowboarding}) => {
       <View
         style={{
           backgroundColor: 'white',
-          width:  Dimensions.get('window').width /
-          1.1,
+          width: Dimensions.get('window').width / 1.1,
           alignSelf: 'center',
           borderRadius: 15,
           flex: 1,
