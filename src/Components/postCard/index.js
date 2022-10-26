@@ -49,13 +49,15 @@ const PostCard = ({postData}) => {
   const renderCard = ({item, index}) => {
     console.log(state.allLoaded, 'Hey!');
     // console.log(state.Rooms[0], 'userdta');
+
     return (
       <LinearGradient
         key={item.id}
         colors={[AppColors.CardColor, AppColors.CardColor]}
         start={{x: -3, y: 1.3}}
         end={{x: 3, y: 0.5}}
-        style={styles2.postCard}>
+        style={styles2.postCard}
+      >
         <View style={styles2.creatorDetails}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <TouchableOpacity
@@ -63,12 +65,16 @@ const PostCard = ({postData}) => {
                 navigation.navigate('ViewProfile', {
                   postData: item,
                 });
-              }}>
+              }}
+            >
               <Image style={styles2.dp} source={{uri: item.postedby.image}} />
             </TouchableOpacity>
             <View style={{marginStart: '3%'}}>
-              <Text style={styles2.name}>{item.postedby.name}</Text>
-              <Text style={styles2.company}>@{item.postedby.name}</Text>
+              <Text style={styles2.name}>
+                {item.postedby.name.charAt(0).toUpperCase() +
+                  item.postedby.name.slice(1)}
+              </Text>
+              {/* <Text style={styles2.company}>@{item.postedby.name}</Text> */}
             </View>
           </View>
           <View style={{flexDirection: 'row'}}>
@@ -79,7 +85,8 @@ const PostCard = ({postData}) => {
                 alignSelf: 'center',
                 marginTop: '-5%',
                 marginRight: '4%',
-              }}>
+              }}
+            >
               12/08/2022
             </Text>
             <TouchableOpacity
@@ -90,7 +97,8 @@ const PostCard = ({postData}) => {
                   state.user.email == item.postedby.email ? true : false,
                 );
                 // alert(item.id);
-              }}>
+              }}
+            >
               <Icon3
                 name="ellipsis-vertical"
                 size={22}
@@ -103,7 +111,8 @@ const PostCard = ({postData}) => {
           <CustomPopup
             modalVisible={popup}
             setModalVisible={setPopup}
-            onRequestClose={() => setPopup(false)}>
+            onRequestClose={() => setPopup(false)}
+          >
             <View>
               {owner && (
                 <View
@@ -112,13 +121,15 @@ const PostCard = ({postData}) => {
                     borderBottomWidth: 1,
                     paddingVertical: '4%',
                     alignItems: 'center',
-                  }}>
+                  }}
+                >
                   <TouchableOpacity
                     onPress={() => {
                       handleDelete(item);
                       // alert(item.id);
                       setPopup(false);
-                    }}>
+                    }}
+                  >
                     <Text style={{color: AppColors.FontsColor}}>Delete</Text>
                   </TouchableOpacity>
                 </View>
@@ -129,7 +140,8 @@ const PostCard = ({postData}) => {
                   borderBottomWidth: 1,
                   alignItems: 'center',
                   paddingVertical: '4%',
-                }}>
+                }}
+              >
                 <TouchableOpacity>
                   <Text style={{color: AppColors.FontsColor}}>Share</Text>
                 </TouchableOpacity>
@@ -140,7 +152,8 @@ const PostCard = ({postData}) => {
                   borderBottomWidth: 1,
                   alignItems: 'center',
                   paddingVertical: '4%',
-                }}>
+                }}
+              >
                 <TouchableOpacity onPress={() => savePost(item)}>
                   <Text style={{color: AppColors.FontsColor}}>
                     {state.savedPosts && state.savedPosts.includes(item.id)
@@ -153,7 +166,8 @@ const PostCard = ({postData}) => {
                 style={{
                   paddingVertical: '4%',
                   alignItems: 'center',
-                }}>
+                }}
+              >
                 <TouchableOpacity onPress={() => setPopup(false)}>
                   <Text style={{color: AppColors.FontsColor}}>close</Text>
                 </TouchableOpacity>
@@ -170,7 +184,8 @@ const PostCard = ({postData}) => {
             <View>
               <Text style={styles2.details}>{item.text}</Text>
               <View
-                style={[styles2.image, {overflow: 'hidden', marginTop: '2%'}]}>
+                style={[styles2.image, {overflow: 'hidden', marginTop: '2%'}]}
+              >
                 <Image
                   style={{width: '100%', height: '100%'}}
                   source={{uri: item.image}}
@@ -203,7 +218,7 @@ const PostCard = ({postData}) => {
               )}
             </TouchableOpacity>
             <Text style={{marginStart: '8%', color: AppColors.BtnClr}}>
-              {item.likes.length} reactions
+              {item.likes.length} Likes
             </Text>
           </View>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -213,7 +228,8 @@ const PostCard = ({postData}) => {
                 navigation.navigate('comments', {
                   postData: item,
                 });
-              }}>
+              }}
+            >
               <Image
                 source={require('../../assets/images/comment.png')}
                 style={{
