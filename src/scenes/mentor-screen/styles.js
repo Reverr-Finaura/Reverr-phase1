@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   image: {
-    width: '100%',
+    width: '40%',
     height: '100%',
     borderRadius: 10,
     justifyContent: 'center',
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   },
   Card: {
     width: '46%',
-    height: Height / 6.3,
+    height: Height / 10,
     margin: '2%',
     borderRadius: 10,
     alignItems: 'center',

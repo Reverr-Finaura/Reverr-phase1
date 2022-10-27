@@ -14,5 +14,9 @@ const smallString = (str, num) => {
     return str;
   }
 };
+function capitalizeFirstLetter(string) {
+  let str = string.toLowerCase();
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
-export {formateDate, smallString};
+export {formateDate, smallString, capitalizeFirstLetter};

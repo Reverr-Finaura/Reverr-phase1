@@ -23,6 +23,8 @@ import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import {courseCategory} from '../../../dumy-Data/courseCategory';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import {arrangeList} from '../../../assets/data/dummyData';
+import {capitalizeFirstLetter} from '../../../utils/Helper/helper';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
@@ -40,8 +42,18 @@ const LearnScreen = () => {
       .get()
       .then(res => {
         let courses = res.docs.map(doc => doc.data());
-        // setCourseData(res.docs.map(doc => doc.data()));
-        setCourseData(courses.filter(item => item.course === 'The Journey'));
+        let allJourneyCourseData = courses.filter(
+          item => item.course === 'The Journey',
+        );
+        let sortedCourseData = [];
+        for (let i = 0; i < allJourneyCourseData.length; i++) {
+          let sort = allJourneyCourseData.filter(
+            data => data.name == arrangeList[i],
+          );
+          //console.log(sort);
+          sortedCourseData.push(sort[0]);
+        }
+        setCourseData(sortedCourseData);
         setLoading(false);
       });
   };
@@ -148,7 +160,6 @@ const LearnScreen = () => {
                   <View
                     style={{
                       width: Width / 2.2,
-
                       justifyContent: 'center',
                       alignItems: 'center',
                       margin: '2%',
@@ -187,25 +198,9 @@ const LearnScreen = () => {
                               fontSize: 17,
                               textAlign: 'center',
                             }}>
-                            {item.name}
+                            {capitalizeFirstLetter(item.name)}
                           </Text>
                         </View>
-                        {/* <ImageBackground
-                          style={{
-                            width: '100%',
-                            height: '100%',
-                            marginTop: '70%',
-                          }}
-                          source={require('../../../assets/images/blurBg.png')}>
-                          <Text
-                            style={{
-                              color: AppColors.ActiveColor,
-                              fontSize: 17,
-                              textAlign: 'center',
-                            }}>
-                            {item.name}
-                          </Text>
-                        </ImageBackground> */}
                       </ImageBackground>
                     </TouchableOpacity>
                   </View>

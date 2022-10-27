@@ -30,7 +30,7 @@ const MentorList = props => {
         let AllUsers = res.docs.map(doc => doc.data());
         let mentors = AllUsers.filter(item => item.userType === 'Mentor');
         setMentorsList(
-          mentors.filter(item => item.domain.includes(mentorCategory)),
+          mentors.filter(item => item.domain.includes(mentorCategory.title)),
         );
         setLoading(false);
       });
@@ -55,7 +55,7 @@ const MentorList = props => {
             fontSize: 19,
             marginStart: '5%',
           }}>
-          {mentorCategory}
+          {mentorCategory.title}
         </Text>
       </View>
       <ScrollView scrollEnabled={true} style={{paddingBottom: '30%'}}>
