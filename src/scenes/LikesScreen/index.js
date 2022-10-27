@@ -1,11 +1,21 @@
-import {View, Text, Image, Dimensions} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  Dimensions,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import firestore from '@react-native-firebase/firestore';
 import {BackButton, IndividualHeaderLayout} from '../../Components';
 import {useDispatch, useSelector} from 'react-redux';
 import {cos} from 'react-native-reanimated';
+import {} from 'react-native-gesture-handler';
+import {useNavigation} from '@react-navigation/native';
 
 const LikeScreen = () => {
+  const navigation = useNavigation();
   const state = useSelector(state => state.UserReducer);
   const dispatch = useDispatch();
   const [show, setshow] = useState(false);
@@ -35,6 +45,15 @@ const LikeScreen = () => {
 
     GetLikedPeople();
   }, []);
+
+  const HandleOnPress = async dataid => {
+    console.log('at onpress', dataid);
+    const cardliked = await firestore().collection('Users').doc(dataid).get();
+
+    const CardRecivedData = cardliked.data();
+
+    navigation.navigate('ShowMoreVibe', CardRecivedData);
+  };
   return (
     <IndividualHeaderLayout>
       <View>
@@ -46,20 +65,7 @@ const LikeScreen = () => {
             alignSelf: 'center',
             marginTop: 80,
           }}
-        >
-          <Text
-            style={{
-              color: '#0077B7',
-              textAlign: 'center',
-              fontFamily: 'Poppins',
-              fontSize: 16,
-              fontWeight: '700',
-            }}
-          >
-            Buy premium to connect with people who are interested in your
-            profile
-          </Text>
-        </View>
+        ></View>
 
         <View style={{alignSelf: 'center', marginTop: 12}}>
           <Text
@@ -76,75 +82,63 @@ const LikeScreen = () => {
         </View>
 
         {show && LikedData.length > 1 ? (
-          LikedData.map(data => {
-            console.log('what is name', data.name);
-            if (data.name === undefined) {
-              return;
-            }
-            return (
-              <View
-                key={data.id}
-                style={{
-                  marginTop: 20,
-                  height: '20%',
-                  width: '75%',
-                  borderBottomRightRadius: 10,
-                  borderTopRightRadius: 10,
-                  borderBottomLeftRadius: 10,
-                  borderTopLeftRadius: 10,
-                  left: 42,
-                  backgroundColor: '#0077B7',
-                }}
-              >
-                <View style={{flexDirection: 'row'}}>
-                  <View style={{alignSelf: 'center'}}>
-                    <Image
-                      style={{
-                        resizeMode: 'cover',
-                        // width: 90,
-                        alignSelf: 'center',
-                        // height: 95,
-                        width: Dimensions.get('window').width / 4.3,
-                        height: Dimensions.get('window').height / 7.5,
-                        borderRadius: 5,
-                      }}
-                      source={{
-                        uri: data.image,
-                      }}
-                    />
-                  </View>
-                  <View style={{alignContent: 'center', marginLeft: 25}}>
-                    <Text
-                      style={{
-                        color: 'white',
-                        textAlign: 'center',
-                        fontFamily: 'Poppins',
-                        fontSize: 24,
-                        fontWeight: '800',
-                      }}
-                    >
-                      {data.name}
-                    </Text>
-                    <View style={{flexDirection: 'row'}}>
-                      <Text
-                        style={{
-                          color: 'white',
-                          textAlign: 'center',
-                          fontFamily: 'Poppins',
-                          fontSize: 14,
-                          flex: 2,
-                          flexWrap: 'wrap',
-                          fontWeight: '600',
-                        }}
-                      >
-                        {data.about}
-                      </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              justifyContent: 'space-around',
+            }}
+          >
+            {LikedData.map(data => {
+              console.log('what is name', data.email, '', data.id);
+              if (data.name === undefined) {
+                return;
+              }
+              return (
+                <TouchableOpacity onPress={() => HandleOnPress(data.email)}>
+                  <View
+                    style={{
+                      marginTop: 20,
+                      width: Dimensions.get('window').width / 2.5,
+                      height: Dimensions.get('window').height / 4,
+                      justifyContent: 'center',
+                      flexDirection: 'row',
+                      borderBottomRightRadius: 10,
+                      borderTopRightRadius: 10,
+                      borderBottomLeftRadius: 10,
+                      borderTopLeftRadius: 10,
+                      backgroundColor: '#0077B7',
+                    }}
+                  >
+                    <View style={{marginTop: '5%', alignItems: 'center'}}>
+                      <View>
+                        <Image
+                          source={{uri: data.image}}
+                          style={{
+                            width: 80,
+
+                            height: 80,
+                            borderRadius: 40,
+                          }}
+                        />
+                      </View>
+
+                      <View>
+                        <Text style={{fontSize: 18, fontWeight: '700'}}>
+                          {data.name}
+                        </Text>
+                      </View>
+                      <View>
+                        <Text tyle={{fontSize: 16, fontWeight: '500'}}>
+                          {data.about}
+                        </Text>
+                      </View>
                     </View>
                   </View>
-                </View>
-              </View>
-            );
-          })
+                </TouchableOpacity>
+              );
+            })}
+          </View>
         ) : (
           <></>
         )}

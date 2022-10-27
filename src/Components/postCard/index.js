@@ -48,6 +48,8 @@ const PostCard = ({postData}) => {
 
   const renderCard = ({item, index}) => {
     console.log(new Date(item.createdAt.seconds * 1000).getMonth, 'Hey!');
+    console.log(state.allLoaded, 'Hey!');
+    // console.log(state.Rooms[0], 'userdta');
 
     return (
       <LinearGradient
@@ -67,8 +69,11 @@ const PostCard = ({postData}) => {
               <Image style={styles2.dp} source={{uri: item.postedby.image}} />
             </TouchableOpacity>
             <View style={{marginStart: '3%'}}>
-              <Text style={styles2.name}>{item.postedby.name}</Text>
-              <Text style={styles2.company}>@{item.postedby.name}</Text>
+              <Text style={styles2.name}>
+                {item.postedby.name.charAt(0).toUpperCase() +
+                  item.postedby.name.slice(1)}
+              </Text>
+              {/* <Text style={styles2.company}>@{item.postedby.name}</Text> */}
             </View>
           </View>
           <View style={{flexDirection: 'row'}}>
@@ -207,7 +212,7 @@ const PostCard = ({postData}) => {
               )}
             </TouchableOpacity>
             <Text style={{marginStart: '8%', color: AppColors.BtnClr}}>
-              {item.likes.length} reactions
+              {item.likes.length} Likes
             </Text>
           </View>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>

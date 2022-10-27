@@ -280,7 +280,7 @@ const Rooms = () => {
               />
             </TouchableOpacity>
             <Text style={{marginStart: '8%', color: AppColors.BtnClr}}>
-              {item.likes.length} reactions
+              {item.likes.length} Likes
             </Text>
           </View>
           <View>
