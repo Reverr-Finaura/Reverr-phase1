@@ -248,7 +248,7 @@ export const SendMessage = (currentcUser, sendTo, message, ref) => {
     .update({
       messages: firestore.FieldValue.arrayUnion({
         msg: message,
-        createdAt: date + '-' + month + '-' + year,
+        createdAt: firestore.Timestamp.fromDate(new Date()),
         sendBy: currentcUser.email,
       }),
     })

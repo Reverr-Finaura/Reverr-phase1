@@ -60,6 +60,8 @@ const ChatScreen = props => {
     }, 2000);
   }, [Recive]);
 
+  // console.log(new Date(SendMessage[0].createdAt * 1000).toDateString());
+
   return (
     <LinearGradient
       style={styles.screen}
@@ -112,7 +114,7 @@ const ChatScreen = props => {
                 <Text
                   style={{
                     color: item.sendBy == userData.email ? '#fff' : '#fff',
-                    width: '30%',
+                    width: '32%',
                     justifyContent: 'center',
                     borderRadius: 15,
                     padding: 10,
@@ -124,12 +126,12 @@ const ChatScreen = props => {
                 </Text>
                 <Text
                   style={{
-                    paddingStart: '2%',
                     fontSize: 7,
+                    marginTop: '1%',
                     color: '#fff',
-                    marginStart: item.sendBy == userData.email ? '2%' : '85%',
+                    marginStart: item.sendBy == userData.email ? '1%' : '85%',
                   }}>
-                  {item.createdAt}
+                  {new Date(item.createdAt * 1000).toDateString()}
                 </Text>
               </View>
             )}

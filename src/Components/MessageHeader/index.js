@@ -103,10 +103,10 @@ export const MessageHeader = props => {
             <Image source={require('../../assets/images/Back.png')} />
           </TouchableOpacity>
 
-          <Image
+          {/* <Image
             style={{marginLeft: 5, height: 30, width: 30}}
             source={{uri: userData.image}}
-          />
+          /> */}
 
           <Text style={styles.text}>{userData.name}</Text>
         </View>

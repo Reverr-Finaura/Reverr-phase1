@@ -22,49 +22,56 @@ const Width = Dimensions.get('window').width;
 
 const HomeCard = () => {
   const navigation = useNavigation();
-  //  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0);
   // this function gives the index of current page
-  /* const onViewRef = useRef(({changed}) => {
+  const onViewRef = useRef(({changed}) => {
+    //console.log(changed, 'changed');
     setIndex(changed[0].item.id);
-  }); */
+  });
   //it helps the above funtion in getting proper index
-  // const viewConfigRef = useRef({viewAreaCoveragePercentThreshold: 50});
+  const viewConfigRef = useRef({viewAreaCoveragePercentThreshold: 50});
   //aded ref to flatlist to chaange index
-  //const flatListRef = useRef(null);
-  //function to move to next page
+  const flatListRef = useRef(null);
 
-  /* useEffect(() => {
+  useEffect(() => {
     const nextPage = () => {
       if (index === 0) {
         flatListRef.current?.scrollToIndex({index: 1});
-      } else if (index === 1) {
+        return;
+      }
+      if (index === 1) {
         flatListRef.current?.scrollToIndex({index: 2});
-      } else if (index === 2) {
-        flatListRef.current?.scrollToIndex({index: 3});
-      } else {
+        return;
+      }
+      if (index === 2) {
         flatListRef.current?.scrollToIndex({index: 0});
+        return;
       }
     };
-    nextPage();
-  }, []); */
+    setTimeout(() => {
+      nextPage();
+    }, 2000);
+  }, [index]);
 
   return (
     <View style={styles.CardContainer}>
       <FlatList
         data={cardData}
         pagingEnabled
-        /*  ref={flatListRef}
-       
+        ref={flatListRef}
         onViewableItemsChanged={onViewRef.current}
-        viewabilityConfig={viewConfigRef.current} */
+        viewabilityConfig={viewConfigRef.current}
         showsHorizontalScrollIndicator={false}
         horizontal
-        /*  onMomentumScrollEnd={event => {
-          const index = Math.floor(
-            event.nativeEvent.contentOffset.x /
-              event.nativeEvent.layoutMeasurement.width,
-          );
-        }} */
+        onScrollToIndexFailed={info => {
+          const wait = new Promise(resolve => setTimeout(resolve, 500));
+          wait.then(() => {
+            flatListRef.current?.scrollToIndex({
+              index: info.index,
+              animated: true,
+            });
+          });
+        }}
         renderItem={({item}) => (
           <LinearGradient
             colors={[AppColors.primarycolor, '#012437']}

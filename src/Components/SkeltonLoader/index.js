@@ -57,28 +57,24 @@ const SkeltonLoader = () => {
                       borderRadius: 9,
                     }}
                   />
-                  <View style={{flexDirection: 'row'}}>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      width: Width,
+                    }}>
                     <View
                       style={{
-                        width: 40,
+                        width: Width / 3,
                         height: 30,
-                        marginStart: 20,
+
                         borderRadius: 6,
                       }}
                     />
                     <View
                       style={{
-                        width: 40,
+                        width: Width / 3,
                         height: 30,
-                        marginStart: 20,
-                        borderRadius: 6,
-                      }}
-                    />
-                    <View
-                      style={{
-                        width: 40,
-                        height: 30,
-                        marginStart: 20,
+                        marginStart: 70,
                         borderRadius: 6,
                       }}
                     />

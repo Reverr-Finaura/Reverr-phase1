@@ -47,14 +47,14 @@ const PostCard = ({postData}) => {
   };
 
   const renderCard = ({item, index}) => {
-    console.log(state.allLoaded, 'Hey!');
-    // console.log(state.Rooms[0], 'userdta');
+    console.log(new Date(item.createdAt.seconds * 1000).getMonth, 'Hey!');
+
     return (
       <LinearGradient
         key={item.id}
-        colors={[AppColors.CardColor, AppColors.CardColor]}
-        start={{x: -3, y: 1.3}}
-        end={{x: 3, y: 0.5}}
+        colors={[AppColors.primarycolor, '#012437']}
+        start={{x: 0.9, y: 1.3}}
+        end={{x: 0.3, y: 0.5}}
         style={styles2.postCard}>
         <View style={styles2.creatorDetails}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -80,7 +80,11 @@ const PostCard = ({postData}) => {
                 marginTop: '-5%',
                 marginRight: '4%',
               }}>
-              12/08/2022
+              {`${new Date(item.createdAt.seconds * 1000).getDate()}/${new Date(
+                item.createdAt.seconds * 1000,
+              ).getMonth()}/${new Date(
+                item.createdAt.seconds * 1000,
+              ).getFullYear()}`}
             </Text>
             <TouchableOpacity
               onPress={() => {

@@ -45,6 +45,8 @@ const Home = () => {
     }
   }, []);
 
+  console.log(state.Rooms, 'Rooms');
+
   return (
     <IndividualHeaderLayout>
       <ScrollView showsVerticalScrollIndicator={false}>

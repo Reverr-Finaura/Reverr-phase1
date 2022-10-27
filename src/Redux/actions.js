@@ -558,7 +558,7 @@ export const load_room_data = lastDocument => {
       let list3 = [];
       let query = await firestore()
         .collection('Posts')
-        .orderBy('createdat', 'desc');
+        .orderBy('createdAt', 'desc');
       if (lastDocument !== undefined) {
         query = query.startAfter(lastDocument);
       }

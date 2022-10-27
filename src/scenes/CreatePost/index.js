@@ -70,7 +70,7 @@ const CreatePost = props => {
       comments: [],
       likes: [],
       text,
-      createdat: firestore.Timestamp.fromDate(new Date()),
+      createdAt: firestore.Timestamp.fromDate(new Date()),
     };
     postData(post);
     navigation.goBack();
