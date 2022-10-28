@@ -21,6 +21,7 @@ const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import {pin_post, pushComment, deleteComment} from '../../Redux/actions';
+import {GiftedChat, Send} from 'react-native-gifted-chat';
 const CommentsScreen = props => {
   //const postData = props?.route?.params?.postData;
   const state = useSelector(state => state.UserReducer);
@@ -182,7 +183,7 @@ const CommentsScreen = props => {
     setRefresh(true);
   };
   return (
-    <KeyboardAvoidingView style={styles.screen}>
+    <View style={styles.screen}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <BackButton
           IconSize={30}
@@ -221,24 +222,34 @@ const CommentsScreen = props => {
           renderItem={renderCard}
         />
       )}
-      <View style={inputContainerStyle}>
-        <TextInput
-          style={styles.input}
-          placeholder="Write Your Comments "
-          value={comment}
-          onChangeText={text => setComment(text)}
-        />
-        <TouchableOpacity onPress={handleComment}>
-          <Icon name="send" color={AppColors.ActiveColor} size={28} />
-        </TouchableOpacity>
-      </View>
-    </KeyboardAvoidingView>
+      <GiftedChat
+        onInputTextChanged={c => setComment(c)}
+        onSend={handleComment}
+        placeholder="Write your comment"
+        renderSend={props => {
+          return (
+            <Send {...props}>
+              <View style={{marginRight: 10, marginBottom: 15}}>
+                <Text
+                  style={{
+                    color: AppColors.ActiveColor,
+                    fontWeight: 'bold',
+                    fontSize: 19,
+                  }}>
+                  Comment
+                </Text>
+              </View>
+            </Send>
+          );
+        }}
+      />
+    </View>
   );
 };
 const styles = StyleSheet.create({
   screen: {
-    //   flex: 1,
-    height: Height / 1.03,
+    flex: 1,
+
     backgroundColor: AppColors.primarycolor,
   },
   commentCard: {
