@@ -21,7 +21,7 @@ const ShowMoreVibe = () => {
   ]);
   const [checkingdata, setcheckingdata] = useState({
     Education: 'MBA',
-    Here_for: ['Find Investors', 'FIND MENTORS', 'FIND EMPLYOYEE'],
+    Here_for: ['FIND INVESTORS', 'FIND MENTORS', 'FIND EMPLYOYEE'],
     How_To_Meet: ['At Coffee', ' Video Call', 'Local Cafee'],
     Industry: 'FINTECH',
     Previous_Designation: 'GOOGLE',
@@ -322,7 +322,7 @@ const ShowMoreVibe = () => {
           </View>
           <View
             style={{
-              marginRight:30,
+              marginRight: 30,
               marginTop: 10,
               flexDirection: 'row',
               justifyContent: 'space-around',
@@ -331,7 +331,6 @@ const ShowMoreVibe = () => {
             <View>
               <View
                 style={{
-          
                   flexDirection: 'row',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -405,7 +404,7 @@ const ShowMoreVibe = () => {
         </View>
         <View
           style={{
-            marginRight:30,
+            marginRight: 30,
             flexDirection: 'row',
             justifyContent: 'space-around',
           }}
