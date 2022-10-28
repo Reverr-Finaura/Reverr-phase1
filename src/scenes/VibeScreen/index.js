@@ -57,14 +57,22 @@ const Vibe = () => {
 
   const LikeTab = () => {
     return (
-      <View>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
         <TouchableOpacity onPress={() => navigation.navigate('LikeScreen')}>
           <View
             style={{
-              backgroundColor: 'black',
+              borderColor: 'dodgerblue',
+              borderWidth: 1,
+              backgroundColor: '#000C12',
               width: 68,
               height: 42,
-              left: 20,
+              left: 40,
               justifyContent: 'center',
               borderBottomEndRadius: 10,
               borderBottomLeftRadius: 10,
@@ -74,20 +82,28 @@ const Vibe = () => {
             }}
           >
             <Text
-              style={{color: 'white', textAlign: 'center', alignSelf: 'center'}}
+              style={{
+                backgroundColor: '#000C12',
+                color: 'white',
+                textAlign: 'center',
+                alignSelf: 'center',
+                fontWeight: '700',
+              }}
             >
-              Likes
+              likes
             </Text>
           </View>
         </TouchableOpacity>
+        <View style={{paddingRight: 35}}>
+          <Icon name="filter" color="#ffffff" size={25} />
+        </View>
       </View>
     );
   };
   const Vibes = () => {
     const {params} = useRoute();
-const data="abc"
-    console.log('data paraams ',params)
-
+    const data = 'abc';
+    console.log('data paraams ', params);
 
     const navigation = useNavigation();
     const state = useSelector(state => state.UserReducer);
@@ -115,7 +131,7 @@ const data="abc"
     ]);
     const [checkingdata, setcheckingdata] = useState({
       Education: 'MBA',
-      Here_for: ['Find Investors', 'FIND MENTORS', 'FIND EMPLYOYEE'],
+      Here_for: ['FIND INVESTORS', 'FIND MENTORS', 'FIND EMPLYOYEE'],
       How_To_Meet: ['At Coffee', ' Video Call', 'Local Cafe'],
       Industry: 'FINTECH',
       Previous_Designation: 'GOOGLE',
@@ -231,7 +247,7 @@ const data="abc"
     };
 
     console.log('state card is', state.vibe.length);
-console.log('datta coming from boarding',data)
+    console.log('datta coming from boarding', data);
     const CheckIfBoarding = async () => {
       await firestore()
         .collection('Users')
@@ -253,14 +269,13 @@ console.log('datta coming from boarding',data)
           console.log('Error getting document:', error);
         });
     };
-    
-    // This will run after VibeBoarding screen
-if(params){
-  console.log('after boarding screen here')
- setshowCards(true)
 
-}
-    
+    // This will run after VibeBoarding screen
+    if (params) {
+      console.log('after boarding screen here');
+      setshowCards(true);
+    }
+
     // Intial setting  here
     useEffect(() => {
       let Afterquery;

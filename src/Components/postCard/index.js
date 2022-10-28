@@ -205,8 +205,8 @@ const PostCard = ({postData}) => {
                   source={require('../../assets/images/like.png')}
                   style={{
                     tintColor: AppColors.ActiveColor,
-                    width: 30,
-                    height: 30,
+                    width: 22,
+                    height: 22,
                   }}
                 />
               )}
@@ -228,7 +228,8 @@ const PostCard = ({postData}) => {
                 style={{
                   tintColor: AppColors.ActiveColor,
                   height: 22,
-                  width: 20,
+                  width: 22,
+               
                 }}
               />
             </TouchableOpacity>
