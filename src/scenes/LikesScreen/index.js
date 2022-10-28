@@ -55,31 +55,22 @@ const LikeScreen = () => {
     navigation.navigate('ShowMoreVibe', CardRecivedData);
   };
   return (
-    <IndividualHeaderLayout>
-      <View>
+    <View
+      style={{
+        backgroundColor: '#020E2C',
+        height: Dimensions.get('window').height,
+      }}
+    >
+      <View style={{marginTop: 20}}>
         <BackButton />
       </View>
       <View>
         <View
           style={{
             alignSelf: 'center',
-            marginTop: 80,
+            marginTop: 10,
           }}
         ></View>
-
-        <View style={{alignSelf: 'center', marginTop: 12}}>
-          <Text
-            style={{
-              color: 'white',
-              textAlign: 'center',
-              fontFamily: 'Poppins',
-              fontSize: 14,
-              fontWeight: '600',
-            }}
-          >
-            William and 9 others liked your profile
-          </Text>
-        </View>
 
         {show && LikedData.length > 1 ? (
           <View
@@ -99,8 +90,8 @@ const LikeScreen = () => {
                   <View
                     style={{
                       marginTop: 20,
-                      width: Dimensions.get('window').width / 2.5,
-                      height: Dimensions.get('window').height / 4,
+                      width: Dimensions.get('window').width / 2.4,
+                      height: Dimensions.get('window').height / 2.8,
                       justifyContent: 'center',
                       flexDirection: 'row',
                       borderBottomRightRadius: 10,
@@ -115,21 +106,35 @@ const LikeScreen = () => {
                         <Image
                           source={{uri: data.image}}
                           style={{
-                            width: 80,
+                            width: 145,
 
-                            height: 80,
-                            borderRadius: 40,
+                            height: 130,
+                            borderRadius: 20,
                           }}
                         />
                       </View>
 
-                      <View>
-                        <Text style={{fontSize: 18, fontWeight: '700'}}>
+                      <View style={{alignSelf: 'flex-start', paddingLeft: 5}}>
+                        <Text
+                          style={{
+                            textAlign: 'left',
+                            fontSize: 18,
+                            fontWeight: '700',
+                            color: 'white',
+                          }}
+                        >
                           {data.name}
                         </Text>
                       </View>
-                      <View>
-                        <Text tyle={{fontSize: 16, fontWeight: '500'}}>
+                      <View style={{alignSelf: 'flex-start', paddingLeft: 5}}>
+                        <Text
+                          style={{
+                            fontSize: 16,
+                            fontWeight: '500',
+                            color: 'white',
+                            flexWrap: 'wrap',
+                          }}
+                        >
                           {data.about}
                         </Text>
                       </View>
@@ -143,7 +148,7 @@ const LikeScreen = () => {
           <></>
         )}
       </View>
-    </IndividualHeaderLayout>
+    </View>
   );
 };
 
