@@ -2,18 +2,7 @@
   package="com.reverr">
 
     <uses-permission android:name="android.permission.INTERNET" />
-  <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
-   <uses-permission android:name="android.permission.CAMERA"/>
-
-   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-  <queries>
-  <intent>
-    <action android:name="android.intent.action.VIEW" />
-    <data android:scheme="upi" android:host="pay"/>
-  </intent>
-  <package android:name="com.android.chrome" />
-</queries>
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
@@ -34,5 +23,4 @@
         </intent-filter>
       </activity>
     </application>
-    
 </manifest>
