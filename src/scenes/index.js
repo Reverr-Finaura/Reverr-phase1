@@ -53,6 +53,7 @@ import {MentorList} from './mentor-screen/mentorList';
 import {Requests} from './requests';
 import {CountdownTimer} from './CountdownTimer';
 import {LikeScreen} from './LikesScreen';
+import PremiumPlans from './PremiumPlans';
 export {
   ArticalDetails,
   FundingScreen,
@@ -107,4 +108,5 @@ export {
   Requests,
   CountdownTimer,
   LikeScreen,
+  PremiumPlans,
 };

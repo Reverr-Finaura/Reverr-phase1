@@ -21,6 +21,9 @@ const MentorList = props => {
   const [mentorsList, setMentorsList] = useState();
   const [column, setColumn] = useState(2);
   const [loading, setLoading] = useState(false);
+
+  // console.log(mentorsList);
+
   const getMentors = async () => {
     setLoading(true);
     const snapshot = await firestore()
@@ -30,7 +33,7 @@ const MentorList = props => {
         let AllUsers = res.docs.map(doc => doc.data());
         let mentors = AllUsers.filter(item => item.userType === 'Mentor');
         setMentorsList(
-          mentors.filter(item => item?.domain?.includes(mentorCategory.title)),
+          mentors.filter(item => item.domain?.includes(mentorCategory.title)),
         );
         setLoading(false);
       });

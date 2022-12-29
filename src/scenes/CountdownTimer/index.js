@@ -1,4 +1,4 @@
-import {View, Text, Dimensions, Image} from 'react-native';
+import {View, Text, Dimensions, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import CountDown from 'react-native-countdown-component';
 import {IndividualHeaderLayout} from '../../Components';
@@ -6,16 +6,19 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useState} from 'react';
 import {useEffect} from 'react';
 import firestore from '@react-native-firebase/firestore';
+import {AppColors} from '../../utils';
+import {useNavigation} from '@react-navigation/native';
 const CountdownTimer = ({toshowtimer, settoshowtimer}) => {
   const state = useSelector(state => state.UserReducer);
   const dispatch = useDispatch();
+  const navigate = useNavigation();
   const [Tostart, settostart] = useState(0);
   const [show, setshow] = useState(false);
-  const TimerCalculation=async ()=>{
- const data = await firestore()
-.collection('Users')
-.doc(state.user.email)
-.get();
+  const TimerCalculation = async () => {
+    const data = await firestore()
+      .collection('Users')
+      .doc(state.user.email)
+      .get();
 
     const ExpiredMilliSecond = data.data().CardsUpdatedTime;
     console.log('expired', ExpiredMilliSecond);
@@ -26,11 +29,11 @@ const CountdownTimer = ({toshowtimer, settoshowtimer}) => {
     console.log('yo', ToStartFrom);
     const ToSecond = Math.abs(ToStartFrom / 1000);
     settostart(ToSecond);
-    setshow(true);}
+    setshow(true);
+  };
   useEffect(() => {
-    
-    TimerCalculation()
-    return () => TimerCalculation()
+    TimerCalculation();
+    return () => TimerCalculation();
   }, []);
   console.log(Tostart);
   const LoadMoreVibeCard = async () => {
@@ -53,16 +56,14 @@ const CountdownTimer = ({toshowtimer, settoshowtimer}) => {
               justifyContent: 'center',
               alignItems: 'center',
               alignContent: 'center',
-            }}
-          >
+            }}>
             <Text
               style={{
                 color: '#0077B7',
                 fontWeight: 'bold',
                 maxWidth: Dimensions.get('window').width / 1.2,
                 fontSize: 22,
-              }}
-            >
+              }}>
               Buy Premium to connect with people who are interested in your
               profile.
             </Text>
@@ -72,8 +73,7 @@ const CountdownTimer = ({toshowtimer, settoshowtimer}) => {
                 marginTop: 20,
                 fontSize: 16,
                 fontWeight: 'bold',
-              }}
-            >
+              }}>
               Many people viewed your profile
             </Text>
             <View
@@ -84,8 +84,7 @@ const CountdownTimer = ({toshowtimer, settoshowtimer}) => {
                 marginVertical: 20,
                 alignContent: 'center',
                 alignItems: 'center',
-              }}
-            >
+              }}>
               <View
                 style={{
                   borderWidth: 2,
@@ -95,8 +94,7 @@ const CountdownTimer = ({toshowtimer, settoshowtimer}) => {
                   justifyContent: 'center',
                   alignContent: 'center',
                   alignItems: 'center',
-                }}
-              >
+                }}>
                 <Image
                   style={{width: 100, height: 100}}
                   source={require('../../assets/images/MentorCard.png')}
@@ -119,8 +117,7 @@ const CountdownTimer = ({toshowtimer, settoshowtimer}) => {
               justifyContent: 'center',
               alignItems: 'center',
               alignContent: 'center',
-            }}
-          >
+            }}>
             <View>
               <CountDown
                 until={Tostart}
@@ -132,6 +129,30 @@ const CountdownTimer = ({toshowtimer, settoshowtimer}) => {
                 onFinish={() => LoadMoreVibeCard()}
               />
             </View>
+          </View>
+          <View
+            style={{
+              width: Dimensions.get('window').width,
+              paddingHorizontal: 30,
+              paddingTop: 2,
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignContent: 'center',
+            }}>
+            <TouchableOpacity
+              onPress={() => {
+                navigate.navigate('premiumPlans');
+              }}
+              style={{
+                borderRadius: 8,
+                width: '100%',
+                alignItems: 'center',
+                backgroundColor: '#2A72DE',
+                paddingHorizontal: 20,
+                paddingVertical: 10,
+              }}>
+              <Text style={{color: '#ffffff', fontSize: 18}}> Get Premium</Text>
+            </TouchableOpacity>
           </View>
         </View>
       ) : (
