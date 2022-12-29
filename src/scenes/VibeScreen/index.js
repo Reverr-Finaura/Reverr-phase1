@@ -62,8 +62,7 @@ const Vibe = () => {
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
-        }}
-      >
+        }}>
         <TouchableOpacity onPress={() => navigation.navigate('LikeScreen')}>
           <View
             style={{
@@ -79,8 +78,7 @@ const Vibe = () => {
               borderBottomRightRadius: 10,
               borderTopLeftRadius: 10,
               borderTopRightRadius: 10,
-            }}
-          >
+            }}>
             <Text
               style={{
                 backgroundColor: '#000C12',
@@ -88,8 +86,7 @@ const Vibe = () => {
                 textAlign: 'center',
                 alignSelf: 'center',
                 fontWeight: '700',
-              }}
-            >
+              }}>
               likes
             </Text>
           </View>
@@ -469,8 +466,7 @@ const Vibe = () => {
                                   borderRadius: 100,
                                 }}
                                 source={{
-                                  uri:
-                                    'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
+                                  uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
                                 }}
                               />
                             )}
@@ -484,8 +480,7 @@ const Vibe = () => {
                                   fontSize: 22,
                                   fontFamily: 'poppins',
                                   fontWeight: 'bold',
-                                }}
-                              >
+                                }}>
                                 {item?.name}
                               </Text>
                               <Text
@@ -493,8 +488,7 @@ const Vibe = () => {
                                   color: '#fff',
                                   fontSize: 14,
                                   fontWeight: '400',
-                                }}
-                              >
+                                }}>
                                 {item?.designation || demoData[0].designation}
                               </Text>
                               <Text
@@ -502,8 +496,7 @@ const Vibe = () => {
                                   color: '#fff',
                                   fontSize: 14,
                                   fontWeight: '400',
-                                }}
-                              >
+                                }}>
                                 {item?.city || demoData[0].city}
                                 {' ,'}
                                 {item?.country || demoData[0].country}
@@ -518,8 +511,7 @@ const Vibe = () => {
                                   fontWeight: 'bold',
                                   marginTop: 10,
                                   marginHorizontal: 10,
-                                }}
-                              >
+                                }}>
                                 {item?.quote || demoData[0].quote}
                               </Text>
                             </View>
@@ -536,8 +528,7 @@ const Vibe = () => {
                                     marginTop: 6,
                                     fontWeight: '700',
                                     marginLeft: 15,
-                                  }}
-                                >
+                                  }}>
                                   What I am here for
                                 </Text>
                                 <View
@@ -546,8 +537,7 @@ const Vibe = () => {
                                     flexDirection: 'row',
                                     justifyContent: 'space-evenly',
                                     flexWrap: 'wrap',
-                                  }}
-                                >
+                                  }}>
                                   {item?.Vibe_Data
                                     ? item?.Vibe_Data?.Here_for?.map(item => {
                                         console.log(item);
@@ -564,8 +554,7 @@ const Vibe = () => {
                                               borderWidth: 3,
                                               borderColor: 'white',
                                               backgroundColor: '#0077B7',
-                                            }}
-                                          >
+                                            }}>
                                             <Text
                                               style={{
                                                 color: 'white',
@@ -573,8 +562,7 @@ const Vibe = () => {
                                                 fontFamily: 'Poppins',
                                                 fontSize: 13,
                                                 fontWeight: '500',
-                                              }}
-                                            >
+                                              }}>
                                               {item}
                                             </Text>
                                           </View>
@@ -613,8 +601,7 @@ const Vibe = () => {
                                               borderWidth: 3,
                                               borderColor: 'white',
                                               backgroundColor: '#0077B7',
-                                            }}
-                                          >
+                                            }}>
                                             <Text
                                               style={{
                                                 color: 'white',
@@ -622,8 +609,7 @@ const Vibe = () => {
                                                 fontFamily: 'Poppins',
                                                 fontSize: 13,
                                                 fontWeight: '500',
-                                              }}
-                                            >
+                                              }}>
                                               {item}
                                             </Text>
                                           </View>
@@ -951,8 +937,7 @@ const Vibe = () => {
               verticalSwipe={false}
               showSecondCard={true}
               backgroundColor={'#000C12'}
-              stackSize={2}
-            ></Swiper>
+              stackSize={2}></Swiper>
           </View>
         ) : (
           <>
@@ -977,8 +962,7 @@ const Vibe = () => {
           <IndividualHeaderLayout style={{flex: 1}}>
             <CustomPopup
               modalVisible={prevDailog}
-              setModalVisible={() => setPrevDailog(false)}
-            >
+              setModalVisible={() => setPrevDailog(false)}>
               <View>
                 <Text>Prev Data Show Here</Text>
               </View>
