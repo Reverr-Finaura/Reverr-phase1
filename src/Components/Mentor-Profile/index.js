@@ -23,11 +23,16 @@ export const MentorDetails = props => {
   const [pressed, setPressed] = useState(false);
   const state = useSelector(state => state.UserReducer);
   const selectedmentor = props.route.params.mentorDetails;
-  // console.log(selectedmentor, 'selected');
+ const [selectedmentorPrice,setSelectedmentorPrice]=useState()
 
   const Ratings = () => {
     return <Rating />;
   };
+  console.log(selectedmentor,"selectedmentordat")
+
+useEffect(()=>{
+  setSelectedmentorPrice((selectedmentor?.plans[0]/2)<=500?500:(selectedmentor?.plans[0]/2)>500&&(selectedmentor?.plans[0]/2)<=750?750:(selectedmentor?.plans[0]/2)>750&&(selectedmentor?.plans[0]/2)<=1000?1000:(selectedmentor?.plans[0]/2)>1000&&(selectedmentor?.plans[0]/2)<=1500?1500:(selectedmentor?.plans[0]/2)+50)
+},[])
 
   const renderOptions = index => {
     switch (index) {
@@ -113,9 +118,10 @@ export const MentorDetails = props => {
             title="Industry"
             subTitle={selectedmentor?.industry}
           />
+          {/* selectedmentor?.plans[0] */}
           <CustomTextCard
             title="Appoinment"
-            subTitle={'₹ ' + selectedmentor?.plans[0] + '/Hr'}
+            subTitle={'₹ ' + selectedmentorPrice + '/30 Min'}
           />
           <TouchableOpacity
             style={{
@@ -149,14 +155,15 @@ export const MentorDetails = props => {
           {renderOptions(optionIndex)}
         </View>
         <View style={{paddingBottom: 90}}>
-          <CustomButton
+
+          {selectedmentor?.mentorUniqueID?<CustomButton
             onPress={() => {
               navigaton.navigate('CalanderAppointments', {
                 mentor: selectedmentor,
               });
             }}
             title="Schedule"
-          />
+          />:null}
         </View>
       </ScrollView>
     )
