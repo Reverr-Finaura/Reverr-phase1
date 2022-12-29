@@ -9,15 +9,18 @@ import {
   TouchableOpacity,
   FlatList,
   Dimensions,
+  ActivityIndicator,
+  Modal,
 } from 'react-native';
 import {State} from 'react-native-gesture-handler';
 // import styles from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 import {useSelector} from 'react-redux';
+import {AppColors} from '../../utils';
 
 const PremiumPlans = () => {
   const navigate = useNavigation();
-
+  const [loader, setLoader] = useState(false);
   const CardRef = useRef();
   const [ListIndex, setListIndex] = useState(0);
   const onViewRef = useRef(({changed}) => {
@@ -48,6 +51,7 @@ const PremiumPlans = () => {
 
   const getPriceHandler = price => {
     console.log(price);
+    setLoader(true);
   };
   return (
     <SafeAreaView style={styles.mainContainer}>
@@ -209,6 +213,43 @@ const PremiumPlans = () => {
               <Text style={{color: '#ffffff', fontSize: 18}}> Get Premium</Text>
             </TouchableOpacity>
           </View> */}
+          <Modal
+            visible={loader}
+            onRequestClose={() => {
+              setLoader(false);
+            }}
+            transparent={true}>
+            <View
+              style={{
+                flex: 1,
+                backgroundColor: 'rgba(1, 1, 1, 0.08)',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <View
+                style={{
+                  backgroundColor: AppColors.FontsColor,
+                  width: '90%',
+                  alignItems: 'center',
+                  paddingVertical: '5%',
+                  borderRadius: 20,
+                }}>
+                <Text
+                  style={{
+                    color: AppColors.primarycolor,
+                    fontSize: 19,
+                    marginVertical: '10%',
+                  }}>
+                  Please Wait..
+                </Text>
+                <ActivityIndicator
+                  color={AppColors.ActiveColor}
+                  size={45}
+                  style={{marginBottom: '5%'}}
+                />
+              </View>
+            </View>
+          </Modal>
         </View>
       </View>
     </SafeAreaView>
