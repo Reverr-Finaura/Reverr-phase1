@@ -31,6 +31,7 @@ export const Mentor = () => {
   
   
   const state = useSelector(state => state.UserReducer);
+  console.log(state.user,"user")
   var mc = mentorCategory;
   var newlist = [];
   const getMentors = async () => {

@@ -76,6 +76,7 @@ const CalanderAppointments = props => {
   const [selectedTime3, setSelectedTime3] = useState(-1);
   //const {state, dispatch} = useContext(UserContext);
   const state = useSelector(state => state.UserReducer);
+ 
   const [availability, setAvailability] = useState([0, 1, 1, 1, 1, 1, 1]);
   const [pointDay, setPointDay] = useState(0);
   const [count, setCount] = useState(0);
