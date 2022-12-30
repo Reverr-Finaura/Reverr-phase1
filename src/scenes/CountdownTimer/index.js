@@ -8,19 +8,23 @@ import {useEffect} from 'react';
 import firestore from '@react-native-firebase/firestore';
 import {AppColors} from '../../utils';
 import {useNavigation} from '@react-navigation/native';
-const CountdownTimer = ({toshowtimer, settoshowtimer}) => {
+const CountdownTimer = ({toshowtimer, settoshowtimer,finalSetVibePremium}) => {
   const state = useSelector(state => state.UserReducer);
   const dispatch = useDispatch();
   const navigate = useNavigation();
   const [Tostart, settostart] = useState(0);
   const [show, setshow] = useState(false);
+  const[hasPremiumOfVibe,setHasPremiumOfVibe]=useState(false)
+  console.log("hasPremiumInTimer",hasPremiumOfVibe)
   const TimerCalculation = async () => {
+
     const data = await firestore()
       .collection('Users')
       .doc(state.user.email)
       .get();
 
     const ExpiredMilliSecond = data.data().CardsUpdatedTime;
+  
     console.log('expired', ExpiredMilliSecond);
     const CurrentTime = new Date();
     const CurrentTimeInMilliSecond = CurrentTime.getTime();
@@ -28,6 +32,7 @@ const CountdownTimer = ({toshowtimer, settoshowtimer}) => {
     const ToStartFrom = ExpiredMilliSecond - CurrentTimeInMilliSecond;
     console.log('yo', ToStartFrom);
     const ToSecond = Math.abs(ToStartFrom / 1000);
+    console.log("ToSecond",ToSecond)
     settostart(ToSecond);
     setshow(true);
   };
@@ -35,16 +40,56 @@ const CountdownTimer = ({toshowtimer, settoshowtimer}) => {
     TimerCalculation();
     return () => TimerCalculation();
   }, []);
-  console.log(Tostart);
+
   const LoadMoreVibeCard = async () => {
-    console.log('workinf');
+    console.log('loadingMoreCard');
     await firestore().collection('Users').doc(state.user.email).update({
       CardsExpiredTime: 0,
       CardsUpdatedTime: 0,
       AllCardsSwiped: false,
+      Number_Of_Swips_Done:0
     });
     settoshowtimer(false);
   };
+
+//CHECK FOR PREMIUM VIBE SUB
+useEffect(()=>{
+
+  const checkForVibePremium=async()=>{
+   await firestore()
+   .collection('Users')
+   .doc(state.user.email)
+   .get()
+   .then((data)=>{
+     
+     if(data._data.hasVibePremium){
+      if(data._data.hasVibePremium===true){
+       data._data.Premium.map((item)=>{
+         if(item.id==="VIBE"){
+           if(new Date(item.DateOfExpiry.seconds*1000)>=new Date()){
+             setHasPremiumOfVibe(true)
+           }
+         }
+       })
+      } 
+     }
+   })
+ } 
+   checkForVibePremium()
+ },[])
+ 
+//UPDATE TIMER IF USER HAS PREMIUM
+useEffect(()=>{
+  const undoTimer=async()=>{
+if(hasPremiumOfVibe===true){
+  console.log("yippee")
+  LoadMoreVibeCard()
+  finalSetVibePremium(true)
+}}
+undoTimer()
+},[hasPremiumOfVibe])
+
+
   return (
     <IndividualHeaderLayout>
       {show ? (
