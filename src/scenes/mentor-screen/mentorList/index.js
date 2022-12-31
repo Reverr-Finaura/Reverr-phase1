@@ -28,10 +28,11 @@ const MentorList = props => {
       .get()
       .then(res => {
         let AllUsers = res.docs.map(doc => doc.data());
-        let mentors = AllUsers.filter(item => item.userType === 'Mentor');
+        let mentors = AllUsers?.filter(item => item.userType === 'Mentor');
         setMentorsList(
-          mentors.filter(item => item.domain.includes(mentorCategory.title)),
+          mentors?.filter(item => item?.domain?.includes(mentorCategory.title)),
         );
+        //console.log(mentors.length, 'kkfh');
         setLoading(false);
       });
   };

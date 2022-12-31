@@ -16,6 +16,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {add_user} from '../../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
+import {useNavigation} from '@react-navigation/native';
 
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
@@ -77,6 +78,7 @@ const LoginScreen = ({navigation}) => {
         console.log(response);
         if (response.success == true) {
           setUserLogedin(true);
+
           if (response.userType == 'Individual') {
             return navigation.replace('IndividualTab');
           } else {

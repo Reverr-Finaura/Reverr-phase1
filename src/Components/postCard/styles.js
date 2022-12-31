@@ -23,7 +23,7 @@ const styles2 = StyleSheet.create({
   postCard: {
     marginTop: '4%',
     alignSelf: 'center',
-    width: 365,
+    width: '100%',
     borderRadius: 10,
 
     paddingHorizontal: '3%',
@@ -72,7 +72,7 @@ const styles2 = StyleSheet.create({
   IconContainer: {
     flexDirection: 'row',
     alignSelf: 'center',
-    paddingVertical: '2%',
+    paddingVertical: '4%',
     width: '100%',
     justifyContent: 'space-between',
   },
