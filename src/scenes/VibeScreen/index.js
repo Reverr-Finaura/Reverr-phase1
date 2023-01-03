@@ -52,11 +52,11 @@ const Vibe = () => {
   const Card_FireBase_Update = useRef(0);
   const [TotalSwipe, setTotalswipe] = useState(0);
   const [showCards, setshowCards] = useState(true);
-  const [hasPremiumOfVibe,setHasPremiumOfVibe]=useState(false)
-    console.log("hasPremiumm",hasPremiumOfVibe)
-  
+  const [hasPremiumOfVibe, setHasPremiumOfVibe] = useState(false);
+  console.log('hasPremiumm', hasPremiumOfVibe);
+
   const navigation = useNavigation();
- 
+
   // const isFocused = useIsFocused();
 
   const LikeTab = () => {
@@ -113,9 +113,9 @@ const Vibe = () => {
     const [moreInfo, setMoreInfo] = useState(-1);
     const [bool, setBool] = useState(false);
     const [cardindex, setcardindex] = useState(0);
-    
+
     const [swipe, setswipe] = useState(1);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [mainDialog, setMainDialog] = useState(false);
     const [prevDailog, setPrevDailog] = useState(false);
     const [prevData, setPrevData] = useState();
@@ -277,32 +277,31 @@ const Vibe = () => {
       console.log('after boarding screen here');
       setshowCards(true);
     }
-//CHECK WHETHER USER HAS PREMIUM SUBSCRIBE FOR VIBE
-useEffect(()=>{
-
- const checkForVibePremium=async()=>{
-  await firestore()
-  .collection('Users')
-  .doc(state.user.email)
-  .get()
-  .then((data)=>{
-    
-    if(data._data.hasVibePremium){
-     if(data._data.hasVibePremium===true){
-      data._data.Premium.map((item)=>{
-        if(item.id==="VIBE"){
-          if(new Date(item.DateOfExpiry.seconds*1000)>=new Date()){
-            setHasPremiumOfVibe(true)
-          }
-        }
-      })
-     } 
-    }
-  })
-} 
-  checkForVibePremium()
-},[])
-
+    //CHECK WHETHER USER HAS PREMIUM SUBSCRIBE FOR VIBE
+    useEffect(() => {
+      const checkForVibePremium = async () => {
+        await firestore()
+          .collection('Users')
+          .doc(state.user.email)
+          .get()
+          .then(data => {
+            if (data._data.hasVibePremium) {
+              if (data._data.hasVibePremium === true) {
+                data._data.Premium.map(item => {
+                  if (item.id === 'VIBE') {
+                    if (
+                      new Date(item.DateOfExpiry.seconds * 1000) >= new Date()
+                    ) {
+                      setHasPremiumOfVibe(true);
+                    }
+                  }
+                });
+              }
+            }
+          });
+      };
+      checkForVibePremium();
+    }, []);
 
     // Intial setting  here
     useEffect(() => {
@@ -314,6 +313,7 @@ useEffect(()=>{
           console.log(NewExpiredDate);
           console.log('Expiredtime', NewExpiredDate.getTime());
           const NewExpiredTime = NewExpiredDate.getTime();
+
           if (NewExpiredTime <= state.user.CardsUpdatedTime) {
             console.log('hello');
             settoshowtimer(true);
@@ -350,6 +350,7 @@ useEffect(()=>{
           .then(snapshot =>
             snapshot.docs.map(
               data => data.data().id,
+              setLoading(false),
               //  data=>   console.log('what is .dta.', typeof(data.data().id)),
             ),
           );
@@ -408,26 +409,31 @@ useEffect(()=>{
       return Afterquery;
     }, []);
 
+    //IF USER HAS VALID PREMIUM FOR VIBE
+    useEffect(() => {
+      const handleAllCardSwiped = async () => {
+        if (hasPremiumOfVibe === true) {
+          setcontinueshowingcard(true);
+          setAllswiped(false);
+          setcardindex(0);
+          settoshowtimer(false);
+          await firestore()
+            .collection('Users')
+            .doc(state.user.email)
+            .update({AllCardsSwiped: false, Number_Of_Swips_Done: 0});
+        }
+      };
 
-//IF USER HAS VALID PREMIUM FOR VIBE
-useEffect(()=>{
-  const handleAllCardSwiped=async()=>{
-if(hasPremiumOfVibe===true){
-  setcontinueshowingcard(true)
-  setAllswiped(false)
-  setcardindex(0)
-  settoshowtimer(false)
-  await firestore().collection('Users').doc(state.user.email).update({ AllCardsSwiped:false,Number_Of_Swips_Done:0})
-}}
-
-handleAllCardSwiped()
-},[hasPremiumOfVibe])
+      handleAllCardSwiped();
+    }, [hasPremiumOfVibe]);
 
     useEffect(() => {
       console.log('card ind q', cardindex);
 
       if (cardindex >= 5) {
-        if(hasPremiumOfVibe===true){return}
+        if (hasPremiumOfVibe === true) {
+          return;
+        }
         setcontinueshowingcard(false);
         console.log('card ind inside', cardindex);
         var DeletePassedUserReference = firestore()
@@ -474,199 +480,211 @@ handleAllCardSwiped()
         // }, ToChecKAfter);
       }
     }, [cardindex]);
-    console.log('card index changing', cardindex);
+    console.log('card index changing', loading);
 
     return (
       <>
-        {showCards ? (
-          <View style={styles.container}>
-            <Text style={{color: 'white'}}>HELOO</Text>
-            <Swiper
-              cards={cards}
-              renderCard={item => {
-                console.log('What is item dddd', item);
+        {loading ? (
+          <View>
+            <Text>Loading...</Text>
+          </View>
+        ) : (
+          <>
+            {showCards ? (
+              <View style={styles.container}>
+                <Text style={{color: 'white'}}>HELOO</Text>
+                <Swiper
+                  cards={cards}
+                  renderCard={item => {
+                    console.log('What is item dddd', item);
 
-                if (item && cards) {
-                  return (
-                    <View style={[styles.card]}>
-                      <ScrollView scrollEnabled={true} style={{flexGrow: 1}}>
-                        <View style={{flex: 1}}>
-                          <View style={{alignSelf: 'center'}}>
-                            {item.image ? (
-                              <Image
-                                style={{
-                                  width: 160,
-                                  alignSelf: 'center',
-                                  height: 160,
-                                  borderRadius: 100,
-                                }}
-                                source={{
-                                  uri: item.image,
-                                }}
-                              />
-                            ) : (
-                              <Image
-                                style={{
-                                  width: 160,
-                                  alignSelf: 'center',
-                                  height: 160,
-                                  borderRadius: 100,
-                                }}
-                                source={{
-                                  uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
-                                }}
-                              />
-                            )}
-                          </View>
+                    if (item && cards) {
+                      return (
+                        <View style={[styles.card]}>
+                          <ScrollView
+                            scrollEnabled={true}
+                            style={{flexGrow: 1}}>
+                            <View style={{flex: 1}}>
+                              <View style={{alignSelf: 'center'}}>
+                                {item.image ? (
+                                  <Image
+                                    style={{
+                                      width: 160,
+                                      alignSelf: 'center',
+                                      height: 160,
+                                      borderRadius: 100,
+                                    }}
+                                    source={{
+                                      uri: item.image,
+                                    }}
+                                  />
+                                ) : (
+                                  <Image
+                                    style={{
+                                      width: 160,
+                                      alignSelf: 'center',
+                                      height: 160,
+                                      borderRadius: 100,
+                                    }}
+                                    source={{
+                                      uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
+                                    }}
+                                  />
+                                )}
+                              </View>
 
-                          <View style={{display: 'flex'}}>
-                            <View style={{marginHorizontal: 10, marginTop: 10}}>
-                              <Text
-                                style={{
-                                  color: 'white',
-                                  fontSize: 22,
-                                  fontFamily: 'poppins',
-                                  fontWeight: 'bold',
-                                }}>
-                                {item?.name}
-                              </Text>
-                              <Text
-                                style={{
-                                  color: '#fff',
-                                  fontSize: 14,
-                                  fontWeight: '400',
-                                }}>
-                                {item?.designation || demoData[0].designation}
-                              </Text>
-                              <Text
-                                style={{
-                                  color: '#fff',
-                                  fontSize: 14,
-                                  fontWeight: '400',
-                                }}>
-                                {item?.city || demoData[0].city}
-                                {' ,'}
-                                {item?.country || demoData[0].country}
-                              </Text>
-                            </View>
-
-                            <View style={{marginTop: 25}}>
-                              <Text
-                                style={{
-                                  color: '#fff',
-                                  fontSize: 14,
-                                  fontWeight: 'bold',
-                                  marginTop: 10,
-                                  marginHorizontal: 10,
-                                }}>
-                                {item?.quote || demoData[0].quote}
-                              </Text>
-                            </View>
-                          </View>
-
-                          <View style={{flex: 1}}>
-                            <View>
-                              <View>
-                                <Text
-                                  style={{
-                                    color: '#0077B7',
-                                    fontFamily: 'Poppins',
-                                    fontSize: 18,
-                                    marginTop: 6,
-                                    fontWeight: '700',
-                                    marginLeft: 15,
-                                  }}>
-                                  What I am here for
-                                </Text>
+                              <View style={{display: 'flex'}}>
                                 <View
-                                  style={{
-                                    marginTop: 8,
-                                    flexDirection: 'row',
-                                    justifyContent: 'space-evenly',
-                                    flexWrap: 'wrap',
-                                  }}>
-                                  {item?.Vibe_Data
-                                    ? item?.Vibe_Data?.Here_for?.map(item => {
-                                        console.log(item);
-                                        return (
-                                          <View
-                                            style={{
-                                              boxShadow:
-                                                '4px -5px 5px 0px #00000040 inset',
+                                  style={{marginHorizontal: 10, marginTop: 10}}>
+                                  <Text
+                                    style={{
+                                      color: 'white',
+                                      fontSize: 22,
+                                      fontFamily: 'poppins',
+                                      fontWeight: 'bold',
+                                    }}>
+                                    {item?.name}
+                                  </Text>
+                                  <Text
+                                    style={{
+                                      color: '#fff',
+                                      fontSize: 14,
+                                      fontWeight: '400',
+                                    }}>
+                                    {item?.designation ||
+                                      demoData[0].designation}
+                                  </Text>
+                                  <Text
+                                    style={{
+                                      color: '#fff',
+                                      fontSize: 14,
+                                      fontWeight: '400',
+                                    }}>
+                                    {item?.city || demoData[0].city}
+                                    {' ,'}
+                                    {item?.country || demoData[0].country}
+                                  </Text>
+                                </View>
 
-                                              alignItems: 'center',
-                                              justifyContent: 'center',
-
-                                              borderRadius: 100 / 2,
-                                              borderWidth: 3,
-                                              borderColor: 'white',
-                                              backgroundColor: '#0077B7',
-                                            }}>
-                                            <Text
-                                              style={{
-                                                color: 'white',
-                                                textAlign: 'center',
-                                                fontFamily: 'Poppins',
-                                                fontSize: 13,
-                                                fontWeight: '500',
-                                              }}>
-                                              {item}
-                                            </Text>
-                                          </View>
-                                        );
-                                      })
-                                    : checkingdata?.Here_for?.map(item => {
-                                        console.log(item);
-                                        return (
-                                          <View
-                                            style={{
-                                              boxShadow:
-                                                '4px -5px 5px 0px #00000040 inset',
-                                              // width:
-                                              //   Dimensions.get('window').width /
-                                              //   4.3,
-                                              // height:
-                                              //   Dimensions.get('window')
-                                              //     .height / 7.5,
-                                              alignItems: 'center',
-                                              justifyContent: 'center',
-
-                                              // borderRadius: 100 / 2,
-                                              borderRadius:
-                                                Math.round(
-                                                  Dimensions.get('window')
-                                                    .width +
-                                                    Dimensions.get('window')
-                                                      .height,
-                                                ) / 2,
-                                              width:
-                                                Dimensions.get('window').width *
-                                                0.2,
-                                              height:
-                                                Dimensions.get('window').width *
-                                                0.2,
-                                              borderWidth: 3,
-                                              borderColor: 'white',
-                                              backgroundColor: '#0077B7',
-                                            }}>
-                                            <Text
-                                              style={{
-                                                color: 'white',
-                                                textAlign: 'center',
-                                                fontFamily: 'Poppins',
-                                                fontSize: 13,
-                                                fontWeight: '500',
-                                              }}>
-                                              {item}
-                                            </Text>
-                                          </View>
-                                        );
-                                      })}
+                                <View style={{marginTop: 25}}>
+                                  <Text
+                                    style={{
+                                      color: '#fff',
+                                      fontSize: 14,
+                                      fontWeight: 'bold',
+                                      marginTop: 10,
+                                      marginHorizontal: 10,
+                                    }}>
+                                    {item?.quote || demoData[0].quote}
+                                  </Text>
                                 </View>
                               </View>
-                            </View>
-                            <View>
-                              {/* <TouchableOpacity
+
+                              <View style={{flex: 1}}>
+                                <View>
+                                  <View>
+                                    <Text
+                                      style={{
+                                        color: '#0077B7',
+                                        fontFamily: 'Poppins',
+                                        fontSize: 18,
+                                        marginTop: 6,
+                                        fontWeight: '700',
+                                        marginLeft: 15,
+                                      }}>
+                                      What I am here for
+                                    </Text>
+                                    <View
+                                      style={{
+                                        marginTop: 8,
+                                        flexDirection: 'row',
+                                        justifyContent: 'space-evenly',
+                                        flexWrap: 'wrap',
+                                      }}>
+                                      {item?.Vibe_Data
+                                        ? item?.Vibe_Data?.Here_for?.map(
+                                            item => {
+                                              console.log(item);
+                                              return (
+                                                <View
+                                                  style={{
+                                                    boxShadow:
+                                                      '4px -5px 5px 0px #00000040 inset',
+
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+
+                                                    borderRadius: 100 / 2,
+                                                    borderWidth: 3,
+                                                    borderColor: 'white',
+                                                    backgroundColor: '#0077B7',
+                                                  }}>
+                                                  <Text
+                                                    style={{
+                                                      color: 'white',
+                                                      textAlign: 'center',
+                                                      fontFamily: 'Poppins',
+                                                      fontSize: 13,
+                                                      fontWeight: '500',
+                                                    }}>
+                                                    {item}
+                                                  </Text>
+                                                </View>
+                                              );
+                                            },
+                                          )
+                                        : checkingdata?.Here_for?.map(item => {
+                                            console.log(item);
+                                            return (
+                                              <View
+                                                style={{
+                                                  boxShadow:
+                                                    '4px -5px 5px 0px #00000040 inset',
+                                                  // width:
+                                                  //   Dimensions.get('window').width /
+                                                  //   4.3,
+                                                  // height:
+                                                  //   Dimensions.get('window')
+                                                  //     .height / 7.5,
+                                                  alignItems: 'center',
+                                                  justifyContent: 'center',
+
+                                                  // borderRadius: 100 / 2,
+                                                  borderRadius:
+                                                    Math.round(
+                                                      Dimensions.get('window')
+                                                        .width +
+                                                        Dimensions.get('window')
+                                                          .height,
+                                                    ) / 2,
+                                                  width:
+                                                    Dimensions.get('window')
+                                                      .width * 0.2,
+                                                  height:
+                                                    Dimensions.get('window')
+                                                      .width * 0.2,
+                                                  borderWidth: 3,
+                                                  borderColor: 'white',
+                                                  backgroundColor: '#0077B7',
+                                                }}>
+                                                <Text
+                                                  style={{
+                                                    color: 'white',
+                                                    textAlign: 'center',
+                                                    fontFamily: 'Poppins',
+                                                    fontSize: 13,
+                                                    fontWeight: '500',
+                                                  }}>
+                                                  {item}
+                                                </Text>
+                                              </View>
+                                            );
+                                          })}
+                                    </View>
+                                  </View>
+                                </View>
+                                <View>
+                                  {/* <TouchableOpacity
                                 onPress={() =>
                                   navigation.navigate('ShowMoreVibe', item)
                                 }
@@ -675,8 +693,8 @@ handleAllCardSwiped()
                                   Tap FOR MORE
                                 </Text>
                               </TouchableOpacity> */}
-                            </View>
-                            {/* <View
+                                </View>
+                                {/* <View
                               style={{
                                 marginTop: 3,
                                 flexDirection: 'row',
@@ -942,55 +960,57 @@ handleAllCardSwiped()
                                 </View>
                               </View>
                             </View> */}
-                          </View>
+                              </View>
+                            </View>
+                          </ScrollView>
                         </View>
-                      </ScrollView>
-                    </View>
-                  );
-                }
-              }}
-              onSwiped={cardindex => {
-                HandleOnSwiped(cardindex);
-              }}
-              onSwipedLeft={() => swipeLeft(cardindex)}
-              onSwipedRight={() => swipeRight(cardindex)}
-              onSwipedAll={() => swipedAll()}
-              onTapCard={() => Tapanywhere(cardindex)}
-              cardIndex={cardindex}
-              overlayLabels={{
-                left: {
-                  title: 'NOPE',
-                  style: {
-                    label: {
-                      textAlign: 'right',
-                      color: 'red',
-                      transform: [{rotate: '25deg'}],
+                      );
+                    }
+                  }}
+                  onSwiped={cardindex => {
+                    HandleOnSwiped(cardindex);
+                  }}
+                  onSwipedLeft={() => swipeLeft(cardindex)}
+                  onSwipedRight={() => swipeRight(cardindex)}
+                  onSwipedAll={() => swipedAll()}
+                  onTapCard={() => Tapanywhere(cardindex)}
+                  cardIndex={cardindex}
+                  overlayLabels={{
+                    left: {
+                      title: 'NOPE',
+                      style: {
+                        label: {
+                          textAlign: 'right',
+                          color: 'red',
+                          transform: [{rotate: '25deg'}],
+                        },
+                      },
                     },
-                  },
-                },
 
-                right: {
-                  title: 'LIKE',
+                    right: {
+                      title: 'LIKE',
 
-                  style: {
-                    label: {
-                      textAlign: 'left',
-                      color: 'green',
-                      transform: [{rotate: '-25deg'}],
+                      style: {
+                        label: {
+                          textAlign: 'left',
+                          color: 'green',
+                          transform: [{rotate: '-25deg'}],
+                        },
+                      },
                     },
-                  },
-                },
-              }}
-              verticalSwipe={false}
-              showSecondCard={true}
-              backgroundColor={'#000C12'}
-              stackSize={2}></Swiper>
-          </View>
-        ) : (
-          <>
-            <Text style={{color: 'white', textAlign: 'center'}}>
-              Loading Cards Please wait
-            </Text>
+                  }}
+                  verticalSwipe={false}
+                  showSecondCard={true}
+                  backgroundColor={'#000C12'}
+                  stackSize={2}></Swiper>
+              </View>
+            ) : (
+              <>
+                <Text style={{color: 'white', textAlign: 'center'}}>
+                  Loading Cards Please wait
+                </Text>
+              </>
+            )}
           </>
         )}
       </>
@@ -1004,7 +1024,6 @@ handleAllCardSwiped()
           toshowtimer={toshowtimer}
           settoshowtimer={settoshowtimer}
           finalSetVibePremium={setHasPremiumOfVibe}
-          
         />
       ) : (
         <>

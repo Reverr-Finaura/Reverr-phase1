@@ -17,7 +17,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 export const MentorCard = ({mentor}) => {
   const navigation = useNavigation();
-  const {name, industry, reviews, id} = mentor?.item;
+  const {name, industry, reviews, id, image} = mentor?.item;
   const {mentors} = useSelector(state => state.UserReducer);
   const dispatch = useDispatch();
   // console.log(mentor, 'mm');
@@ -26,6 +26,8 @@ export const MentorCard = ({mentor}) => {
     dispatch(setMentorProfile(mentor));
     navigation.navigate('MentorDetails');
   }; */
+
+  //console.log(image, 'mentors');
 
   return (
     <TouchableOpacity
@@ -46,10 +48,7 @@ export const MentorCard = ({mentor}) => {
         start={{x: 0, y: 1}}
         end={{x: 1, y: 0.5}}
         style={styles.Card}>
-        <Image
-          source={require('../../assets/images/MentorProfile.png')}
-          style={styles.dp}
-        />
+        <Image source={{uri: image}} style={styles.dp} />
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.industry}>{smallString(industry, 20)}</Text>
         <Rating />
@@ -73,5 +72,10 @@ const styles = StyleSheet.create({
   industry: {
     color: AppColors.infoFonts,
     marginVertical: '5%',
+  },
+  dp: {
+    height: 100,
+    width: 100,
+    borderRadius: 100,
   },
 });

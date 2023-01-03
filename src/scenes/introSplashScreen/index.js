@@ -44,7 +44,7 @@ const IntroSplash = () => {
               console.log(inst);
               dispatch(setUser(inst._data));
               if (inst?._data?.userType == 'Mentor') {
-                return navigation.replace("MentorBottomTab");
+                return navigation.replace('MentorBottomTab');
               } else {
                 //console.log(inst._data)
                 return navigation.replace('IndividualTab');
@@ -98,16 +98,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   Logo: {
-    marginTop: 100,
+    marginTop: Height / 5,
   },
   logoText: {
     color: 'gray',
     fontFamily: 'Poppins-Bold',
+    fontWeight: 'bold',
     fontSize: 35,
   },
   textContainer: {
     position: 'absolute',
-    marginTop: 320,
+    marginTop: Height / 1.4,
   },
 });
 

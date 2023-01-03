@@ -23,24 +23,22 @@ const LikeScreen = () => {
   const [error, seterror] = useState('');
   const [LikedData, setLikedData] = useState([{}]);
 
-  console.log('liked datta', LikedData.length);
+  // console.log('liked datta', LikedData.length);
   useEffect(() => {
     const GetLikedPeople = async () => {
       const Data = state.user.people_liked_me;
-      if (Data) {
-        Data.map(async item => {
-          const dataliked = await firestore()
-            .collection('Users')
-            .doc(item)
-            .get();
+      console.log(Data, 'liked');
+      Data?.map(async item => {
+        console.log(item, 'kjdksskjshf');
+        const dataliked = await firestore().collection('Users').doc(item).get();
 
-          const RecievedData = dataliked.data();
-          setLikedData(prev => [...prev, RecievedData]);
-        });
-      }
+        const RecievedData = dataliked.data();
+        // console.log(dataliked._data, 'kssk');
+        setLikedData(prev => [...prev, RecievedData]);
+      });
 
       setshow(true);
-      console.log('alll set');
+      console.log(LikedData, 'alll set');
     };
 
     GetLikedPeople();
@@ -59,8 +57,7 @@ const LikeScreen = () => {
       style={{
         backgroundColor: '#020E2C',
         height: Dimensions.get('window').height,
-      }}
-    >
+      }}>
       <View style={{marginTop: 20}}>
         <BackButton />
       </View>
@@ -69,8 +66,7 @@ const LikeScreen = () => {
           style={{
             alignSelf: 'center',
             marginTop: 10,
-          }}
-        ></View>
+          }}></View>
 
         {show && LikedData.length > 1 ? (
           <View
@@ -78,11 +74,10 @@ const LikeScreen = () => {
               flexDirection: 'row',
               flexWrap: 'wrap',
               justifyContent: 'space-around',
-            }}
-          >
-            {LikedData.map(data => {
-              console.log('what is name', data.email, '', data.id);
-              if (data.name === undefined) {
+            }}>
+            {LikedData?.map(data => {
+              //console.log('what is name', data.email, '', data.id);
+              if (data?.name === undefined) {
                 return;
               }
               return (
@@ -99,8 +94,7 @@ const LikeScreen = () => {
                       borderBottomLeftRadius: 10,
                       borderTopLeftRadius: 10,
                       backgroundColor: '#0077B7',
-                    }}
-                  >
+                    }}>
                     <View style={{marginTop: '5%', alignItems: 'center'}}>
                       <View>
                         <Image
@@ -121,8 +115,7 @@ const LikeScreen = () => {
                             fontSize: 18,
                             fontWeight: '700',
                             color: 'white',
-                          }}
-                        >
+                          }}>
                           {data.name}
                         </Text>
                       </View>
@@ -133,8 +126,7 @@ const LikeScreen = () => {
                             fontWeight: '500',
                             color: 'white',
                             flexWrap: 'wrap',
-                          }}
-                        >
+                          }}>
                           {data.about}
                         </Text>
                       </View>
@@ -145,7 +137,9 @@ const LikeScreen = () => {
             })}
           </View>
         ) : (
-          <></>
+          <>
+            <Text>skfjsfj</Text>
+          </>
         )}
       </View>
     </View>
