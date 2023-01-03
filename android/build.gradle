@@ -1,4 +1,4 @@
-import org.apache.tools.ant.taskdefs.condition.Os
+// import org.apache.tools.ant.taskdefs.condition.Os
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
@@ -6,8 +6,8 @@ buildscript {
     ext {
         buildToolsVersion = "31.0.0"
         minSdkVersion = 21
-        compileSdkVersion = 33
-        targetSdkVersion = 33
+        compileSdkVersion = 31
+        targetSdkVersion = 31
         ndkVersion = '21.4.7075529'
         supportLibVersion   = '29.0.3'
         playServicesVersion = '17.0.0' // or find latest version

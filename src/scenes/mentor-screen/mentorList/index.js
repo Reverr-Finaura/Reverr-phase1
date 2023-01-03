@@ -21,6 +21,9 @@ const MentorList = props => {
   const [mentorsList, setMentorsList] = useState();
   const [column, setColumn] = useState(2);
   const [loading, setLoading] = useState(false);
+
+  // console.log(mentorsList);
+
   const getMentors = async () => {
     setLoading(true);
     const snapshot = await firestore()

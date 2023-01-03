@@ -68,6 +68,7 @@ var fulldayarr = [
 var dayarr = ['S', 'M', 'T', 'W', 'Th', 'F', 'Sa'];
 
 const CalanderAppointments = props => {
+  console.log("props.route.params.mentor.plans[0]/2)*0.9",(props.route.params.mentor.plans[0]/2)*0.9)
   //const dates = props.route.params.dates;
   const [selectedDate, setSelectedDate] = useState(-1);
   const [selectedTime1, setSelectedTime1] = useState(-1);
@@ -75,6 +76,7 @@ const CalanderAppointments = props => {
   const [selectedTime3, setSelectedTime3] = useState(-1);
   //const {state, dispatch} = useContext(UserContext);
   const state = useSelector(state => state.UserReducer);
+  
   const [availability, setAvailability] = useState([0, 1, 1, 1, 1, 1, 1]);
   const [pointDay, setPointDay] = useState(0);
   const [count, setCount] = useState(0);
@@ -106,8 +108,16 @@ const CalanderAppointments = props => {
     } else {
       if (amt < 751) {
         amt = 750;
-      } else {
-        amt = 1000;
+      } else{
+        if(amt<1001){
+          amt=1000
+        }else{
+          if(amt<1501){
+            amt=1500
+          }else {
+            amt = amt+50;
+          }
+        }
       }
     }
     console.log(plan[0] / 2, amt, 'plans');
@@ -115,6 +125,7 @@ const CalanderAppointments = props => {
       orderId: oId,
       currency: 'INR',
       amount: amt,
+      // amount: 0.5,
       secret: '$2b$10$wu8ujbqHIaelkAQ.MfmRE.eVx.7iVOBfbyIbsD1zRSWvgzsFf4goe',
     };
 
@@ -125,9 +136,9 @@ const CalanderAppointments = props => {
     };
     setLoader(true);
     //<--- set true loader --->
-
+    // https://reverrserver.herokuapp.com/cftoken
     const res = await axios
-      .post('https://reverrserver.herokuapp.com/cftoken', order, {
+      .post('http://54.172.20.42:3000/cftoken', order, {
         headers: headers,
       })
       .then(res => {
@@ -149,7 +160,7 @@ const CalanderAppointments = props => {
       orderNote: ' ',
       notifyUrl: 'https://test.gocashfree.com/notify',
       customerName: state.user.name,
-      customerPhone: state.user.mobile,
+      customerPhone: state.user.mobile?state.user.mobile:state.user.phone,
       customerEmail: state.user.email,
     };
     console.log(map);
@@ -199,6 +210,8 @@ const CalanderAppointments = props => {
       });
 
     if (res.txStatus == 'SUCCESS') {
+      //INITIATE SPLIT PAYMENT
+      initiateSplitPayment(res).then(()=>{
       firestore()
         .collection('Users')
         .doc(props.route.params.mentor.email)
@@ -229,6 +242,7 @@ const CalanderAppointments = props => {
       //<--- add id to mentor's orders array --->
       //<--- add user's email to mentor's client --->
       //<--- add mentor's email to user's mentor's --->
+    })
     } else {
       // console.log('payment:' + id);
       Alert.alert('Payment failed!', 'try again ' + id, [
@@ -237,6 +251,30 @@ const CalanderAppointments = props => {
       //<--- Payment failed! try again --->
     }
   };
+
+// INITIATE SPLIT PAYMENT
+const initiateSplitPayment=async(payment)=>{
+  const headers = {
+    'Content-Type': 'application/json',
+    "X-Client-Id":"21235619dae90a7c71fa82b24c653212",
+    "X-Client-Secret":"b3fcd2aee2a93a9d7efedcd88936046a43506c5c",
+  };
+
+  const data=
+    {
+      "split": [
+        {
+              "vendorId":  props.route.params.mentor.mentorUniqueID,
+              "amount": (props.route.params.mentor.plans[0]/2)*0.9,
+              "percentage": null
+          }
+      ],
+      "splitType": "ORDER_AMOUNT"
+  }
+  
+  await axios.post(`https://api.cashfree.com/api/v2/easy-split/orders/${payment.orderId}/split`,data,{headers: headers}).then((res)=>{console.log("sucess split",res.data)}).catch((err)=>{console.log("Failure Split",err.message)})
+}
+
   var dt = new Date();
   var today = dt.getDate();
   var Tdays = new Date(dt.getFullYear(), dt.getMonth() + 1, 0).getDate();
@@ -269,7 +307,7 @@ const CalanderAppointments = props => {
       .collection('Users')
       .doc(props.route.params.mentor.email)
       .onSnapshot(documentSnapshot => {
-        console.log('User data: ', documentSnapshot.data());
+        console.log('Mentor data: ', documentSnapshot.data());
         setAvailability(documentSnapshot.data().availability);
         console.log(availability);
         var today = new Date();

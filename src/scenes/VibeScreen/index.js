@@ -52,7 +52,11 @@ const Vibe = () => {
   const Card_FireBase_Update = useRef(0);
   const [TotalSwipe, setTotalswipe] = useState(0);
   const [showCards, setshowCards] = useState(true);
+  const [hasPremiumOfVibe,setHasPremiumOfVibe]=useState(false)
+    console.log("hasPremiumm",hasPremiumOfVibe)
+  
   const navigation = useNavigation();
+ 
   // const isFocused = useIsFocused();
 
   const LikeTab = () => {
@@ -62,8 +66,7 @@ const Vibe = () => {
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
-        }}
-      >
+        }}>
         <TouchableOpacity onPress={() => navigation.navigate('LikeScreen')}>
           <View
             style={{
@@ -79,8 +82,7 @@ const Vibe = () => {
               borderBottomRightRadius: 10,
               borderTopLeftRadius: 10,
               borderTopRightRadius: 10,
-            }}
-          >
+            }}>
             <Text
               style={{
                 backgroundColor: '#000C12',
@@ -88,8 +90,7 @@ const Vibe = () => {
                 textAlign: 'center',
                 alignSelf: 'center',
                 fontWeight: '700',
-              }}
-            >
+              }}>
               likes
             </Text>
           </View>
@@ -112,6 +113,7 @@ const Vibe = () => {
     const [moreInfo, setMoreInfo] = useState(-1);
     const [bool, setBool] = useState(false);
     const [cardindex, setcardindex] = useState(0);
+    
     const [swipe, setswipe] = useState(1);
     const [loading, setLoading] = useState(true);
     const [mainDialog, setMainDialog] = useState(false);
@@ -275,6 +277,32 @@ const Vibe = () => {
       console.log('after boarding screen here');
       setshowCards(true);
     }
+//CHECK WHETHER USER HAS PREMIUM SUBSCRIBE FOR VIBE
+useEffect(()=>{
+
+ const checkForVibePremium=async()=>{
+  await firestore()
+  .collection('Users')
+  .doc(state.user.email)
+  .get()
+  .then((data)=>{
+    
+    if(data._data.hasVibePremium){
+     if(data._data.hasVibePremium===true){
+      data._data.Premium.map((item)=>{
+        if(item.id==="VIBE"){
+          if(new Date(item.DateOfExpiry.seconds*1000)>=new Date()){
+            setHasPremiumOfVibe(true)
+          }
+        }
+      })
+     } 
+    }
+  })
+} 
+  checkForVibePremium()
+},[])
+
 
     // Intial setting  here
     useEffect(() => {
@@ -380,10 +408,26 @@ const Vibe = () => {
       return Afterquery;
     }, []);
 
+
+//IF USER HAS VALID PREMIUM FOR VIBE
+useEffect(()=>{
+  const handleAllCardSwiped=async()=>{
+if(hasPremiumOfVibe===true){
+  setcontinueshowingcard(true)
+  setAllswiped(false)
+  setcardindex(0)
+  settoshowtimer(false)
+  await firestore().collection('Users').doc(state.user.email).update({ AllCardsSwiped:false,Number_Of_Swips_Done:0})
+}}
+
+handleAllCardSwiped()
+},[hasPremiumOfVibe])
+
     useEffect(() => {
       console.log('card ind q', cardindex);
 
-      if (cardindex == 5) {
+      if (cardindex >= 5) {
+        if(hasPremiumOfVibe===true){return}
         setcontinueshowingcard(false);
         console.log('card ind inside', cardindex);
         var DeletePassedUserReference = firestore()
@@ -469,8 +513,7 @@ const Vibe = () => {
                                   borderRadius: 100,
                                 }}
                                 source={{
-                                  uri:
-                                    'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
+                                  uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
                                 }}
                               />
                             )}
@@ -484,8 +527,7 @@ const Vibe = () => {
                                   fontSize: 22,
                                   fontFamily: 'poppins',
                                   fontWeight: 'bold',
-                                }}
-                              >
+                                }}>
                                 {item?.name}
                               </Text>
                               <Text
@@ -493,8 +535,7 @@ const Vibe = () => {
                                   color: '#fff',
                                   fontSize: 14,
                                   fontWeight: '400',
-                                }}
-                              >
+                                }}>
                                 {item?.designation || demoData[0].designation}
                               </Text>
                               <Text
@@ -502,8 +543,7 @@ const Vibe = () => {
                                   color: '#fff',
                                   fontSize: 14,
                                   fontWeight: '400',
-                                }}
-                              >
+                                }}>
                                 {item?.city || demoData[0].city}
                                 {' ,'}
                                 {item?.country || demoData[0].country}
@@ -518,8 +558,7 @@ const Vibe = () => {
                                   fontWeight: 'bold',
                                   marginTop: 10,
                                   marginHorizontal: 10,
-                                }}
-                              >
+                                }}>
                                 {item?.quote || demoData[0].quote}
                               </Text>
                             </View>
@@ -536,8 +575,7 @@ const Vibe = () => {
                                     marginTop: 6,
                                     fontWeight: '700',
                                     marginLeft: 15,
-                                  }}
-                                >
+                                  }}>
                                   What I am here for
                                 </Text>
                                 <View
@@ -546,8 +584,7 @@ const Vibe = () => {
                                     flexDirection: 'row',
                                     justifyContent: 'space-evenly',
                                     flexWrap: 'wrap',
-                                  }}
-                                >
+                                  }}>
                                   {item?.Vibe_Data
                                     ? item?.Vibe_Data?.Here_for?.map(item => {
                                         console.log(item);
@@ -564,8 +601,7 @@ const Vibe = () => {
                                               borderWidth: 3,
                                               borderColor: 'white',
                                               backgroundColor: '#0077B7',
-                                            }}
-                                          >
+                                            }}>
                                             <Text
                                               style={{
                                                 color: 'white',
@@ -573,8 +609,7 @@ const Vibe = () => {
                                                 fontFamily: 'Poppins',
                                                 fontSize: 13,
                                                 fontWeight: '500',
-                                              }}
-                                            >
+                                              }}>
                                               {item}
                                             </Text>
                                           </View>
@@ -613,8 +648,7 @@ const Vibe = () => {
                                               borderWidth: 3,
                                               borderColor: 'white',
                                               backgroundColor: '#0077B7',
-                                            }}
-                                          >
+                                            }}>
                                             <Text
                                               style={{
                                                 color: 'white',
@@ -622,8 +656,7 @@ const Vibe = () => {
                                                 fontFamily: 'Poppins',
                                                 fontSize: 13,
                                                 fontWeight: '500',
-                                              }}
-                                            >
+                                              }}>
                                               {item}
                                             </Text>
                                           </View>
@@ -951,8 +984,7 @@ const Vibe = () => {
               verticalSwipe={false}
               showSecondCard={true}
               backgroundColor={'#000C12'}
-              stackSize={2}
-            ></Swiper>
+              stackSize={2}></Swiper>
           </View>
         ) : (
           <>
@@ -971,14 +1003,15 @@ const Vibe = () => {
         <CountdownTimer
           toshowtimer={toshowtimer}
           settoshowtimer={settoshowtimer}
+          finalSetVibePremium={setHasPremiumOfVibe}
+          
         />
       ) : (
         <>
           <IndividualHeaderLayout style={{flex: 1}}>
             <CustomPopup
               modalVisible={prevDailog}
-              setModalVisible={() => setPrevDailog(false)}
-            >
+              setModalVisible={() => setPrevDailog(false)}>
               <View>
                 <Text>Prev Data Show Here</Text>
               </View>

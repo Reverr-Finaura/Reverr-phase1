@@ -1,3 +1,4 @@
+
 import {
     View,
     Text,
@@ -31,6 +32,7 @@ import axios from 'axios';
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
+  // eslint-disable-next-line prettier/prettier
   }
   
   const Plans = props => {
@@ -90,7 +92,7 @@ import axios from 'axios';
         orderNote: ' ',
         notifyUrl: 'https://test.gocashfree.com/notify',
         customerName: state.user.name,
-        customerPhone: state.user.mobile,
+        customerPhone: state.user.mobile?state.user.mobile:state.user.phone,
         customerEmail: state.user.email,
       };
       RNPgReactNativeSDK.startPaymentWEB(map, 'PROD', result => {
