@@ -156,14 +156,14 @@ useEffect(()=>{
         </View>
         <View style={{paddingBottom: 90}}>
 
-          {selectedmentor?.mentorUniqueID?<CustomButton
+         <CustomButton
             onPress={() => {
               navigaton.navigate('CalanderAppointments', {
                 mentor: selectedmentor,
               });
             }}
             title="Schedule"
-          />:null}
+          />
         </View>
       </ScrollView>
     )
