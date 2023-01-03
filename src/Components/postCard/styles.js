@@ -35,6 +35,9 @@ const styles2 = StyleSheet.create({
   creatorDetails: {
     flexDirection: 'row',
     alignItems: 'center',
+    borderBottomColor: 'gray',
+    borderBottomWidth: 1,
+    paddingVertical: '3%',
     justifyContent: 'space-between',
   },
   dp: {
@@ -60,7 +63,7 @@ const styles2 = StyleSheet.create({
     borderRadius: 10,
   },
   details: {
-    marginTop: '3%',
+    marginVertical: '5%',
     color: AppColors.FontsColor,
     fontFamily: 'Poppins-Regular',
     fontSize: 16,
@@ -72,7 +75,11 @@ const styles2 = StyleSheet.create({
   IconContainer: {
     flexDirection: 'row',
     alignSelf: 'center',
-    paddingVertical: '4%',
+    paddingVertical: '0%',
+    borderTopColor: 'gray',
+    borderTopWidth: 1,
+    borderBottomColor: AppColors.FontsColor,
+    borderBottomWidth: 1,
     width: '100%',
     justifyContent: 'space-between',
   },

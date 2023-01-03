@@ -27,7 +27,7 @@ export const MentorCard = ({mentor}) => {
     navigation.navigate('MentorDetails');
   }; */
 
-  console.log(image, 'mentors');
+  //console.log(image, 'mentors');
 
   return (
     <TouchableOpacity

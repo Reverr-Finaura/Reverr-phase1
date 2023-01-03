@@ -353,14 +353,17 @@ const PostCard = ({postData}) => {
         )}
         <View>
           {item.image === null || '' ? (
-            <View style={{paddingHorizontal: '5%', paddingVertical: '4%'}}>
+            <View style={{paddingHorizontal: '5%'}}>
               <Text style={styles2.details}>{item.text}</Text>
             </View>
           ) : (
             <View>
               <Text style={styles2.details}>{item.text}</Text>
               <View
-                style={[styles2.image, {overflow: 'hidden', marginTop: '2%'}]}>
+                style={[
+                  styles2.image,
+                  {overflow: 'hidden', marginBottom: '6%'},
+                ]}>
                 <Image
                   style={{width: '100%', height: '100%'}}
                   source={{uri: item.image}}
@@ -373,8 +376,6 @@ const PostCard = ({postData}) => {
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <TouchableOpacity
               style={{
-                borderTopColor: 'white',
-                borderTopWidth: 2,
                 paddingTop: '6%',
               }}
               onPress={() => likePost(item.id, item)}>
@@ -395,8 +396,6 @@ const PostCard = ({postData}) => {
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <TouchableOpacity
               style={{
-                borderTopColor: 'white',
-                borderTopWidth: 2,
                 paddingTop: '6%',
               }}
               onPress={() => {
@@ -418,8 +417,6 @@ const PostCard = ({postData}) => {
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <TouchableOpacity
               style={{
-                borderTopColor: 'white',
-                borderTopWidth: 2,
                 paddingTop: '6%',
               }}
               /*  onPress={() => {
@@ -457,13 +454,6 @@ const PostCard = ({postData}) => {
             </TouchableOpacity>
           </View>
         </View>
-
-        <View
-          style={{
-            width: '100%',
-            height: 1.5,
-            backgroundColor: AppColors.FontsColor,
-          }}></View>
       </View>
     );
   };

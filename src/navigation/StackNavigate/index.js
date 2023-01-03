@@ -22,6 +22,7 @@ import {
   Requests,
   CountdownTimer,
   LikeScreen,
+  ScheduleAppointment,
 } from '../../scenes';
 import ThanksScreen from '../../scenes/thanks-screen';
 import {
@@ -115,6 +116,10 @@ const StackNavigate = props => {
       <Stack.Screen
         name="CalanderAppointments"
         component={CalanderAppointments}
+      />
+      <Stack.Screen
+        name="scheduleappointment"
+        component={ScheduleAppointment}
       />
       <Stack.Screen name="EditCalender" component={EditCalender} />
       {/* <Stack.Screen name="Messages" component={}/> */}
