@@ -32,8 +32,9 @@ const MentorList = props => {
       .then(res => {
         let AllUsers = res.docs.map(doc => doc.data());
         let mentors = AllUsers.filter(item => item.userType === 'Mentor');
+       let uniqueMentor=mentors.filter(item => item.mentorUniqueID);
         setMentorsList(
-          mentors?.filter(item => item?.domain?.includes(mentorCategory.title)),
+          uniqueMentor?.filter(item => item?.domain?.includes(mentorCategory.title)),
         );
         //console.log(mentors.length, 'kkfh');
         setLoading(false);
