@@ -80,11 +80,38 @@ const calendlyData=[
         link:"https://calendly.com/vaibhav-do/mentorship-session"
     },
     {id:17,
-        name:"",
-        link:""
+        name:"Subhajit Bhattacharya",
+        email:"subhajit.bhattacharya07@gmail.com",
+        link:"https://calendly.com/subhajitbhattacharya"
     },
     {id:18,
         name:"",
+        email:"",
+        link:""
+    },
+    {id:19,
+        name:"",
+        email:"",
+        link:""
+    },
+    {id:20,
+        name:"",
+        email:"",
+        link:""
+    },
+    {id:21,
+        name:"",
+        email:"",
+        link:""
+    },
+    {id:22,
+        name:"",
+        email:"",
+        link:""
+    },
+    {id:23,
+        name:"",
+        email:"",
         link:""
     },
 

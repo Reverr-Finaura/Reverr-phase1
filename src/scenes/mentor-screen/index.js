@@ -31,7 +31,7 @@ export const Mentor = () => {
   
   
   const state = useSelector(state => state.UserReducer);
-  console.log(state.user,"user")
+  // console.log(state.user,"user")
   var mc = mentorCategory;
   var newlist = [];
   const getMentors = async () => {
@@ -71,7 +71,7 @@ if(mentor?.name?.toLowerCase()===details?.mentorName?.toLowerCase()){
   })
   
   ultimateArr?.map((item)=>{
-    accMentorName.push(item.name)
+    accMentorName.push(item.email)
   })
   
   setvendorArray(ultimateArr)
