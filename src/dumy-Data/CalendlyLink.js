@@ -27,7 +27,7 @@ const calendlyData=[
     {id:6,
         name:"Kishita Thakar",
         email:"askkareerkite@gmail.com",
-        link:"https://calendly.com/kishita/60min"
+        link:"https://calendly.com/kishita"
     },
     {id:7,
         name:"MAHESH SHIVANNA",

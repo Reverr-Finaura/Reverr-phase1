@@ -71,7 +71,7 @@ if(mentor?.name?.toLowerCase()===details?.mentorName?.toLowerCase()){
   })
   
   ultimateArr?.map((item)=>{
-    accMentorName.push(item.email)
+    accMentorName.push(item.name)
   })
   
   setvendorArray(ultimateArr)
