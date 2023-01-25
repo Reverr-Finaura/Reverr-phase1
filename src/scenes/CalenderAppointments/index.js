@@ -138,7 +138,7 @@ const CalanderAppointments = props => {
     //<--- set true loader --->
     // https://reverrserver.herokuapp.com/cftoken
     const res = await axios
-      .post('http://54.172.20.42:3000/cftoken', order, {
+      .post('https://server.reverr.io/cftoken', order, {
         headers: headers,
       })
       .then(res => {

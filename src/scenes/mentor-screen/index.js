@@ -78,12 +78,6 @@ if(mentor?.name?.toLowerCase()===details?.mentorName?.toLowerCase()){
  
  console.log("accMentorName",accMentorName)
 
-
-//NEVER USE THIS!!!
-//  ultimateArr.map((item)=>{
-//   firestore().collection('AccountDataTesting').doc(item.email).set({...item,mentorUniqueID:uuid().slice(0,16)}).then(() => {console.log('User added!');
-//   })
-// })
 }
 
 

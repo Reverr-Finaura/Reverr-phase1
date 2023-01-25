@@ -53,6 +53,9 @@ const handlePrePayment=async()=>{
   
   let oId = makeid(12);
   let amt = selectedmentor?.plans[0] / 2;
+  if(amt<5){
+    amt=amt
+  }else{
     if (amt < 501) {
       amt = 500;
     } else {
@@ -70,6 +73,7 @@ const handlePrePayment=async()=>{
         }
       }
     }
+  }
   const order = {
     orderId: oId,
     currency: 'INR',
@@ -85,7 +89,7 @@ console.log("mentorUniqueID",selectedmentor.mentorUniqueID)
   setLoader(true);
   //<--- set true loader --->
   const res = await axios
-    .post('http://54.172.20.42:3000/cftoken', order, {
+    .post('https://server.reverr.io/cftoken', order, {
       headers: headers,
     })
     .then(res => {
@@ -235,6 +239,7 @@ const initiateSplitPayment=async(payment)=>{
 
   useEffect(() => {
     setSelectedmentorPrice(
+      selectedmentor?.plans[0] / 2 <= 5?selectedmentor?.plans[0] / 2:
       selectedmentor?.plans[0] / 2 <= 500
         ? 500
         : selectedmentor?.plans[0] / 2 > 500 &&
