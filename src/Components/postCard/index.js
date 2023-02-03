@@ -255,18 +255,17 @@ const PostCard = ({postData}) => {
               <Image style={styles2.dp} source={{uri: item.postedby.image}} />
             </TouchableOpacity>
             <View style={{marginStart: '3%'}}>
-              <Text style={styles2.name}>
-                {item.postedby.name.charAt(0).toUpperCase() +
-                  item.postedby.name.slice(1)}
+              <Text style={[styles2.name, {textTransform: 'capitalize'}]}>
+                {item.postedby.name}
               </Text>
               <Text
                 style={{
                   color: AppColors.FontsColor,
                   fontSize: 12,
-                  textDecorationLine: 'underline',
+
                   textDecorationColor: AppColors.FontsColor,
                 }}>
-                {item.postedby.industry}
+                {item.postedby.designation}
               </Text>
             </View>
           </View>

@@ -51,7 +51,7 @@ const Vibe = () => {
   const [toshowtimer, settoshowtimer] = useState(false);
   const Card_FireBase_Update = useRef(0);
   const [TotalSwipe, setTotalswipe] = useState(0);
-  const [showCards, setshowCards] = useState(true);
+  const [showCards, setshowCards] = useState(false);
   const [hasPremiumOfVibe, setHasPremiumOfVibe] = useState(false);
   console.log('hasPremiumm', hasPremiumOfVibe);
 
@@ -228,6 +228,7 @@ const Vibe = () => {
     };
 
     const [cards, setcards] = useState([]);
+
     const swipedAll = () => {
       console.log('swiped all');
       setAllswiped(true);
@@ -329,9 +330,9 @@ const Vibe = () => {
           .get()
           .then(doc => {
             if (doc.data().Vibe_Data) {
-              setshowCards(true);
               setTotalswipe(doc.data().Number_Of_Swips_Done);
-              console.log('yoooi', showCards);
+              // setshowCards(true);
+              // console.log('yoooi', showCards);
             }
           });
         console.log('noo');
@@ -383,6 +384,7 @@ const Vibe = () => {
                   ...doc.data(),
                 })),
             );
+            setshowCards(true);
           });
         }
 
@@ -401,6 +403,7 @@ const Vibe = () => {
                   ...doc.data(),
                 })),
               );
+              setshowCards(true);
             });
         }
       };
@@ -481,7 +484,8 @@ const Vibe = () => {
       }
     }, [cardindex]);
     console.log('card index changing', loading);
-
+    // console.log(showCards);/
+    // console.log(cards);
     return (
       <>
         {loading ? (
@@ -490,7 +494,7 @@ const Vibe = () => {
           </View>
         ) : (
           <>
-            {showCards ? (
+            {cards.length !== 0 ? (
               <View style={styles.container}>
                 <Text style={{color: 'white'}}>HELOO</Text>
                 <Swiper
@@ -1006,9 +1010,9 @@ const Vibe = () => {
               </View>
             ) : (
               <>
-                <Text style={{color: 'white', textAlign: 'center'}}>
-                  Loading Cards Please wait
-                </Text>
+                <View style={styles.loader}>
+                  <ActivityIndicator size="large" color="#8AB9FF" />
+                </View>
               </>
             )}
           </>
@@ -1117,6 +1121,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     transform: [{rotate: '30deg'}],
     zIndex: 3,
+  },
+  loader: {
+    width: '100%',
+    height: '80%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
