@@ -35,7 +35,7 @@ const ProfileDetailsBox = ({userData}) => {
             marginStart: '7%',
             marginVertical: '2%',
           }}>
-          {userData.designation && userData.designation}
+          {userData.designation?userData.designation:"N?A"}
         </Text>
       </View>
       {/* <View style={styles.container}>
@@ -204,7 +204,7 @@ const ProfileDetailsBox = ({userData}) => {
             marginStart: '7%',
             marginVertical: '2%',
           }}>
-          {userData.industry}
+          {userData.industry?userData.industry:"N/A"}
         </Text>
       </View>
       <View style={styles.container}>
@@ -245,7 +245,7 @@ const ProfileDetailsBox = ({userData}) => {
             }}>
             <Icon name="ellipse" size={10} color={AppColors.ActiveColor} />
             <Text style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
-              Male
+              {userData.gender?userData.gender:"N/A"}
             </Text>
           </View>
         </View>
@@ -267,7 +267,7 @@ const ProfileDetailsBox = ({userData}) => {
             }}>
             <Icon name="ellipse" size={10} color={AppColors.ActiveColor} />
             <Text style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
-              India, Delhi
+             {userData.state?userData.state:"N/A"}
             </Text>
           </View>
         </View>
@@ -278,7 +278,7 @@ const ProfileDetailsBox = ({userData}) => {
               fontWeight: 'bold',
               fontSize: 16,
             }}>
-            Hometown
+            Country
           </Text>
           <View
             style={{
@@ -289,7 +289,7 @@ const ProfileDetailsBox = ({userData}) => {
             }}>
             <Icon name="ellipse" size={10} color={AppColors.ActiveColor} />
             <Text style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
-              New delhi, India
+              {userData.country?userData.country:"N/A"}
             </Text>
           </View>
         </View>
@@ -355,11 +355,14 @@ const ProfileDetailsBox = ({userData}) => {
             alignItems: 'center',
             paddingStart: '7%',
           }}>
+           {userData.linkedinLink===""&&userData.twitterLink===""?<Text style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
+              N/A
+            </Text>:null}
           <TouchableOpacity>
-            <Image source={require('../../assets/images/linkdin.png')} />
+            {userData.linkedinLink!==""?<Image source={require('../../assets/images/linkdin.png')} />:null}
           </TouchableOpacity>
           <TouchableOpacity>
-            <Image source={require('../../assets/images/twitter.png')} />
+           {userData.twitterLink!==""?<Image source={require('../../assets/images/twitter.png')} />:null} 
           </TouchableOpacity>
         </View>
       </View>

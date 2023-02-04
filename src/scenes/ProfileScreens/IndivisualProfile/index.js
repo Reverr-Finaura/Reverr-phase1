@@ -32,6 +32,7 @@ const IndividuaProfile = props => {
   const [_id, set_Id] = useState('');
   const dispatch = useDispatch();
   const [postData, setPostData] = useState('');
+console.log("state",state.user)
 
   // console.log(state.Rooms.postedby === state.user.email, 'RoomsData');
 
@@ -143,17 +144,17 @@ const IndividuaProfile = props => {
               }}>
               <View style={{alignItems: 'center'}}>
                 <Text style={{color: AppColors.FontsColor}}>Gender</Text>
-                <Text style={{color: AppColors.FontsColor}}>Male</Text>
+                <Text style={{color: AppColors.FontsColor}}>{state.user.gender?state.user.gender:"N/A"}</Text>
               </View>
               <View style={{alignItems: 'center'}}>
-                <Text style={{color: AppColors.FontsColor}}>Hometown</Text>
+                <Text style={{color: AppColors.FontsColor}}>Country</Text>
                 <Text style={{color: AppColors.FontsColor}}>
-                  New Delhi, India
+                {state.user.country?state.user.country:"N/A"}
                 </Text>
               </View>
               <View style={{alignItems: 'center'}}>
                 <Text style={{color: AppColors.FontsColor}}>Location</Text>
-                <Text style={{color: AppColors.FontsColor}}>New Delhi</Text>
+                <Text style={{color: AppColors.FontsColor}}> {state.user.state?state.user.state:"N/A"}</Text>
               </View>
             </View>
           </View>
@@ -287,8 +288,7 @@ const IndividuaProfile = props => {
                   textAlign: 'center',
                   paddingHorizontal: '5%',
                 }}>
-                I am a marketing research , looking for mentorship, I am an IIM
-                Bangalore graduate and have worked with Fintech for 5 years.
+                {state.user.about?state.user.about:"N/A"}
               </Text>
             </LinearGradient>
             <ProfileDetailsBox userData={state.user} />
