@@ -73,23 +73,30 @@ const LoginScreen = ({navigation}) => {
         setpasserror(true);
       } else {
         //setUserLogedin(false);
-        setUserLogedin(false);
-        var response = await loginUser(email.trim(), password);
-        console.log(response);
-        if (response.success == true) {
-          setUserLogedin(true);
-
-          if (response.userType == 'Individual') {
-            return navigation.replace('IndividualTab');
-          } else {
-            console.log('I am an Mentor');
-            return navigation.replace('MentorBottomTab');
-          }
-        } else if (response.failiure == true) {
-          setUserLogedin(true);
-          alert('Invalid Credentials!');
-          //navigation.replace('Login')
-        }
+        firestore()
+          .collection('Users')
+          .doc(email.trim())
+          .get()
+          .then(async documentSnapshot => {
+            if (documentSnapshot.exists) {
+              if (documentSnapshot.data().userType === 'Individual') {
+                setUserLogedin(false);
+                var response = await loginUser(email.trim(), password);
+                if (response.success == true) {
+                  setUserLogedin(true);
+                  navigation.replace('IndividualTab');
+                } else if (response.failiure == true) {
+                  setUserLogedin(true);
+                  alert('Invalid Credentials!');
+                  //navigation.replace('Login')
+                }
+              }else{
+                alert("User Not Register")
+              }
+            }else{
+              alert("User not Register")
+            }
+          });
       }
     }
   };
