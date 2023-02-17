@@ -37,7 +37,6 @@ export default function LikeMatchScreen({navigation}) {
           title={'Start messaging'}
           marginLeft={20}
           marginRight={20}
-          
         />
         <Text style={{textAlign:"center",marginTop:10,}}>Go Back</Text>
       </View>
