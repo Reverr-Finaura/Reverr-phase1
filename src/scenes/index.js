@@ -55,6 +55,8 @@ import {CountdownTimer} from './CountdownTimer';
 import {LikeScreen} from './LikesScreen';
 import PremiumPlans from './PremiumPlans';
 import ScheduleAppointment from './scheduleappointment';
+import LikeMatchScreen from './LikeMatchScreen';
+import SuperLikeScreen from './SuperLikeScreen';
 export {
   ArticalDetails,
   FundingScreen,
@@ -111,4 +113,6 @@ export {
   LikeScreen,
   PremiumPlans,
   ScheduleAppointment,
+  LikeMatchScreen,
+  SuperLikeScreen
 };

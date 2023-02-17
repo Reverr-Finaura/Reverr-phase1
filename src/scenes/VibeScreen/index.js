@@ -11,9 +11,13 @@ import {
   Button,
   ImageBackground,
   TouchableOpacity,
+  Modal,
 } from 'react-native';
 import Swiper from 'react-native-deck-swiper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Entypo from 'react-native-vector-icons/Entypo';
+import MultiSelect from 'react-native-multiple-select';
 
 // import { useNavigation } from '@react-navigation/native';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
@@ -41,6 +45,46 @@ import CountDown from 'react-native-countdown-component';
 import {firebase} from '@react-native-firebase/database';
 import {CountdownTimer} from '../CountdownTimer';
 import {useLayoutEffect} from 'react';
+import {blue} from 'react-native-redash';
+import {black} from 'react-native-paper/lib/typescript/styles/colors';
+const totalScore = [
+  {
+    title: 'Juice',
+    detial: 'Grapefruit Juice.',
+    price: '170',
+    image: 'https://static.toiimg.com/photo/msid-82736662/82736662.jpg?896468',
+    orderID: '46456',
+  },
+  {
+    title: 'Juice',
+    detial: 'Grapefruit Juice.',
+    price: '170',
+    image: 'https://static.toiimg.com/photo/msid-82736662/82736662.jpg?896468',
+    orderID: '46456',
+  },
+  {
+    title: 'Noodles',
+    detial: 'Prawns Wrapped In Noodles. ..',
+    price: '500',
+    image:
+      'https://www.foodiecrush.com/wp-content/uploads/2019/07/Pomodoro-Sauce-foodiecrush.com-018-500x500.jpg',
+    orderID: '34546',
+  },
+  {
+    title: 'Pasta',
+    detial: 'Pasta alla Carbonara. ...',
+    price: '1000',
+    image: 'https://static.toiimg.com/thumb/57730102.cms?width=1200&height=900',
+    orderID: '4747',
+  },
+  {
+    title: 'Pasta',
+    detial: 'Pasta alla Carbonara. ...',
+    price: '1000',
+    image: 'https://static.toiimg.com/thumb/57730102.cms?width=1200&height=900',
+    orderID: '4747',
+  },
+];
 const Vibe = () => {
   const [continueshowingcard, setcontinueshowingcard] = useState(true);
   const [prevDailog, setPrevDailog] = useState(false);
@@ -54,7 +98,53 @@ const Vibe = () => {
   const [showCards, setshowCards] = useState(false);
   const [hasPremiumOfVibe, setHasPremiumOfVibe] = useState(false);
   console.log('hasPremiumm', hasPremiumOfVibe);
+  const [selected1, setselected1] = useState([]);
 
+  const [filter, setFilter] = useState(false);
+  const [selected2, setselected2] = useState([]);
+
+  const [selected3, setselected3] = useState([]);
+  const HareFor = [
+    {id: 'Find Investors', name: 'Find Investors'},
+    {id: 'Networking', name: 'Networking'},
+    {id: 'Hire Employees', name: 'Hire Employees'},
+    {id: 'Find Mentor', name: 'Find Mentor'},
+    {id: 'Find Cofounders', name: 'Find Cofounder'},
+  ];
+
+  const meetdata = [
+    {id: 'At Coffee', name: 'At Coffee'},
+    {id: 'Video Call', name: 'Video Call'},
+    {id: 'Local Cafe', name: 'Local Cafe'},
+  ];
+  const yearsExperience = [
+    {id: ' < 1', name: '<1'},
+    {id: '1-2', name: '1-2'},
+    {id: '2-5', name: '2-5'},
+    {id: '5>', name: '5>'},
+  ];
+
+  const onSelectedItemsChange3 = data => {
+    console.log('here meet', data);
+    setselected3(data);
+    console.log(data);
+    console.warn(selected3);
+  };
+  const onSelectedItemsChange1 = data => {
+    console.log('here meet', data);
+    setselected1(data);
+    console.log(data);
+    console.warn(selected1);
+  };
+  const onSelectedItemsChange2 = data => {
+    console.log('here meet', data);
+    setselected2(data);
+    console.log(data);
+    console.warn(selected2);
+  };
+  const filterModal = () => {
+    setFilter(v => !v);
+  };
   const navigation = useNavigation();
 
   // const isFocused = useIsFocused();
@@ -96,7 +186,9 @@ const Vibe = () => {
           </View>
         </TouchableOpacity>
         <View style={{paddingRight: 35}}>
-          <Icon name="filter" color="#ffffff" size={25} />
+          <TouchableOpacity onPress={() => filterModal()}>
+            <Icon name="filter" color="#ffffff" size={25} />
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -228,6 +320,7 @@ const Vibe = () => {
     };
 
     const [cards, setcards] = useState([]);
+    console.log('What is item dddd', cards);
 
     const swipedAll = () => {
       console.log('swiped all');
@@ -1040,7 +1133,418 @@ const Vibe = () => {
               </View>
             </CustomPopup>
             <LikeTab />
-            <Vibes />
+            {/* <Vibes /> */}
+            <FlatList
+              data={totalScore}
+              extraData={totalScore}
+              pagingEnabled
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{justifyContent: 'center', flexGrow: 1}}
+              renderItem={({item, index}) => {
+                return (
+                  <View
+                    style={{
+                      alignSelf: 'center',
+                      width: Dimensions.get('window').width / 1.12,
+                      height: Dimensions.get('window').height / 1.49,
+                      marginVertical: 20,
+                      borderTopRightRadius: 50,
+                      borderTopLeftRadius: 50,
+                      marginHorizontal: 20,
+                      borderBottomLeftRadius: 45,
+                      borderBottomRightRadius: 45,
+                      padding: 2,
+                      backgroundColor: '#243985',
+                      borderWidth: 2,
+                      borderColor: 'dodgerblue',
+                    }}>
+                    <ScrollView scrollEnabled={true} style={{flexGrow: 1}}>
+                      <View style={{flex: 1}}>
+                        <View style={{alignSelf: 'center'}}>
+                          {item.image ? (
+                            <Image
+                              style={{
+                                width: 160,
+                                alignSelf: 'center',
+                                height: 160,
+                                borderRadius: 100,
+                              }}
+                              source={{
+                                uri: item.image,
+                              }}
+                            />
+                          ) : (
+                            <Image
+                              style={{
+                                width: 160,
+                                alignSelf: 'center',
+                                height: 160,
+                                borderRadius: 100,
+                              }}
+                              source={{
+                                uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
+                              }}
+                            />
+                          )}
+                        </View>
+
+                        <View style={{display: 'flex'}}>
+                          <View style={{marginHorizontal: 10, marginTop: 10}}>
+                            <Text
+                              style={{
+                                color: 'white',
+                                fontSize: 22,
+                                fontFamily: 'poppins',
+                                fontWeight: 'bold',
+                              }}>
+                              {item?.title}
+                            </Text>
+                            <Text
+                              style={{
+                                color: '#fff',
+                                fontSize: 14,
+                                fontWeight: '400',
+                              }}>
+                              {item.detial}
+                            </Text>
+                            <Text
+                              style={{
+                                color: '#fff',
+                                fontSize: 14,
+                                fontWeight: '400',
+                              }}>
+                              {item.title}
+                              {' ,'}
+                              {item.detial}
+                            </Text>
+                          </View>
+
+                          <View style={{marginTop: 25}}>
+                            <Text
+                              style={{
+                                color: '#fff',
+                                fontSize: 14,
+                                fontWeight: 'bold',
+                                marginTop: 10,
+                                marginHorizontal: 10,
+                              }}>
+                              {item.detial}
+                            </Text>
+                          </View>
+                        </View>
+
+                        <View style={{flex: 1}}>
+                          <View>
+                            <View>
+                              <Text
+                                style={{
+                                  color: '#0077B7',
+                                  fontFamily: 'Poppins',
+                                  fontSize: 18,
+                                  marginTop: 6,
+                                  fontWeight: '700',
+                                  marginLeft: 15,
+                                }}>
+                                What I am here for
+                              </Text>
+                              <View
+                                style={{
+                                  marginTop: 8,
+                                  flexDirection: 'row',
+                                  justifyContent: 'space-evenly',
+                                  flexWrap: 'wrap',
+                                }}>
+                                <View
+                                  style={{
+                                    alignItems: 'center',
+                                    alignSelf: 'center',
+                                    justifyContent: 'center',
+                                    borderRadius: 100 / 2,
+                                    borderWidth: 3,
+                                    borderColor: 'white',
+                                    backgroundColor: '#0077B7',
+                                    height: 80,
+                                    width: 80,
+                                  }}>
+                                  <Text
+                                    style={{
+                                      color: 'white',
+                                      textAlign: 'center',
+                                      fontFamily: 'Poppins',
+                                      fontSize: 13,
+                                      fontWeight: '500',
+                                    }}>
+                                    FIND INVESTORS
+                                  </Text>
+                                </View>
+                                <View
+                                  style={{
+                                    alignItems: 'center',
+                                    alignSelf: 'center',
+                                    justifyContent: 'center',
+                                    borderRadius: 100 / 2,
+                                    borderWidth: 3,
+                                    borderColor: 'white',
+                                    backgroundColor: '#0077B7',
+                                    height: 80,
+                                    width: 80,
+                                  }}>
+                                  <Text
+                                    style={{
+                                      color: 'white',
+                                      textAlign: 'center',
+                                      fontFamily: 'Poppins',
+                                      fontSize: 13,
+                                      fontWeight: '500',
+                                    }}>
+                                    FIND MENTORS
+                                  </Text>
+                                </View>
+                                <View
+                                  style={{
+                                    alignItems: 'center',
+                                    alignSelf: 'center',
+                                    justifyContent: 'center',
+                                    borderRadius: 100 / 2,
+                                    borderWidth: 3,
+                                    borderColor: 'white',
+                                    backgroundColor: '#0077B7',
+                                    height: 80,
+                                    width: 80,
+                                  }}>
+                                  <Text
+                                    style={{
+                                      color: 'white',
+                                      textAlign: 'center',
+                                      fontFamily: 'Poppins',
+                                      fontSize: 13,
+                                      fontWeight: '500',
+                                    }}>
+                                    FIND EMPLYOYEE
+                                  </Text>
+                                </View>
+                              </View>
+                              <View
+                                style={{
+                                  alignItems: 'center',
+                                  alignSelf: 'center',
+                                  flexDirection: 'row',
+                                  marginTop: 10,
+                                  backgroundColor: '#121416',
+                                  flex: 1,
+                                  width: 250,
+                                  height: 55,
+                                  borderRadius: 10,
+                                }}>
+                                <View style={{marginStart: 10,flex:1}}>
+                                  <Image
+                                    style={{
+                                      height: 32,
+                                      width: 32,
+                                    }}
+                                    source={require('../../../src/assets/images/nope.png')}
+                                  />
+                                  <Text style={{color: '#fff'}}>nope</Text>
+                                </View>
+
+                                <View style={{flex:1,marginRight:15}}>
+                                  <TouchableOpacity 
+                                  onPress={() => navigation.navigate('SuperLikeScreen')}
+                                  >
+
+                                <Image
+                                    style={{
+                                      height: 32,
+                                      width: 32,
+                                      marginStart: 10,
+                                    }}
+                                    source={require('../../../src/assets/images/superlike.png')}
+                                  />
+                                  <Text style={{color: '#fff'}}>superlike</Text>
+                                  </TouchableOpacity>
+
+                                </View>
+                                <View style={{marginEnd: 10}}>
+                                  <TouchableOpacity
+                                  onPress={() => navigation.navigate('LikeMatchScreen')}
+                                  >
+
+                                <Image
+                                    style={{
+                                      height: 32,
+                                      width: 32,
+                                    }}
+                                    source={require('../../../src/assets/images/liketic.png')}
+                                  />
+                                  <Text style={{color: '#fff',marginStart:5}}>like</Text>
+                                  </TouchableOpacity>
+
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                          <View></View>
+                        </View>
+                      </View>
+                    </ScrollView>
+                    <View style={{flex: 1}}>
+                      <Modal transparent={true} visible={filter}>
+                        <View style={styles.ModelBack}>
+                          <View style={styles.modelViewOne}>
+                            <View style={styles.modelViewTwo}>
+                              <Entypo
+                                onPress={filterModal}
+                                name="cross"
+                                size={30}
+                                color="#ffffff"></Entypo>
+                              <Text style={styles.modelText}>Filter</Text>
+                            </View>
+                            <View
+                              style={{
+                                flexDirection: 'row',
+                                justifyContent: 'space-around',
+                                alignItems: 'center',
+                                marginTop: 5,
+                              }}>
+                              <Text
+                                style={{
+                                  color: '#ffffff',
+                                  fontFamily: 'Poppins',
+                                  fontSize: 16,
+                                  width: '45%',
+                                  textAlign: 'left',
+                                  fontWeight: '700',
+                                }}>
+                                How Can We Meet
+                              </Text>
+                              <View style={{width: 150}}>
+                                <MultiSelect
+                                  items={meetdata}
+                                  uniqueKey="id"
+                                  onSelectedItemsChange={data =>
+                                    onSelectedItemsChange3(data)
+                                  }
+                                  selectedItems={selected3}
+                                  selectText="Pick Locations"
+                                  searchInputPlaceholderText="Search"
+                                  onChangeInput={text => console.log(text)}
+                                  tagRemoveIconColor="#CCC"
+                                  tagBorderColor="blue"
+                                  tagTextColor="#CCC"
+                                  selectedItemTextColor="#CCC"
+                                  selectedItemIconColor="#CCC"
+                                  itemTextColor="#000"
+                                  displayKey="name"
+                                  tagContainerStyle={{
+                                    backgroundColor: 'blue',
+                                    width: Dimensions.get('window').width / 2.7,
+                                  }}
+                                  searchInputStyle={{color: '#CCC'}}
+                                  submitButtonColor="blue"
+                                  submitButtonText="Submit"
+                                />
+                              </View>
+                            </View>
+                            <View
+                              style={{
+                                flexDirection: 'row',
+                                justifyContent: 'space-around',
+                                alignItems: 'center',
+                                marginTop: 5,
+                              }}>
+                              <Text
+                                style={{
+                                  color: '#ffffff',
+                                  fontFamily: 'Poppins',
+                                  fontSize: 16,
+                                  width: '45%',
+                                  textAlign: 'left',
+                                  fontWeight: '700',
+                                }}>
+                                What I Am Hare For
+                              </Text>
+                              <View style={{width: 150}}>
+                                <MultiSelect
+                                  items={HareFor}
+                                  uniqueKey="id"
+                                  onSelectedItemsChange={data =>
+                                    onSelectedItemsChange2(data)
+                                  }
+                                  selectedItems={selected2}
+                                  selectText="Choice"
+                                  searchInputPlaceholderText="Search"
+                                  onChangeInput={text => console.log(text)}
+                                  tagRemoveIconColor="#CCC"
+                                  tagBorderColor="blue"
+                                  tagTextColor="#CCC"
+                                  selectedItemTextColor="#CCC"
+                                  selectedItemIconColor="#CCC"
+                                  itemTextColor="#000"
+                                  displayKey="name"
+                                  tagContainerStyle={{
+                                    backgroundColor: 'blue',
+                                    width: Dimensions.get('window').width / 2.7,
+                                  }}
+                                  searchInputStyle={{color: '#CCC'}}
+                                  submitButtonColor="blue"
+                                  submitButtonText="Submit"
+                                />
+                              </View>
+                            </View>
+                            <View
+                              style={{
+                                flexDirection: 'row',
+                                justifyContent: 'space-around',
+                                alignItems: 'center',
+                                marginTop: 5,
+                              }}>
+                              <Text
+                                style={{
+                                  color: '#ffffff',
+                                  fontFamily: 'Poppins',
+                                  fontSize: 16,
+                                  width: '45%',
+                                  textAlign: 'left',
+                                  fontWeight: '700',
+                                }}>
+                                Years of Experience
+                              </Text>
+                              <View style={{width: 150}}>
+                                <MultiSelect
+                                  items={yearsExperience}
+                                  uniqueKey="id"
+                                  onSelectedItemsChange={data =>
+                                    onSelectedItemsChange1(data)
+                                  }
+                                  selectedItems={selected1}
+                                  selectText="Choose"
+                                  searchInputPlaceholderText="Search Items..."
+                                  onChangeInput={text => console.log(text)}
+                                  tagRemoveIconColor="#CCC"
+                                  tagBorderColor="#CCC"
+                                  tagTextColor="#CCC"
+                                  selectedItemTextColor="#CCC"
+                                  selectedItemIconColor="#CCC"
+                                  itemTextColor="#000"
+                                  displayKey="name"
+                                  searchInputStyle={{color: '#CCC'}}
+                                  single={true}
+                                  submitButtonColor="#CCC"
+                                  submitButtonText="Submit"
+                                />
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </Modal>
+                    </View>
+                  </View>
+                );
+              }}
+              // }
+              keyExtractor={(item, index) => index.toString()}
+            />
           </IndividualHeaderLayout>
         </>
       )}
@@ -1128,6 +1632,33 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  modelViewOne: {
+    backgroundColor: '#0C0C0D',
+    borderRadius: 15,
+    marginHorizontal: 20,
+    height: '80%',
+    marginTop: 60,
+    borderColor: '#0C0C0D',
+    borderWidth: 1,
+  },
+  modelViewTwo: {
+    flexDirection: 'row',
+    marginHorizontal: 15,
+    marginVertical: 10,
+    alignSelf: 'center',
+  },
+  modelText: {
+    color: '#ffffff',
+    fontSize: 18,
+    marginEnd: 20,
+    fontWeight: 'bold',
+    flex: 1,
+    textAlign: 'center',
+  },
+  ModelBack: {
+    flex: 1,
+    backgroundColor: 'rgba(52, 52, 52, 0.8)',
   },
 });
 

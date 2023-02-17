@@ -23,6 +23,8 @@ import {
   CountdownTimer,
   LikeScreen,
   ScheduleAppointment,
+  LikeMatchScreen,
+  SuperLikeScreen
 } from '../../scenes';
 import ThanksScreen from '../../scenes/thanks-screen';
 import {
@@ -130,6 +132,10 @@ const StackNavigate = props => {
       <Stack.Screen name="Countdown" component={CountdownTimer} />
       <Stack.Screen name="VibeBoarding" component={VibeBoarding} />
       <Stack.Screen name="LikeScreen" component={LikeScreen} />
+      <Stack.Screen name="LikeMatchScreen" component={LikeMatchScreen} />
+      <Stack.Screen name="SuperLikeScreen" component={SuperLikeScreen} />
+
+
       <Stack.Screen name="ShowMoreVibe" component={ShowMoreVibe} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
       <Stack.Screen name="premiumPlans" component={PremiumPlans} />
