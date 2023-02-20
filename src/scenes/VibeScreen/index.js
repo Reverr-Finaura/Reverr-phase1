@@ -25,6 +25,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {CustomPopup, IndividualHeaderLayout} from '../../Components';
 import {Choice} from '../../Components';
 import {AppColors} from '../../utils';
+import LinearGradient from 'react-native-linear-gradient';
 import {
   Load_Card,
   matchedpeople,
@@ -321,6 +322,7 @@ const Vibe = () => {
 
     const [cards, setcards] = useState([]);
     console.log('What is item dddd', cards);
+    alert(cards)
 
     const swipedAll = () => {
       console.log('swiped all');
@@ -1144,6 +1146,7 @@ const Vibe = () => {
               renderItem={({item, index}) => {
                 return (
                   <View
+                  
                     style={{
                       alignSelf: 'center',
                       width: Dimensions.get('window').width / 1.12,
@@ -1155,10 +1158,11 @@ const Vibe = () => {
                       borderBottomLeftRadius: 45,
                       borderBottomRightRadius: 45,
                       padding: 2,
-                      backgroundColor: '#243985',
+                      backgroundColor: '#0C0C0D',
                       borderWidth: 2,
                       borderColor: 'dodgerblue',
                     }}>
+                      
                     <ScrollView scrollEnabled={true} style={{flexGrow: 1}}>
                       <View style={{flex: 1}}>
                         <View style={{alignSelf: 'center'}}>

@@ -57,6 +57,7 @@ import PremiumPlans from './PremiumPlans';
 import ScheduleAppointment from './scheduleappointment';
 import LikeMatchScreen from './LikeMatchScreen';
 import SuperLikeScreen from './SuperLikeScreen';
+import ChatVibeScreen from './ChatVibeScreen';
 export {
   ArticalDetails,
   FundingScreen,
@@ -114,5 +115,8 @@ export {
   PremiumPlans,
   ScheduleAppointment,
   LikeMatchScreen,
-  SuperLikeScreen
+  SuperLikeScreen,
+  ChatVibeScreen,
+  
+  
 };
