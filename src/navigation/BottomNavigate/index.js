@@ -16,7 +16,9 @@ import {
   Settings,
   DashBoard,
   Vibe,
+
 } from '../../scenes';
+import { VibeBoarding } from '../../Components/VibeBoarding';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {MentorDetails} from '../../Components';
 

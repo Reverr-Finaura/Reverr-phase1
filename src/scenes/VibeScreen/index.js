@@ -87,6 +87,15 @@ const totalScore = [
   },
 ];
 const Vibe = () => {
+  const state = useSelector(state => state.UserReducer);
+  //  console.log("",JSON.stringify (state.Rooms,2,4))
+
+  //  console.log(">>>",state.Rooms[7].postedby)
+
+  state.Rooms.map(room => {
+    console.log('=======================', room?.postedby?.Vibe_Data);
+  });
+
   const [continueshowingcard, setcontinueshowingcard] = useState(true);
   const [prevDailog, setPrevDailog] = useState(false);
   const [allswiped, setAllswiped] = useState(false);
@@ -322,7 +331,7 @@ const Vibe = () => {
 
     const [cards, setcards] = useState([]);
     console.log('What is item dddd', cards);
-    alert(cards)
+    alert(cards);
 
     const swipedAll = () => {
       console.log('swiped all');
@@ -1137,413 +1146,609 @@ const Vibe = () => {
             <LikeTab />
             {/* <Vibes /> */}
             <FlatList
-              data={totalScore}
-              extraData={totalScore}
+              data={state.Rooms}
+              extraData={state.Rooms}
               pagingEnabled
               horizontal
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={{justifyContent: 'center', flexGrow: 1}}
               renderItem={({item, index}) => {
                 return (
-                  <View
-                  
-                    style={{
-                      alignSelf: 'center',
-                      width: Dimensions.get('window').width / 1.12,
-                      height: Dimensions.get('window').height / 1.49,
-                      marginVertical: 20,
-                      borderTopRightRadius: 50,
-                      borderTopLeftRadius: 50,
-                      marginHorizontal: 20,
-                      borderBottomLeftRadius: 45,
-                      borderBottomRightRadius: 45,
-                      padding: 2,
-                      backgroundColor: '#0C0C0D',
-                      borderWidth: 2,
-                      borderColor: 'dodgerblue',
-                    }}>
-                      
-                    <ScrollView scrollEnabled={true} style={{flexGrow: 1}}>
-                      <View style={{flex: 1}}>
-                        <View style={{alignSelf: 'center'}}>
-                          {item.image ? (
-                            <Image
-                              style={{
-                                width: 160,
-                                alignSelf: 'center',
-                                height: 160,
-                                borderRadius: 100,
-                              }}
-                              source={{
-                                uri: item.image,
-                              }}
-                            />
-                          ) : (
-                            <Image
-                              style={{
-                                width: 160,
-                                alignSelf: 'center',
-                                height: 160,
-                                borderRadius: 100,
-                              }}
-                              source={{
-                                uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
-                              }}
-                            />
-                          )}
-                        </View>
-
-                        <View style={{display: 'flex'}}>
-                          <View style={{marginHorizontal: 10, marginTop: 10}}>
-                            <Text
-                              style={{
-                                color: 'white',
-                                fontSize: 22,
-                                fontFamily: 'poppins',
-                                fontWeight: 'bold',
-                              }}>
-                              {item?.title}
-                            </Text>
-                            <Text
-                              style={{
-                                color: '#fff',
-                                fontSize: 14,
-                                fontWeight: '400',
-                              }}>
-                              {item.detial}
-                            </Text>
-                            <Text
-                              style={{
-                                color: '#fff',
-                                fontSize: 14,
-                                fontWeight: '400',
-                              }}>
-                              {item.title}
-                              {' ,'}
-                              {item.detial}
-                            </Text>
-                          </View>
-
-                          <View style={{marginTop: 25}}>
-                            <Text
-                              style={{
-                                color: '#fff',
-                                fontSize: 14,
-                                fontWeight: 'bold',
-                                marginTop: 10,
-                                marginHorizontal: 10,
-                              }}>
-                              {item.detial}
-                            </Text>
-                          </View>
-                        </View>
-
+                  <ScrollView>
+                    <View
+                      style={{
+                        alignSelf: 'center',
+                        width: Dimensions.get('window').width / 1.12,
+                        height: Dimensions.get('window').height / 1.49,
+                        marginVertical: 20,
+                        borderTopRightRadius: 50,
+                        borderTopLeftRadius: 50,
+                        marginHorizontal: 20,
+                        borderBottomLeftRadius: 45,
+                        borderBottomRightRadius: 45,
+                        padding: 2,
+                        backgroundColor: '#0C0C0D',
+                        borderWidth: 2,
+                        borderColor: 'dodgerblue',
+                      }}>
+                      <ScrollView scrollEnabled={true} style={{flexGrow: 1}}>
                         <View style={{flex: 1}}>
-                          <View>
-                            <View>
-                              <Text
+                          <View style={{alignSelf: 'center', marginTop: 10}}>
+                            {item.image ? (
+                              <Image
                                 style={{
-                                  color: '#0077B7',
-                                  fontFamily: 'Poppins',
-                                  fontSize: 18,
-                                  marginTop: 6,
-                                  fontWeight: '700',
-                                  marginLeft: 15,
-                                }}>
-                                What I am here for
-                              </Text>
-                              <View
-                                style={{
-                                  marginTop: 8,
-                                  flexDirection: 'row',
-                                  justifyContent: 'space-evenly',
-                                  flexWrap: 'wrap',
-                                }}>
-                                <View
-                                  style={{
-                                    alignItems: 'center',
-                                    alignSelf: 'center',
-                                    justifyContent: 'center',
-                                    borderRadius: 100 / 2,
-                                    borderWidth: 3,
-                                    borderColor: 'white',
-                                    backgroundColor: '#0077B7',
-                                    height: 80,
-                                    width: 80,
-                                  }}>
-                                  <Text
-                                    style={{
-                                      color: 'white',
-                                      textAlign: 'center',
-                                      fontFamily: 'Poppins',
-                                      fontSize: 13,
-                                      fontWeight: '500',
-                                    }}>
-                                    FIND INVESTORS
-                                  </Text>
-                                </View>
-                                <View
-                                  style={{
-                                    alignItems: 'center',
-                                    alignSelf: 'center',
-                                    justifyContent: 'center',
-                                    borderRadius: 100 / 2,
-                                    borderWidth: 3,
-                                    borderColor: 'white',
-                                    backgroundColor: '#0077B7',
-                                    height: 80,
-                                    width: 80,
-                                  }}>
-                                  <Text
-                                    style={{
-                                      color: 'white',
-                                      textAlign: 'center',
-                                      fontFamily: 'Poppins',
-                                      fontSize: 13,
-                                      fontWeight: '500',
-                                    }}>
-                                    FIND MENTORS
-                                  </Text>
-                                </View>
-                                <View
-                                  style={{
-                                    alignItems: 'center',
-                                    alignSelf: 'center',
-                                    justifyContent: 'center',
-                                    borderRadius: 100 / 2,
-                                    borderWidth: 3,
-                                    borderColor: 'white',
-                                    backgroundColor: '#0077B7',
-                                    height: 80,
-                                    width: 80,
-                                  }}>
-                                  <Text
-                                    style={{
-                                      color: 'white',
-                                      textAlign: 'center',
-                                      fontFamily: 'Poppins',
-                                      fontSize: 13,
-                                      fontWeight: '500',
-                                    }}>
-                                    FIND EMPLYOYEE
-                                  </Text>
-                                </View>
-                              </View>
-                              <View
-                                style={{
-                                  alignItems: 'center',
+                                  width: 130,
                                   alignSelf: 'center',
+                                  height: 130,
+                                  borderRadius: 100,
+                                  resizeMode: 'cover',
+                                }}
+                                source={{
+                                  uri: item.image,
+                                }}
+                              />
+                            ) : (
+                              <Image
+                                style={{
+                                  width: 130,
+                                  alignSelf: 'center',
+                                  height: 130,
+                                  borderRadius: 100,
+                                  resizeMode: 'cover',
+                                }}
+                                source={{
+                                  uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
+                                }}
+                              />
+                            )}
+                          </View>
+
+                          <View style={{display: 'flex'}}>
+                            <View
+                              style={{
+                                marginHorizontal: 10,
+                                marginTop: 5,
+                                alignItems: 'center',
+                              }}>
+                              <Text
+                                style={{
+                                  color: 'white',
+                                  fontSize: 22,
+                                  fontFamily: 'poppins',
+                                  fontWeight: 'bold',
+                                }}>
+                                {item?.postedby?.name}
+                              </Text>
+                              <Text
+                                style={{
+                                  color: '#8CB2F4',
+                                  fontSize: 14,
+                                  fontWeight: '400',
+                                }}>
+                                CEO at Reverr
+                              </Text>
+                              <Text
+                                style={{
+                                  color: '#999999',
+                                  fontSize: 12,
+                                  fontWeight: '400',
+                                }}>
+                                New Delhi, India
+                              </Text>
+                            </View>
+                          </View>
+                          <View>
+                            <Text
+                              style={{
+                                color: '#78D2FF',
+                                fontFamily: 'Poppins',
+                                fontSize: 18,
+                                marginTop: 6,
+                                fontWeight: '700',
+                                marginLeft: 15,
+                              }}>
+                              About Me
+                            </Text>
+                            <Text
+                              style={{
+                                color: '#EFEFEF',
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                                marginVertical: 10,
+                                fontWeight: '400',
+                                
+                                alignSelf:"center",
+                                marginLeft: 5,
+                              }}numberOfLines={2}>
+                             Don’t ship it. Don’t settle for good enough. Do better work than you did yesterday. Get out of your comfort zone and give it your all – every day.
+                            </Text>
+                          </View>
+
+                          <View style={{flex: 1}}>
+                            <View>
+                              <View>
+                                <Text
+                                  style={{
+                                    color: '#78D2FF',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 18,
+                                    marginTop: 6,
+                                    fontWeight: '700',
+                                    marginLeft: 15,
+                                  }}>
+                                  What I am here for
+                                </Text>
+
+                                <View
+                                  style={{
+                                    marginTop: 8,
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-evenly',
+                                    flexWrap: 'wrap',
+                                  }}>
+                                  <View
+                                    style={{
+                                      alignItems: 'center',
+                                      alignSelf: 'center',
+                                      justifyContent: 'center',
+                                      borderRadius: 100 / 2,
+                                      borderWidth: 3,
+                                      borderColor: 'white',
+                                      backgroundColor: '#0077B7',
+                                      height: 80,
+                                      width: 80,
+                                    }}>
+                                    <Text
+                                      style={{
+                                        color: 'white',
+                                        textAlign: 'center',
+                                        fontFamily: 'Poppins',
+                                        fontSize: 13,
+                                        fontWeight: '500',
+                                      }}>
+                                      FIND INVESTORS
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={{
+                                      alignItems: 'center',
+                                      alignSelf: 'center',
+                                      justifyContent: 'center',
+                                      borderRadius: 100 / 2,
+                                      borderWidth: 3,
+                                      borderColor: 'white',
+                                      backgroundColor: '#0077B7',
+                                      height: 80,
+                                      width: 80,
+                                    }}>
+                                    <Text
+                                      style={{
+                                        color: 'white',
+                                        textAlign: 'center',
+                                        fontFamily: 'Poppins',
+                                        fontSize: 13,
+                                        fontWeight: '500',
+                                      }}>
+                                      FIND MENTORS
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={{
+                                      alignItems: 'center',
+                                      alignSelf: 'center',
+                                      justifyContent: 'center',
+                                      borderRadius: 100 / 2,
+                                      borderWidth: 3,
+                                      borderColor: 'white',
+                                      backgroundColor: '#0077B7',
+                                      height: 80,
+                                      width: 80,
+                                    }}>
+                                    <Text
+                                      style={{
+                                        color: 'white',
+                                        textAlign: 'center',
+                                        fontFamily: 'Poppins',
+                                        fontSize: 13,
+                                        fontWeight: '500',
+                                      }}>
+                                      FIND EMPLYOYEE
+                                    </Text>
+                                  </View>
+                                  {/* {
+                                         item?.Vibe_Data?.Here_for?.map(
+                                            item => {
+                                              console.log(item);
+                                              return (
+                                                <View
+                                                  style={{
+                                                    boxShadow:
+                                                      '4px -5px 5px 0px #00000040 inset',
+
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+
+                                                    borderRadius: 100 / 2,
+                                                    borderWidth: 3,
+                                                    borderColor: 'white',
+                                                    backgroundColor: '#0077B7',
+                                                  }}>
+                                                  <Text
+                                                    style={{
+                                                      color: 'white',
+                                                      textAlign: 'center',
+                                                      fontFamily: 'Poppins',
+                                                      fontSize: 13,
+                                                      fontWeight: '500',
+                                                    }}>
+                                                      dffdgfg
+                                                  </Text>
+                                                </View>
+                                              );
+                                            },
+                                          )
+                                       } */}
+                                </View>
+                                <View
+                                  style={{
+                                    alignItems: 'center',
+                                    alignSelf: 'center',
+                                    flexDirection: 'row',
+                                    marginTop: 10,
+                                    backgroundColor: '#121416',
+                                    flex: 1,
+                                    width: 250,
+                                    height: 55,
+                                    borderRadius: 10,
+                                  }}>
+                                  <View style={{marginStart: 10, flex: 1}}>
+                                    <Image
+                                      style={{
+                                        height: 32,
+                                        width: 32,
+                                      }}
+                                      source={require('../../../src/assets/images/nope.png')}
+                                    />
+                                    <Text style={{color: '#fff'}}>nope</Text>
+                                  </View>
+
+                                  <View style={{flex: 1, marginRight: 15}}>
+                                    <TouchableOpacity
+                                      onPress={() =>
+                                        navigation.navigate('SuperLikeScreen')
+                                      }>
+                                      <Image
+                                        style={{
+                                          height: 32,
+                                          width: 32,
+                                          marginStart: 10,
+                                        }}
+                                        source={require('../../../src/assets/images/superlike.png')}
+                                      />
+                                      <Text style={{color: '#fff'}}>
+                                        superlike
+                                      </Text>
+                                    </TouchableOpacity>
+                                  </View>
+                                  <View style={{marginEnd: 10}}>
+                                    <TouchableOpacity
+                                      onPress={() =>
+                                        navigation.navigate('LikeMatchScreen')
+                                      }>
+                                      <Image
+                                        style={{
+                                          height: 32,
+                                          width: 32,
+                                        }}
+                                        source={require('../../../src/assets/images/liketic.png')}
+                                      />
+                                      <Text
+                                        style={{color: '#fff', marginStart: 5}}>
+                                        like
+                                      </Text>
+                                    </TouchableOpacity>
+                                  </View>
+                                </View>
+                                <View>
+                            <Text
+                              style={{
+                                color: '#78D2FF',
+                                fontFamily: 'Poppins',
+                                fontSize: 18,
+                                marginTop: 6,
+                                fontWeight: '700',
+                                marginLeft: 15,
+                              }}>
+                              Education:
+                            </Text>
+                            <Text
+                              style={{
+                                color: '#EFEFEF',
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                                fontWeight: '400',
+                                marginVertical:5,
+                               
+                                marginLeft: 15,
+                              }}>
+                                IIM Bangalore
+                            </Text>
+                            <Text
+                              style={{
+                                color: '#78D2FF',
+                                fontFamily: 'Poppins',
+                                fontSize: 18,
+                                marginTop: 6,
+                                fontWeight: '700',
+                                marginLeft: 15,
+                              }}>
+                              Industry:
+                            </Text>
+                            <Text
+                              style={{
+                                color: '#EFEFEF',
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                                fontWeight: '400',
+                                marginVertical:5,
+                               
+                                marginLeft: 15,
+                              }}>
+                                IIM Bangalore
+                            </Text>
+                            <Text
+                              style={{
+                                color: '#78D2FF',
+                                fontFamily: 'Poppins',
+                                fontSize: 18,
+                                marginTop: 6,
+                                fontWeight: '700',
+                                marginLeft: 15,
+                              }}>
+                              Previous Designation:
+                            </Text>
+                            <Text
+                              style={{
+                                color: '#EFEFEF',
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                                fontWeight: '400',
+                                marginVertical:5,
+                               
+                                marginLeft: 15,
+                              }}>
+                                IIM Bangalore
+                            </Text>
+                            <Text
+                              style={{
+                                color: '#78D2FF',
+                                fontFamily: 'Poppins',
+                                fontSize: 18,
+                                marginTop: 6,
+                                fontWeight: '700',
+                                marginLeft: 15,
+                              }}>
+                              Previous Organization:
+                            </Text>
+                            <Text
+                              style={{
+                                color: '#EFEFEF',
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                                fontWeight: '400',
+                                marginVertical:5,
+                               
+                                marginLeft: 15,
+                              }}>
+                                IIM Bangalore
+                            </Text>
+                            <Text
+                              style={{
+                                color: '#78D2FF',
+                                fontFamily: 'Poppins',
+                                fontSize: 18,
+                                marginTop: 6,
+                                fontWeight: '700',
+                                marginLeft: 15,
+                              }}>
+                              How to Meet:
+                            </Text>
+                            <Text
+                              style={{
+                                color: '#EFEFEF',
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                                fontWeight: '400',
+                                marginVertical:5,
+                               
+                                marginLeft: 15,
+                              }}>
+                                IIM Bangalore
+                            </Text>
+                            <Text
+                              style={{
+                                color: '#78D2FF',
+                                fontFamily: 'Poppins',
+                                fontSize: 18,
+                                marginTop: 6,
+                                fontWeight: '700',
+                                marginLeft: 15,
+                              }}>
+                              Experience:
+                            </Text>
+                            <Text
+                              style={{
+                                color: '#EFEFEF',
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                                fontWeight: '400',
+                                marginVertical:5,
+                               
+                                marginLeft: 15,
+                              }}>
+                                IIM Bangalore
+                            </Text>
+                          </View>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </ScrollView>
+                      <View style={{flex: 1}}>
+                        <Modal transparent={true} visible={filter}>
+                          <View style={styles.ModelBack}>
+                            <View style={styles.modelViewOne}>
+                              <View style={styles.modelViewTwo}>
+                                <Entypo
+                                  onPress={filterModal}
+                                  name="cross"
+                                  size={30}
+                                  color="#ffffff"></Entypo>
+                                <Text style={styles.modelText}>Filter</Text>
+                              </View>
+                              <View
+                                style={{
                                   flexDirection: 'row',
-                                  marginTop: 10,
-                                  backgroundColor: '#121416',
-                                  flex: 1,
-                                  width: 250,
-                                  height: 55,
-                                  borderRadius: 10,
+                                  justifyContent: 'space-around',
+                                  alignItems: 'center',
+                                  marginTop: 5,
                                 }}>
-                                <View style={{marginStart: 10,flex:1}}>
-                                  <Image
-                                    style={{
-                                      height: 32,
-                                      width: 32,
+                                <Text
+                                  style={{
+                                    color: '#ffffff',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    width: '45%',
+                                    textAlign: 'left',
+                                    fontWeight: '700',
+                                  }}>
+                                  How Can We Meet
+                                </Text>
+                                <View style={{width: 150}}>
+                                  <MultiSelect
+                                    items={meetdata}
+                                    uniqueKey="id"
+                                    onSelectedItemsChange={data =>
+                                      onSelectedItemsChange3(data)
+                                    }
+                                    selectedItems={selected3}
+                                    selectText="Pick Locations"
+                                    searchInputPlaceholderText="Search"
+                                    onChangeInput={text => console.log(text)}
+                                    tagRemoveIconColor="#CCC"
+                                    tagBorderColor="blue"
+                                    tagTextColor="#CCC"
+                                    selectedItemTextColor="#CCC"
+                                    selectedItemIconColor="#CCC"
+                                    itemTextColor="#000"
+                                    displayKey="name"
+                                    tagContainerStyle={{
+                                      backgroundColor: 'blue',
+                                      width:
+                                        Dimensions.get('window').width / 2.7,
                                     }}
-                                    source={require('../../../src/assets/images/nope.png')}
+                                    searchInputStyle={{color: '#CCC'}}
+                                    submitButtonColor="blue"
+                                    submitButtonText="Submit"
                                   />
-                                  <Text style={{color: '#fff'}}>nope</Text>
                                 </View>
-
-                                <View style={{flex:1,marginRight:15}}>
-                                  <TouchableOpacity 
-                                  onPress={() => navigation.navigate('SuperLikeScreen')}
-                                  >
-
-                                <Image
-                                    style={{
-                                      height: 32,
-                                      width: 32,
-                                      marginStart: 10,
+                              </View>
+                              <View
+                                style={{
+                                  flexDirection: 'row',
+                                  justifyContent: 'space-around',
+                                  alignItems: 'center',
+                                  marginTop: 5,
+                                }}>
+                                <Text
+                                  style={{
+                                    color: '#ffffff',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    width: '45%',
+                                    textAlign: 'left',
+                                    fontWeight: '700',
+                                  }}>
+                                  What I Am Hare For
+                                </Text>
+                                <View style={{width: 150}}>
+                                  <MultiSelect
+                                    items={HareFor}
+                                    uniqueKey="id"
+                                    onSelectedItemsChange={data =>
+                                      onSelectedItemsChange2(data)
+                                    }
+                                    selectedItems={selected2}
+                                    selectText="Choice"
+                                    searchInputPlaceholderText="Search"
+                                    onChangeInput={text => console.log(text)}
+                                    tagRemoveIconColor="#CCC"
+                                    tagBorderColor="blue"
+                                    tagTextColor="#CCC"
+                                    selectedItemTextColor="#CCC"
+                                    selectedItemIconColor="#CCC"
+                                    itemTextColor="#000"
+                                    displayKey="name"
+                                    tagContainerStyle={{
+                                      backgroundColor: 'blue',
+                                      width:
+                                        Dimensions.get('window').width / 2.7,
                                     }}
-                                    source={require('../../../src/assets/images/superlike.png')}
+                                    searchInputStyle={{color: '#CCC'}}
+                                    submitButtonColor="blue"
+                                    submitButtonText="Submit"
                                   />
-                                  <Text style={{color: '#fff'}}>superlike</Text>
-                                  </TouchableOpacity>
-
                                 </View>
-                                <View style={{marginEnd: 10}}>
-                                  <TouchableOpacity
-                                  onPress={() => navigation.navigate('LikeMatchScreen')}
-                                  >
-
-                                <Image
-                                    style={{
-                                      height: 32,
-                                      width: 32,
-                                    }}
-                                    source={require('../../../src/assets/images/liketic.png')}
+                              </View>
+                              <View
+                                style={{
+                                  flexDirection: 'row',
+                                  justifyContent: 'space-around',
+                                  alignItems: 'center',
+                                  marginTop: 5,
+                                }}>
+                                <Text
+                                  style={{
+                                    color: '#ffffff',
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    width: '45%',
+                                    textAlign: 'left',
+                                    fontWeight: '700',
+                                  }}>
+                                  Years of Experience
+                                </Text>
+                                <View style={{width: 150}}>
+                                  <MultiSelect
+                                    items={yearsExperience}
+                                    uniqueKey="id"
+                                    onSelectedItemsChange={data =>
+                                      onSelectedItemsChange1(data)
+                                    }
+                                    selectedItems={selected1}
+                                    selectText="Choose"
+                                    searchInputPlaceholderText="Search Items..."
+                                    onChangeInput={text => console.log(text)}
+                                    tagRemoveIconColor="#CCC"
+                                    tagBorderColor="#CCC"
+                                    tagTextColor="#CCC"
+                                    selectedItemTextColor="#CCC"
+                                    selectedItemIconColor="#CCC"
+                                    itemTextColor="#000"
+                                    displayKey="name"
+                                    searchInputStyle={{color: '#CCC'}}
+                                    single={true}
+                                    submitButtonColor="#CCC"
+                                    submitButtonText="Submit"
                                   />
-                                  <Text style={{color: '#fff',marginStart:5}}>like</Text>
-                                  </TouchableOpacity>
-
                                 </View>
                               </View>
                             </View>
                           </View>
-                          <View></View>
-                        </View>
+                        </Modal>
                       </View>
-                    </ScrollView>
-                    <View style={{flex: 1}}>
-                      <Modal transparent={true} visible={filter}>
-                        <View style={styles.ModelBack}>
-                          <View style={styles.modelViewOne}>
-                            <View style={styles.modelViewTwo}>
-                              <Entypo
-                                onPress={filterModal}
-                                name="cross"
-                                size={30}
-                                color="#ffffff"></Entypo>
-                              <Text style={styles.modelText}>Filter</Text>
-                            </View>
-                            <View
-                              style={{
-                                flexDirection: 'row',
-                                justifyContent: 'space-around',
-                                alignItems: 'center',
-                                marginTop: 5,
-                              }}>
-                              <Text
-                                style={{
-                                  color: '#ffffff',
-                                  fontFamily: 'Poppins',
-                                  fontSize: 16,
-                                  width: '45%',
-                                  textAlign: 'left',
-                                  fontWeight: '700',
-                                }}>
-                                How Can We Meet
-                              </Text>
-                              <View style={{width: 150}}>
-                                <MultiSelect
-                                  items={meetdata}
-                                  uniqueKey="id"
-                                  onSelectedItemsChange={data =>
-                                    onSelectedItemsChange3(data)
-                                  }
-                                  selectedItems={selected3}
-                                  selectText="Pick Locations"
-                                  searchInputPlaceholderText="Search"
-                                  onChangeInput={text => console.log(text)}
-                                  tagRemoveIconColor="#CCC"
-                                  tagBorderColor="blue"
-                                  tagTextColor="#CCC"
-                                  selectedItemTextColor="#CCC"
-                                  selectedItemIconColor="#CCC"
-                                  itemTextColor="#000"
-                                  displayKey="name"
-                                  tagContainerStyle={{
-                                    backgroundColor: 'blue',
-                                    width: Dimensions.get('window').width / 2.7,
-                                  }}
-                                  searchInputStyle={{color: '#CCC'}}
-                                  submitButtonColor="blue"
-                                  submitButtonText="Submit"
-                                />
-                              </View>
-                            </View>
-                            <View
-                              style={{
-                                flexDirection: 'row',
-                                justifyContent: 'space-around',
-                                alignItems: 'center',
-                                marginTop: 5,
-                              }}>
-                              <Text
-                                style={{
-                                  color: '#ffffff',
-                                  fontFamily: 'Poppins',
-                                  fontSize: 16,
-                                  width: '45%',
-                                  textAlign: 'left',
-                                  fontWeight: '700',
-                                }}>
-                                What I Am Hare For
-                              </Text>
-                              <View style={{width: 150}}>
-                                <MultiSelect
-                                  items={HareFor}
-                                  uniqueKey="id"
-                                  onSelectedItemsChange={data =>
-                                    onSelectedItemsChange2(data)
-                                  }
-                                  selectedItems={selected2}
-                                  selectText="Choice"
-                                  searchInputPlaceholderText="Search"
-                                  onChangeInput={text => console.log(text)}
-                                  tagRemoveIconColor="#CCC"
-                                  tagBorderColor="blue"
-                                  tagTextColor="#CCC"
-                                  selectedItemTextColor="#CCC"
-                                  selectedItemIconColor="#CCC"
-                                  itemTextColor="#000"
-                                  displayKey="name"
-                                  tagContainerStyle={{
-                                    backgroundColor: 'blue',
-                                    width: Dimensions.get('window').width / 2.7,
-                                  }}
-                                  searchInputStyle={{color: '#CCC'}}
-                                  submitButtonColor="blue"
-                                  submitButtonText="Submit"
-                                />
-                              </View>
-                            </View>
-                            <View
-                              style={{
-                                flexDirection: 'row',
-                                justifyContent: 'space-around',
-                                alignItems: 'center',
-                                marginTop: 5,
-                              }}>
-                              <Text
-                                style={{
-                                  color: '#ffffff',
-                                  fontFamily: 'Poppins',
-                                  fontSize: 16,
-                                  width: '45%',
-                                  textAlign: 'left',
-                                  fontWeight: '700',
-                                }}>
-                                Years of Experience
-                              </Text>
-                              <View style={{width: 150}}>
-                                <MultiSelect
-                                  items={yearsExperience}
-                                  uniqueKey="id"
-                                  onSelectedItemsChange={data =>
-                                    onSelectedItemsChange1(data)
-                                  }
-                                  selectedItems={selected1}
-                                  selectText="Choose"
-                                  searchInputPlaceholderText="Search Items..."
-                                  onChangeInput={text => console.log(text)}
-                                  tagRemoveIconColor="#CCC"
-                                  tagBorderColor="#CCC"
-                                  tagTextColor="#CCC"
-                                  selectedItemTextColor="#CCC"
-                                  selectedItemIconColor="#CCC"
-                                  itemTextColor="#000"
-                                  displayKey="name"
-                                  searchInputStyle={{color: '#CCC'}}
-                                  single={true}
-                                  submitButtonColor="#CCC"
-                                  submitButtonText="Submit"
-                                />
-                              </View>
-                            </View>
-                          </View>
-                        </View>
-                      </Modal>
                     </View>
-                  </View>
+                  </ScrollView>
                 );
               }}
               // }

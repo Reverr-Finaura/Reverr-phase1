@@ -220,11 +220,11 @@ const VibeBoarding = ({showboarding, setshowboarding}) => {
     setrefresh(true);
     const inntialrefresh=true
     setTimeout(() => {
-      navigation.navigate(
-        'Vibe',
-        inntialrefresh
+      // navigation.navigate(
+      //   'Vibe',
+      //   inntialrefresh
        
-      );
+      // );
     }, 10);
   };
   return (
