@@ -1256,11 +1256,15 @@ const Vibe = () => {
                                 fontSize: 14,
                                 marginVertical: 10,
                                 fontWeight: '400',
-                                
-                                alignSelf:"center",
+
+                                alignSelf: 'center',
                                 marginLeft: 5,
-                              }}numberOfLines={2}>
-                             Don’t ship it. Don’t settle for good enough. Do better work than you did yesterday. Get out of your comfort zone and give it your all – every day.
+                              }}
+                              numberOfLines={2}>
+                              Don’t ship it. Don’t settle for good enough. Do
+                              better work than you did yesterday. Get out of
+                              your comfort zone and give it your all – every
+                              day.
                             </Text>
                           </View>
 
@@ -1286,7 +1290,7 @@ const Vibe = () => {
                                     justifyContent: 'space-evenly',
                                     flexWrap: 'wrap',
                                   }}>
-                                  <View
+                                  {/* <View
                                     style={{
                                       alignItems: 'center',
                                       alignSelf: 'center',
@@ -1354,40 +1358,40 @@ const Vibe = () => {
                                       }}>
                                       FIND EMPLYOYEE
                                     </Text>
-                                  </View>
-                                  {/* {
-                                         item?.Vibe_Data?.Here_for?.map(
-                                            item => {
-                                              console.log(item);
-                                              return (
-                                                <View
-                                                  style={{
-                                                    boxShadow:
-                                                      '4px -5px 5px 0px #00000040 inset',
+                                  </View> */}
+                                  {item?.postedby?.Vibe_Data?.Here_for?.map(
+                                    Here_for => {
+                                      console.log(item);
+                                      return (
+                                        <View
+                                          style={{
+                                            boxShadow:
+                                              '4px -5px 5px 0px #00000040 inset',
 
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
 
-                                                    borderRadius: 100 / 2,
-                                                    borderWidth: 3,
-                                                    borderColor: 'white',
-                                                    backgroundColor: '#0077B7',
-                                                  }}>
-                                                  <Text
-                                                    style={{
-                                                      color: 'white',
-                                                      textAlign: 'center',
-                                                      fontFamily: 'Poppins',
-                                                      fontSize: 13,
-                                                      fontWeight: '500',
-                                                    }}>
-                                                      dffdgfg
-                                                  </Text>
-                                                </View>
-                                              );
-                                            },
-                                          )
-                                       } */}
+                                            borderRadius: 100 / 2,
+                                            borderWidth: 3,
+                                            borderColor: 'white',
+                                            backgroundColor: '#0077B7',
+                                            height: 80,
+                                            width: 80,
+                                          }}>
+                                          <Text
+                                            style={{
+                                              color: 'white',
+                                              textAlign: 'center',
+                                              fontFamily: 'Poppins',
+                                              fontSize: 13,
+                                              fontWeight: '500',
+                                            }}>
+                                            {Here_for}
+                                          </Text>
+                                        </View>
+                                      );
+                                    },
+                                  )}
                                 </View>
                                 <View
                                   style={{
@@ -1450,145 +1454,166 @@ const Vibe = () => {
                                   </View>
                                 </View>
                                 <View>
-                            <Text
-                              style={{
-                                color: '#78D2FF',
-                                fontFamily: 'Poppins',
-                                fontSize: 18,
-                                marginTop: 6,
-                                fontWeight: '700',
-                                marginLeft: 15,
-                              }}>
-                              Education:
-                            </Text>
-                            <Text
-                              style={{
-                                color: '#EFEFEF',
-                                fontFamily: 'Poppins',
-                                fontSize: 14,
-                                fontWeight: '400',
-                                marginVertical:5,
-                               
-                                marginLeft: 15,
-                              }}>
-                                IIM Bangalore
-                            </Text>
-                            <Text
-                              style={{
-                                color: '#78D2FF',
-                                fontFamily: 'Poppins',
-                                fontSize: 18,
-                                marginTop: 6,
-                                fontWeight: '700',
-                                marginLeft: 15,
-                              }}>
-                              Industry:
-                            </Text>
-                            <Text
-                              style={{
-                                color: '#EFEFEF',
-                                fontFamily: 'Poppins',
-                                fontSize: 14,
-                                fontWeight: '400',
-                                marginVertical:5,
-                               
-                                marginLeft: 15,
-                              }}>
-                                IIM Bangalore
-                            </Text>
-                            <Text
-                              style={{
-                                color: '#78D2FF',
-                                fontFamily: 'Poppins',
-                                fontSize: 18,
-                                marginTop: 6,
-                                fontWeight: '700',
-                                marginLeft: 15,
-                              }}>
-                              Previous Designation:
-                            </Text>
-                            <Text
-                              style={{
-                                color: '#EFEFEF',
-                                fontFamily: 'Poppins',
-                                fontSize: 14,
-                                fontWeight: '400',
-                                marginVertical:5,
-                               
-                                marginLeft: 15,
-                              }}>
-                                IIM Bangalore
-                            </Text>
-                            <Text
-                              style={{
-                                color: '#78D2FF',
-                                fontFamily: 'Poppins',
-                                fontSize: 18,
-                                marginTop: 6,
-                                fontWeight: '700',
-                                marginLeft: 15,
-                              }}>
-                              Previous Organization:
-                            </Text>
-                            <Text
-                              style={{
-                                color: '#EFEFEF',
-                                fontFamily: 'Poppins',
-                                fontSize: 14,
-                                fontWeight: '400',
-                                marginVertical:5,
-                               
-                                marginLeft: 15,
-                              }}>
-                                IIM Bangalore
-                            </Text>
-                            <Text
-                              style={{
-                                color: '#78D2FF',
-                                fontFamily: 'Poppins',
-                                fontSize: 18,
-                                marginTop: 6,
-                                fontWeight: '700',
-                                marginLeft: 15,
-                              }}>
-                              How to Meet:
-                            </Text>
-                            <Text
-                              style={{
-                                color: '#EFEFEF',
-                                fontFamily: 'Poppins',
-                                fontSize: 14,
-                                fontWeight: '400',
-                                marginVertical:5,
-                               
-                                marginLeft: 15,
-                              }}>
-                                IIM Bangalore
-                            </Text>
-                            <Text
-                              style={{
-                                color: '#78D2FF',
-                                fontFamily: 'Poppins',
-                                fontSize: 18,
-                                marginTop: 6,
-                                fontWeight: '700',
-                                marginLeft: 15,
-                              }}>
-                              Experience:
-                            </Text>
-                            <Text
-                              style={{
-                                color: '#EFEFEF',
-                                fontFamily: 'Poppins',
-                                fontSize: 14,
-                                fontWeight: '400',
-                                marginVertical:5,
-                               
-                                marginLeft: 15,
-                              }}>
-                                IIM Bangalore
-                            </Text>
-                          </View>
+                                  <Text
+                                    style={{
+                                      color: '#78D2FF',
+                                      fontFamily: 'Poppins',
+                                      fontSize: 18,
+                                      marginTop: 6,
+                                      fontWeight: '700',
+                                      marginLeft: 15,
+                                    }}>
+                                    Education:
+                                  </Text>
+                                  <Text
+                                    style={{
+                                      color: '#EFEFEF',
+                                      fontFamily: 'Poppins',
+                                      fontSize: 14,
+                                      fontWeight: '400',
+                                      marginVertical: 5,
+
+                                      marginLeft: 15,
+                                    }}>
+                                    {item.postedby?.Vibe_Data?.Education}
+                                  </Text>
+                                  <Text
+                                    style={{
+                                      color: '#78D2FF',
+                                      fontFamily: 'Poppins',
+                                      fontSize: 18,
+                                      marginTop: 6,
+                                      fontWeight: '700',
+                                      marginLeft: 15,
+                                    }}>
+                                    Industry:
+                                  </Text>
+                                  <Text
+                                    style={{
+                                      color: '#EFEFEF',
+                                      fontFamily: 'Poppins',
+                                      fontSize: 14,
+                                      fontWeight: '400',
+                                      marginVertical: 5,
+
+                                      marginLeft: 15,
+                                    }}>
+                                    {item.postedby?.Vibe_Data?.Industry}
+                                  </Text>
+                                  <Text
+                                    style={{
+                                      color: '#78D2FF',
+                                      fontFamily: 'Poppins',
+                                      fontSize: 18,
+                                      marginTop: 6,
+                                      fontWeight: '700',
+                                      marginLeft: 15,
+                                    }}>
+                                    Previous Designation:
+                                  </Text>
+                                  <Text
+                                    style={{
+                                      color: '#EFEFEF',
+                                      fontFamily: 'Poppins',
+                                      fontSize: 14,
+                                      fontWeight: '400',
+                                      marginVertical: 5,
+
+                                      marginLeft: 15,
+                                    }}>
+                                    {
+                                      item.postedby?.Vibe_Data
+                                        ?.Previous_Designation
+                                    }
+                                  </Text>
+                                  <Text
+                                    style={{
+                                      color: '#78D2FF',
+                                      fontFamily: 'Poppins',
+                                      fontSize: 18,
+                                      marginTop: 6,
+                                      fontWeight: '700',
+                                      marginLeft: 15,
+                                    }}>
+                                    Previous Organization:
+                                  </Text>
+                                  <Text
+                                    style={{
+                                      color: '#EFEFEF',
+                                      fontFamily: 'Poppins',
+                                      fontSize: 14,
+                                      fontWeight: '400',
+                                      marginVertical: 5,
+
+                                      marginLeft: 15,
+                                    }}>
+                                    {item.postedby?.Vibe_Data?.Previous_Org}
+                                  </Text>
+                                  <Text
+                                    style={{
+                                      color: '#78D2FF',
+                                      fontFamily: 'Poppins',
+                                      fontSize: 18,
+                                      marginTop: 6,
+                                      fontWeight: '700',
+                                      marginLeft: 15,
+                                    }}>
+                                    How can we meet:
+                                  </Text>
+                                  {item?.postedby?.Vibe_Data?.How_To_Meet?.map(
+                                    How_To_Meet => {
+                                      console.log(item);
+                                      return (
+                                        <View>
+                                          <Text
+                                            style={{
+                                              color: '#EFEFEF',
+                                              fontFamily: 'Poppins',
+                                              fontSize: 14,
+                                              fontWeight: '400',
+                                              marginVertical: 5,
+
+                                              marginLeft: 15,
+                                            }}>
+                                            {How_To_Meet}
+                                          </Text>
+                                        </View>
+                                      );
+                                    },
+                                  )}
+                                  <Text
+                                    style={{
+                                      color: '#78D2FF',
+                                      fontFamily: 'Poppins',
+                                      fontSize: 18,
+                                      marginTop: 6,
+                                      fontWeight: '700',
+                                      marginLeft: 15,
+                                    }}>
+                                    Experience:
+                                  </Text>
+                                  {item?.postedby?.Vibe_Data?.Years_Of_Experience?.map(
+                                    Years_Of_Experience => {
+                                      console.log(item);
+                                      return (
+                                        <View>
+                                          <Text
+                                            style={{
+                                              color: '#EFEFEF',
+                                              fontFamily: 'Poppins',
+                                              fontSize: 14,
+                                              fontWeight: '400',
+                                              marginVertical: 5,
+                                              marginBottom:10,
+                                              marginLeft: 15,
+                                            }}>
+                                            {Years_Of_Experience}
+                                          </Text>
+                                        </View>
+                                      );
+                                    },
+                                  )}
+                                </View>
                               </View>
                             </View>
                           </View>
