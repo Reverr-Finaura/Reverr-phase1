@@ -106,6 +106,8 @@ const Vibe = () => {
   const Card_FireBase_Update = useRef(0);
   const [TotalSwipe, setTotalswipe] = useState(0);
   const [showCards, setshowCards] = useState(false);
+  const [visible, setVisible] = useState(false);
+
   const [hasPremiumOfVibe, setHasPremiumOfVibe] = useState(false);
   console.log('hasPremiumm', hasPremiumOfVibe);
   const [selected1, setselected1] = useState([]);
@@ -154,6 +156,9 @@ const Vibe = () => {
   };
   const filterModal = () => {
     setFilter(v => !v);
+  };
+  const toggleData = () => {
+    setVisible(!visible);
   };
   const navigation = useNavigation();
 
@@ -1267,192 +1272,82 @@ const Vibe = () => {
                               day.
                             </Text>
                           </View>
+                          <View
+                            style={{
+                              alignItems: 'center',
+                              alignSelf: 'center',
+                              flexDirection: 'row',
+                              marginTop: 10,
+                              backgroundColor: '#121416',
+                              flex: 1,
+                              width: 250,
+                              height: 55,
+                              borderRadius: 10,
+                            }}>
+                            <View style={{marginStart: 10, flex: 1}}>
+                              <Image
+                                style={{
+                                  height: 32,
+                                  width: 32,
+                                }}
+                                source={require('../../../src/assets/images/nope.png')}
+                              />
+                              <Text style={{color: '#fff'}}>nope</Text>
+                            </View>
 
-                          <View style={{flex: 1}}>
-                            <View>
-                              <View>
+                            <View style={{flex: 1, marginRight: 15}}>
+                              <TouchableOpacity
+                                onPress={() =>
+                                  navigation.navigate('SuperLikeScreen')
+                                }>
+                                <Image
+                                  style={{
+                                    height: 32,
+                                    width: 32,
+                                    marginStart: 10,
+                                  }}
+                                  source={require('../../../src/assets/images/superlike.png')}
+                                />
+                                <Text style={{color: '#fff'}}>superlike</Text>
+                              </TouchableOpacity>
+                            </View>
+                            <View style={{marginEnd: 10}}>
+                              <TouchableOpacity
+                                onPress={() =>
+                                  navigation.navigate('LikeMatchScreen')
+                                }>
+                                <Image
+                                  style={{
+                                    height: 32,
+                                    width: 32,
+                                  }}
+                                  source={require('../../../src/assets/images/liketic.png')}
+                                />
                                 <Text
                                   style={{
-                                    color: '#78D2FF',
-                                    fontFamily: 'Poppins',
-                                    fontSize: 18,
-                                    marginTop: 6,
-                                    fontWeight: '700',
-                                    marginLeft: 15,
+                                    color: '#fff',
+                                    marginStart: 5,
                                   }}>
-                                  What I am here for
+                                  like
                                 </Text>
+                              </TouchableOpacity>
+                            </View>
+                          </View>
+                          <TouchableOpacity onPress={toggleData}>
+                            <Entypo
+                              style={{alignSelf: 'center', marginTop: 20}}
+                              name={
+                                visible
+                                  ? 'chevron-small-up'
+                                  : 'chevron-small-down'
+                              }
+                              size={40}
+                              color="#ffffff"></Entypo>
+                          </TouchableOpacity>
 
-                                <View
-                                  style={{
-                                    marginTop: 8,
-                                    flexDirection: 'row',
-                                    justifyContent: 'space-evenly',
-                                    flexWrap: 'wrap',
-                                  }}>
-                                  {/* <View
-                                    style={{
-                                      alignItems: 'center',
-                                      alignSelf: 'center',
-                                      justifyContent: 'center',
-                                      borderRadius: 100 / 2,
-                                      borderWidth: 3,
-                                      borderColor: 'white',
-                                      backgroundColor: '#0077B7',
-                                      height: 80,
-                                      width: 80,
-                                    }}>
-                                    <Text
-                                      style={{
-                                        color: 'white',
-                                        textAlign: 'center',
-                                        fontFamily: 'Poppins',
-                                        fontSize: 13,
-                                        fontWeight: '500',
-                                      }}>
-                                      FIND INVESTORS
-                                    </Text>
-                                  </View>
-                                  <View
-                                    style={{
-                                      alignItems: 'center',
-                                      alignSelf: 'center',
-                                      justifyContent: 'center',
-                                      borderRadius: 100 / 2,
-                                      borderWidth: 3,
-                                      borderColor: 'white',
-                                      backgroundColor: '#0077B7',
-                                      height: 80,
-                                      width: 80,
-                                    }}>
-                                    <Text
-                                      style={{
-                                        color: 'white',
-                                        textAlign: 'center',
-                                        fontFamily: 'Poppins',
-                                        fontSize: 13,
-                                        fontWeight: '500',
-                                      }}>
-                                      FIND MENTORS
-                                    </Text>
-                                  </View>
-                                  <View
-                                    style={{
-                                      alignItems: 'center',
-                                      alignSelf: 'center',
-                                      justifyContent: 'center',
-                                      borderRadius: 100 / 2,
-                                      borderWidth: 3,
-                                      borderColor: 'white',
-                                      backgroundColor: '#0077B7',
-                                      height: 80,
-                                      width: 80,
-                                    }}>
-                                    <Text
-                                      style={{
-                                        color: 'white',
-                                        textAlign: 'center',
-                                        fontFamily: 'Poppins',
-                                        fontSize: 13,
-                                        fontWeight: '500',
-                                      }}>
-                                      FIND EMPLYOYEE
-                                    </Text>
-                                  </View> */}
-                                  {item?.postedby?.Vibe_Data?.Here_for?.map(
-                                    Here_for => {
-                                      console.log(item);
-                                      return (
-                                        <View
-                                          style={{
-                                            boxShadow:
-                                              '4px -5px 5px 0px #00000040 inset',
-
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-
-                                            borderRadius: 100 / 2,
-                                            borderWidth: 3,
-                                            borderColor: 'white',
-                                            backgroundColor: '#0077B7',
-                                            height: 80,
-                                            width: 80,
-                                          }}>
-                                          <Text
-                                            style={{
-                                              color: 'white',
-                                              textAlign: 'center',
-                                              fontFamily: 'Poppins',
-                                              fontSize: 13,
-                                              fontWeight: '500',
-                                            }}>
-                                            {Here_for}
-                                          </Text>
-                                        </View>
-                                      );
-                                    },
-                                  )}
-                                </View>
-                                <View
-                                  style={{
-                                    alignItems: 'center',
-                                    alignSelf: 'center',
-                                    flexDirection: 'row',
-                                    marginTop: 10,
-                                    backgroundColor: '#121416',
-                                    flex: 1,
-                                    width: 250,
-                                    height: 55,
-                                    borderRadius: 10,
-                                  }}>
-                                  <View style={{marginStart: 10, flex: 1}}>
-                                    <Image
-                                      style={{
-                                        height: 32,
-                                        width: 32,
-                                      }}
-                                      source={require('../../../src/assets/images/nope.png')}
-                                    />
-                                    <Text style={{color: '#fff'}}>nope</Text>
-                                  </View>
-
-                                  <View style={{flex: 1, marginRight: 15}}>
-                                    <TouchableOpacity
-                                      onPress={() =>
-                                        navigation.navigate('SuperLikeScreen')
-                                      }>
-                                      <Image
-                                        style={{
-                                          height: 32,
-                                          width: 32,
-                                          marginStart: 10,
-                                        }}
-                                        source={require('../../../src/assets/images/superlike.png')}
-                                      />
-                                      <Text style={{color: '#fff'}}>
-                                        superlike
-                                      </Text>
-                                    </TouchableOpacity>
-                                  </View>
-                                  <View style={{marginEnd: 10}}>
-                                    <TouchableOpacity
-                                      onPress={() =>
-                                        navigation.navigate('LikeMatchScreen')
-                                      }>
-                                      <Image
-                                        style={{
-                                          height: 32,
-                                          width: 32,
-                                        }}
-                                        source={require('../../../src/assets/images/liketic.png')}
-                                      />
-                                      <Text
-                                        style={{color: '#fff', marginStart: 5}}>
-                                        like
-                                      </Text>
-                                    </TouchableOpacity>
-                                  </View>
-                                </View>
+                          {visible && (
+                            <View style={{flex: 1}}>
+                              <View>
                                 <View>
                                   <Text
                                     style={{
@@ -1463,160 +1358,226 @@ const Vibe = () => {
                                       fontWeight: '700',
                                       marginLeft: 15,
                                     }}>
-                                    Education:
+                                    What I am here for
                                   </Text>
-                                  <Text
-                                    style={{
-                                      color: '#EFEFEF',
-                                      fontFamily: 'Poppins',
-                                      fontSize: 14,
-                                      fontWeight: '400',
-                                      marginVertical: 5,
 
-                                      marginLeft: 15,
-                                    }}>
-                                    {item.postedby?.Vibe_Data?.Education}
-                                  </Text>
-                                  <Text
+                                  <View
                                     style={{
-                                      color: '#78D2FF',
-                                      fontFamily: 'Poppins',
-                                      fontSize: 18,
-                                      marginTop: 6,
-                                      fontWeight: '700',
-                                      marginLeft: 15,
+                                      marginTop: 8,
+                                      flexDirection: 'row',
+                                      justifyContent: 'space-evenly',
+                                      flexWrap: 'wrap',
                                     }}>
-                                    Industry:
-                                  </Text>
-                                  <Text
-                                    style={{
-                                      color: '#EFEFEF',
-                                      fontFamily: 'Poppins',
-                                      fontSize: 14,
-                                      fontWeight: '400',
-                                      marginVertical: 5,
+                                    {item?.postedby?.Vibe_Data?.Here_for?.map(
+                                      Here_for => {
+                                        console.log(item);
+                                        return (
+                                          <TouchableOpacity
+                                            onPress={data =>
+                                              navigation.navigate(
+                                                'ShowMoreVibe',
+                                                {
+                                                  data,
+                                                },
+                                              )
+                                            }>
+                                            <View
+                                              style={{
+                                                boxShadow:
+                                                  '4px -5px 5px 0px #00000040 inset',
 
-                                      marginLeft: 15,
-                                    }}>
-                                    {item.postedby?.Vibe_Data?.Industry}
-                                  </Text>
-                                  <Text
-                                    style={{
-                                      color: '#78D2FF',
-                                      fontFamily: 'Poppins',
-                                      fontSize: 18,
-                                      marginTop: 6,
-                                      fontWeight: '700',
-                                      marginLeft: 15,
-                                    }}>
-                                    Previous Designation:
-                                  </Text>
-                                  <Text
-                                    style={{
-                                      color: '#EFEFEF',
-                                      fontFamily: 'Poppins',
-                                      fontSize: 14,
-                                      fontWeight: '400',
-                                      marginVertical: 5,
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
 
-                                      marginLeft: 15,
-                                    }}>
-                                    {
-                                      item.postedby?.Vibe_Data
-                                        ?.Previous_Designation
-                                    }
-                                  </Text>
-                                  <Text
-                                    style={{
-                                      color: '#78D2FF',
-                                      fontFamily: 'Poppins',
-                                      fontSize: 18,
-                                      marginTop: 6,
-                                      fontWeight: '700',
-                                      marginLeft: 15,
-                                    }}>
-                                    Previous Organization:
-                                  </Text>
-                                  <Text
-                                    style={{
-                                      color: '#EFEFEF',
-                                      fontFamily: 'Poppins',
-                                      fontSize: 14,
-                                      fontWeight: '400',
-                                      marginVertical: 5,
+                                                borderRadius: 100 / 2,
+                                                borderWidth: 3,
+                                                borderColor: 'white',
+                                                backgroundColor: '#0077B7',
+                                                height: 80,
+                                                width: 80,
+                                              }}>
+                                              <Text
+                                                style={{
+                                                  color: 'white',
+                                                  textAlign: 'center',
+                                                  fontFamily: 'Poppins',
+                                                  fontSize: 13,
+                                                  fontWeight: '500',
+                                                }}>
+                                                {Here_for}
+                                              </Text>
+                                            </View>
+                                          </TouchableOpacity>
+                                        );
+                                      },
+                                    )}
+                                  </View>
 
-                                      marginLeft: 15,
-                                    }}>
-                                    {item.postedby?.Vibe_Data?.Previous_Org}
-                                  </Text>
-                                  <Text
-                                    style={{
-                                      color: '#78D2FF',
-                                      fontFamily: 'Poppins',
-                                      fontSize: 18,
-                                      marginTop: 6,
-                                      fontWeight: '700',
-                                      marginLeft: 15,
-                                    }}>
-                                    How can we meet:
-                                  </Text>
-                                  {item?.postedby?.Vibe_Data?.How_To_Meet?.map(
-                                    How_To_Meet => {
-                                      console.log(item);
-                                      return (
-                                        <View>
-                                          <Text
-                                            style={{
-                                              color: '#EFEFEF',
-                                              fontFamily: 'Poppins',
-                                              fontSize: 14,
-                                              fontWeight: '400',
-                                              marginVertical: 5,
+                                  <View>
+                                    <Text
+                                      style={{
+                                        color: '#78D2FF',
+                                        fontFamily: 'Poppins',
+                                        fontSize: 18,
+                                        marginTop: 6,
+                                        fontWeight: '700',
+                                        marginLeft: 15,
+                                      }}>
+                                      Education:
+                                    </Text>
+                                    <Text
+                                      style={{
+                                        color: '#EFEFEF',
+                                        fontFamily: 'Poppins',
+                                        fontSize: 14,
+                                        fontWeight: '400',
+                                        marginVertical: 5,
 
-                                              marginLeft: 15,
-                                            }}>
-                                            {How_To_Meet}
-                                          </Text>
-                                        </View>
-                                      );
-                                    },
-                                  )}
-                                  <Text
-                                    style={{
-                                      color: '#78D2FF',
-                                      fontFamily: 'Poppins',
-                                      fontSize: 18,
-                                      marginTop: 6,
-                                      fontWeight: '700',
-                                      marginLeft: 15,
-                                    }}>
-                                    Experience:
-                                  </Text>
-                                  {item?.postedby?.Vibe_Data?.Years_Of_Experience?.map(
-                                    Years_Of_Experience => {
-                                      console.log(item);
-                                      return (
-                                        <View>
-                                          <Text
-                                            style={{
-                                              color: '#EFEFEF',
-                                              fontFamily: 'Poppins',
-                                              fontSize: 14,
-                                              fontWeight: '400',
-                                              marginVertical: 5,
-                                              marginBottom:10,
-                                              marginLeft: 15,
-                                            }}>
-                                            {Years_Of_Experience}
-                                          </Text>
-                                        </View>
-                                      );
-                                    },
-                                  )}
+                                        marginLeft: 15,
+                                      }}>
+                                      {item.postedby?.Vibe_Data?.Education}
+                                    </Text>
+                                    <Text
+                                      style={{
+                                        color: '#78D2FF',
+                                        fontFamily: 'Poppins',
+                                        fontSize: 18,
+                                        marginTop: 6,
+                                        fontWeight: '700',
+                                        marginLeft: 15,
+                                      }}>
+                                      Industry:
+                                    </Text>
+                                    <Text
+                                      style={{
+                                        color: '#EFEFEF',
+                                        fontFamily: 'Poppins',
+                                        fontSize: 14,
+                                        fontWeight: '400',
+                                        marginVertical: 5,
+
+                                        marginLeft: 15,
+                                      }}>
+                                      {item.postedby?.Vibe_Data?.Industry}
+                                    </Text>
+                                    <Text
+                                      style={{
+                                        color: '#78D2FF',
+                                        fontFamily: 'Poppins',
+                                        fontSize: 18,
+                                        marginTop: 6,
+                                        fontWeight: '700',
+                                        marginLeft: 15,
+                                      }}>
+                                      Previous Designation:
+                                    </Text>
+                                    <Text
+                                      style={{
+                                        color: '#EFEFEF',
+                                        fontFamily: 'Poppins',
+                                        fontSize: 14,
+                                        fontWeight: '400',
+                                        marginVertical: 5,
+
+                                        marginLeft: 15,
+                                      }}>
+                                      {
+                                        item.postedby?.Vibe_Data
+                                          ?.Previous_Designation
+                                      }
+                                    </Text>
+                                    <Text
+                                      style={{
+                                        color: '#78D2FF',
+                                        fontFamily: 'Poppins',
+                                        fontSize: 18,
+                                        marginTop: 6,
+                                        fontWeight: '700',
+                                        marginLeft: 15,
+                                      }}>
+                                      Previous Organization:
+                                    </Text>
+                                    <Text
+                                      style={{
+                                        color: '#EFEFEF',
+                                        fontFamily: 'Poppins',
+                                        fontSize: 14,
+                                        fontWeight: '400',
+                                        marginVertical: 5,
+
+                                        marginLeft: 15,
+                                      }}>
+                                      {item.postedby?.Vibe_Data?.Previous_Org}
+                                    </Text>
+                                    <Text
+                                      style={{
+                                        color: '#78D2FF',
+                                        fontFamily: 'Poppins',
+                                        fontSize: 18,
+                                        marginTop: 6,
+                                        fontWeight: '700',
+                                        marginLeft: 15,
+                                      }}>
+                                      How can we meet:
+                                    </Text>
+                                    {item?.postedby?.Vibe_Data?.How_To_Meet?.map(
+                                      How_To_Meet => {
+                                        console.log(item);
+                                        return (
+                                          <View>
+                                            <Text
+                                              style={{
+                                                color: '#EFEFEF',
+                                                fontFamily: 'Poppins',
+                                                fontSize: 14,
+                                                fontWeight: '400',
+                                                marginVertical: 5,
+
+                                                marginLeft: 15,
+                                              }}>
+                                              {How_To_Meet}
+                                            </Text>
+                                          </View>
+                                        );
+                                      },
+                                    )}
+                                    <Text
+                                      style={{
+                                        color: '#78D2FF',
+                                        fontFamily: 'Poppins',
+                                        fontSize: 18,
+                                        marginTop: 6,
+                                        fontWeight: '700',
+                                        marginLeft: 15,
+                                      }}>
+                                      Experience:
+                                    </Text>
+                                    {item?.postedby?.Vibe_Data?.Years_Of_Experience?.map(
+                                      Years_Of_Experience => {
+                                        console.log(item);
+                                        return (
+                                          <View>
+                                            <Text
+                                              style={{
+                                                color: '#EFEFEF',
+                                                fontFamily: 'Poppins',
+                                                fontSize: 14,
+                                                fontWeight: '400',
+                                                marginVertical: 5,
+                                                marginBottom: 10,
+                                                marginLeft: 15,
+                                              }}>
+                                              {Years_Of_Experience}
+                                            </Text>
+                                          </View>
+                                        );
+                                      },
+                                    )}
+                                  </View>
                                 </View>
                               </View>
                             </View>
-                          </View>
+                          )}
                         </View>
                       </ScrollView>
                       <View style={{flex: 1}}>

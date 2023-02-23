@@ -334,6 +334,7 @@ const ShowMoreVibe = () => {
                   flexDirection: 'row',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  marginStart:10
                 }}
               >
                 <Icon name="search" color={AppColors.ActiveColor} size={20} />
@@ -414,7 +415,7 @@ const ShowMoreVibe = () => {
               style={{
                 flexDirection: 'row',
                 alignparamss: 'center',
-
+                marginStart:10,
                 justifyContent: 'center',
               }}
             >
