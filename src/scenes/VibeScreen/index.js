@@ -86,6 +86,14 @@ const totalScore = [
     orderID: '4747',
   },
 ];
+const data = [
+  { id: 1, name: 'John',  hareFor: 'Find Investors',howMeet:'At Coffee'},
+  { id: 2, name: 'Jane',  hareFor: 'Networking',howMeet:'Video Call'},
+  { id: 3, name: 'Jack',  hareFor: 'Hire Employees',howMeet:'Local Cafe'},
+  { id: 4, name: 'Jill',  hareFor: 'Find Mentor',howMeet:'Video Call'  },
+  { id: 5, name: 'T',  hareFor: 'Find Cofounders',howMeet:'At Coffee'  },
+
+];
 const Vibe = () => {
   const state = useSelector(state => state.UserReducer);
   //  console.log("",JSON.stringify (state.Rooms,2,4))
@@ -116,44 +124,40 @@ const Vibe = () => {
   const [selected2, setselected2] = useState([]);
 
   const [selected3, setselected3] = useState([]);
-  const HareFor = [
+  const [filteredData, setFilteredData] = useState(data);
+  const [filters, setFilters] = useState({
+    hareFor: [],
+    // yearsExperience: [],
+    howMeet: [],
+  });
+
+  const applyFilters = () => {
+    const newFilteredData = data.filter(
+      item  =>
+        (filters.howMeet.length === 0 ||
+          filters.howMeet.includes(item.howMeet)) &&
+        (filters.hareFor.length === 0 ||
+          filters.hareFor.includes(item.hareFor)) 
+        //&& (filters.yearsExperience.length === 0 ||
+        //   filters.yearsExperience.includes(item.yearsExperience.toString())),
+          
+    );
+    setFilteredData(newFilteredData);
+  };
+  const hareFor = [
     {id: 'Find Investors', name: 'Find Investors'},
     {id: 'Networking', name: 'Networking'},
     {id: 'Hire Employees', name: 'Hire Employees'},
     {id: 'Find Mentor', name: 'Find Mentor'},
     {id: 'Find Cofounders', name: 'Find Cofounder'},
   ];
-
-  const meetdata = [
+  const howMeet = [
     {id: 'At Coffee', name: 'At Coffee'},
     {id: 'Video Call', name: 'Video Call'},
     {id: 'Local Cafe', name: 'Local Cafe'},
   ];
-  const yearsExperience = [
-    {id: ' < 1', name: '<1'},
-    {id: '1-2', name: '1-2'},
-    {id: '2-5', name: '2-5'},
-    {id: '5>', name: '5>'},
-  ];
 
-  const onSelectedItemsChange3 = data => {
-    console.log('here meet', data);
-    setselected3(data);
-    console.log(data);
-    console.warn(selected3);
-  };
-  const onSelectedItemsChange1 = data => {
-    console.log('here meet', data);
-    setselected1(data);
-    console.log(data);
-    console.warn(selected1);
-  };
-  const onSelectedItemsChange2 = data => {
-    console.log('here meet', data);
-    setselected2(data);
-    console.log(data);
-    console.warn(selected2);
-  };
+  
   const filterModal = () => {
     setFilter(v => !v);
   };
@@ -1592,143 +1596,94 @@ const Vibe = () => {
                                   color="#ffffff"></Entypo>
                                 <Text style={styles.modelText}>Filter</Text>
                               </View>
-                              <View
-                                style={{
-                                  flexDirection: 'row',
-                                  justifyContent: 'space-around',
-                                  alignItems: 'center',
-                                  marginTop: 5,
-                                }}>
-                                <Text
-                                  style={{
-                                    color: '#ffffff',
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16,
-                                    width: '45%',
-                                    textAlign: 'left',
-                                    fontWeight: '700',
-                                  }}>
-                                  How Can We Meet
-                                </Text>
-                                <View style={{width: 150}}>
-                                  <MultiSelect
-                                    items={meetdata}
-                                    uniqueKey="id"
-                                    onSelectedItemsChange={data =>
-                                      onSelectedItemsChange3(data)
-                                    }
-                                    selectedItems={selected3}
-                                    selectText="Pick Locations"
-                                    searchInputPlaceholderText="Search"
-                                    onChangeInput={text => console.log(text)}
-                                    tagRemoveIconColor="#CCC"
-                                    tagBorderColor="blue"
-                                    tagTextColor="#CCC"
-                                    selectedItemTextColor="#CCC"
-                                    selectedItemIconColor="#CCC"
-                                    itemTextColor="#000"
-                                    displayKey="name"
-                                    tagContainerStyle={{
-                                      backgroundColor: 'blue',
-                                      width:
-                                        Dimensions.get('window').width / 2.7,
-                                    }}
-                                    searchInputStyle={{color: '#CCC'}}
-                                    submitButtonColor="blue"
-                                    submitButtonText="Submit"
-                                  />
-                                </View>
+                              <View style={{padding: 20}}>
+                                <MultiSelect
+                                  items={hareFor}
+                                  uniqueKey="id"
+                                  displayKey="name"
+                                  onSelectedItemsChange={selectedItems =>
+                                    setFilters({
+                                      ...filters,
+                                      hareFor: selectedItems,
+                                    })
+                                  }
+                                  selectedItems={filters.hareFor}
+                                  selectText="Hare For"
+                                  searchInputPlaceholderText="Search Hare For"
+                                  searchInputStyle={{height: 40}}
+                                  tagRemoveIconColor="#CCC"
+                                  tagBorderColor="#CCC"
+                                  tagTextColor="#CCC"
+                                  selectedItemTextColor="#CCC"
+                                  selectedItemIconColor="#CCC"
+                                  itemTextColor="#000"
+                                  searchInputTextColor="#000"
+                                  hideDropdown={false}
+                                  hideSubmitButton={true}
+                                />
+                                {/* <MultiSelect
+                                  items={ageOptions}
+                                  uniqueKey="id"
+                                  displayKey="name"
+                                  onSelectedItemsChange={selectedItems =>
+                                    setFilters({
+                                      ...filters,
+                                      yearsExperience: selectedItems,
+                                    })
+                                  }
+                                  selectedItems={filters.yearsExperience}
+                                  selectText="Year Experience"
+                                  searchInputPlaceholderText="Search Year Experience"
+                                  searchInputStyle={{height: 40}}
+                                  tagRemoveIconColor="#CCC"
+                                  tagBorderColor="#CCC"
+                                  tagTextColor="#CCC"
+                                  selectedItemTextColor="#CCC"
+                                  selectedItemIconColor="#CCC"
+                                  itemTextColor="#000"
+                                  searchInputTextColor="#000"
+                                  hideDropdown={false}
+                                  hideSubmitButton={true}
+                                /> */}
+                                <MultiSelect
+                                  items={howMeet}
+                                  uniqueKey="id"
+                                  displayKey="name"
+                                  onSelectedItemsChange={selectedItems =>
+                                    setFilters({
+                                      ...filters,
+                                      howMeet: selectedItems,
+                                    })
+                                  }
+                                  selectedItems={filters.howMeet}
+                                  selectText="How we Meat"
+                                  searchInputPlaceholderText="How we Meet..."
+                                  searchInputStyle={{height: 40}}
+                                  tagRemoveIconColor="#CCC"
+                                  tagBorderColor="#CCC"
+                                  tagTextColor="#CCC"
+                                  selectedItemTextColor="#CCC"
+                                  selectedItemIconColor="#CCC"
+                                  itemTextColor="#000"
+                                  searchInputTextColor="#000"
+                                  hideDropdown={false}
+                                  hideSubmitButton={true}
+                                />
+                                <Button
+                                  title="Apply Filters"
+                                  onPress={applyFilters}
+                                />
                               </View>
-                              <View
-                                style={{
-                                  flexDirection: 'row',
-                                  justifyContent: 'space-around',
-                                  alignItems: 'center',
-                                  marginTop: 5,
-                                }}>
-                                <Text
-                                  style={{
-                                    color: '#ffffff',
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16,
-                                    width: '45%',
-                                    textAlign: 'left',
-                                    fontWeight: '700',
-                                  }}>
-                                  What I Am Hare For
-                                </Text>
-                                <View style={{width: 150}}>
-                                  <MultiSelect
-                                    items={HareFor}
-                                    uniqueKey="id"
-                                    onSelectedItemsChange={data =>
-                                      onSelectedItemsChange2(data)
-                                    }
-                                    selectedItems={selected2}
-                                    selectText="Choice"
-                                    searchInputPlaceholderText="Search"
-                                    onChangeInput={text => console.log(text)}
-                                    tagRemoveIconColor="#CCC"
-                                    tagBorderColor="blue"
-                                    tagTextColor="#CCC"
-                                    selectedItemTextColor="#CCC"
-                                    selectedItemIconColor="#CCC"
-                                    itemTextColor="#000"
-                                    displayKey="name"
-                                    tagContainerStyle={{
-                                      backgroundColor: 'blue',
-                                      width:
-                                        Dimensions.get('window').width / 2.7,
-                                    }}
-                                    searchInputStyle={{color: '#CCC'}}
-                                    submitButtonColor="blue"
-                                    submitButtonText="Submit"
-                                  />
-                                </View>
-                              </View>
-                              <View
-                                style={{
-                                  flexDirection: 'row',
-                                  justifyContent: 'space-around',
-                                  alignItems: 'center',
-                                  marginTop: 5,
-                                }}>
-                                <Text
-                                  style={{
-                                    color: '#ffffff',
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16,
-                                    width: '45%',
-                                    textAlign: 'left',
-                                    fontWeight: '700',
-                                  }}>
-                                  Years of Experience
-                                </Text>
-                                <View style={{width: 150}}>
-                                  <MultiSelect
-                                    items={yearsExperience}
-                                    uniqueKey="id"
-                                    onSelectedItemsChange={data =>
-                                      onSelectedItemsChange1(data)
-                                    }
-                                    selectedItems={selected1}
-                                    selectText="Choose"
-                                    searchInputPlaceholderText="Search Items..."
-                                    onChangeInput={text => console.log(text)}
-                                    tagRemoveIconColor="#CCC"
-                                    tagBorderColor="#CCC"
-                                    tagTextColor="#CCC"
-                                    selectedItemTextColor="#CCC"
-                                    selectedItemIconColor="#CCC"
-                                    itemTextColor="#000"
-                                    displayKey="name"
-                                    searchInputStyle={{color: '#CCC'}}
-                                    single={true}
-                                    submitButtonColor="#CCC"
-                                    submitButtonText="Submit"
-                                  />
-                                </View>
-                              </View>
+                              <FlatList
+                                data={filteredData}
+                                renderItem={({item}) => (
+                                  <View>
+                                    <Text style={{color: '#fff'}}>
+                                      {item.name}
+                                    </Text>
+                                  </View>
+                                )}
+                              />
                             </View>
                           </View>
                         </Modal>
