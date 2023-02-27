@@ -13,6 +13,7 @@ import {
 import {VibeHeader} from '../../Components/VibeHeader';
 import Button from '../../Components/Button';
 import LinearGradient from 'react-native-linear-gradient';
+import styles from './styles';
 export default function LikeMatchScreen({navigation}) {
   const [email, setEmail] = useState('');
 
@@ -35,7 +36,7 @@ export default function LikeMatchScreen({navigation}) {
       </View>
       <Text style={styles.like1}>You and jatin matched. Go send a hello !</Text>
       <View style={{flex:1}}></View>
-      <View style={{marginHorizontal: 30,marginBottom:20}}>
+      <View style={styles.button}>
         <Button
           backgroundColor={'#2A72DE'}
           title={'Start messaging'}
@@ -50,40 +51,4 @@ export default function LikeMatchScreen({navigation}) {
     </SafeAreaView>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#2A72DE80',
-  },
-  like: {
-    color: '#fff',
-    fontSize: 30,
-    alignItems: 'center',
-    textAlign: 'center',
-    marginTop: 20,
-    fontWeight: '700',
-  },
-  like1: {
-    color: '#fff',
-    fontSize: 20,
-    alignItems: 'center',
-    textAlign: 'center',
-    marginTop: 30,
-    fontWeight: '700',
-    marginHorizontal: 30,
-  },
-  ImageBack: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 40,
-  },
-  image: {
-    width: 130,
-    height: 130,
-    borderRadius: 100,
-    resizeMode: 'cover',
-    borderColor: '#000',
-    borderWidth: 5,
-  },
-});
+

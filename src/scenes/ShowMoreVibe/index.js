@@ -160,11 +160,12 @@ const ShowMoreVibe = () => {
                           height: Dimensions.get('window').height / 7.5,
                           alignItems: 'center',
                           justifyContent: 'center',
-
                           borderRadius: 100 / 2,
                           borderWidth: 3,
                           borderColor: 'white',
                           backgroundColor: '#0077B7',
+                          height: 80,
+                         width: 80,
                         }}
                       >
                         <Text
@@ -172,8 +173,9 @@ const ShowMoreVibe = () => {
                             color: 'white',
                             textAlign: 'center',
                             fontFamily: 'Poppins',
-                            fontSize: 13,
-                            fontWeight: '500',
+                            fontSize: 1,
+                            padding:20,
+                            fontWeight: '400',
                           }}
                         >
                           {item}
@@ -207,6 +209,8 @@ const ShowMoreVibe = () => {
                           borderWidth: 3,
                           borderColor: 'white',
                           backgroundColor: '#0077B7',
+                          height: 80,
+                          width: 80,
                         }}
                       >
                         <Text

@@ -87,11 +87,11 @@ const totalScore = [
   },
 ];
 const data = [
-  { id: 1, name: 'John',  hareFor: 'Find Investors',howMeet:'At Coffee'},
-  { id: 2, name: 'Jane',  hareFor: 'Networking',howMeet:'Video Call'},
-  { id: 3, name: 'Jack',  hareFor: 'Hire Employees',howMeet:'Local Cafe'},
-  { id: 4, name: 'Jill',  hareFor: 'Find Mentor',howMeet:'Video Call'  },
-  { id: 5, name: 'T',  hareFor: 'Find Cofounders',howMeet:'At Coffee'  },
+  { id: 1, name: 'John',  hareFor: 'Find Investors',howMeet:'At Coffee',yearsExperience:1},
+  { id: 2, name: 'Jane',  hareFor: 'Networking',howMeet:'Video Call',yearsExperience:1},
+  { id: 3, name: 'Jack',  hareFor: 'Hire Employees',howMeet:'Local Cafe',yearsExperience:1},
+  { id: 4, name: 'Jill',  hareFor: 'Find Mentor',howMeet:'Video Call',yearsExperience:1  },
+  { id: 5, name: 'T',  hareFor: 'Find Cofounders',howMeet:'At Coffee',yearsExperience:1  },
 
 ];
 const Vibe = () => {
@@ -100,9 +100,20 @@ const Vibe = () => {
 
   //  console.log(">>>",state.Rooms[7].postedby)
 
-  state.Rooms.map(room => {
-    console.log('=======================', room?.postedby?.Vibe_Data);
-  });
+  // state.Rooms.map((room,i) => {
+  //   if(room?.postedby?.Vibe_Data !=undefined){
+  //     console.log(i,'=======================>', room?.postedby?.Vibe_Data);
+
+  //   }else{
+  //     console.log(i,'===========UNDEFINED============>', room?.postedby?.Vibe_Data);
+
+  //   }
+  // });
+
+
+
+ 
+
 
   const [continueshowingcard, setcontinueshowingcard] = useState(true);
   const [prevDailog, setPrevDailog] = useState(false);
@@ -117,19 +128,98 @@ const Vibe = () => {
   const [visible, setVisible] = useState(false);
 
   const [hasPremiumOfVibe, setHasPremiumOfVibe] = useState(false);
-  console.log('hasPremiumm', hasPremiumOfVibe);
+  // console.log('hasPremiumm', hasPremiumOfVibe);
   const [selected1, setselected1] = useState([]);
 
   const [filter, setFilter] = useState(false);
+  console.log("🚀 ~ file: index.js:135 ~ Vibe ~ filter:", filter)
   const [selected2, setselected2] = useState([]);
 
   const [selected3, setselected3] = useState([]);
   const [filteredData, setFilteredData] = useState(data);
   const [filters, setFilters] = useState({
     hareFor: [],
-    // yearsExperience: [],
+    yearsExperience: [],
     howMeet: [],
   });
+  const ageOptions = [
+    {
+      id: '< 1',
+      name: '< 1',
+    },
+    {
+      id: '1-2',
+      name: '1-2',
+    },
+    {
+      id: '2-5',
+      name: '2-5',
+    },
+    {
+      id: '5>',
+      name: '5>',
+    },
+  ];
+
+const [filteringData,setFilteringData]=useState(state.Rooms)
+
+filteringData.filter((aa,i)=>{
+  console.log(i,"<===================>",aa.postedby.Vibe_Data)
+
+})
+// console.log("🚀 ~ file: index.js:146 ~ Vibe ~ filteringData:", filteringData.length)
+
+  // console.log("🚀 ~ file: index.js:171 ~ Vibe ~ filters:", filters.hareFor)
+  // console.log("🚀 ~ file: index.js:171 ~ Vibe ~ filters:", filters.howMeet)
+
+
+
+ 
+  
+  const filterData=()=>{
+    // return
+    if(filters.hareFor.length>0 || filters.howMeet.length>0 ||filters.yearsExperience.length>0){
+  let res = state.Rooms.filter((val) => {
+    if (val?.postedby?.Vibe_Data?.Here_for != undefined) {
+      return filters.hareFor.every((hereFor) =>
+        val.postedby.Vibe_Data.Here_for.includes(hereFor)
+      );
+    }
+  });
+  
+  let res1 = res.filter((val) => {
+    if (val?.postedby?.Vibe_Data?.How_To_Meet != undefined) {
+      return filters.howMeet.every((meeting) =>
+        val.postedby.Vibe_Data.How_To_Meet.includes(meeting)
+      );
+    }
+  });
+
+  let res2 = res1.filter((val) => {
+    if (val?.postedby?.Vibe_Data?.Years_Of_Experience != undefined) {
+      return filters.yearsExperience.every((yearExp) =>
+        val.postedby.Vibe_Data.Years_Of_Experience.includes(yearExp)
+      );
+    }
+  });
+
+
+  setFilteringData(res2)
+  setFilter(false)
+  // alert("Inner")
+  
+}else{
+  setFilteringData(state.Rooms)
+  setFilter(false)
+  // alert("Outer")
+
+}
+  
+  }
+  
+   
+
+
 
   const applyFilters = () => {
     const newFilteredData = data.filter(
@@ -138,8 +228,8 @@ const Vibe = () => {
           filters.howMeet.includes(item.howMeet)) &&
         (filters.hareFor.length === 0 ||
           filters.hareFor.includes(item.hareFor)) 
-        //&& (filters.yearsExperience.length === 0 ||
-        //   filters.yearsExperience.includes(item.yearsExperience.toString())),
+        && (filters.yearsExperience.length === 0 ||
+          filters.yearsExperience.includes(item.yearsExperience.toString())),
           
     );
     setFilteredData(newFilteredData);
@@ -205,7 +295,7 @@ const Vibe = () => {
           </View>
         </TouchableOpacity>
         <View style={{paddingRight: 35}}>
-          <TouchableOpacity onPress={() => filterModal()}>
+          <TouchableOpacity onPress={() => setFilter(true)}>
             <Icon name="filter" color="#ffffff" size={25} />
           </TouchableOpacity>
         </View>
@@ -215,7 +305,7 @@ const Vibe = () => {
   const Vibes = () => {
     const {params} = useRoute();
     const data = 'abc';
-    console.log('data paraams ', params);
+    // console.log('data paraams ', params);
 
     const navigation = useNavigation();
     const state = useSelector(state => state.UserReducer);
@@ -257,18 +347,18 @@ const Vibe = () => {
     const [vertical, setvertical] = useState(false);
 
     const HandleShow = async () => {
-      console.log('at shoiww');
-      console.log(show);
+      // console.log('at shoiww');
+      // console.log(show);
       setshow(() => !show);
       setvertical(() => !vertical);
-      console.log('after', show);
+      // console.log('after', show);
     };
 
     const swipeLeft = async CurrentIndex => {
-      console.log('card index is', CurrentIndex);
+      // console.log('card index is', CurrentIndex);
       if (!cards[cardindex]) return;
       const LeftSwiped = cards[CurrentIndex];
-      console.log('Left detail', LeftSwiped.id);
+      // console.log('Left detail', LeftSwiped.id);
       firestore()
         .collection('Users')
         .doc(state.user.email)
@@ -279,7 +369,7 @@ const Vibe = () => {
 
     const Tapanywhere = cardindex => {
       const data = cards[cardindex];
-      console.log('Tap anywhere', data);
+      // console.log('Tap anywhere', data);
       navigation.navigate('ShowMoreVibe', data);
     };
 
@@ -287,7 +377,7 @@ const Vibe = () => {
       // var currCard = cards[idx];
 
       const data = cards[CurrentIndex];
-      console.log('right datta', data);
+      // console.log('right datta', data);
       dispatch(RemoveTopCard());
       // console.log('stae  vibe swipe right isss', state.vibe);
       // console.log('data is', data);
@@ -329,7 +419,7 @@ const Vibe = () => {
                   state.user.email,
                 ),
               });
-            console.log('userswiped');
+            // console.log('userswiped');
           })
           .catch(err => {
             console.log(err.message);
@@ -339,7 +429,7 @@ const Vibe = () => {
     };
 
     const [cards, setcards] = useState([]);
-    console.log('What is item dddd', cards);
+    // console.log('What is item dddd', cards);
     alert(cards);
 
     const swipedAll = () => {
@@ -351,7 +441,7 @@ const Vibe = () => {
       setcardindex(prev => prev + 1);
       setswipe(prev => prev + 1);
       const Data = cards[cardindex];
-      console.log('datattaa', Data);
+      // console.log('datattaa', Data);
       await firestore().collection('Users').doc(state.user.email).update({
         Number_Of_Swips_Done: swipe,
       });
@@ -362,8 +452,8 @@ const Vibe = () => {
         .update({Last_Card_Email_Swiped: Data.id});
     };
 
-    console.log('state card is', state.vibe.length);
-    console.log('datta coming from boarding', data);
+    // console.log('state card is', state.vibe.length);
+    // console.log('datta coming from boarding', data);
     const CheckIfBoarding = async () => {
       await firestore()
         .collection('Users')
@@ -371,7 +461,7 @@ const Vibe = () => {
         .get()
         .then(doc => {
           if (doc.data().Vibe_Data) {
-            console.log('Document vibe data:', doc.data().Vibe_Data);
+            // console.log('Document vibe data:', doc.data().Vibe_Data);
 
             console.log('yoooi');
           } else {
@@ -422,10 +512,10 @@ const Vibe = () => {
       let Afterquery;
       const FetchUsersCard = async () => {
         if (state.user.AllCardsSwiped) {
-          console.log(state.user, 'what is this');
+          // console.log(state.user, 'what is this');
           const NewExpiredDate = new Date();
-          console.log(NewExpiredDate);
-          console.log('Expiredtime', NewExpiredDate.getTime());
+          // console.log(NewExpiredDate);
+          // console.log('Expiredtime', NewExpiredDate.getTime());
           const NewExpiredTime = NewExpiredDate.getTime();
 
           if (NewExpiredTime <= state.user.CardsUpdatedTime) {
@@ -455,7 +545,7 @@ const Vibe = () => {
         // if (To_Show_Vibe_Screen) {
         //   return;
         // }
-        console.log('what is total swipe', TotalSwipe);
+        // console.log('what is total swipe', TotalSwipe);
         const passeduserdata = await firestore()
           .collection('Users')
           .doc(state.user.email)
@@ -544,14 +634,14 @@ const Vibe = () => {
     }, [hasPremiumOfVibe]);
 
     useEffect(() => {
-      console.log('card ind q', cardindex);
+      // console.log('card ind q', cardindex);
 
       if (cardindex >= 5) {
         if (hasPremiumOfVibe === true) {
           return;
         }
         setcontinueshowingcard(false);
-        console.log('card ind inside', cardindex);
+        // console.log('card ind inside', cardindex);
         var DeletePassedUserReference = firestore()
           .collection('Users')
           .doc(state.user.email)
@@ -563,8 +653,8 @@ const Vibe = () => {
         setAllswiped(true);
 
         const ExpiredDate = new Date();
-        console.log(ExpiredDate);
-        console.log(ExpiredDate.getTime());
+        // console.log(ExpiredDate);
+        // console.log(ExpiredDate.getTime());
         const ExpiredTime = ExpiredDate.getTime();
         const UpdatedTime = ExpiredTime + 86400000;
         const SetFirebaseswipedData = async () => {
@@ -579,7 +669,7 @@ const Vibe = () => {
         settoshowtimer(true);
         // It is 24 hrrs in milli second 86400000;86397500;
         const ToChecKAfter = 12000;
-        console.log('updated time', UpdatedTime);
+        // console.log('updated time', UpdatedTime);
 
         // setTimeout(async () => {
         //   const UpdateDate = new Date();
@@ -613,7 +703,7 @@ const Vibe = () => {
                 <Swiper
                   cards={cards}
                   renderCard={item => {
-                    console.log('What is item dddd', item);
+                    // console.log('What is item dddd', item);
 
                     if (item && cards) {
                       return (
@@ -721,7 +811,7 @@ const Vibe = () => {
                                       {item?.Vibe_Data
                                         ? item?.Vibe_Data?.Here_for?.map(
                                             item => {
-                                              console.log(item);
+                                              // console.log(item);
                                               return (
                                                 <View
                                                   style={{
@@ -751,7 +841,7 @@ const Vibe = () => {
                                             },
                                           )
                                         : checkingdata?.Here_for?.map(item => {
-                                            console.log(item);
+                                            // console.log(item);
                                             return (
                                               <View
                                                 style={{
@@ -1134,6 +1224,22 @@ const Vibe = () => {
     );
   };
 
+const [indexs,setIndex]=useState(0)
+  const swipeLefts = async CurrentIndex => {
+    
+    if (!cards[cardindex]) return;
+    const LeftSwiped = cards[CurrentIndex];
+    // console.log('Left detail', LeftSwiped.id);
+    console.log('card index is', LeftSwiped.id);
+    return
+    firestore()
+      .collection('Users')
+      .doc(state.user.email)
+      .collection('passeduser')
+      .doc(LeftSwiped.id)
+      .set(LeftSwiped);
+  };
+
   return (
     <>
       {toshowtimer ? (
@@ -1154,16 +1260,19 @@ const Vibe = () => {
             </CustomPopup>
             <LikeTab />
             {/* <Vibes /> */}
+
+            {filteringData.length !=0 ?
             <FlatList
-              data={state.Rooms}
-              extraData={state.Rooms}
+              data={filteringData}
+              extraData={filteringData}
               pagingEnabled
               horizontal
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={{justifyContent: 'center', flexGrow: 1}}
               renderItem={({item, index}) => {
+                if(indexs==index){
                 return (
-                  <ScrollView>
+                  <ScrollView showsVerticalScrollIndicator={false}>
                     <View
                       style={{
                         alignSelf: 'center',
@@ -1176,11 +1285,12 @@ const Vibe = () => {
                         borderBottomLeftRadius: 45,
                         borderBottomRightRadius: 45,
                         padding: 2,
+                        paddingHorizontal:20,
                         backgroundColor: '#0C0C0D',
                         borderWidth: 2,
                         borderColor: 'dodgerblue',
                       }}>
-                      <ScrollView scrollEnabled={true} style={{flexGrow: 1}}>
+                      <ScrollView scrollEnabled={true} style={{flexGrow: 1}}showsVerticalScrollIndicator={false}>
                         <View style={{flex: 1}}>
                           <View style={{alignSelf: 'center', marginTop: 10}}>
                             {item.image ? (
@@ -1289,6 +1399,13 @@ const Vibe = () => {
                               borderRadius: 10,
                             }}>
                             <View style={{marginStart: 10, flex: 1}}>
+                            <TouchableOpacity
+                                onPress={() =>{
+                                  // navigation.navigate('LikeMatchScreen')
+                                  // swipeLefts(index)
+                                  setIndex(indexs+1)
+                                }
+                                }>
                               <Image
                                 style={{
                                   height: 32,
@@ -1296,6 +1413,7 @@ const Vibe = () => {
                                 }}
                                 source={require('../../../src/assets/images/nope.png')}
                               />
+                              </TouchableOpacity>
                               <Text style={{color: '#fff'}}>nope</Text>
                             </View>
 
@@ -1317,8 +1435,11 @@ const Vibe = () => {
                             </View>
                             <View style={{marginEnd: 10}}>
                               <TouchableOpacity
-                                onPress={() =>
-                                  navigation.navigate('LikeMatchScreen')
+                                onPress={() =>{
+                                  // navigation.navigate('LikeMatchScreen')
+                                  // swipeLefts(index)
+                                  setIndex(indexs+1)
+                                }
                                 }>
                                 <Image
                                   style={{
@@ -1374,7 +1495,7 @@ const Vibe = () => {
                                     }}>
                                     {item?.postedby?.Vibe_Data?.Here_for?.map(
                                       Here_for => {
-                                        console.log(item);
+                                        // console.log(item);
                                         return (
                                           <TouchableOpacity
                                             onPress={data =>
@@ -1526,7 +1647,7 @@ const Vibe = () => {
                                     </Text>
                                     {item?.postedby?.Vibe_Data?.How_To_Meet?.map(
                                       How_To_Meet => {
-                                        console.log(item);
+                                        // console.log(item);
                                         return (
                                           <View>
                                             <Text
@@ -1558,7 +1679,7 @@ const Vibe = () => {
                                     </Text>
                                     {item?.postedby?.Vibe_Data?.Years_Of_Experience?.map(
                                       Years_Of_Experience => {
-                                        console.log(item);
+                                        // console.log(item);
                                         return (
                                           <View>
                                             <Text
@@ -1584,13 +1705,24 @@ const Vibe = () => {
                           )}
                         </View>
                       </ScrollView>
-                      <View style={{flex: 1}}>
+                     
+                    </View>
+                  </ScrollView>
+                );
+                                    }
+              }}
+              // }
+              keyExtractor={(item, index) => index.toString()}
+            />
+          :<Text style={{color:"white"}}>Empty</Text>}
+          </IndividualHeaderLayout>
+          <View style={{}}>
                         <Modal transparent={true} visible={filter}>
                           <View style={styles.ModelBack}>
                             <View style={styles.modelViewOne}>
                               <View style={styles.modelViewTwo}>
                                 <Entypo
-                                  onPress={filterModal}
+                                  onPress={()=>setFilter(false)}
                                   name="cross"
                                   size={30}
                                   color="#ffffff"></Entypo>
@@ -1621,7 +1753,7 @@ const Vibe = () => {
                                   hideDropdown={false}
                                   hideSubmitButton={true}
                                 />
-                                {/* <MultiSelect
+                                <MultiSelect
                                   items={ageOptions}
                                   uniqueKey="id"
                                   displayKey="name"
@@ -1644,7 +1776,7 @@ const Vibe = () => {
                                   searchInputTextColor="#000"
                                   hideDropdown={false}
                                   hideSubmitButton={true}
-                                /> */}
+                                />
                                 <MultiSelect
                                   items={howMeet}
                                   uniqueKey="id"
@@ -1671,7 +1803,7 @@ const Vibe = () => {
                                 />
                                 <Button
                                   title="Apply Filters"
-                                  onPress={applyFilters}
+                                  onPress={filterData}
                                 />
                               </View>
                               <FlatList
@@ -1688,14 +1820,6 @@ const Vibe = () => {
                           </View>
                         </Modal>
                       </View>
-                    </View>
-                  </ScrollView>
-                );
-              }}
-              // }
-              keyExtractor={(item, index) => index.toString()}
-            />
-          </IndividualHeaderLayout>
         </>
       )}
     </>
