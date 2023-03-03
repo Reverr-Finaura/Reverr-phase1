@@ -7,15 +7,15 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import firestore from '@react-native-firebase/firestore';
-import {BackButton, IndividualHeaderLayout} from '../../Components';
-import {useDispatch, useSelector} from 'react-redux';
-import {cos} from 'react-native-reanimated';
-import {} from 'react-native-gesture-handler';
-import {useNavigation} from '@react-navigation/native';
+import { BackButton, IndividualHeaderLayout } from '../../Components';
+import { useDispatch, useSelector } from 'react-redux';
+import { cos } from 'react-native-reanimated';
+import { } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
-
+import styles from './styles';
 const LikeScreen = () => {
   const navigation = useNavigation();
   const state = useSelector(state => state.UserReducer);
@@ -51,7 +51,7 @@ const LikeScreen = () => {
         console.log('12345==================rer===>', RecievedData);
 
         // console.log(dataliked._data, 'kssk');
-        alert(RecievedData, 'alll set');
+        // alert(RecievedData, 'alll set');
 
         setLikedData(prev => [...prev, RecievedData]);
       });
@@ -69,59 +69,29 @@ const LikeScreen = () => {
 
     const CardRecivedData = cardliked.data();
 
-    navigation.navigate('ShowMoreVibe', CardRecivedData);
+    // navigation.navigate('ShowMoreVibe', CardRecivedData);
   };
   return (
     <View
-      style={{
-        backgroundColor: '#020E2C',
-        height: Dimensions.get('window').height,
-      }}>
-      <View style={{marginTop: 20}}>
+      style={styles.mainView}>
+      <View style={{ marginTop: 20 }}>
         <BackButton />
         <Text
-          style={{
-            textAlign: 'left',
-            fontSize: 16,
-            fontWeight: '700',
-            marginHorizontal: 15,
-            alignItems: 'center',
-            textAlign: 'center',
-            marginTop: 10,
-            color: 'white',
-          }}>
+          style={styles.buyPremium}>
           Buy Premium to connect people who are interested in your profile
         </Text>
         <Text
-          style={{
-            textAlign: 'left',
-            fontSize: 14,
-            fontWeight: '700',
-            marginHorizontal: 15,
-            alignItems: 'center',
-            textAlign: 'center',
-            marginTop: 20,
-            color: '#0077B7',
-          }}>
+          style={styles.william}>
           William and 9 other liked your profile
         </Text>
       </View>
       <View>
-        <View
-          style={{
-            alignSelf: 'center',
-            marginTop: 10,
-          }}></View>
+
 
         {show && LikedData.length > 1 ? (
           <ScrollView>
             <View
-              style={{
-                flexDirection: 'row',
-                flexWrap: 'wrap',
-                justifyContent: 'space-around',
-                marginBottom: 20,
-              }}>
+              style={styles.card}>
               {LikedData?.map(data => {
                 //console.log('what is name', data.email, '', data.id);
                 if (data?.name === undefined) {
@@ -131,59 +101,24 @@ const LikeScreen = () => {
                   <View>
                     <TouchableOpacity onPress={() => HandleOnPress(data.email)}>
                       <View
-                        style={{
-                          marginTop: 20,
+                        style={styles.mainDesign}>
+                        <View style={styles.view2}>
+                          <View style={styles.view3}>
+                            <Image style={styles.coverImage}
+                              source={{ uri: data.image }}
 
-                          justifyContent: 'center',
-                          flexDirection: 'row',
-                          borderBottomRightRadius: 10,
-                          borderTopRightRadius: 10,
-                          borderBottomLeftRadius: 10,
-                          borderTopLeftRadius: 10,
-                          backgroundColor: '#000000',
-                          borderColor: '#0077B7',
-                          borderWidth: 2,
-                        }}>
-                        <View style={{margin: 10}}>
-                          <View style={{flexDirection: 'row'}}>
-                            <Image
-                              source={{uri: data.image}}
-                              style={{
-                                width: 100,
-                                height: 100,
-                                borderRadius: 20,
-                              }}
                             />
-                            <View style={{alignSelf: 'center'}}>
+                            <View style={styles.view4}>
                               <Text
-                                style={{
-                                  textAlign: 'left',
-                                  fontSize: 18,
-                                  fontWeight: '700',
-                                  marginLeft: 10,
-                                  color: 'white',
-                                }}>
+                                style={styles.txtName}>
                                 {data.name}
                               </Text>
                               <Text
-                                style={{
-                                  textAlign: 'left',
-                                  fontSize: 14,
-                                  fontWeight: '700',
-                                  marginLeft: 10,
-                                  color: '#0077B7',
-                                }}>
+                                style={styles.market}>
                                 Market Research
                               </Text>
                               <Text
-                                style={{
-                                  fontSize: 12,
-                                  fontWeight: '500',
-                                  color: 'white',
-                                  width: 200,
-                                  marginLeft: 10,
-                                  flexWrap: 'wrap',
-                                }}>
+                                style={styles.about}>
                                 {data.about}
                               </Text>
                             </View>
@@ -198,7 +133,7 @@ const LikeScreen = () => {
           </ScrollView>
         ) : (
           <>
-            <Text>skfjsfj</Text>
+            <Text></Text>
           </>
         )}
       </View>
@@ -206,4 +141,4 @@ const LikeScreen = () => {
   );
 };
 
-export {LikeScreen};
+export { LikeScreen };

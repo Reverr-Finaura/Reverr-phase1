@@ -1,5 +1,5 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import {
   StartupVerification,
@@ -55,22 +55,22 @@ import {
   CalanderAppointments,
   PremiumPlans,
 } from '../../scenes';
-import {BottomNavigate, MentorNavigator} from '../BottomNavigate';
-import {ArticalDetails} from '../../scenes';
-import {MentorBottomTab} from '../MentorBottomTab';
-import {MentorDetails} from '../../Components';
-import {DrawerNavigation} from '../drawerNavigation';
-import {MatchScreen} from '../../scenes/MatchScreen';
-import {CourseList} from '../../scenes/learn-screen';
-import {VibeBoarding} from '../../Components/VibeBoarding';
-import {ShowMoreVibe} from '../../scenes/ShowMoreVibe';
-import {ChangePassword} from '../../scenes/ChangePassword';
+import { BottomNavigate, MentorNavigator } from '../BottomNavigate';
+import { ArticalDetails } from '../../scenes';
+import { MentorBottomTab } from '../MentorBottomTab';
+import { MentorDetails } from '../../Components';
+import { DrawerNavigation } from '../drawerNavigation';
+import { MatchScreen } from '../../scenes/MatchScreen';
+import { CourseList } from '../../scenes/learn-screen';
+import { VibeBoarding } from '../../Components/VibeBoarding';
+import { ShowMoreVibe } from '../../scenes/ShowMoreVibe';
+import { ChangePassword } from '../../scenes/ChangePassword';
 const Stack = createNativeStackNavigator();
 
 const StackNavigate = props => {
   return (
     <Stack.Navigator
-      screenOptions={{headerShown: false}}
+      screenOptions={{ headerShown: false }}
       initialRouteName="IntroSplash">
       <Stack.Screen
         name="StartupVerification"
@@ -136,10 +136,6 @@ const StackNavigate = props => {
       <Stack.Screen name="LikeMatchScreen" component={LikeMatchScreen} />
       <Stack.Screen name="SuperLikeScreen" component={SuperLikeScreen} />
       {/* <Stack.Screen name="ChatVibeScreen" component={ChatVibeScreen} /> */}
-
-
-
-
       <Stack.Screen name="ShowMoreVibe" component={ShowMoreVibe} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
       <Stack.Screen name="premiumPlans" component={PremiumPlans} />
@@ -147,4 +143,4 @@ const StackNavigate = props => {
   );
 };
 
-export {StackNavigate};
+export { StackNavigate };
