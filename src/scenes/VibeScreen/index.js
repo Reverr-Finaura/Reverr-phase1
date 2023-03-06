@@ -19,6 +19,7 @@ import Button from '../../Components/Button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MultiSelect from 'react-native-multiple-select';
 import styles from './styles';
 // import { useNavigation } from '@react-navigation/native';
@@ -110,6 +111,7 @@ const Vibe = () => {
         <TouchableOpacity onPress={() => navigation.navigate('LikeScreen')}>
           <View
             style={styles.viewLike1}>
+
             <Text
               style={styles.likeText}>
               likes
@@ -130,7 +132,7 @@ const Vibe = () => {
     // console.log('data paraams ', params);
     const [filter, setFilter] = useState(false);
 
-    const [visible, setVisible] = useState(false);
+    const [visible, setVisible] = useState(null);
 
     const toggleData = () => {
       setVisible(!visible);
@@ -683,15 +685,19 @@ const Vibe = () => {
           <TouchableOpacity onPress={() => navigation.navigate('LikeScreen')}>
             <View
               style={styles.viewLike1}>
+              <MaterialCommunityIcons name="heart-plus-outline" color="#ffffff" size={20} />
               <Text
                 style={styles.likeText}>
-                likes
+                view likes
               </Text>
             </View>
           </TouchableOpacity>
           <View style={{ paddingRight: 35 }}>
             <TouchableOpacity onPress={() => setFilter(true)}>
-              <Icon name="filter" color="#ffffff" size={25} />
+              <Image
+                style={{ height: 30, width: 30 }}
+                source={require('../../../src/assets/images/FadersHorizontal.png')}
+              />
             </TouchableOpacity>
           </View>
         </View>
@@ -749,7 +755,7 @@ const Vibe = () => {
                                   </Text>
                                   <Text
                                     style={styles.ceo}>
-                                    CEO at Reverr {item.email}
+                                    {item.Vibe_Data == undefined ? "" : item?.Vibe_Data?.Education}
                                   </Text>
                                   <Text
                                     style={styles.Delhi}>
@@ -821,11 +827,11 @@ const Vibe = () => {
                                     </TouchableOpacity>
                                   </View>
                                 </View>
-                                <TouchableOpacity onPress={toggleData}>
+                                <TouchableOpacity onPress={() => setVisible(index)}>
                                   <Entypo
                                     style={styles.entypo}
                                     name={
-                                      visible
+                                      visible === index
                                         ? 'chevron-small-up'
                                         : 'chevron-small-down'
                                     }
@@ -833,7 +839,7 @@ const Vibe = () => {
                                     color="#ffffff"></Entypo>
                                 </TouchableOpacity>
 
-                                {visible && (
+                                {visible === index && (
                                   <View style={{ flex: 1 }}>
                                     <View>
                                       <View>
@@ -864,7 +870,8 @@ const Vibe = () => {
                                                   <View
                                                     style={styles.circle}>
                                                     <Text
-                                                      style={styles.dataDatabase}>
+                                                      style={styles.hareFor}>
+
                                                       {Here_for}
 
                                                     </Text>

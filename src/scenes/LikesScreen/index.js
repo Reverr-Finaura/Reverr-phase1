@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useId, useState } from 'react';
 import firestore from '@react-native-firebase/firestore';
 import { BackButton, IndividualHeaderLayout } from '../../Components';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,7 +25,7 @@ const LikeScreen = () => {
   const [error, seterror] = useState('');
   const [LikedData, setLikedData] = useState([{}]);
 
-  // console.log('liked datta', LikedData.length);
+  console.log('liked datta', LikedData);
 
   const userFunc = async () => {
     const savedUser = await firestore()
@@ -38,13 +38,15 @@ const LikeScreen = () => {
 
   useEffect(() => {
     const GetLikedPeople = async () => {
-      const Data = state.user.people_liked_me;
+      const Data = state.user.liked_people;
+      console.log('12345===========dddd=======rer===>', Data);
+
 
       Data?.map(async item => {
         console.log(item, 'kjdksskjshf');
         const dataliked = await firestore()
           .collection('Users')
-          .doc('mauricerana@gmail.com')
+          .doc(item)
           .get();
 
         const RecievedData = dataliked.data();
@@ -93,7 +95,7 @@ const LikeScreen = () => {
             <View
               style={styles.card}>
               {LikedData?.map(data => {
-                //console.log('what is name', data.email, '', data.id);
+                console.log('what is name', data.about);
                 if (data?.name === undefined) {
                   return;
                 }
@@ -133,7 +135,7 @@ const LikeScreen = () => {
           </ScrollView>
         ) : (
           <>
-            <Text></Text>
+            <Text style={{ textAlign: "center", marginTop: 10, color: "#fff" }}>No Record Found</Text>
           </>
         )}
       </View>
