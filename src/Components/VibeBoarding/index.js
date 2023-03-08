@@ -1,16 +1,16 @@
-import {View, Text, TouchableOpacity, Dimensions} from 'react-native';
+import { View, Text, TouchableOpacity, Dimensions, TextInput, Image } from 'react-native';
 import React from 'react';
-import {IndividualHeaderLayout} from '../HeaderLayout';
+import { IndividualHeaderLayout } from '../HeaderLayout';
 import MultiSelect from 'react-native-multiple-select';
-import {useState} from 'react';
-import {CustomTextInput} from '../TextInput';
-import {InputField} from '../InputField';
-import {TextInput} from 'react-native-paper';
-import {AppColors} from '../../utils';
-import {ScrollView} from 'react-native-gesture-handler';
+import { useState } from 'react';
+import { CustomTextInput } from '../TextInput';
+import { InputField } from '../InputField';
+// import { TextInput } from 'react-native-paper';
+import { AppColors } from '../../utils';
+import { ScrollView } from 'react-native-gesture-handler';
 import firestore from '@react-native-firebase/firestore';
-import {useDispatch, useSelector} from 'react-redux';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 const items = [
   {
@@ -121,7 +121,7 @@ const prevduration = [
     id: '2-5',
     name: '2-5',
   },
-  {id: '>5', name: '>5'},
+  { id: '>5', name: '>5' },
 ];
 const herefor = [
   {
@@ -146,14 +146,14 @@ const herefor = [
   },
 ];
 const meetdata = [
-  {id: 'At Coffee', name: 'At Coffee'},
-  {id: 'Video Call', name: 'Video Call'},
-  {id: 'Local Cafe', name: 'Local Cafe'},
+  { id: 'At Coffee', name: 'At Coffee' },
+  { id: 'Video Call', name: 'Video Call' },
+  { id: 'Local Cafe', name: 'Local Cafe' },
 ];
-const VibeBoarding = ({showboarding, setshowboarding}) => {
+const VibeBoarding = ({ showboarding, setshowboarding }) => {
   const navigation = useNavigation();
-  const {params} = useRoute();
-  console.log('paraamss is', params);
+  // const { params } = useRoute();
+  // console.log('paraamss is', params);
   const state = useSelector(state => state.UserReducer);
   const dispatch = useDispatch();
   const [selected, setselected] = useState([]);
@@ -165,6 +165,8 @@ const VibeBoarding = ({showboarding, setshowboarding}) => {
   const [industry, setindustry] = useState('');
   const [prevorg, setprevorg] = useState('');
   const [refresh, setrefresh] = useState(true);
+  const [loader, setLoader] = useState(false)
+
   const onSelectedItemsChange = data => {
     console.log('here', data);
     setselected(data);
@@ -190,6 +192,8 @@ const VibeBoarding = ({showboarding, setshowboarding}) => {
     console.warn(selected3);
   };
   const HandleSubmit = async () => {
+    setLoader(true)
+
     console.log('at submit');
     console.log('selected is', selected);
     console.log('selected1 is', selected1);
@@ -216,83 +220,109 @@ const VibeBoarding = ({showboarding, setshowboarding}) => {
       });
     await firestore().collection('Users').doc(state.user.email).update({
       Number_Of_Swips_Done: 0,
-    });
-    setrefresh(true);
-    const inntialrefresh=true
-    setTimeout(() => {
-      // navigation.navigate(
-      //   'Vibe',
-      //   inntialrefresh
-       
-      // );
-    }, 10);
+    }).then(() => {
+      setLoader(false)
+      setrefresh(true);
+      const inntialrefresh = true
+      navigation.navigate(
+        'Vibe',
+        inntialrefresh
+      );
+    }).catch((error) => {
+      alert(error)
+    })
+
+    // setTimeout(() => {
+    //   // navigation.navigate(
+    //   //   'Vibe',
+    //   //   inntialrefresh
+
+    //   // );
+    // }, 10);
   };
-  return (
-    <IndividualHeaderLayout>
-      <View
-        style={{
-          backgroundColor: 'white',
-          width: Dimensions.get('window').width / 1.1,
-          alignSelf: 'center',
-          borderRadius: 15,
-          flex: 1,
-        }}
-      >
-        <ScrollView style={{flexGrow: 1}}>
-          <View style={{flex: 1}}>
-            <View style={{alignSelf: 'center'}}>
+
+
+  if (loader) {
+    return (
+      <View style={{ flex: 1, backgroundColor: "#000" }}>
+        <Image style={{ alignSelf: "center", justifyContent: "center", resizeMode: "contain", width: "100%", height: "100%" }}
+          source={require('../../../src/assets/images/loader.png')}
+
+
+        />
+      </View>
+    )
+  }
+
+  if (loader === false) {
+    return (
+      <IndividualHeaderLayout>
+        <View
+          style={{
+            backgroundColor: 'black',
+            width: Dimensions.get('window').width / 1.1,
+            alignSelf: 'center',
+            borderRadius: 15,
+            flex: 1,
+          }}
+        >
+
+
+          <ScrollView style={{ flexGrow: 1 }}>
+            <View style={{ flex: 1 }}>
+              <View style={{ alignSelf: 'center' }}>
+                <Text
+                  style={{
+                    color: '#ffffff',
+                    fontFamily: 'Poppins',
+                    fontSize: 18,
+                    fontWeight: '700',
+                    marginTop: 4,
+                  }}
+                >
+                  Create your Vibe Profile!
+                </Text>
+              </View>
+
               <Text
                 style={{
-                  color: '#0077B7',
+                  color: '#848599',
                   fontFamily: 'Poppins',
-                  fontSize: 18,
+                  fontSize: 14,
                   fontWeight: '700',
-                  marginTop: 4,
+                  marginTop: 14,
                 }}
               >
-                Create your Vibe Profile!
+                Tell Us About Yourself
               </Text>
-            </View>
 
-            <Text
-              style={{
-                color: '#0077B7',
-                fontFamily: 'Poppins',
-                fontSize: 18,
-                fontWeight: '700',
-                marginTop: 14,
-              }}
-            >
-              Tell Us About Yourself
-            </Text>
-
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-                alignItems: 'center',
-                marginTop: 5,
-              }}
-            >
-              <Text
+              <View
                 style={{
-                  color: '#0077B7',
-                  fontFamily: 'Poppins',
-                  width: '60%',
-                  textAlign: 'left',
-                  fontSize: 16,
-                  fontWeight: '700',
+
+
+                  marginTop: 10,
                 }}
               >
-                Years of Experience
-              </Text>
-              <View style={{width: 100}}>
+                <Text
+                  style={{
+                    color: '#FFFFFF',
+                    fontFamily: 'Poppins',
+                    width: '60%',
+                    textAlign: 'left',
+                    fontSize: 16,
+                    fontWeight: '700',
+                    marginBottom: 10,
+                  }}
+                >
+                  Years of Experience
+                </Text>
+
                 <MultiSelect
                   items={experience}
                   uniqueKey="id"
                   onSelectedItemsChange={data => onSelectedItemsChange(data)}
                   selectedItems={selected}
-                  selectText="Choose"
+                  selectText="  Enter Duration"
                   searchInputPlaceholderText="Search Items..."
                   onChangeInput={text => console.log(text)}
                   tagRemoveIconColor="#CCC"
@@ -302,40 +332,40 @@ const VibeBoarding = ({showboarding, setshowboarding}) => {
                   selectedItemIconColor="#CCC"
                   itemTextColor="#000"
                   displayKey="name"
-                  searchInputStyle={{color: '#CCC'}}
+                  searchInputStyle={{ color: '#CCC', borderRadius: 20 }}
                   single={true}
                   submitButtonColor="#CCC"
                   submitButtonText="Submit"
                 />
+
               </View>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-                alignItems: 'center',
-                marginTop: 5,
-              }}
-            >
-              <Text
+              <View
                 style={{
-                  color: '#0077B7',
-                  fontFamily: 'Poppins',
-                  fontSize: 16,
-                  width: '60%',
-                  textAlign: 'left',
-                  fontWeight: '700',
+
+
+                  marginTop: 10,
                 }}
               >
-                Previous Organistation Duration
-              </Text>
-              <View style={{width: 100}}>
+                <Text
+                  style={{
+                    color: '#FFFFFF',
+                    fontFamily: 'Poppins',
+                    fontSize: 16,
+                    textAlign: 'left',
+                    fontWeight: '700',
+                    marginBottom: 10
+                  }}
+                >
+                  Previous Organistation Duration
+                </Text>
+
                 <MultiSelect
+
                   items={prevduration}
                   uniqueKey="id"
                   onSelectedItemsChange={data => onSelectedItemsChange1(data)}
                   selectedItems={selected1}
-                  selectText="Choose Duration"
+                  selectText="  Enter previous designation"
                   searchInputPlaceholderText="Search Items..."
                   onChangeInput={text => console.log(text)}
                   tagRemoveIconColor="#CCC"
@@ -345,171 +375,166 @@ const VibeBoarding = ({showboarding, setshowboarding}) => {
                   selectedItemIconColor="#CCC"
                   itemTextColor="#000"
                   displayKey="name"
-                  searchInputStyle={{color: '#CCC'}}
+                  searchInputStyle={{ color: '#CCC' }}
                   single={true}
                   submitButtonColor="#CCC"
                   submitButtonText="Submit"
                 />
-              </View>
-            </View>
-            <View style={{alignItems: 'stretch'}}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-around',
-                  marginTop: 3,
-                }}
-              >
-                <Text
-                  style={{
-                    color: '#0077B7',
-                    fontFamily: 'Poppins',
-                    fontSize: 16,
-                    width: '40%',
-                    textAlign: 'left',
-                    fontWeight: '700',
-                  }}
-                >
-                  Education{' '}
-                </Text>
-                <TextInput
-                  style={{
-                    height: 30,
-                    width: '45%',
-                    alignSelf: 'baseline',
-                    borderWidth: 2,
-                    borderRadius: 15,
-                    borderTopLeftRadius: 15,
-                    borderTopRightRadius: 15,
-                  }}
-                  onChangeText={text => onChangeText(text)}
-                />
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-around',
-                  marginTop: 3,
-                }}
-              >
-                <Text
-                  style={{
-                    color: '#0077B7',
-                    fontFamily: 'Poppins',
-                    fontSize: 16,
-                    width: '40%',
-                    textAlign: 'justify',
-                    fontWeight: '700',
-                  }}
-                >
-                  Previous Designation
-                </Text>
-                <TextInput
-                  style={{
-                    height: 30,
-                    width: '45%',
-                    alignSelf: 'baseline',
-                    borderWidth: 2,
-                    borderRadius: 15,
-                    borderTopLeftRadius: 15,
-                    borderTopRightRadius: 15,
-                  }}
-                  onChangeText={text => setprevdesignation(text)}
-                />
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-around',
-                  marginTop: 3,
-                }}
-              >
-                <Text
-                  style={{
-                    color: '#0077B7',
-                    fontFamily: 'Poppins',
-                    fontSize: 16,
-                    width: '40%',
-                    textAlign: 'left',
-                    fontWeight: '700',
-                  }}
-                >
-                  What Is My Industry
-                </Text>
-                <TextInput
-                  style={{
-                    height: 30,
-                    width: '45%',
-                    borderWidth: 2,
-                    borderRadius: 15,
-                    alignSelf: 'baseline',
-                    borderTopLeftRadius: 15,
-                    borderTopRightRadius: 15,
-                  }}
-                  onChangeText={text => setindustry(text)}
-                />
-              </View>
 
+              </View>
+              <View style={{ alignItems: 'stretch' }}>
+                <View
+                  style={{
+
+                    marginTop: 10,
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: '#FFFFFF',
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+                      textAlign: 'left',
+                      fontWeight: '700',
+                      marginBottom: 10
+                    }}
+                  >
+                    Education{' '}
+                  </Text>
+                  <TextInput
+                    style={{
+                      height: 40,
+                      backgroundColor: "#FFFFFF",
+                      color: '#000000',
+                      paddingLeft: 8
+
+                    }}
+                    placeholder={"Enter qualification"}
+                    placeholderTextColor={"#6B6A71"}
+                    selectionColor={"#ccc"}
+                    onChangeText={text => onChangeText(text)}
+                  />
+                </View>
+                <View
+                  style={{
+
+                    marginTop: 10,
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: '#FFFFFF',
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+                      textAlign: 'justify',
+                      fontWeight: '700',
+                      marginBottom: 10
+                    }}
+                  >
+                    Previous Designation
+                  </Text>
+                  <TextInput
+                    style={{
+                      height: 40,
+                      backgroundColor: "#FFFFFF",
+                      color: '#000000',
+                      paddingLeft: 8
+                    }}
+                    placeholder={"Enter previous designation"}
+                    placeholderTextColor={"#6B6A71"}
+                    selectionColor={"#ccc"}
+                    onChangeText={text => setprevdesignation(text)}
+                  />
+                </View>
+                <View
+                  style={{
+
+                    marginTop: 10,
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: '#FFFFFF',
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+                      textAlign: 'left',
+                      fontWeight: '700',
+                      marginBottom: 10,
+                    }}
+                  >
+                    What Is My Industry
+                  </Text>
+                  <TextInput
+                    style={{
+                      height: 40,
+                      backgroundColor: "#FFFFFF",
+                      color: "#000000",
+                      paddingLeft: 8
+                    }}
+                    onChangeText={text => setindustry(text)}
+                    placeholder={"Enter Industry"}
+
+                    placeholderTextColor={"#6B6A71"}
+                    selectionColor={"#ccc"}
+                  />
+                </View>
+
+                <View
+                  style={{
+                    marginTop: 10,
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: '#FFFFFF',
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+                      fontWeight: '700',
+                      textAlign: 'left',
+                      marginBottom: 10,
+                    }}
+                  >
+                    Previous Organistation
+                  </Text>
+                  <TextInput
+                    style={{
+                      height: 40,
+                      backgroundColor: '#ffffff',
+                      color: "#000000",
+                      paddingLeft: 8
+                    }}
+                    onChangeText={text => setprevorg(text)}
+                    placeholder={"Enter Previous Organization"}
+                    placeholderTextColor={"#6B6A71"}
+                    selectionColor={"#ccc"}
+                  />
+                </View>
+              </View>
               <View
                 style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-around',
-                  marginTop: 3,
+
+                  marginTop: 10,
                 }}
               >
                 <Text
                   style={{
-                    color: '#0077B7',
+                    color: '#FFFFFF',
                     fontFamily: 'Poppins',
                     fontSize: 16,
-                    fontWeight: '700',
-                    width: '40%',
                     textAlign: 'left',
+                    fontWeight: '700',
+                    marginBottom: 10,
                   }}
                 >
-                  Previous Organistation
+                  What I Am Here For
                 </Text>
-                <TextInput
-                  style={{
-                    height: 30,
-                    width: '45%',
-                    alignSelf: 'baseline',
-                    borderWidth: 2,
-                    borderRadius: 15,
-                    borderTopLeftRadius: 15,
-                    borderTopRightRadius: 15,
-                  }}
-                  onChangeText={text => setprevorg(text)}
-                />
-              </View>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-                alignItems: 'center',
-                marginTop: 5,
-              }}
-            >
-              <Text
-                style={{
-                  color: '#0077B7',
-                  fontFamily: 'Poppins',
-                  fontSize: 16,
-                  width: '45%',
-                  textAlign: 'left',
-                  fontWeight: '700',
-                }}
-              >
-                What I Am Here For
-              </Text>
-              <View style={{width: 150}}>
+
                 <MultiSelect
                   items={herefor}
                   uniqueKey="id"
                   onSelectedItemsChange={data => onSelectedItemsChange2(data)}
                   selectedItems={selected2}
-                  selectText="Choose"
+                  selectText="  Enter hare for"
                   tagContainerStyle={{
                     backgroundColor: '#0077B7',
                     width: Dimensions.get('window').width / 2.7,
@@ -523,39 +548,35 @@ const VibeBoarding = ({showboarding, setshowboarding}) => {
                   selectedItemIconColor="#CCC"
                   itemTextColor="#000"
                   displayKey="name"
-                  searchInputStyle={{color: '#CCC'}}
+                  searchInputStyle={{ color: '#CCC' }}
                   submitButtonColor="#CCC"
                   submitButtonText="Submit"
                 />
+
               </View>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-                alignItems: 'center',
-                marginTop: 5,
-              }}
-            >
-              <Text
+              <View
                 style={{
-                  color: '#0077B7',
-                  fontFamily: 'Poppins',
-                  fontSize: 16,
-                  width: '45%',
-                  textAlign: 'left',
-                  fontWeight: '700',
+                  marginTop: 10,
                 }}
               >
-                How Can We Meet
-              </Text>
-              <View style={{width: 150}}>
+                <Text
+                  style={{
+                    color: '#FFFFFF',
+                    fontFamily: 'Poppins',
+                    fontSize: 16,
+                    textAlign: 'left',
+                    fontWeight: '700',
+                    marginBottom: 10
+                  }}
+                >
+                  How Can We Meet
+                </Text>
                 <MultiSelect
                   items={meetdata}
                   uniqueKey="id"
                   onSelectedItemsChange={data => onSelectedItemsChange3(data)}
                   selectedItems={selected3}
-                  selectText="Pick Locations"
+                  selectText="  Enter we meet"
                   searchInputPlaceholderText="Search Items..."
                   onChangeInput={text => console.log(text)}
                   tagRemoveIconColor="#CCC"
@@ -569,40 +590,47 @@ const VibeBoarding = ({showboarding, setshowboarding}) => {
                     backgroundColor: '#0077B7',
                     width: Dimensions.get('window').width / 2.7,
                   }}
-                  searchInputStyle={{color: '#CCC'}}
+                  searchInputStyle={{ color: '#CCC' }}
                   submitButtonColor="#CCC"
                   submitButtonText="Submit"
                 />
               </View>
-            </View>
-            <View
-              style={{
-                marginTop: 25,
-              }}
-            >
-              <TouchableOpacity
-                onPress={() => {
-                  HandleSubmit();
+              <View
+                style={{
+                  marginTop: 25,
                 }}
               >
-                <Text
-                  style={{
-                    color: 'black',
-                    fontFamily: 'Poppins',
-                    fontSize: 20,
-                    textAlign: 'center',
-                    fontWeight: '700',
+                <TouchableOpacity
+                  onPress={() => {
+                    HandleSubmit();
                   }}
                 >
-                  Submit
-                </Text>
-              </TouchableOpacity>
+                  <Text
+                    style={{
+                      color: '#ffffff',
+                      fontFamily: 'Poppins',
+                      fontSize: 20,
+                      textAlign: 'center',
+                      fontWeight: '700',
+                      height: 50,
+                      marginBottom: 20,
+                      textAlign: "center",
+                      paddingTop: 12,
+                      borderRadius: 20,
+                      backgroundColor: "#0A73FF"
+
+                    }}
+                  >
+                    Submit
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
-        </ScrollView>
-      </View>
-    </IndividualHeaderLayout>
-  );
+          </ScrollView>
+        </View>
+      </IndividualHeaderLayout>
+    );
+  }
 };
 
-export {VibeBoarding};
+export { VibeBoarding };

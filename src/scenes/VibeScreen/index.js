@@ -132,7 +132,7 @@ const Vibe = () => {
     // console.log('data paraams ', params);
     const [filter, setFilter] = useState(false);
 
-    const [visible, setVisible] = useState(null);
+    const [visible, setVisible] = useState(false);
 
     const toggleData = () => {
       setVisible(!visible);
@@ -442,7 +442,7 @@ const Vibe = () => {
         .then(doc => {
           if (doc.data().Vibe_Data) {
             // console.log('Document vibe data:', doc.data().Vibe_Data);
-
+            setshowCards(true);
             console.log('yoooi');
           } else {
             // doc.data() will be undefined in this case
@@ -489,6 +489,8 @@ const Vibe = () => {
 
     // Intial setting  here
     useEffect(() => {
+      CheckIfBoarding();
+
       let Afterquery;
       const FetchUsersCard = async () => {
         if (state.user.AllCardsSwiped) {
@@ -503,8 +505,7 @@ const Vibe = () => {
             settoshowtimer(true);
           }
         }
-
-        CheckIfBoarding();
+        // CheckIfBoarding();
         console.log('after boarding');
 
         await firestore()
@@ -598,9 +599,12 @@ const Vibe = () => {
             });
         }
       };
+      if (showCards) {
 
-      FetchUsersCard();
+        FetchUsersCard();
+      }
       return Afterquery;
+
     }, []);
 
     //IF USER HAS VALID PREMIUM FOR VIBE
@@ -692,7 +696,7 @@ const Vibe = () => {
               </Text>
             </View>
           </TouchableOpacity>
-          <View style={{ paddingRight: 35 }}>
+          <View style={{ paddingRight: 20 }}>
             <TouchableOpacity onPress={() => setFilter(true)}>
               <Image
                 style={{ height: 30, width: 30 }}
@@ -832,7 +836,7 @@ const Vibe = () => {
                                     style={styles.entypo}
                                     name={
                                       visible === index
-                                        ? 'chevron-small-up'
+                                        ? ''
                                         : 'chevron-small-down'
                                     }
                                     size={40}
@@ -843,131 +847,136 @@ const Vibe = () => {
                                   <View style={{ flex: 1 }}>
                                     <View>
                                       <View>
-                                        <Text
-                                          style={styles.vibeText}>
-                                          What I am here for
-                                        </Text>
-                                        {item.Vibe_Data == undefined && <Text
-                                          style={styles.noData}>
-                                          N/A
-                                        </Text>}
+                                        {
+                                          item.Vibe_Data != undefined && (
+                                            <>
+                                              <Text
+                                                style={styles.vibeText}>
+                                                What I am here for
+                                              </Text>
+                                              <View
+                                                style={styles.viewVibe}>
+                                                {item.Vibe_Data != undefined && item?.Vibe_Data?.Here_for?.map(
+                                                  Here_for => {
+                                                    console.log(">>>>>>>>", Here_for);
+                                                    return (
+                                                      <TouchableOpacity
+                                                        onPress={data =>
+                                                          navigation.navigate(
+                                                            'ShowMoreVibe',
+                                                            {
+                                                              data,
+                                                            },
+                                                          )
+                                                        }>
+                                                        <View
+                                                          style={styles.circle}>
+                                                          <Text
+                                                            style={styles.hareFor}>
 
-                                        <View
-                                          style={styles.viewVibe}>
-                                          {item.Vibe_Data != undefined && item?.Vibe_Data?.Here_for?.map(
-                                            Here_for => {
-                                              console.log(">>>>>>>>", Here_for);
-                                              return (
-                                                <TouchableOpacity
-                                                  onPress={data =>
-                                                    navigation.navigate(
-                                                      'ShowMoreVibe',
-                                                      {
-                                                        data,
-                                                      },
-                                                    )
-                                                  }>
-                                                  <View
-                                                    style={styles.circle}>
-                                                    <Text
-                                                      style={styles.hareFor}>
+                                                            {Here_for}
 
-                                                      {Here_for}
-
-                                                    </Text>
-                                                  </View>
-                                                </TouchableOpacity>
-                                              );
-                                            },
-                                          )}
-                                        </View>
-
-                                        <View>
-                                          <Text
-                                            style={
-                                              styles.vibeText
-                                            }>
-                                            Education:
-                                          </Text>
-                                          <Text
-                                            style={styles.dataDatabase}>
-                                            {item.Vibe_Data == undefined ? "N/A" : item?.Vibe_Data?.Education}
-                                          </Text>
-
-
-                                          <Text
-                                            style={styles.vibeText}>
-                                            Industry:
-                                          </Text>
+                                                          </Text>
+                                                        </View>
+                                                      </TouchableOpacity>
+                                                    );
+                                                  },
+                                                )}
+                                              </View>
+                                            </>
+                                          )
+                                        }
+                                        {item.Vibe_Data != undefined && (
+                                          <>
+                                            <View>
+                                              <Text
+                                                style={
+                                                  styles.vibeText
+                                                }>
+                                                Education:
+                                              </Text>
+                                              <Text
+                                                style={styles.dataDatabase}>
+                                                {item.Vibe_Data == undefined ? "N/A" : item?.Vibe_Data?.Education}
+                                              </Text>
 
 
-                                          <Text
-                                            style={styles.dataDatabase}>
-                                            {item.Vibe_Data == undefined ? "N/A" : item?.Vibe_Data?.Industry}
-                                          </Text>
+                                              <Text
+                                                style={styles.vibeText}>
+                                                Industry:
+                                              </Text>
 
-                                          <Text
-                                            style={styles.vibeText}>
-                                            Previous Designation:
-                                          </Text>
-                                          <Text
-                                            style={styles.dataDatabase}>
-                                            {
-                                              item.Vibe_Data == undefined ? "N/A" : item?.Vibe_Data
-                                                ?.Previous_Designation
-                                            }
-                                          </Text>
-                                          <Text
-                                            style={styles.vibeText}>
-                                            Previous Organization:
-                                          </Text>
-                                          <Text
-                                            style={styles.dataDatabase}>
-                                            {item.Vibe_Data == undefined ? "N/A" : item?.Vibe_Data?.Previous_Org}
-                                          </Text>
-                                          <Text
-                                            style={styles.vibeText}>
-                                            How can we meet:
-                                          </Text>
-                                          {item.Vibe_Data == undefined && <Text
-                                            style={styles.noData}>
-                                            N/A
-                                          </Text>}
-                                          {item.Vibe_Data != undefined && item?.Vibe_Data?.How_To_Meet?.map(
-                                            How_To_Meet => {
-                                              // console.log(item);
-                                              return (
-                                                <View>
-                                                  <Text
-                                                    style={styles.dataDatabase}>
-                                                    {How_To_Meet}
-                                                  </Text>
-                                                </View>
-                                              );
-                                            },
-                                          )}
-                                          <Text
-                                            style={styles.vibeText}>
-                                            Experience:
-                                          </Text>
-                                          {item.Vibe_Data == undefined && <Text
-                                            style={styles.noData}>
-                                            N/A
-                                          </Text>}
-                                          {item.Vibe_Data != undefined && item?.Vibe_Data?.Years_Of_Experience?.map(
-                                            Years_Of_Experience => {
-                                              // console.log(item);
-                                              return (
-                                                <View>
-                                                  <Text
-                                                    style={styles.dataDatabase}>
-                                                    {Years_Of_Experience}
-                                                  </Text>
-                                                </View>
-                                              );
-                                            },
-                                          )}
-                                        </View>
+
+                                              <Text
+                                                style={styles.dataDatabase}>
+                                                {item.Vibe_Data == undefined ? "N/A" : item?.Vibe_Data?.Industry}
+                                              </Text>
+
+                                              <Text
+                                                style={styles.vibeText}>
+                                                Previous Designation:
+                                              </Text>
+                                              <Text
+                                                style={styles.dataDatabase}>
+                                                {
+                                                  item.Vibe_Data == undefined ? "N/A" : item?.Vibe_Data
+                                                    ?.Previous_Designation
+                                                }
+                                              </Text>
+                                              <Text
+                                                style={styles.vibeText}>
+                                                Previous Organization:
+                                              </Text>
+                                              <Text
+                                                style={styles.dataDatabase}>
+                                                {item.Vibe_Data == undefined ? "N/A" : item?.Vibe_Data?.Previous_Org}
+                                              </Text>
+                                              <Text
+                                                style={styles.vibeText}>
+                                                How can we meet:
+                                              </Text>
+                                              {item.Vibe_Data == undefined && <Text
+                                                style={styles.noData}>
+                                                N/A
+                                              </Text>}
+                                              {item.Vibe_Data != undefined && item?.Vibe_Data?.How_To_Meet?.map(
+                                                How_To_Meet => {
+                                                  // console.log(item);
+                                                  return (
+                                                    <View>
+                                                      <Text
+                                                        style={styles.dataDatabase}>
+                                                        {How_To_Meet}
+                                                      </Text>
+                                                    </View>
+                                                  );
+                                                },
+                                              )}
+                                              <Text
+                                                style={styles.vibeText}>
+                                                Experience:
+                                              </Text>
+                                              {item.Vibe_Data == undefined && <Text
+                                                style={styles.noData}>
+                                                N/A
+                                              </Text>}
+                                              {item.Vibe_Data != undefined && item?.Vibe_Data?.Years_Of_Experience?.map(
+                                                Years_Of_Experience => {
+                                                  // console.log(item);
+                                                  return (
+                                                    <View>
+                                                      <Text
+                                                        style={styles.dataDatabase}>
+                                                        {Years_Of_Experience}
+                                                      </Text>
+                                                    </View>
+                                                  );
+                                                },
+                                              )}
+                                            </View>
+
+                                          </>)}
+
                                       </View>
                                     </View>
                                   </View>

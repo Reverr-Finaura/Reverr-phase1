@@ -115,14 +115,12 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   viewLike1: {
-
-    borderWidth: 1,
     alignItems: "center",
 
 
     height: 42,
     flexDirection: "row",
-    left: 40,
+    left: 20,
     justifyContent: 'center',
 
   },
