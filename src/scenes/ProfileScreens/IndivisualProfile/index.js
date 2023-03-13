@@ -8,17 +8,17 @@ import {
   Dimensions,
   ActivityIndicator,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
-import {AppColors} from '../../../utils';
-import {ProfileDetailsBox} from '../../../Components';
+import React, { useState, useEffect } from 'react';
+import { AppColors } from '../../../utils';
+import { ProfileDetailsBox } from '../../../Components';
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
-import {useNavigation} from '@react-navigation/native';
-import {useDispatch, useSelector} from 'react-redux';
-import {styles} from '../viewProfile/style';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { styles } from '../viewProfile/style';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
-import {load_room_data, set_allLoaded} from '../../../Redux/actions';
-import {mentorService} from '../../../Redux/services/mentor.service';
+import { load_room_data, set_allLoaded } from '../../../Redux/actions';
+import { mentorService } from '../../../Redux/services/mentor.service';
 import PostCard from '../../../Components/postCard';
 
 const Width = Dimensions.get('screen').width;
@@ -32,7 +32,7 @@ const IndividuaProfile = props => {
   const [_id, set_Id] = useState('');
   const dispatch = useDispatch();
   const [postData, setPostData] = useState('');
-console.log("state",state.user)
+  console.log("state", state.user)
 
   // console.log(state.Rooms.postedby === state.user.email, 'RoomsData');
 
@@ -59,8 +59,8 @@ console.log("state",state.user)
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
-      style={{flex: 1, backgroundColor: AppColors.primarycolor}}>
-      <View style={{height: Height / 2.4, width: '100%'}}>
+      style={{ flex: 1, backgroundColor: AppColors.primarycolor }}>
+      <View style={{ height: Height / 2.4, width: '100%' }}>
         <View
           style={{
             backgroundColor: '#093B6A80',
@@ -93,8 +93,8 @@ console.log("state",state.user)
 
         <LinearGradient
           colors={[AppColors.ActiveColor, '#012437']}
-          start={{x: 0.3, y: 1.3}}
-          end={{x: 2, y: 0.9}}
+          start={{ x: 0.3, y: 1.3 }}
+          end={{ x: 2, y: 0.9 }}
           style={{
             position: 'absolute',
             top: '40%',
@@ -106,7 +106,7 @@ console.log("state",state.user)
             elevation: 10,
             zIndex: 5,
           }}>
-          <View style={{marginTop: '20%'}}>
+          <View style={{ marginTop: '20%' }}>
             <Text
               style={{
                 fontSize: 18,
@@ -123,7 +123,7 @@ console.log("state",state.user)
                 color: AppColors.BtnClr,
                 textAlign: 'center',
               }}>
-              @ {state.user.name}
+              {state.user.name}
             </Text>
             <View
               style={{
@@ -142,19 +142,19 @@ console.log("state",state.user)
                 paddingStart: '12%',
                 marginTop: '5%',
               }}>
-              <View style={{alignItems: 'center'}}>
-                <Text style={{color: AppColors.FontsColor}}>Gender</Text>
-                <Text style={{color: AppColors.FontsColor}}>{state.user.gender?state.user.gender:"N/A"}</Text>
+              <View style={{ alignItems: 'center' }}>
+                <Text style={{ color: AppColors.FontsColor }}>Gender</Text>
+                <Text style={{ color: AppColors.FontsColor }}>{state.user.gender ? state.user.gender : "N/A"}</Text>
               </View>
-              <View style={{alignItems: 'center'}}>
-                <Text style={{color: AppColors.FontsColor}}>Country</Text>
-                <Text style={{color: AppColors.FontsColor}}>
-                {state.user.country?state.user.country:"N/A"}
+              <View style={{ alignItems: 'center' }}>
+                <Text style={{ color: AppColors.FontsColor }}>Country</Text>
+                <Text style={{ color: AppColors.FontsColor }}>
+                  {state.user.country ? state.user.country : "N/A"}
                 </Text>
               </View>
-              <View style={{alignItems: 'center'}}>
-                <Text style={{color: AppColors.FontsColor}}>Location</Text>
-                <Text style={{color: AppColors.FontsColor}}> {state.user.state?state.user.state:"N/A"}</Text>
+              <View style={{ alignItems: 'center' }}>
+                <Text style={{ color: AppColors.FontsColor }}>Location</Text>
+                <Text style={{ color: AppColors.FontsColor }}> {state.user.state ? state.user.state : "N/A"}</Text>
               </View>
             </View>
           </View>
@@ -183,7 +183,7 @@ console.log("state",state.user)
             </ImageBackground>
           </TouchableOpacity>
           <Image
-            source={{uri: state.user.image}}
+            source={{ uri: state.user.image }}
             style={{
               width: 110,
               height: 110,
@@ -271,8 +271,8 @@ console.log("state",state.user)
           <View>
             <LinearGradient
               colors={[AppColors.primarycolor, AppColors.poupopbg]}
-              start={{x: 0, y: 0.8}}
-              end={{x: 0.9, y: 0}}
+              start={{ x: 0, y: 0.8 }}
+              end={{ x: 0.9, y: 0 }}
               style={{
                 marginHorizontal: '5%',
                 borderRadius: 40,
@@ -288,10 +288,13 @@ console.log("state",state.user)
                   textAlign: 'center',
                   paddingHorizontal: '5%',
                 }}>
-                {state.user.about?state.user.about:"N/A"}
+                {state.user.about ? state.user.about : "N/A"}
               </Text>
             </LinearGradient>
-            <ProfileDetailsBox userData={state.user} />
+
+            <ProfileDetailsBox
+            // userData={state.user} 
+            />
           </View>
         )}
       </View>
@@ -299,4 +302,4 @@ console.log("state",state.user)
   );
 };
 
-export {IndividuaProfile};
+export { IndividuaProfile };

@@ -8,24 +8,24 @@ import {
   Dimensions,
   ActivityIndicator,
 } from 'react-native';
-import React, {useState} from 'react';
-import {BackButton, ProfileDetailsBox} from '../../../Components';
+import React, { useState } from 'react';
+import { BackButton, ProfileDetailsBox } from '../../../Components';
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
 import Ionic from 'react-native-vector-icons/Ionicons';
-import {useNavigation} from '@react-navigation/native';
-import {useDispatch, useSelector} from 'react-redux';
-import {styles} from './style';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { styles } from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
-import {AppColors} from '../../../utils';
+import { AppColors } from '../../../utils';
 import {
   ApprovedReq,
   CancelRequest,
   ConnectToSocial,
   rejectRequest,
 } from '../../../utils/FirebaseFunctionality';
-import {useEffect} from 'react';
-import {add_user} from '../../../Redux/actions';
+import { useEffect } from 'react';
+import { add_user } from '../../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
 import PostCard from '../../../Components/postCard';
 
@@ -80,8 +80,8 @@ const ViewProfile = props => {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
-      style={{flex: 1, backgroundColor: AppColors.primarycolor}}>
-      <View style={{height: Height / 2.4, width: '100%'}}>
+      style={{ flex: 1, backgroundColor: AppColors.primarycolor }}>
+      <View style={{ height: Height / 2.4, width: '100%' }}>
         <View
           style={{
             backgroundColor: '#093B6A80',
@@ -114,8 +114,8 @@ const ViewProfile = props => {
 
         <LinearGradient
           colors={[AppColors.ActiveColor, '#012437']}
-          start={{x: 0.3, y: 1.3}}
-          end={{x: 2, y: 0.9}}
+          start={{ x: 0.3, y: 1.3 }}
+          end={{ x: 2, y: 0.9 }}
           style={{
             position: 'absolute',
             top: '40%',
@@ -127,7 +127,7 @@ const ViewProfile = props => {
             elevation: 10,
             zIndex: 5,
           }}>
-          <View style={{marginTop: '20%'}}>
+          <View style={{ marginTop: '20%' }}>
             <Text
               style={{
                 fontSize: 18,
@@ -144,7 +144,7 @@ const ViewProfile = props => {
                 color: AppColors.BtnClr,
                 textAlign: 'center',
               }}>
-              @ {userDetails.name}
+              {userDetails.name}
             </Text>
             <View
               style={{
@@ -152,7 +152,7 @@ const ViewProfile = props => {
                 justifyContent: 'center',
                 marginTop: '2%',
               }}>
-              {state.user.network.includes(userDetails.email) ? (
+              {state?.user?.network?.includes(userDetails.email) ? (
                 <View>
                   <TouchableOpacity>
                     <Text
@@ -168,8 +168,8 @@ const ViewProfile = props => {
               ) : (
                 <View>
                   {state &&
-                  state.user.recivedRequests.includes(userDetails.email) ? (
-                    <View style={{paddingVertical: '2%'}}>
+                    state?.user?.recivedRequests?.includes(userDetails.email) ? (
+                    <View style={{ paddingVertical: '2%' }}>
                       <View
                         style={{
                           flexDirection: 'row',
@@ -186,7 +186,7 @@ const ViewProfile = props => {
                             );
                           }}
                           style={styles.button}>
-                          <Text style={{color: AppColors.FontsColor}}>
+                          <Text style={{ color: AppColors.FontsColor }}>
                             Approve
                           </Text>
                         </TouchableOpacity>
@@ -198,8 +198,8 @@ const ViewProfile = props => {
                               setLoading,
                             );
                           }}
-                          style={[styles.button, {backgroundColor: 'red'}]}>
-                          <Text style={{color: AppColors.FontsColor}}>
+                          style={[styles.button, { backgroundColor: 'red' }]}>
+                          <Text style={{ color: AppColors.FontsColor }}>
                             Reject
                           </Text>
                         </TouchableOpacity>
@@ -217,9 +217,9 @@ const ViewProfile = props => {
                       ) : (
                         <>
                           {state &&
-                          state.user.sendRequests.includes(
-                            userDetails.email,
-                          ) ? (
+                            state?.user?.sendRequests?.includes(
+                              userDetails.email,
+                            ) ? (
                             <TouchableOpacity onPress={removeToNetwork}>
                               <Text
                                 style={{
@@ -257,19 +257,19 @@ const ViewProfile = props => {
                 paddingStart: '12%',
                 marginTop: '5%',
               }}>
-              <View style={{alignItems: 'center'}}>
-                <Text style={{color: AppColors.FontsColor}}>Gender</Text>
-                <Text style={{color: AppColors.FontsColor}}>Male</Text>
+              <View style={{ alignItems: 'center' }}>
+                <Text style={{ color: AppColors.FontsColor }}>Gender</Text>
+                <Text style={{ color: AppColors.FontsColor }}>Male</Text>
               </View>
-              <View style={{alignItems: 'center'}}>
-                <Text style={{color: AppColors.FontsColor}}>Hometown</Text>
-                <Text style={{color: AppColors.FontsColor}}>
+              <View style={{ alignItems: 'center' }}>
+                <Text style={{ color: AppColors.FontsColor }}>Hometown</Text>
+                <Text style={{ color: AppColors.FontsColor }}>
                   New Delhi, India
                 </Text>
               </View>
-              <View style={{alignItems: 'center'}}>
-                <Text style={{color: AppColors.FontsColor}}>Location</Text>
-                <Text style={{color: AppColors.FontsColor}}>New Delhi</Text>
+              <View style={{ alignItems: 'center' }}>
+                <Text style={{ color: AppColors.FontsColor }}>Location</Text>
+                <Text style={{ color: AppColors.FontsColor }}>New Delhi</Text>
               </View>
             </View>
           </View>
@@ -298,7 +298,7 @@ const ViewProfile = props => {
             </ImageBackground>
           </TouchableOpacity> */}
           <Image
-            source={{uri: userDetails.image}}
+            source={{ uri: userDetails.image }}
             style={{
               width: 110,
               height: 110,
@@ -386,8 +386,8 @@ const ViewProfile = props => {
           <View>
             <LinearGradient
               colors={[AppColors.primarycolor, AppColors.poupopbg]}
-              start={{x: 0, y: 0.8}}
-              end={{x: 0.9, y: 0}}
+              start={{ x: 0, y: 0.8 }}
+              end={{ x: 0.9, y: 0 }}
               style={{
                 marginHorizontal: '5%',
                 borderRadius: 40,
@@ -396,7 +396,7 @@ const ViewProfile = props => {
                 marginTop: '3%',
                 paddingHorizontal: '2%',
               }}>
-              <Text style={[styles.text, {fontWeight: 'bold', fontSize: 15}]}>
+              <Text style={[styles.text, { fontWeight: 'bold', fontSize: 15 }]}>
                 “I like being aware of new things around me ”
               </Text>
               <Text
@@ -410,7 +410,9 @@ const ViewProfile = props => {
                 Bangalore graduate and have worked with Fintech for 5 years.
               </Text>
             </LinearGradient>
-            <ProfileDetailsBox userData={state.user} />
+            <ProfileDetailsBox
+            // userData={state?.user} 
+            />
           </View>
         )}
       </View>
@@ -418,4 +420,4 @@ const ViewProfile = props => {
   );
 };
 
-export {ViewProfile};
+export { ViewProfile };

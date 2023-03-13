@@ -11,18 +11,18 @@ import {
   Modal,
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import {AppColors} from '../../utils';
-import {Menu} from '../../dumy-Data/drawerMenu';
-import {useSelector} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
+import { AppColors } from '../../utils';
+import { Menu } from '../../dumy-Data/drawerMenu';
+import { useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
-import auth, {deleteUser, firebase} from '@react-native-firebase/auth';
+import auth, { deleteUser, firebase } from '@react-native-firebase/auth';
 
 const DrawerContent = () => {
   const state = useSelector(state => state.UserReducer);
   const navigation = useNavigation();
 
- 
+
 
 
   return (
@@ -38,9 +38,9 @@ const DrawerContent = () => {
       </Text>
       <TouchableOpacity
         onPress={() => navigation.navigate('IndividualProfile')}
-        style={{marginTop: '10%'}}>
+        style={{ marginTop: '10%' }}>
         <Image
-          source={{uri: state.user.image}}
+          source={{ uri: state.user.image }}
           style={{
             width: 90,
             height: 90,
@@ -60,10 +60,10 @@ const DrawerContent = () => {
         }}>
         {state.user.name}
       </Text>
-      <View style={{marginVertical: '15%', paddingHorizontal: '9%'}}>
+      <View style={{ marginVertical: '15%', paddingHorizontal: '9%' }}>
         <FlatList
           data={Menu}
-          renderItem={({item, index}) => (
+          renderItem={({ item, index }) => (
             <TouchableOpacity
               style={{
                 flexDirection: 'row',
@@ -75,7 +75,7 @@ const DrawerContent = () => {
               }}>
               <Image
                 source={item.icon}
-                style={{tintColor: AppColors.BtnClr, width: 27, height: 27}}
+                style={{ tintColor: AppColors.BtnClr, width: 27, height: 27 }}
               />
               <Text
                 style={{
@@ -136,4 +136,4 @@ const styles = StyleSheet.create({
     marginBottom: '16%',
   },
 });
-export {DrawerContent};
+export { DrawerContent };

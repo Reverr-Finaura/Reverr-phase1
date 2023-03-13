@@ -337,12 +337,9 @@ const VibeBoarding = ({ showboarding, setshowboarding }) => {
                   submitButtonColor="#CCC"
                   submitButtonText="Submit"
                 />
-
               </View>
               <View
                 style={{
-
-
                   marginTop: 10,
                 }}
               >

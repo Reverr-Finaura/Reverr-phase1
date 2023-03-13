@@ -9,14 +9,14 @@ import {
   Dimensions,
   ToastAndroid
 } from 'react-native';
-import React, {useContext, useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import React, { useContext, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
-import {BackButton} from '../../../Components';
-import {AppColors} from '../../../utils';
-import { useSelector,useDispatch } from 'react-redux';
-import { saveCourse,removeCourse } from '../../../Redux/actions';
+import { BackButton } from '../../../Components';
+import { AppColors } from '../../../utils';
+import { useSelector, useDispatch } from 'react-redux';
+import { saveCourse, removeCourse } from '../../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
@@ -25,45 +25,45 @@ const StartCourse = props => {
   const navigation = useNavigation();
   const [chp, setchp] = useState(0);
   const [slide, setslide] = useState(0);
-  const state=useSelector(state=>state.UserReducer);
-  const dispatch=useDispatch();
+  const state = useSelector(state => state.UserReducer);
+  const dispatch = useDispatch();
   const showToast = (msg) => {
     ToastAndroid.show(msg, ToastAndroid.SHORT);
   };
-  const SaveCourses=async(id)=>{
+  const SaveCourses = async (id) => {
     dispatch(saveCourse(id))
     await firestore().collection('Users').doc(state.user.email).update({
-      savedCourses:[...state.user.savedCourses,id]
-    }).then(()=>{
+      savedCourses: [...state.user.savedCourses, id]
+    }).then(() => {
       showToast("Course Saved Successfully")
-    }).catch(err=>{
+    }).catch(err => {
       showToast("Error while saving the course!")
     })
   }
 
-  const RemoveCourse=async(id)=>{
-    var bucket=[];
-    for(var i=0;i<state?.user?.savedCourses.length;i++){
-      if(id!=state?.user?.savedCourses[i]){
+  const RemoveCourse = async (id) => {
+    var bucket = [];
+    for (var i = 0; i < state?.user?.savedCourses.length; i++) {
+      if (id != state?.user?.savedCourses[i]) {
         bucket.push(state?.user?.savedCourses[i]);
       }
     }
     dispatch(removeCourse(id));
     await firestore().collection('Users').doc(state.user.email).update({
-      savedCourses:bucket
-    }).then(()=>{
+      savedCourses: bucket
+    }).then(() => {
       showToast("Course Removed Successfully")
-    }).catch(err=>{
+    }).catch(err => {
       showToast("Error while removing the course!")
     })
-    
+
   }
 
   return (
     <View style={styles.screen}>
       <ImageBackground
-        style={{width: '100%', height: Height / 2.7, paddingTop: '5%'}}
-        source={{uri: courseData.image}}>
+        style={{ width: '100%', height: Height / 2.7, paddingTop: '5%' }}
+        source={{ uri: courseData.image }}>
         <BackButton
           IconSize={30}
           onPress={() => {
@@ -97,15 +97,15 @@ const StartCourse = props => {
           activeOpacity={0.6}
           style={styles.circle}
           onPress={() => {
-            if(state?.user?.savedCourses.includes(courseData.id)){
+            if (state?.user?.savedCourses?.includes(courseData.id)) {
               RemoveCourse(courseData.id);
-            }else{
+            } else {
               SaveCourses(courseData.id)
             }
-            }}>
-          <Icon2 name={state.user.savedCourses.includes(courseData.id)?"bookmark":'bookmark-outline'} size={28} color="#0077B7" />
+          }}>
+          <Icon2 name={state?.user?.savedCourses?.includes(courseData.id) ? "bookmark" : 'bookmark-outline'} size={28} color="#0077B7" />
         </TouchableOpacity>
-        
+
 
         <TouchableOpacity
           style={styles.ContinueButton}
@@ -121,7 +121,7 @@ const StartCourse = props => {
       <ScrollView style={styles.ChapterContainer}>
         <FlatList
           data={courseData.chapter}
-          renderItem={({item, index}) => (
+          renderItem={({ item, index }) => (
             <View key={index} style={styles.ChapterCard}>
               <View
                 style={{
@@ -141,7 +141,7 @@ const StartCourse = props => {
                   }}
                   style={[
                     styles.circle,
-                    {backgroundColor: AppColors.ActiveColor},
+                    { backgroundColor: AppColors.ActiveColor },
                   ]}>
                   <Icon2
                     name="chevron-forward-outline"
@@ -217,4 +217,4 @@ const styles = StyleSheet.create({
     backgroundColor: AppColors.CardColor,
   },
 });
-export {StartCourse};
+export { StartCourse };
