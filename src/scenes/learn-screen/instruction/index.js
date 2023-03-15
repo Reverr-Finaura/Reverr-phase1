@@ -6,12 +6,15 @@ import {AppColors} from '../../../utils';
 
 const ReadingInstruction = props => {
   const bookData = props.route.params.BookData;
+  const moduleNumber = props.route.params.moduleNumber;
   const navigation = useNavigation();
   setTimeout(() => {
     navigation.replace('OpenBook', {
-      BookData: bookData.slide,
+      BookData: bookData.slides,
+      moduleNumber:moduleNumber
     });
   }, 1000);
+ // console.log(bookData,"sjdjshdj");
   return (
     <View style={styles.screen}>
       <BackButton IconSize={30} style={{marginVertical: '5%'}} />

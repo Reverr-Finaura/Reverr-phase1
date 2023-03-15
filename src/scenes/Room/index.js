@@ -108,7 +108,7 @@ const Rooms = () => {
               onPress={() => {
                 navigation.navigate('IndividualProfile');
               }}>
-              <Image style={styles.dp} source={{uri: item.postedby.image}} />
+             {item.postedby.image!==""&& <Image style={styles.dp} source={{uri: item.postedby.image}} />}
             </TouchableOpacity>
             <View style={{marginStart: '3%'}}>
               <Text style={styles.name}>{item.postedby.name}</Text>
