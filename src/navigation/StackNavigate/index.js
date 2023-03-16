@@ -135,7 +135,7 @@ const StackNavigate = props => {
       <Stack.Screen name="LikeScreen" component={LikeScreen} />
       <Stack.Screen name="LikeMatchScreen" component={LikeMatchScreen} />
       <Stack.Screen name="SuperLikeScreen" component={SuperLikeScreen} />
-      {/* <Stack.Screen name="ChatVibeScreen" component={ChatVibeScreen} /> */}
+      <Stack.Screen name="ChatVibeScreen" component={ChatVibeScreen} />
       <Stack.Screen name="ShowMoreVibe" component={ShowMoreVibe} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
       <Stack.Screen name="premiumPlans" component={PremiumPlans} />

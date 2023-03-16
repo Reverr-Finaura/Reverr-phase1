@@ -722,14 +722,15 @@ const Vibe = () => {
                   contentContainerStyle={{ justifyContent: 'center', flexGrow: 1 }}
                   renderItem={({ item, index }) => {
                     const a = item.name == undefined ? "NA" : item.name
-                    console.log("lllllllllll", item)
+                    console.log("lllllllllll", item.userType)
                     if (cardindex == index) {
 
                       return (
                         <ScrollView showsVerticalScrollIndicator={false}>
                           <View
                             style={styles.MainCard}>
-                            <ScrollView scrollEnabled={true} style={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
+                            <ScrollView scrollEnabled={true} style={{ flexGrow: 1 }}
+                              showsVerticalScrollIndicator={false}>
                               <View style={{ flex: 1 }}>
                                 <View style={{ alignSelf: 'center', marginTop: 10 }}>
                                   {item.image ? (
@@ -767,10 +768,16 @@ const Vibe = () => {
                                 </View>
 
                                 <View>
-                                  <Text
-                                    style={styles.about}>
-                                    About Me
-                                  </Text>
+                                  <TouchableOpacity
+                                    onPress={() => {
+                                      navigation.navigate('ChatVibeScreen')
+                                    }
+                                    }>
+                                    <Text
+                                      style={styles.about}>
+                                      About Me
+                                    </Text>
+                                  </TouchableOpacity>
                                   <Text
                                     style={styles.detial}
                                     numberOfLines={2}>
