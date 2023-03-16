@@ -110,14 +110,14 @@ const SignupScreen = props => {
     const msg = 'Your OTP for verification is ' + OTP;
 
     var templateParams = {
-      name: data.Name,
-      email: data.Email,
-      subject: 'OTP for account verification',
-      message: msg,
+      from_name: "Reverr",
+      to_name: data.Name,
+      to_email: data.Email,
+      otp:OTP,
     };
     emailjs.init('user_FR6AulWQMZry87FBzhKNu');
     emailjs
-      .send('service_lfmmz8k', 'template_6lqwjap', templateParams)
+      .send('service_lfmmz8k', 'template_n3pcht5', templateParams)
       .then(res => {
         console.log(res);
       })
