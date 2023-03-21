@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -7,13 +7,15 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import {MentorList} from '../../Components/Mentor-list';
+import { MentorList } from '../../Components/Mentor-list';
 import styles from './styles';
-import {ChatLayout} from '../../Components/ChatLayout';
-import {IndividualHeaderLayout} from '../../Components';
-import {useSelector} from 'react-redux';
-import {AppColors} from '../../utils';
+import { ChatLayout } from '../../Components/ChatLayout';
+import { IndividualHeaderLayout } from '../../Components';
+import { useSelector } from 'react-redux';
+import { AppColors } from '../../utils';
 import firestore from '@react-native-firebase/firestore';
+import authentication from '@react-native-firebase/auth';
+
 
 export const Messages = () => {
   //console.log(mentors);
@@ -24,6 +26,7 @@ export const Messages = () => {
   const [matchedUser, setMatchedUser] = useState([]);
   const [totalNetworkUser, setTotalNetworkUser] = useState([]);
   const [loading, setLoading] = useState(false);
+  console.log("match=====", networks)
 
   const getNetworksUsers = async () => {
     setLoading(true);
@@ -117,16 +120,16 @@ export const Messages = () => {
         </View>
 
         {mentors && (
-          <View style={{marginTop: '3%'}}>
+          <View style={{ marginTop: '3%' }}>
             {state?.user?.mentors?.length > 0 ? (
               <FlatList
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
                 data={state.user.mentors}
-                renderItem={({item}) => <MentorList mentor={item} />}
+                renderItem={({ item }) => <MentorList mentor={item} />}
               />
             ) : (
-              <Text style={{color: 'grey', fontSize: 14, marginLeft: 50}}>
+              <Text style={{ color: 'grey', fontSize: 14, marginLeft: 50 }}>
                 Please Subscribe To Mentors for Guidence
               </Text>
             )}
@@ -140,20 +143,20 @@ export const Messages = () => {
           </View>
         )}
         {networks && (
-          <View style={{marginTop: '3%'}}>
+          <View style={{ marginTop: '3%' }}>
             {state?.user?.mentors?.length > 0 ? (
               <FlatList
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
                 data={state.user.mentors}
-                renderItem={({item}) => <MentorList mentor={item} />}
+                renderItem={({ item }) => <MentorList mentor={item} />}
               />
             ) : (
-              <Text style={{color: 'grey', fontSize: 14, marginLeft: 50}}>
+              <Text style={{ color: 'grey', fontSize: 14, marginLeft: 50 }}>
                 Please Subscribe To Mentors for Guidence
               </Text>
             )}
-            <ChatLayout usersArray={totalNetworkUser} />
+            <ChatLayout usersArray={totalNetworkUser.filter(it => it.email != authentication().currentUser.email)} />
           </View>
         )}
       </IndividualHeaderLayout>

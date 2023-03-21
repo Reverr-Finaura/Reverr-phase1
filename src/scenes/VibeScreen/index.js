@@ -640,9 +640,7 @@ const Vibe = () => {
         DeletePassedUserReference.get().then(querysnapshot => {
           Promise.all(querysnapshot.docs.map(d => d.ref.delete()));
         });
-
         setAllswiped(true);
-
         const ExpiredDate = new Date();
         // console.log(ExpiredDate);
         // console.log(ExpiredDate.getTime());
@@ -770,7 +768,10 @@ const Vibe = () => {
                                 <View>
                                   <TouchableOpacity
                                     onPress={() => {
-                                      navigation.navigate('ChatVibeScreen')
+                                      navigation.navigate('MatchScreen', {
+                                        data,
+                                      }
+                                      )
                                     }
                                     }>
                                     <Text

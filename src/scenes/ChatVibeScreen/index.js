@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import database, { firebase } from '@react-native-firebase/database'
 import authentication from '@react-native-firebase/auth';
 import {
@@ -15,21 +15,52 @@ import {
 import { ChatHeaderVibe } from '../../Components/ChatHeaderVibe';
 import { Bubble, GiftedChat, Send } from 'react-native-gifted-chat';
 
-export default function ChatVibeScreen({ navigation }) {
+export default function ChatVibeScreen(props) {
   const [messages, setMessages] = useState([]);
+  const userData = props?.route?.params?.userData;
+  console.log("userDattttt", userData)
+
+  const senderId = authentication().currentUser.email.split('@')[0]
+  const receiverId = userData.email.split('@')[0]
+
+  const docid =
+    receiverId > senderId
+      ? senderId + '-' + receiverId
+      : receiverId + '-' + senderId;
+  useEffect(() => {
+
+    getAllMessages();
+  }, []);
+  const getAllMessages = () => {
+    let temArray = [];
+    let querySanp = database()
+      .ref('messages')
+      .child(docid)
+
+    querySanp.on('value', snapshot => {
+      if (snapshot.val()) {
+        const msg = Object.values(snapshot.val());
+        let sortedbyDate = msg.sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+        );
+        setMessages(sortedbyDate);
+      }
+    });
+  };
   const onSend = messagesArray => {
     let myMsg = null;
 
     const msg = messagesArray[0];
     myMsg = {
       ...msg,
-      senderId: authentication().currentUser.uid,
-      receiverId: "123",
+      senderId,
+      receiverId,
       createdAt: new Date().getTime(),
     };
     setMessages(previousMessages => GiftedChat.append(previousMessages, myMsg));
 
-    const messagesRef = database().ref(`chats/${'123'}/messages`);
+    const messagesRef = database().ref("messages/" + docid);
     messagesRef.push({
       ...myMsg,
       createdAt: firebase.database.ServerValue.TIMESTAMP,
