@@ -14,9 +14,10 @@ import {
 
 import { ChatHeaderVibe } from '../../Components/ChatHeaderVibe';
 import { Bubble, GiftedChat, Send } from 'react-native-gifted-chat';
-
+import { MessageHeader } from '../../Components/MessageHeader';
 export default function ChatVibeScreen(props) {
   const [messages, setMessages] = useState([]);
+  const [isLoading, setLoading] = useState(true);
   const userData = props?.route?.params?.userData;
   console.log("userDattttt", userData)
 
@@ -36,7 +37,6 @@ export default function ChatVibeScreen(props) {
     let querySanp = database()
       .ref('messages')
       .child(docid)
-
     querySanp.on('value', snapshot => {
       if (snapshot.val()) {
         const msg = Object.values(snapshot.val());
@@ -45,6 +45,7 @@ export default function ChatVibeScreen(props) {
             new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
         );
         setMessages(sortedbyDate);
+        setLoading(false);
       }
     });
   };
@@ -70,7 +71,7 @@ export default function ChatVibeScreen(props) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ChatHeaderVibe />
+      <MessageHeader userData={userData} />
       {/* <Text style={styles.like1}>Send a customized message by clicking on any box.</Text>
       <View style={styles.view}>
         <Text style={styles.like2}>Your business is interesting , can you tell me a little more</Text>
@@ -107,6 +108,7 @@ export default function ChatVibeScreen(props) {
           );
         }}
       /> */}
+
       <GiftedChat
         messages={messages}
         showAvatarForEveryMessage={true}

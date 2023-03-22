@@ -6,6 +6,7 @@ import {
   FlatList,
   ScrollView,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import { MentorList } from '../../Components/Mentor-list';
 import styles from './styles';
@@ -25,7 +26,8 @@ export const Messages = () => {
   const [networkUser, setNetworkUser] = useState([]);
   const [matchedUser, setMatchedUser] = useState([]);
   const [totalNetworkUser, setTotalNetworkUser] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+
   console.log("match=====", networks)
 
   const getNetworksUsers = async () => {
@@ -59,12 +61,12 @@ export const Messages = () => {
   };
   useEffect(() => {
     getNetworksUsers();
-
     let total = networkUser.concat(matchedUser);
     setTotalNetworkUser(total);
 
     console.log(totalNetworkUser, 'total');
   }, [networks, mentors]);
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -156,7 +158,20 @@ export const Messages = () => {
                 Please Subscribe To Mentors for Guidence
               </Text>
             )}
+            {/* {loading == false ? ( */}
+
             <ChatLayout usersArray={totalNetworkUser.filter(it => it.email != authentication().currentUser.email)} />
+            {/* ) : ( */}
+            {/* <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  alignContent: 'center',
+                  marginVertical: 100,
+                }}>
+                <ActivityIndicator size="large" color="#fff" />
+              </View>
+            )} */}
           </View>
         )}
       </IndividualHeaderLayout>

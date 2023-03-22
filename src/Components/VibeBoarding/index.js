@@ -1,8 +1,7 @@
-import { View, Text, TouchableOpacity, Dimensions, TextInput, Image } from 'react-native';
-import React from 'react';
+import { View, Text, TouchableOpacity, Dimensions, TextInput, Image, Animated } from 'react-native';
+import React, { useRef, useEffect, useState, } from 'react';
 import { IndividualHeaderLayout } from '../HeaderLayout';
 import MultiSelect from 'react-native-multiple-select';
-import { useState } from 'react';
 import { CustomTextInput } from '../TextInput';
 import { InputField } from '../InputField';
 // import { TextInput } from 'react-native-paper';
@@ -11,6 +10,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import firestore from '@react-native-firebase/firestore';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { opacity } from 'react-native-redash';
 
 const items = [
   {
@@ -166,6 +166,31 @@ const VibeBoarding = ({ showboarding, setshowboarding }) => {
   const [prevorg, setprevorg] = useState('');
   const [refresh, setrefresh] = useState(true);
   const [loader, setLoader] = useState(false)
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const [fadeIn, setFadeIn] = useState(true);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (fadeIn) {
+        Animated.timing(fadeAnim, {
+          toValue: 1,
+          duration: 100, // Set the duration of the fade in animation
+          useNativeDriver: true // Add this line to improve performance
+        }).start(() => {
+          setFadeIn(false);
+        });
+      } else {
+        Animated.timing(fadeAnim, {
+          toValue: 0,
+          duration: 1000, // Set the duration of the fade out animation
+          useNativeDriver: true // Add this line to improve performance
+        }).start(() => {
+          setFadeIn(true);
+        });
+      }
+    }, 500); // Set the interval duration to 2 seconds (1000ms = 1 second)
+
+    return () => clearInterval(interval);
+  }, [fadeAnim, fadeIn]);
 
   const onSelectedItemsChange = data => {
     console.log('here', data);
@@ -244,13 +269,13 @@ const VibeBoarding = ({ showboarding, setshowboarding }) => {
 
   if (loader) {
     return (
-      <View style={{ flex: 1, backgroundColor: "#000" }}>
+      <Animated.View style={{ flex: 1, backgroundColor: "#010C12", opacity: fadeAnim }}>
         <Image style={{ alignSelf: "center", justifyContent: "center", resizeMode: "contain", width: "100%", height: "100%" }}
           source={require('../../../src/assets/images/loader.png')}
 
 
         />
-      </View>
+      </Animated.View >
     )
   }
 

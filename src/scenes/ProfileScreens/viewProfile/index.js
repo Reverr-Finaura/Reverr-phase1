@@ -54,7 +54,7 @@ const ViewProfile = props => {
         dispatch(add_user(res._data));
       });
     let t = state.Rooms.filter(
-      item => item.postedby.email == userDetails.email,
+      item => item.postedby.email == userDetails?.email,
     );
     setPostData(t);
     //console.log(state.Rooms, 'filtered');
@@ -63,11 +63,11 @@ const ViewProfile = props => {
   console.log(state.user.sendRequests);
 
   const connectToNetwork = async () => {
-    ConnectToSocial(state.user.email, userDetails.email, setConnectLoading);
+    ConnectToSocial(state.user.email, userDetails?.email, setConnectLoading);
   };
 
   const removeToNetwork = async () => {
-    CancelRequest(state.user.email, userDetails.email, setConnectLoading);
+    CancelRequest(state.user.email, userDetails?.email, setConnectLoading);
   };
 
   if (!state) {
@@ -136,7 +136,7 @@ const ViewProfile = props => {
                 letterSpacing: 1,
                 textAlign: 'center',
               }}>
-              {userDetails.name}
+              {userDetails?.name}
             </Text>
             <Text
               style={{
@@ -144,7 +144,7 @@ const ViewProfile = props => {
                 color: AppColors.BtnClr,
                 textAlign: 'center',
               }}>
-              {userDetails.name}
+              {userDetails?.name}
             </Text>
             <View
               style={{
@@ -152,7 +152,7 @@ const ViewProfile = props => {
                 justifyContent: 'center',
                 marginTop: '2%',
               }}>
-              {state?.user?.network?.includes(userDetails.email) ? (
+              {state?.user?.network?.includes(userDetails?.email) ? (
                 <View>
                   <TouchableOpacity>
                     <Text
@@ -168,7 +168,7 @@ const ViewProfile = props => {
               ) : (
                 <View>
                   {state &&
-                    state?.user?.recivedRequests?.includes(userDetails.email) ? (
+                    state?.user?.recivedRequests?.includes(userDetails?.email) ? (
                     <View style={{ paddingVertical: '2%' }}>
                       <View
                         style={{
@@ -181,7 +181,7 @@ const ViewProfile = props => {
                           onPress={() => {
                             ApprovedReq(
                               state.user.email,
-                              userDetails.email,
+                              userDetails?.email,
                               setLoading,
                             );
                           }}
@@ -194,7 +194,7 @@ const ViewProfile = props => {
                           onPress={() => {
                             rejectRequest(
                               state.user.email,
-                              userDetails.email,
+                              userDetails?.email,
                               setLoading,
                             );
                           }}
@@ -218,7 +218,7 @@ const ViewProfile = props => {
                         <>
                           {state &&
                             state?.user?.sendRequests?.includes(
-                              userDetails.email,
+                              userDetails?.email,
                             ) ? (
                             <TouchableOpacity onPress={removeToNetwork}>
                               <Text
@@ -298,7 +298,7 @@ const ViewProfile = props => {
             </ImageBackground>
           </TouchableOpacity> */}
           <Image
-            source={{ uri: userDetails.image }}
+            source={{ uri: userDetails?.image }}
             style={{
               width: 110,
               height: 110,
