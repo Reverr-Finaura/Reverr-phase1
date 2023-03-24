@@ -6,14 +6,14 @@ import {
   ImageBackground,
   Image,
 } from 'react-native';
-import React, {useState} from 'react';
-import {Header} from '../../Components/Header';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import React, { useState } from 'react';
+import { Header } from '../../Components/Header';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 const MatchScreen = () => {
   const navigation = useNavigation();
-  const {params} = useRoute();
-  const {data} = params;
+  const { params } = useRoute();
+  const { data } = params;
 
   const userimage = data.image;
   const matchedimage = data.image;
@@ -28,7 +28,7 @@ const MatchScreen = () => {
     >
       <View style={styles.main}>
         <View>
-          <View style={{top: 306, width: '50%'}}>
+          <View style={{ top: 306, width: '50%' }}>
             <Header />
           </View>
         </View>
@@ -66,7 +66,7 @@ const MatchScreen = () => {
               top: 45,
               borderRadius: 100,
             }}
-            source={{uri: matchedimage}}
+            source={{ uri: matchedimage }}
           />
         </View>
         <View>
@@ -81,7 +81,7 @@ const MatchScreen = () => {
               top: 45,
               borderRadius: 100,
             }}
-            source={{uri: userimage}}
+            source={{ uri: userimage }}
           />
         </View>
       </View>
@@ -118,20 +118,20 @@ const MatchScreen = () => {
           backgroundColor: '#2A72DE',
         }}
       >
-        <View style={{alignSelf:'center'}}>
-        <Text
-          style={{
-            fontFamily: 'Poppins',
-            fontSize: 20,
-            fontWeight: '700',
-            lineHeight: 30,
-            color: 'white',
-            letterSpacing: 0,
-            textAlign: 'center',
-          }}
-        >
-          Start messaging
-        </Text>
+        <View style={{ alignSelf: 'center' }}>
+          <Text
+            style={{
+              fontFamily: 'Poppins',
+              fontSize: 20,
+              fontWeight: '700',
+              lineHeight: 30,
+              color: 'white',
+              letterSpacing: 0,
+              textAlign: 'center',
+            }}
+          >
+            Start messaging
+          </Text>
         </View>
       </View>
     </View>
@@ -168,4 +168,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-export {MatchScreen};
+export { MatchScreen };

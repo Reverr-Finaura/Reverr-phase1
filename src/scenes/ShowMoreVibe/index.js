@@ -1,10 +1,10 @@
-import {View, Text, Image, Dimensions, ScrollView} from 'react-native';
+import { View, Text, Image, Dimensions, ScrollView } from 'react-native';
 import React from 'react';
-import {useNavigation, useRoute} from '@react-navigation/native';
-import {BackButton, IndividualHeaderLayout} from '../../Components';
-import {useState} from 'react';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { BackButton, IndividualHeaderLayout } from '../../Components';
+import { useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {AppColors} from '../../utils';
+import { AppColors } from '../../utils';
 
 const ShowMoreVibe = () => {
   const [demoData, setDemoData] = useState([
@@ -30,15 +30,15 @@ const ShowMoreVibe = () => {
     Years_Of_Experience: ['4'],
   });
   const navigation = useNavigation();
-  const {params} = useRoute();
-  const {data} = params;
+  const { params } = useRoute();
+  const { data } = params;
   return (
     <IndividualHeaderLayout>
       <View>{console.log('datata from show more', params)}</View>
       <ScrollView>
         <BackButton />
         <View>
-          <View style={{alignSelf: 'center'}}>
+          <View style={{ alignSelf: 'center' }}>
             {params.image ? (
               <Image
                 style={{
@@ -66,8 +66,8 @@ const ShowMoreVibe = () => {
               />
             )}
           </View>
-          <View style={{display: 'flex'}}>
-            <View style={{marginHorizontal: 10, marginTop: 10}}>
+          <View style={{ display: 'flex' }}>
+            <View style={{ marginHorizontal: 10, marginTop: 10 }}>
               <Text
                 style={{
                   color: 'white',
@@ -113,7 +113,7 @@ const ShowMoreVibe = () => {
                 About Me
               </Text>
             </View>
-            <View style={{marginTop: 5}}>
+            <View style={{ marginTop: 5 }}>
               <Text
                 style={{
                   color: '#fff',
@@ -151,78 +151,71 @@ const ShowMoreVibe = () => {
             >
               {params?.Vibe_Data
                 ? params?.Vibe_Data?.Here_for?.map(item => {
-                    console.log(item);
-                    return (
-                      <View
+                  console.log(item);
+                  return (
+                    <View
+                      style={{
+                        boxShadow: '4px -5px 5px 0px #00000040 inset',
+                        width: Dimensions.get('window').width / 4.3,
+                        height: Dimensions.get('window').height / 7.5,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderRadius: 100 / 2,
+                        borderWidth: 3,
+                        borderColor: 'white',
+                        backgroundColor: '#0077B7',
+                        height: 80,
+                        width: 80,
+                      }}
+                    >
+                      <Text
                         style={{
-                          boxShadow: '4px -5px 5px 0px #00000040 inset',
-                          width: Dimensions.get('window').width / 4.3,
-                          height: Dimensions.get('window').height / 7.5,
-                          alignItems: 'center',
-                          justifyContent: 'center',
-
-                          borderRadius: 100 / 2,
-                          borderWidth: 3,
-                          borderColor: 'white',
-                          backgroundColor: '#0077B7',
+                          color: 'white',
+                          textAlign: 'center',
+                          fontFamily: 'Poppins',
+                          fontSize: 1,
+                          padding: 20,
+                          fontWeight: '400',
                         }}
                       >
-                        <Text
-                          style={{
-                            color: 'white',
-                            textAlign: 'center',
-                            fontFamily: 'Poppins',
-                            fontSize: 13,
-                            fontWeight: '500',
-                          }}
-                        >
-                          {item}
-                        </Text>
-                      </View>
-                    );
-                  })
+                        {item}
+                      </Text>
+                    </View>
+                  );
+                })
                 : checkingdata?.Here_for?.map(item => {
-                    console.log(item);
-                    return (
-                      <View
+                  console.log(item);
+                  return (
+                    <View
+                      style={{
+                        boxShadow: '4px -5px 5px 0px #00000040 inset',
+                        width: Dimensions.get('window').width / 4.3,
+                        height: Dimensions.get('window').height / 7.5,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderRadius: 100 / 2,
+                        borderWidth: 3,
+                        borderColor: 'white',
+                        backgroundColor: '#0077B7',
+                        height: 80,
+                        width: 80,
+                      }}
+                    >
+                      <Text
                         style={{
-                          boxShadow: '4px -5px 5px 0px #00000040 inset',
-                          // width:
-                          //   Dimensions.get('window').width /
-                          //   4.3,
-                          // height:
-                          //   Dimensions.get('window')
-                          //     .height / 7.5,
-                          alignItems: 'center',
-                          justifyContent: 'center',
-
-                          // borderRadius: 100 / 2,
-                          borderRadius:
-                            Math.round(
-                              Dimensions.get('window').width +
-                                Dimensions.get('window').height,
-                            ) / 2,
-                          width: Dimensions.get('window').width * 0.2,
-                          height: Dimensions.get('window').width * 0.2,
-                          borderWidth: 3,
-                          borderColor: 'white',
-                          backgroundColor: '#0077B7',
+                          color: 'white',
+                          textAlign: 'center',
+                          fontFamily: 'Poppins',
+                          fontSize: 11,
+                          padding: 5,
+                          fontWeight: '500',
                         }}
                       >
-                        <Text
-                          style={{
-                            color: 'white',
-                            textAlign: 'center',
-                            fontFamily: 'Poppins',
-                            fontSize: 13,
-                            fontWeight: '500',
-                          }}
-                        >
-                          {item}
-                        </Text>
-                      </View>
-                    );
-                  })}
+                        {item}
+                      </Text>
+                    </View>
+                  );
+                })}
             </View>
           </View>
 
@@ -247,78 +240,79 @@ const ShowMoreVibe = () => {
           >
             {params?.Vibe_Data
               ? params?.Vibe_Data?.How_To_Meet.map(params => {
-                  console.log(params);
+                console.log(params);
 
-                  return (
-                    <View
+                return (
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'center',
+                      alignparamss: 'center',
+
+                    }}
+                  >
+                    <Icon
+                      name="check-circle"
+                      color={AppColors.ActiveColor}
+                      size={20}
+                    />
+
+                    <Text
                       style={{
-                        flexDirection: 'row',
-                        justifyContent: 'center',
-                        alignparamss: 'center',
+                        marginLeft: 4,
+                        color: 'white',
+                        fontFamily: 'Poppins',
+                        fontSize: 16,
+                        fontWeight: '400',
                       }}
                     >
-                      <Icon
-                        name="check-circle"
-                        color={AppColors.ActiveColor}
-                        size={20}
-                      />
-
-                      <Text
-                        style={{
-                          marginLeft: 4,
-                          color: 'white',
-                          fontFamily: 'Poppins',
-                          fontSize: 16,
-                          fontWeight: '400',
-                        }}
-                      >
-                        {params}
-                      </Text>
-                    </View>
-                  );
-                })
+                      {params}
+                    </Text>
+                  </View>
+                );
+              })
               : checkingdata?.How_To_Meet.map(params => {
-                  console.log(params);
-                  if (params) {
-                    if (params === 'At Coffee') {
-                      var icon = 'coffee';
-                    } else if (params === 'Video Call') {
-                      var icon = 'tick';
-                    } else if (params === 'Local Cafee') {
-                      var icon = 'coffee';
-                    } else {
-                      var icon = 'check-circle';
-                    }
+                console.log(params);
+                if (params) {
+                  if (params === 'At Coffee') {
+                    var icon = 'coffee';
+                  } else if (params === 'Video Call') {
+                    var icon = 'tick';
+                  } else if (params === 'Local Cafee') {
+                    var icon = 'coffee';
+                  } else {
+                    var icon = 'check-circle';
                   }
-                  console.log(icon);
-                  return (
-                    <View
+                }
+                console.log(icon);
+                return (
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'center',
+                      alignparamss: 'center',
+                    }}
+                  >
+                    <Icon
+                      name={icon}
+                      color={AppColors.ActiveColor}
+                      size={20}
+                    />
+
+                    <Text
                       style={{
-                        flexDirection: 'row',
-                        justifyContent: 'center',
-                        alignparamss: 'center',
+                        marginLeft: 4,
+                        color: 'white',
+                        fontFamily: 'Poppins',
+                        fontSize: 16,
+                        fontWeight: '400',
                       }}
                     >
-                      <Icon
-                        name={icon}
-                        color={AppColors.ActiveColor}
-                        size={20}
-                      />
-
-                      <Text
-                        style={{
-                          marginLeft: 4,
-                          color: 'white',
-                          fontFamily: 'Poppins',
-                          fontSize: 16,
-                          fontWeight: '400',
-                        }}
-                      >
-                        {params}
-                      </Text>
-                    </View>
-                  );
-                })}
+                      {params}
+                    </Text>
+                  </View>
+                );
+              })}
           </View>
           <View
             style={{
@@ -334,6 +328,7 @@ const ShowMoreVibe = () => {
                   flexDirection: 'row',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  marginStart: 10
                 }}
               >
                 <Icon name="search" color={AppColors.ActiveColor} size={20} />
@@ -414,7 +409,7 @@ const ShowMoreVibe = () => {
               style={{
                 flexDirection: 'row',
                 alignparamss: 'center',
-
+                marginStart: 10,
                 justifyContent: 'center',
               }}
             >
@@ -496,4 +491,4 @@ const ShowMoreVibe = () => {
   );
 };
 
-export {ShowMoreVibe};
+export { ShowMoreVibe };

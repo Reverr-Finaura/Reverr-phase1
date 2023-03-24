@@ -6,7 +6,7 @@ import {
   Dimensions,
 } from 'react-native';
 import React from 'react';
-import {AppColors} from '../../utils';
+import { AppColors } from '../../utils';
 import LinearGradient from 'react-native-linear-gradient';
 
 const Height = Dimensions.get('window').height;
@@ -27,14 +27,14 @@ const CustomMenuBar = ({
   return (
     <LinearGradient
       colors={[AppColors.ActiveColor, '#012437']}
-      start={{x: -1, y: 1.3}}
-      end={{x: 1, y: 0.5}}
+      start={{ x: -1, y: 1.3 }}
+      end={{ x: 1, y: 0.5 }}
       style={styles.Container}>
       <TouchableOpacity onPress={ClickOnItem1}>
         <Text
           style={[
             styles.text,
-            {backgroundColor: active1 ? AppColors.ActiveColor : null},
+            { backgroundColor: active1 ? AppColors.ActiveColor : null },
           ]}>
           {Item1}
         </Text>
@@ -43,7 +43,7 @@ const CustomMenuBar = ({
         <Text
           style={[
             styles.text,
-            {backgroundColor: active2 ? AppColors.ActiveColor : null},
+            { backgroundColor: active2 ? AppColors.ActiveColor : null },
             itemStyle,
           ]}>
           {Item2}
@@ -53,7 +53,7 @@ const CustomMenuBar = ({
         <Text
           style={[
             styles.text,
-            {backgroundColor: active3 ? AppColors.ActiveColor : null},
+            { backgroundColor: active3 ? AppColors.ActiveColor : null },
             itemStyle,
           ]}>
           {Item3}
@@ -83,4 +83,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {CustomMenuBar};
+export { CustomMenuBar };

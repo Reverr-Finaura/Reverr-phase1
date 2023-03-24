@@ -20,7 +20,6 @@ export const Header = ({customStyles = {}}) => {
 
       <Image
         source={require('../../assets/images/logo.png')}
-        style={{marginRight: 16}}
       />
 
       <TouchableOpacity>
@@ -29,7 +28,7 @@ export const Header = ({customStyles = {}}) => {
 
       <CustomImage
         source={require('../../assets/images/Message.png')}
-        action={() => navigation.navigate('ChatScreen')}
+        // action={() => navigation.navigate('ChatScreen')}
       />
     </View>
   );

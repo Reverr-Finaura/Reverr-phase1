@@ -9,14 +9,14 @@ import {
   Dimensions,
   ToastAndroid
 } from 'react-native';
-import React, {useContext, useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import React, { useContext, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
-import {BackButton} from '../../../Components';
-import {AppColors} from '../../../utils';
-import { useSelector,useDispatch } from 'react-redux';
-import { saveCourse,removeCourse } from '../../../Redux/actions';
+import { BackButton } from '../../../Components';
+import { AppColors } from '../../../utils';
+import { useSelector, useDispatch } from 'react-redux';
+import { saveCourse, removeCourse } from '../../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
 import { ModulesData } from '../../../dumy-Data/moduleData';
 const Width = Dimensions.get('window').width;
@@ -26,11 +26,12 @@ const StartCourse = props => {
   const navigation = useNavigation();
   const [chp, setchp] = useState(0);
   const [slide, setslide] = useState(0);
-  const state=useSelector(state=>state.UserReducer);
-  const dispatch=useDispatch();
+  const state = useSelector(state => state.UserReducer);
+  const dispatch = useDispatch();
   const showToast = (msg) => {
     ToastAndroid.show(msg, ToastAndroid.SHORT);
   };
+<<<<<<< HEAD
   // const SaveCourses=async(id)=>{
   //   dispatch(saveCourse(id))
   //   await firestore().collection('Users').doc(state.user.email).update({
@@ -60,11 +61,42 @@ const StartCourse = props => {
     
   // }
   console.log(courseData,"cddg");
+=======
+  const SaveCourses = async (id) => {
+    dispatch(saveCourse(id))
+    await firestore().collection('Users').doc(state.user.email).update({
+      savedCourses: [...state.user.savedCourses, id]
+    }).then(() => {
+      showToast("Course Saved Successfully")
+    }).catch(err => {
+      showToast("Error while saving the course!")
+    })
+  }
+
+  const RemoveCourse = async (id) => {
+    var bucket = [];
+    for (var i = 0; i < state?.user?.savedCourses.length; i++) {
+      if (id != state?.user?.savedCourses[i]) {
+        bucket.push(state?.user?.savedCourses[i]);
+      }
+    }
+    dispatch(removeCourse(id));
+    await firestore().collection('Users').doc(state.user.email).update({
+      savedCourses: bucket
+    }).then(() => {
+      showToast("Course Removed Successfully")
+    }).catch(err => {
+      showToast("Error while removing the course!")
+    })
+
+  }
+
+>>>>>>> yasir
   return (
     <View style={styles.screen}>
       <ImageBackground
-        style={{width: '100%', height: Height / 2.7, paddingTop: '5%'}}
-        source={{uri: courseData.image}}>
+        style={{ width: '100%', height: Height / 2.7, paddingTop: '5%' }}
+        source={{ uri: courseData.image }}>
         <BackButton
           IconSize={30}
           onPress={() => {
@@ -97,6 +129,7 @@ const StartCourse = props => {
         <TouchableOpacity
           activeOpacity={0.6}
           style={styles.circle}
+<<<<<<< HEAD
           // onPress={() => {
           //   if(state?.user?.savedCourses?.includes(courseData.id)){
           //     RemoveCourse(courseData.id);
@@ -108,6 +141,19 @@ const StartCourse = props => {
           
           <Icon2 name={state.user?.savedCourses?.includes(courseData.id)?"bookmark":'bookmark-outline'} size={28} color="#0077B7" />
         </TouchableOpacity>
+=======
+          onPress={() => {
+            if (state?.user?.savedCourses?.includes(courseData.id)) {
+              RemoveCourse(courseData.id);
+            } else {
+              SaveCourses(courseData.id)
+            }
+          }}>
+          <Icon2 name={state?.user?.savedCourses?.includes(courseData.id) ? "bookmark" : 'bookmark-outline'} size={28} color="#0077B7" />
+        </TouchableOpacity>
+
+
+>>>>>>> yasir
         <TouchableOpacity
           style={styles.ContinueButton}
           onPress={() => {
@@ -121,8 +167,13 @@ const StartCourse = props => {
       <Text style={styles.txt}>Chapters</Text>
       <ScrollView style={styles.ChapterContainer}>
         <FlatList
+<<<<<<< HEAD
           data={courseData}
           renderItem={({item, index}) => (
+=======
+          data={courseData.chapter}
+          renderItem={({ item, index }) => (
+>>>>>>> yasir
             <View key={index} style={styles.ChapterCard}>
               <View
                 style={{
@@ -143,7 +194,7 @@ const StartCourse = props => {
                   }}
                   style={[
                     styles.circle,
-                    {backgroundColor: AppColors.ActiveColor},
+                    { backgroundColor: AppColors.ActiveColor },
                   ]}>
                   <Icon2
                     name="chevron-forward-outline"
@@ -219,4 +270,4 @@ const styles = StyleSheet.create({
     backgroundColor: AppColors.CardColor,
   },
 });
-export {StartCourse};
+export { StartCourse };

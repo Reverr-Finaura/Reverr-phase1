@@ -54,7 +54,13 @@ import {CountdownTimer} from './CountdownTimer';
 import {LikeScreen} from './LikesScreen';
 import PremiumPlans from './PremiumPlans';
 import ScheduleAppointment from './scheduleappointment';
+<<<<<<< HEAD
 import { PersonalProfile,EduAndExp,LookingFor,Intrest,Social } from './profilesetup';
+=======
+import LikeMatchScreen from './LikeMatchScreen';
+import SuperLikeScreen from './SuperLikeScreen';
+import ChatVibeScreen from './ChatVibeScreen';
+>>>>>>> yasir
 export {
   ArticalDetails,
   FundingScreen,
@@ -117,4 +123,9 @@ export {
   LikeScreen,
   PremiumPlans,
   ScheduleAppointment,
+  LikeMatchScreen,
+  SuperLikeScreen,
+  ChatVibeScreen,
+  
+  
 };

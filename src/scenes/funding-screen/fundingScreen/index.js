@@ -1,9 +1,9 @@
-import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {useNavigation} from '@react-navigation/native';
-import {CustomButton} from '../../../Components';
-import {AppColors} from '../../../utils';
+import { useNavigation } from '@react-navigation/native';
+import { CustomButton } from '../../../Components';
+import { AppColors } from '../../../utils';
 
 const Width = Dimensions.get('screen').width;
 const Height = Dimensions.get('screen').height;
@@ -18,8 +18,8 @@ const FundingScreen = () => {
       />
       <LinearGradient
         colors={[AppColors.primarycolor, '#012437']}
-        start={{x: 0, y: 1.3}}
-        end={{x: 0, y: 0.5}}
+        start={{ x: 0, y: 1.3 }}
+        end={{ x: 0, y: 0.5 }}
         style={styles.card}>
         <Text style={styles.title}>Funding</Text>
         <Text style={styles.subtext}>
@@ -34,7 +34,7 @@ const FundingScreen = () => {
         Title="Apply For Funding"
         onPress={() =>
           navigation.navigate('WebView', {
-            url: 'https://reverrapp.com/fundingform',
+            url: 'https://reverr.io/fundingform',
           })}
       />
     </View>
@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {FundingScreen};
+export { FundingScreen };

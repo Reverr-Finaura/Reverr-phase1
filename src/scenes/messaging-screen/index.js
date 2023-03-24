@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -6,14 +6,17 @@ import {
   FlatList,
   ScrollView,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
-import {MentorList} from '../../Components/Mentor-list';
+import { MentorList } from '../../Components/Mentor-list';
 import styles from './styles';
-import {ChatLayout} from '../../Components/ChatLayout';
-import {IndividualHeaderLayout} from '../../Components';
-import {useSelector} from 'react-redux';
-import {AppColors} from '../../utils';
+import { ChatLayout } from '../../Components/ChatLayout';
+import { IndividualHeaderLayout } from '../../Components';
+import { useSelector } from 'react-redux';
+import { AppColors } from '../../utils';
 import firestore from '@react-native-firebase/firestore';
+import authentication from '@react-native-firebase/auth';
+
 
 export const Messages = () => {
   //console.log(mentors);
@@ -23,7 +26,9 @@ export const Messages = () => {
   const [networkUser, setNetworkUser] = useState([]);
   const [matchedUser, setMatchedUser] = useState([]);
   const [totalNetworkUser, setTotalNetworkUser] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  console.log("match=====", networks)
 
   const getNetworksUsers = async () => {
     setLoading(true);
@@ -56,12 +61,12 @@ export const Messages = () => {
   };
   useEffect(() => {
     getNetworksUsers();
-
     let total = networkUser.concat(matchedUser);
     setTotalNetworkUser(total);
 
     console.log(totalNetworkUser, 'total');
   }, [networks, mentors]);
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -117,16 +122,16 @@ export const Messages = () => {
         </View>
 
         {mentors && (
-          <View style={{marginTop: '3%'}}>
+          <View style={{ marginTop: '3%' }}>
             {state?.user?.mentors?.length > 0 ? (
               <FlatList
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
                 data={state.user.mentors}
-                renderItem={({item}) => <MentorList mentor={item} />}
+                renderItem={({ item }) => <MentorList mentor={item} />}
               />
             ) : (
-              <Text style={{color: 'grey', fontSize: 14, marginLeft: 50}}>
+              <Text style={{ color: 'grey', fontSize: 14, marginLeft: 50 }}>
                 Please Subscribe To Mentors for Guidence
               </Text>
             )}
@@ -140,20 +145,33 @@ export const Messages = () => {
           </View>
         )}
         {networks && (
-          <View style={{marginTop: '3%'}}>
+          <View style={{ marginTop: '3%' }}>
             {state?.user?.mentors?.length > 0 ? (
               <FlatList
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
                 data={state.user.mentors}
-                renderItem={({item}) => <MentorList mentor={item} />}
+                renderItem={({ item }) => <MentorList mentor={item} />}
               />
             ) : (
-              <Text style={{color: 'grey', fontSize: 14, marginLeft: 50}}>
+              <Text style={{ color: 'grey', fontSize: 14, marginLeft: 50 }}>
                 Please Subscribe To Mentors for Guidence
               </Text>
             )}
-            <ChatLayout usersArray={totalNetworkUser} />
+            {/* {loading == false ? ( */}
+
+            <ChatLayout usersArray={totalNetworkUser.filter(it => it.email != authentication().currentUser.email)} />
+            {/* ) : ( */}
+            {/* <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  alignContent: 'center',
+                  marginVertical: 100,
+                }}>
+                <ActivityIndicator size="large" color="#fff" />
+              </View>
+            )} */}
           </View>
         )}
       </IndividualHeaderLayout>

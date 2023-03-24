@@ -9,11 +9,11 @@ import {
   ImageBackground,
 } from 'react-native';
 import styles from './styles';
-import {useSelector} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
-import {AppColors} from '../../utils';
+import { useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
+import { AppColors } from '../../utils';
 
-export const ChatLayout = ({usersArray}) => {
+export const ChatLayout = ({ usersArray }) => {
   const state = useSelector(state => state.UserReducer);
   const navigation = useNavigation();
   return (
@@ -33,18 +33,18 @@ export const ChatLayout = ({usersArray}) => {
         style={styles.chatContainer}
         source={require('../../assets/images/Rectangle2.png')}>
         <FlatList
-          style={{marginBottom: 16}}
+          style={{ marginBottom: 16 }}
           data={usersArray}
-          renderItem={({item}) => (
+          renderItem={({ item }) => (
             <TouchableOpacity
               style={styles2.container}
               onPress={() =>
-                navigation.navigate('ChatScreen', {
+                navigation.navigate('ChatVibeScreen', {
                   userData: item,
                 })
               }>
-              <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-                <Image style={styles2.image} source={{uri: item.image}} />
+              <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+                <Image style={styles2.image} source={{ uri: item.image }} />
                 <View
                   style={{
                     width: '70%',

@@ -1,9 +1,9 @@
-import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
 import firestore from '@react-native-firebase/firestore';
 import styles from './styles';
-import {useSelector} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
+import { useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
 export const YourFavMentorList = () => {
   const state = useSelector(state => state.UserReducer);
@@ -33,7 +33,7 @@ export const YourFavMentorList = () => {
             <FlatList
               data={mentorsList}
               horizontal
-              renderItem={({item}) => (
+              renderItem={({ item }) => (
                 <TouchableOpacity
                   activeOpacity={0.6}
                   onPress={() => {
@@ -42,7 +42,7 @@ export const YourFavMentorList = () => {
                     });
                   }}
                   style={styles.Card}>
-                  <Image style={styles.dp} source={{uri: item.image}} />
+                  <Image style={styles.dp} source={{ uri: item.image }} />
                   <Text style={styles.Name}>{item.name}</Text>
                   <Text style={styles.skills}>{item.skills}</Text>
                 </TouchableOpacity>

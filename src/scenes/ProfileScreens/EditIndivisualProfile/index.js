@@ -12,18 +12,18 @@ import {
   FlatList,
   TextInput,
 } from 'react-native';
-import React, {useState, useContext, useEffect} from 'react';
-import {AppColors} from '../../../utils';
+import React, { useState, useContext, useEffect } from 'react';
+import { AppColors } from '../../../utils';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 //import {ChangeDp} from '../../utils/fireBaseFunctions';
-import {ChangeDp} from '../../../utils/FirebaseFunctionality';
-import {useNavigation} from '@react-navigation/native';
-import {EditCard, CustomButton, BackButton} from '../../../Components/index';
+import { ChangeDp } from '../../../utils/FirebaseFunctionality';
+import { useNavigation } from '@react-navigation/native';
+import { EditCard, CustomButton, BackButton } from '../../../Components/index';
 import firestore from '@react-native-firebase/firestore';
-import {useDispatch, useSelector} from 'react-redux';
-import {styles} from './style';
-import {updateUserData} from '../../../Redux/actions';
-import {Item} from 'react-native-paper/lib/typescript/components/List/List';
+import { useDispatch, useSelector } from 'react-redux';
+import { styles } from './style';
+import { updateUserData } from '../../../Redux/actions';
+import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 const Width = Dimensions.get('screen').width;
 const Height = Dimensions.get('screen').height;
 
@@ -39,7 +39,7 @@ const EditProfile = () => {
   );
   const [loading, setLoading] = useState(false);
   const [addMoreExperience, setAddMoreExperience] = useState(false);
-  const [educationlist, setEducationlist] = useState([{school: ''}]);
+  const [educationlist, setEducationlist] = useState([{ school: '' }]);
 
   const [ex1, setEx1] = useState(
     state?.user && state?.user?.experience && state?.user?.experience.length > 0
@@ -206,7 +206,7 @@ const EditProfile = () => {
           value={Industry == '>/s<' ? 'Enter Your Industry' : Industry}
           style={[
             styles.name,
-            {marginTop: Height / 90, color: AppColors.infoFonts},
+            { marginTop: Height / 90, color: AppColors.infoFonts },
           ]}
           onChangeText={i => {
             setIndustry(i);
@@ -328,7 +328,7 @@ const EditProfile = () => {
           </Text>
           <FlatList
             data={educationlist}
-            renderItem={({item, index}) => (
+            renderItem={({ item, index }) => (
               <View>
                 {index > 0 && (
                   <TouchableOpacity
@@ -337,7 +337,7 @@ const EditProfile = () => {
                       list.splice(index, 1);
                       setEducationlist(list);
                     }}
-                    style={{marginStart: '85%'}}>
+                    style={{ marginStart: '85%' }}>
                     <Text
                       style={{
                         color: AppColors.ActiveColor,
@@ -400,7 +400,7 @@ const EditProfile = () => {
           />
 
           <TouchableOpacity
-            onPress={() => setEducationlist([...educationlist, {school: ''}])}
+            onPress={() => setEducationlist([...educationlist, { school: '' }])}
             style={{
               width: '20%',
               alignItems: 'center',
@@ -424,25 +424,25 @@ const EditProfile = () => {
           onChangeText={e => {
             setEd2(e);
           }}
-          //value={ed2 == '>/s<' ? 'Enter Education' : ed2}
+        //value={ed2 == '>/s<' ? 'Enter Education' : ed2}
         />
         <EditCard
           Title="Twitter"
           onChangeText={e => {
             setEd3(e);
           }}
-          //value={ed3 == '>/s<' ? 'Enter Education' : ed3}
+        //value={ed3 == '>/s<' ? 'Enter Education' : ed3}
         />
       </ScrollView>
       <CustomButton
         Title="Save Changes"
         onPress={() => saveChanges()}
-        style={{marginBottom: '4%'}}
+        style={{ marginBottom: '4%' }}
       />
       <View style={styles.dp}>
         <Image
-          style={{width: '100%', height: '100%'}}
-          source={{uri: state.user && state.user.image}}
+          style={{ width: '100%', height: '100%' }}
+          source={{ uri: state.user && state.user.image }}
         />
       </View>
       <ActivityIndicator
@@ -462,4 +462,4 @@ const EditProfile = () => {
   );
 };
 
-export {EditProfile};
+export { EditProfile };

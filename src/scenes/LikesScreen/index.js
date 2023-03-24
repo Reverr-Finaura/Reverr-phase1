@@ -5,15 +5,17 @@ import {
   Dimensions,
   FlatList,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useId, useState } from 'react';
 import firestore from '@react-native-firebase/firestore';
-import {BackButton, IndividualHeaderLayout} from '../../Components';
-import {useDispatch, useSelector} from 'react-redux';
-import {cos} from 'react-native-reanimated';
-import {} from 'react-native-gesture-handler';
-import {useNavigation} from '@react-navigation/native';
-
+import { BackButton, IndividualHeaderLayout } from '../../Components';
+import { useDispatch, useSelector } from 'react-redux';
+import { cos } from 'react-native-reanimated';
+import { } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
+import styles from './styles';
 const LikeScreen = () => {
   const navigation = useNavigation();
   const state = useSelector(state => state.UserReducer);
@@ -23,17 +25,36 @@ const LikeScreen = () => {
   const [error, seterror] = useState('');
   const [LikedData, setLikedData] = useState([{}]);
 
-  // console.log('liked datta', LikedData.length);
+  console.log('liked datta', LikedData);
+
+  const userFunc = async () => {
+    const savedUser = await firestore()
+      .collection('Users')
+      .doc('mauricerana@gmail.com')
+      .get();
+    //  console.log('Its a :' +JSON.stringify (savedUser._data));
+    // dispatch(add_user(savedUser._data));
+  };
+
   useEffect(() => {
     const GetLikedPeople = async () => {
-      const Data = state.user.people_liked_me;
-      console.log(Data, 'liked');
+      const Data = state.user.liked_people;
+      console.log('12345===========dddd=======rer===>', Data);
+
+
       Data?.map(async item => {
         console.log(item, 'kjdksskjshf');
-        const dataliked = await firestore().collection('Users').doc(item).get();
+        const dataliked = await firestore()
+          .collection('Users')
+          .doc(item)
+          .get();
 
         const RecievedData = dataliked.data();
+        console.log('12345==================rer===>', RecievedData);
+
         // console.log(dataliked._data, 'kssk');
+        // alert(RecievedData, 'alll set');
+
         setLikedData(prev => [...prev, RecievedData]);
       });
 
@@ -50,95 +71,71 @@ const LikeScreen = () => {
 
     const CardRecivedData = cardliked.data();
 
-    navigation.navigate('ShowMoreVibe', CardRecivedData);
+    // navigation.navigate('ShowMoreVibe', CardRecivedData);
   };
   return (
     <View
-      style={{
-        backgroundColor: '#020E2C',
-        height: Dimensions.get('window').height,
-      }}>
-      <View style={{marginTop: 20}}>
+      style={styles.mainView}>
+      <View style={{ marginTop: 20 }}>
         <BackButton />
+        <Text
+          style={styles.buyPremium}>
+          Buy Premium to connect people who are interested in your profile
+        </Text>
+        <Text
+          style={styles.william}>
+          William and 9 other liked your profile
+        </Text>
       </View>
       <View>
-        <View
-          style={{
-            alignSelf: 'center',
-            marginTop: 10,
-          }}></View>
+
 
         {show && LikedData.length > 1 ? (
-          <View
-            style={{
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              justifyContent: 'space-around',
-            }}>
-            {LikedData?.map(data => {
-              //console.log('what is name', data.email, '', data.id);
-              if (data?.name === undefined) {
-                return;
-              }
-              return (
-                <TouchableOpacity onPress={() => HandleOnPress(data.email)}>
-                  <View
-                    style={{
-                      marginTop: 20,
-                      width: Dimensions.get('window').width / 2.4,
-                      height: Dimensions.get('window').height / 2.8,
-                      justifyContent: 'center',
-                      flexDirection: 'row',
-                      borderBottomRightRadius: 10,
-                      borderTopRightRadius: 10,
-                      borderBottomLeftRadius: 10,
-                      borderTopLeftRadius: 10,
-                      backgroundColor: '#0077B7',
-                    }}>
-                    <View style={{marginTop: '5%', alignItems: 'center'}}>
-                      <View>
-                        <Image
-                          source={{uri: data.image}}
-                          style={{
-                            width: 145,
+          <ScrollView>
+            <View
+              style={styles.card}>
+              {LikedData?.map(data => {
+                console.log('what is name', data.about);
+                if (data?.name === undefined) {
+                  return;
+                }
+                return (
+                  <View>
+                    <TouchableOpacity onPress={() => HandleOnPress(data.email)}>
+                      <View
+                        style={styles.mainDesign}>
+                        <View style={styles.view2}>
+                          <View style={styles.view3}>
+                            <Image style={styles.coverImage}
+                              source={{ uri: data.image }}
 
-                            height: 130,
-                            borderRadius: 20,
-                          }}
-                        />
+                            />
+                            <View style={styles.view4}>
+                              <Text
+                                style={styles.txtName}>
+                                {data.name}
+                              </Text>
+                              <Text
+                                style={styles.market}>
+                                Market Research
+                              </Text>
+                              <Text
+                                style={styles.about}>
+                                {data.about}
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
                       </View>
-
-                      <View style={{alignSelf: 'flex-start', paddingLeft: 5}}>
-                        <Text
-                          style={{
-                            textAlign: 'left',
-                            fontSize: 18,
-                            fontWeight: '700',
-                            color: 'white',
-                          }}>
-                          {data.name}
-                        </Text>
-                      </View>
-                      <View style={{alignSelf: 'flex-start', paddingLeft: 5}}>
-                        <Text
-                          style={{
-                            fontSize: 16,
-                            fontWeight: '500',
-                            color: 'white',
-                            flexWrap: 'wrap',
-                          }}>
-                          {data.about}
-                        </Text>
-                      </View>
-                    </View>
+                    </TouchableOpacity>
                   </View>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
+                );
+              })}
+            </View>
+          </ScrollView>
         ) : (
           <>
-            <Text>skfjsfj</Text>
+            <Text style={{ textAlign: "center", marginTop: 10, color: "#fff" }}>No Record Found</Text>
           </>
         )}
       </View>
@@ -146,4 +143,4 @@ const LikeScreen = () => {
   );
 };
 
-export {LikeScreen};
+export { LikeScreen };

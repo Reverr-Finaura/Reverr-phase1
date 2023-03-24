@@ -8,22 +8,22 @@ import {
   FlatList,
 } from 'react-native';
 import React from 'react';
-import {AppColors} from '../../utils';
+import { AppColors } from '../../utils';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const ProfileDetailsBox = ({userData}) => {
-  console.log(userData, 'jhjh');
+const ProfileDetailsBox = ({ userData }) => {
+  console.log(userData?.designation, 'jhjh');
   return (
-    <View style={{marginHorizontal: '5%'}}>
+    <View style={{ marginHorizontal: '5%' }}>
       <View style={styles.container}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={[styles.text, {color: AppColors.FontsColor}]}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={[styles.text, { color: AppColors.FontsColor }]}>
             Current
           </Text>
           <Text
             style={[
               styles.text,
-              {color: AppColors.ActiveColor, paddingHorizontal: '2%'},
+              { color: AppColors.ActiveColor, paddingHorizontal: '2%' },
             ]}>
             Title
           </Text>
@@ -35,7 +35,7 @@ const ProfileDetailsBox = ({userData}) => {
             marginStart: '7%',
             marginVertical: '2%',
           }}>
-          {userData.designation?userData.designation:"N?A"}
+          {userData?.designation ? userData.designation : "N?A"}
         </Text>
       </View>
       {/* <View style={styles.container}>
@@ -58,15 +58,15 @@ const ProfileDetailsBox = ({userData}) => {
           </View>
         </View>
       </View> */}
-      {userData.experience.length > 0 && (
+      {userData?.experience?.length > 0 && (
         <View style={styles.container}>
-          <Text style={[styles.text, {color: AppColors.FontsColor}]}>
+          <Text style={[styles.text, { color: AppColors.FontsColor }]}>
             Experience
           </Text>
           <FlatList
-            data={userData.experience}
-            renderItem={({item, index}) => (
-              <View style={{paddingHorizontal: '10%', marginTop: '2.5%'}}>
+            data={userData?.experience}
+            renderItem={({ item, index }) => (
+              <View style={{ paddingHorizontal: '10%', marginTop: '2.5%' }}>
                 <View
                   style={{
                     flexDirection: 'row',
@@ -80,7 +80,7 @@ const ProfileDetailsBox = ({userData}) => {
                     color={AppColors.ActiveColor}
                   />
                   <Text
-                    style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
+                    style={{ color: AppColors.BtnClr, marginHorizontal: '3%' }}>
                     {item}
                   </Text>
                 </View>
@@ -89,15 +89,15 @@ const ProfileDetailsBox = ({userData}) => {
           />
         </View>
       )}
-      {userData.education.length > 0 && (
+      {userData?.education?.length > 0 && (
         <View style={styles.container}>
-          <Text style={[styles.text, {color: AppColors.FontsColor}]}>
+          <Text style={[styles.text, { color: AppColors.FontsColor }]}>
             Education
           </Text>
           <FlatList
-            data={userData.education}
-            renderItem={({item, index}) => (
-              <View style={{paddingHorizontal: '10%', marginTop: '2.5%'}}>
+            data={userData?.education}
+            renderItem={({ item, index }) => (
+              <View style={{ paddingHorizontal: '10%', marginTop: '2.5%' }}>
                 <View
                   style={{
                     flexDirection: 'row',
@@ -111,7 +111,7 @@ const ProfileDetailsBox = ({userData}) => {
                     color={AppColors.ActiveColor}
                   />
                   <Text
-                    style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
+                    style={{ color: AppColors.BtnClr, marginHorizontal: '3%' }}>
                     {item}
                   </Text>
                 </View>
@@ -192,8 +192,8 @@ const ProfileDetailsBox = ({userData}) => {
         </View>
       </View> */}
       <View style={styles.container}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={[styles.text, {color: AppColors.FontsColor}]}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={[styles.text, { color: AppColors.FontsColor }]}>
             Industry
           </Text>
         </View>
@@ -204,12 +204,12 @@ const ProfileDetailsBox = ({userData}) => {
             marginStart: '7%',
             marginVertical: '2%',
           }}>
-          {userData.industry?userData.industry:"N/A"}
+          {userData?.industry ? userData?.industry : "N/A"}
         </Text>
       </View>
       <View style={styles.container}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={[styles.text, {color: AppColors.FontsColor}]}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={[styles.text, { color: AppColors.FontsColor }]}>
             Years of experience
           </Text>
         </View>
@@ -224,10 +224,10 @@ const ProfileDetailsBox = ({userData}) => {
         </Text>
       </View>
       <View style={styles.container}>
-        <Text style={[styles.text, {color: AppColors.FontsColor}]}>
+        <Text style={[styles.text, { color: AppColors.FontsColor }]}>
           Personal Information
         </Text>
-        <View style={{paddingHorizontal: '10%', marginTop: '2.5%'}}>
+        <View style={{ paddingHorizontal: '10%', marginTop: '2.5%' }}>
           <Text
             style={{
               color: AppColors.FontsColor,
@@ -244,12 +244,12 @@ const ProfileDetailsBox = ({userData}) => {
               marginTop: '2%',
             }}>
             <Icon name="ellipse" size={10} color={AppColors.ActiveColor} />
-            <Text style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
-              {userData.gender?userData.gender:"N/A"}
+            <Text style={{ color: AppColors.BtnClr, marginHorizontal: '3%' }}>
+              {userData?.gender ? userData?.gender : "N/A"}
             </Text>
           </View>
         </View>
-        <View style={{paddingHorizontal: '10%', marginTop: '2.5%'}}>
+        <View style={{ paddingHorizontal: '10%', marginTop: '2.5%' }}>
           <Text
             style={{
               color: AppColors.FontsColor,
@@ -266,12 +266,12 @@ const ProfileDetailsBox = ({userData}) => {
               marginTop: '2%',
             }}>
             <Icon name="ellipse" size={10} color={AppColors.ActiveColor} />
-            <Text style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
-             {userData.state?userData.state:"N/A"}
+            <Text style={{ color: AppColors.BtnClr, marginHorizontal: '3%' }}>
+              {userData?.state ? userData?.state : "N/A"}
             </Text>
           </View>
         </View>
-        <View style={{paddingHorizontal: '10%', marginTop: '2.5%'}}>
+        <View style={{ paddingHorizontal: '10%', marginTop: '2.5%' }}>
           <Text
             style={{
               color: AppColors.FontsColor,
@@ -288,15 +288,15 @@ const ProfileDetailsBox = ({userData}) => {
               marginTop: '2%',
             }}>
             <Icon name="ellipse" size={10} color={AppColors.ActiveColor} />
-            <Text style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
-              {userData.country?userData.country:"N/A"}
+            <Text style={{ color: AppColors.BtnClr, marginHorizontal: '3%' }}>
+              {userData?.country ? userData?.country : "N/A"}
             </Text>
           </View>
         </View>
       </View>
       <View style={styles.container}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={[styles.text, {color: AppColors.FontsColor}]}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={[styles.text, { color: AppColors.FontsColor }]}>
             Interests
           </Text>
         </View>
@@ -315,7 +315,7 @@ const ProfileDetailsBox = ({userData}) => {
               paddingVertical: '3%',
               paddingHorizontal: '3%',
             }}>
-            <Text style={{color: AppColors.FontsColor, fontWeight: 'bold'}}>
+            <Text style={{ color: AppColors.FontsColor, fontWeight: 'bold' }}>
               #Networking
             </Text>
           </View>
@@ -326,7 +326,7 @@ const ProfileDetailsBox = ({userData}) => {
               paddingVertical: '3%',
               paddingHorizontal: '3%',
             }}>
-            <Text style={{color: AppColors.FontsColor, fontWeight: 'bold'}}>
+            <Text style={{ color: AppColors.FontsColor, fontWeight: 'bold' }}>
               #Networking
             </Text>
           </View>
@@ -337,15 +337,15 @@ const ProfileDetailsBox = ({userData}) => {
               paddingVertical: '3%',
               paddingHorizontal: '3%',
             }}>
-            <Text style={{color: AppColors.FontsColor, fontWeight: 'bold'}}>
+            <Text style={{ color: AppColors.FontsColor, fontWeight: 'bold' }}>
               #Networking
             </Text>
           </View>
         </View>
       </View>
       <View style={styles.container}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={[styles.text, {color: AppColors.FontsColor}]}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={[styles.text, { color: AppColors.FontsColor }]}>
             How can we meet
           </Text>
         </View>
@@ -355,14 +355,14 @@ const ProfileDetailsBox = ({userData}) => {
             alignItems: 'center',
             paddingStart: '7%',
           }}>
-           {userData.linkedinLink===""&&userData.twitterLink===""?<Text style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
-              N/A
-            </Text>:null}
+          {userData?.linkedinLink === "" && userData?.twitterLink === "" ? <Text style={{ color: AppColors.BtnClr, marginHorizontal: '3%' }}>
+            N/A
+          </Text> : null}
           <TouchableOpacity>
-            {userData.linkedinLink!==""?<Image source={require('../../assets/images/linkdin.png')} />:null}
+            {userData?.linkedinLink !== "" ? <Image source={require('../../assets/images/linkdin.png')} /> : null}
           </TouchableOpacity>
           <TouchableOpacity>
-           {userData.twitterLink!==""?<Image source={require('../../assets/images/twitter.png')} />:null} 
+            {userData?.twitterLink !== "" ? <Image source={require('../../assets/images/twitter.png')} /> : null}
           </TouchableOpacity>
         </View>
       </View>
@@ -380,4 +380,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-export {ProfileDetailsBox};
+export { ProfileDetailsBox };

@@ -1,26 +1,35 @@
-import React, {useCallback, useRef, useState, useEffect} from 'react';
+
+import React, { useCallback, useRef, useState, useEffect } from 'react';
 import {
   View,
-  StyleSheet,
+
   Text,
-  Dimensions,
   Image,
   Animated,
   PanResponder,
   ActivityIndicator,
-  Button,
+  FlatList,
+  ScrollView,
   ImageBackground,
   TouchableOpacity,
+  Modal,
 } from 'react-native';
 import Swiper from 'react-native-deck-swiper';
+import Button from '../../Components/Button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Entypo from 'react-native-vector-icons/Entypo';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MultiSelect from 'react-native-multiple-select';
+import styles from './styles';
 // import { useNavigation } from '@react-navigation/native';
-import {FlatList, ScrollView} from 'react-native-gesture-handler';
-import {useDispatch, useSelector} from 'react-redux';
-import {CustomPopup, IndividualHeaderLayout} from '../../Components';
-import {Choice} from '../../Components';
-import {AppColors} from '../../utils';
+// import {FlatList, ScrollView} from 'react-native-gesture-handler';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { CustomPopup, IndividualHeaderLayout } from '../../Components';
+import { Choice } from '../../Components';
+import { AppColors } from '../../utils';
+import LinearGradient from 'react-native-linear-gradient';
 import {
   Load_Card,
   matchedpeople,
@@ -35,26 +44,61 @@ import {
   useNavigation,
   useRoute,
 } from '@react-navigation/native';
-import {cardData} from '../../dumy-Data/defaultHomeCardData';
-import {VibeBoarding} from '../../Components/VibeBoarding';
+import { cardData } from '../../dumy-Data/defaultHomeCardData';
+import { VibeBoarding } from '../../Components/VibeBoarding';
 import CountDown from 'react-native-countdown-component';
-import {firebase} from '@react-native-firebase/database';
-import {CountdownTimer} from '../CountdownTimer';
-import {useLayoutEffect} from 'react';
+import { firebase } from '@react-native-firebase/database';
+import { CountdownTimer } from '../CountdownTimer';
+import { useLayoutEffect } from 'react';
+import { blue } from 'react-native-redash';
+import { black } from 'react-native-paper/lib/typescript/styles/colors';
+const data = [
+  { id: 1, name: 'John', hareFor: 'Find Investors', howMeet: 'At Coffee', yearsExperience: 1 },
+  { id: 2, name: 'Jane', hareFor: 'Networking', howMeet: 'Video Call', yearsExperience: 1 },
+  { id: 3, name: 'Jack', hareFor: 'Hire Employees', howMeet: 'Local Cafe', yearsExperience: 1 },
+  { id: 4, name: 'Jill', hareFor: 'Find Mentor', howMeet: 'Video Call', yearsExperience: 1 },
+  { id: 5, name: 'T', hareFor: 'Find Cofounders', howMeet: 'At Coffee', yearsExperience: 1 },
+
+];
 const Vibe = () => {
+  const state = useSelector(state => state.UserReducer);
+  //  console.log("",JSON.stringify (state.Rooms,2,4))
+
+  //  console.log(">>>",state.Rooms[7].postedby)
+
+  // state.Rooms.map((room,i) => {
+  //   if(room?.postedby?.Vibe_Data !=undefined){
+  //     console.log(i,'=======================>', room?.postedby?.Vibe_Data);
+
+  //   }else{
+  //     console.log(i,'===========UNDEFINED============>', room?.postedby?.Vibe_Data);
+
+  //   }
+  // });
+
+
+
+
+
+
   const [continueshowingcard, setcontinueshowingcard] = useState(true);
   const [prevDailog, setPrevDailog] = useState(false);
   const [allswiped, setAllswiped] = useState(false);
-  const [showboarding, setshowboarding] = useState(false);
-  const [more, setMore] = useState(false);
-  const [LoadingScreen, setLoadingScreen] = useState(false);
   const [toshowtimer, settoshowtimer] = useState(false);
-  const Card_FireBase_Update = useRef(0);
   const [TotalSwipe, setTotalswipe] = useState(0);
   const [showCards, setshowCards] = useState(false);
   const [hasPremiumOfVibe, setHasPremiumOfVibe] = useState(false);
-  console.log('hasPremiumm', hasPremiumOfVibe);
+  // console.log('hasPremiumm', hasPremiumOfVibe);
+  const [selected1, setselected1] = useState([]);
 
+  // const [filter, setFilter] = useState(false);
+  // console.log("🚀 ~ file: index.js:135 ~ Vibe ~ filter:", filter)
+
+
+
+  const filterModal = () => {
+    setFilter(v => !v);
+  };
   const navigation = useNavigation();
 
   // const isFocused = useIsFocused();
@@ -62,49 +106,36 @@ const Vibe = () => {
   const LikeTab = () => {
     return (
       <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}>
+        style={styles.viewLike}>
         <TouchableOpacity onPress={() => navigation.navigate('LikeScreen')}>
           <View
-            style={{
-              borderColor: 'dodgerblue',
-              borderWidth: 1,
-              backgroundColor: '#000C12',
-              width: 68,
-              height: 42,
-              left: 40,
-              justifyContent: 'center',
-              borderBottomEndRadius: 10,
-              borderBottomLeftRadius: 10,
-              borderBottomRightRadius: 10,
-              borderTopLeftRadius: 10,
-              borderTopRightRadius: 10,
-            }}>
+            style={styles.viewLike1}>
+
             <Text
-              style={{
-                backgroundColor: '#000C12',
-                color: 'white',
-                textAlign: 'center',
-                alignSelf: 'center',
-                fontWeight: '700',
-              }}>
+              style={styles.likeText}>
               likes
             </Text>
           </View>
         </TouchableOpacity>
-        <View style={{paddingRight: 35}}>
-          <Icon name="filter" color="#ffffff" size={25} />
+        <View style={{ paddingRight: 35 }}>
+          <TouchableOpacity onPress={() => setFilter(true)}>
+            <Icon name="filter" color="#ffffff" size={25} />
+          </TouchableOpacity>
         </View>
       </View>
     );
   };
   const Vibes = () => {
-    const {params} = useRoute();
+    const { params } = useRoute();
     const data = 'abc';
-    console.log('data paraams ', params);
+    // console.log('data paraams ', params);
+    const [filter, setFilter] = useState(false);
+
+    const [visible, setVisible] = useState(false);
+
+    const toggleData = () => {
+      setVisible(!visible);
+    };
 
     const navigation = useNavigation();
     const state = useSelector(state => state.UserReducer);
@@ -113,6 +144,7 @@ const Vibe = () => {
     const [moreInfo, setMoreInfo] = useState(-1);
     const [bool, setBool] = useState(false);
     const [cardindex, setcardindex] = useState(0);
+    const [count, setCount] = useState(0);
 
     const [swipe, setswipe] = useState(1);
     const [loading, setLoading] = useState(false);
@@ -145,19 +177,94 @@ const Vibe = () => {
     const [show, setshow] = useState(false);
     const [vertical, setvertical] = useState(false);
 
+    const [filters, setFilters] = useState({
+      hareFor: [],
+      yearsExperience: [],
+      howMeet: [],
+    });
+    const ageOptions = [
+      { id: '< 1', name: '< 1', },
+      { id: '1-2', name: '1-2', },
+      { id: '2-5', name: '2-5', },
+      { id: '5>', name: '5>', },
+    ];
+
+    const hareFor = [
+      { id: 'Find Investors', name: 'Find Investors' },
+      { id: 'Networking', name: 'Networking' },
+      { id: 'Hire Employees', name: 'Hire Employees' },
+      { id: 'Find Mentor', name: 'Find Mentor' },
+      { id: 'Find Cofounders', name: 'Find Cofounder' },
+    ];
+    const howMeet = [
+      { id: 'At Coffee', name: 'At Coffee' },
+      { id: 'Video Call', name: 'Video Call' },
+      { id: 'Local Cafe', name: 'Local Cafe' },
+    ];
+
+    const [filteringData, setFilteringData] = useState([])
+    // console.log("🚀 ~ file: index.js:2476 ~ Vibes ~ filteringData:",JSON.stringify (filteringData))
+
+
+
+
+
+    const filterData = () => {
+      if (filters.hareFor.length > 0 || filters.howMeet.length > 0 || filters.yearsExperience.length > 0) {
+        let res = cards.filter((val) => {
+          if (val?.Vibe_Data?.Here_for != undefined) {
+            return filters.hareFor.every((hereFor) =>
+              val.Vibe_Data.Here_for.includes(hereFor)
+            );
+          }
+        });
+
+        let res1 = res.filter((val) => {
+          if (val.Vibe_Data?.How_To_Meet != undefined) {
+            return filters.howMeet.every((meeting) =>
+              val.Vibe_Data.How_To_Meet.includes(meeting)
+            );
+          }
+        });
+
+        let res2 = res1.filter((val) => {
+          if (val?.Vibe_Data?.Years_Of_Experience != undefined) {
+            return filters.yearsExperience.every((yearExp) =>
+              val.Vibe_Data.Years_Of_Experience.includes(yearExp)
+            );
+          }
+        });
+
+
+        setFilteringData(res2)
+        setFilter(false)
+        // alert("Inner")
+
+      } else {
+        setFilteringData(cards)
+        setFilter(false)
+        // alert("Outer")
+
+      }
+
+    }
+
     const HandleShow = async () => {
-      console.log('at shoiww');
-      console.log(show);
+      // console.log('at shoiww');
+      // console.log(show);
       setshow(() => !show);
       setvertical(() => !vertical);
-      console.log('after', show);
+      // console.log('after', show);
     };
 
     const swipeLeft = async CurrentIndex => {
-      console.log('card index is', CurrentIndex);
+
+      setCount(count + 1)
+      HandleOnSwiped(CurrentIndex)
       if (!cards[cardindex]) return;
       const LeftSwiped = cards[CurrentIndex];
-      console.log('Left detail', LeftSwiped.id);
+      console.log("🚀 ~ file: index.js:2543 ~ swipeLeft ~ LeftSwiped:", LeftSwiped)
+      // console.log('Left detail', LeftSwiped.id);
       firestore()
         .collection('Users')
         .doc(state.user.email)
@@ -168,21 +275,30 @@ const Vibe = () => {
 
     const Tapanywhere = cardindex => {
       const data = cards[cardindex];
-      console.log('Tap anywhere', data);
+      // console.log('Tap anywhere', data);
       navigation.navigate('ShowMoreVibe', data);
     };
 
     const swipeRight = async CurrentIndex => {
+      console.log("===>", CurrentIndex)
+
+      setCount(count + 1)
+
+      HandleOnSwiped(CurrentIndex)
       // var currCard = cards[idx];
 
       const data = cards[CurrentIndex];
       console.log('right datta', data);
-      dispatch(RemoveTopCard());
+
+
+      // dispatch(RemoveTopCard());
       // console.log('stae  vibe swipe right isss', state.vibe);
       // console.log('data is', data);
-      var Liked_Email = data.email;
+
+      var Liked_Email = data.id;
       var My_Email = state.user.email;
       var Liked_People = data.liked_people;
+
       if (Liked_People) {
         var check = Liked_People.includes(My_Email);
         if (check) {
@@ -218,7 +334,7 @@ const Vibe = () => {
                   state.user.email,
                 ),
               });
-            console.log('userswiped');
+            // console.log('userswiped');
           })
           .catch(err => {
             console.log(err.message);
@@ -226,8 +342,72 @@ const Vibe = () => {
           });
       }
     };
+    const superLikeCenter = async CurrentIndex => {
+      console.log("===>", CurrentIndex)
 
+      setCount(count + 1)
+
+      HandleOnSwiped(CurrentIndex)
+      // var currCard = cards[idx];
+
+      const data = cards[CurrentIndex];
+      console.log('right datta', data);
+
+
+      // dispatch(RemoveTopCard());
+      // console.log('stae  vibe swipe right isss', state.vibe);
+      // console.log('data is', data);
+
+      var Liked_Email = data.id;
+      var My_Email = state.user.email;
+      var Liked_People = data.liked_people;
+
+      if (Liked_People) {
+        var check = Liked_People.includes(My_Email);
+        if (check) {
+          await firestore()
+            .collection('Users')
+            .doc(state.user.email)
+            .update({
+              Matched_People: firestore.FieldValue.arrayUnion(Liked_Email),
+            });
+          // action dispacthed to store matchedpeople
+          dispatch(matchedpeople(Liked_Email));
+          // Match screen is called here
+          navigation.navigate('MatchScreen', {
+            data,
+          });
+
+          setPrevDailog(true);
+          setPrevData(prev);
+        }
+      } else {
+        await firestore()
+          .collection('Users')
+          .doc(state.user.email)
+          .update({
+            super_liked_people: firestore.FieldValue.arrayUnion(Liked_Email),
+          })
+          .then(async () => {
+            await firestore()
+              .collection('Users')
+              .doc(Liked_Email)
+              .update({
+                super_people_liked_me: firestore.FieldValue.arrayUnion(
+                  state.user.email,
+                ),
+              });
+            // console.log('userswiped');
+          })
+          .catch(err => {
+            console.log(err.message);
+            console.log('please check your internet connection');
+          });
+      }
+    };
     const [cards, setcards] = useState([]);
+    // console.log('What is item dddd', cards);
+    // alert(cards);
 
     const swipedAll = () => {
       console.log('swiped all');
@@ -235,22 +415,24 @@ const Vibe = () => {
     };
 
     const HandleOnSwiped = async cardindex => {
+
       setcardindex(prev => prev + 1);
       setswipe(prev => prev + 1);
+
       const Data = cards[cardindex];
-      console.log('datattaa', Data);
+      // console.log('datattaa', Data);
       await firestore().collection('Users').doc(state.user.email).update({
         Number_Of_Swips_Done: swipe,
       });
 
-      await firestore()
-        .collection('Users')
-        .doc(state.user.email)
-        .update({Last_Card_Email_Swiped: Data.id});
+      // await firestore()
+      //   .collection('Users')
+      //   .doc(state.user.email)
+      //   .update({Last_Card_Email_Swiped: Data.id});
     };
 
-    console.log('state card is', state.vibe.length);
-    console.log('datta coming from boarding', data);
+    // console.log('state card is', state.vibe.length);
+    // console.log('datta coming from boarding', data);
     const CheckIfBoarding = async () => {
       await firestore()
         .collection('Users')
@@ -258,8 +440,8 @@ const Vibe = () => {
         .get()
         .then(doc => {
           if (doc.data().Vibe_Data) {
-            console.log('Document vibe data:', doc.data().Vibe_Data);
-
+            // console.log('Document vibe data:', doc.data().Vibe_Data);
+            setshowCards(true);
             console.log('yoooi');
           } else {
             // doc.data() will be undefined in this case
@@ -306,13 +488,15 @@ const Vibe = () => {
 
     // Intial setting  here
     useEffect(() => {
+      CheckIfBoarding();
+
       let Afterquery;
       const FetchUsersCard = async () => {
         if (state.user.AllCardsSwiped) {
-          console.log(state.user, 'what is this');
+          // console.log(state.user, 'what is this');
           const NewExpiredDate = new Date();
-          console.log(NewExpiredDate);
-          console.log('Expiredtime', NewExpiredDate.getTime());
+          // console.log(NewExpiredDate);
+          // console.log('Expiredtime', NewExpiredDate.getTime());
           const NewExpiredTime = NewExpiredDate.getTime();
 
           if (NewExpiredTime <= state.user.CardsUpdatedTime) {
@@ -320,8 +504,7 @@ const Vibe = () => {
             settoshowtimer(true);
           }
         }
-
-        CheckIfBoarding();
+        // CheckIfBoarding();
         console.log('after boarding');
 
         await firestore()
@@ -342,7 +525,7 @@ const Vibe = () => {
         // if (To_Show_Vibe_Screen) {
         //   return;
         // }
-        console.log('what is total swipe', TotalSwipe);
+        // console.log('what is total swipe', TotalSwipe);
         const passeduserdata = await firestore()
           .collection('Users')
           .doc(state.user.email)
@@ -367,26 +550,34 @@ const Vibe = () => {
         }
         // console.log('what is passed user after ids', passeduserids);
         // const data=["rgupta.success@gmail.com",'kunnugarg2@gmail.com','kohlibhavya18@gmail.com','19103098@mail.jiit.ac.in']
-        if (TotalSwipe == 0) {
-          console.log('heree at 0');
-          let Intialquery = await firestore()
-            .collection('Users')
+        // if (TotalSwipe == 0) {
+        console.log('heree at 0');
+        let Intialquery = await firestore()
+          .collection('Users')
 
-            .where('email', 'not-in', [...passeduserids]);
+          .where('email', 'not-in', [...passeduserids]);
 
-          Intialquery.onSnapshot(snapshot => {
-            // console.log('value of snap', snapshot.docs.length);
-            setcards(
-              snapshot.docs
-                // .filter(doc => doc.id !== state.user.email)
-                .map(doc => ({
-                  id: doc.id,
-                  ...doc.data(),
-                })),
-            );
-            setshowCards(true);
-          });
-        }
+        Intialquery.get().then(snapshot => {
+
+          // Intialquery.onSnapshot(snapshot => {
+          // console.log('value of snap', snapshot.docs.length);
+          setcards(
+            snapshot.docs
+              // .filter(doc => doc.id !== state.user.email)
+              .map(doc => ({
+                id: doc.id,
+                ...doc.data(),
+              })),
+          );
+          setFilteringData(snapshot.docs
+            // .filter(doc => doc.id !== state.user.email)
+            .map(doc => ({
+              id: doc.id,
+              ...doc.data(),
+            })),)
+          setshowCards(true);
+        });
+        // }
 
         if (TotalSwipe > 0 && continueshowingcard) {
           Afterquery = await firestore()
@@ -407,9 +598,12 @@ const Vibe = () => {
             });
         }
       };
+      if (showCards) {
 
-      FetchUsersCard();
+        FetchUsersCard();
+      }
       return Afterquery;
+
     }, []);
 
     //IF USER HAS VALID PREMIUM FOR VIBE
@@ -423,7 +617,7 @@ const Vibe = () => {
           await firestore()
             .collection('Users')
             .doc(state.user.email)
-            .update({AllCardsSwiped: false, Number_Of_Swips_Done: 0});
+            .update({ AllCardsSwiped: false, Number_Of_Swips_Done: 0 });
         }
       };
 
@@ -431,14 +625,14 @@ const Vibe = () => {
     }, [hasPremiumOfVibe]);
 
     useEffect(() => {
-      console.log('card ind q', cardindex);
+      // console.log('card ind q', cardindex);
 
       if (cardindex >= 5) {
         if (hasPremiumOfVibe === true) {
           return;
         }
         setcontinueshowingcard(false);
-        console.log('card ind inside', cardindex);
+        // console.log('card ind inside', cardindex);
         var DeletePassedUserReference = firestore()
           .collection('Users')
           .doc(state.user.email)
@@ -446,12 +640,10 @@ const Vibe = () => {
         DeletePassedUserReference.get().then(querysnapshot => {
           Promise.all(querysnapshot.docs.map(d => d.ref.delete()));
         });
-
         setAllswiped(true);
-
         const ExpiredDate = new Date();
-        console.log(ExpiredDate);
-        console.log(ExpiredDate.getTime());
+        // console.log(ExpiredDate);
+        // console.log(ExpiredDate.getTime());
         const ExpiredTime = ExpiredDate.getTime();
         const UpdatedTime = ExpiredTime + 86400000;
         const SetFirebaseswipedData = async () => {
@@ -466,7 +658,7 @@ const Vibe = () => {
         settoshowtimer(true);
         // It is 24 hrrs in milli second 86400000;86397500;
         const ToChecKAfter = 12000;
-        console.log('updated time', UpdatedTime);
+        // console.log('updated time', UpdatedTime);
 
         // setTimeout(async () => {
         //   const UpdateDate = new Date();
@@ -488,525 +680,327 @@ const Vibe = () => {
     // console.log(cards);
     return (
       <>
+
+        <View
+          style={styles.viewLike}>
+          <TouchableOpacity onPress={() => navigation.navigate('LikeScreen')}>
+            <View
+              style={styles.viewLike1}>
+              <MaterialCommunityIcons name="heart-plus-outline" color="#ffffff" size={20} />
+              <Text
+                style={styles.likeText}>
+                view likes
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <View style={{ paddingRight: 20 }}>
+            <TouchableOpacity onPress={() => setFilter(true)}>
+              <Image
+                style={{ height: 30, width: 30 }}
+                source={require('../../../src/assets/images/FadersHorizontal.png')}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
         {loading ? (
           <View>
             <Text>Loading...</Text>
           </View>
         ) : (
           <>
-            {cards.length !== 0 ? (
+            {filteringData.length !== 0 ? (
               <View style={styles.container}>
-                <Text style={{color: 'white'}}>HELOO</Text>
-                <Swiper
-                  cards={cards}
-                  renderCard={item => {
-                    console.log('What is item dddd', item);
+                {/* <Text style={{color: 'white'}}>HELOO</Text> */}
+                <FlatList
+                  data={filteringData.filter(it => it.email != '')}
+                  extraData={filteringData}
+                  pagingEnabled
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  contentContainerStyle={{ justifyContent: 'center', flexGrow: 1 }}
+                  renderItem={({ item, index }) => {
+                    const a = item.name == undefined ? "NA" : item.name
+                    console.log("lllllllllll", item.userType)
+                    if (cardindex == index) {
 
-                    if (item && cards) {
                       return (
-                        <View style={[styles.card]}>
-                          <ScrollView
-                            scrollEnabled={true}
-                            style={{flexGrow: 1}}>
-                            <View style={{flex: 1}}>
-                              <View style={{alignSelf: 'center'}}>
-                                {item.image ? (
-                                  <Image
-                                    style={{
-                                      width: 160,
-                                      alignSelf: 'center',
-                                      height: 160,
-                                      borderRadius: 100,
-                                    }}
-                                    source={{
-                                      uri: item.image,
-                                    }}
-                                  />
-                                ) : (
-                                  <Image
-                                    style={{
-                                      width: 160,
-                                      alignSelf: 'center',
-                                      height: 160,
-                                      borderRadius: 100,
-                                    }}
-                                    source={{
-                                      uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
-                                    }}
-                                  />
-                                )}
-                              </View>
+                        <ScrollView showsVerticalScrollIndicator={false}>
+                          <View
+                            style={styles.MainCard}>
+                            <ScrollView scrollEnabled={true} style={{ flexGrow: 1 }}
+                              showsVerticalScrollIndicator={false}>
+                              <View style={{ flex: 1 }}>
+                                <View style={{ alignSelf: 'center', marginTop: 10 }}>
+                                  {item.image ? (
+                                    <Image
+                                      style={styles.coverImage}
+                                      source={{
+                                        uri: item.image,
+                                      }}
+                                    />
+                                  ) : (
+                                    <Image
+                                      style={styles.coverImage}
+                                      source={{
+                                        uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
+                                      }}
+                                    />
+                                  )}
+                                </View>
 
-                              <View style={{display: 'flex'}}>
+
                                 <View
-                                  style={{marginHorizontal: 10, marginTop: 10}}>
+                                  style={styles.viewText}>
                                   <Text
-                                    style={{
-                                      color: 'white',
-                                      fontSize: 22,
-                                      fontFamily: 'poppins',
-                                      fontWeight: 'bold',
-                                    }}>
+                                    style={styles.txtName}>
                                     {item?.name}
                                   </Text>
                                   <Text
-                                    style={{
-                                      color: '#fff',
-                                      fontSize: 14,
-                                      fontWeight: '400',
-                                    }}>
-                                    {item?.designation ||
-                                      demoData[0].designation}
+                                    style={styles.ceo}>
+                                    {item.Vibe_Data == undefined ? "" : item?.Vibe_Data?.Education}
                                   </Text>
                                   <Text
-                                    style={{
-                                      color: '#fff',
-                                      fontSize: 14,
-                                      fontWeight: '400',
-                                    }}>
-                                    {item?.city || demoData[0].city}
-                                    {' ,'}
-                                    {item?.country || demoData[0].country}
+                                    style={styles.Delhi}>
+                                    New Delhi, India
                                   </Text>
                                 </View>
 
-                                <View style={{marginTop: 25}}>
-                                  <Text
-                                    style={{
-                                      color: '#fff',
-                                      fontSize: 14,
-                                      fontWeight: 'bold',
-                                      marginTop: 10,
-                                      marginHorizontal: 10,
-                                    }}>
-                                    {item?.quote || demoData[0].quote}
-                                  </Text>
-                                </View>
-                              </View>
-
-                              <View style={{flex: 1}}>
                                 <View>
-                                  <View>
+                                  <TouchableOpacity
+                                    onPress={() => {
+                                      navigation.navigate('MatchScreen', {
+                                        data,
+                                      }
+                                      )
+                                    }
+                                    }>
                                     <Text
-                                      style={{
-                                        color: '#0077B7',
-                                        fontFamily: 'Poppins',
-                                        fontSize: 18,
-                                        marginTop: 6,
-                                        fontWeight: '700',
-                                        marginLeft: 15,
-                                      }}>
-                                      What I am here for
+                                      style={styles.about}>
+                                      About Me
                                     </Text>
-                                    <View
-                                      style={{
-                                        marginTop: 8,
-                                        flexDirection: 'row',
-                                        justifyContent: 'space-evenly',
-                                        flexWrap: 'wrap',
-                                      }}>
-                                      {item?.Vibe_Data
-                                        ? item?.Vibe_Data?.Here_for?.map(
-                                            item => {
-                                              console.log(item);
-                                              return (
-                                                <View
-                                                  style={{
-                                                    boxShadow:
-                                                      '4px -5px 5px 0px #00000040 inset',
+                                  </TouchableOpacity>
+                                  <Text
+                                    style={styles.detial}
+                                    numberOfLines={2}>
+                                    Don’t ship it. Don’t settle for good enough. Do
+                                    better work than you did yesterday. Get out of
+                                    your comfort zone and give it your all – every
+                                    day.
+                                  </Text>
+                                </View>
+                                <View
+                                  style={styles.likebar}>
+                                  <View style={styles.nopeText}>
+                                    <TouchableOpacity
+                                      onPress={() => {
+                                        // navigation.navigate('LikeMatchScreen')
+                                        // swipeLefts(index)
+                                        // setIndex(indexs+1)
+                                        swipeLeft(index)
+                                      }
+                                      }>
+                                      <Image
+                                        style={styles.nope}
+                                        source={require('../../../src/assets/images/nope.png')}
+                                      />
+                                    </TouchableOpacity>
+                                    <Text style={styles.textwhite}>nope</Text>
+                                  </View>
 
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center',
+                                  <View style={styles.superLike}>
+                                    <TouchableOpacity
+                                      onPress={() => { superLikeCenter(index) }
+                                      }>
+                                      <Image
+                                        style={styles.nopes}
+                                        source={require('../../../src/assets/images/superlike.png')}
+                                      />
+                                      <Text style={styles.textwhite}>superlike</Text>
+                                    </TouchableOpacity>
+                                  </View>
+                                  <View style={{ marginEnd: 10 }}>
+                                    <TouchableOpacity
+                                      onPress={() => {
+                                        // navigation.navigate('LikeMatchScreen')
+                                        // swipeLefts(index)
+                                        swipeRight(index)
+                                        // setIndex(indexs+1)
+                                      }
+                                      }>
+                                      <Image
+                                        style={styles.nope}
+                                        source={require('../../../src/assets/images/liketic.png')}
+                                      />
+                                      <Text
+                                        style={styles.textwhites}>
+                                        like
+                                      </Text>
+                                    </TouchableOpacity>
+                                  </View>
+                                </View>
+                                <TouchableOpacity onPress={() => setVisible(index)}>
+                                  <Entypo
+                                    style={styles.entypo}
+                                    name={
+                                      visible === index
+                                        ? ''
+                                        : 'chevron-small-down'
+                                    }
+                                    size={40}
+                                    color="#ffffff"></Entypo>
+                                </TouchableOpacity>
 
-                                                    borderRadius: 100 / 2,
-                                                    borderWidth: 3,
-                                                    borderColor: 'white',
-                                                    backgroundColor: '#0077B7',
-                                                  }}>
-                                                  <Text
-                                                    style={{
-                                                      color: 'white',
-                                                      textAlign: 'center',
-                                                      fontFamily: 'Poppins',
-                                                      fontSize: 13,
-                                                      fontWeight: '500',
-                                                    }}>
-                                                    {item}
-                                                  </Text>
-                                                </View>
-                                              );
-                                            },
-                                          )
-                                        : checkingdata?.Here_for?.map(item => {
-                                            console.log(item);
-                                            return (
+                                {visible === index && (
+                                  <View style={{ flex: 1 }}>
+                                    <View>
+                                      <View>
+                                        {
+                                          item.Vibe_Data != undefined && (
+                                            <>
+                                              <Text
+                                                style={styles.vibeText}>
+                                                What I am here for
+                                              </Text>
                                               <View
-                                                style={{
-                                                  boxShadow:
-                                                    '4px -5px 5px 0px #00000040 inset',
-                                                  // width:
-                                                  //   Dimensions.get('window').width /
-                                                  //   4.3,
-                                                  // height:
-                                                  //   Dimensions.get('window')
-                                                  //     .height / 7.5,
-                                                  alignItems: 'center',
-                                                  justifyContent: 'center',
+                                                style={styles.viewVibe}>
+                                                {item.Vibe_Data != undefined && item?.Vibe_Data?.Here_for?.map(
+                                                  Here_for => {
+                                                    console.log(">>>>>>>>", Here_for);
+                                                    return (
+                                                      <TouchableOpacity
+                                                        onPress={data =>
+                                                          navigation.navigate(
+                                                            'ShowMoreVibe',
+                                                            {
+                                                              data,
+                                                            },
+                                                          )
+                                                        }>
+                                                        <View
+                                                          style={styles.circle}>
+                                                          <Text
+                                                            style={styles.hareFor}>
 
-                                                  // borderRadius: 100 / 2,
-                                                  borderRadius:
-                                                    Math.round(
-                                                      Dimensions.get('window')
-                                                        .width +
-                                                        Dimensions.get('window')
-                                                          .height,
-                                                    ) / 2,
-                                                  width:
-                                                    Dimensions.get('window')
-                                                      .width * 0.2,
-                                                  height:
-                                                    Dimensions.get('window')
-                                                      .width * 0.2,
-                                                  borderWidth: 3,
-                                                  borderColor: 'white',
-                                                  backgroundColor: '#0077B7',
-                                                }}>
-                                                <Text
-                                                  style={{
-                                                    color: 'white',
-                                                    textAlign: 'center',
-                                                    fontFamily: 'Poppins',
-                                                    fontSize: 13,
-                                                    fontWeight: '500',
-                                                  }}>
-                                                  {item}
-                                                </Text>
+                                                            {Here_for}
+
+                                                          </Text>
+                                                        </View>
+                                                      </TouchableOpacity>
+                                                    );
+                                                  },
+                                                )}
                                               </View>
-                                            );
-                                          })}
+                                            </>
+                                          )
+                                        }
+                                        {item.Vibe_Data != undefined && (
+                                          <>
+                                            <View>
+                                              <Text
+                                                style={
+                                                  styles.vibeText
+                                                }>
+                                                Education:
+                                              </Text>
+                                              <Text
+                                                style={styles.dataDatabase}>
+                                                {item.Vibe_Data == undefined ? "N/A" : item?.Vibe_Data?.Education}
+                                              </Text>
+
+
+                                              <Text
+                                                style={styles.vibeText}>
+                                                Industry:
+                                              </Text>
+
+
+                                              <Text
+                                                style={styles.dataDatabase}>
+                                                {item.Vibe_Data == undefined ? "N/A" : item?.Vibe_Data?.Industry}
+                                              </Text>
+
+                                              <Text
+                                                style={styles.vibeText}>
+                                                Previous Designation:
+                                              </Text>
+                                              <Text
+                                                style={styles.dataDatabase}>
+                                                {
+                                                  item.Vibe_Data == undefined ? "N/A" : item?.Vibe_Data
+                                                    ?.Previous_Designation
+                                                }
+                                              </Text>
+                                              <Text
+                                                style={styles.vibeText}>
+                                                Previous Organization:
+                                              </Text>
+                                              <Text
+                                                style={styles.dataDatabase}>
+                                                {item.Vibe_Data == undefined ? "N/A" : item?.Vibe_Data?.Previous_Org}
+                                              </Text>
+                                              <Text
+                                                style={styles.vibeText}>
+                                                How can we meet:
+                                              </Text>
+                                              {item.Vibe_Data == undefined && <Text
+                                                style={styles.noData}>
+                                                N/A
+                                              </Text>}
+                                              {item.Vibe_Data != undefined && item?.Vibe_Data?.How_To_Meet?.map(
+                                                How_To_Meet => {
+                                                  // console.log(item);
+                                                  return (
+                                                    <View>
+                                                      <Text
+                                                        style={styles.dataDatabase}>
+                                                        {How_To_Meet}
+                                                      </Text>
+                                                    </View>
+                                                  );
+                                                },
+                                              )}
+                                              <Text
+                                                style={styles.vibeText}>
+                                                Experience:
+                                              </Text>
+                                              {item.Vibe_Data == undefined && <Text
+                                                style={styles.noData}>
+                                                N/A
+                                              </Text>}
+                                              {item.Vibe_Data != undefined && item?.Vibe_Data?.Years_Of_Experience?.map(
+                                                Years_Of_Experience => {
+                                                  // console.log(item);
+                                                  return (
+                                                    <View>
+                                                      <Text
+                                                        style={styles.dataDatabase}>
+                                                        {Years_Of_Experience}
+                                                      </Text>
+                                                    </View>
+                                                  );
+                                                },
+                                              )}
+                                            </View>
+
+                                          </>)}
+
+                                      </View>
                                     </View>
                                   </View>
-                                </View>
-                                <View>
-                                  {/* <TouchableOpacity
-                                onPress={() =>
-                                  navigation.navigate('ShowMoreVibe', item)
-                                }
-                              >
-                                <Text style={{color: 'white'}}>
-                                  Tap FOR MORE
-                                </Text>
-                              </TouchableOpacity> */}
-                                </View>
-                                {/* <View
-                              style={{
-                                marginTop: 3,
-                                flexDirection: 'row',
-                                justifyContent: 'space-around',
-                              }}
-                            >
-                              {item?.Vibe_Data
-                                ? item?.Vibe_Data?.How_To_Meet.map(item => {
-                                    console.log(item);
-                                    return (
-                                      <View
-                                        style={{
-                                          flexDirection: 'row',
-                                          justifyContent: 'center',
-                                          alignItems: 'center',
-                                        }}
-                                      >
-                                        <Icon
-                                          name="check-circle"
-                                          color={AppColors.ActiveColor}
-                                          size={20}
-                                        />
-
-                                        <Text
-                                          style={{
-                                            marginLeft: 4,
-                                            color: 'white',
-                                            fontFamily: 'Poppins',
-                                            fontSize: 16,
-                                            fontWeight: '400',
-                                          }}
-                                        >
-                                          {item}
-                                        </Text>
-                                      </View>
-                                    );
-                                  })
-                                : checkingdata?.How_To_Meet.map(item => {
-                                    console.log(item);
-                                    return (
-                                      <View
-                                        style={{
-                                          flexDirection: 'row',
-                                          justifyContent: 'center',
-                                          alignItems: 'center',
-                                        }}
-                                      >
-                                        <Icon
-                                          name="check-circle"
-                                          color={AppColors.ActiveColor}
-                                          size={20}
-                                        />
-
-                                        <Text
-                                          style={{
-                                            marginLeft: 4,
-                                            color: 'white',
-                                            fontFamily: 'Poppins',
-                                            fontSize: 16,
-                                            fontWeight: '400',
-                                          }}
-                                        >
-                                          {item}
-                                        </Text>
-                                      </View>
-                                    );
-                                  })}
-                            </View>
-                            <View>
-                              <Text
-                                style={{
-                                  color: '#0077B7',
-                                  fontFamily: 'Poppins',
-                                  fontSize: 18,
-                                  fontWeight: '700',
-                                  marginTop: 4,
-                                  marginLeft: 15,
-                                }}
-                              >
-                                About Me
-                              </Text>
-                            </View>
-
-                            <View style={{flex: 1}}>
-                              <View
-                                style={{
-                                  flexDirection: 'row',
-                                  justifyContent: 'space-between',
-                                }}
-                              >
-                                <View>
-                                  <View
-                                    style={{
-                                      flexDirection: 'row',
-                                      alignItems: 'center',
-                                      justifyContent: 'center',
-                                    }}
-                                  >
-                                    <Icon
-                                      name="check-circle"
-                                      color={AppColors.ActiveColor}
-                                      size={20}
-                                    />
-                                    <Text
-                                      style={{
-                                        color: '#8AB9FF',
-                                        fontFamily: 'Poppins',
-                                        fontSize: 16,
-
-                                        marginLeft: 4,
-                                        fontWeight: '500',
-                                        marginTop: 4,
-                                      }}
-                                    >
-                                      What am I looking for{' '}
-                                    </Text>
-                                  </View>
-                                  <Text
-                                    style={{
-                                      color: '#FFFFFF',
-                                      fontFamily: 'Inter',
-                                      fontSize: 14,
-                                      textAlign: 'center',
-                                      fontWeight: '400',
-                                      marginTop: 1,
-                                    }}
-                                  >
-                                    Mentor ship {''} Get Inspired{' '}
-                                  </Text>
-                                </View>
-
-                                <View>
-                                  <View
-                                    style={{
-                                      flexDirection: 'row',
-                                      alignItems: 'center',
-                                      alignSelf: 'flex-start',
-                                      justifyContent: 'space-between',
-                                    }}
-                                  >
-                                    <Icon
-                                      name="check-circle"
-                                      color={AppColors.ActiveColor}
-                                      size={20}
-                                    />
-                                    <Text
-                                      style={{
-                                        color: '#8AB9FF',
-                                        fontFamily: 'Poppins',
-                                        fontSize: 16,
-                                        fontWeight: '500',
-                                        marginTop: 4,
-                                        marginLeft: 4,
-                                      }}
-                                    >
-                                      Past Experience
-                                    </Text>
-                                  </View>
-                                  <Text
-                                    style={{
-                                      color: '#FFFFFF',
-                                      fontFamily: 'Inter',
-                                      fontSize: 14,
-                                      textAlign: 'center',
-                                      fontWeight: '400',
-                                      marginTop: 1,
-                                    }}
-                                  >
-                                    {checkingdata?.Previous_Designation}
-                                  </Text>
-                                </View>
+                                )}
                               </View>
-                              <View
-                                style={{
-                                  flexDirection: 'row',
-                                  justifyContent: 'space-between',
-                                }}
-                              >
-                                <View>
-                                  <View
-                                    style={{
-                                      flexDirection: 'row',
-                                      alignItems: 'center',
+                            </ScrollView>
 
-                                      justifyContent: 'center',
-                                    }}
-                                  >
-                                    <Icon
-                                      name="check-circle"
-                                      color={AppColors.ActiveColor}
-                                      size={20}
-                                    />
-                                    <Text
-                                      style={{
-                                        color: '#8AB9FF',
-                                        fontFamily: 'Poppins',
-                                        fontSize: 16,
-
-                                        marginLeft: 4,
-                                        fontWeight: '500',
-                                        marginTop: 4,
-                                      }}
-                                    >
-                                      Previous Designation
-                                    </Text>
-                                  </View>
-                                  <Text
-                                    style={{
-                                      color: '#FFFFFF',
-                                      fontFamily: 'Inter',
-                                      fontSize: 14,
-                                      textAlign: 'center',
-                                      fontWeight: '400',
-                                      marginTop: 1,
-                                    }}
-                                  >
-                                    {item?.Vibe_Data
-                                      ? item?.Vibe_Data?.Previous_Org
-                                      : checkingdata?.Previous_Org}
-                                  </Text>
-                                </View>
-
-                                <View>
-                                  <View
-                                    style={{
-                                      flexDirection: 'row',
-                                      alignItems: 'center',
-                                      justifyContent: 'center',
-                                    }}
-                                  >
-                                    <Icon
-                                      name="check-circle"
-                                      color={AppColors.ActiveColor}
-                                      size={20}
-                                    />
-                                    <Text
-                                      style={{
-                                        color: '#8AB9FF',
-                                        fontFamily: 'Poppins',
-                                        fontSize: 16,
-                                        fontWeight: '500',
-                                        marginTop: 4,
-                                        marginLeft: 4,
-                                      }}
-                                    >
-                                      Prev. Experience
-                                    </Text>
-                                  </View>
-                                  <Text
-                                    style={{
-                                      color: '#FFFFFF',
-                                      fontFamily: 'Inter',
-                                      fontSize: 14,
-                                      textAlign: 'center',
-                                      fontWeight: '400',
-                                      marginTop: 1,
-                                    }}
-                                  >
-                                    {item?.Vibe_Data
-                                      ? item?.Vibe_Data?.Previous_org_Duration
-                                      : checkingdata?.Previous_org_Duration}
-                                  </Text>
-                                </View>
-                              </View>
-                            </View> */}
-                              </View>
-                            </View>
-                          </ScrollView>
-                        </View>
+                          </View>
+                        </ScrollView>
                       );
+                      // }
                     }
-                  }}
-                  onSwiped={cardindex => {
-                    HandleOnSwiped(cardindex);
-                  }}
-                  onSwipedLeft={() => swipeLeft(cardindex)}
-                  onSwipedRight={() => swipeRight(cardindex)}
-                  onSwipedAll={() => swipedAll()}
-                  onTapCard={() => Tapanywhere(cardindex)}
-                  cardIndex={cardindex}
-                  overlayLabels={{
-                    left: {
-                      title: 'NOPE',
-                      style: {
-                        label: {
-                          textAlign: 'right',
-                          color: 'red',
-                          transform: [{rotate: '25deg'}],
-                        },
-                      },
-                    },
+                  }
+                  }
+                  keyExtractor={(item, index) => index.toString()}
+                />
 
-                    right: {
-                      title: 'LIKE',
-
-                      style: {
-                        label: {
-                          textAlign: 'left',
-                          color: 'green',
-                          transform: [{rotate: '-25deg'}],
-                        },
-                      },
-                    },
-                  }}
-                  verticalSwipe={false}
-                  showSecondCard={true}
-                  backgroundColor={'#000C12'}
-                  stackSize={2}></Swiper>
               </View>
             ) : (
               <>
@@ -1015,11 +1009,128 @@ const Vibe = () => {
                 </View>
               </>
             )}
+            <Modal transparent={true} visible={filter}>
+              <View style={styles.ModelBack}>
+                <View style={styles.modelViewOne}>
+                  <View style={styles.modelViewTwo}>
+                    <Entypo
+                      onPress={() => setFilter(false)}
+                      name="cross"
+                      size={25}
+                      color="#000"></Entypo>
+                    <Text style={styles.modelText}>Filter</Text>
+                  </View>
+                  <ScrollView>
+
+
+                    <View style={{ padding: 20 }}>
+
+                      <MultiSelect
+                        items={hareFor}
+                        uniqueKey="id"
+                        displayKey="name"
+
+                        onSelectedItemsChange={selectedItems =>
+                          setFilters({
+                            ...filters,
+                            hareFor: selectedItems,
+                          })
+                        }
+                        editable={false}
+                        selectTextOnFocus={false}
+                        selectedItems={filters.hareFor}
+                        selectText="Hare For"
+                        searchInputPlaceholderText="Search Hare For"
+                        searchInputStyle={{ height: 50 }}
+                        styleDropdownMenu={true}
+                        styleDropdownMenuSubsection={true}
+                        styleIndicator={true}
+
+                        styleInputGroup={true}
+                        tagRemoveIconColor="#CCC"
+                        tagBorderColor="#CCC"
+                        tagTextColor="#CCC"
+                        selectedItemTextColor="#CCC"
+                        selectedItemIconColor="#CCC"
+                        itemTextColor="#000"
+                        searchInputTextColor="#000"
+                        hideDropdown={true}
+                        hideTags={true}
+                        hideSubmitButton={true}
+
+                      />
+                      <MultiSelect
+                        items={ageOptions}
+                        uniqueKey="id"
+                        displayKey="name"
+
+                        onSelectedItemsChange={selectedItems =>
+                          setFilters({
+                            ...filters,
+                            yearsExperience: selectedItems,
+                          })
+                        }
+                        selectedItems={filters.yearsExperience}
+                        selectText="Year Experience"
+                        searchInputPlaceholderText="Search Year Experience"
+
+                        tagRemoveIconColor="#CCC"
+                        tagBorderColor="#CCC"
+                        tagTextColor="#CCC"
+                        selectedItemTextColor="#CCC"
+                        selectedItemIconColor="#CCC"
+                        itemTextColor="#000"
+                        searchInputTextColor="#000"
+                        hideDropdown={true}
+                        hideTags={true}
+                        hideSubmitButton={true}
+
+                      />
+                      <MultiSelect
+                        items={howMeet}
+                        uniqueKey="id"
+                        displayKey="name"
+                        onSelectedItemsChange={selectedItems =>
+                          setFilters({
+                            ...filters,
+                            howMeet: selectedItems,
+                          })
+                        }
+                        selectedItems={filters.howMeet}
+                        selectText="How we Meat"
+                        searchInputPlaceholderText="How we Meet..."
+                        searchInputStyle={{ height: 40 }}
+                        tagRemoveIconColor="#CCC"
+                        tagBorderColor="#CCC"
+                        tagTextColor="#CCC"
+                        selectedItemTextColor="#CCC"
+                        selectedItemIconColor="#CCC"
+                        itemTextColor="#000"
+                        searchInputTextColor="#000"
+                        hideDropdown={true}
+                        hideTags={true}
+                        hideSubmitButton={true}
+                      />
+                      <Button
+                        backgroundColor={'#2A72DE'}
+                        title={'Apply Filter'}
+                        onPress={filterData}
+                        marginLeft={20}
+                        marginRight={20}
+                      />
+                    </View>
+                  </ScrollView>
+
+                </View>
+              </View>
+            </Modal>
           </>
         )}
       </>
     );
   };
+
+  const [indexs, setIndex] = useState(0)
 
   return (
     <>
@@ -1031,7 +1142,7 @@ const Vibe = () => {
         />
       ) : (
         <>
-          <IndividualHeaderLayout style={{flex: 1}}>
+          <IndividualHeaderLayout style={{ flex: 1 }}>
             <CustomPopup
               modalVisible={prevDailog}
               setModalVisible={() => setPrevDailog(false)}>
@@ -1039,96 +1150,18 @@ const Vibe = () => {
                 <Text>Prev Data Show Here</Text>
               </View>
             </CustomPopup>
-            <LikeTab />
+            {/* <LikeTab /> */}
             <Vibes />
+
+
           </IndividualHeaderLayout>
+
         </>
       )}
     </>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000C12',
-  },
-  screen: {
-    flex: 1,
-    paddingHorizontal: '5%',
-    justifyContent: 'center',
-    backgroundColor: AppColors.primarycolor,
-  },
-  card: {
-    alignSelf: 'center',
-    position: 'absolute',
-    bottom: 125,
-    width: Dimensions.get('window').width / 1.12,
-    height: Dimensions.get('window').height / 1.49,
-    // flex:1,
-    marginHorizontal: 35,
-    marginVertical: 20,
-    borderTopRightRadius: 50,
-    borderTopLeftRadius: 50,
-    borderBottomLeftRadius: 45,
-    borderBottomRightRadius: 45,
 
-    padding: 2,
-    backgroundColor: 'black',
-    borderWidth: 2,
-    borderColor: 'dodgerblue',
-  },
-  image: {
-    width: Dimensions.get('window').width / 1.17,
-    height: Dimensions.get('window').height / 2.5,
-    borderTopRightRadius: 50,
-    borderTopLeftRadius: 50,
-    opacity: 0.9,
-    display: 'flex',
-    justifyContent: 'flex-end',
-    resizeMode: 'cover',
-  },
 
-  heading: {
-    color: '#0077B7',
-    fontWeight: 'bold',
-    maxWidth: Dimensions.get('window').width / 1.2,
-    fontSize: 22,
-  },
-  button: {
-    backgroundColor: '#0077B7',
-    width: 300,
-    height: 60,
-    borderRadius: 25,
-    marginTop: 35,
-    marginLeft: 50,
-    alignItems: 'center',
-    alignContent: 'center',
-    display: 'flex',
-    flexDirection: 'row',
-    paddingHorizontal: 30,
-  },
-  likeContainer: {
-    left: 45,
-    top: Dimensions.get('window').height / 14,
-    position: 'absolute',
-    transform: [{rotate: '-30deg'}],
-    zIndex: 3,
-  },
-  unlikeContainer: {
-    right: 45,
-    top: Dimensions.get('window').height / 14,
-    position: 'absolute',
-    transform: [{rotate: '30deg'}],
-    zIndex: 3,
-  },
-  loader: {
-    width: '100%',
-    height: '80%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
-
-export {Vibe};
+export { Vibe };

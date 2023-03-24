@@ -1,7 +1,7 @@
 import React from 'react';
-import {Image} from 'react-native';
+import { Image } from 'react-native';
 
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import {
   Home,
@@ -16,9 +16,11 @@ import {
   Settings,
   DashBoard,
   Vibe,
+
 } from '../../scenes';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {MentorDetails} from '../../Components';
+import { VibeBoarding } from '../../Components/VibeBoarding';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { MentorDetails } from '../../Components';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,6 +28,7 @@ export const BottomNavigate = () => {
   return (
     <Tab.Navigator
       screenOptions={{
+        lazy: true,
         headerShown: false,
         tabBarStyle: {
           borderTopWidth: 2,
@@ -42,7 +45,7 @@ export const BottomNavigate = () => {
         name="Home"
         component={HomeStack}
         options={{
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <Image
               style={{
                 width: 32,
@@ -59,7 +62,7 @@ export const BottomNavigate = () => {
         name="Mentor"
         component={MentorNavigator}
         options={{
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <Image
               style={{
                 width: 32,
@@ -77,7 +80,7 @@ export const BottomNavigate = () => {
         name="Vibe"
         component={Vibe}
         options={{
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <Image
               style={{
                 width: 32,
@@ -94,7 +97,7 @@ export const BottomNavigate = () => {
         name="Funding"
         component={FundingScreen}
         options={{
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <Image
               style={{
                 width: 32,
@@ -111,7 +114,7 @@ export const BottomNavigate = () => {
         name="Learn"
         component={LearnScreen}
         options={{
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <Image
               style={{
                 width: 32,
@@ -132,7 +135,7 @@ const Stack = createNativeStackNavigator();
 
 export const HomeStack = () => {
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="HomeStack" component={Home} />
       <Stack.Screen name="Messages" component={Messages} />
       <Stack.Screen name="Settings" component={Settings} />
@@ -143,7 +146,7 @@ export const HomeStack = () => {
 
 export const MentorNavigator = () => {
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="MentorStack" component={Mentor} />
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="MentorDetails" component={MentorDetails} />
