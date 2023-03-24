@@ -1,37 +1,18 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {
-  StartupVerification,
-  SplashFirst,
-  SplashSecond,
-  SplashThird,
-  ProfileSetUp,
-  Plans,
-  Rooms,
-  NewsDetails,
-  Webview,
-  FundingForm,
-  OnBoarding,
-  TermConditions,
-  DashBoard,
-  EditCalender,
-  Notifications,
-  MentorList,
-  ViewProfile,
-  Requests,
-  CountdownTimer,
-  LikeScreen,
-  ScheduleAppointment,
-} from '../../scenes';
+
 import ThanksScreen from '../../scenes/thanks-screen';
 import {
   ForgotPassword,
   IndividuaProfile,
-  LoginScreen,
+  StartLogin,
+  LoginViaEmail,
+  LoginViaPhone,
   OtpScreen,
   ResetPassword,
-  SignupScreen,
+  SignupForm,
+  StartSignup,
   Test,
   Settings,
   EditProfile,
@@ -51,6 +32,29 @@ import {
   VideoCall,
   CalanderAppointments,
   PremiumPlans,
+  OnBoarding,
+  SplashFirst,
+  SplashSecond,
+  SplashThird,
+  PersonalProfile,
+  NewsDetails,
+  TermConditions,
+  FundingForm,
+  Notifications,
+  Requests,
+  EditCalender,
+  ViewProfile,
+  CountdownTimer,
+  LikeScreen,
+  MentorList,
+  StartupVerification,
+  ScheduleAppointment,
+  Webview,
+  Rooms,
+  EduAndExp,
+  LookingFor,
+  Intrest,
+  Social,
 } from '../../scenes';
 import {BottomNavigate, MentorNavigator} from '../BottomNavigate';
 import {ArticalDetails} from '../../scenes';
@@ -79,10 +83,17 @@ const StackNavigate = props => {
       <Stack.Screen name="Splash1" component={SplashFirst} />
       <Stack.Screen name="Splash2" component={SplashSecond} />
       <Stack.Screen name="Splash3" component={SplashThird} />
-      <Stack.Screen name="ProfileSetUp" component={ProfileSetUp} />
+      <Stack.Screen name="PersonalProfile" component={PersonalProfile} />
       <Stack.Screen name="Thanks" component={ThanksScreen} />
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="SignUp" component={SignupScreen} />
+      <Stack.Screen name="Login" component={StartLogin} />
+      <Stack.Screen name="eduAndexp" component={EduAndExp} />
+      <Stack.Screen name="lookingfor" component={LookingFor} />
+      <Stack.Screen name="intrest" component={Intrest} />
+      <Stack.Screen name="social" component={Social} />
+      <Stack.Screen name="LoginViaPhone" component={LoginViaPhone} />
+      <Stack.Screen name="LoginViaEmail" component={LoginViaEmail} />
+      <Stack.Screen name="SignUp" component={StartSignup} />
+      <Stack.Screen name="SignUpForm" component={SignupForm} />
       <Stack.Screen name="OtpVerification" component={OtpScreen} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="ResetPassword" component={ResetPassword} />

@@ -1,11 +1,17 @@
 import { StyleSheet } from "react-native";
-import { AppColors } from "../../../utils";
+import { AppColors } from "../../../../utils";
 const styles = StyleSheet.create({
     screen: {
-      paddingHorizontal:20,
-      paddingVertical:10,
+      flex:1,
       backgroundColor: AppColors.primarycolor,
     },
+    heading: {
+      fontFamily:'Poppins-Bold',
+      color: AppColors.FontsColor,
+      textAlign: 'center',
+      fontSize: 29,
+    },
+    
     activity:{
       height:"100%",
       width:"100%",
@@ -28,8 +34,7 @@ const styles = StyleSheet.create({
       fontFamily: 'Poppins-Regular',
     },
     inputstyle: {
-      marginTop: 0,
-      marginBottom: -10,
+      marginTop: '3%',
       color:'#fff'
     },
     signuplink: {

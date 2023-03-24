@@ -1,5 +1,5 @@
-import {SignupScreen, OtpScreen, ForgotPassword, ResetPassword} from './Auth';
-import {LoginScreen} from './Auth';
+import {SignupForm,StartSignup, OtpScreen, ForgotPassword, ResetPassword} from './Auth';
+import {StartLogin,LoginViaEmail,LoginViaPhone} from './Auth';
 //import { LoginScreen } from './Auth';
 import {
   IndividuaProfile,
@@ -14,7 +14,6 @@ import {StartupVerification} from './startup-verification';
 import {SplashFirst} from './splash-screens/splash1';
 import {SplashSecond} from './splash-screens/splash2';
 import {SplashThird} from './splash-screens/splash3';
-import {ProfileSetUp} from './profilesetup';
 import {Rooms} from './Room';
 import {CreatePost} from './CreatePost';
 import {CommentsScreen} from './CommentScreen';
@@ -55,6 +54,7 @@ import {CountdownTimer} from './CountdownTimer';
 import {LikeScreen} from './LikesScreen';
 import PremiumPlans from './PremiumPlans';
 import ScheduleAppointment from './scheduleappointment';
+import { PersonalProfile,EduAndExp,LookingFor,Intrest,Social } from './profilesetup';
 export {
   ArticalDetails,
   FundingScreen,
@@ -62,10 +62,13 @@ export {
   Webview,
   StartupVerification,
   SplashFirst,
+  Intrest,
+  LookingFor,
+  Social,
   SplashSecond,
   SplashThird,
   NewsDetails,
-  ProfileSetUp,
+  PersonalProfile,
   Home,
   LearnScreen,
   Courses,
@@ -76,8 +79,9 @@ export {
   TermConditions,
   Room,
   Plans,
-  LoginScreen,
-  SignupScreen,
+  StartLogin,
+  SignupForm,
+  StartSignup,
   OtpScreen,
   ForgotPassword,
   Test,
@@ -89,6 +93,8 @@ export {
   Messages,
   ChatScreen,
   SavedScreen,
+  EduAndExp,
+  LoginViaEmail,LoginViaPhone,
   Rooms,
   CreatePost,
   CommentsScreen,

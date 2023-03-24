@@ -38,7 +38,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Reverr required camera access</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Reverr required library access</string>
 	<key>UIAppFonts</key>

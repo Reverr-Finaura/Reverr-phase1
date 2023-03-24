@@ -13,7 +13,7 @@ const BackButton = props => {
         onPress={() => navigation.goBack()}>
         <Icon
           name="angle-left"
-          size={props.IconSize}
+          size={30}
           color={AppColors.FontsColor}
         />
       </TouchableOpacity>
