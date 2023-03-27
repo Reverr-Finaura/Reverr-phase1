@@ -22,6 +22,8 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MultiSelect from 'react-native-multiple-select';
 import styles from './styles';
+import authentication from '@react-native-firebase/auth';
+
 // import { useNavigation } from '@react-navigation/native';
 // import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
@@ -712,7 +714,7 @@ const Vibe = () => {
               <View style={styles.container}>
                 {/* <Text style={{color: 'white'}}>HELOO</Text> */}
                 <FlatList
-                  data={filteringData.filter(it => it.email != '')}
+                  data={filteringData.filter(it => it.email != authentication().currentUser.email)}
                   extraData={filteringData}
                   pagingEnabled
                   horizontal
@@ -1021,15 +1023,11 @@ const Vibe = () => {
                     <Text style={styles.modelText}>Filter</Text>
                   </View>
                   <ScrollView>
-
-
                     <View style={{ padding: 20 }}>
-
                       <MultiSelect
                         items={hareFor}
                         uniqueKey="id"
                         displayKey="name"
-
                         onSelectedItemsChange={selectedItems =>
                           setFilters({
                             ...filters,
@@ -1045,7 +1043,6 @@ const Vibe = () => {
                         styleDropdownMenu={true}
                         styleDropdownMenuSubsection={true}
                         styleIndicator={true}
-
                         styleInputGroup={true}
                         tagRemoveIconColor="#CCC"
                         tagBorderColor="#CCC"
@@ -1057,7 +1054,6 @@ const Vibe = () => {
                         hideDropdown={true}
                         hideTags={true}
                         hideSubmitButton={true}
-
                       />
                       <MultiSelect
                         items={ageOptions}
@@ -1097,7 +1093,7 @@ const Vibe = () => {
                           })
                         }
                         selectedItems={filters.howMeet}
-                        selectText="How we Meat"
+                        selectText="How we Meet"
                         searchInputPlaceholderText="How we Meet..."
                         searchInputStyle={{ height: 40 }}
                         tagRemoveIconColor="#CCC"
