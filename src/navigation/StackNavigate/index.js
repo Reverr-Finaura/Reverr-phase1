@@ -1,36 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-<<<<<<< HEAD
-
-=======
-import {
-  StartupVerification,
-  SplashFirst,
-  SplashSecond,
-  SplashThird,
-  ProfileSetUp,
-  Plans,
-  Rooms,
-  NewsDetails,
-  Webview,
-  FundingForm,
-  OnBoarding,
-  TermConditions,
-  DashBoard,
-  EditCalender,
-  Notifications,
-  MentorList,
-  ViewProfile,
-  Requests,
-  CountdownTimer,
-  LikeScreen,
-  ScheduleAppointment,
-  LikeMatchScreen,
-  SuperLikeScreen,
-  ChatVibeScreen
-} from '../../scenes';
->>>>>>> yasir
 import ThanksScreen from '../../scenes/thanks-screen';
 import {
   ForgotPassword,
@@ -84,6 +54,9 @@ import {
   LookingFor,
   Intrest,
   Social,
+  LikeMatchScreen,
+  SuperLikeScreen,
+  ChatVibeScreen,
 } from '../../scenes';
 import { BottomNavigate, MentorNavigator } from '../BottomNavigate';
 import { ArticalDetails } from '../../scenes';

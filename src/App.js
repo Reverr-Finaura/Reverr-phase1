@@ -13,16 +13,10 @@ import auth from '@react-native-firebase/auth';
 import { Provider } from 'react-redux';
 import { store } from './Redux/store';
 //import 'react-native-gesture-handler';
-<<<<<<< HEAD
 import {StatusBar} from 'react-native';
 import {AppLayout} from './layouts';
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import { AppColors } from './utils';
-=======
-import { StatusBar } from 'react-native';
-import { AppLayout } from './layouts';
-import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
->>>>>>> yasir
 
 const theme = {
   ...DefaultTheme,

@@ -31,7 +31,6 @@ const StartCourse = props => {
   const showToast = (msg) => {
     ToastAndroid.show(msg, ToastAndroid.SHORT);
   };
-<<<<<<< HEAD
   // const SaveCourses=async(id)=>{
   //   dispatch(saveCourse(id))
   //   await firestore().collection('Users').doc(state.user.email).update({
@@ -61,7 +60,6 @@ const StartCourse = props => {
     
   // }
   console.log(courseData,"cddg");
-=======
   const SaveCourses = async (id) => {
     dispatch(saveCourse(id))
     await firestore().collection('Users').doc(state.user.email).update({
@@ -91,7 +89,6 @@ const StartCourse = props => {
 
   }
 
->>>>>>> yasir
   return (
     <View style={styles.screen}>
       <ImageBackground
@@ -129,7 +126,6 @@ const StartCourse = props => {
         <TouchableOpacity
           activeOpacity={0.6}
           style={styles.circle}
-<<<<<<< HEAD
           // onPress={() => {
           //   if(state?.user?.savedCourses?.includes(courseData.id)){
           //     RemoveCourse(courseData.id);
@@ -141,19 +137,6 @@ const StartCourse = props => {
           
           <Icon2 name={state.user?.savedCourses?.includes(courseData.id)?"bookmark":'bookmark-outline'} size={28} color="#0077B7" />
         </TouchableOpacity>
-=======
-          onPress={() => {
-            if (state?.user?.savedCourses?.includes(courseData.id)) {
-              RemoveCourse(courseData.id);
-            } else {
-              SaveCourses(courseData.id)
-            }
-          }}>
-          <Icon2 name={state?.user?.savedCourses?.includes(courseData.id) ? "bookmark" : 'bookmark-outline'} size={28} color="#0077B7" />
-        </TouchableOpacity>
-
-
->>>>>>> yasir
         <TouchableOpacity
           style={styles.ContinueButton}
           onPress={() => {
@@ -167,13 +150,8 @@ const StartCourse = props => {
       <Text style={styles.txt}>Chapters</Text>
       <ScrollView style={styles.ChapterContainer}>
         <FlatList
-<<<<<<< HEAD
           data={courseData}
           renderItem={({item, index}) => (
-=======
-          data={courseData.chapter}
-          renderItem={({ item, index }) => (
->>>>>>> yasir
             <View key={index} style={styles.ChapterCard}>
               <View
                 style={{
