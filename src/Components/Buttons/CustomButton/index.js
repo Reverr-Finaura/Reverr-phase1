@@ -15,14 +15,8 @@ const Width = Dimensions.get('window').width;
 const CustomButton = props => {
   return (
     <View style={styles.screen}>
-      <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}>
-        <LinearGradient
-          colors={[AppColors.primarycolor, '#012437']}
-          start={{x: 0, y: 1.3}}
-          end={{x: 0.3, y: 0.5}}
-          style={{...styles.Btn, ...props.style}}>
-          <Text style={{...styles.txt, ...props.TextStyle}}>{props.Title}</Text>
-        </LinearGradient>
+      <TouchableOpacity style={{...styles.Btn, ...props.style}} activeOpacity={0.6} onPress={props.onPress}>
+      <Text style={{...styles.txt, ...props.TextStyle}}>{props.Title}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -32,12 +26,15 @@ const styles = StyleSheet.create({
   screen: {
     alignItems: 'center',
     marginTop: '5%',
+    overflow:'hidden',
+    borderRadius: 10,
   },
   Btn: {
-    borderRadius: 20,
+    borderRadius: 10,
     width: Width / 1.1,
     paddingVertical: '4%',
     justifyContent: 'center',
+    backgroundColor:AppColors.buttonColor,
     alignItems: 'center',
   },
   txt: {

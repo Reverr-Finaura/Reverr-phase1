@@ -4,6 +4,8 @@ import {
   Dimensions,
   ScrollView,
   TouchableOpacity,
+  BackHandler,
+  Alert,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {styles} from './styles';
@@ -44,8 +46,26 @@ const Home = () => {
       dispatch(load_room_data(state.lastDocument));
     }
   }, []);
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert("Hold on!", "Are you sure you want to close App?", [
+        {
+          text: "Cancel",
+          onPress: () => null,
+          style: "cancel"
+        },
+        { text: "YES", onPress: () => BackHandler.exitApp() }
+      ]);
+      return true;
+    };
 
-  console.log(state.Rooms, 'Rooms');
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, []);
 
   return (
     <IndividualHeaderLayout>

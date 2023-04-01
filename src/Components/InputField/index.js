@@ -14,14 +14,21 @@ const Width = Dimensions.get('window').width;
 
 const InputField = props => {
   return (
-    <View style={styles.screen}>
+    <View style={{...styles.screen, ...props.style}}>
       <View style={{width: '100%'}}>
-        <Text style={styles.heading}>{props.Title} </Text>
-        <View style={styles.input}>
+        <Text style={{...styles.heading,...props.titleStyle}}>{props.Title} </Text>
+        <View
+          style={[
+            styles.input,
+            {
+              borderWidth: props.error ? 2 : 0,
+              borderColor: props.error ? 'red' : AppColors.FontsColor,
+            },
+          ]}>
           <TextInput
-            selectionColor={AppColors.FontsColor}
+            selectionColor={AppColors.primarycolor}
             style={{
-              color: AppColors.FontsColor,
+              color: AppColors.primarycolor,
               paddingStart: '2%',
               width: '88%',
             }}
@@ -36,7 +43,7 @@ const InputField = props => {
           <TouchableOpacity onPress={props.Eyelick}>
             <Icon
               name={props.PasswordIcon}
-              color={AppColors.BtnClr}
+              color={AppColors.CardColor}
               size={24}
             />
           </TouchableOpacity>
@@ -54,19 +61,18 @@ const styles = StyleSheet.create({
     color: AppColors.FontsColor,
     fontFamily: 'Poppins-Regular',
     fontSize: 16,
-    paddingVertical: '6%',
+    paddingVertical: '3%',
   },
   input: {
     fontSize: 13,
     flexDirection: 'row',
     alignItems: 'center',
-    color: AppColors.FontsColor,
+    color: AppColors.primarycolor,
     overflow: 'hidden',
     borderRadius: 6,
     paddingStart: '2.5%',
-    backgroundColor: AppColors.inputFieldColor,
+    backgroundColor: AppColors.FontsColor,
     fontFamily: 'Poppins-Regular',
-    height: Height / 12,
     width: '100%',
   },
 });

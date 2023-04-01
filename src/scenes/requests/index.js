@@ -5,6 +5,7 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {AppColors, smallString} from '../../utils';
@@ -19,8 +20,10 @@ const Requests = () => {
   const state = useSelector(state => state.UserReducer);
   const [loading, setLoading] = useState(false);
   const [recivedReq, setRecivedReq] = useState([]);
+  const [loader, setLoader] = useState(false);
 
   const getRequested = async () => {
+    setLoader(true);
     let rec = [];
     for (let index = 0; index < state.user.recivedRequests.length; index++) {
       let req = await firestore()
@@ -29,9 +32,15 @@ const Requests = () => {
         .get();
 
       rec.push(req._data);
+      if(index===state.user.recivedRequests.length-1)
+      {
+        setLoader(false);
+      }
     }
     setRecivedReq(rec);
+    
   };
+  console.log(state.user.recivedRequests,"jjhjh");
 
   const dispatch = useDispatch();
 
@@ -60,59 +69,70 @@ const Requests = () => {
           Requests
         </Text>
       </View>
-      <View>
-        <FlatList
-          data={recivedReq}
-          keyExtractor={item => item.email}
-          renderItem={({item, index}) => (
-            <View
-              key={index}
-              style={{
-                width: '47%',
-                marginVertical: '2%',
-                marginHorizontal: '2%',
-                alignItems: 'center',
-              }}>
-              <LinearGradient
-                colors={[AppColors.primarycolor, '#012437']}
-                start={{x: 0, y: 1}}
-                end={{x: 1, y: 0.5}}
-                style={styles.Card}>
-                <Image
-                  source={require('../../assets/images/MentorProfile.png')}
-                  style={styles.dp}
-                />
-                <Text style={styles.name}>{item.name}</Text>
-                <Text style={styles.industry}>
-                  {smallString(item.industry, 20)}
-                </Text>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    width: '100%',
-                    justifyContent: 'space-around',
-                    paddingHorizontal: '6%',
-                  }}>
-                  <TouchableOpacity
-                    onPress={() => {
-                      ApprovedReq(state.user.email, item.email, setLoading);
-                    }}
-                    style={styles.button}>
-                    <Text style={{color: AppColors.FontsColor}}>Approve</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => {
-                      rejectRequest(state.user.email, item.email, setLoading);
-                    }}
-                    style={[styles.button, {backgroundColor: 'red'}]}>
-                    <Text style={{color: AppColors.FontsColor}}>Reject</Text>
-                  </TouchableOpacity>
-                </View>
-              </LinearGradient>
-            </View>
-          )}
-        />
-      </View>
+      {loader ? (
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '50%',
+          }}>
+          <ActivityIndicator size={45} color={AppColors.FontsColor} />
+        </View>
+      ) : (
+        <View>
+          <FlatList
+            data={recivedReq}
+            keyExtractor={item => item.email}
+            renderItem={({item, index}) => (
+              <View
+                key={index}
+                style={{
+                  width: '47%',
+                  marginVertical: '2%',
+                  marginHorizontal: '2%',
+                  alignItems: 'center',
+                }}>
+                <LinearGradient
+                  colors={[AppColors.primarycolor, '#012437']}
+                  start={{x: 0, y: 1}}
+                  end={{x: 1, y: 0.5}}
+                  style={styles.Card}>
+                  <Image
+                    source={require('../../assets/images/MentorProfile.png')}
+                    style={styles.dp}
+                  />
+                  <Text style={styles.name}>{item.name}</Text>
+                  <Text style={styles.industry}>
+                    {smallString(item.industry, 20)}
+                  </Text>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      width: '100%',
+                      justifyContent: 'space-around',
+                      paddingHorizontal: '6%',
+                    }}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        ApprovedReq(state.user.email, item.email, setLoading);
+                      }}
+                      style={styles.button}>
+                      <Text style={{color: AppColors.FontsColor}}>Approve</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => {
+                        rejectRequest(state.user.email, item.email, setLoading);
+                      }}
+                      style={[styles.button, {backgroundColor: 'red'}]}>
+                      <Text style={{color: AppColors.FontsColor}}>Reject</Text>
+                    </TouchableOpacity>
+                  </View>
+                </LinearGradient>
+              </View>
+            )}
+          />
+        </View>
+      )}
     </View>
   );
 };

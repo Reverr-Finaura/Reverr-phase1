@@ -7,18 +7,30 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
   ActivityIndicator,
+  Dimensions,
+  Image,
+  Modal,
 } from 'react-native';
 import React, {useState} from 'react';
 import {AppColors} from '../../../utils';
-import {CustomButton, BackButton} from '../../../Components/index';
+import {CustomButton, BackButton, OtpInputs} from '../../../Components/index';
 import {styles} from './style';
 import {useNavigation} from '@react-navigation/native';
-import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
 import {useDispatch} from 'react-redux';
-import {add_user} from '../../../Redux/actions';
+import LinearGradient from 'react-native-linear-gradient';
+import {useEffect} from 'react';
+import {convertSeconds} from '../../../utils/Helper/helper';
+
+const Height = Dimensions.get('window').height;
+const Width = Dimensions.get('window').width;
 
 const OtpScreen = props => {
+  const [pin1, setPin1] = useState('');
+  const [pin2, setPin2] = useState('');
+  const [pin3, setPin3] = useState('');
+  const [pin4, setPin4] = useState('');
+  const [pin5, setPin5] = useState('');
+  const [timeLeft, setTimeLeft] = useState(240);
   const navigation = useNavigation();
   const [otp, setOtp] = React.useState('');
   const Otp = props?.route?.params?.OTP;
@@ -27,154 +39,137 @@ const OtpScreen = props => {
   const Mobile = props?.route?.params?.Mobile;
   const Email = props?.route?.params?.Email;
   const Password = props?.route?.params?.Password;
+  const DateOfBirth = props?.route?.params?.Dob;
   const dispatch = useDispatch();
-  const [isUserSignedUp, setIsUserSignedUp] = useState(true);
-  const SignUpUser = async () => {
-    setIsUserSignedUp(false);
-    const user_object = {
-      Appointement_request: [],
-      saved: [],
-      rating: 0,
-      email: Email,
-      name: Name,
-      password: Password,
-      about: '',
-      totalRating: 0,
-      userType: 'Individual',
-      notification: [],
-      experience: [{company: '', position: ''}],
-      education: [{school: '', from: '', to: ''}],
-      linkdinLink: '',
-      twitterLink: '',
-      image:
-        'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/Images%2FDefaultdp.png?alt=media&token=eaf853bf-3c60-42df-9c8b-d4ebf5a1a2a6',
+  const [isUserSignedUp, setIsUserSignedUp] = useState(false);
 
-      industry: '',
-      linkedin: '',
-      orders: [],
-      reviews: [],
-      phone: Mobile,
-      mobile: Mobile,
-      mentors: [],
-    };
-    // console.log(user_object);
-    await auth()
-      .createUserWithEmailAndPassword(Email, Password)
-      .then(async () => {
-        console.log('User account created & signed in!');
-        await firestore()
-          .collection('Users')
-          .doc(Email)
-          .set(user_object)
-          .then(() => {
-            setIsUserSignedUp(true);
-            //console.log(user)
+const userDetailsObj = {
+  name:Name,
+  mobile:Mobile,
+  email:Email,
+  password:Password,
+  dob:DateOfBirth
+}
 
-            navigation.navigate('onBoarding', {
-              Email: Email,
-              user_object: user_object,
-            });
-          })
-          .catch(e => {
-            setIsUserSignedUp(true);
-            alert(e);
-          });
-      })
-      .catch(error => {
-        if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-          alert('That email address is already in use!');
-        }
+//console.log(DateOfBirth,"dob");
+  useEffect(() => {
+    let timer;
+    if (timeLeft > 0) {
+      timer = setTimeout(() => {
+        setTimeLeft(timeLeft => timeLeft - 1);
+      }, 1000);
+    }
 
-        if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
-          alert('That email address is invalid!');
-        }
-        setIsUserSignedUp(true);
-        console.error(error);
-      });
-  };
-  if (!isUserSignedUp) {
-    return (
-      <View style={styles.screen}>
-        <ActivityIndicator size="large" color="#fff" />
-      </View>
-    );
-  }
+    return () => clearTimeout(timer);
+  });
   return (
     <TouchableWithoutFeedback
       onPress={() => {
         Keyboard.dismiss();
       }}>
-      <View style={styles.screen}>
-        <View style={{marginTop: 10}}>
-          <BackButton
-            IconSize={30}
-            onPress={() => {
-              navigation.goBack();
-            }}
+      <LinearGradient colors={['#070972', '#0C0C0D']} style={styles.screen}>
+        <BackButton/>
+        <Modal
+          visible={isUserSignedUp}
+          onRequestClose={() => {
+            setIsUserSignedUp(false);
+          }}
+          transparent={true}>
+          <View
+            style={{
+              backgroundColor: 'rgba(1, 1, 1, 0.6)',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              height: '100%',
+            }}>
+            <View
+              style={{
+                backgroundColor: 'white',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '50%',
+                height: '20%',
+                borderRadius: 20,
+              }}>
+              <Text style={{color: AppColors.primarycolor, fontSize: 22}}>
+                Verifying...
+              </Text>
+            </View>
+          </View>
+        </Modal>
+        <Text style={styles.heading}>OTP</Text>
+        <Text
+          style={{
+            color: AppColors.BtnClr,
+            textAlign: 'center',
+            marginVertical: '2%',
+          }}>
+          Please enter the OTP sent to your mobile / Email
+        </Text>
+        <View style={{alignItems: 'center', marginTop: '8%'}}>
+          <Image
+            style={{width: Width / 1.8, height: Height / 3.1}}
+            source={require('../../../assets/images/illustration/otp.png')}
           />
-        </View>
-        <View style={styles.pageInfo}>
-          <Text
-            style={[
-              styles.Text,
-              {fontSize: 24, color: AppColors.FontsColor, marginBottom: 13},
-            ]}>
-            Confirmation
-          </Text>
-          <Text
-            style={[styles.Text, {fontSize: 14, color: AppColors.infoFonts}]}>
-            Please enter the vertification code{' '}
-          </Text>
-          <Text
-            style={[styles.Text, {fontSize: 14, color: AppColors.infoFonts}]}>
-            from the email we just send you
-          </Text>
-        </View>
-        <View style={styles.container}>
-          <Text style={styles.inputHeader}>OTP</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="code"
-            placeholderTextColor={AppColors.infoFonts}
-            onChangeText={o => {
-              setOtp(o);
-            }}
-            maxLength={6}
-            keyboardType="number-pad"
+          <OtpInputs
+            setPin1={setPin1}
+            setPin2={setPin2}
+            setPin3={setPin3}
+            setPin4={setPin4}
+            setPin5={setPin5}
           />
+
+          <Text
+            style={{
+              color: AppColors.BtnClr,
+              textAlign: 'center',
+              marginVertical: '2%',
+              marginTop: '12%',
+            }}>
+            Didn’t recieve an OTP?
+          </Text>
+          {timeLeft == 0 ? (
+            <View
+              style={{
+                marginTop: '5%',
+              }}>
+              <TouchableOpacity>
+                <Text
+                  style={{color: AppColors.buttonColor, fontWeight: 'bold'}}>
+                  Resend
+                </Text>
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <View
+              style={{
+                marginTop: '5%',
+              }}>
+              <Text style={{color: AppColors.buttonColor, fontWeight: 'bold'}}>
+                {convertSeconds(timeLeft)}
+              </Text>
+            </View>
+          )}
           <CustomButton
-            Title="Confirm"
+            Title="Submit"
             style={{marginTop: 20}}
             onPress={async () => {
-              if (Otp != otp) {
+              let enterdOtp = `${pin1}${pin2}${pin3}${pin4}${pin5}`;
+              if (Otp != enterdOtp) {
                 console.log(Otp);
                 console.log(otp);
                 alert('wrong otp');
               } else {
-                const response = await SignUpUser(Email, Password);
+                
+                navigation.replace("PersonalProfile",{
+                  userDetailsObj:userDetailsObj
+                })
               }
             }}
           />
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginTop: 30,
-            }}>
-            <Text
-              style={{
-                color: AppColors.infoFonts,
-                fontFamily: 'Poppins-Regular',
-                fontSize: 13,
-              }}>
-              Don’t get it?{' '}
-            </Text>
-          </View>
         </View>
-      </View>
+      </LinearGradient>
     </TouchableWithoutFeedback>
   );
 };

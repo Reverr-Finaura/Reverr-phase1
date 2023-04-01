@@ -7,13 +7,14 @@ import {
   StyleSheet,
   TouchableOpacity,
   ImageBackground,
+  ActivityIndicator,
 } from 'react-native';
 import styles from './styles';
-import { useSelector } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
-import { AppColors } from '../../utils';
+import {useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+import {AppColors} from '../../utils';
 
-export const ChatLayout = ({ usersArray }) => {
+export const ChatLayout = ({usersArray, loader}) => {
   const state = useSelector(state => state.UserReducer);
   const navigation = useNavigation();
   return (
@@ -32,32 +33,54 @@ export const ChatLayout = ({ usersArray }) => {
       <ImageBackground
         style={styles.chatContainer}
         source={require('../../assets/images/Rectangle2.png')}>
-        <FlatList
-          style={{ marginBottom: 16 }}
-          data={usersArray}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              style={styles2.container}
-              onPress={() =>
-                navigation.navigate('ChatVibeScreen', {
-                  userData: item,
-                })
-              }>
-              <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                <Image style={styles2.image} source={{ uri: item.image }} />
-                <View
-                  style={{
-                    width: '70%',
-                    justifyContent: 'center',
-                    marginHorizontal: '5%',
-                  }}>
-                  <Text style={styles2.name}>{item.name}</Text>
-                  <Text style={styles2.message}>Tap to Chat</Text>
-                </View>
+        {loader ? (
+          <View style={{paddingVertical:'40%'}}>
+            <ActivityIndicator size={40} color={AppColors.FontsColor} />
+          </View>
+        ) : (
+          <View>
+            {usersArray.length > 0 ? (
+              <FlatList
+                style={{marginBottom: 16}}
+                data={usersArray}
+                renderItem={({item}) => (
+                  <TouchableOpacity
+                    style={styles2.container}
+                    onPress={() =>
+                      navigation.navigate('ChatVibeScreen', {
+                        userData: item,
+                      })
+                    }>
+                    <View
+                      style={{flexDirection: 'row', justifyContent: 'center'}}>
+                      <Image style={styles2.image} source={{uri: item.image}} />
+                      <View
+                        style={{
+                          width: '70%',
+                          justifyContent: 'center',
+                          marginHorizontal: '5%',
+                        }}>
+                        <Text style={styles2.name}>{item.name}</Text>
+                        <Text style={styles2.message}>Tap to Chat</Text>
+                      </View>
+                    </View>
+                  </TouchableOpacity>
+                )}
+              />
+            ) : (
+              <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  paddingVertical: '50%',
+                }}>
+                <Text style={{color: AppColors.FontsColor}}>
+                  You Have No any Mentors
+                </Text>
               </View>
-            </TouchableOpacity>
-          )}
-        />
+            )}
+          </View>
+        )}
       </ImageBackground>
     </View>
   );
