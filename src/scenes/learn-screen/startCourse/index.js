@@ -18,10 +18,11 @@ import { AppColors } from '../../../utils';
 import { useSelector, useDispatch } from 'react-redux';
 import { saveCourse, removeCourse } from '../../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
+import { ModulesData } from '../../../dumy-Data/moduleData';
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 const StartCourse = props => {
-  const courseData = props.route.params.CourseDetails;
+  const courseData = ModulesData.modules // props.route.params.CourseDetails;
   const navigation = useNavigation();
   const [chp, setchp] = useState(0);
   const [slide, setslide] = useState(0);
@@ -30,6 +31,35 @@ const StartCourse = props => {
   const showToast = (msg) => {
     ToastAndroid.show(msg, ToastAndroid.SHORT);
   };
+  // const SaveCourses=async(id)=>{
+  //   dispatch(saveCourse(id))
+  //   await firestore().collection('Users').doc(state.user.email).update({
+  //     savedCourses:[...state.user.savedCourses,id]
+  //   }).then(()=>{
+  //     showToast("Course Saved Successfully")
+  //   }).catch(err=>{
+  //     showToast("Error while saving the course!")
+  //   })
+  // }
+
+  // const RemoveCourse=async(id)=>{
+  //   var bucket=[];
+  //   for(var i=0;i<state?.user?.savedCourses.length;i++){
+  //     if(id!=state?.user?.savedCourses[i]){
+  //       bucket.push(state?.user?.savedCourses[i]);
+  //     }
+  //   }
+  //   dispatch(removeCourse(id));
+  //   await firestore().collection('Users').doc(state.user.email).update({
+  //     savedCourses:bucket
+  //   }).then(()=>{
+  //     showToast("Course Removed Successfully")
+  //   }).catch(err=>{
+  //     showToast("Error while removing the course!")
+  //   })
+    
+  // }
+  console.log(courseData,"cddg");
   const SaveCourses = async (id) => {
     dispatch(saveCourse(id))
     await firestore().collection('Users').doc(state.user.email).update({
@@ -96,17 +126,17 @@ const StartCourse = props => {
         <TouchableOpacity
           activeOpacity={0.6}
           style={styles.circle}
-          onPress={() => {
-            if (state?.user?.savedCourses?.includes(courseData.id)) {
-              RemoveCourse(courseData.id);
-            } else {
-              SaveCourses(courseData.id)
-            }
-          }}>
-          <Icon2 name={state?.user?.savedCourses?.includes(courseData.id) ? "bookmark" : 'bookmark-outline'} size={28} color="#0077B7" />
+          // onPress={() => {
+          //   if(state?.user?.savedCourses?.includes(courseData.id)){
+          //     RemoveCourse(courseData.id);
+          //   }else{
+          //     SaveCourses(courseData.id)
+          //   }
+          //   }}>
+          >
+          
+          <Icon2 name={state.user?.savedCourses?.includes(courseData.id)?"bookmark":'bookmark-outline'} size={28} color="#0077B7" />
         </TouchableOpacity>
-
-
         <TouchableOpacity
           style={styles.ContinueButton}
           onPress={() => {
@@ -120,8 +150,8 @@ const StartCourse = props => {
       <Text style={styles.txt}>Chapters</Text>
       <ScrollView style={styles.ChapterContainer}>
         <FlatList
-          data={courseData.chapter}
-          renderItem={({ item, index }) => (
+          data={courseData}
+          renderItem={({item, index}) => (
             <View key={index} style={styles.ChapterCard}>
               <View
                 style={{
@@ -130,13 +160,14 @@ const StartCourse = props => {
                   justifyContent: 'space-between',
                 }}>
                 <View>
-                  <Text style={styles.chapter}>Chapter - {index + 1}</Text>
+                  <Text style={styles.chapter}>Module - {index + 1}</Text>
                 </View>
                 <TouchableOpacity
                   onPress={() => {
                     setchp(index);
                     navigation.navigate('Instruction', {
                       BookData: item,
+                      moduleNumber:index+1
                     });
                   }}
                   style={[

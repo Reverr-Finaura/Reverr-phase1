@@ -13,9 +13,10 @@ import auth from '@react-native-firebase/auth';
 import { Provider } from 'react-redux';
 import { store } from './Redux/store';
 //import 'react-native-gesture-handler';
-import { StatusBar } from 'react-native';
-import { AppLayout } from './layouts';
-import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+import {StatusBar} from 'react-native';
+import {AppLayout} from './layouts';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+import { AppColors } from './utils';
 
 const theme = {
   ...DefaultTheme,
@@ -43,7 +44,7 @@ export default function App() {
         {/* <Text>Hello</Text> */}
         <PaperProvider theme={theme}>
           <NavigationContainer>
-            <StatusBar backgroundColor={'#000c12'} />
+            <StatusBar backgroundColor={AppColors.primarycolor} />
             {/* <Root_Navigator/> */}
             <StackNavigate />
             {/* <Text>Hello World</Text> */}

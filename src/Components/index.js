@@ -1,4 +1,4 @@
-import {BackButton, CustomButton} from './Buttons';
+import {BackButton, CustomButton,NextButton} from './Buttons';
 import {InputField} from './InputField';
 import {TitleCard, EditCard} from './ProfileScreenComponents';
 //import { IndividualHeaderLayout } from "./HeaderLayout";
@@ -21,12 +21,15 @@ import {ProfileDetailsBox} from '../Components/profileDetailsBox';
 import {DrawerContent} from './drawerContent';
 import {Choice} from './Choice';
 import {OptionsPopup} from './optionPopup';
+import { OtpInputs } from './otpInput';
+import { DropDown } from './DropDown';
 export {
   BackButton,
   CustomButton,
   ArticalLoader,
   NewsLoader,
   CourseLoader,
+  DropDown,
   InputField,
   TitleCard,
   EditCard,
@@ -40,10 +43,12 @@ export {
   BottomPopup,
   HomeCard,
   ModelView,
+  NextButton,
   MentorHomeCard,
   MentorDetails,
   ProfileDetailsBox,
   DrawerContent,
   Choice,
   OptionsPopup,
+  OtpInputs
 };

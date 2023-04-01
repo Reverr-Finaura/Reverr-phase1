@@ -6,7 +6,11 @@ const formateDate = date => {
   });
   return dateStr;
 };
-
+ function DDMMYYYY(date) {
+  let str = JSON.stringify(date);
+  let str2 = str && str.replace(`"`, '').split('T')[0];
+  return str2 && str2.split('-').reverse().join('-');
+}
 const smallString = (str, num) => {
   if (str && str.length > num) {
     return str.slice(0, num) + '...';
@@ -67,10 +71,22 @@ function timeAgo(date) {
   }
   return `${Math.floor(seconds)} seconds ago`;
 }
+
+ function convertSeconds(seconds) {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const secs = seconds % 60;
+
+  return `${minutes.toString().padStart(2, '0')}: ${secs
+    .toString()
+    .padStart(2, '0')}`;
+}
 export {
   formateDate,
   smallString,
   capitalizeFirstLetter,
   formatTimeAgo,
   timeAgo,
+  DDMMYYYY,
+  convertSeconds
 };

@@ -4,6 +4,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Dimensions,
+  Image,
   FlatList,
 } from 'react-native';
 import React, {useRef, useState, useEffect} from 'react';
@@ -16,7 +17,8 @@ const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
 const OpenBook = props => {
-  const bookData = props.route.params.BookData;
+  const bookData =  props.route.params.BookData;
+  const moduleNumber = props.route.params.moduleNumber;
   const pagesRef = useRef();
   const [currIndex, setCurrIndex] = useState(0);
   const [progress, setProgress] = useState('10%');
@@ -27,6 +29,7 @@ const OpenBook = props => {
   const [dcolor, setdcolor] = useState('white');
 
   const checkans = idx => {
+    console.log(idx,"sdhsjhdjh");
     if (idx == 0)
       bookData[currIndex].ans == 0 ? setacolor('green') : setacolor('red');
     if (idx == 1)
@@ -59,7 +62,277 @@ const OpenBook = props => {
   const navigation = useNavigation();
 
   useEffect(() => {}, [currIndex]);
-  console.log(bookData, 'bookData');
+  console.log(moduleNumber, 'bookData');
+
+  const IntroScreen = ({item}) => {
+    return (
+      <View style={{justifyContent: 'center'}}>
+        <Text style={{textAlign: 'center', fontSize: 18, marginTop: '30%'}}>
+          MODULE {moduleNumber}
+        </Text>
+        <Text
+          style={{
+            marginTop: '5%',
+            fontWeight: 'bold',
+            fontSize: 25,
+            color: '#000C12',
+            textAlign: 'center',
+          }}>
+          {item.heading}
+        </Text>
+        <Image
+          source={{uri: item.image}}
+          style={{width: Width / 1.1, height: Height / 4, marginTop: '45%'}}
+        />
+      </View>
+    );
+  };
+  const TextIMGScreen = ({item}) => {
+    return (
+      <View style={{justifyContent: 'center'}}>
+        <Text
+          style={{
+            marginTop: '5%',
+            color: '#000C12',
+            textAlign: 'left',
+            fontSize: 16,
+          }}>
+          {item.text}
+        </Text>
+        <Image
+          source={{uri: item.image}}
+          style={{
+            width: Width / 1.7,
+            height: Height / 3.1,
+            marginTop: '40%',
+            alignSelf: 'center',
+          }}
+        />
+      </View>
+    );
+  };
+  const QuizScreen = ({item}) => {
+    return (
+      <View
+        style={{
+          height: '90%',
+          width: '100%',
+          backgroundColor: '#672DE1',
+          borderRadius:20
+        }}>
+        <View
+          style={{
+            backgroundColor: 'yellow',
+            height: 100,
+            width: 100,
+            borderRadius: 50,
+            opacity: 0.7,
+            position: 'absolute',
+            top: -50,
+            left: -50,
+          }}></View>
+        <View
+          style={{
+            backgroundColor: 'yellow',
+            height: 300,
+            width: 300,
+            borderRadius: 200,
+            opacity: 0.7,
+            position: 'absolute',
+            top: 150,
+            left: -190,
+          }}></View>
+        <View
+          style={{
+            backgroundColor: 'yellow',
+            height: 150,
+            width: 150,
+            borderRadius: 200,
+            opacity: 0.7,
+            position: 'absolute',
+            top: 80,
+            right: -120,
+          }}></View>
+        <View
+          style={{
+            backgroundColor: 'yellow',
+            height: 200,
+            width: 200,
+            borderRadius: 200,
+            opacity: 0.7,
+            position: 'absolute',
+            bottom: -190,
+            right: -100,
+          }}></View>
+        <Text
+          style={{
+            textAlign: 'center',
+            fontSize: 32,
+            color: AppColors.FontsColor,
+            fontWeight: 'bold',
+          }}>
+          QUIZ TIME!
+        </Text>
+        <Text
+          style={{
+            textAlign: 'center',
+            fontSize: 20,
+            color: AppColors.FontsColor,
+            marginTop: '5%',
+          }}>
+          {item.question}
+        </Text>
+        <View style={{marginTop: '10%'}}>
+          {item.options?.map((opt, index) => (
+            <TouchableOpacity
+              key={index}
+              style={{
+                backgroundColor: 'black',
+                borderRadius: 10,
+                marginVertical: '3%',
+                paddingHorizontal: '5%',
+                zIndex:50,
+                paddingVertical: '5%',
+              }}>
+              <Text style={{color: AppColors.FontsColor, textAlign: 'left'}}>
+                {opt}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+        {/* <Text
+          style={{
+            color: AppColors.FontsColor,
+            textTransform: 'uppercase',
+            fontWeight: 'bold',
+            marginTop:'15%'
+          }}>
+          ANS:{item.ans}
+        </Text> */}
+      </View>
+    );
+  };
+
+  const HeadTextImgScreen = ({item}) => {
+    return (
+      <View>
+        <Text
+          style={{
+            textAlign: 'left',
+            color: AppColors.primarycolor,
+            fontWeight: 'bold',
+            fontSize: 18,
+          }}>
+          {item.heading}
+        </Text>
+        <Text
+          style={{
+            textAlign: 'left',
+            color: AppColors.primarycolor,
+            marginTop: '7%',
+          }}>
+          {item.text}
+        </Text>
+        <Image
+          source={{uri: item.image}}
+          style={{
+            width: Width / 1.7,
+            height: Height / 3.1,
+            marginTop: '45%',
+            alignSelf: 'center',
+          }}
+        />
+      </View>
+    );
+  };
+
+  const HeadTextImgPointsScreen = ({item}) => {
+    return (
+      <View>
+        <Text
+          style={{
+            textAlign: 'center',
+            color: AppColors.primarycolor,
+            fontWeight: 'bold',
+            fontSize: 18,
+          }}>
+          {item.heading}
+        </Text>
+        <Text
+          style={{
+            textAlign: 'left',
+            color: AppColors.primarycolor,
+            marginTop: '7%',
+          }}>
+          {item.text}
+        </Text>
+        <View style={{marginTop: '3%'}}>
+          <Text style={{color:AppColors.primarycolor,fontWeight:'bold',marginBottom:'3%'}}>Ask :</Text>
+          {item.points?.map((pt, index) => (
+            <View key={index} style={{flexDirection: 'row', alignItems: 'center',paddingRight:'4%'}}>
+              <View
+                style={{
+                  width: 5,
+                  height: 5,
+                  backgroundColor: AppColors.primarycolor,
+                  borderRadius: 10,
+                  marginHorizontal:'3%'
+                }}
+              />
+              <Text
+                style={{marginVertical: '1%', color: AppColors.primarycolor}}>
+                {pt}
+              </Text>
+            </View>
+          ))}
+        </View>
+
+        {item.image!=""&&<Image
+          source={{uri: item.image}}
+          style={{
+            width: Width / 2.5,
+            height: Height / 3.5,
+            marginTop: '15%',
+            alignSelf: 'center',
+          }}
+        />}
+      </View>
+    );
+  };
+
+  const HeadSubtextImgScreen = ({item}) =>{
+    return(
+      <View style={{}}>
+        <Text style={{textAlign:'center',fontSize:20,fontWeight:'bold',color:AppColors.primarycolor}}>{item.heading}</Text>
+        
+        <Text style={{textAlign:'left', marginVertical:'3%', color:AppColors.primarycolor}}>{item.text}</Text>
+        <Text style={{textAlign:'center',fontSize:17,fontWeight:'500',color:AppColors.primarycolor,marginTop:'3%'}}>{item.subheading}</Text>
+        <Text style={{textAlign:'left',marginVertical:'6%',fontSize:12, color:AppColors.primarycolor}}>{item.sub_text}</Text>
+        <Image
+          source={{uri: item.image}}
+          style={{
+            width: Width / 1.25,
+            height: Height / 3.5,
+            marginTop: '15%',
+            alignSelf: 'center',
+          }}
+        />
+      </View>
+    )
+  }
+  const HeadSubtextScreen = ({item}) =>{
+    return(
+      <View style={{}}>
+        <Text style={{textAlign:'center',fontSize:20,fontWeight:'bold',color:AppColors.primarycolor}}>{item.heading}</Text>
+        <Text style={{textAlign:'center',fontSize:17,fontWeight:'500',color:AppColors.primarycolor,marginTop:'3%'}}>{item.subheading}</Text>
+        <Text style={{textAlign:'left', marginVertical:'3%', color:AppColors.primarycolor}}>{item.text}</Text>
+        <Text style={{textAlign:'left',fontSize:12, color:AppColors.primarycolor}}>{item.sub_text}</Text>
+        
+      </View>
+    )
+  }
+
+  
   return (
     <View style={styles.screen}>
       <BackButton IconSize={30} />
@@ -73,7 +346,7 @@ const OpenBook = props => {
           renderItem={({item, index}) => {
             return (
               <View style={styles.pageContainer}>
-                <View style={styles.overlay}>
+                <View style={[styles.overlay]}>
                   <TouchableOpacity
                     onPress={() => {
                       if (index > 0) {
@@ -91,8 +364,33 @@ const OpenBook = props => {
                     }}
                     style={styles.next}></TouchableOpacity>
                 </View>
-                <View style={styles.page}>
-                  {item.type == 'TEXT' ? (
+                <View
+                  style={[
+                    styles.page,
+                    {
+                      backgroundColor:
+                        item.type == 'quiz' ? '#672DE1' : 'white',
+                      borderRadius: 20,
+                      overflow: 'hidden',
+                      height:item.type == 'quiz'? Height / 1.25:Height / 1.2,
+                    },
+                  ]}>
+                  {item.type == 'intro' && <IntroScreen item={item} />}
+                  {item.type == 'textimg' && <TextIMGScreen item={item} />}
+                  {item.type == 'quiz' && <QuizScreen item={item} />}
+                  {item.type == 'headtextimgpoints' && (
+                    <HeadTextImgPointsScreen item={item} />
+                  )}
+                  {item.type == 'headtextimg' && (
+                    <HeadTextImgScreen item={item} />
+                  )}
+                  {item.type == 'headsubtextimg' && (
+                    <HeadSubtextImgScreen item={item} />
+                  )}
+                  {item.type == 'headsubtext' && (
+                    <HeadSubtextScreen item={item} />
+                  )}
+                  {/* {item.type == 'TEXT' ? (
                     <>
                       <Text style={styles.title}>{item.title}</Text>
                       <Text style={styles.body}>{item.body}</Text>
@@ -125,7 +423,7 @@ const OpenBook = props => {
                         </Text>
                       </TouchableOpacity>
                     </>
-                  )}
+                  )} */}
                 </View>
               </View>
             );
@@ -133,7 +431,7 @@ const OpenBook = props => {
         />
       )}
       <View style={styles.StatusContainer}>
-        {bookData[currIndex].type == 'QUIZ' &&
+        {bookData[currIndex].type == 'quiz' &&
           (checkedAnswer ? (
             <View
               style={{
@@ -269,7 +567,7 @@ const styles = StyleSheet.create({
   },
   pageContainer: {
     width: Width,
-    height: Height / 1.25,
+    height: Height / 1.2,
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingVertical: 10,
@@ -277,15 +575,15 @@ const styles = StyleSheet.create({
   page: {
     backgroundColor: AppColors.FontsColor,
     width: Width / 1.05,
-    height: Height / 1.3,
+    height: Height / 1.2,
     paddingHorizontal: '5%',
     paddingVertical: '9%',
     borderRadius: 20,
   },
   StatusContainer: {
-    paddingBottom: '5%',
     alignItems: 'center',
     paddingHorizontal: '6%',
+    marginVertical:'3%'
   },
   progressContainer: {
     height: 10,

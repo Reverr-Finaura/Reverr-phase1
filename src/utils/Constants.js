@@ -10,4 +10,5 @@ export const AppColors = {
   ActiveColor: '#0077B7',
   CardColor: '#393939',
   poupopbg: '#004971',
+  buttonColor:"#006DFF"
 };

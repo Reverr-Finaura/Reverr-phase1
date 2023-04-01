@@ -4,6 +4,14 @@ const styles = StyleSheet.create({
     screen: {
       flex: 1,
       backgroundColor: AppColors.primarycolor,
+     
+    },
+    heading: {
+      fontFamily:'Poppins-Bold',
+      color: AppColors.FontsColor,
+      textAlign: 'center',
+      fontSize: 29,
+      marginTop:'5%',
     },
     pageInfo: {
       marginTop: 60,

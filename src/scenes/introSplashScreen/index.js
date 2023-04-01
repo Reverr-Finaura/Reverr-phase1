@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
+import {View, Text, StyleSheet, Image, Dimensions, StatusBar} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {AppColors} from '../../utils';
 import {useNavigation} from '@react-navigation/native';
@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {setUser} from '../../Redux/actions';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import LinearGradient from 'react-native-linear-gradient';
 //import { AuthContext } from '../Navigations/AuthProvider';
 
 const Height = Dimensions.get('window').height;
@@ -75,7 +76,8 @@ const IntroSplash = () => {
   // }, 2000);
 
   return (
-    <View style={styles.Screen}>
+    <LinearGradient colors={['#070972', '#0C0C0D']} style={styles.Screen}>
+      <StatusBar backgroundColor={'#070972'} />
       <View style={styles.container}>
         <Image
           style={styles.Logo}
@@ -85,7 +87,7 @@ const IntroSplash = () => {
           <Text style={styles.logoText}>Reverr</Text>
         </View>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 
