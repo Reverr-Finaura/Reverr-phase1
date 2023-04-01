@@ -176,15 +176,34 @@ export const PersonalProfile = props => {
                   <Icon name="plus" size={25} color={AppColors.BtnClr} />
                 </ImageBackground>
               ) : (
-                <Image
+                <View style={{width: Width / 3,
+                height: Height / 5.42,
+                borderRadius:100,
+                overflow:'hidden'}}>
+                  <ImageBackground
                   style={{
                     width: Width / 3,
                     height: Height / 5.42,
-                    borderRadius: 100,
+                    borderRadius:100,
                     alignSelf: 'center',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    
                   }}
-                  source={{uri: profilePicLink}}
-                />
+                  source={{uri: profilePicLink}}>
+                  <Text
+                    style={{
+                      color: AppColors.FontsColor,
+                      fontSize: 17,
+                      textAlign: 'center',
+                      marginTop: '10%',
+                    }}>
+                    Change your photo
+                  </Text>
+                  <Icon name="plus" size={25} color={AppColors.BtnClr} />
+                </ImageBackground>
+                </View>
+                
               )}
             </TouchableOpacity>
             {profilepicError && (

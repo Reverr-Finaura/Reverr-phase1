@@ -11,3 +11,12 @@ const rootReducer = combineReducers({
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));
+
+
+// import {configureStore} from '@reduxjs/toolkit';
+// import AppReducer from './appSlice'
+// export const store = configureStore({
+//   reducer: {
+//    app:AppReducer
+//   },
+// });

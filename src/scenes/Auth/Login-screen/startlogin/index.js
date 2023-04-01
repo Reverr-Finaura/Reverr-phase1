@@ -37,7 +37,7 @@ const StartLogin = () => {
         Login via phone
       </Text>
     </TouchableOpacity>
-    <TouchableOpacity onPress={()=>navigation.navigate("LoginViaEmail")} activeOpacity={0.6} style={[styles.button,{borderWidth:2,borderColor:AppColors.BtnClr}]}>
+    <TouchableOpacity onPress={()=>navigation.navigate("viaEmail")} activeOpacity={0.6} style={[styles.button,{borderWidth:2,borderColor:AppColors.BtnClr}]}>
       <Image
         style={{marginHorizontal: '5%'}}
         source={require('../../../../assets/images/illustration/gmail.png')}

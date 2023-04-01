@@ -117,29 +117,52 @@ const SignupForm = props => {
     }
   
 
-  const EmailOtp = () => {
-    const OTP = Math.floor(Math.random() * 100000 + 1);
-    const msg = 'Your OTP for verification is ' + OTP;
-
-    var templateParams = {
-      name: data.Name,
-      email: data.Email,
-      subject: 'OTP for account verification',
-      message: msg,
+    const EmailOtp = () => {
+      const OTP = Math.floor(Math.random() * 90000) + 10000;
+      const msg = 'Your OTP for verification is ' + OTP;
+  
+      var templateParams = {
+        from_name: "Reverr",
+        to_name: data.Name,
+        to_email: data.Email,
+        otp:OTP,
+      };
+      emailjs.init('user_FR6AulWQMZry87FBzhKNu');
+      emailjs
+        .send('service_lfmmz8k', 'template_n3pcht5', templateParams)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      console.log(templateParams, 'send email');
+  
+      return OTP;
     };
-    emailjs.init('user_FR6AulWQMZry87FBzhKNu');
-    emailjs
-      .send('service_lfmmz8k', 'template_6lqwjap', templateParams)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-    console.log(templateParams, 'send email');
+  // const EmailOtp = () => {
+  //   const OTP = Math.floor(Math.random() * 100000 + 1);
+  //   const msg = 'Your OTP for verification is ' + OTP;
 
-    return OTP;
-  };
+  //   var templateParams = {
+  //     name: data.Name,
+  //     email: data.Email,
+  //     subject: 'OTP for account verification',
+  //     message: msg,
+  //   };
+  //   emailjs.init('user_FR6AulWQMZry87FBzhKNu');
+  //   emailjs
+  //     .send('service_lfmmz8k', 'template_6lqwjap', templateParams)
+  //     .then(res => {
+  //       console.log(res);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  //   console.log(templateParams, 'send email');
+
+  //   return OTP;
+  // };
   
   return (
     <View style={{flex: 1}}>

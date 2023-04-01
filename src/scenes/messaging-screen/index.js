@@ -28,7 +28,7 @@ export const Messages = () => {
   const [totalNetworkUser, setTotalNetworkUser] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  console.log("match=====", networks)
+  console.log("match=====", state.user)
 
   const getNetworksUsers = async () => {
     setLoading(true);
@@ -66,6 +66,8 @@ export const Messages = () => {
 
     console.log(totalNetworkUser, 'total');
   }, [networks, mentors]);
+
+ 
 
 
   return (
@@ -141,6 +143,7 @@ export const Messages = () => {
                   ? state.user.clients
                   : state.user.mentors
               }
+              loader={loading}
             />
           </View>
         )}
@@ -155,12 +158,12 @@ export const Messages = () => {
               />
             ) : (
               <Text style={{ color: 'grey', fontSize: 14, marginLeft: 50 }}>
-                Please Subscribe To Mentors for Guidence
+                Add Friends 
               </Text>
             )}
             {/* {loading == false ? ( */}
 
-            <ChatLayout usersArray={totalNetworkUser.filter(it => it.email != authentication().currentUser.email)} />
+            <ChatLayout loader={loading}  usersArray={totalNetworkUser.filter(it => it.email != authentication().currentUser.email)} />
             {/* ) : ( */}
             {/* <View
                 style={{

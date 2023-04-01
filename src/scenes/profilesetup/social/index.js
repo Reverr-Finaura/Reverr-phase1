@@ -74,6 +74,7 @@ const Social = (props) => {
         rating: 0,
         gender: "",
         dob: dob,
+        matched:[],
         state: "",
         country: "",
         totalRating: 0,
@@ -103,7 +104,7 @@ const Social = (props) => {
           .then(() => {
             dispatch(add_user(newData));
             setLoading(false);
-            navigation.replace('IndividualTab')
+            navigation.replace('MyDrawer')
           })
           .catch(e => {
             setLoading(false)

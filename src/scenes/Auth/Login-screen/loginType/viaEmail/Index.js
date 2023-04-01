@@ -40,7 +40,8 @@ const LoginViaEmail = () => {
   // console.log(test);
   const navigation = useNavigation()
   var dispatch = useDispatch();
-  const loginUser = async (email, password) => {
+  const loginUser = async (useremail, password) => {
+    const email = useremail.toLowerCase()
     var user_request_obj = {
       success: false,
       failiure: false,
@@ -49,7 +50,7 @@ const LoginViaEmail = () => {
     };
 
     try {
-      await auth().signInWithEmailAndPassword(email, password);
+      await auth().signInWithEmailAndPassword(email.toLowerCase(), password);
     } catch (e) {
       if (e.code === 'auth/wrong-password') {
        // alert('Wrong password try again!');
@@ -90,7 +91,7 @@ const LoginViaEmail = () => {
             if (response.success == true) {
               setUserLogedin(true);
               setLoading(false)
-              navigation.replace('IndividualTab');
+              navigation.replace('MyDrawer');
             } else if (response.failiure == true) {
               setUserLogedin(true);
               setLoading(false)
@@ -98,9 +99,12 @@ const LoginViaEmail = () => {
               //navigation.replace('Login')
             }
           } else {
+            setLoading(false)
             alert('User Not Register');
+            
           }
         } else {
+          setLoading(false)
           alert('User not Register');
         }
       });

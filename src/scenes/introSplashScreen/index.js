@@ -34,6 +34,8 @@ const IntroSplash = () => {
     //if(subscriber){
     setTimeout(() => {
       auth().onAuthStateChanged(async user => {
+
+        console.log(user,"usegsg");
         if (!user) {
           return navigation.replace('Login');
         } else {
@@ -45,10 +47,10 @@ const IntroSplash = () => {
               console.log(inst);
               dispatch(setUser(inst._data));
               if (inst?._data?.userType == 'Mentor') {
-                return navigation.replace('MentorBottomTab');
+                return navigation.replace('MentorBottomTab'); //navigation.replace('MyDrawer');
               } else {
                 //console.log(inst._data)
-                return navigation.replace('IndividualTab');
+                return navigation.replace('IndividualTab'); //navigation.replace('MyDrawer');
               }
             });
         }

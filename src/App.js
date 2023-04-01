@@ -17,6 +17,7 @@ import {StatusBar} from 'react-native';
 import {AppLayout} from './layouts';
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import { AppColors } from './utils';
+//import Route from './routes/MainRoute';
 
 const theme = {
   ...DefaultTheme,
@@ -52,6 +53,11 @@ export default function App() {
         </PaperProvider>
       </Provider>
     </AppLayout>
+
+    // <Provider store={store}>
+    //   <StatusBar backgroundColor={"#1B1D8B"} />
+    //   <Route/>
+    // </Provider>
   );
 }
 
