@@ -301,7 +301,7 @@ const Vibe = () => {
         .collection('Users')
         .doc(state.user.email)
         .update({
-          likedDislike: firestore.FieldValue.arrayUnion(Liked_Email),
+          liked: firestore.FieldValue.arrayUnion(Liked_Email),
 
         });
 
@@ -576,51 +576,61 @@ const Vibe = () => {
 
         Intialquery.get().then(snapshot => {
           // like
-          let tempList = state.user.likedDislike.map(item => item);
-          let result = snapshot.docs.filter(item =>
-            (!tempList.includes(item.data().email))
-            // console.log("--------1222", item)
-          )
+          // let tempList = state.user.likedDislike.map(item => item);
+          // let result = snapshot.docs.filter(item =>
+          //   (!tempList.includes(item.data().email))
+          //   // console.log("--------1222", item)
+          // )
 
           // dislike
           // let tempList2 = state.user.dislike.map(item => item);
           // let result2 = result.filter(item =>
           //   (!tempList2.includes(item.data().email))
           // )
-          result.map((i, index) => {
-            console.log(index + 1, "ifrer part", i.data().email)
-          })
-          console.log(result.length, '--------------------', snapshot.docs.length);
+          // result.map((i, index) => {
+          //   console.log(index + 1, "ifrer part", i.data().email)
+          // })
+          // console.log(result.length, '--------------------', snapshot.docs.length);
 
           // Intialquery.onSnapshot(snapshot => {
           // console.log('value of snap', snapshot.docs.length);
-          // setcards(
-          //   result.docs
-          //     // .filter(doc => doc.id !== state.user.email)
-          //     .map(doc => ({
-          //       id: doc.id,
-          //       ...doc.data(),
-          //     })),
-          // );
-          setcards(
-            result
+
+
+          // let resultss = results.filter(o1 => !reject.some(o2 => o1.email === o2));
+
+          if (state.user.liked != undefined) {
+            let result = snapshot.docs.filter(o1 => !state.user.liked.some(o2 => o1.email === o2));
+            console.log("🚀 ~ file: index.js:603 ~ Intialquery.get ~ result:", result.length)
+
+            setcards(
+              result
+                .map(doc => ({
+                  id: doc.id,
+                  ...doc.data(),
+                })),
+            );
+            setFilteringData(result
+              .map(doc => ({
+                id: doc.id,
+                ...doc.data(),
+              })),)
+          } else {
+            setcards(
+              snapshot.docs
+                // .filter(doc => doc.id !== state.user.email)
+                .map(doc => ({
+                  id: doc.id,
+                  ...doc.data(),
+                })),
+            );
+
+            setFilteringData(snapshot.docs
               // .filter(doc => doc.id !== state.user.email)
               .map(doc => ({
                 id: doc.id,
                 ...doc.data(),
-              })),
-          );
-          setFilteringData(result
-            .map(doc => ({
-              id: doc.id,
-              ...doc.data(),
-            })),)
-          // setFilteringData(snapshot.docs
-          //   // .filter(doc => doc.id !== state.user.email)
-          //   .map(doc => ({
-          //     id: doc.id,
-          //     ...doc.data(),
-          //   })),)
+              })),)
+          }
           setshowCards(true);
         });
         // }
