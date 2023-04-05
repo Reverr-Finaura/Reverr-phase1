@@ -22,6 +22,7 @@ const Height = Dimensions.get('window').height;
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import {pin_post, pushComment, deleteComment} from '../../Redux/actions';
 import {GiftedChat, Send} from 'react-native-gifted-chat';
+import LinearGradient from 'react-native-linear-gradient';
 const CommentsScreen = props => {
   //const postData = props?.route?.params?.postData;
   const state = useSelector(state => state.UserReducer);
@@ -74,8 +75,8 @@ const CommentsScreen = props => {
   const renderCard = ({item}) => {
     return (
       <View style={[styles.commentCard, {position: 'relative'}]}>
-        <Text>bfghfg{item.commentid}</Text>
-        {item.commentid == selectedOption && (
+        {/* <Text>{item.commentid}</Text> */}
+        {item.commentid === selectedOption && (
           <OptionsPopup
             modalVisible={options}
             setModalVisible={() => setOptions(false)}>
@@ -150,9 +151,11 @@ const CommentsScreen = props => {
           }}>
           {item.commentedby.designation || state.user.designation}
         </Text>
+        <TouchableOpacity onLongPress={()=>setSelectedOption(item.commentid)} style={{paddingVertical:'3%'}}>
         <Text style={{color: '#fff', fontFamily: 'Poppins-Regular'}}>
           {item.comment}
         </Text>
+        </TouchableOpacity>
       </View>
     );
   };
@@ -183,8 +186,8 @@ const CommentsScreen = props => {
     setRefresh(true);
   };
   return (
-    <View style={styles.screen}>
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+    <LinearGradient colors={['#070972', '#0C0C0D']} style={styles.screen}>
+       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <BackButton
           IconSize={30}
           onPress={() => {
@@ -243,7 +246,7 @@ const CommentsScreen = props => {
           );
         }}
       />
-    </View>
+    </LinearGradient>
   );
 };
 const styles = StyleSheet.create({

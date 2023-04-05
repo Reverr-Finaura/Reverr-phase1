@@ -76,7 +76,7 @@ const CreatePost = props => {
     navigation.goBack();
   };
   return (
-    <View style={styles.screen}>
+    <LinearGradient colors={['#070972', '#0C0C0D']} style={styles.screen}>
       <View style={styles.header}>
         <TouchableOpacity
           onPress={() => {
@@ -233,7 +233,7 @@ const CreatePost = props => {
           </TouchableOpacity>
         </LinearGradient>
       </BottomPopup>
-    </View>
+    </LinearGradient>
   );
 };
 const styles = StyleSheet.create({

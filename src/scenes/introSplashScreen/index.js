@@ -7,6 +7,7 @@ import {setUser} from '../../Redux/actions';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import LinearGradient from 'react-native-linear-gradient';
+import { setUserDetails } from '../../Redux/appSlice';
 //import { AuthContext } from '../Navigations/AuthProvider';
 
 const Height = Dimensions.get('window').height;
@@ -16,7 +17,6 @@ const IntroSplash = () => {
   const navigation = useNavigation();
   //const [user, setUser] = useState(AuthContext);
   const [initializing, setInitializing] = useState(true);
-
   const state = useSelector(state => state.UserReducer);
   const [user, setuser] = useState();
   const dispatch = useDispatch();
@@ -34,23 +34,22 @@ const IntroSplash = () => {
     //if(subscriber){
     setTimeout(() => {
       auth().onAuthStateChanged(async user => {
-
-        console.log(user,"usegsg");
+       /// console.log(user,"usegsg");
         if (!user) {
-          return navigation.replace('Login');
+          return navigation.replace('login');
         } else {
           await firestore()
             .collection('Users')
             .doc(user.email)
             .get()
             .then(inst => {
-              console.log(inst);
+              //console.log(inst);
               dispatch(setUser(inst._data));
               if (inst?._data?.userType == 'Mentor') {
-                return navigation.replace('MentorBottomTab'); //navigation.replace('MyDrawer');
+                return navigation.replace('MyDrawer');
               } else {
                 //console.log(inst._data)
-                return navigation.replace('IndividualTab'); //navigation.replace('MyDrawer');
+                return navigation.replace('MyDrawer');
               }
             });
         }

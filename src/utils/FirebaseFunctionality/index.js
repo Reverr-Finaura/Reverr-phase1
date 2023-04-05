@@ -287,7 +287,7 @@ export const ReciveMessage = async (currentcUser, sendTo, setmsg) => {
 export const getPost = async () => {
   let postdata = '';
   let t = await firestore().collection('Posts').get();
-
+  console.log(t,"kdjksdsiodo");
   return t._docs;
 };
 
@@ -434,5 +434,23 @@ export const ApprovedReq = async (
         });
     });
 };
+
+export const fetchInitialData = async ({setData,setIsLoading})  =>  {
+  setIsLoading(true);
+  const querySnapshot = await firestore().collection('Posts').limit(10).get();
+  const d = querySnapshot.docs.map((doc) => ({...doc.data() }));
+  setData(d);
+  setIsLoading(false);
+};
+
+export const fetchMoreData = async ({setData,setIsLoading}) =>  {
+  setIsLoading(true);
+  const lastItem = data[data.length - 1];
+  const querySnapshot = await firestore().collection('Posts').startAfter(lastItem).limit(10).get();
+  const newData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  setData([...data, ...newData]);
+  setIsLoading(false);
+};
+
 
 export {loginUser};

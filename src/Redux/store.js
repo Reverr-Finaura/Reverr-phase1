@@ -13,10 +13,16 @@ const rootReducer = combineReducers({
 export const store = createStore(rootReducer, applyMiddleware(thunk));
 
 
-// import {configureStore} from '@reduxjs/toolkit';
+// import {configureStore,createImmutableStateInvariantMiddleware,
+// } from '@reduxjs/toolkit';
 // import AppReducer from './appSlice'
+
+// const immutableInvariantMiddleware = createImmutableStateInvariantMiddleware({
+//   ignoredPaths: ['ignoredPath', 'ignoredNested.one', 'ignoredNested.two'],
+// })
 // export const store = configureStore({
 //   reducer: {
 //    app:AppReducer
 //   },
+//   middleware: [immutableInvariantMiddleware],
 // });
