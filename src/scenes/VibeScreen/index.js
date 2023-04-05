@@ -207,10 +207,6 @@ const Vibe = () => {
     const [filteringData, setFilteringData] = useState([])
     // console.log("🚀 ~ file: index.js:2476 ~ Vibes ~ filteringData:",JSON.stringify (filteringData))
 
-
-
-
-
     const filterData = () => {
       if (filters.hareFor.length > 0 || filters.howMeet.length > 0 || filters.yearsExperience.length > 0) {
         let res = cards.filter((val) => {
@@ -265,7 +261,7 @@ const Vibe = () => {
       HandleOnSwiped(CurrentIndex)
       if (!cards[cardindex]) return;
       const LeftSwiped = cards[CurrentIndex];
-      console.log("🚀 ~ file: index.js:2543 ~ swipeLeft ~ LeftSwiped:", LeftSwiped)
+      // console.log("🚀 ~ file: index.js:2543 ~ swipeLeft ~ LeftSwiped:", LeftSwiped)
       // console.log('Left detail', LeftSwiped.id);
       firestore()
         .collection('Users')
@@ -282,7 +278,7 @@ const Vibe = () => {
     };
 
     const swipeRight = async CurrentIndex => {
-      console.log("===>", CurrentIndex)
+      // console.log("===>", CurrentIndex)
 
       setCount(count + 1)
 
@@ -290,7 +286,7 @@ const Vibe = () => {
       // var currCard = cards[idx];
 
       const data = cards[CurrentIndex];
-      console.log('right datta', data);
+      // console.log('right datta', data);
 
 
       // dispatch(RemoveTopCard());
@@ -301,6 +297,14 @@ const Vibe = () => {
       var My_Email = state.user.email;
       var Liked_People = data.liked_people;
 
+      await firestore()
+        .collection('Users')
+        .doc(state.user.email)
+        .update({
+          liked: firestore.FieldValue.arrayUnion(Liked_Email),
+
+        });
+
       if (Liked_People) {
         var check = Liked_People.includes(My_Email);
         if (check) {
@@ -309,6 +313,7 @@ const Vibe = () => {
             .doc(state.user.email)
             .update({
               Matched_People: firestore.FieldValue.arrayUnion(Liked_Email),
+
             });
           // action dispacthed to store matchedpeople
           dispatch(matchedpeople(Liked_Email));
@@ -345,7 +350,7 @@ const Vibe = () => {
       }
     };
     const superLikeCenter = async CurrentIndex => {
-      console.log("===>", CurrentIndex)
+      // console.log("===>", CurrentIndex)
 
       setCount(count + 1)
 
@@ -353,7 +358,7 @@ const Vibe = () => {
       // var currCard = cards[idx];
 
       const data = cards[CurrentIndex];
-      console.log('right datta', data);
+      // console.log('right datta', data);
 
 
       // dispatch(RemoveTopCard());
@@ -444,11 +449,11 @@ const Vibe = () => {
           if (doc.data().Vibe_Data) {
             // console.log('Document vibe data:', doc.data().Vibe_Data);
             setshowCards(true);
-            console.log('yoooi');
+            // console.log('yoooi');
           } else {
             // doc.data() will be undefined in this case
             setshowCards(false);
-            console.log('No such document!');
+            // console.log('No such document!');
             navigation.navigate('VibeBoarding');
           }
         })
@@ -502,12 +507,12 @@ const Vibe = () => {
           const NewExpiredTime = NewExpiredDate.getTime();
 
           if (NewExpiredTime <= state.user.CardsUpdatedTime) {
-            console.log('hello');
+            // console.log('hello');
             settoshowtimer(true);
           }
         }
         // CheckIfBoarding();
-        console.log('after boarding');
+        // console.log('after boarding');
 
         await firestore()
           .collection('Users')
@@ -520,7 +525,7 @@ const Vibe = () => {
               // console.log('yoooi', showCards);
             }
           });
-        console.log('noo');
+        // console.log('noo');
         // const TotalSwipe = state.user.Number_Of_Swips_Done;
         const LastEmailSwipe = state.user.Last_Card_Email_Swiped;
         // const To_Show_Vibe_Screen = No_Of_Swipes.data().Vibe;
@@ -541,10 +546,19 @@ const Vibe = () => {
             ),
           );
         // console.log('what is passed data', passeduserdata);
+        // alert(passeduserdata)
 
         const passeduserids =
           passeduserdata.length > 0 ? passeduserdata : ['test'];
         // console.log('what is passed user ids', passeduserids);
+
+        let tempList = passeduserids.map(item => item.email);
+
+        let result = cards.filter(item => (tempList.includes(item.email)))
+        console.log("result", result)
+        // alert(result)
+
+
         {
           if (passeduserids.length >= 10) {
             passeduserids.splice(0, 3);
@@ -553,30 +567,70 @@ const Vibe = () => {
         // console.log('what is passed user after ids', passeduserids);
         // const data=["rgupta.success@gmail.com",'kunnugarg2@gmail.com','kohlibhavya18@gmail.com','19103098@mail.jiit.ac.in']
         // if (TotalSwipe == 0) {
-        console.log('heree at 0');
+        // console.log('heree at 0');
         let Intialquery = await firestore()
           .collection('Users')
 
           .where('email', 'not-in', [...passeduserids]);
 
+
         Intialquery.get().then(snapshot => {
+          // like
+          // let tempList = state.user.likedDislike.map(item => item);
+          // let result = snapshot.docs.filter(item =>
+          //   (!tempList.includes(item.data().email))
+          //   // console.log("--------1222", item)
+          // )
+
+          // dislike
+          // let tempList2 = state.user.dislike.map(item => item);
+          // let result2 = result.filter(item =>
+          //   (!tempList2.includes(item.data().email))
+          // )
+          // result.map((i, index) => {
+          //   console.log(index + 1, "ifrer part", i.data().email)
+          // })
+          // console.log(result.length, '--------------------', snapshot.docs.length);
 
           // Intialquery.onSnapshot(snapshot => {
           // console.log('value of snap', snapshot.docs.length);
-          setcards(
-            snapshot.docs
+
+
+          // let resultss = results.filter(o1 => !reject.some(o2 => o1.email === o2));
+
+          if (state.user.liked != undefined) {
+            let result = snapshot.docs.filter(o1 => !state.user.liked.some(o2 => o1.email === o2));
+            console.log("🚀 ~ file: index.js:603 ~ Intialquery.get ~ result:", result.length)
+
+            setcards(
+              result
+                .map(doc => ({
+                  id: doc.id,
+                  ...doc.data(),
+                })),
+            );
+            setFilteringData(result
+              .map(doc => ({
+                id: doc.id,
+                ...doc.data(),
+              })),)
+          } else {
+            setcards(
+              snapshot.docs
+                // .filter(doc => doc.id !== state.user.email)
+                .map(doc => ({
+                  id: doc.id,
+                  ...doc.data(),
+                })),
+            );
+
+            setFilteringData(snapshot.docs
               // .filter(doc => doc.id !== state.user.email)
               .map(doc => ({
                 id: doc.id,
                 ...doc.data(),
-              })),
-          );
-          setFilteringData(snapshot.docs
-            // .filter(doc => doc.id !== state.user.email)
-            .map(doc => ({
-              id: doc.id,
-              ...doc.data(),
-            })),)
+              })),)
+          }
           setshowCards(true);
         });
         // }
@@ -629,7 +683,7 @@ const Vibe = () => {
     useEffect(() => {
       // console.log('card ind q', cardindex);
 
-      if (cardindex >= 5) {
+      if (cardindex >= 10) {
         if (hasPremiumOfVibe === true) {
           return;
         }
@@ -677,7 +731,7 @@ const Vibe = () => {
         // }, ToChecKAfter);
       }
     }, [cardindex]);
-    console.log('card index changing', loading);
+    // console.log('card index changing', loading);
     // console.log(showCards);/
     // console.log(cards);
     return (
@@ -721,8 +775,11 @@ const Vibe = () => {
                   showsHorizontalScrollIndicator={false}
                   contentContainerStyle={{ justifyContent: 'center', flexGrow: 1 }}
                   renderItem={({ item, index }) => {
-                    const a = item.name == undefined ? "NA" : item.name
-                    console.log("lllllllllll", item.userType)
+                    // if (item.) {
+
+                    // }
+                    // console.log("1234", item)
+                    // console.log("lllllllllll", item.userType)
                     if (cardindex == index) {
 
                       return (
@@ -749,8 +806,6 @@ const Vibe = () => {
                                     />
                                   )}
                                 </View>
-
-
                                 <View
                                   style={styles.viewText}>
                                   <Text
@@ -768,19 +823,11 @@ const Vibe = () => {
                                 </View>
 
                                 <View>
-                                  <TouchableOpacity
-                                    onPress={() => {
-                                      navigation.navigate('MatchScreen', {
-                                        data,
-                                      }
-                                      )
-                                    }
-                                    }>
-                                    <Text
-                                      style={styles.about}>
-                                      About Me
-                                    </Text>
-                                  </TouchableOpacity>
+                                  <Text
+                                    style={styles.about}>
+                                    About Me
+                                  </Text>
+
                                   <Text
                                     style={styles.detial}
                                     numberOfLines={2}>
@@ -867,7 +914,7 @@ const Vibe = () => {
                                                 style={styles.viewVibe}>
                                                 {item.Vibe_Data != undefined && item?.Vibe_Data?.Here_for?.map(
                                                   Here_for => {
-                                                    console.log(">>>>>>>>", Here_for);
+                                                    // console.log(">>>>>>>>", Here_for);
                                                     return (
                                                       <TouchableOpacity
                                                         onPress={data =>
