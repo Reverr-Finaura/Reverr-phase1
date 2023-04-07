@@ -24,72 +24,72 @@ export const mentorCategory = [
 
 export const mentorsCategory = [
   {
-    title: 'Business',
-    image: Theme.business
+    title: 'Branding and Public Relations',
+    image: Theme.branding,
   },
   {
-    title: 'Branding',
-    image: Theme.branding
+    title: 'Strategy and Business Development',
+    image: Theme.business,
   },
   {
-    title: 'Accounting',
-    image: Theme.accounting
+    title: 'Business Transformation',
+    image: Theme.business,
   },
   {
-    title: 'Finance',
-    image: Theme.finance
+    title: 'Career Advice and Self-Mastery',
+    image: Theme.finance,
   },
   {
-    title: 'Marketing',
-    image: Theme.marketing
+    title: 'Culture',
+    image: Theme.sales,
+  },
+  {
+    title: 'Data Science and Analysis',
+    image: Theme.branding,
+  },
+  {
+    title: 'Finance and Accounting',
+    image: Theme.accounting,
+  },
+  /* {
+    title: 'Human Resources and Recruiting',
+    image: require('../assets/images/mentorsCategoryImages/Branding_and_PR.jpeg'),
+  }, */
+  {
+    title: 'Leadership and Management',
+    image: Theme.sales,
+  },
+  {
+    title: 'Legal, Risk Management and Compliance',
+    image: Theme.finance,
+  },
+
+  {
+    title: 'Product Management',
+    image: Theme.marketing,
   },
   {
     title: 'Sales',
-    image: Theme.sales
+    image: Theme.finance,
   },
-  // {
-  //   title: 'Finance and Accounting',
-  //   image: require('../assets/images/mentorsCategoryImages/Finance_and_Accounting.jpeg'),
-  // },
-  // /* {
-  //   title: 'Human Resources and Recruiting',
-  //   image: require('../assets/images/mentorsCategoryImages/Branding_and_PR.jpeg'),
-  // }, */
-  // {
-  //   title: 'Leadership and Management',
-  //   image: require('../assets/images/mentorsCategoryImages/Leadership.jpeg'),
-  // },
-  // {
-  //   title: 'Legal, Risk Management and Compliance',
-  //   image: require('../assets/images/mentorsCategoryImages/Legal.jpeg'),
-  // },
-
-  // {
-  //   title: 'Product Management',
-  //   image: require('../assets/images/mentorsCategoryImages/Product_management.png'),
-  // },
-  // {
-  //   title: 'Sales',
-  //   image: require('../assets/images/mentorsCategoryImages/sales.jpeg'),
-  // },
-  // {
-  //   title: 'Social Entrepreneurship and Charity',
-  //   image: require('../assets/images/mentorsCategoryImages/social_entrepreneurship_and_charity.jpeg'),
-  // },
-  // {
-  //   title: 'Start-up: Founding and Fundraising',
-  //   image: require('../assets/images/mentorsCategoryImages/Startup_Funding_and_Founding.png'),
-  // },
-  // {
-  //   title: 'Sustainability',
-  //   image: require('../assets/images/mentorsCategoryImages/Sustainability.jpeg'),
-  // },
-  // {
-  //   title: 'Team Structure and Work Methodologies',
-  //   image: require('../assets/images/mentorsCategoryImages/Team_structure.jpeg'),
-  // },
-  // {
-  //   title: 'UX, Design and User Research',
-  //   image: require('../assets/images/mentorsCategoryImages/UIUX.png'),
-  // },
+  {
+    title: 'Social Entrepreneurship and Charity',
+    image: Theme.marketing,
+  },
+  {
+    title: 'Start-up: Founding and Fundraising',
+    image: Theme.accounting,
+  },
+  {
+    title: 'Sustainability',
+    image: Theme.finance,
+  },
+  {
+    title: 'Team Structure and Work Methodologies',
+    image: Theme.business,
+  },
+  {
+    title: 'UX, Design and User Research',
+    image: Theme.finance,
+  },
 ];

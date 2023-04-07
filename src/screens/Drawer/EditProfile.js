@@ -1,20 +1,17 @@
-import React from "react";
-import { 
-    View,
-    Text,
-    StyleSheet
-} from "react-native";
+import React from 'react';
+import {View, Text, StyleSheet} from 'react-native';
 
-function EditProfile({navigation}){
-    return(
+function EditUserProfile() {
+  return (
     <View style={styles.container}>
-        <Text>EditProfile</Text>
+      <EditUserProfile />
     </View>
-    )}
-export default EditProfile;
+  );
+}
+export default EditUserProfile;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    }
+  container: {
+    flex: 1,
+  },
 });

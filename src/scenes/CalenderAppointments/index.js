@@ -22,6 +22,7 @@ import {Button} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import axios from 'axios';
 import RNPgReactNativeSDK from 'react-native-pg-react-native-sdk';
+import Theme from '../../utils/Theme';
 
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
@@ -68,7 +69,10 @@ var fulldayarr = [
 var dayarr = ['S', 'M', 'T', 'W', 'Th', 'F', 'Sa'];
 
 const CalanderAppointments = props => {
-  console.log("props.route.params.mentor.plans[0]/2)*0.9",(props.route.params.mentor.plans[0]/2)*0.9)
+  console.log(
+    'props.route.params.mentor.plans[0]/2)*0.9',
+    (props.route.params.mentor.plans[0] / 2) * 0.9,
+  );
   //const dates = props.route.params.dates;
   const [selectedDate, setSelectedDate] = useState(-1);
   const [selectedTime1, setSelectedTime1] = useState(-1);
@@ -76,7 +80,7 @@ const CalanderAppointments = props => {
   const [selectedTime3, setSelectedTime3] = useState(-1);
   //const {state, dispatch} = useContext(UserContext);
   const state = useSelector(state => state.UserReducer);
-  
+
   const [availability, setAvailability] = useState([0, 1, 1, 1, 1, 1, 1]);
   const [pointDay, setPointDay] = useState(0);
   const [count, setCount] = useState(0);
@@ -108,14 +112,14 @@ const CalanderAppointments = props => {
     } else {
       if (amt < 751) {
         amt = 750;
-      } else{
-        if(amt<1001){
-          amt=1000
-        }else{
-          if(amt<1501){
-            amt=1500
-          }else {
-            amt = amt+50;
+      } else {
+        if (amt < 1001) {
+          amt = 1000;
+        } else {
+          if (amt < 1501) {
+            amt = 1500;
+          } else {
+            amt = amt + 50;
           }
         }
       }
@@ -160,7 +164,7 @@ const CalanderAppointments = props => {
       orderNote: ' ',
       notifyUrl: 'https://test.gocashfree.com/notify',
       customerName: state.user.name,
-      customerPhone: state.user.mobile?state.user.mobile:state.user.phone,
+      customerPhone: state.user.mobile ? state.user.mobile : state.user.phone,
       customerEmail: state.user.email,
     };
     console.log(map);
@@ -211,38 +215,38 @@ const CalanderAppointments = props => {
 
     if (res.txStatus == 'SUCCESS') {
       //INITIATE SPLIT PAYMENT
-      initiateSplitPayment(res).then(()=>{
-      firestore()
-        .collection('Users')
-        .doc(props.route.params.mentor.email)
-        .update({
-          orders: firestore.FieldValue.arrayUnion(id),
-        })
-        .then(() => {
-          firestore()
-            .collection('Users')
-            .doc(props.route.params.mentor.email)
-            .update({
-              clients: firestore.FieldValue.arrayUnion(state.user.email),
-            })
-            .then(() => {
-              firestore()
-                .collection('Users')
-                .doc(state.user.email)
-                .update({
-                  mentors: firestore.FieldValue.arrayUnion(
-                    props.route.params.mentor.email,
-                  ),
-                })
-                .then(() => {
-                  console.log('All Information stored');
-                });
-            });
-        });
-      //<--- add id to mentor's orders array --->
-      //<--- add user's email to mentor's client --->
-      //<--- add mentor's email to user's mentor's --->
-    })
+      initiateSplitPayment(res).then(() => {
+        firestore()
+          .collection('Users')
+          .doc(props.route.params.mentor.email)
+          .update({
+            orders: firestore.FieldValue.arrayUnion(id),
+          })
+          .then(() => {
+            firestore()
+              .collection('Users')
+              .doc(props.route.params.mentor.email)
+              .update({
+                clients: firestore.FieldValue.arrayUnion(state.user.email),
+              })
+              .then(() => {
+                firestore()
+                  .collection('Users')
+                  .doc(state.user.email)
+                  .update({
+                    mentors: firestore.FieldValue.arrayUnion(
+                      props.route.params.mentor.email,
+                    ),
+                  })
+                  .then(() => {
+                    console.log('All Information stored');
+                  });
+              });
+          });
+        //<--- add id to mentor's orders array --->
+        //<--- add user's email to mentor's client --->
+        //<--- add mentor's email to user's mentor's --->
+      });
     } else {
       // console.log('payment:' + id);
       Alert.alert('Payment failed!', 'try again ' + id, [
@@ -252,28 +256,38 @@ const CalanderAppointments = props => {
     }
   };
 
-// INITIATE SPLIT PAYMENT
-const initiateSplitPayment=async(payment)=>{
-  const headers = {
-    'Content-Type': 'application/json',
-    "X-Client-Id":"21235619dae90a7c71fa82b24c653212",
-    "X-Client-Secret":"b3fcd2aee2a93a9d7efedcd88936046a43506c5c",
-  };
+  // INITIATE SPLIT PAYMENT
+  const initiateSplitPayment = async payment => {
+    const headers = {
+      'Content-Type': 'application/json',
+      'X-Client-Id': '21235619dae90a7c71fa82b24c653212',
+      'X-Client-Secret': 'b3fcd2aee2a93a9d7efedcd88936046a43506c5c',
+    };
 
-  const data=
-    {
-      "split": [
+    const data = {
+      split: [
         {
-              "vendorId":  props.route.params.mentor.mentorUniqueID,
-              "amount": (props.route.params.mentor.plans[0]/2)*0.9,
-              "percentage": null
-          }
+          vendorId: props.route.params.mentor.mentorUniqueID,
+          amount: (props.route.params.mentor.plans[0] / 2) * 0.9,
+          percentage: null,
+        },
       ],
-      "splitType": "ORDER_AMOUNT"
-  }
-  
-  await axios.post(`https://api.cashfree.com/api/v2/easy-split/orders/${payment.orderId}/split`,data,{headers: headers}).then((res)=>{console.log("sucess split",res.data)}).catch((err)=>{console.log("Failure Split",err.message)})
-}
+      splitType: 'ORDER_AMOUNT',
+    };
+
+    await axios
+      .post(
+        `https://api.cashfree.com/api/v2/easy-split/orders/${payment.orderId}/split`,
+        data,
+        {headers: headers},
+      )
+      .then(res => {
+        console.log('sucess split', res.data);
+      })
+      .catch(err => {
+        console.log('Failure Split', err.message);
+      });
+  };
 
   var dt = new Date();
   var today = dt.getDate();
@@ -382,7 +396,9 @@ const initiateSplitPayment=async(payment)=>{
     // .then(()=>console.log("added event"))
   };
   return (
-    <View style={styles.screen}>
+    <LinearGradient
+      colors={['#1B1D8B', Theme.backgroundColor]}
+      style={styles.screen}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <BackButton
           IconSize={30}
@@ -957,7 +973,7 @@ const initiateSplitPayment=async(payment)=>{
           </View>
         </Modal>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 const styles = StyleSheet.create({

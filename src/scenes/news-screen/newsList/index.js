@@ -19,7 +19,7 @@ const Height = Dimensions.get('window').height;
 
 const NewsList = () => {
   const [newsData, setNewsData] = useState();
-  const [clmn, setClmn] = useState(3);
+  const [clmn, setClmn] = useState(2);
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
 
@@ -46,7 +46,7 @@ const NewsList = () => {
   }
   useEffect(() => {
     getNews();
-    console.log(newsData, 'newsData');
+    console.log(newsData?.length, 'newsData');
   }, []);
 
   return (
@@ -60,7 +60,6 @@ const NewsList = () => {
           }}>
           <FlatList
             data={newsData}
-            nestedScrollEnabled={true}
             numColumns={clmn}
             renderItem={({item}) => {
               if (item.image) {
@@ -82,7 +81,7 @@ const NewsList = () => {
                             color: AppColors.FontsColor,
                             fontFamily: 'Poppins-Regular',
                           }}>
-                          {smallString(item.name, 60)}
+                          {smallString(item.name, 30)}
                         </Text>
                       </View>
                     </ImageBackground>
@@ -91,6 +90,7 @@ const NewsList = () => {
               }
             }}
           />
+          <View style={{height: 150}} />
         </View>
       )}
     </View>
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     marginTop: '3%',
   },
   NewsContainer: {
-    width: '47%',
+    width: '48%',
     height: 200,
     borderRadius: 10,
     overflow: 'hidden',

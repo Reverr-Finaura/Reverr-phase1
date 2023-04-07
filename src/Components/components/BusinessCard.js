@@ -11,7 +11,10 @@ function BusinessCard({fulldetails, key}) {
   const navigation = useNavigation();
 
   return (
-    <LinearGradient colors={['#030F2D', '#0A255F']} style={styles.container}>
+    <LinearGradient
+      key={key}
+      colors={['#030F2D', '#0A255F']}
+      style={styles.container}>
       <View style={styles.halfWrapper}>
         <Image
           source={{uri: fulldetails?.image}}
@@ -30,15 +33,15 @@ function BusinessCard({fulldetails, key}) {
       <View style={styles.halfWrapper2}>
         <Text style={styles.title}>{fulldetails?.industry}</Text>
         <View style={{paddingVertical: 10}}>
-          <BulletPoint title={"feature1"} />
-          <BulletPoint title={"feature2"} />
+          <BulletPoint title={'feature1'} />
+          <BulletPoint title={'feature2'} />
         </View>
-        <Text style={[styles.subtitle, {marginBottom: 15}]}>
-          00:00:00
-        </Text>
+        <Text style={[styles.subtitle, {marginBottom: 15}]}>00:00:00</Text>
 
         <ButtonStroke
-          handlePress={() => navigation.navigate('ScheduleSession',{details:fulldetails})}
+          handlePress={() =>
+            navigation.navigate('ScheduleSession', {details: fulldetails})
+          }
           haveicon={true}
           label={'Schedule Session'}
         />

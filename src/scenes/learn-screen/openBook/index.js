@@ -11,13 +11,15 @@ import React, {useRef, useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {BackButton} from '../../../Components';
 import {AppColors} from '../../../utils';
+import LinearGradient from 'react-native-linear-gradient';
+import Theme from '../../../utils/Theme';
 // import { black } from 'react-native-paper/lib/typescript/styles/colors';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
 const OpenBook = props => {
-  const bookData =  props.route.params.BookData;
+  const bookData = props.route.params.BookData;
   const moduleNumber = props.route.params.moduleNumber;
   const pagesRef = useRef();
   const [currIndex, setCurrIndex] = useState(0);
@@ -29,7 +31,7 @@ const OpenBook = props => {
   const [dcolor, setdcolor] = useState('white');
 
   const checkans = idx => {
-    console.log(idx,"sdhsjhdjh");
+    console.log(idx, 'sdhsjhdjh');
     if (idx == 0)
       bookData[currIndex].ans == 0 ? setacolor('green') : setacolor('red');
     if (idx == 1)
@@ -118,7 +120,7 @@ const OpenBook = props => {
           height: '90%',
           width: '100%',
           backgroundColor: '#672DE1',
-          borderRadius:20
+          borderRadius: 20,
         }}>
         <View
           style={{
@@ -191,7 +193,7 @@ const OpenBook = props => {
                 borderRadius: 10,
                 marginVertical: '3%',
                 paddingHorizontal: '5%',
-                zIndex:50,
+                zIndex: 50,
                 paddingVertical: '5%',
               }}>
               <Text style={{color: AppColors.FontsColor, textAlign: 'left'}}>
@@ -267,16 +269,29 @@ const OpenBook = props => {
           {item.text}
         </Text>
         <View style={{marginTop: '3%'}}>
-          <Text style={{color:AppColors.primarycolor,fontWeight:'bold',marginBottom:'3%'}}>Ask :</Text>
+          <Text
+            style={{
+              color: AppColors.primarycolor,
+              fontWeight: 'bold',
+              marginBottom: '3%',
+            }}>
+            Ask :
+          </Text>
           {item.points?.map((pt, index) => (
-            <View key={index} style={{flexDirection: 'row', alignItems: 'center',paddingRight:'4%'}}>
+            <View
+              key={index}
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                paddingRight: '4%',
+              }}>
               <View
                 style={{
                   width: 5,
                   height: 5,
                   backgroundColor: AppColors.primarycolor,
                   borderRadius: 10,
-                  marginHorizontal:'3%'
+                  marginHorizontal: '3%',
                 }}
               />
               <Text
@@ -287,27 +302,61 @@ const OpenBook = props => {
           ))}
         </View>
 
-        {item.image!=""&&<Image
-          source={{uri: item.image}}
-          style={{
-            width: Width / 2.5,
-            height: Height / 3.5,
-            marginTop: '15%',
-            alignSelf: 'center',
-          }}
-        />}
+        {item.image != '' && (
+          <Image
+            source={{uri: item.image}}
+            style={{
+              width: Width / 2.5,
+              height: Height / 3.5,
+              marginTop: '15%',
+              alignSelf: 'center',
+            }}
+          />
+        )}
       </View>
     );
   };
 
-  const HeadSubtextImgScreen = ({item}) =>{
-    return(
+  const HeadSubtextImgScreen = ({item}) => {
+    return (
       <View style={{}}>
-        <Text style={{textAlign:'center',fontSize:20,fontWeight:'bold',color:AppColors.primarycolor}}>{item.heading}</Text>
-        
-        <Text style={{textAlign:'left', marginVertical:'3%', color:AppColors.primarycolor}}>{item.text}</Text>
-        <Text style={{textAlign:'center',fontSize:17,fontWeight:'500',color:AppColors.primarycolor,marginTop:'3%'}}>{item.subheading}</Text>
-        <Text style={{textAlign:'left',marginVertical:'6%',fontSize:12, color:AppColors.primarycolor}}>{item.sub_text}</Text>
+        <Text
+          style={{
+            textAlign: 'center',
+            fontSize: 20,
+            fontWeight: 'bold',
+            color: AppColors.primarycolor,
+          }}>
+          {item.heading}
+        </Text>
+
+        <Text
+          style={{
+            textAlign: 'left',
+            marginVertical: '3%',
+            color: AppColors.primarycolor,
+          }}>
+          {item.text}
+        </Text>
+        <Text
+          style={{
+            textAlign: 'center',
+            fontSize: 17,
+            fontWeight: '500',
+            color: AppColors.primarycolor,
+            marginTop: '3%',
+          }}>
+          {item.subheading}
+        </Text>
+        <Text
+          style={{
+            textAlign: 'left',
+            marginVertical: '6%',
+            fontSize: 12,
+            color: AppColors.primarycolor,
+          }}>
+          {item.sub_text}
+        </Text>
         <Image
           source={{uri: item.image}}
           style={{
@@ -318,23 +367,54 @@ const OpenBook = props => {
           }}
         />
       </View>
-    )
-  }
-  const HeadSubtextScreen = ({item}) =>{
-    return(
+    );
+  };
+  const HeadSubtextScreen = ({item}) => {
+    return (
       <View style={{}}>
-        <Text style={{textAlign:'center',fontSize:20,fontWeight:'bold',color:AppColors.primarycolor}}>{item.heading}</Text>
-        <Text style={{textAlign:'center',fontSize:17,fontWeight:'500',color:AppColors.primarycolor,marginTop:'3%'}}>{item.subheading}</Text>
-        <Text style={{textAlign:'left', marginVertical:'3%', color:AppColors.primarycolor}}>{item.text}</Text>
-        <Text style={{textAlign:'left',fontSize:12, color:AppColors.primarycolor}}>{item.sub_text}</Text>
-        
+        <Text
+          style={{
+            textAlign: 'center',
+            fontSize: 20,
+            fontWeight: 'bold',
+            color: AppColors.primarycolor,
+          }}>
+          {item.heading}
+        </Text>
+        <Text
+          style={{
+            textAlign: 'center',
+            fontSize: 17,
+            fontWeight: '500',
+            color: AppColors.primarycolor,
+            marginTop: '3%',
+          }}>
+          {item.subheading}
+        </Text>
+        <Text
+          style={{
+            textAlign: 'left',
+            marginVertical: '3%',
+            color: AppColors.primarycolor,
+          }}>
+          {item.text}
+        </Text>
+        <Text
+          style={{
+            textAlign: 'left',
+            fontSize: 12,
+            color: AppColors.primarycolor,
+          }}>
+          {item.sub_text}
+        </Text>
       </View>
-    )
-  }
+    );
+  };
 
-  
   return (
-    <View style={styles.screen}>
+    <LinearGradient
+      colors={['#1B1D8B', Theme.backgroundColor]}
+      style={styles.screen}>
       <BackButton IconSize={30} />
       {bookData && bookData.length > 0 && (
         <FlatList
@@ -372,7 +452,8 @@ const OpenBook = props => {
                         item.type == 'quiz' ? '#672DE1' : 'white',
                       borderRadius: 20,
                       overflow: 'hidden',
-                      height:item.type == 'quiz'? Height / 1.25:Height / 1.2,
+                      height:
+                        item.type == 'quiz' ? Height / 1.25 : Height / 1.2,
                     },
                   ]}>
                   {item.type == 'intro' && <IntroScreen item={item} />}
@@ -541,7 +622,7 @@ const OpenBook = props => {
           <View style={[styles.complete, {width: progress}]}></View>
         </View>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 const styles = StyleSheet.create({
@@ -573,7 +654,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   page: {
-    backgroundColor: AppColors.FontsColor,
+    backgroundColor: 'red',
     width: Width / 1.05,
     height: Height / 1.2,
     paddingHorizontal: '5%',
@@ -583,7 +664,7 @@ const styles = StyleSheet.create({
   StatusContainer: {
     alignItems: 'center',
     paddingHorizontal: '6%',
-    marginVertical:'3%'
+    marginVertical: '3%',
   },
   progressContainer: {
     height: 10,

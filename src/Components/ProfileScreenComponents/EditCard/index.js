@@ -18,10 +18,10 @@ const EditCard = props => {
       </Text>
       <TextInput
         style={{
-          backgroundColor: AppColors.inputFieldColor,
+          backgroundColor: AppColors.FontsColor,
           paddingStart: '3%',
           paddingVertical: 6,
-          color: AppColors.infoFonts,
+          color: AppColors.primarycolor,
           fontFamily: 'Poppins-Regular',
           borderRadius: 5,
         }}

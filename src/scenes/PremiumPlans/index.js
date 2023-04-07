@@ -21,6 +21,7 @@ import {AppColors} from '../../utils';
 import axios from 'axios';
 import RNPgReactNativeSDK from 'react-native-pg-react-native-sdk';
 import firestore from '@react-native-firebase/firestore';
+import Theme from '../../utils/Theme';
 
 const PremiumPlans = () => {
   const navigate = useNavigation();
@@ -241,7 +242,9 @@ const PremiumPlans = () => {
   };
 
   return (
-    <SafeAreaView style={styles.mainContainer}>
+    <LinearGradient
+      colors={['#1B1D8B', Theme.backgroundColor]}
+      style={styles.mainContainer}>
       <View style={styles.header}>
         <TouchableOpacity
           onPress={() => {
@@ -439,7 +442,7 @@ const PremiumPlans = () => {
           </Modal>
         </View>
       </View>
-    </SafeAreaView>
+    </LinearGradient>
   );
 };
 

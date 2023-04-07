@@ -7,28 +7,30 @@ import {
   ScrollView,
   FlatList,
   Dimensions,
-  ToastAndroid
+  ToastAndroid,
 } from 'react-native';
-import React, { useContext, useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React, {useContext, useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
-import { BackButton } from '../../../Components';
-import { AppColors } from '../../../utils';
-import { useSelector, useDispatch } from 'react-redux';
-import { saveCourse, removeCourse } from '../../../Redux/actions';
+import {BackButton} from '../../../Components';
+import {AppColors} from '../../../utils';
+import {useSelector, useDispatch} from 'react-redux';
+import {saveCourse, removeCourse} from '../../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
-import { ModulesData } from '../../../dumy-Data/moduleData';
+import {ModulesData} from '../../../dumy-Data/moduleData';
+import LinearGradient from 'react-native-linear-gradient';
+import Theme from '../../../utils/Theme';
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 const StartCourse = props => {
-  const courseData = ModulesData.modules // props.route.params.CourseDetails;
+  const courseData = ModulesData.modules; // props.route.params.CourseDetails;
   const navigation = useNavigation();
   const [chp, setchp] = useState(0);
   const [slide, setslide] = useState(0);
   const state = useSelector(state => state.UserReducer);
   const dispatch = useDispatch();
-  const showToast = (msg) => {
+  const showToast = msg => {
     ToastAndroid.show(msg, ToastAndroid.SHORT);
   };
   // const SaveCourses=async(id)=>{
@@ -57,21 +59,26 @@ const StartCourse = props => {
   //   }).catch(err=>{
   //     showToast("Error while removing the course!")
   //   })
-    
-  // }
-  console.log(courseData,"cddg");
-  const SaveCourses = async (id) => {
-    dispatch(saveCourse(id))
-    await firestore().collection('Users').doc(state.user.email).update({
-      savedCourses: [...state.user.savedCourses, id]
-    }).then(() => {
-      showToast("Course Saved Successfully")
-    }).catch(err => {
-      showToast("Error while saving the course!")
-    })
-  }
 
-  const RemoveCourse = async (id) => {
+  // }
+  console.log(courseData, 'cddg');
+  const SaveCourses = async id => {
+    dispatch(saveCourse(id));
+    await firestore()
+      .collection('Users')
+      .doc(state.user.email)
+      .update({
+        savedCourses: [...state.user.savedCourses, id],
+      })
+      .then(() => {
+        showToast('Course Saved Successfully');
+      })
+      .catch(err => {
+        showToast('Error while saving the course!');
+      });
+  };
+
+  const RemoveCourse = async id => {
     var bucket = [];
     for (var i = 0; i < state?.user?.savedCourses.length; i++) {
       if (id != state?.user?.savedCourses[i]) {
@@ -79,21 +86,29 @@ const StartCourse = props => {
       }
     }
     dispatch(removeCourse(id));
-    await firestore().collection('Users').doc(state.user.email).update({
-      savedCourses: bucket
-    }).then(() => {
-      showToast("Course Removed Successfully")
-    }).catch(err => {
-      showToast("Error while removing the course!")
-    })
+    await firestore()
+      .collection('Users')
+      .doc(state.user.email)
+      .update({
+        savedCourses: bucket,
+      })
+      .then(() => {
+        showToast('Course Removed Successfully');
+      })
+      .catch(err => {
+        showToast('Error while removing the course!');
+      });
+  };
 
-  }
+  console.log(courseData, 'akjdskhdsh');
 
   return (
-    <View style={styles.screen}>
+    <LinearGradient
+      colors={['#1B1D8B', Theme.backgroundColor]}
+      style={styles.screen}>
       <ImageBackground
-        style={{ width: '100%', height: Height / 2.7, paddingTop: '5%' }}
-        source={{ uri: courseData.image }}>
+        style={{width: '100%', height: Height / 2.7, paddingTop: '5%'}}
+        source={{uri: courseData.image}}>
         <BackButton
           IconSize={30}
           onPress={() => {
@@ -133,9 +148,16 @@ const StartCourse = props => {
           //     SaveCourses(courseData.id)
           //   }
           //   }}>
-          >
-          
-          <Icon2 name={state.user?.savedCourses?.includes(courseData.id)?"bookmark":'bookmark-outline'} size={28} color="#0077B7" />
+        >
+          <Icon2
+            name={
+              state.user?.savedCourses?.includes(courseData.id)
+                ? 'bookmark'
+                : 'bookmark-outline'
+            }
+            size={28}
+            color="#0077B7"
+          />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.ContinueButton}
@@ -167,12 +189,12 @@ const StartCourse = props => {
                     setchp(index);
                     navigation.navigate('Instruction', {
                       BookData: item,
-                      moduleNumber:index+1
+                      moduleNumber: index + 1,
                     });
                   }}
                   style={[
                     styles.circle,
-                    { backgroundColor: AppColors.ActiveColor },
+                    {backgroundColor: AppColors.ActiveColor},
                   ]}>
                   <Icon2
                     name="chevron-forward-outline"
@@ -185,7 +207,7 @@ const StartCourse = props => {
           )}
         />
       </ScrollView>
-    </View>
+    </LinearGradient>
   );
 };
 const styles = StyleSheet.create({
@@ -248,4 +270,4 @@ const styles = StyleSheet.create({
     backgroundColor: AppColors.CardColor,
   },
 });
-export { StartCourse };
+export {StartCourse};

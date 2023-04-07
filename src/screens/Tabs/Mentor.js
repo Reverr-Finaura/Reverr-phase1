@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -15,11 +15,35 @@ import MentorCard from '../../Components/components/MentorCard';
 import Searchbar from '../../Components/components/Searchbar';
 import {featuredMentors} from '../../utils/sampledata';
 import Theme from '../../utils/Theme';
-import {mentorCategory, mentorsCategory} from '../../dumy-Data/mentorsCategory';
+import firestore from '@react-native-firebase/firestore';
+import {mentorsCategory} from '../../dumy-Data/mentorsCategory';
 
 function Mentor() {
   const [column, setColumn] = useState(2);
   const navigation = useNavigation();
+  const [loading, setLoading] = useState(false);
+  const [randomMentors, setRandomMentors] = useState([]);
+
+  const getRandomMentors = async () => {
+    setLoading(true);
+    await firestore()
+      .collection('Users')
+      .get()
+      .then(res => {
+        let AllUsers = res.docs.map(doc => doc.data());
+        let mentors = AllUsers?.filter(item => item.userType === 'Mentor');
+        const randomObjects = [];
+        for (let i = 0; i < 3; i++) {
+          const randomIndex = Math.floor(Math.random() * mentors?.length);
+          randomObjects.push(mentors[randomIndex]);
+        }
+        setRandomMentors(randomObjects);
+      });
+  };
+
+  useEffect(() => {
+    getRandomMentors();
+  }, []);
 
   return (
     <View style={{flex: 1}}>
@@ -60,12 +84,12 @@ function Mentor() {
           style={{paddingLeft: 20}}
           showsHorizontalScrollIndicator={false}
           horizontal={true}
-          data={featuredMentors}
+          data={randomMentors}
           renderItem={({item}) => (
             <MentorCard
               key={item.id}
-              image={item.userimage}
-              name={item.username}
+              image={item.image}
+              name={item.name}
               desig={item.designation}
             />
           )}
@@ -77,19 +101,22 @@ function Mentor() {
           Choose a Category
         </Text>
         <FlatList
-            numColumns={column}
-            data={mentorsCategory}
-            renderItem={({item, index}) => (
-              <CateogryCard
-                handlePress={() => navigation.navigate("mentorslist",{
-                  category:item.title
-                })}
-                title={item.title}
-                image={item.image}
-              />
-            )}
-            keyExtractor={(item,index)=>index}
-          />
+          numColumns={column}
+          data={mentorsCategory}
+          renderItem={({item, index}) => (
+            <CateogryCard
+              key={index}
+              handlePress={() =>
+                navigation.navigate('mentorslist', {
+                  category: item.title,
+                })
+              }
+              title={item.title}
+              image={item.image}
+            />
+          )}
+          keyExtractor={(item, index) => index}
+        />
 
         {/* <View style={styles.chooseCatWrapper}>
           <CateogryCard handlePress={()=>navigation.navigate('Business')} title={'Business'} image={Theme.business} />
@@ -145,6 +172,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    
   },
 });

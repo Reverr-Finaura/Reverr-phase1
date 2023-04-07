@@ -20,6 +20,8 @@ import {styles} from './style';
 import firestore from '@react-native-firebase/firestore';
 import {deleteUser, firebase} from '@react-native-firebase/auth';
 import {set_allLoaded} from '../../../Redux/actions';
+import LinearGradient from 'react-native-linear-gradient';
+import Theme from '../../../utils/Theme';
 
 const Width = Dimensions.get('screen').width;
 const Height = Dimensions.get('screen').height;
@@ -56,17 +58,19 @@ const Settings = props => {
     console.log(password);
     const UserDetails = auth();
     const provider = firebase.auth.EmailAuthProvider;
+
     if (password) {
       const authCredential = provider.credential(
         UserDetails.currentUser.email,
         password,
       );
+      console.log(UserDetails.currentUser.uid);
+      await UserDetails.currentUser.reauthenticateWithCredential(
+        authCredential,
+      );
+      console.log(password);
+      UserDetails.currentUser.delete().then(console.log('delete perm'));
     }
-
-    console.log(UserDetails.currentUser.uid);
-    await UserDetails.currentUser.reauthenticateWithCredential(authCredential);
-    console.log(password);
-    UserDetails.currentUser.delete().then(console.log('delete perm'));
   };
   // Deleting  user document here
   const HandleDelete = async () => {
@@ -94,14 +98,16 @@ const Settings = props => {
       .signOut()
       .then(() => {
         console.log('User Signed out!');
-        navigation.replace('Login');
+        navigation.replace('login');
       })
       .catch(err => {
         console.log('error in signing out');
       });
   };
   return (
-    <View style={styles.screen}>
+    <LinearGradient
+      colors={['#1B1D8B', Theme.backgroundColor]}
+      style={styles.screen}>
       <View style={styles.header}>
         <BackButton
           IconSize={30}
@@ -115,8 +121,7 @@ const Settings = props => {
             fontFamily: 'Poppins-Regular',
             marginStart: Width / 3.3,
             fontSize: 22,
-          }}
-        >
+          }}>
           Settings
         </Text>
       </View>
@@ -125,8 +130,7 @@ const Settings = props => {
           onPress={() => {
             savedScreen();
           }}
-          style={{height: '7%', marginTop: '25%'}}
-        >
+          style={{height: '7%', marginTop: '25%'}}>
           <TitleCard firstText="Saved" />
         </TouchableOpacity>
         <TouchableOpacity
@@ -137,19 +141,19 @@ const Settings = props => {
             //navigation.navigate('EditMentorProfile')
             //}
           }}
-          style={{height: '7%', marginTop: '7%'}}
-        >
+          style={{height: '7%', marginTop: '7%'}}>
           <TitleCard firstText="Edit profile" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=> navigation.navigate('ChangePassword')} style={{height: '7%', marginTop: '7%'}}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('ChangePassword')}
+          style={{height: '7%', marginTop: '7%'}}>
           <TitleCard firstText="Change password" />
         </TouchableOpacity>
         <TouchableOpacity
           style={{height: '7%', marginTop: '7%'}}
           onPress={() => {
             navigation.navigate('TermConditions');
-          }}
-        >
+          }}>
           <TitleCard firstText="Terms and conditions" />
         </TouchableOpacity>
         <TouchableOpacity style={{height: '7%', marginTop: '7%'}}>
@@ -159,23 +163,27 @@ const Settings = props => {
           onPress={() => {
             logout();
           }}
-          style={{height: '7%', marginTop: '7%'}}
-        >
+          style={{height: '7%', marginTop: '7%'}}>
           <TitleCard firstText="Logout" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Vibe');
+          }}
+          style={{height: '7%', marginTop: '7%'}}>
+          <TitleCard firstText="Vibe" />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             createTwoButtonAlert();
           }}
-          style={{height: '7%', marginTop: '7%'}}
-        >
+          style={{height: '7%', marginTop: '7%'}}>
           <TitleCard firstText="Delete Account" />
         </TouchableOpacity>
         <Modal
           visible={visible}
           transparent={true}
-          style={{justifyContent: 'center'}}
-        >
+          style={{justifyContent: 'center'}}>
           <View
             style={{
               height: 100,
@@ -184,10 +192,8 @@ const Settings = props => {
               alignSelf: 'center',
               justifyContent: 'center',
               backgroundColor: 'white',
-            }}
-          >
+            }}>
             <TextInput
-              value={Text}
               onChangeText={newtext => setpasword(newtext)}
               placeholder={'Enter Your Password'}
             />
@@ -203,7 +209,7 @@ const Settings = props => {
           source={{uri: state.user && state.user.image}}
         />
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 

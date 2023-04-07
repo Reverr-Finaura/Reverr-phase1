@@ -3,6 +3,8 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {BackButton} from '../../../Components';
 import {AppColors} from '../../../utils';
+import Theme from '../../../utils/Theme';
+import LinearGradient from 'react-native-linear-gradient';
 
 const ReadingInstruction = props => {
   const bookData = props.route.params.BookData;
@@ -11,12 +13,14 @@ const ReadingInstruction = props => {
   setTimeout(() => {
     navigation.replace('OpenBook', {
       BookData: bookData.slides,
-      moduleNumber:moduleNumber
+      moduleNumber: moduleNumber,
     });
   }, 1000);
- // console.log(bookData,"sjdjshdj");
+  // console.log(bookData,"sjdjshdj");
   return (
-    <View style={styles.screen}>
+    <LinearGradient
+      colors={['#1B1D8B', Theme.backgroundColor]}
+      style={styles.screen}>
       <BackButton IconSize={30} style={{marginVertical: '5%'}} />
       <View style={{flex: 1, paddingHorizontal: '4%', paddingVertical: '2%'}}>
         <View style={styles.container}>
@@ -28,7 +32,7 @@ const ReadingInstruction = props => {
           </View>
         </View>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 const styles = StyleSheet.create({

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -8,15 +8,17 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
-import { MentorList } from '../../Components/Mentor-list';
+import {MentorList} from '../../Components/Mentor-list';
 import styles from './styles';
-import { ChatLayout } from '../../Components/ChatLayout';
-import { IndividualHeaderLayout } from '../../Components';
-import { useSelector } from 'react-redux';
-import { AppColors } from '../../utils';
+import {ChatLayout} from '../../Components/ChatLayout';
+import {IndividualHeaderLayout} from '../../Components';
+import {useSelector} from 'react-redux';
+import {AppColors} from '../../utils';
 import firestore from '@react-native-firebase/firestore';
 import authentication from '@react-native-firebase/auth';
-
+import LinearGradient from 'react-native-linear-gradient';
+import Theme from '../../utils/Theme';
+import GradientHeader from '../../Components/components/GradientHeader';
 
 export const Messages = () => {
   //console.log(mentors);
@@ -28,7 +30,7 @@ export const Messages = () => {
   const [totalNetworkUser, setTotalNetworkUser] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  console.log("match=====", state.user)
+  console.log('match=====', state.user);
 
   const getNetworksUsers = async () => {
     setLoading(true);
@@ -67,12 +69,12 @@ export const Messages = () => {
     console.log(totalNetworkUser, 'total');
   }, [networks, mentors]);
 
- 
-
-
   return (
-    <SafeAreaView style={styles.container}>
-      <IndividualHeaderLayout>
+    <LinearGradient
+      colors={['#1B1D8B', Theme.backgroundColor]}
+      style={styles.container}>
+      <GradientHeader />
+      <View>
         <Text style={styles.title}>Messages</Text>
         <View
           style={{
@@ -87,9 +89,7 @@ export const Messages = () => {
               setNetworks(false);
             }}
             style={{
-              backgroundColor: mentors
-                ? AppColors.ActiveColor
-                : AppColors.primarycolor,
+              backgroundColor: mentors ? AppColors.ActiveColor : null,
               width: '45%',
               alignItems: 'center',
               paddingVertical: '3%',
@@ -109,9 +109,7 @@ export const Messages = () => {
               setMentors(false);
             }}
             style={{
-              backgroundColor: networks
-                ? AppColors.ActiveColor
-                : AppColors.primarycolor,
+              backgroundColor: networks ? AppColors.ActiveColor : null,
               width: '45%',
               alignItems: 'center',
               paddingVertical: '3%',
@@ -124,16 +122,16 @@ export const Messages = () => {
         </View>
 
         {mentors && (
-          <View style={{ marginTop: '3%' }}>
+          <View style={{marginTop: '3%'}}>
             {state?.user?.mentors?.length > 0 ? (
               <FlatList
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
                 data={state.user.mentors}
-                renderItem={({ item }) => <MentorList mentor={item} />}
+                renderItem={({item}) => <MentorList mentor={item} />}
               />
             ) : (
-              <Text style={{ color: 'grey', fontSize: 14, marginLeft: 50 }}>
+              <Text style={{color: 'grey', fontSize: 14, marginLeft: 50}}>
                 Please Subscribe To Mentors for Guidence
               </Text>
             )}
@@ -148,22 +146,27 @@ export const Messages = () => {
           </View>
         )}
         {networks && (
-          <View style={{ marginTop: '3%' }}>
+          <View style={{marginTop: '3%'}}>
             {state?.user?.mentors?.length > 0 ? (
               <FlatList
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
                 data={state.user.mentors}
-                renderItem={({ item }) => <MentorList mentor={item} />}
+                renderItem={({item}) => <MentorList mentor={item} />}
               />
             ) : (
-              <Text style={{ color: 'grey', fontSize: 14, marginLeft: 50 }}>
-                Add Friends 
+              <Text style={{color: 'grey', fontSize: 14, marginLeft: 50}}>
+                Add Friends
               </Text>
             )}
             {/* {loading == false ? ( */}
 
-            <ChatLayout loader={loading}  usersArray={totalNetworkUser.filter(it => it.email != authentication().currentUser.email)} />
+            <ChatLayout
+              loader={loading}
+              usersArray={totalNetworkUser.filter(
+                it => it.email != authentication().currentUser.email,
+              )}
+            />
             {/* ) : ( */}
             {/* <View
                 style={{
@@ -177,7 +180,7 @@ export const Messages = () => {
             )} */}
           </View>
         )}
-      </IndividualHeaderLayout>
-    </SafeAreaView>
+      </View>
+    </LinearGradient>
   );
 };

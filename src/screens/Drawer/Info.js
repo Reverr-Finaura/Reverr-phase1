@@ -1,20 +1,18 @@
-import React from "react";
-import { 
-    View,
-    Text,
-    StyleSheet
-} from "react-native";
+import React from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+import {TermConditions} from '../../scenes';
 
-function Info({navigation}){
-    return(
+function Info({navigation}) {
+  return (
     <View style={styles.container}>
-        <Text>Info</Text>
+      <TermConditions />
     </View>
-    )}
+  );
+}
 export default Info;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    }
+  container: {
+    flex: 1,
+  },
 });

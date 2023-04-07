@@ -30,6 +30,7 @@ import {useNavigation} from '@react-navigation/native';
 import {mentorService} from '../../Redux/services/mentor.service';
 import {load_room_data, set_allLoaded} from '../../Redux/actions';
 import {SkeltonLoader} from '../../Components';
+import {NewsList} from '../../scenes/news-screen';
 
 const Height = Dimensions.get('window').height;
 
@@ -41,11 +42,11 @@ function Home() {
   const [news, setNews] = useState(false);
   const [_id, set_Id] = useState('');
   const navigation = useNavigation();
-  const [menu, setMenu] = useState('All');
+  const [menu, setMenu] = useState('Discussion');
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const dispatch = useDispatch();
 
-  const menuItems = ['All', 'Rooms', 'Articals'];
+  const menuItems = ['Discussion', 'News', 'Articals'];
 
   useEffect(() => {
     dispatch(mentorService);
@@ -101,7 +102,7 @@ function Home() {
               flexDirection: 'row',
               alignItems: 'center',
               paddingVertical: '6%',
-              width:80
+              width: 80,
             }}>
             <Text style={styles.subtitle}>Featured</Text>
             <Image
@@ -116,58 +117,81 @@ function Home() {
                 zIndex: 20,
                 position: 'absolute',
                 top: '12%',
-                height:100,
-                paddingTop:'5%',
-                paddingLeft:'8%'
-                
+                height: 100,
+                paddingTop: '5%',
+                paddingLeft: '8%',
               }}>
               {menuItems.map((item, index) => (
-                <TouchableOpacity onPress={()=>{
-                  setMenu(item)
-                  setIsOpenMenu(false)
-                }} key={index} style={{paddingHorizontal: '5%',paddingVertical:'5%'}}>
-                  <Text style={{color:menu===item?Theme.primaryColor:Theme.backgroundColor,fontWeight:'bold'}}>{item}</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    setMenu(item);
+                    setIsOpenMenu(false);
+                  }}
+                  key={index}
+                  style={{paddingHorizontal: '5%', paddingVertical: '5%'}}>
+                  <Text
+                    style={{
+                      color:
+                        menu === item
+                          ? Theme.primaryColor
+                          : Theme.backgroundColor,
+                      fontWeight: 'bold',
+                    }}>
+                    {item}
+                  </Text>
                 </TouchableOpacity>
               ))}
             </View>
           )}
-
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-            style={{paddingBottom: '30%'}}>
-            <View>
-              {state.Rooms.length == 0 ? (
-                <SkeltonLoader />
-              ) : (
-                <>
-                  {state.Rooms?.map((item, index) => (
-                    <View key={index}>
-                      <PostCard item={item} />
-                    </View>
-                  ))}
-                </>
-              )}
-            </View>
+          {menu === 'News' && (
             <View style={styles.wrapper}>
               <Text style={[styles.title, {fontSize: 18, fontWeight: 'bold'}]}>
                 Trending News
               </Text>
               <BlueButtonRounded label={'Read More'} />
             </View>
+          )}
 
-            <NewsCard />
-
-            <View style={{paddingBottom: '30%'}}>
-              <ArticleCard />
-            </View>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            style={{paddingBottom: '30%'}}>
+            {menu === 'Discussion' && (
+              <View>
+                {state.Rooms.length == 0 ? (
+                  <SkeltonLoader />
+                ) : (
+                  <View>
+                    {state.Rooms?.map((item, index) => (
+                      <View key={index}>
+                        <PostCard item={item} />
+                      </View>
+                    ))}
+                    <View style={{height: 120}} />
+                  </View>
+                )}
+              </View>
+            )}
+            {menu === 'News' && (
+              <View>
+                {/* <NewsCard /> */}
+                <NewsList />
+              </View>
+            )}
+            {menu === 'Articals' && (
+              <View View style={{paddingBottom: '30%'}}>
+                <ArticleCard />
+              </View>
+            )}
           </ScrollView>
 
           {/* <PostCard hasArt={true} /> */}
         </View>
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate('createpost')}>
-        <Image source={Theme.addbtn} style={styles.corner} />
-      </TouchableOpacity>
+      {menu === 'Discussion' && (
+        <TouchableOpacity onPress={() => navigation.navigate('createpost')}>
+          <Image source={Theme.addbtn} style={styles.corner} />
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
@@ -194,7 +218,6 @@ const styles = StyleSheet.create({
     bottom: 5,
   },
   wrapper: {
-    marginTop: 25,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

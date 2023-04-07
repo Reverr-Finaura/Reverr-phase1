@@ -55,10 +55,14 @@ const MentorsList = props => {
   return (
     <View style={styles.container}>
       <GradientHeader />
-
       <View>
         <View style={{paddingHorizontal: '5%', paddingTop: '3%'}}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              paddingBottom: '3%',
+              alignItems: 'center',
+            }}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <Image
                 source={Theme.arrowleft}
@@ -74,33 +78,52 @@ const MentorsList = props => {
           </View>
 
           <ScrollView>
-            {loading?<View style={{height:500,alignItems:'center',justifyContent:'center'}}>
-              <ActivityIndicator size={35} color={Theme.textLightColor}/>
-            </View>:<>{mentorsList?.length === 0 ? (
-              <View style={{height:'80%',alignItems:'center',justifyContent:'center'}}>
-                <Text style={{color:Theme.textLightColor}}>😒There is No any Mentor in this Category</Text>
+            {loading ? (
+              <View
+                style={{
+                  height: 500,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <ActivityIndicator size={35} color={Theme.textLightColor} />
               </View>
             ) : (
               <>
-                {mentorsList?.map((item,index) => {
-                  return (
-                    <BusinessCard
-                      key={index}
-                      // userimage={item.image}
-                      // industryname={item.industry}
-                      // duration={item.duration}
-                      // name={item.name}
-                      // reviews={item.reviews}
-                      // rating={item.Rating}
-                      // feature1={item.feature1}
-                      // feature2={item.feature2}
-                      // designation={item.designation}
-                      fulldetails={item}
-                    />
-                  );
-                })}
+                {mentorsList?.length === 0 ? (
+                  <View
+                    style={{
+                      height: '80%',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                    <Text style={{color: Theme.textLightColor}}>
+                      😒There is No any Mentor in this Category
+                    </Text>
+                  </View>
+                ) : (
+                  <>
+                    {mentorsList?.map((item, index) => {
+                      return (
+                        <BusinessCard
+                          key={index}
+                          // userimage={item.image}
+                          // industryname={item.industry}
+                          // duration={item.duration}
+                          // name={item.name}
+                          // reviews={item.reviews}
+                          // rating={item.Rating}
+                          // feature1={item.feature1}
+                          // feature2={item.feature2}
+                          // designation={item.designation}
+                          fulldetails={item}
+                        />
+                      );
+                    })}
+                    <View style={{height: 20}} />
+                  </>
+                )}
               </>
-            )}</>}
+            )}
             <View style={{height: 160}} />
           </ScrollView>
         </View>
