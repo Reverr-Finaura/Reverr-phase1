@@ -1,42 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import database, { firebase } from '@react-native-firebase/database'
+import React, {useState, useEffect} from 'react';
+import database, {firebase} from '@react-native-firebase/database';
 import authentication from '@react-native-firebase/auth';
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  ActivityIndicator,
-  View,
-  Alert,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
 
-import { ChatHeaderVibe } from '../../Components/ChatHeaderVibe';
-import { Bubble, GiftedChat, Send } from 'react-native-gifted-chat';
-import { MessageHeader } from '../../Components/MessageHeader';
+import {ChatHeaderVibe} from '../../Components/ChatHeaderVibe';
+import {Bubble, GiftedChat, Send} from 'react-native-gifted-chat';
+import {MessageHeader} from '../../Components/MessageHeader';
 export default function ChatVibeScreen(props) {
   const [messages, setMessages] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const userData = props?.route?.params?.userData;
-  console.log("userDattttt", userData)
+  console.log('userDattttt', userData);
 
-  const senderId = authentication().currentUser.email.split('@')[0]
-  const receiverId = userData.email.split('@')[0]
+  const senderId = authentication().currentUser.email.split('@')[0];
+  const receiverId = userData.email.split('@')[0];
 
   const docid =
     receiverId > senderId
       ? senderId + '-' + receiverId
       : receiverId + '-' + senderId;
   useEffect(() => {
-
     getAllMessages();
   }, []);
   const getAllMessages = () => {
     let temArray = [];
-    let querySanp = database()
-      .ref('messages')
-      .child(docid)
+    let querySanp = database().ref('messages').child(docid);
     querySanp.on('value', snapshot => {
       if (snapshot.val()) {
         const msg = Object.values(snapshot.val());
@@ -51,7 +39,6 @@ export default function ChatVibeScreen(props) {
   };
   const onSend = messagesArray => {
     let myMsg = null;
-
     const msg = messagesArray[0];
     myMsg = {
       ...msg,
@@ -61,13 +48,12 @@ export default function ChatVibeScreen(props) {
     };
     setMessages(previousMessages => GiftedChat.append(previousMessages, myMsg));
 
-    const messagesRef = database().ref("messages/" + docid);
+    const messagesRef = database().ref('messages/' + docid);
     messagesRef.push({
       ...myMsg,
       createdAt: firebase.database.ServerValue.TIMESTAMP,
     });
-
-  }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -118,7 +104,7 @@ export default function ChatVibeScreen(props) {
         alwaysShowSend={true}
         placeholder={'Type a message...'}
         textInputProps={{
-          style: { color: '#000000', flex: 1 }
+          style: {color: '#000000', flex: 1},
         }}
         user={{
           _id: authentication().currentUser.uid,
@@ -129,11 +115,11 @@ export default function ChatVibeScreen(props) {
               {...props}
               wrapperStyle={{
                 right: {
-                  backgroundColor: "#407BFF",
+                  backgroundColor: '#407BFF',
                   color: '#000000',
                 },
                 left: {
-                  backgroundColor: "#fff",
+                  backgroundColor: '#fff',
                   color: '#407BFF',
                 },
               }}
@@ -141,7 +127,6 @@ export default function ChatVibeScreen(props) {
           );
         }}
       />
-
     </SafeAreaView>
   );
 }
@@ -169,11 +154,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   view: {
-    borderColor: "#fff",
+    borderColor: '#fff',
     borderStyle: 'dashed',
-    borderWidth: 2, marginTop: 30,
+    borderWidth: 2,
+    marginTop: 30,
     marginHorizontal: 30,
     borderRadius: 10,
     paddingVertical: 15,
-  }
+  },
 });

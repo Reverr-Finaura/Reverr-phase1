@@ -17,6 +17,7 @@ import {featuredMentors} from '../../utils/sampledata';
 import Theme from '../../utils/Theme';
 import firestore from '@react-native-firebase/firestore';
 import {mentorsCategory} from '../../dumy-Data/mentorsCategory';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 function Mentor() {
   const [column, setColumn] = useState(2);
@@ -30,20 +31,25 @@ function Mentor() {
       .collection('Users')
       .get()
       .then(res => {
+        let arr = [];
         let AllUsers = res.docs.map(doc => doc.data());
         let mentors = AllUsers?.filter(item => item.userType === 'Mentor');
-        const randomObjects = [];
-        for (let i = 0; i < 3; i++) {
-          const randomIndex = Math.floor(Math.random() * mentors?.length);
-          randomObjects.push(mentors[randomIndex]);
-        }
-        setRandomMentors(randomObjects);
+        const m = mentors.filter(
+          user => user.email === '96heenamansuri@gmail.com',
+        );
+        const m2 = mentors.filter(
+          user => user.email === '1mail2kumarraja@gmail.com',
+        );
+
+        setRandomMentors([...m, ...m2]);
+        setLoading(false);
       });
   };
 
   useEffect(() => {
     getRandomMentors();
   }, []);
+  //console.log(randomMentors, 'dkjds');
 
   return (
     <View style={{flex: 1}}>
@@ -54,7 +60,7 @@ function Mentor() {
           backgroundColor: Theme.backgroundColor,
           paddingVertical: 25,
         }}>
-        <View style={{paddingHorizontal: 20}}>
+        {/* <View style={{paddingHorizontal: 20}}>
           <Text style={styles.title}>Find the best mentor</Text>
           <View
             style={{
@@ -78,23 +84,46 @@ function Mentor() {
           <Text style={[styles.title, {fontSize: 16, marginBottom: 15}]}>
             Featured Mentors
           </Text>
-        </View>
-
-        <FlatList
-          style={{paddingLeft: 20}}
-          showsHorizontalScrollIndicator={false}
-          horizontal={true}
-          data={randomMentors}
-          renderItem={({item}) => (
-            <MentorCard
-              key={item.id}
-              image={item.image}
-              name={item.name}
-              desig={item.designation}
+        </View> */}
+        <Text style={[styles.title, {fontSize: 16}]}>Featured Mentors</Text>
+        {!loading ? (
+          <>
+            <FlatList
+              style={{paddingLeft: 20}}
+              showsHorizontalScrollIndicator={false}
+              horizontal={true}
+              data={randomMentors}
+              renderItem={({item}) => <MentorCard item={item} />}
+              keyExtractor={(item, index) => index}
             />
-          )}
-          keyExtractor={item => item.id}
-        />
+          </>
+        ) : (
+          <View
+            style={{
+              flexDirection: 'row',
+              width: '100%',
+              justifyContent: 'space-around',
+            }}>
+            <SkeletonPlaceholder backgroundColor="#012437">
+              <View
+                style={{
+                  width: 180,
+                  height: 170,
+                  marginHorizontal: '2%',
+                  borderRadius: 10,
+                }}></View>
+            </SkeletonPlaceholder>
+            <SkeletonPlaceholder backgroundColor="#012437">
+              <View
+                style={{
+                  width: 180,
+                  height: 170,
+                  borderRadius: 10,
+                  marginHorizontal: '2%',
+                }}></View>
+            </SkeletonPlaceholder>
+          </View>
+        )}
 
         <Text
           style={[styles.title, {fontSize: 16, marginLeft: 15, marginTop: 25}]}>
@@ -105,7 +134,6 @@ function Mentor() {
           data={mentorsCategory}
           renderItem={({item, index}) => (
             <CateogryCard
-              key={index}
               handlePress={() =>
                 navigation.navigate('mentorslist', {
                   category: item.title,
@@ -138,8 +166,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     color: '#FFF',
-    marginTop: 15,
+    marginVertical: '5%',
     fontWeight: 'bold',
+    marginStart: '5%',
   },
   subtitle: {
     color: '#FFF',

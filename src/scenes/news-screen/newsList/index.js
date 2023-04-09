@@ -7,6 +7,7 @@ import {
   Dimensions,
   FlatList,
   ImageBackground,
+  Image,
 } from 'react-native';
 import React, {useEffect, useState, useRef, useContext} from 'react';
 import {AppColors, smallString} from '../../../utils';
@@ -72,7 +73,11 @@ const NewsList = () => {
                         articalData: item,
                       });
                     }}>
-                    <ImageBackground
+                    <Image
+                      style={{height: '70%', width: '100%'}}
+                      source={{uri: item.image.thumbnail.contentUrl}}
+                    />
+                    {/* <ImageBackground
                       style={{flex: 1}}
                       source={{uri: item.image.thumbnail.contentUrl}}>
                       <View style={styles.title}>
@@ -84,7 +89,16 @@ const NewsList = () => {
                           {smallString(item.name, 30)}
                         </Text>
                       </View>
-                    </ImageBackground>
+                    </ImageBackground> */}
+                    <View style={styles.title}>
+                      <Text
+                        style={{
+                          color: AppColors.FontsColor,
+                          fontFamily: 'Poppins-Regular',
+                        }}>
+                        {smallString(item.name, 30)}
+                      </Text>
+                    </View>
                   </TouchableOpacity>
                 );
               }
@@ -121,15 +135,17 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     marginHorizontal: 5,
     marginVertical: 5,
+    borderWidth: 1,
+    borderColor: AppColors.infoFonts,
   },
   title: {
-    position: 'absolute',
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    backgroundColor: AppColors.primarycolor,
     width: '100%',
     height: '40%',
     paddingVertical: 5,
     alignItems: 'center',
-    top: Height > 684 ? 135 : 130,
+    textAlign: 'center',
+    elevation: 0.6,
   },
 });
 export {NewsList};

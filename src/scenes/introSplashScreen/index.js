@@ -1,4 +1,11 @@
-import {View, Text, StyleSheet, Image, Dimensions, StatusBar} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Dimensions,
+  StatusBar,
+} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {AppColors} from '../../utils';
 import {useNavigation} from '@react-navigation/native';
@@ -7,7 +14,7 @@ import {setUser} from '../../Redux/actions';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import LinearGradient from 'react-native-linear-gradient';
-import { setUserDetails } from '../../Redux/appSlice';
+import {setUserDetails} from '../../Redux/appSlice';
 //import { AuthContext } from '../Navigations/AuthProvider';
 
 const Height = Dimensions.get('window').height;
@@ -34,7 +41,7 @@ const IntroSplash = () => {
     //if(subscriber){
     setTimeout(() => {
       auth().onAuthStateChanged(async user => {
-       /// console.log(user,"usegsg");
+        /// console.log(user,"usegsg");
         if (!user) {
           return navigation.replace('login');
         } else {
@@ -47,9 +54,11 @@ const IntroSplash = () => {
               dispatch(setUser(inst._data));
               if (inst?._data?.userType == 'Mentor') {
                 return navigation.replace('MyDrawer');
+                // return navigation.navigate('IndividualTab');
               } else {
                 //console.log(inst._data)
                 return navigation.replace('MyDrawer');
+                // return navigation.navigate('IndividualTab');
               }
             });
         }

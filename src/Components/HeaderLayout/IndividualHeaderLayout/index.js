@@ -1,11 +1,11 @@
-import { View, StyleSheet } from 'react-native';
-import React, { useState } from 'react';
-import { Header } from '../../HeaderComponents';
-import { AppColors } from '../../../utils';
-import { useNavigation } from '@react-navigation/native';
-import { ModelView } from '../../ModelView';
-import { useSelector, useDispatch } from 'react-redux';
-import { CalanderScreen } from '../../../scenes/CalenderScreen';
+import {View, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {Header} from '../../HeaderComponents';
+import {AppColors} from '../../../utils';
+import {useNavigation} from '@react-navigation/native';
+import {ModelView} from '../../ModelView';
+import {useSelector, useDispatch} from 'react-redux';
+import {CalanderScreen} from '../../../scenes/CalenderScreen';
 const IndividualHeaderLayout = props => {
   //const {state, dispatch} = useContext(UserContext);
   const state = useSelector(state => state.UserReducer);
@@ -31,19 +31,6 @@ const IndividualHeaderLayout = props => {
         }}
         DpUrl={state.user && state.user.image}
       />
-      {/* <CalanderScreen /> */}
-      <ModelView
-        ShowModal={isOpen}
-        onCloseModal={() => {
-          setIsOpen(false);
-        }}>
-        <CalanderScreen
-          onClose={() => {
-            setIsOpen(false);
-          }}
-          setModel={setIsOpen}
-        />
-      </ModelView>
       {props.children}
     </View>
   );
@@ -56,4 +43,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { IndividualHeaderLayout };
+export {IndividualHeaderLayout};

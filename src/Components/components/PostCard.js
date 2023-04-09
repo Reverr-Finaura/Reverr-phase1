@@ -20,6 +20,7 @@ import {
 import {timeAgo} from '../../utils/Helper/helper';
 import Theme from '../../utils/Theme';
 import {AppColors} from '../../utils';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 function PostCard({item, index}) {
   // console.log(item,"kdhskhd");
@@ -52,8 +53,8 @@ function PostCard({item, index}) {
     <View style={[styles.container, {position: 'relative'}]}>
       {item?.id === _id && (
         <TouchableOpacity
-        activeOpacity={1}
-        onPress={()=>set_Id('')}
+          activeOpacity={1}
+          onPress={() => set_Id('')}
           style={{
             left: 0,
             right: 0,
@@ -61,12 +62,13 @@ function PostCard({item, index}) {
             bottom: 0,
             position: 'absolute',
             zIndex: 20,
-            paddingLeft:'25%',
-            paddingRight:'7%',
-            paddingTop:'5%',
-            overflow:'hidden'
+            paddingLeft: '25%',
+            paddingRight: '7%',
+            paddingTop: '5%',
+            overflow: 'hidden',
           }}>
-          <View style={{backgroundColor: Theme.textLightColor,borderRadius:20}}>
+          <View
+            style={{backgroundColor: Theme.textLightColor, borderRadius: 20}}>
             <View>
               {state?.user?.email == item?.postedby?.email && (
                 <View
@@ -79,9 +81,14 @@ function PostCard({item, index}) {
                   <TouchableOpacity
                     onPress={() => {
                       handleDelete(item);
-                      
                     }}>
-                    <Text style={{color: AppColors.primarycolor,fontFamily:'Poppins-Regular'}}>Delete</Text>
+                    <Text
+                      style={{
+                        color: AppColors.primarycolor,
+                        fontFamily: 'Poppins-Regular',
+                      }}>
+                      Delete
+                    </Text>
                   </TouchableOpacity>
                 </View>
               )}
@@ -93,17 +100,26 @@ function PostCard({item, index}) {
                   paddingVertical: '4%',
                 }}>
                 <TouchableOpacity>
-                  <Text style={{color: AppColors.primarycolor,fontFamily:'Poppins-Regular'}}>Share</Text>
+                  <Text
+                    style={{
+                      color: AppColors.primarycolor,
+                      fontFamily: 'Poppins-Regular',
+                    }}>
+                    Share
+                  </Text>
                 </TouchableOpacity>
               </View>
               <View
                 style={{
-                  
                   alignItems: 'center',
                   paddingVertical: '4%',
                 }}>
                 <TouchableOpacity onPress={() => savePost(item)}>
-                  <Text style={{color: AppColors.primarycolor,fontFamily:'Poppins-Regular'}}>
+                  <Text
+                    style={{
+                      color: AppColors.primarycolor,
+                      fontFamily: 'Poppins-Regular',
+                    }}>
                     {state.savedPosts && state.savedPosts.includes(item.id)
                       ? 'Unsave'
                       : 'Save'}
@@ -135,10 +151,21 @@ function PostCard({item, index}) {
         />
       </TouchableOpacity>
       <View style={styles.upperWrapper}>
-        <Image
-          source={{uri: item?.postedby?.image}}
-          style={{height: 45, width: 45, borderRadius: 100}}
-        />
+        <TouchableOpacity
+          onPress={() => {
+            if (item?.postedby?.email === state.user.email) {
+              navigation.navigate('Profile');
+            } else {
+              navigation.navigate('OthersProfile', {
+                otherUserData: item?.postedby,
+              });
+            }
+          }}>
+          <Image
+            source={{uri: item?.postedby?.image}}
+            style={{height: 45, width: 45, borderRadius: 100}}
+          />
+        </TouchableOpacity>
         <View style={{paddingLeft: 15}}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Text style={styles.title}>{item?.postedby?.name}</Text>
@@ -147,7 +174,7 @@ function PostCard({item, index}) {
             </Text>
           </View>
           {item?.postedby?.designation !== '' && (
-            <Text style={styles.desig}>CEO @{item?.postedby?.designation}</Text>
+            <Text style={styles.desig}>{item?.postedby?.designation}</Text>
           )}
         </View>
       </View>
@@ -171,10 +198,11 @@ function PostCard({item, index}) {
         <TouchableOpacity
           onPress={() => likePost(item.id, item)}
           style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Image
-            source={Theme.heart}
-            style={{height: 20, width: 20, resizeMode: 'contain'}}
-          />
+          {item.likes.includes(state.user.email) ? (
+            <Icon name="heart" size={19} color="red" />
+          ) : (
+            <Icon name="heart-outline" size={20} color={AppColors.CardColor} />
+          )}
           <Text
             style={{
               color: '#FFF',
@@ -186,12 +214,14 @@ function PostCard({item, index}) {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {
-                dispatch(pin_post(item));
-                navigation.navigate('writecomments', {
-                  postData: item,
-                });
-              }} style={{flexDirection: 'row', alignItems: 'center'}}>
+        <TouchableOpacity
+          onPress={() => {
+            dispatch(pin_post(item));
+            navigation.navigate('writecomments', {
+              postData: item,
+            });
+          }}
+          style={{flexDirection: 'row', alignItems: 'center'}}>
           <Image
             source={Theme.chatsmall}
             style={{height: 20, width: 20, resizeMode: 'contain'}}

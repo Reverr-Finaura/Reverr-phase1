@@ -168,10 +168,17 @@ const Settings = props => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('Vibe');
+            navigation.navigate('newVibes');
           }}
           style={{height: '7%', marginTop: '7%'}}>
           <TitleCard firstText="Vibe" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('LikeScreen');
+          }}
+          style={{height: '7%', marginTop: '7%'}}>
+          <TitleCard firstText="LikeVibe" />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {

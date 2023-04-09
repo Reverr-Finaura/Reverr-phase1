@@ -31,6 +31,7 @@ import {mentorService} from '../../Redux/services/mentor.service';
 import {load_room_data, set_allLoaded} from '../../Redux/actions';
 import {SkeltonLoader} from '../../Components';
 import {NewsList} from '../../scenes/news-screen';
+import {AppColors} from '../../utils';
 
 const Height = Dimensions.get('window').height;
 
@@ -46,7 +47,7 @@ function Home() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const dispatch = useDispatch();
 
-  const menuItems = ['Discussion', 'News', 'Articals'];
+  const menuItems = ['Discussion', 'News', 'Articles'];
 
   useEffect(() => {
     dispatch(mentorService);
@@ -90,7 +91,7 @@ function Home() {
         }}>
         <View>
           <Text style={styles.title}>
-            Hello,{' '}
+            Hello,
             <Text
               style={{color: Theme.primaryColor, textTransform: 'capitalize'}}>
               {state.user.name}
@@ -104,7 +105,7 @@ function Home() {
               paddingVertical: '6%',
               width: 80,
             }}>
-            <Text style={styles.subtitle}>Featured</Text>
+            <Text style={styles.subtitle}>{menu}</Text>
             <Image
               source={Theme.dropdown}
               style={{height: 8, width: 8, resizeMode: 'contain'}}
@@ -113,11 +114,15 @@ function Home() {
           {isOpenMenu && (
             <View
               style={{
-                backgroundColor: 'white',
+                backgroundColor: '#1C1C1C',
+                borderRadius: 10,
+                elevation: 0.6,
                 zIndex: 20,
                 position: 'absolute',
+                borderWidth: 1,
+                borderColor: AppColors.CardColor,
                 top: '12%',
-                height: 100,
+                height: 110,
                 paddingTop: '5%',
                 paddingLeft: '8%',
               }}>
@@ -134,21 +139,13 @@ function Home() {
                       color:
                         menu === item
                           ? Theme.primaryColor
-                          : Theme.backgroundColor,
+                          : AppColors.FontsColor,
                       fontWeight: 'bold',
                     }}>
                     {item}
                   </Text>
                 </TouchableOpacity>
               ))}
-            </View>
-          )}
-          {menu === 'News' && (
-            <View style={styles.wrapper}>
-              <Text style={[styles.title, {fontSize: 18, fontWeight: 'bold'}]}>
-                Trending News
-              </Text>
-              <BlueButtonRounded label={'Read More'} />
             </View>
           )}
 
@@ -174,10 +171,16 @@ function Home() {
             {menu === 'News' && (
               <View>
                 {/* <NewsCard /> */}
+                <View style={styles.wrapper}>
+                  <Text
+                    style={[styles.title, {fontSize: 18, fontWeight: 'bold'}]}>
+                    Trending News
+                  </Text>
+                </View>
                 <NewsList />
               </View>
             )}
-            {menu === 'Articals' && (
+            {menu === 'Articles' && (
               <View View style={{paddingBottom: '30%'}}>
                 <ArticleCard />
               </View>

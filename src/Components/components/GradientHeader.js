@@ -14,14 +14,17 @@ import {useSelector} from 'react-redux';
 
 const windowHeight = Dimensions.get('window').height;
 
-function GradientHeader() {
+function GradientHeader(props) {
   const state = useSelector(state => state.UserReducer);
   const navigation = useNavigation();
   return (
     <LinearGradient
       colors={['#1B1D8B', Theme.backgroundColor]}
       style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation?.openDrawer();
+        }}>
         <Image source={{uri: state.user?.image}} style={styles.user} />
       </TouchableOpacity>
 
@@ -40,6 +43,7 @@ function GradientHeader() {
       <TouchableOpacity onPress={() => navigation.navigate('Messages')}>
         <Image source={Theme.chat} style={styles.chat} />
       </TouchableOpacity>
+      {props.children}
     </LinearGradient>
   );
 }

@@ -1,18 +1,24 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-function MentorCard({image, name, desig}) {
+function MentorCard({item}) {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('ScheduleSession', {details: item})}
+      style={styles.container}>
       <View style={styles.imageWrapper}>
-        {image !== '' && <Image source={{uri: image}} style={{flex: 1}} />}
+        {item?.image !== '' && (
+          <Image source={{uri: item?.image}} style={{flex: 1}} />
+        )}
       </View>
       <LinearGradient
         colors={['#0A255F', '#061A46']}
         style={styles.infowrapper}>
-        <Text style={styles.title}>{name}</Text>
-        <Text style={styles.desig}>{desig}</Text>
+        <Text style={styles.title}>{item?.name}</Text>
+        <Text style={styles.desig}>{item?.designation}</Text>
       </LinearGradient>
     </TouchableOpacity>
   );
@@ -22,7 +28,7 @@ export default MentorCard;
 const styles = StyleSheet.create({
   container: {
     height: 190,
-    width: 140,
+    width: 180,
     borderRadius: 10,
     overflow: 'hidden',
     marginRight: 15,

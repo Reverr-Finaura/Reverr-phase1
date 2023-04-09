@@ -22,7 +22,9 @@ function CustomDrawer(props) {
         <LinearGradient
           colors={['#3D85E3', '#79C0F2']}
           style={styles.imgborder}>
-          <Image source={{uri: state?.user?.image}} style={styles.img} />
+          <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+            <Image source={{uri: state?.user?.image}} style={styles.img} />
+          </TouchableOpacity>
         </LinearGradient>
         <View>
           <View

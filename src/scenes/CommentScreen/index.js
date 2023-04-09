@@ -23,6 +23,7 @@ import Icon2 from 'react-native-vector-icons/Ionicons';
 import {pin_post, pushComment, deleteComment} from '../../Redux/actions';
 import {GiftedChat, Send} from 'react-native-gifted-chat';
 import LinearGradient from 'react-native-linear-gradient';
+import Theme from '../../utils/Theme';
 const CommentsScreen = props => {
   //const postData = props?.route?.params?.postData;
   const state = useSelector(state => state.UserReducer);
@@ -146,15 +147,17 @@ const CommentsScreen = props => {
             fontFamily: 'Poppins-Regular',
             fontSize: 10,
             marginBottom: 3,
-            marginTop: 0,
+            marginTop: -10,
             marginLeft: 45,
           }}>
           {item.commentedby.designation || state.user.designation}
         </Text>
-        <TouchableOpacity onLongPress={()=>setSelectedOption(item.commentid)} style={{paddingVertical:'3%'}}>
-        <Text style={{color: '#fff', fontFamily: 'Poppins-Regular'}}>
-          {item.comment}
-        </Text>
+        <TouchableOpacity
+          onLongPress={() => setSelectedOption(item.commentid)}
+          style={{paddingVertical: '3%'}}>
+          <Text style={{color: '#fff', fontFamily: 'Poppins-Regular'}}>
+            {item.comment}
+          </Text>
         </TouchableOpacity>
       </View>
     );
@@ -186,8 +189,8 @@ const CommentsScreen = props => {
     setRefresh(true);
   };
   return (
-    <LinearGradient colors={['#070972', '#0C0C0D']} style={styles.screen}>
-       <View style={{flexDirection: 'row', alignItems: 'center'}}>
+    <View style={styles.screen}>
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <BackButton
           IconSize={30}
           onPress={() => {
@@ -246,14 +249,13 @@ const CommentsScreen = props => {
           );
         }}
       />
-    </LinearGradient>
+    </View>
   );
 };
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-
-    backgroundColor: AppColors.primarycolor,
+    backgroundColor: Theme.backgroundColor,
   },
   commentCard: {
     padding: 5,

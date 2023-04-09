@@ -1,8 +1,6 @@
-
-import React, { useCallback, useRef, useState, useEffect } from 'react';
+import React, {useCallback, useRef, useState, useEffect} from 'react';
 import {
   View,
-
   Text,
   Image,
   Animated,
@@ -26,11 +24,11 @@ import authentication from '@react-native-firebase/auth';
 
 // import { useNavigation } from '@react-navigation/native';
 // import {FlatList, ScrollView} from 'react-native-gesture-handler';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
-import { CustomPopup, IndividualHeaderLayout } from '../../Components';
-import { Choice } from '../../Components';
-import { AppColors } from '../../utils';
+import {CustomPopup, IndividualHeaderLayout} from '../../Components';
+import {Choice} from '../../Components';
+import {AppColors} from '../../utils';
 import LinearGradient from 'react-native-linear-gradient';
 import {
   Load_Card,
@@ -46,21 +44,51 @@ import {
   useNavigation,
   useRoute,
 } from '@react-navigation/native';
-import { cardData } from '../../dumy-Data/defaultHomeCardData';
-import { VibeBoarding } from '../../Components/VibeBoarding';
+import {cardData} from '../../dumy-Data/defaultHomeCardData';
+import {VibeBoarding} from '../../Components/VibeBoarding';
 import CountDown from 'react-native-countdown-component';
-import { firebase } from '@react-native-firebase/database';
-import { CountdownTimer } from '../CountdownTimer';
-import { useLayoutEffect } from 'react';
-import { blue } from 'react-native-redash';
-import { black } from 'react-native-paper/lib/typescript/styles/colors';
+import {firebase} from '@react-native-firebase/database';
+import {CountdownTimer} from '../CountdownTimer';
+import {useLayoutEffect} from 'react';
+import {blue} from 'react-native-redash';
+import {black} from 'react-native-paper/lib/typescript/styles/colors';
+import GradientHeader from '../../Components/components/GradientHeader';
 const data = [
-  { id: 1, name: 'John', hareFor: 'Find Investors', howMeet: 'At Coffee', yearsExperience: 1 },
-  { id: 2, name: 'Jane', hareFor: 'Networking', howMeet: 'Video Call', yearsExperience: 1 },
-  { id: 3, name: 'Jack', hareFor: 'Hire Employees', howMeet: 'Local Cafe', yearsExperience: 1 },
-  { id: 4, name: 'Jill', hareFor: 'Find Mentor', howMeet: 'Video Call', yearsExperience: 1 },
-  { id: 5, name: 'T', hareFor: 'Find Cofounders', howMeet: 'At Coffee', yearsExperience: 1 },
-
+  {
+    id: 1,
+    name: 'John',
+    hareFor: 'Find Investors',
+    howMeet: 'At Coffee',
+    yearsExperience: 1,
+  },
+  {
+    id: 2,
+    name: 'Jane',
+    hareFor: 'Networking',
+    howMeet: 'Video Call',
+    yearsExperience: 1,
+  },
+  {
+    id: 3,
+    name: 'Jack',
+    hareFor: 'Hire Employees',
+    howMeet: 'Local Cafe',
+    yearsExperience: 1,
+  },
+  {
+    id: 4,
+    name: 'Jill',
+    hareFor: 'Find Mentor',
+    howMeet: 'Video Call',
+    yearsExperience: 1,
+  },
+  {
+    id: 5,
+    name: 'T',
+    hareFor: 'Find Cofounders',
+    howMeet: 'At Coffee',
+    yearsExperience: 1,
+  },
 ];
 const Vibe = () => {
   const state = useSelector(state => state.UserReducer);
@@ -78,11 +106,6 @@ const Vibe = () => {
   //   }
   // });
 
-
-
-
-
-
   const [continueshowingcard, setcontinueshowingcard] = useState(true);
   const [prevDailog, setPrevDailog] = useState(false);
   const [allswiped, setAllswiped] = useState(false);
@@ -96,8 +119,6 @@ const Vibe = () => {
   // const [filter, setFilter] = useState(false);
   // console.log("🚀 ~ file: index.js:135 ~ Vibe ~ filter:", filter)
 
-
-
   const filterModal = () => {
     setFilter(v => !v);
   };
@@ -107,19 +128,13 @@ const Vibe = () => {
 
   const LikeTab = () => {
     return (
-      <View
-        style={styles.viewLike}>
+      <View style={styles.viewLike}>
         <TouchableOpacity onPress={() => navigation.navigate('LikeScreen')}>
-          <View
-            style={styles.viewLike1}>
-
-            <Text
-              style={styles.likeText}>
-              likes
-            </Text>
+          <View style={styles.viewLike1}>
+            <Text style={styles.likeText}>likes</Text>
           </View>
         </TouchableOpacity>
-        <View style={{ paddingRight: 35 }}>
+        <View style={{paddingRight: 35}}>
           <TouchableOpacity onPress={() => setFilter(true)}>
             <Icon name="filter" color="#ffffff" size={25} />
           </TouchableOpacity>
@@ -128,7 +143,7 @@ const Vibe = () => {
     );
   };
   const Vibes = () => {
-    const { params } = useRoute();
+    const {params} = useRoute();
     const data = 'abc';
     // console.log('data paraams ', params);
     const [filter, setFilter] = useState(false);
@@ -185,67 +200,67 @@ const Vibe = () => {
       howMeet: [],
     });
     const ageOptions = [
-      { id: '< 1', name: '< 1', },
-      { id: '1-2', name: '1-2', },
-      { id: '2-5', name: '2-5', },
-      { id: '5>', name: '5>', },
+      {id: '< 1', name: '< 1'},
+      {id: '1-2', name: '1-2'},
+      {id: '2-5', name: '2-5'},
+      {id: '5>', name: '5>'},
     ];
 
     const hareFor = [
-      { id: 'Find Investors', name: 'Find Investors' },
-      { id: 'Networking', name: 'Networking' },
-      { id: 'Hire Employees', name: 'Hire Employees' },
-      { id: 'Find Mentor', name: 'Find Mentor' },
-      { id: 'Find Cofounders', name: 'Find Cofounder' },
+      {id: 'Find Investors', name: 'Find Investors'},
+      {id: 'Networking', name: 'Networking'},
+      {id: 'Hire Employees', name: 'Hire Employees'},
+      {id: 'Find Mentor', name: 'Find Mentor'},
+      {id: 'Find Cofounders', name: 'Find Cofounder'},
     ];
     const howMeet = [
-      { id: 'At Coffee', name: 'At Coffee' },
-      { id: 'Video Call', name: 'Video Call' },
-      { id: 'Local Cafe', name: 'Local Cafe' },
+      {id: 'At Coffee', name: 'At Coffee'},
+      {id: 'Video Call', name: 'Video Call'},
+      {id: 'Local Cafe', name: 'Local Cafe'},
     ];
 
-    const [filteringData, setFilteringData] = useState([])
+    const [filteringData, setFilteringData] = useState([]);
     // console.log("🚀 ~ file: index.js:2476 ~ Vibes ~ filteringData:",JSON.stringify (filteringData))
 
     const filterData = () => {
-      if (filters.hareFor.length > 0 || filters.howMeet.length > 0 || filters.yearsExperience.length > 0) {
-        let res = cards.filter((val) => {
+      if (
+        filters.hareFor.length > 0 ||
+        filters.howMeet.length > 0 ||
+        filters.yearsExperience.length > 0
+      ) {
+        let res = cards.filter(val => {
           if (val?.Vibe_Data?.Here_for != undefined) {
-            return filters.hareFor.every((hereFor) =>
-              val.Vibe_Data.Here_for.includes(hereFor)
+            return filters.hareFor.every(hereFor =>
+              val.Vibe_Data.Here_for.includes(hereFor),
             );
           }
         });
 
-        let res1 = res.filter((val) => {
+        let res1 = res.filter(val => {
           if (val.Vibe_Data?.How_To_Meet != undefined) {
-            return filters.howMeet.every((meeting) =>
-              val.Vibe_Data.How_To_Meet.includes(meeting)
+            return filters.howMeet.every(meeting =>
+              val.Vibe_Data.How_To_Meet.includes(meeting),
             );
           }
         });
 
-        let res2 = res1.filter((val) => {
+        let res2 = res1.filter(val => {
           if (val?.Vibe_Data?.Years_Of_Experience != undefined) {
-            return filters.yearsExperience.every((yearExp) =>
-              val.Vibe_Data.Years_Of_Experience.includes(yearExp)
+            return filters.yearsExperience.every(yearExp =>
+              val.Vibe_Data.Years_Of_Experience.includes(yearExp),
             );
           }
         });
 
-
-        setFilteringData(res2)
-        setFilter(false)
+        setFilteringData(res2);
+        setFilter(false);
         // alert("Inner")
-
       } else {
-        setFilteringData(cards)
-        setFilter(false)
+        setFilteringData(cards);
+        setFilter(false);
         // alert("Outer")
-
       }
-
-    }
+    };
 
     const HandleShow = async () => {
       // console.log('at shoiww');
@@ -256,9 +271,8 @@ const Vibe = () => {
     };
 
     const swipeLeft = async CurrentIndex => {
-
-      setCount(count + 1)
-      HandleOnSwiped(CurrentIndex)
+      setCount(count + 1);
+      HandleOnSwiped(CurrentIndex);
       if (!cards[cardindex]) return;
       const LeftSwiped = cards[CurrentIndex];
       // console.log("🚀 ~ file: index.js:2543 ~ swipeLeft ~ LeftSwiped:", LeftSwiped)
@@ -280,14 +294,13 @@ const Vibe = () => {
     const swipeRight = async CurrentIndex => {
       // console.log("===>", CurrentIndex)
 
-      setCount(count + 1)
+      setCount(count + 1);
 
-      HandleOnSwiped(CurrentIndex)
+      HandleOnSwiped(CurrentIndex);
       // var currCard = cards[idx];
 
       const data = cards[CurrentIndex];
       // console.log('right datta', data);
-
 
       // dispatch(RemoveTopCard());
       // console.log('stae  vibe swipe right isss', state.vibe);
@@ -302,7 +315,6 @@ const Vibe = () => {
         .doc(state.user.email)
         .update({
           liked: firestore.FieldValue.arrayUnion(Liked_Email),
-
         });
 
       if (Liked_People) {
@@ -313,7 +325,6 @@ const Vibe = () => {
             .doc(state.user.email)
             .update({
               Matched_People: firestore.FieldValue.arrayUnion(Liked_Email),
-
             });
           // action dispacthed to store matchedpeople
           dispatch(matchedpeople(Liked_Email));
@@ -352,14 +363,13 @@ const Vibe = () => {
     const superLikeCenter = async CurrentIndex => {
       // console.log("===>", CurrentIndex)
 
-      setCount(count + 1)
+      setCount(count + 1);
 
-      HandleOnSwiped(CurrentIndex)
+      HandleOnSwiped(CurrentIndex);
       // var currCard = cards[idx];
 
       const data = cards[CurrentIndex];
       // console.log('right datta', data);
-
 
       // dispatch(RemoveTopCard());
       // console.log('stae  vibe swipe right isss', state.vibe);
@@ -422,7 +432,6 @@ const Vibe = () => {
     };
 
     const HandleOnSwiped = async cardindex => {
-
       setcardindex(prev => prev + 1);
       setswipe(prev => prev + 1);
 
@@ -554,10 +563,9 @@ const Vibe = () => {
 
         let tempList = passeduserids.map(item => item.email);
 
-        let result = cards.filter(item => (tempList.includes(item.email)))
-        console.log("result", result)
+        let result = cards.filter(item => tempList.includes(item.email));
+        console.log('result', result);
         // alert(result)
-
 
         {
           if (passeduserids.length >= 10) {
@@ -572,7 +580,6 @@ const Vibe = () => {
           .collection('Users')
 
           .where('email', 'not-in', [...passeduserids]);
-
 
         Intialquery.get().then(snapshot => {
           // like
@@ -595,25 +602,29 @@ const Vibe = () => {
           // Intialquery.onSnapshot(snapshot => {
           // console.log('value of snap', snapshot.docs.length);
 
-
           // let resultss = results.filter(o1 => !reject.some(o2 => o1.email === o2));
 
           if (state.user.liked != undefined) {
-            let result = snapshot.docs.filter(o1 => !state.user.liked.some(o2 => o1.email === o2));
-            console.log("🚀 ~ file: index.js:603 ~ Intialquery.get ~ result:", result.length)
+            let result = snapshot.docs.filter(
+              o1 => !state.user.liked.some(o2 => o1.email === o2),
+            );
+            console.log(
+              '🚀 ~ file: index.js:603 ~ Intialquery.get ~ result:',
+              result.length,
+            );
 
             setcards(
-              result
-                .map(doc => ({
-                  id: doc.id,
-                  ...doc.data(),
-                })),
-            );
-            setFilteringData(result
-              .map(doc => ({
+              result.map(doc => ({
                 id: doc.id,
                 ...doc.data(),
-              })),)
+              })),
+            );
+            setFilteringData(
+              result.map(doc => ({
+                id: doc.id,
+                ...doc.data(),
+              })),
+            );
           } else {
             setcards(
               snapshot.docs
@@ -624,12 +635,14 @@ const Vibe = () => {
                 })),
             );
 
-            setFilteringData(snapshot.docs
-              // .filter(doc => doc.id !== state.user.email)
-              .map(doc => ({
-                id: doc.id,
-                ...doc.data(),
-              })),)
+            setFilteringData(
+              snapshot.docs
+                // .filter(doc => doc.id !== state.user.email)
+                .map(doc => ({
+                  id: doc.id,
+                  ...doc.data(),
+                })),
+            );
           }
           setshowCards(true);
         });
@@ -655,11 +668,9 @@ const Vibe = () => {
         }
       };
       if (showCards) {
-
         FetchUsersCard();
       }
       return Afterquery;
-
     }, []);
 
     //IF USER HAS VALID PREMIUM FOR VIBE
@@ -673,7 +684,7 @@ const Vibe = () => {
           await firestore()
             .collection('Users')
             .doc(state.user.email)
-            .update({ AllCardsSwiped: false, Number_Of_Swips_Done: 0 });
+            .update({AllCardsSwiped: false, Number_Of_Swips_Done: 0});
         }
       };
 
@@ -736,23 +747,21 @@ const Vibe = () => {
     // console.log(cards);
     return (
       <>
-
-        <View
-          style={styles.viewLike}>
+        <View style={styles.viewLike}>
           <TouchableOpacity onPress={() => navigation.navigate('LikeScreen')}>
-            <View
-              style={styles.viewLike1}>
-              <MaterialCommunityIcons name="heart-plus-outline" color="#ffffff" size={20} />
-              <Text
-                style={styles.likeText}>
-                view likes
-              </Text>
+            <View style={styles.viewLike1}>
+              <MaterialCommunityIcons
+                name="heart-plus-outline"
+                color="#ffffff"
+                size={20}
+              />
+              <Text style={styles.likeText}>view likes</Text>
             </View>
           </TouchableOpacity>
-          <View style={{ paddingRight: 20 }}>
+          <View style={{paddingRight: 20}}>
             <TouchableOpacity onPress={() => setFilter(true)}>
               <Image
-                style={{ height: 30, width: 30 }}
+                style={{height: 30, width: 30}}
                 source={require('../../../src/assets/images/FadersHorizontal.png')}
               />
             </TouchableOpacity>
@@ -768,28 +777,34 @@ const Vibe = () => {
               <View style={styles.container}>
                 {/* <Text style={{color: 'white'}}>HELOO</Text> */}
                 <FlatList
-                  data={filteringData.filter(it => it.email != authentication().currentUser.email)}
+                  data={filteringData.filter(
+                    it => it.email != authentication().currentUser.email,
+                  )}
                   extraData={filteringData}
                   pagingEnabled
                   horizontal
                   showsHorizontalScrollIndicator={false}
-                  contentContainerStyle={{ justifyContent: 'center', flexGrow: 1 }}
-                  renderItem={({ item, index }) => {
+                  contentContainerStyle={{
+                    justifyContent: 'center',
+                    flexGrow: 1,
+                  }}
+                  renderItem={({item, index}) => {
                     // if (item.) {
 
                     // }
                     // console.log("1234", item)
                     // console.log("lllllllllll", item.userType)
                     if (cardindex == index) {
-
                       return (
                         <ScrollView showsVerticalScrollIndicator={false}>
-                          <View
-                            style={styles.MainCard}>
-                            <ScrollView scrollEnabled={true} style={{ flexGrow: 1 }}
+                          <View style={styles.MainCard}>
+                            <ScrollView
+                              scrollEnabled={true}
+                              style={{flexGrow: 1}}
                               showsVerticalScrollIndicator={false}>
-                              <View style={{ flex: 1 }}>
-                                <View style={{ alignSelf: 'center', marginTop: 10 }}>
+                              <View style={{flex: 1}}>
+                                <View
+                                  style={{alignSelf: 'center', marginTop: 10}}>
                                   {item.image ? (
                                     <Image
                                       style={styles.coverImage}
@@ -806,48 +821,39 @@ const Vibe = () => {
                                     />
                                   )}
                                 </View>
-                                <View
-                                  style={styles.viewText}>
-                                  <Text
-                                    style={styles.txtName}>
+                                <View style={styles.viewText}>
+                                  <Text style={styles.txtName}>
                                     {item?.name}
                                   </Text>
-                                  <Text
-                                    style={styles.ceo}>
-                                    {item.Vibe_Data == undefined ? "" : item?.Vibe_Data?.Education}
+                                  <Text style={styles.ceo}>
+                                    {item.Vibe_Data == undefined
+                                      ? ''
+                                      : item?.Vibe_Data?.Education}
                                   </Text>
-                                  <Text
-                                    style={styles.Delhi}>
+                                  <Text style={styles.Delhi}>
                                     New Delhi, India
                                   </Text>
                                 </View>
 
                                 <View>
-                                  <Text
-                                    style={styles.about}>
-                                    About Me
-                                  </Text>
+                                  <Text style={styles.about}>About Me</Text>
 
-                                  <Text
-                                    style={styles.detial}
-                                    numberOfLines={2}>
-                                    Don’t ship it. Don’t settle for good enough. Do
-                                    better work than you did yesterday. Get out of
-                                    your comfort zone and give it your all – every
-                                    day.
+                                  <Text style={styles.detial} numberOfLines={2}>
+                                    Don’t ship it. Don’t settle for good enough.
+                                    Do better work than you did yesterday. Get
+                                    out of your comfort zone and give it your
+                                    all – every day.
                                   </Text>
                                 </View>
-                                <View
-                                  style={styles.likebar}>
+                                <View style={styles.likebar}>
                                   <View style={styles.nopeText}>
                                     <TouchableOpacity
                                       onPress={() => {
                                         // navigation.navigate('LikeMatchScreen')
                                         // swipeLefts(index)
                                         // setIndex(indexs+1)
-                                        swipeLeft(index)
-                                      }
-                                      }>
+                                        swipeLeft(index);
+                                      }}>
                                       <Image
                                         style={styles.nope}
                                         source={require('../../../src/assets/images/nope.png')}
@@ -858,36 +864,38 @@ const Vibe = () => {
 
                                   <View style={styles.superLike}>
                                     <TouchableOpacity
-                                      onPress={() => { superLikeCenter(index) }
-                                      }>
+                                      onPress={() => {
+                                        superLikeCenter(index);
+                                      }}>
                                       <Image
                                         style={styles.nopes}
                                         source={require('../../../src/assets/images/superlike.png')}
                                       />
-                                      <Text style={styles.textwhite}>superlike</Text>
+                                      <Text style={styles.textwhite}>
+                                        superlike
+                                      </Text>
                                     </TouchableOpacity>
                                   </View>
-                                  <View style={{ marginEnd: 10 }}>
+                                  <View style={{marginEnd: 10}}>
                                     <TouchableOpacity
                                       onPress={() => {
                                         // navigation.navigate('LikeMatchScreen')
                                         // swipeLefts(index)
-                                        swipeRight(index)
+                                        swipeRight(index);
                                         // setIndex(indexs+1)
-                                      }
-                                      }>
+                                      }}>
                                       <Image
                                         style={styles.nope}
                                         source={require('../../../src/assets/images/liketic.png')}
                                       />
-                                      <Text
-                                        style={styles.textwhites}>
+                                      <Text style={styles.textwhites}>
                                         like
                                       </Text>
                                     </TouchableOpacity>
                                   </View>
                                 </View>
-                                <TouchableOpacity onPress={() => setVisible(index)}>
+                                <TouchableOpacity
+                                  onPress={() => setVisible(index)}>
                                   <Entypo
                                     style={styles.entypo}
                                     name={
@@ -900,19 +908,17 @@ const Vibe = () => {
                                 </TouchableOpacity>
 
                                 {visible === index && (
-                                  <View style={{ flex: 1 }}>
+                                  <View style={{flex: 1}}>
                                     <View>
                                       <View>
-                                        {
-                                          item.Vibe_Data != undefined && (
-                                            <>
-                                              <Text
-                                                style={styles.vibeText}>
-                                                What I am here for
-                                              </Text>
-                                              <View
-                                                style={styles.viewVibe}>
-                                                {item.Vibe_Data != undefined && item?.Vibe_Data?.Here_for?.map(
+                                        {item.Vibe_Data != undefined && (
+                                          <>
+                                            <Text style={styles.vibeText}>
+                                              What I am here for
+                                            </Text>
+                                            <View style={styles.viewVibe}>
+                                              {item.Vibe_Data != undefined &&
+                                                item?.Vibe_Data?.Here_for?.map(
                                                   Here_for => {
                                                     // console.log(">>>>>>>>", Here_for);
                                                     return (
@@ -928,128 +934,124 @@ const Vibe = () => {
                                                         <View
                                                           style={styles.circle}>
                                                           <Text
-                                                            style={styles.hareFor}>
-
+                                                            style={
+                                                              styles.hareFor
+                                                            }>
                                                             {Here_for}
-
                                                           </Text>
                                                         </View>
                                                       </TouchableOpacity>
                                                     );
                                                   },
                                                 )}
-                                              </View>
-                                            </>
-                                          )
-                                        }
+                                            </View>
+                                          </>
+                                        )}
                                         {item.Vibe_Data != undefined && (
                                           <>
                                             <View>
-                                              <Text
-                                                style={
-                                                  styles.vibeText
-                                                }>
+                                              <Text style={styles.vibeText}>
                                                 Education:
                                               </Text>
-                                              <Text
-                                                style={styles.dataDatabase}>
-                                                {item.Vibe_Data == undefined ? "N/A" : item?.Vibe_Data?.Education}
+                                              <Text style={styles.dataDatabase}>
+                                                {item.Vibe_Data == undefined
+                                                  ? 'N/A'
+                                                  : item?.Vibe_Data?.Education}
                                               </Text>
 
-
-                                              <Text
-                                                style={styles.vibeText}>
+                                              <Text style={styles.vibeText}>
                                                 Industry:
                                               </Text>
 
-
-                                              <Text
-                                                style={styles.dataDatabase}>
-                                                {item.Vibe_Data == undefined ? "N/A" : item?.Vibe_Data?.Industry}
+                                              <Text style={styles.dataDatabase}>
+                                                {item.Vibe_Data == undefined
+                                                  ? 'N/A'
+                                                  : item?.Vibe_Data?.Industry}
                                               </Text>
 
-                                              <Text
-                                                style={styles.vibeText}>
+                                              <Text style={styles.vibeText}>
                                                 Previous Designation:
                                               </Text>
-                                              <Text
-                                                style={styles.dataDatabase}>
-                                                {
-                                                  item.Vibe_Data == undefined ? "N/A" : item?.Vibe_Data
-                                                    ?.Previous_Designation
-                                                }
+                                              <Text style={styles.dataDatabase}>
+                                                {item.Vibe_Data == undefined
+                                                  ? 'N/A'
+                                                  : item?.Vibe_Data
+                                                      ?.Previous_Designation}
                                               </Text>
-                                              <Text
-                                                style={styles.vibeText}>
+                                              <Text style={styles.vibeText}>
                                                 Previous Organization:
                                               </Text>
-                                              <Text
-                                                style={styles.dataDatabase}>
-                                                {item.Vibe_Data == undefined ? "N/A" : item?.Vibe_Data?.Previous_Org}
+                                              <Text style={styles.dataDatabase}>
+                                                {item.Vibe_Data == undefined
+                                                  ? 'N/A'
+                                                  : item?.Vibe_Data
+                                                      ?.Previous_Org}
                                               </Text>
-                                              <Text
-                                                style={styles.vibeText}>
+                                              <Text style={styles.vibeText}>
                                                 How can we meet:
                                               </Text>
-                                              {item.Vibe_Data == undefined && <Text
-                                                style={styles.noData}>
-                                                N/A
-                                              </Text>}
-                                              {item.Vibe_Data != undefined && item?.Vibe_Data?.How_To_Meet?.map(
-                                                How_To_Meet => {
-                                                  // console.log(item);
-                                                  return (
-                                                    <View>
-                                                      <Text
-                                                        style={styles.dataDatabase}>
-                                                        {How_To_Meet}
-                                                      </Text>
-                                                    </View>
-                                                  );
-                                                },
+                                              {item.Vibe_Data == undefined && (
+                                                <Text style={styles.noData}>
+                                                  N/A
+                                                </Text>
                                               )}
-                                              <Text
-                                                style={styles.vibeText}>
+                                              {item.Vibe_Data != undefined &&
+                                                item?.Vibe_Data?.How_To_Meet?.map(
+                                                  How_To_Meet => {
+                                                    // console.log(item);
+                                                    return (
+                                                      <View>
+                                                        <Text
+                                                          style={
+                                                            styles.dataDatabase
+                                                          }>
+                                                          {How_To_Meet}
+                                                        </Text>
+                                                      </View>
+                                                    );
+                                                  },
+                                                )}
+                                              <Text style={styles.vibeText}>
                                                 Experience:
                                               </Text>
-                                              {item.Vibe_Data == undefined && <Text
-                                                style={styles.noData}>
-                                                N/A
-                                              </Text>}
-                                              {item.Vibe_Data != undefined && item?.Vibe_Data?.Years_Of_Experience?.map(
-                                                Years_Of_Experience => {
-                                                  // console.log(item);
-                                                  return (
-                                                    <View>
-                                                      <Text
-                                                        style={styles.dataDatabase}>
-                                                        {Years_Of_Experience}
-                                                      </Text>
-                                                    </View>
-                                                  );
-                                                },
+                                              {item.Vibe_Data == undefined && (
+                                                <Text style={styles.noData}>
+                                                  N/A
+                                                </Text>
                                               )}
+                                              {item.Vibe_Data != undefined &&
+                                                item?.Vibe_Data?.Years_Of_Experience?.map(
+                                                  Years_Of_Experience => {
+                                                    // console.log(item);
+                                                    return (
+                                                      <View>
+                                                        <Text
+                                                          style={
+                                                            styles.dataDatabase
+                                                          }>
+                                                          {Years_Of_Experience}
+                                                        </Text>
+                                                      </View>
+                                                    );
+                                                  },
+                                                )}
                                             </View>
-
-                                          </>)}
-
+                                          </>
+                                        )}
                                       </View>
                                     </View>
                                   </View>
                                 )}
                               </View>
                             </ScrollView>
-
                           </View>
                         </ScrollView>
                       );
                       // }
                     }
-                  }
-                  }
+                  }}
                   keyExtractor={(item, index) => index.toString()}
                 />
-
               </View>
             ) : (
               <>
@@ -1070,7 +1072,7 @@ const Vibe = () => {
                     <Text style={styles.modelText}>Filter</Text>
                   </View>
                   <ScrollView>
-                    <View style={{ padding: 20 }}>
+                    <View style={{padding: 20}}>
                       <MultiSelect
                         items={hareFor}
                         uniqueKey="id"
@@ -1086,7 +1088,7 @@ const Vibe = () => {
                         selectedItems={filters.hareFor}
                         selectText="Hare For"
                         searchInputPlaceholderText="Search Hare For"
-                        searchInputStyle={{ height: 50 }}
+                        searchInputStyle={{height: 50}}
                         styleDropdownMenu={true}
                         styleDropdownMenuSubsection={true}
                         styleIndicator={true}
@@ -1106,7 +1108,6 @@ const Vibe = () => {
                         items={ageOptions}
                         uniqueKey="id"
                         displayKey="name"
-
                         onSelectedItemsChange={selectedItems =>
                           setFilters({
                             ...filters,
@@ -1116,7 +1117,6 @@ const Vibe = () => {
                         selectedItems={filters.yearsExperience}
                         selectText="Year Experience"
                         searchInputPlaceholderText="Search Year Experience"
-
                         tagRemoveIconColor="#CCC"
                         tagBorderColor="#CCC"
                         tagTextColor="#CCC"
@@ -1127,7 +1127,6 @@ const Vibe = () => {
                         hideDropdown={true}
                         hideTags={true}
                         hideSubmitButton={true}
-
                       />
                       <MultiSelect
                         items={howMeet}
@@ -1142,7 +1141,7 @@ const Vibe = () => {
                         selectedItems={filters.howMeet}
                         selectText="How we Meet"
                         searchInputPlaceholderText="How we Meet..."
-                        searchInputStyle={{ height: 40 }}
+                        searchInputStyle={{height: 40}}
                         tagRemoveIconColor="#CCC"
                         tagBorderColor="#CCC"
                         tagTextColor="#CCC"
@@ -1163,7 +1162,6 @@ const Vibe = () => {
                       />
                     </View>
                   </ScrollView>
-
                 </View>
               </View>
             </Modal>
@@ -1173,7 +1171,7 @@ const Vibe = () => {
     );
   };
 
-  const [indexs, setIndex] = useState(0)
+  const [indexs, setIndex] = useState(0);
 
   return (
     <>
@@ -1184,27 +1182,21 @@ const Vibe = () => {
           finalSetVibePremium={setHasPremiumOfVibe}
         />
       ) : (
-        <>
-          <IndividualHeaderLayout style={{ flex: 1 }}>
-            <CustomPopup
-              modalVisible={prevDailog}
-              setModalVisible={() => setPrevDailog(false)}>
-              <View>
-                <Text>Prev Data Show Here</Text>
-              </View>
-            </CustomPopup>
-            {/* <LikeTab /> */}
-            <Vibes />
-
-
-          </IndividualHeaderLayout>
-
-        </>
+        <View style={{backgroundColor: AppColors.primarycolor, flex: 1}}>
+          <GradientHeader />
+          <CustomPopup
+            modalVisible={prevDailog}
+            setModalVisible={() => setPrevDailog(false)}>
+            <View>
+              <Text>Prev Data Show Here</Text>
+            </View>
+          </CustomPopup>
+          {/* <LikeTab /> */}
+          <Vibes />
+        </View>
       )}
     </>
   );
 };
 
-
-
-export { Vibe };
+export {Vibe};

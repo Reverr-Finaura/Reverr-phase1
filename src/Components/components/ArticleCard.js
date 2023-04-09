@@ -1,12 +1,20 @@
-import React,{useState,useEffect} from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity, ToastAndroid, FlatList} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ToastAndroid,
+  FlatList,
+} from 'react-native';
 import Theme from '../../utils/Theme';
 import Ionic from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
-import { SaveArticle } from '../../Redux/actions';
-import { smallString } from '../../utils';
+import {useDispatch, useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+import {SaveArticle} from '../../Redux/actions';
+import {smallString} from '../../utils';
 
 function ArticleCard() {
   const state = useSelector(state => state.UserReducer);
@@ -75,7 +83,7 @@ function ArticleCard() {
       });
   };
 
-  console.log(articalData,"articalData");
+  // console.log(articalData,"articalData");
 
   return (
     <>
@@ -84,29 +92,29 @@ function ArticleCard() {
         nestedScrollEnabled={true}
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item.id}
-        renderItem={({item,index}) => (
+        renderItem={({item, index}) => (
           <TouchableOpacity key={index} style={styles.container}>
             <View style={{width: '23%'}}>
-              <Image source={{uri:item?.image?.imageUrl}} style={styles.img} />
+              <Image source={{uri: item?.image?.imageUrl}} style={styles.img} />
             </View>
 
             <View
               style={{
                 paddingLeft: 10,
-                width: '64%',
+                width: '80%',
                 justifyContent: 'space-evenly',
               }}>
               <Text style={styles.title}> {item.heading}</Text>
               <View style={styles.line} />
               <Text numberOfLines={2} style={styles.desc}>
-              {smallString(item.body, 100)}
+                {smallString(item.body, 100)}
               </Text>
             </View>
 
-            <View style={styles.corner}>
+            {/* <View style={styles.corner}>
               <Image source={Theme.triangle} style={styles.triangle} />
               <Text style={styles.number}>169</Text>
-            </View>
+            </View> */}
           </TouchableOpacity>
         )}
       />
@@ -135,6 +143,7 @@ const styles = StyleSheet.create({
   },
   desc: {
     fontWeight: '500',
+    paddingRight: '4%',
     fontSize: 13,
     color: '#fff',
   },

@@ -7,7 +7,6 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {Image, StyleSheet, Platform} from 'react-native';
 import Home from '../screens/Tabs/Home';
 import Mentor from '../screens/Tabs/Mentor';
-import Vibe from '../screens/Tabs/Vibe';
 import Funds from '../screens/Tabs/Funds';
 import Learn from '../screens/Tabs/Learn';
 import Theme from '../utils/Theme';
@@ -27,24 +26,31 @@ import Settings from '../screens/Drawer/Settings';
 import {
   CalanderAppointments,
   ChatScreen,
+  ChatVibeScreen,
   CommentsScreen,
   CreatePost,
   EditProfile,
   IntroSplash,
   LearnScreen,
+  LikeScreen,
   LoginViaEmail,
   LoginViaPhone,
   MentorList,
   Messages,
+  NewsDetails,
   OpenBook,
   Plans,
   PremiumPlans,
   ReadingInstruction,
+  Requests,
   StartCourse,
   StartLogin,
+  Vibe,
 } from '../scenes';
 import MentorsList from '../screens/MentorsList';
 import ProfileSettings from '../screens/Drawer/Settings';
+import NewVibe from '../screens/Tabs/Vibe';
+import OthersProfile from '../screens/OthersProfile';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -91,18 +97,13 @@ export default function Route() {
         />
         <Stack.Screen
           options={{headerShown: false}}
-          name="ChatScreen"
-          component={ChatScreen}
+          name="ChatVibeScreen"
+          component={ChatVibeScreen}
         />
         <Stack.Screen
-          name="Messages"
           options={{headerShown: false}}
-          component={Messages}
-        />
-        <Stack.Screen
-          name="plans"
-          options={{headerShown: false}}
-          component={PremiumPlans}
+          name="LikeScreen"
+          component={LikeScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -149,18 +150,21 @@ function MyDrawer() {
             <Image source={Theme.bookmarkline} style={styles.icon} />
           ),
         }}
-        name="My Courses"
+        name="Saved"
         component={MyCourses}
       />
-      {/* <Drawer.Screen
+      <Drawer.Screen
         options={{
           drawerIcon: () => (
-            <Image source={Theme.bookopen} style={styles.icon} />
+            <Image
+              source={Theme.requests}
+              style={[styles.icon, {tintColor: 'white'}]}
+            />
           ),
         }}
-        name="My Books"
-        component={MyBooks}
-      /> */}
+        name="Requests"
+        component={Requests}
+      />
       <Drawer.Screen
         options={{
           drawerIcon: () => <Image source={Theme.info} style={styles.icon} />,
@@ -201,8 +205,43 @@ function HomeStack() {
       />
       <Stack.Screen
         options={{headerShown: false}}
+        name="OthersProfile"
+        component={OthersProfile}
+      />
+      <Stack.Screen
+        options={{headerShown: false}}
         name="Premium"
         component={Premium}
+      />
+      <Stack.Screen
+        name="newVibes"
+        options={{headerShown: false}}
+        component={NewVibe}
+      />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="ChatScreen"
+        component={ChatScreen}
+      />
+      <Stack.Screen
+        name="Messages"
+        options={{headerShown: false}}
+        component={Messages}
+      />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="ChatVibeScreen"
+        component={ChatVibeScreen}
+      />
+      <Stack.Screen
+        name="plans"
+        options={{headerShown: false}}
+        component={PremiumPlans}
+      />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="NewsDetails"
+        component={NewsDetails}
       />
     </Stack.Navigator>
   );

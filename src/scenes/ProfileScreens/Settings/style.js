@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   dp: {
-    height: Height / 7.5,
+    height: Height / 7,
     width: Width / 5.2,
     overflow: 'hidden',
     borderRadius: 200,

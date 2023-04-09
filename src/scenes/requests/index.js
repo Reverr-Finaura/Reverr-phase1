@@ -14,7 +14,7 @@ import firestore from '@react-native-firebase/firestore';
 import {useDispatch, useSelector} from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
 import {ApprovedReq, rejectRequest} from '../../utils/FirebaseFunctionality';
-import {add_user} from '../../Redux/actions';
+import {add_user, setUser} from '../../Redux/actions';
 
 const Requests = () => {
   const state = useSelector(state => state.UserReducer);
@@ -30,30 +30,20 @@ const Requests = () => {
         .collection('Users')
         .doc(state.user.recivedRequests[index])
         .get();
-
       rec.push(req._data);
-      if(index===state.user.recivedRequests.length-1)
-      {
+      if (index === state.user.recivedRequests.length - 1) {
         setLoader(false);
       }
     }
     setRecivedReq(rec);
-    
+    setLoader(false);
   };
-  console.log(state.user.recivedRequests,"jjhjh");
+  //console.log(state.user.recivedRequests, 'jjhjh');
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     getRequested();
-    firestore()
-      .collection('Users')
-      .doc(state.user.email)
-      .get()
-      .then(res => {
-        console.log(res._data, 'resAdd');
-        dispatch(add_user(res._data));
-      });
   }, [dispatch, loading]);
 
   return (
@@ -80,57 +70,103 @@ const Requests = () => {
         </View>
       ) : (
         <View>
-          <FlatList
-            data={recivedReq}
-            keyExtractor={item => item.email}
-            renderItem={({item, index}) => (
-              <View
-                key={index}
+          {recivedReq?.length === 0 ? (
+            <View
+              style={{
+                height: '70%',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Text
                 style={{
-                  width: '47%',
-                  marginVertical: '2%',
-                  marginHorizontal: '2%',
-                  alignItems: 'center',
+                  fontFamily: 'Poppins-Regular',
+                  color: AppColors.FontsColor,
                 }}>
-                <LinearGradient
-                  colors={[AppColors.primarycolor, '#012437']}
-                  start={{x: 0, y: 1}}
-                  end={{x: 1, y: 0.5}}
-                  style={styles.Card}>
-                  <Image
-                    source={require('../../assets/images/MentorProfile.png')}
-                    style={styles.dp}
-                  />
-                  <Text style={styles.name}>{item.name}</Text>
-                  <Text style={styles.industry}>
-                    {smallString(item.industry, 20)}
-                  </Text>
+                You have no any requests
+              </Text>
+            </View>
+          ) : (
+            <View>
+              <FlatList
+                data={recivedReq}
+                keyExtractor={item => item.email}
+                renderItem={({item, index}) => (
                   <View
+                    key={index}
                     style={{
-                      flexDirection: 'row',
-                      width: '100%',
-                      justifyContent: 'space-around',
-                      paddingHorizontal: '6%',
+                      width: '47%',
+                      marginVertical: '2%',
+                      marginHorizontal: '2%',
+                      alignItems: 'center',
                     }}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        ApprovedReq(state.user.email, item.email, setLoading);
-                      }}
-                      style={styles.button}>
-                      <Text style={{color: AppColors.FontsColor}}>Approve</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      onPress={() => {
-                        rejectRequest(state.user.email, item.email, setLoading);
-                      }}
-                      style={[styles.button, {backgroundColor: 'red'}]}>
-                      <Text style={{color: AppColors.FontsColor}}>Reject</Text>
-                    </TouchableOpacity>
+                    <LinearGradient
+                      colors={[AppColors.primarycolor, '#012437']}
+                      start={{x: 0, y: 1}}
+                      end={{x: 1, y: 0.5}}
+                      style={styles.Card}>
+                      <Image source={{uri: item.image}} style={[styles.dp]} />
+                      <Text style={styles.name}>{item.name}</Text>
+                      <Text style={styles.industry}>
+                        {smallString(item.industry, 20)}
+                      </Text>
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          width: '100%',
+                          justifyContent: 'space-around',
+                          paddingHorizontal: '6%',
+                        }}>
+                        {loading ? (
+                          <View>
+                            <ActivityIndicator />
+                          </View>
+                        ) : (
+                          <TouchableOpacity
+                            onPress={() => {
+                              ApprovedReq(
+                                state.user.email,
+                                item.email,
+                                setLoading,
+                              ).then(r => {
+                                //  console.log(r, 'aproved');
+                                dispatch(setUser(r));
+                              });
+                            }}
+                            style={styles.button}>
+                            <Text style={{color: AppColors.FontsColor}}>
+                              Approve
+                            </Text>
+                          </TouchableOpacity>
+                        )}
+                        {loading ? (
+                          <View>
+                            <ActivityIndicator />
+                          </View>
+                        ) : (
+                          <TouchableOpacity
+                            onPress={() => {
+                              rejectRequest(
+                                state.user.email,
+                                item.email,
+                                setLoading,
+                              ).then(r => {
+                                console.log(r, 'reject');
+                                dispatch(setUser(r));
+                              });
+                            }}
+                            style={[styles.button, {backgroundColor: 'red'}]}>
+                            <Text style={{color: AppColors.FontsColor}}>
+                              Reject
+                            </Text>
+                          </TouchableOpacity>
+                        )}
+                      </View>
+                    </LinearGradient>
                   </View>
-                </LinearGradient>
-              </View>
-            )}
-          />
+                )}
+              />
+            </View>
+          )}
         </View>
       )}
     </View>
@@ -167,6 +203,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: '7%',
     paddingVertical: '3%',
     borderRadius: 5,
+  },
+  dp: {
+    height: 90,
+    width: 90,
+    borderRadius: 50,
   },
 });
 

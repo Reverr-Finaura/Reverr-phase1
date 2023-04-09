@@ -3,7 +3,7 @@ import firestore from '@react-native-firebase/firestore';
 import ImagePicker from 'react-native-image-crop-picker';
 import storage from '@react-native-firebase/storage';
 //import {add_user,updateImage} from '../../Redux/actions';
-import {updateImage, updateUserState} from '../../Redux/actions';
+import {setUser, updateImage, updateUserState} from '../../Redux/actions';
 import {useDispatch} from 'react-redux';
 
 var date = new Date().getDate();
@@ -98,11 +98,12 @@ export const RemovePost = async (item, email, posts) => {
     .update({savedPosts: [...posts.filter(arti => arti != item.id)]});
 };
 
-export const AddGalleryImage = setfileUrl => {
+export const AddGalleryImage = (setfileUrl, setLoader) => {
   ImagePicker.openPicker({
     mediaType: 'photo',
   })
     .then(image => {
+      setLoader(true);
       try {
         const url = image.path;
         const fileUrl = url.substring(url.lastIndexOf('/') + 1);
@@ -115,27 +116,32 @@ export const AddGalleryImage = setfileUrl => {
               .getDownloadURL();
             setfileUrl(imgURL);
             console.log(imgURL);
+            setLoader(false);
             /*  dispatch({type: 'UPDATEPHOTO', payload: imgURL});
           await firestore().collection('Users').doc(userEmail).update({
             image: imgURL,
           }); */
           })
           .catch(e => {
+            setLoader(false);
             console.log('error not selected file');
           });
       } catch (error) {
+        setLoader(false);
         alert('Cancel');
       }
     })
     .catch(e => {
+      setLoader(false);
       console.log('error not selected file');
     });
 };
-export const AddCameraImage = setfileUrl => {
+export const AddCameraImage = (setfileUrl, setLoader) => {
   ImagePicker.openCamera({
     mediaType: 'photo',
   })
     .then(image => {
+      setLoader(true);
       try {
         const url = image.path;
         const fileUrl = url.substring(url.lastIndexOf('/') + 1);
@@ -148,6 +154,7 @@ export const AddCameraImage = setfileUrl => {
               .getDownloadURL();
             setfileUrl(imgURL);
             console.log(imgURL);
+            setLoader(false);
 
             /*  dispatch({type: 'UPDATEPHOTO', payload: imgURL});
           await firestore().collection('Users').doc(userEmail).update({
@@ -155,23 +162,27 @@ export const AddCameraImage = setfileUrl => {
           }); */
           })
           .catch(e => {
+            setLoader(false);
             console.log('error not selected file');
           });
       } catch (error) {
+        setLoader(false);
         alert('Cancel');
         return null;
       }
     })
     .catch(e => {
+      setLoader(false);
       console.log('error not selected file');
     });
 };
 
-export const AddGalleryVideo = setVideoUrl => {
+export const AddGalleryVideo = (setVideoUrl, setLoader) => {
   ImagePicker.openPicker({
     mediaType: 'video',
   })
     .then(video => {
+      setLoader(true);
       try {
         const url = video.path;
         const fileUrl = url.substring(url.lastIndexOf('/') + 1);
@@ -184,27 +195,32 @@ export const AddGalleryVideo = setVideoUrl => {
               .getDownloadURL();
             console.log(vidURL);
             setVideoUrl(vidURL);
+            setLoader(false);
             /*  dispatch({type: 'UPDATEPHOTO', payload: imgURL});
           await firestore().collection('Users').doc(userEmail).update({
             image: imgURL,
           }); */
           })
           .catch(e => {
+            setLoader(false);
             console.log('error not selected file');
           });
       } catch (error) {
+        setLoader(false);
         alert('Cancel');
       }
     })
     .catch(e => {
+      setLoader(false);
       console.log('error not selected file');
     });
 };
-export const AddCameraVideo = setVideoUrl => {
+export const AddCameraVideo = (setVideoUrl, setLoader) => {
   ImagePicker.openCamera({
     mediaType: 'video',
   })
     .then(image => {
+      setLoader(true);
       try {
         const url = image.path;
         const fileUrl = url.substring(url.lastIndexOf('/') + 1);
@@ -216,21 +232,25 @@ export const AddCameraVideo = setVideoUrl => {
               .ref('Videos/' + fileUrl)
               .getDownloadURL();
             // console.log(imgURL);
-            return imgURL;
+            setVideoUrl(imgURL);
+            setLoader(false);
             /*  dispatch({type: 'UPDATEPHOTO', payload: imgURL});
           await firestore().collection('Users').doc(userEmail).update({
             image: imgURL,
           }); */
           })
           .catch(e => {
+            setLoader(false);
             console.log('error not selected file');
           });
       } catch (error) {
+        setLoader(false);
         alert('Cancel');
         return null;
       }
     })
     .catch(e => {
+      setLoader(false);
       console.log('error not selected file');
     });
 };
@@ -287,7 +307,7 @@ export const ReciveMessage = async (currentcUser, sendTo, setmsg) => {
 export const getPost = async () => {
   let postdata = '';
   let t = await firestore().collection('Posts').get();
-  console.log(t,"kdjksdsiodo");
+  console.log(t, 'kdjksdsiodo');
   return t._docs;
 };
 
@@ -296,6 +316,7 @@ export const ConnectToSocial = async (
   toUserEmail,
   setLoading,
 ) => {
+  let userData = [];
   setLoading(true);
   await firestore()
     .collection('Users')
@@ -311,9 +332,19 @@ export const ConnectToSocial = async (
           recivedRequests: firestore.FieldValue.arrayUnion(currentcUseremail),
         });
     })
-    .then(() => {
+    .then(async () => {
+      await firestore()
+        .collection('Users')
+        .doc(currentcUseremail)
+        .get()
+        .then(inst => {
+          //console.log(inst);
+          // dispatch(setUser(inst._data));
+          userData = inst._data;
+        });
       setLoading(false);
     });
+  return userData;
 };
 
 export const CancelRequest = async (
@@ -321,6 +352,7 @@ export const CancelRequest = async (
   toUserEmail,
   setLoading,
 ) => {
+  let userData = [];
   setLoading(true);
   await firestore()
     .collection('Users')
@@ -336,15 +368,26 @@ export const CancelRequest = async (
           recivedRequests: firestore.FieldValue.arrayRemove(currentcUseremail),
         });
     })
-    .then(() => {
+    .then(async () => {
+      await firestore()
+        .collection('Users')
+        .doc(currentcUseremail)
+        .get()
+        .then(inst => {
+          //console.log(inst);
+          // dispatch(setUser(inst._data));
+          userData = inst._data;
+        });
       setLoading(false);
     });
+  return userData;
 };
 export const rejectRequest = async (
   currentcUseremail,
   toUserEmail,
   setLoading,
 ) => {
+  let userData = [];
   setLoading(true);
   await firestore()
     .collection('Users')
@@ -360,15 +403,26 @@ export const rejectRequest = async (
           sendRequests: firestore.FieldValue.arrayRemove(currentcUseremail),
         });
     })
-    .then(() => {
+    .then(async () => {
+      await firestore()
+        .collection('Users')
+        .doc(currentcUseremail)
+        .get()
+        .then(inst => {
+          //console.log(inst);
+          // dispatch(setUser(inst._data));
+          userData = inst._data;
+        });
       setLoading(false);
     });
+  return userData;
 };
 export const ApprovedReq = async (
   currentcUseremail,
   toUserEmail,
   setLoading,
 ) => {
+  let userData = [];
   setLoading(true);
   await firestore()
     .collection('Users')
@@ -400,9 +454,9 @@ export const ApprovedReq = async (
           sendRequests: firestore.FieldValue.arrayRemove(currentcUseremail),
         });
     })
-    .then(() => {
+    .then(async () => {
       setLoading(false);
-      firestore()
+      await firestore()
         .collection('Messages')
         .doc(currentcUseremail)
         .collection('Networks')
@@ -416,8 +470,8 @@ export const ApprovedReq = async (
             },
           ],
         })
-        .then(() => {
-          firestore()
+        .then(async () => {
+          await firestore()
             .collection('Messages')
             .doc(toUserEmail)
             .collection('Networks')
@@ -430,27 +484,43 @@ export const ApprovedReq = async (
                   sendBy: '',
                 },
               ],
+            })
+            .then(async () => {
+              await firestore()
+                .collection('Users')
+                .doc(currentcUseremail)
+                .get()
+                .then(inst => {
+                  console.log(inst._data, 'inst');
+                  // dispatch(setUser(inst._data));
+                  userData = inst._data;
+                });
+              setLoading(false);
             });
         });
     });
+  return userData;
 };
 
-export const fetchInitialData = async ({setData,setIsLoading})  =>  {
+export const fetchInitialData = async ({setData, setIsLoading}) => {
   setIsLoading(true);
   const querySnapshot = await firestore().collection('Posts').limit(10).get();
-  const d = querySnapshot.docs.map((doc) => ({...doc.data() }));
+  const d = querySnapshot.docs.map(doc => ({...doc.data()}));
   setData(d);
   setIsLoading(false);
 };
 
-export const fetchMoreData = async ({setData,setIsLoading}) =>  {
+export const fetchMoreData = async ({setData, setIsLoading}) => {
   setIsLoading(true);
   const lastItem = data[data.length - 1];
-  const querySnapshot = await firestore().collection('Posts').startAfter(lastItem).limit(10).get();
-  const newData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  const querySnapshot = await firestore()
+    .collection('Posts')
+    .startAfter(lastItem)
+    .limit(10)
+    .get();
+  const newData = querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
   setData([...data, ...newData]);
   setIsLoading(false);
 };
-
 
 export {loginUser};

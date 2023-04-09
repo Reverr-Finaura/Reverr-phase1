@@ -1,5 +1,11 @@
-import {SignupForm,StartSignup, OtpScreen, ForgotPassword, ResetPassword} from './Auth';
-import {StartLogin,LoginViaEmail,LoginViaPhone} from './Auth';
+import {
+  SignupForm,
+  StartSignup,
+  OtpScreen,
+  ForgotPassword,
+  ResetPassword,
+} from './Auth';
+import {StartLogin, LoginViaEmail, LoginViaPhone} from './Auth';
 //import { LoginScreen } from './Auth';
 import {
   IndividuaProfile,
@@ -54,7 +60,13 @@ import {CountdownTimer} from './CountdownTimer';
 import {LikeScreen} from './LikesScreen';
 import PremiumPlans from './PremiumPlans';
 import ScheduleAppointment from './scheduleappointment';
-import { PersonalProfile,EduAndExp,LookingFor,Intrest,Social } from './profilesetup';
+import {
+  PersonalProfile,
+  EduAndExp,
+  LookingFor,
+  Intrest,
+  Social,
+} from './profilesetup';
 import LikeMatchScreen from './LikeMatchScreen';
 import SuperLikeScreen from './SuperLikeScreen';
 import ChatVibeScreen from './ChatVibeScreen';
@@ -97,7 +109,8 @@ export {
   ChatScreen,
   SavedScreen,
   EduAndExp,
-  LoginViaEmail,LoginViaPhone,
+  LoginViaEmail,
+  LoginViaPhone,
   Rooms,
   CreatePost,
   CommentsScreen,
@@ -123,6 +136,4 @@ export {
   LikeMatchScreen,
   SuperLikeScreen,
   ChatVibeScreen,
-  
-  
 };

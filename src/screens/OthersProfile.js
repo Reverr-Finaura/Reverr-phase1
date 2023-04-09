@@ -1,35 +1,36 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
   ScrollView,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  ActivityIndicator,
 } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import Theme from '../utils/Theme';
+import RegularHeader from '../Components/components/RegularHeader';
 import LinearGradient from 'react-native-linear-gradient';
 import AboutMeSection from '../Components/components/AboutMeSection';
-import FindMeOn from '../Components/components/FindMeOn';
 import LineBar from '../Components/components/LineBar';
-import ProfileTitle from '../Components/components/ProfileTitle';
-import RegularHeader from '../Components/components/RegularHeader';
 import WhyHere from '../Components/components/WhyHere';
-import Theme from '../utils/Theme';
+import ProfileTitle from '../Components/components/ProfileTitle';
+import FindMeOn from '../Components/components/FindMeOn';
+import {useNavigation} from '@react-navigation/native';
+import {AppColors} from '../utils';
+import {CancelRequest, ConnectToSocial} from '../utils/FirebaseFunctionality';
 import {useDispatch, useSelector} from 'react-redux';
-import {mentorService} from '../Redux/services/mentor.service';
-import {load_room_data, set_allLoaded} from '../Redux/actions';
-import PostCard from '../Components/components/PostCard';
+import {setUser} from '../Redux/actions';
 
-function Profile() {
+const OthersProfile = props => {
+  const othersData = props.route.params.otherUserData;
+  const [connectLoading, setConnectLoading] = useState(false);
   const state = useSelector(state => state.UserReducer);
-
-  const navigation = useNavigation();
-
-  const [selectedText, setSelectedText] = useState('about');
 
   const dispatch = useDispatch();
 
+  const navigation = useNavigation();
+  const [selectedText, setSelectedText] = useState('about');
   const handleTextClick = text => {
     switch (text) {
       case 'posts':
@@ -40,43 +41,102 @@ function Profile() {
         break;
     }
   };
-  const [postData, setPostData] = useState('');
+  //console.log(othersData.email);
+  const connectToNetwork = async () => {
+    ConnectToSocial(
+      state.user.email,
+      othersData?.email,
+      setConnectLoading,
+    ).then(t => {
+      //console.log(t.sendRequests, 'newdata');
+      dispatch(setUser(t));
+    });
+  };
 
-  useEffect(() => {
-    dispatch(mentorService);
-    if (state.lastDocument == undefined) {
-      dispatch(set_allLoaded(false));
-      dispatch(load_room_data(undefined));
-    } else {
-      dispatch(load_room_data(state.lastDocument));
-    }
-    let t = state.Rooms.filter(item => item.postedby.email == state.user.email);
-    setPostData(t);
-    //console.log(state.Rooms, 'filtered');
-  }, []);
+  const removeToNetwork = async () => {
+    CancelRequest(state.user.email, othersData?.email, setConnectLoading).then(
+      t => {
+        //console.log(t.sendRequests, 'newdata');
+        dispatch(setUser(t));
+      },
+    );
+  };
 
+  useEffect(() => {}, [dispatch, state]);
+  console.log(state.user?.sendRequests, 'userUpdated');
   return (
     <View style={styles.container}>
       <RegularHeader
         leftHandlePress={() => navigation.goBack()}
         title="Profile"
       />
-
       <ScrollView>
         <View style={styles.wrapper}>
           <LinearGradient
             colors={['#3D85E3', '#79C0F2']}
             style={styles.imgborder}>
-            <Image source={{uri: state.user?.image}} style={styles.img} />
+            <Image source={{uri: othersData?.image}} style={styles.img} />
           </LinearGradient>
           <View
             style={{marginTop: 20, flexDirection: 'row', alignItems: 'center'}}>
-            <Text style={styles.usertitle}>{state.user?.name}</Text>
+            <Text style={styles.usertitle}>{othersData?.name}</Text>
             <Image source={Theme.verify} style={styles.verify} />
           </View>
-          <Text style={styles.tag}>{state.user?.designation}</Text>
+          <Text style={styles.tag}>{othersData?.designation}</Text>
         </View>
-
+        {connectLoading ? (
+          <View
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginTop: '5%',
+            }}>
+            <ActivityIndicator color={AppColors.FontsColor} />
+          </View>
+        ) : (
+          <View
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginTop: '5%',
+            }}>
+            {state?.user?.sendRequests?.includes(othersData?.email) ? (
+              <TouchableOpacity
+                onPress={() => removeToNetwork()}
+                activeOpacity={0.6}
+                style={{
+                  backgroundColor: 'red',
+                  paddingHorizontal: '4%',
+                  borderRadius: 6,
+                }}>
+                <Text
+                  style={{
+                    fontFamily: 'Poppins-Bold',
+                    color: AppColors.FontsColor,
+                  }}>
+                  Cancel request
+                </Text>
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                activeOpacity={0.6}
+                onPress={() => connectToNetwork()}
+                style={{
+                  backgroundColor: AppColors.ActiveColor,
+                  paddingHorizontal: '4%',
+                  borderRadius: 6,
+                }}>
+                <Text
+                  style={{
+                    fontFamily: 'Poppins-SemiBold',
+                    color: AppColors.FontsColor,
+                  }}>
+                  Connect +
+                </Text>
+              </TouchableOpacity>
+            )}
+          </View>
+        )}
         <View style={styles.tabWrapper}>
           <TouchableOpacity
             style={[
@@ -121,64 +181,56 @@ function Profile() {
         {selectedText === 'about' ? (
           <View>
             <AboutMeSection
-              about={state.user?.about}
-              location={state.user?.location}
+              about={othersData?.about}
+              location={othersData?.location}
             />
 
             <View style={{paddingHorizontal: 20}}>
               <LineBar />
             </View>
-
             <WhyHere />
+            <View style={{paddingHorizontal: 20}}>
+              <LineBar />
+            </View>
+            <ProfileTitle title="Currently" textOne={othersData?.designation} />
 
             <View style={{paddingHorizontal: 20}}>
               <LineBar />
             </View>
 
-            <ProfileTitle
-              title="Currently"
-              textOne={state?.user?.designation}
-            />
+            <ProfileTitle title="Industry" textOne={othersData?.industry} />
 
             <View style={{paddingHorizontal: 20}}>
               <LineBar />
             </View>
 
-            <ProfileTitle title="Industry" textOne={state.user?.industry} />
+            <ProfileTitle title="Education" array={othersData?.education} />
 
             <View style={{paddingHorizontal: 20}}>
               <LineBar />
             </View>
 
-            <ProfileTitle title="Education" array={state?.user?.education} />
-
-            <View style={{paddingHorizontal: 20}}>
-              <LineBar />
-            </View>
-
-            <FindMeOn
+            {/* <FindMeOn
               title={'Find Me On:'}
               mob={state?.user?.phone}
               email={state?.user?.email}
               linkdin={state?.user?.linkedinLink}
               twitter={state?.user?.twitterLink}
-            />
+            /> */}
           </View>
         ) : (
           <View style={{paddingHorizontal: '5%'}}>
-            {postData?.map((item, index) => (
+            {/* {postData?.map((item, index) => (
               <View key={index}>
                 <PostCard item={item} />
               </View>
-            ))}
+            ))} */}
           </View>
         )}
       </ScrollView>
     </View>
   );
-}
-export default Profile;
-
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -252,3 +304,5 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
 });
+
+export default OthersProfile;

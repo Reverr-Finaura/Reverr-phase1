@@ -70,9 +70,7 @@ export const Messages = () => {
   }, [networks, mentors]);
 
   return (
-    <LinearGradient
-      colors={['#1B1D8B', Theme.backgroundColor]}
-      style={styles.container}>
+    <View style={styles.container}>
       <GradientHeader />
       <View>
         <Text style={styles.title}>Messages</Text>
@@ -147,17 +145,13 @@ export const Messages = () => {
         )}
         {networks && (
           <View style={{marginTop: '3%'}}>
-            {state?.user?.mentors?.length > 0 ? (
+            {state?.user?.mentors?.length > 0 && (
               <FlatList
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
                 data={state.user.mentors}
                 renderItem={({item}) => <MentorList mentor={item} />}
               />
-            ) : (
-              <Text style={{color: 'grey', fontSize: 14, marginLeft: 50}}>
-                Add Friends
-              </Text>
             )}
             {/* {loading == false ? ( */}
 
@@ -181,6 +175,6 @@ export const Messages = () => {
           </View>
         )}
       </View>
-    </LinearGradient>
+    </View>
   );
 };

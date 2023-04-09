@@ -104,19 +104,20 @@ const MentorsList = props => {
                   <>
                     {mentorsList?.map((item, index) => {
                       return (
-                        <BusinessCard
-                          key={index}
-                          // userimage={item.image}
-                          // industryname={item.industry}
-                          // duration={item.duration}
-                          // name={item.name}
-                          // reviews={item.reviews}
-                          // rating={item.Rating}
-                          // feature1={item.feature1}
-                          // feature2={item.feature2}
-                          // designation={item.designation}
-                          fulldetails={item}
-                        />
+                        <View key={index}>
+                          <BusinessCard
+                            // userimage={item.image}
+                            // industryname={item.industry}
+                            // duration={item.duration}
+                            // name={item.name}
+                            // reviews={item.reviews}
+                            // rating={item.Rating}
+                            // feature1={item.feature1}
+                            // feature2={item.feature2}
+                            // designation={item.designation}
+                            fulldetails={item}
+                          />
+                        </View>
                       );
                     })}
                     <View style={{height: 20}} />

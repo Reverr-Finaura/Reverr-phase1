@@ -16,15 +16,15 @@ import {styles} from './styles';
 import {BackButton, InputField, NextButton} from '../../../Components';
 import {AppColors} from '../../../utils';
 import {useNavigation} from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
-import { add_user } from '../../../Redux/actions';
+import {useDispatch} from 'react-redux';
+import {add_user} from '../../../Redux/actions';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
 
-const Social = (props) => {
+const Social = props => {
   const {
     name,
     mobile,
@@ -39,60 +39,71 @@ const Social = (props) => {
     organization,
     designation,
     lookingFor,
-    intrest
+    intrest,
   } = props?.route?.params?.userDetailsObj;
   const [start, setStart] = useState(false);
-  const [linkedin, setLinkedin] = useState('')
-  const [twitter, setTwitter] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [linkedin, setLinkedin] = useState('');
+  const [twitter, setTwitter] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const onboardingData= {
-    profileImg:image,
-    about:bio,
-    education:[{degree:degree,schoolOrCollege:"",startingDate:"",lastDate:""}],
-    experience:[{designation:designation,previousOrCurrentOrganisation:"",yourRole:"",durationOfYears:"",id:new Date().getTime()}],
-    whatULookingFor:lookingFor,
-    industry:industry,
-    linkedinLink:linkedin,
-    twitterLink:twitter,
-    instagramLink:"",
-    designation:designation,
-    userType:"Individual",
-    phone:mobile,
-    password:password
-  }
+  const onboardingData = {
+    profileImg: image,
+    about: bio,
+    education: [
+      {degree: degree, schoolOrCollege: '', startingDate: '', lastDate: ''},
+    ],
+    experience: [
+      {
+        designation: designation,
+        previousOrCurrentOrganisation: '',
+        yourRole: '',
+        durationOfYears: '',
+        id: new Date().getTime(),
+      },
+    ],
+    whatULookingFor: lookingFor,
+    industry: industry,
+    linkedinLink: linkedin,
+    twitterLink: twitter,
+    instagramLink: '',
+    designation: designation,
+    userType: 'Individual',
+    phone: mobile,
+    password: password,
+  };
 
-    const SignUpUser = async () => {
-      const newData={...onboardingData,
-        name:name,
-        email:email,
-        image:image,
-        Appointement_request: [],
-        saved: [],
-        rating: 0,
-        gender: "",
-        dob: dob,
-        matched:[],
-        state: "",
-        country: "",
-        totalRating: 0,
-        notification: [],
-        network: [],
-        receivedRequests: [],
-        sendRequests: [],
-        facebookLink: "",
-        orders: [],
-        reviews: [],
-        mentors: [],
-        events: [],
-        hasGeneralProfile: true,
-        hasFundingProfile: "No",
-        applyForFundingId: null,
-        meeting: {},
-      }
-      setLoading(true)
+  const SignUpUser = async () => {
+    const newData = {
+      ...onboardingData,
+      name: name,
+      email: email,
+      image: image,
+      Appointement_request: [],
+      saved: [],
+      rating: 0,
+      gender: '',
+      dob: dob,
+      matched: [],
+      state: '',
+      country: '',
+      totalRating: 0,
+      notification: [],
+      network: [],
+      recivedRequests: [],
+      sendRequests: [],
+      facebookLink: '',
+      orders: [],
+      reviews: [],
+      mentors: [],
+      events: [],
+      hasGeneralProfile: true,
+      hasFundingProfile: 'No',
+      applyForFundingId: null,
+      meeting: {},
+    };
+    setLoading(true);
     await auth()
       .createUserWithEmailAndPassword(email, password)
       .then(async () => {
@@ -104,10 +115,10 @@ const Social = (props) => {
           .then(() => {
             dispatch(add_user(newData));
             setLoading(false);
-            navigation.replace('MyDrawer')
+            navigation.replace('MyDrawer');
           })
           .catch(e => {
-            setLoading(false)
+            setLoading(false);
             alert(e);
           });
       })
@@ -121,11 +132,11 @@ const Social = (props) => {
           console.log('That email address is invalid!');
           alert('That email address is invalid!');
         }
-       setLoading(false)
+        setLoading(false);
         console.error(error);
       });
   };
-  
+
   return (
     <View>
       <ImageBackground
@@ -133,67 +144,86 @@ const Social = (props) => {
         source={require('../../../assets/images/illustration/backgroud1.png')}>
         <StatusBar backgroundColor={'#020E2C'} />
         <Modal
-            visible={loading}
-            onRequestClose={() => {
-              setLoading(false);
-            }}
-            transparent={true}>
+          visible={loading}
+          onRequestClose={() => {
+            setLoading(false);
+          }}
+          transparent={true}>
+          <View
+            style={{
+              backgroundColor: 'rgba(1, 1, 1, 0.6)',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              height: '100%',
+            }}>
             <View
               style={{
-                backgroundColor: 'rgba(1, 1, 1, 0.6)',
+                backgroundColor: 'white',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: '100%',
-                height: '100%',
+                width: '35%',
+                height: '17%',
+                borderRadius: 20,
               }}>
-              <View
-                style={{
-                  backgroundColor: 'white',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '35%',
-                  height: '17%',
-                  borderRadius: 20,
-                }}>
-                <ActivityIndicator size="large" color={AppColors.buttonColor} />
-              </View>
+              <ActivityIndicator size="large" color={AppColors.buttonColor} />
             </View>
-          </Modal>
-        <BackButton/>
+          </View>
+        </Modal>
+        <BackButton />
         {start ? (
           <View style={{paddingHorizontal: '3%'}}>
             <Text style={styles.text}>Social Handles</Text>
             <View style={{marginTop: '15%'}}>
-              
               <View>
-                <View style={{flexDirection:'row',alignItems:'center'}}>
-                  <Image source={require("../../../assets/images/illustration/linkdin.png")}/>
-                  <Text style={{color:AppColors.FontsColor,marginHorizontal:'3%',fontFamily:'Poppins-SemiBold',marginTop:'3%',fontSize:19}}>Linkedin</Text>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <Image
+                    source={require('../../../assets/images/illustration/linkdin.png')}
+                  />
+                  <Text
+                    style={{
+                      color: AppColors.FontsColor,
+                      marginHorizontal: '3%',
+                      fontFamily: 'Poppins-SemiBold',
+                      marginTop: '3%',
+                      fontSize: 19,
+                    }}>
+                    Linkedin
+                  </Text>
                 </View>
-              <InputField
-              placeholder="www.linkedin.in/username"
-              style={{marginTop: '-9%'}}
-              value={linkedin}
-              onChangeText={e => {
-                setLinkedin(e);
-               
-              }}/>
-            
+                <InputField
+                  placeholder="www.linkedin.in/username"
+                  style={{marginTop: '-9%'}}
+                  value={linkedin}
+                  onChangeText={e => {
+                    setLinkedin(e);
+                  }}
+                />
               </View>
-              <View style={{marginTop:'10%'}}>
-              <View style={{flexDirection:'row',alignItems:'center'}}>
-                  <Image source={require("../../../assets/images/illustration/twitter.png")}/>
-                  <Text style={{color:AppColors.FontsColor,marginHorizontal:'3%',fontFamily:'Poppins-SemiBold',marginTop:'3%',fontSize:19}}>Twitter</Text>
+              <View style={{marginTop: '10%'}}>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <Image
+                    source={require('../../../assets/images/illustration/twitter.png')}
+                  />
+                  <Text
+                    style={{
+                      color: AppColors.FontsColor,
+                      marginHorizontal: '3%',
+                      fontFamily: 'Poppins-SemiBold',
+                      marginTop: '3%',
+                      fontSize: 19,
+                    }}>
+                    Twitter
+                  </Text>
                 </View>
-              <InputField
-              placeholder="www.twitter.com/username"
-              style={{marginTop: '-9%'}}
-              value={twitter}
-              onChangeText={e => {
-                setTwitter(e);
-                
-              }}
-            />
+                <InputField
+                  placeholder="www.twitter.com/username"
+                  style={{marginTop: '-9%'}}
+                  value={twitter}
+                  onChangeText={e => {
+                    setTwitter(e);
+                  }}
+                />
               </View>
               <NextButton
                 title="Submit"
@@ -202,7 +232,7 @@ const Social = (props) => {
                   marginTop: '60%',
                   alignSelf: 'center',
                 }}
-                onPress={() =>SignUpUser()}
+                onPress={() => SignUpUser()}
               />
               <Text
                 style={{

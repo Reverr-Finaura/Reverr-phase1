@@ -10,7 +10,7 @@ function ProfileTitle({title, textOne, array}) {
       </View>
       <View style={styles.wrapper}>
         <View>
-          {textOne && <Text style={styles.about}>{textOne}</Text>}
+          {textOne === null && <Text style={styles.about}>{textOne}</Text>}
           {array && (
             <View>
               {array?.length === 0 ? (

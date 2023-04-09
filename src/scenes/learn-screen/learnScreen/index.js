@@ -15,6 +15,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {
   CourseLoader,
   IndividualHeaderLayout,
+  NewsLoader,
   SwipeCard,
 } from '../../../Components';
 import firestore from '@react-native-firebase/firestore';
@@ -34,11 +35,13 @@ const Height = Dimensions.get('window').height;
 const LearnScreen = () => {
   const [courseData, setCourseData] = useState();
   const [loading, setLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [column, setColumn] = useState(2);
   const navigation = useNavigation();
 
   const getCourses = async () => {
     setLoading(true);
+    setLoader(true);
     const snapshot = await firestore()
       .collection('Courses')
       .get()
@@ -57,6 +60,7 @@ const LearnScreen = () => {
         }
         setCourseData(sortedCourseData);
         setLoading(false);
+        setLoader(false);
       });
   };
   useEffect(() => {
@@ -64,10 +68,10 @@ const LearnScreen = () => {
   }, []);
 
   return (
-    <View>
+    <View style={{backgroundColor: AppColors.primarycolor, flex: 1}}>
       <GradientHeader />
-      <LinearGradient colors={['#1B1D8B', Theme.backgroundColor]}>
-        <ScrollView style={{paddingTop: '5%'}}>
+      <View>
+        <View style={{marginTop: '5%'}}>
           {loading ? (
             <SkeletonPlaceholder backgroundColor="#012437">
               <View
@@ -87,27 +91,28 @@ const LearnScreen = () => {
               horizontal={true}
             />
           )}
-          <View style={styles.Btn}>
-            <View
+        </View>
+        <View style={styles.Btn}>
+          <View
+            style={{
+              height: '100%',
+              width: '80%',
+              alignItems: 'center',
+              paddingHorizontal: '15%',
+              justifyContent: 'center',
+            }}>
+            <Text
               style={{
-                height: '100%',
                 width: '100%',
-                alignItems: 'center',
-                paddingHorizontal: '15%',
-                justifyContent: 'center',
+                color: 'black',
+                fontFamily: 'Poppins-Bold',
+                fontSize: 18,
+                textAlign: 'center',
               }}>
-              <Text
-                style={{
-                  width: '100%',
-                  color: 'black',
-                  fontFamily: 'Poppins-Bold',
-                  fontSize: 18,
-                  textAlign: 'center',
-                }}>
-                The Journey
-              </Text>
-            </View>
-            {/* <TouchableOpacity
+              The Journey
+            </Text>
+          </View>
+          <TouchableOpacity
             onPress={() => {
               ToastAndroid.showWithGravityAndOffset(
                 ' Quiz Not Available ',
@@ -128,146 +133,98 @@ const LearnScreen = () => {
               justifyContent: 'center',
             }}>
             <Icon name="angle-right" size={55} color={AppColors.FontsColor} />
-          </TouchableOpacity> */}
-          </View>
-
-          <View>
-            {loading ? (
-              <View style={{width: '100%', marginTop: '8%'}}>
-                <FlatList
-                  data={courseData}
-                  numColumns={column}
-                  showsVerticalScrollIndicator={false}
-                  renderItem={({item}) => (
-                    <View style={{width: '50%'}}>
-                      <SkeletonPlaceholder backgroundColor="#012437">
-                        <View
-                          style={{
-                            width: '95%',
-                            height: 170,
-                            marginHorizontal: '2%',
-                            marginVertical: '2%',
-                            borderRadius: 10,
-                          }}></View>
-                      </SkeletonPlaceholder>
-                    </View>
-                  )}
-                />
-              </View>
-            ) : (
-              <View style={{marginVertical: '8%'}}>
-                <FlatList
-                  data={courseData}
-                  numColumns={column}
-                  showsVerticalScrollIndicator={false}
-                  renderItem={({item}) => (
+          </TouchableOpacity>
+        </View>
+        <View style={{height: '100%'}}>
+          {loader ? (
+            <View
+              style={{
+                marginTop: '8%',
+                justifyContent: 'center',
+              }}>
+              <FlatList
+                data={[1, 2, 3, 4, 5, 6]}
+                numColumns={column}
+                showsVerticalScrollIndicator={false}
+                renderItem={({item}) => (
+                  <SkeletonPlaceholder backgroundColor="#012437">
                     <View
                       style={{
-                        width: Width / 2.2,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        margin: '2%',
-                      }}>
-                      <TouchableOpacity
-                        activeOpacity={0.6}
-                        onPress={() => {
-                          navigation.navigate('StartCourse', {
-                            CourseDetails: item,
-                          });
-                        }}
-                        style={{
-                          borderRadius: 20,
-                          overflow: 'hidden',
-                          width: Width / 2.2,
-                        }}>
-                        <ImageBackground
-                          source={{uri: item.image}}
-                          style={{
-                            width: Width / 2.2,
-                            height: Height / 4,
-                            borderRadius: 20,
-                          }}>
-                          <View
-                            style={{
-                              backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                              marginTop: '70%',
-                              height: '100%',
-                              alignItems: 'center',
-                              paddingTop: '4%',
-                              paddingHorizontal: '3%',
-                            }}>
-                            <Text
-                              style={{
-                                color: AppColors.FontsColor,
-                                fontSize: 17,
-                                textAlign: 'center',
-                              }}>
-                              {capitalizeFirstLetter(item.name)}
-                            </Text>
-                          </View>
-                        </ImageBackground>
-                      </TouchableOpacity>
-                    </View>
-                  )}
-                />
-              </View>
-            )}
-          </View>
-
-          {/*  <View
-          style={{
-            paddingVertical: '8%',
-            paddingTop: '3%',
-            marginTop: '1%',
-          }}>
-          <Text
-            style={{
-              marginStart: '3%',
-              color: AppColors.FontsColor,
-              fontFamily: 'Poppins-Bold',
-              fontSize: 18,
-            }}>
-            Categories
-          </Text>
-          <FlatList
-            numColumns={column}
-            data={courseCategory}
-            renderItem={({item, index}) => (
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate('CourseList', {
-                    courseCategory: item,
-                  });
-                }}
-                style={styles.Card}
-                activeOpacity={0.7}>
-                <LinearGradient
-                  colors={[AppColors.ActiveColor, AppColors.primarycolor]}
-                  start={{x: -1, y: 1.3}}
-                  end={{x: 3, y: 0.5}}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: 10,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                  <Text
+                        width: 190,
+                        height: 170,
+                        marginHorizontal: '2%',
+                        marginVertical: '2%',
+                        borderRadius: 10,
+                      }}></View>
+                  </SkeletonPlaceholder>
+                )}
+              />
+            </View>
+          ) : (
+            <View
+              style={{
+                marginVertical: '8%',
+                backgroundColor: AppColors.primarycolor,
+              }}>
+              <FlatList
+                data={courseData}
+                numColumns={column}
+                showsVerticalScrollIndicator={false}
+                renderItem={({item}) => (
+                  <View
                     style={{
-                      color: AppColors.FontsColor,
-                      fontSize: 17,
-                      textAlign: 'center',
-                      marginHorizontal: '6%',
+                      width: Width / 2.2,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      margin: '2%',
                     }}>
-                    {item}
-                  </Text>
-                </LinearGradient>
-              </TouchableOpacity>
-            )}
-          />
-        </View> */}
-        </ScrollView>
-      </LinearGradient>
+                    <TouchableOpacity
+                      activeOpacity={0.6}
+                      onPress={() => {
+                        navigation.navigate('StartCourse', {
+                          CourseDetails: item,
+                        });
+                      }}
+                      style={{
+                        borderRadius: 20,
+                        overflow: 'hidden',
+                        width: Width / 2.2,
+                      }}>
+                      <ImageBackground
+                        source={{uri: item.image}}
+                        style={{
+                          width: Width / 2.2,
+                          height: Height / 4,
+                          borderRadius: 20,
+                        }}>
+                        <View
+                          style={{
+                            backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                            marginTop: '70%',
+                            height: '100%',
+                            alignItems: 'center',
+                            paddingTop: '4%',
+                            paddingHorizontal: '3%',
+                          }}>
+                          <Text
+                            style={{
+                              color: AppColors.FontsColor,
+                              fontSize: 17,
+                              textAlign: 'center',
+                            }}>
+                            {capitalizeFirstLetter(item.name)}
+                          </Text>
+                        </View>
+                      </ImageBackground>
+                    </TouchableOpacity>
+                  </View>
+                )}
+              />
+              {/* <View style={{height: 200}} /> */}
+            </View>
+          )}
+        </View>
+      </View>
     </View>
   );
 };
@@ -282,7 +239,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   Btn: {
-    width: '85%',
+    width: '95%',
     marginTop: '3%',
     justifyContent: 'space-between',
     height: 80,

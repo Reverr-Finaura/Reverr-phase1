@@ -640,7 +640,7 @@ export const setUser = data => {
       //console.log(user);
       var udata = [];
       var basket;
-      if (data.userType == 'Mentor') {
+      if (data?.userType == 'Mentor') {
         for (var i = 0; i < data?.clients?.length; i++) {
           basket = await firestore()
             .collection('Users')
@@ -649,7 +649,7 @@ export const setUser = data => {
           udata.push(basket.data());
         }
       } else {
-        for (var i = 0; i < data.mentors.length; i++) {
+        for (var i = 0; i < data?.mentors.length; i++) {
           basket = await firestore()
             .collection('Users')
             .doc(data?.mentors[i])
