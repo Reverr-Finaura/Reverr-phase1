@@ -25,25 +25,25 @@ const LikeScreen = () => {
   const [error, seterror] = useState('');
   const [LikedData, setLikedData] = useState([{}]);
 
-  console.log('liked datta', LikedData);
+  console.log('liked data', LikedData);
 
-  const userFunc = async () => {
-    const savedUser = await firestore()
-      .collection('Users')
-      .doc('mauricerana@gmail.com')
-      .get();
-    //  console.log('Its a :' +JSON.stringify (savedUser._data));
-    // dispatch(add_user(savedUser._data));
-  };
+  // const userFunc = async () => {
+  //   const savedUser = await firestore()
+  //     .collection('Users')
+  //     .doc('mauricerana@gmail.com')
+  //     .get();
+  //   //  console.log('Its a :' +JSON.stringify (savedUser._data));
+  //   // dispatch(add_user(savedUser._data));
+  // };
 
   useEffect(() => {
     const GetLikedPeople = async () => {
-      const Data = state.user.liked_people;
-      console.log('12345===========dddd=======rer===>', Data);
+      var Data = [];
 
+      state.user.people_liked_me && Data.push(...state.user.people_liked_me);
+      state.user.people_super_liked_me && Data.push(...state.user.people_super_liked_me);
 
       Data?.map(async item => {
-        console.log(item, 'kjdksskjshf');
         const dataliked = await firestore()
           .collection('Users')
           .doc(item)
@@ -59,7 +59,6 @@ const LikeScreen = () => {
       });
 
       setshow(true);
-      console.log(LikedData, 'alll set');
     };
 
     GetLikedPeople();
@@ -80,12 +79,12 @@ const LikeScreen = () => {
         <BackButton />
         <Text
           style={styles.buyPremium}>
-          Buy Premium to connect people who are interested in your profile
+          These People want to connect with you!
         </Text>
-        <Text
+        {/* <Text
           style={styles.william}>
           William and 9 other liked your profile
-        </Text>
+        </Text> */}
       </View>
       <View>
 
@@ -117,7 +116,7 @@ const LikeScreen = () => {
                               </Text>
                               <Text
                                 style={styles.market}>
-                                Market Research
+                                {data.designation}
                               </Text>
                               <Text
                                 style={styles.about}>

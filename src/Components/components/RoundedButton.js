@@ -9,7 +9,7 @@ import Theme from "../../utils/Theme";
 function RoundedButton({label}){
     return(
     <View style={styles.container}>
-        <Text style={{color:'#FFF',fontWeight:'500',fontSize:12}}>{label}</Text>
+       <Text key={label} style={{color:'#FFF',fontWeight:'500',fontSize:12}}>{label}</Text>
     </View>
     )}
 export default RoundedButton;

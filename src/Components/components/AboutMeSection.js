@@ -7,7 +7,7 @@ function AboutMeSection({about, location}) {
     <View style={styles.container}>
       <Text style={styles.tabTitle}>About Me</Text>
       <Text style={styles.about}>{about}</Text>
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      {/* <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <Image
           source={Theme.location}
           style={{
@@ -18,7 +18,7 @@ function AboutMeSection({about, location}) {
           }}
         />
         <Text style={styles.about}>{location}</Text>
-      </View>
+      </View> */}
     </View>
   );
 }
@@ -27,6 +27,7 @@ export default AboutMeSection;
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+    paddingBottom: 10
   },
   tabTitle: {
     fontWeight: 'bold',

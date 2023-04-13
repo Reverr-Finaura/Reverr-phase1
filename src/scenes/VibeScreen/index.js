@@ -21,6 +21,15 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import MultiSelect from 'react-native-multiple-select';
 import styles from './styles';
 import authentication from '@react-native-firebase/auth';
+import LinearGradient from 'react-native-linear-gradient';
+import AboutMeSection from '../../Components/components/AboutMeSection';
+import FindMeOn from '../../Components/components/FindMeOn';
+import GradientHeader from '../../Components/components/GradientHeader';
+import HowToMeet from '../../Components/components/HowToMeet';
+import LineBar from '../../Components/components/LineBar';
+import ProfileTitle from '../../Components/components/ProfileTitle';
+import WhyHere from '../../Components/components/WhyHere';
+import Theme from '../../utils/Theme';
 
 // import { useNavigation } from '@react-navigation/native';
 // import {FlatList, ScrollView} from 'react-native-gesture-handler';
@@ -29,7 +38,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import {CustomPopup, IndividualHeaderLayout} from '../../Components';
 import {Choice} from '../../Components';
 import {AppColors} from '../../utils';
-import LinearGradient from 'react-native-linear-gradient';
 import {
   Load_Card,
   matchedpeople,
@@ -52,7 +60,6 @@ import {CountdownTimer} from '../CountdownTimer';
 import {useLayoutEffect} from 'react';
 import {blue} from 'react-native-redash';
 import {black} from 'react-native-paper/lib/typescript/styles/colors';
-import GradientHeader from '../../Components/components/GradientHeader';
 const data = [
   {
     id: 1,
@@ -168,28 +175,7 @@ const Vibe = () => {
     const [mainDialog, setMainDialog] = useState(false);
     const [prevDailog, setPrevDailog] = useState(false);
     const [prevData, setPrevData] = useState();
-    const [demoData, setDemoData] = useState([
-      {
-        id: '123',
-        name: 'Jatin Khurana',
-        designation: 'CEO and Fintech',
-        country: 'India',
-        city: 'Delhi',
-        image: '../../assets/images/dp.png',
-        quote:
-          "Don't ship it. Don't settle for good enough. Do better work than you did yesterday. Get out of your comfort zone and give it your all",
-      },
-    ]);
-    const [checkingdata, setcheckingdata] = useState({
-      Education: 'MBA',
-      Here_for: ['FIND INVESTORS', 'FIND MENTORS', 'FIND EMPLYOYEE'],
-      How_To_Meet: ['At Coffee', ' Video Call', 'Local Cafe'],
-      Industry: 'FINTECH',
-      Previous_Designation: 'GOOGLE',
-      Previous_Org: 'GOOGLE SWE',
-      Previous_org_Duration: ['2'],
-      Years_Of_Experience: ['4'],
-    });
+    const [numberOfSwipsDone, setNumberOfSwipsDone] = useState();
     const [getcard, setgetcards] = useState(0);
     const [show, setshow] = useState(false);
     const [vertical, setvertical] = useState(false);
@@ -216,7 +202,7 @@ const Vibe = () => {
     const howMeet = [
       {id: 'At Coffee', name: 'At Coffee'},
       {id: 'Video Call', name: 'Video Call'},
-      {id: 'Local Cafe', name: 'Local Cafe'},
+      {id: 'Phone Call', name: 'Phone Call'},
     ];
 
     const [filteringData, setFilteringData] = useState([]);
@@ -273,16 +259,28 @@ const Vibe = () => {
     const swipeLeft = async CurrentIndex => {
       setCount(count + 1);
       HandleOnSwiped(CurrentIndex);
-      if (!cards[cardindex]) return;
-      const LeftSwiped = cards[CurrentIndex];
-      // console.log("🚀 ~ file: index.js:2543 ~ swipeLeft ~ LeftSwiped:", LeftSwiped)
-      // console.log('Left detail', LeftSwiped.id);
-      firestore()
-        .collection('Users')
-        .doc(state.user.email)
-        .collection('passeduser')
-        .doc(LeftSwiped.id)
-        .set(LeftSwiped);
+
+      var tempCards = filteringData.filter(
+        it => it.email != authentication().currentUser.email,
+      ).filter(
+        it => it.Vibe_Data !=undefined
+      );
+
+      var tempUser = tempCards[CurrentIndex];
+
+      var My_Email = state.user.email;
+
+      passedUsers(tempUser.email)
+      // if (!cards[cardindex]) return;
+      // const LeftSwiped = cards[CurrentIndex];
+      // // console.log("🚀 ~ file: index.js:2543 ~ swipeLeft ~ LeftSwiped:", LeftSwiped)
+      // // console.log('Left detail', LeftSwiped.id);
+      // firestore()
+      //   .collection('Users')
+      //   .doc(state.user.email)
+      //   .collection('passeduser')
+      //   .doc(LeftSwiped.id)
+      //   .set(LeftSwiped);
     };
 
     const Tapanywhere = cardindex => {
@@ -291,136 +289,341 @@ const Vibe = () => {
       navigation.navigate('ShowMoreVibe', data);
     };
 
-    const swipeRight = async CurrentIndex => {
-      // console.log("===>", CurrentIndex)
-
-      setCount(count + 1);
-
-      HandleOnSwiped(CurrentIndex);
-      // var currCard = cards[idx];
-
-      const data = cards[CurrentIndex];
-      // console.log('right datta', data);
-
-      // dispatch(RemoveTopCard());
-      // console.log('stae  vibe swipe right isss', state.vibe);
-      // console.log('data is', data);
-
-      var Liked_Email = data.id;
+    const passedUsers = async (user) =>{
       var My_Email = state.user.email;
-      var Liked_People = data.liked_people;
 
       await firestore()
-        .collection('Users')
-        .doc(state.user.email)
-        .update({
-          liked: firestore.FieldValue.arrayUnion(Liked_Email),
-        });
-
-      if (Liked_People) {
-        var check = Liked_People.includes(My_Email);
-        if (check) {
-          await firestore()
             .collection('Users')
-            .doc(state.user.email)
+            .doc(My_Email)
             .update({
-              Matched_People: firestore.FieldValue.arrayUnion(Liked_Email),
+              passedUser: firestore.FieldValue.arrayUnion(user),
             });
-          // action dispacthed to store matchedpeople
-          dispatch(matchedpeople(Liked_Email));
-          // Match screen is called here
-          navigation.navigate('MatchScreen', {
-            data,
-          });
+      await firestore()
+            .collection('Users')
+            .doc(My_Email)
+            .update({
+              Last_Card_Email_Swiped: user,
+            });
+      await firestore()
+            .collection('Users')
+            .doc(My_Email)
+            .update({
+              Number_Of_Swips_Done: firebase.firestore.FieldValue.increment(1)
+            });
 
-          setPrevDailog(true);
-          setPrevData(prev);
-        }
-      } else {
-        await firestore()
-          .collection('Users')
-          .doc(state.user.email)
-          .update({
-            liked_people: firestore.FieldValue.arrayUnion(Liked_Email),
-          })
-          .then(async () => {
-            await firestore()
-              .collection('Users')
-              .doc(Liked_Email)
-              .update({
-                people_liked_me: firestore.FieldValue.arrayUnion(
-                  state.user.email,
-                ),
-              });
-            // console.log('userswiped');
-          })
-          .catch(err => {
-            console.log(err.message);
-            console.log('please check your internet connection');
-          });
-      }
-    };
-    const superLikeCenter = async CurrentIndex => {
-      // console.log("===>", CurrentIndex)
+            setNumberOfSwipsDone(prev=> prev++);
+    }
+
+    const swipeRight = async CurrentIndex => {
+
+      var tempCards = filteringData.filter(
+        it => it.email != authentication().currentUser.email,
+      ).filter(
+        it => it.Vibe_Data !=undefined
+      );
+
+      var tempUser = tempCards[CurrentIndex];
+
+      var My_Email = state.user.email;
 
       setCount(count + 1);
 
       HandleOnSwiped(CurrentIndex);
       // var currCard = cards[idx];
+      
 
-      const data = cards[CurrentIndex];
-      // console.log('right datta', data);
+      //add swiped user to passed user array of the current user
+      passedUsers(tempUser.email)
 
-      // dispatch(RemoveTopCard());
-      // console.log('stae  vibe swipe right isss', state.vibe);
-      // console.log('data is', data);
+      //check if the user has liked me or superliked me then match and update in both users
+      if((tempUser.liked && tempUser.liked.includes(My_Email) )||(tempUser.super_liked_people && tempUser.super_liked_people.includes(My_Email))){
+        var sup = tempUser.super_liked_people ? tempUser.super_liked_people.includes(My_Email) : false;
+        try{
 
-      var Liked_Email = data.id;
-      var My_Email = state.user.email;
-      var Liked_People = data.liked_people;
-
-      if (Liked_People) {
-        var check = Liked_People.includes(My_Email);
-        if (check) {
+          if(sup){
+            await firestore()
+            .collection('Users')
+            .doc(tempUser)
+            .update({
+              super_liked_people: firestore.FieldValue.arrayRemove(My_Email),
+            });
+          }else{
+            await firestore()
+            .collection('Users')
+            .doc(tempUser)
+            .update({
+              liked: firestore.FieldValue.arrayRemove(My_Email),
+            });
+          }
           await firestore()
             .collection('Users')
-            .doc(state.user.email)
+            .doc(My_Email)
             .update({
-              Matched_People: firestore.FieldValue.arrayUnion(Liked_Email),
+              Matched_People: firestore.FieldValue.arrayUnion(tempUser.email),
             });
+            await firestore()
+            .collection('Users')
+            .doc(tempUser.email)
+            .update({
+              Matched_People: firestore.FieldValue.arrayUnion(My_Email),
+            });
+
           // action dispacthed to store matchedpeople
-          dispatch(matchedpeople(Liked_Email));
+          dispatch(matchedpeople(tempUser.email));
           // Match screen is called here
           navigation.navigate('MatchScreen', {
-            data,
+            tempUser,
           });
 
           setPrevDailog(true);
           setPrevData(prev);
         }
-      } else {
-        await firestore()
-          .collection('Users')
-          .doc(state.user.email)
-          .update({
-            super_liked_people: firestore.FieldValue.arrayUnion(Liked_Email),
-          })
-          .then(async () => {
-            await firestore()
-              .collection('Users')
-              .doc(Liked_Email)
-              .update({
-                super_people_liked_me: firestore.FieldValue.arrayUnion(
-                  state.user.email,
-                ),
-              });
-            // console.log('userswiped');
-          })
-          .catch(err => {
-            console.log(err.message);
-            console.log('please check your internet connection');
-          });
+        catch(err){
+          console.log(err)
+          alert("Please Check your internet connection")
+        }
       }
+      //else add likeduser's email to user's liked array
+      else{
+        try{
+          
+          await firestore()
+          .collection('Users')
+          .doc(My_Email)
+          .update({
+            liked: firestore.FieldValue.arrayUnion(tempUser.email),
+          });
+
+          await firestore()
+          .collection('Users')
+          .doc(tempUser.email)
+          .update({
+            people_liked_me: firestore.FieldValue.arrayUnion(My_Email),
+          });
+        
+        }
+        catch (err){
+          console.log(err)
+          alert("Please Check your internet connection")
+        }
+
+      }
+      
+
+      // const data = cards[CurrentIndex];
+      // // console.log('right datta', data);
+
+      // // dispatch(RemoveTopCard());
+      // // console.log('stae  vibe swipe right isss', state.vibe);
+      // console.log('data is', data);
+      
+      // var Liked_Email = data.id;
+      // var Liked_People = data.liked_people;
+      // console.log(Liked_Email, "LIKED EMAIL")
+      // console.log(Liked_People, "LIKED PEOPLE")
+      // await firestore()
+      //   .collection('Users')
+      //   .doc(state.user.email)
+      //   .update({
+      //     liked: firestore.FieldValue.arrayUnion(Liked_Email),
+      //   });
+
+      // if (Liked_People) {
+      //   var check = Liked_People.includes(My_Email);
+      //   if (check) {
+      //     await firestore()
+      //       .collection('Users')
+      //       .doc(state.user.email)
+      //       .update({
+      //         Matched_People: firestore.FieldValue.arrayUnion(Liked_Email),
+      //       });
+      //     // action dispacthed to store matchedpeople
+      //     dispatch(matchedpeople(Liked_Email));
+      //     // Match screen is called here
+      //     navigation.navigate('MatchScreen', {
+      //       data,
+      //     });
+
+      //     setPrevDailog(true);
+      //     setPrevData(prev);
+      //   }
+      // } else {
+      //   await firestore()
+      //     .collection('Users')
+      //     .doc(state.user.email)
+      //     .update({
+      //       liked_people: firestore.FieldValue.arrayUnion(Liked_Email),
+      //     })
+      //     .then(async () => {
+      //       await firestore()
+      //         .collection('Users')
+      //         .doc(Liked_Email)
+      //         .update({
+      //           people_liked_me: firestore.FieldValue.arrayUnion(
+      //             state.user.email,
+      //           ),
+      //         });
+      //       // console.log('userswiped');
+      //     })
+      //     .catch(err => {
+      //       console.log(err.message);
+      //       console.log('please check your internet connection');
+      //     });
+      // }
+    };
+    const superLikeCenter = async CurrentIndex => {
+
+      var tempCards = filteringData.filter(
+        it => it.email != authentication().currentUser.email,
+      ).filter(
+        it => it.Vibe_Data !=undefined
+      );
+
+      var tempUser = tempCards[CurrentIndex];
+
+      var My_Email = state.user.email;
+
+      setCount(count + 1);
+
+      passedUsers(tempUser.email)
+
+      HandleOnSwiped(CurrentIndex);
+      // var currCard = cards[idx];
+
+      //check if the user has liked me or superliked me then match and update in both users
+      if((tempUser.liked && tempUser.liked.includes(My_Email) )||(tempUser.super_liked_people && tempUser.super_liked_people.includes(My_Email))){
+        var sup = tempUser.super_liked_people ? tempUser.super_liked_people.includes(My_Email) : false;
+        try{
+
+          if(sup){
+            await firestore()
+            .collection('Users')
+            .doc(tempUser)
+            .update({
+              super_liked_people: firestore.FieldValue.arrayRemove(My_Email),
+            });
+          }else{
+            await firestore()
+            .collection('Users')
+            .doc(tempUser)
+            .update({
+              liked: firestore.FieldValue.arrayRemove(My_Email),
+            });
+          }
+
+          await firestore()
+            .collection('Users')
+            .doc(My_Email)
+            .update({
+              Matched_People: firestore.FieldValue.arrayUnion(tempUser.email),
+            });
+            await firestore()
+            .collection('Users')
+            .doc(tempUser.email)
+            .update({
+              Matched_People: firestore.FieldValue.arrayUnion(My_Email),
+            });
+          // action dispacthed to store matchedpeople
+          dispatch(matchedpeople(tempUser.email));
+          // Match screen is called here
+          navigation.navigate('MatchScreen', {
+            tempUser,
+          });
+
+          setPrevDailog(true);
+          setPrevData(prev);
+        }
+        catch(err){
+          console.log(err)
+          alert("Please Check your internet connection")
+        }
+      }
+      //else add likeduser's email to user's liked array
+      else{
+        try{
+          
+          await firestore()
+          .collection('Users')
+          .doc(My_Email)
+          .update({
+            super_liked_people: firestore.FieldValue.arrayUnion(tempUser.email),
+          });
+
+          await firestore()
+          .collection('Users')
+          .doc(tempUser.email)
+          .update({
+            people_super_liked_me: firestore.FieldValue.arrayUnion(My_Email),
+          });
+        
+        }
+        catch (err){
+          console.log(err)
+          alert("Please Check your internet connection")
+        }
+
+      }
+
+      // // console.log("===>", CurrentIndex)
+
+      // setCount(count + 1);
+
+      // HandleOnSwiped(CurrentIndex);
+      // // var currCard = cards[idx];
+
+      // const data = cards[CurrentIndex];
+      // // console.log('right datta', data);
+
+      // // dispatch(RemoveTopCard());
+      // // console.log('stae  vibe swipe right isss', state.vibe);
+      // // console.log('data is', data);
+
+      // var Liked_Email = data.id;
+      // var My_Email = state.user.email;
+      // var Liked_People = data.liked_people;
+
+      // if (Liked_People) {
+      //   var check = Liked_People.includes(My_Email);
+      //   if (check) {
+      //     await firestore()
+      //       .collection('Users')
+      //       .doc(state.user.email)
+      //       .update({
+      //         Matched_People: firestore.FieldValue.arrayUnion(Liked_Email),
+      //       });
+      //     // action dispacthed to store matchedpeople
+      //     dispatch(matchedpeople(Liked_Email));
+      //     // Match screen is called here
+      //     navigation.navigate('MatchScreen', {
+      //       data,
+      //     });
+
+      //     setPrevDailog(true);
+      //     setPrevData(prev);
+      //   }
+      // } else {
+      //   await firestore()
+      //     .collection('Users')
+      //     .doc(state.user.email)
+      //     .update({
+      //       super_liked_people: firestore.FieldValue.arrayUnion(Liked_Email),
+      //     })
+      //     .then(async () => {
+      //       await firestore()
+      //         .collection('Users')
+      //         .doc(Liked_Email)
+      //         .update({
+      //           super_people_liked_me: firestore.FieldValue.arrayUnion(
+      //             state.user.email,
+      //           ),
+      //         });
+      //       // console.log('userswiped');
+      //     })
+      //     .catch(err => {
+      //       console.log(err.message);
+      //       console.log('please check your internet connection');
+      //     });
+      // }
     };
     const [cards, setcards] = useState([]);
     // console.log('What is item dddd', cards);
@@ -437,9 +640,10 @@ const Vibe = () => {
 
       const Data = cards[cardindex];
       // console.log('datattaa', Data);
-      await firestore().collection('Users').doc(state.user.email).update({
-        Number_Of_Swips_Done: swipe,
-      });
+
+      // await firestore().collection('Users').doc(state.user.email).update({
+      //   Number_Of_Swips_Done: swipe,
+      // });
 
       // await firestore()
       //   .collection('Users')
@@ -542,35 +746,38 @@ const Vibe = () => {
         //   return;
         // }
         // console.log('what is total swipe', TotalSwipe);
-        const passeduserdata = await firestore()
-          .collection('Users')
-          .doc(state.user.email)
-          .collection('passeduser')
-          .get()
-          .then(snapshot =>
-            snapshot.docs.map(
-              data => data.data().id,
-              setLoading(false),
-              //  data=>   console.log('what is .dta.', typeof(data.data().id)),
-            ),
-          );
-        // console.log('what is passed data', passeduserdata);
-        // alert(passeduserdata)
+        // const passeduserdata = await firestore()
+        //   .collection('Users')
+        //   .doc(state.user.email)
+        //   .collection('passeduser')
+        //   .get()
+        //   .then(snapshot =>
+        //     snapshot.docs.map(
+        //       data => data.data().id,
+        //       setLoading(false),
+        //       //  data=>   console.log('what is .dta.', typeof(data.data().id)),
+        //     ),
+        //   );
+        // // console.log('what is passed data', passeduserdata);
+        // // alert(passeduserdata)
 
-        const passeduserids =
-          passeduserdata.length > 0 ? passeduserdata : ['test'];
-        // console.log('what is passed user ids', passeduserids);
+        // const passeduserids =
+        //   passeduserdata.length > 0 ? passeduserdata : ['test'];
+        // // console.log('what is passed user ids', passeduserids);
 
-        let tempList = passeduserids.map(item => item.email);
+        // let tempList = passeduserids.map(item => item.email);
 
-        let result = cards.filter(item => tempList.includes(item.email));
-        console.log('result', result);
+        const passedusers = state.user.passedUser;
+
+        setNumberOfSwipsDone(state.user.Number_Of_Swips_Done)
+
+        let result = cards.filter(item => passedusers.includes(item.email));
         // alert(result)
 
         {
-          if (passeduserids.length >= 10) {
-            passeduserids.splice(0, 3);
-          }
+          // if (passeduserids.length >= 10) {
+          //   passeduserids.splice(0, 3);
+          // }
         }
         // console.log('what is passed user after ids', passeduserids);
         // const data=["rgupta.success@gmail.com",'kunnugarg2@gmail.com','kohlibhavya18@gmail.com','19103098@mail.jiit.ac.in']
@@ -578,10 +785,10 @@ const Vibe = () => {
         // console.log('heree at 0');
         let Intialquery = await firestore()
           .collection('Users')
-
-          .where('email', 'not-in', [...passeduserids]);
+          .where('email', 'not-in', [...passedusers]);
 
         Intialquery.get().then(snapshot => {
+          let result = snapshot.docs
           // like
           // let tempList = state.user.likedDislike.map(item => item);
           // let result = snapshot.docs.filter(item =>
@@ -605,13 +812,13 @@ const Vibe = () => {
           // let resultss = results.filter(o1 => !reject.some(o2 => o1.email === o2));
 
           if (state.user.liked != undefined) {
-            let result = snapshot.docs.filter(
-              o1 => !state.user.liked.some(o2 => o1.email === o2),
-            );
-            console.log(
-              '🚀 ~ file: index.js:603 ~ Intialquery.get ~ result:',
-              result.length,
-            );
+            // let result = snapshot.docs.filter(
+            //   o1 => !state.user.liked.some(o2 => o1.email === o2),
+            // );
+            // console.log(
+            //   '🚀 ~ file: index.js:603 ~ Intialquery.get ~ result:',
+            //   result.length,
+            // );
 
             setcards(
               result.map(doc => ({
@@ -652,7 +859,7 @@ const Vibe = () => {
           Afterquery = await firestore()
             .collection('Users')
             .orderBy('email')
-            .where('email', 'not-in', [...passeduserids])
+            .where('email', 'not-in', [...passedusers])
             .startAfter(LastEmailSwipe)
             .onSnapshot(snapshot => {
               setcards(
@@ -681,10 +888,14 @@ const Vibe = () => {
           setAllswiped(false);
           setcardindex(0);
           settoshowtimer(false);
+          const ExpiredDate = new Date();
+          // console.log(ExpiredDate);
+          // console.log(ExpiredDate.getTime());
+          const ExpiredTime = ExpiredDate.getTime()-10000;
           await firestore()
             .collection('Users')
             .doc(state.user.email)
-            .update({AllCardsSwiped: false, Number_Of_Swips_Done: 0});
+            .update({AllCardsSwiped: false, Number_Of_Swips_Done: 0, CardsExpiredTime:ExpiredTime});
         }
       };
 
@@ -694,19 +905,19 @@ const Vibe = () => {
     useEffect(() => {
       // console.log('card ind q', cardindex);
 
-      if (cardindex >= 10) {
+      if (numberOfSwipsDone >= 10) {
         if (hasPremiumOfVibe === true) {
           return;
         }
         setcontinueshowingcard(false);
         // console.log('card ind inside', cardindex);
-        var DeletePassedUserReference = firestore()
-          .collection('Users')
-          .doc(state.user.email)
-          .collection('passeduser');
-        DeletePassedUserReference.get().then(querysnapshot => {
-          Promise.all(querysnapshot.docs.map(d => d.ref.delete()));
-        });
+        // var DeletePassedUserReference = firestore()
+        //   .collection('Users')
+        //   .doc(state.user.email)
+        //   .collection('passeduser');
+        // DeletePassedUserReference.get().then(querysnapshot => {
+        //   Promise.all(querysnapshot.docs.map(d => d.ref.delete()));
+        // });
         setAllswiped(true);
         const ExpiredDate = new Date();
         // console.log(ExpiredDate);
@@ -715,7 +926,7 @@ const Vibe = () => {
         const UpdatedTime = ExpiredTime + 86400000;
         const SetFirebaseswipedData = async () => {
           await firestore().collection('Users').doc(state.user.email).update({
-            CardsExpiredTime: ExpiredTime,
+            CardsExpiredTime: UpdatedTime,
             CardsUpdatedTime: UpdatedTime,
             AllCardsSwiped: true,
           });
@@ -741,31 +952,27 @@ const Vibe = () => {
         //   }
         // }, ToChecKAfter);
       }
-    }, [cardindex]);
+    }, [numberOfSwipsDone]);
     // console.log('card index changing', loading);
-    // console.log(showCards);/
+    // console.log(showCards);
     // console.log(cards);
+    const vibeusers = filteringData.filter(it=> it.Vibe_Data != undefined);
+    vibeusers.map((it)=>{
+
+      // console.log( it.email  , "111111111")
+    })
+    if(vibeusers[0] )
+    console.log( vibeusers[0]  , "111111111")
     return (
       <>
-        <View style={styles.viewLike}>
-          <TouchableOpacity onPress={() => navigation.navigate('LikeScreen')}>
-            <View style={styles.viewLike1}>
-              <MaterialCommunityIcons
-                name="heart-plus-outline"
-                color="#ffffff"
-                size={20}
-              />
-              <Text style={styles.likeText}>view likes</Text>
-            </View>
+        <View style={styles.likewrapper}>
+          <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}} onPress={() => navigation.navigate('LikeScreen')}>
+            <Image source={Theme.hearttick} style={styles.icon} />
+            <Text style={styles.text}>view likes</Text>
           </TouchableOpacity>
-          <View style={{paddingRight: 20}}>
             <TouchableOpacity onPress={() => setFilter(true)}>
-              <Image
-                style={{height: 30, width: 30}}
-                source={require('../../../src/assets/images/FadersHorizontal.png')}
-              />
+            <Image source={Theme.filter} style={styles.icon} />
             </TouchableOpacity>
-          </View>
         </View>
         {loading ? (
           <View>
@@ -774,11 +981,13 @@ const Vibe = () => {
         ) : (
           <>
             {filteringData.length !== 0 ? (
-              <View style={styles.container}>
+              <View >
                 {/* <Text style={{color: 'white'}}>HELOO</Text> */}
                 <FlatList
                   data={filteringData.filter(
                     it => it.email != authentication().currentUser.email,
+                  ).filter(
+                    it => it.Vibe_Data !=undefined
                   )}
                   extraData={filteringData}
                   pagingEnabled
@@ -787,17 +996,136 @@ const Vibe = () => {
                   contentContainerStyle={{
                     justifyContent: 'center',
                     flexGrow: 1,
+                    width:"50%",
+                    height:"88%"
                   }}
                   renderItem={({item, index}) => {
-                    // if (item.) {
-
-                    // }
-                    // console.log("1234", item)
-                    // console.log("lllllllllll", item.userType)
-                    if (cardindex == index) {
+                    // console.log(item.email)
+                    if (cardindex == index ) {
+                      // console.log(item)
                       return (
                         <ScrollView showsVerticalScrollIndicator={false}>
-                          <View style={styles.MainCard}>
+                          <LinearGradient
+                            colors={colors}
+                            style={[styles.cardWrapper, styles.shadowProp]}>
+                            <View style={styles.wrapper}>
+                              <LinearGradient
+                                colors={['#3D85E3', '#79C0F2']}
+                                style={styles.imgborder}>
+                                   {item.image ? (
+                                    <Image
+                                      style={styles.img}
+                                      source={{
+                                        uri: item.image,
+                                      }}
+                                    />
+                                  ) : (
+                                    <Image
+                                      style={styles.coverImage}
+                                      source={{
+                                        uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
+                                      }}
+                                    />
+                                  )}
+                              </LinearGradient>
+                              <View style={styles.titleWrapper}>
+                                {item.name ? <Text style={styles.usertitle}>{item.name}</Text>: null}
+                                {item.verified && <Image source={Theme.verify} style={styles.verify} />}
+                              </View>
+                              <Text style={styles.tag}>{item.designation ? item.designation : item.Vibe_Data.Previous_Designation} at {item.Vibe_Data.Previous_Org}</Text>
+                              {/* <Text style={styles.location}>New Delhi,India</Text> */}
+                            </View>
+
+                            <AboutMeSection about={item.about?item.about:"I haven't added about section yet..."}/>
+                            
+                            <View style={styles.floatingBanner}>
+                              <TouchableOpacity style={styles.align}
+                                   onPress={() => {
+                                    // navigation.navigate('LikeMatchScreen')
+                                    // swipeLefts(index)
+                                    // setIndex(indexs+1)
+                                    swipeLeft(index);
+                                  }}
+                              >
+                                <Image source={Theme.nope} style={styles.btn} />
+                                <Text style={styles.btntext}>nope</Text>
+                              </TouchableOpacity>
+                              <TouchableOpacity style={styles.align}
+                                onPress={() => {
+                                  superLikeCenter(index);
+                                }}
+                              >
+                                <Image source={Theme.superlike} style={styles.btn} />
+                                <Text style={styles.btntext}>superlike</Text>
+                              </TouchableOpacity>
+                              <TouchableOpacity style={styles.align}
+                                onPress={() => {
+                                  // navigation.navigate('LikeMatchScreen')
+                                  // swipeLefts(index)
+                                  swipeRight(index);
+                                  // setIndex(indexs+1)
+                                }}
+                              >
+                                <Image source={Theme.like} style={styles.btn} />
+                                <Text style={styles.btntext}>like</Text>
+                              </TouchableOpacity>
+                            </View>
+                            <View style={{paddingHorizontal: 20}}>
+                              <LineBar />
+                            </View>
+
+                            {item.Vibe_Data.Here_for && 
+                            <>
+                            <WhyHere hereFor={item.Vibe_Data.Here_for}/>
+
+                            <View style={{paddingHorizontal: 20}}>
+                              <LineBar />
+                            </View>
+                            </>
+                            }
+                            <ProfileTitle
+                              title="Currently"
+                              textOne={item.designation ? item.designation : item.Vibe_Data.Previous_Designation}
+                              textTwo="Rever,Mastok"
+                            />
+
+                            <View style={{paddingHorizontal: 20}}>
+                              <LineBar />
+                            </View>
+
+                            <ProfileTitle title="Industry" textOne={item.industry?item.industry:item.Vibe_Data.Industry} />
+
+                            <View style={{paddingHorizontal: 20}}>
+                              <LineBar />
+                            </View>
+                            {item.Vibe_Data.Education ?
+                            <>
+                              <ProfileTitle
+                              title="Education"
+                              textOne={item.Vibe_Data.Education}
+                              textTwo="MBA"
+                              />
+
+                              <View style={{paddingHorizontal: 20}}>
+                                <LineBar />
+                              </View>
+                            </>: null
+                            }
+
+                            {item.Vibe_Data.How_To_Meet ? <HowToMeet htm={item.Vibe_Data.How_To_Meet} /> : null}
+
+                            <View style={{paddingHorizontal: 20}}>
+                              <LineBar />
+                            </View>
+
+                            <FindMeOn title={'Find Me On:'} linkedin={item.linkedin} phone={item.mobile} email={item.email} />
+                          </LinearGradient>
+
+                          <View style={{height: 110}} />
+                        
+
+                        
+                          {/* <View style={styles.MainCard}>
                             <ScrollView
                               scrollEnabled={true}
                               style={{flexGrow: 1}}
@@ -1042,9 +1370,10 @@ const Vibe = () => {
                                     </View>
                                   </View>
                                 )}
-                              </View>
+                              </View> 
                             </ScrollView>
-                          </View>
+                          </View> */}
+                          
                         </ScrollView>
                       );
                       // }
@@ -1052,6 +1381,7 @@ const Vibe = () => {
                   }}
                   keyExtractor={(item, index) => index.toString()}
                 />
+                
               </View>
             ) : (
               <>
@@ -1086,8 +1416,8 @@ const Vibe = () => {
                         editable={false}
                         selectTextOnFocus={false}
                         selectedItems={filters.hareFor}
-                        selectText="Hare For"
-                        searchInputPlaceholderText="Search Hare For"
+                        selectText="Here For"
+                        searchInputPlaceholderText="Search Here For"
                         searchInputStyle={{height: 50}}
                         styleDropdownMenu={true}
                         styleDropdownMenuSubsection={true}
@@ -1198,5 +1528,13 @@ const Vibe = () => {
     </>
   );
 };
+
+const colors = [
+  '#08096F',
+  '#0D0D0D',
+  Theme.backgroundColor,
+  Theme.backgroundColor,
+  '#1B1D8B',
+];
 
 export {Vibe};

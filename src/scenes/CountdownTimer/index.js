@@ -162,6 +162,8 @@ undoTimer()
               justifyContent: 'center',
               alignItems: 'center',
               alignContent: 'center',
+              paddingTop: 0,
+              paddingBottom: 10
             }}>
             <View>
               <CountDown
@@ -178,7 +180,7 @@ undoTimer()
           <View
             style={{
               width: Dimensions.get('window').width,
-              paddingHorizontal: 30,
+              paddingHorizontal: 50,
               paddingTop: 2,
               justifyContent: 'center',
               alignItems: 'center',
@@ -193,7 +195,7 @@ undoTimer()
                 width: '100%',
                 alignItems: 'center',
                 backgroundColor: '#2A72DE',
-                paddingHorizontal: 20,
+                paddingHorizontal: 10,
                 paddingVertical: 10,
               }}>
               <Text style={{color: '#ffffff', fontSize: 18}}> Get Premium</Text>
