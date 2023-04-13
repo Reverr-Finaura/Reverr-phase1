@@ -176,7 +176,9 @@ const PremiumPlans = () => {
       if (state.user.Premium) {
         premiumData = state.user.Premium;
       } else {
-        premiumData = [];
+        premiumData = [{
+          id:'VIBE'
+          }];
       }
       const finalPremiumData = premiumData.map(item => {
         if (item.id === 'VIBE') {
