@@ -44,7 +44,7 @@ function CustomDrawer(props) {
         <Text style={styles.labeltext}>and receive exclusive access to</Text>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate('plans')}
+          onPress={() => navigation.navigate('premiumPlans')}
           style={styles.upgd}>
           <Text style={{fontSize: 14, color: '#FFF', fontWeight: 'bold'}}>
             Upgrade

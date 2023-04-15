@@ -10,6 +10,8 @@ import {
   Alert,
   BackHandler,
   Dimensions,
+  RefreshControlComponent,
+  RefreshControl,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import ArticleCard from '../../Components/components/ArticleCard';
@@ -28,7 +30,11 @@ import firestore from '@react-native-firebase/firestore';
 import {getRoomData} from '../../Redux/appSlice';
 import {useNavigation} from '@react-navigation/native';
 import {mentorService} from '../../Redux/services/mentor.service';
-import {load_room_data, set_allLoaded} from '../../Redux/actions';
+import {
+  load_room_data,
+  refresh_rooms_list,
+  set_allLoaded,
+} from '../../Redux/actions';
 import {SkeltonLoader} from '../../Components';
 import {NewsList} from '../../scenes/news-screen';
 import {AppColors} from '../../utils';
@@ -45,6 +51,7 @@ function Home() {
   const navigation = useNavigation();
   const [menu, setMenu] = useState('Discussion');
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const [refreshRoom, setRefreshRoom] = useState(false);
   const dispatch = useDispatch();
 
   const menuItems = ['Discussion', 'News', 'Articles'];
@@ -78,6 +85,18 @@ function Home() {
 
     return () => backHandler.remove();
   }, []);
+
+  const _handleLoadMore = () => {
+    console.log('on end reached dispatched');
+    dispatch(load_room_data(state?.lastDocument || undefined));
+  };
+
+  const handleRefresh = () => {
+    dispatch(set_allLoaded(false));
+    dispatch(refresh_rooms_list());
+  };
+
+  // console.log(state?.Rooms[0].id, 'Rooms');
 
   return (
     <View style={{flex: 1}}>
@@ -149,35 +168,44 @@ function Home() {
             </View>
           )}
 
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-            style={{paddingBottom: '30%'}}>
+          <View
+            style={{
+              height: Height / 2,
+            }}>
             {menu === 'Discussion' && (
               <View>
-                {state.Rooms.length == 0 ? (
+                {state.Rooms.length === 0 ? (
                   <SkeltonLoader />
                 ) : (
-                  <View>
-                    {state.Rooms?.map((item, index) => (
-                      <View key={index}>
-                        <PostCard item={item} />
-                      </View>
-                    ))}
+                  <View style={{paddingBottom: '3%'}}>
+                    <FlatList
+                      data={state?.Rooms}
+                      onEndReached={_handleLoadMore}
+                      onEndReachedThreshold={1}
+                      refreshing={state.refreshing}
+                      onRefresh={handleRefresh}
+                      renderItem={({item, index}) => (
+                        <View key={index}>
+                          <PostCard item={item} />
+                        </View>
+                      )}
+                      keyExtractor={(item, index) => index}
+                    />
                     <View style={{height: 120}} />
                   </View>
                 )}
               </View>
             )}
             {menu === 'News' && (
-              <View>
+              <View style={{flex: 1, paddingBottom: '7%'}}>
                 {/* <NewsCard /> */}
-                <View style={styles.wrapper}>
-                  <Text
-                    style={[styles.title, {fontSize: 18, fontWeight: 'bold'}]}>
-                    Trending News
-                  </Text>
+                <Text
+                  style={[styles.title, {fontSize: 18, fontWeight: 'bold'}]}>
+                  Trending News
+                </Text>
+                <View style={{height: Height / 1.64}}>
+                  <NewsList />
                 </View>
-                <NewsList />
               </View>
             )}
             {menu === 'Articles' && (
@@ -185,7 +213,7 @@ function Home() {
                 <ArticleCard />
               </View>
             )}
-          </ScrollView>
+          </View>
 
           {/* <PostCard hasArt={true} /> */}
         </View>

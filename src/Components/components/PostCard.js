@@ -7,6 +7,8 @@ import {
   Image,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  Share,
+  Alert,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {
@@ -15,12 +17,20 @@ import {
   load_room_data,
   pin_post,
   refresh_rooms_list,
+  setUser,
   set_allLoaded,
 } from '../../Redux/actions';
 import {timeAgo} from '../../utils/Helper/helper';
 import Theme from '../../utils/Theme';
 import {AppColors} from '../../utils';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {
+  RemovePost,
+  savePost,
+  sharePost,
+  unsavePost,
+} from '../../utils/FirebaseFunctionality';
+import {log} from 'react-native-reanimated';
 
 function PostCard({item, index}) {
   // console.log(item,"kdhskhd");
@@ -48,6 +58,43 @@ function PostCard({item, index}) {
   const handleRefresh = () => {
     dispatch(set_allLoaded(false));
     dispatch(refresh_rooms_list());
+  };
+  const SharePost = async (postText, id) => {
+    try {
+      const result = await Share.share({
+        message: postText,
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+          console.log(result.activityType, 'result.activityType');
+        } else {
+          // shared
+
+          sharePost(id, state?.user?.email);
+          console.log('Post Shared');
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+        console.log('dismissed');
+      }
+    } catch (error) {
+      Alert.alert(error.message);
+    }
+  };
+
+  const saveYourPost = postID => {
+    if (item.saved.includes(postID)) {
+      unsavePost(postID, state?.user?.email).then(res => {
+        console.log(res, 'unsaved');
+        dispatch(setUser(res));
+      });
+    } else {
+      savePost(postID, state?.user?.email).then(res => {
+        console.log(res, 'saved');
+        dispatch(setUser(res));
+      });
+    }
   };
   return (
     <View style={[styles.container, {position: 'relative'}]}>
@@ -237,7 +284,11 @@ function PostCard({item, index}) {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}}>
+        <TouchableOpacity
+          onPress={() => {
+            SharePost(item?.text, item.id);
+          }}
+          style={{flexDirection: 'row', alignItems: 'center'}}>
           <Image
             source={Theme.share}
             style={{height: 20, width: 20, resizeMode: 'contain'}}
@@ -249,11 +300,13 @@ function PostCard({item, index}) {
               fontSize: 13,
               marginLeft: 5,
             }}>
-            300
+            {item.share?.length}
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}}>
+        <TouchableOpacity
+          onPress={() => saveYourPost()}
+          style={{flexDirection: 'row', alignItems: 'center'}}>
           <Image
             source={Theme.bookmark}
             style={{height: 17, width: 17, resizeMode: 'contain'}}
@@ -265,7 +318,7 @@ function PostCard({item, index}) {
               fontSize: 13,
               marginLeft: 5,
             }}>
-            300
+            {item?.saved?.length}
           </Text>
         </TouchableOpacity>
       </View>

@@ -38,16 +38,17 @@ const NewsList = () => {
     setLoading(true);
     try {
       await axios.request(options).then(res => {
+        console.log(res.data.value, 'sdhjshdjs');
         setNewsData(res.data.value);
         setLoading(false);
       });
     } catch (err) {
-      console.log(err);
+      console.log(err, 'news error');
     }
   }
   useEffect(() => {
     getNews();
-    console.log(newsData?.length, 'newsData');
+    //console.log(newsData?.length, 'newsData');
   }, []);
 
   return (

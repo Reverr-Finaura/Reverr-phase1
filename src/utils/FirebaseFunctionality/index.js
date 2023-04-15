@@ -84,19 +84,19 @@ export const ChangeDp = (setLoading, dispatch, email) => {
     });
 };
 
-export const SavePost = async (item, email, posts) => {
-  const res = await firestore()
-    .collection('Users')
-    .doc(email)
-    .update({savedPosts: [...posts, item.id]});
-};
+// export const SavePost = async (item, email, posts) => {
+//   const res = await firestore()
+//     .collection('Users')
+//     .doc(email)
+//     .update({savedPosts: [...posts, item.id]});
+// };
 
-export const RemovePost = async (item, email, posts) => {
-  const res = await firestore()
-    .collection('Users')
-    .doc(email)
-    .update({savedPosts: [...posts.filter(arti => arti != item.id)]});
-};
+// export const RemovePost = async (item, email, posts) => {
+//   const res = await firestore()
+//     .collection('Users')
+//     .doc(email)
+//     .update({savedPosts: [...posts.filter(arti => arti != item.id)]});
+// };
 
 export const AddGalleryImage = (setfileUrl, setLoader) => {
   ImagePicker.openPicker({
@@ -521,6 +521,80 @@ export const fetchMoreData = async ({setData, setIsLoading}) => {
   const newData = querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
   setData([...data, ...newData]);
   setIsLoading(false);
+};
+
+export const savePost = async ({postID, currentUserEmail}) => {
+  let userData = [];
+  await firestore()
+    .collection('posts')
+    .doc(postID)
+    .update({
+      saved: firestore.FieldValue.arrayUnion(currentUserEmail),
+    })
+    .then(async () => {
+      await firestore()
+        .collection('Users')
+        .doc(currentUserEmail)
+        .update({
+          saved: firestore.FieldValue.arrayUnion(postID),
+        })
+        .then(async () => {
+          await firestore()
+            .collection('Users')
+            .doc(currentUserEmail)
+            .get()
+            .then(inst => {
+              console.log(inst._data, 'inst');
+              // dispatch(setUser(inst._data));
+              userData = inst._data;
+            });
+          setLoading(false);
+        });
+    });
+  return userData;
+};
+
+export const unsavePost = async ({postID, currentUserEmail}) => {
+  let userData = [];
+  await firestore()
+    .collection('posts')
+    .doc(postID)
+    .update({
+      saved: firestore.FieldValue.arrayRemove(currentUserEmail),
+    })
+    .then(async () => {
+      await firestore()
+        .collection('Users')
+        .doc(currentUserEmail)
+        .update({
+          saved: firestore.FieldValue.arrayRemove(postID),
+        })
+        .then(async () => {
+          await firestore()
+            .collection('Users')
+            .doc(currentUserEmail)
+            .get()
+            .then(inst => {
+              console.log(inst._data, 'inst');
+              // dispatch(setUser(inst._data));
+              userData = inst._data;
+            });
+        });
+    });
+  return userData;
+};
+
+export const sharePost = async (postID, currentUserEmail) => {
+  let userData = [];
+  await firestore()
+    .collection('posts')
+    .doc(postID)
+    .update({
+      share: firestore.FieldValue.arrayUnion(currentUserEmail),
+    })
+    .then(async () => {
+      console.log('shared');
+    });
 };
 
 export {loginUser};

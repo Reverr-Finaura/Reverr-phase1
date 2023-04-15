@@ -16,7 +16,7 @@ const SkeltonLoader = () => {
   const [subs, setSubs] = useState(false);
   const navigation = useNavigation();
   return (
-    <View style={{backgroundColor: AppColors.primarycolor, flex: 1}}>
+    <View style={{backgroundColor: AppColors.primarycolor}}>
       {postData &&
         postData.length > 0 &&
         postData.map((item, index) => {

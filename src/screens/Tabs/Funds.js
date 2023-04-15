@@ -11,8 +11,11 @@ import GradientHeader from '../../Components/components/GradientHeader';
 import NoteCard from '../../Components/components/NoteCard';
 import NoteCardBig from '../../Components/components/NoteCardBig';
 import Theme from '../../utils/Theme';
+import {useNavigation} from '@react-navigation/native';
 
-function Funds({navigation}) {
+function Funds() {
+  const navigation = useNavigation();
+
   return (
     <View style={{flex: 1}}>
       <GradientHeader />
@@ -39,7 +42,9 @@ function Funds({navigation}) {
           <View style={{height: 100}} />
         </ScrollView>
       </View>
-      <TouchableOpacity style={styles.corner}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('applyNow')}
+        style={styles.corner}>
         <Text style={{fontSize: 16, color: '#FFF', fontWeight: 'bold'}}>
           Apply For Funds
         </Text>

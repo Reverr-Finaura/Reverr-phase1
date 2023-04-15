@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     height: Height / 1.65,
-    marginVertical: Height / 9.8,
+    marginVertical: '2%',
     paddingHorizontal: '2%',
     marginHorizontal: '2.5%',
     borderRadius: 10,
@@ -43,6 +43,20 @@ const styles = StyleSheet.create({
     marginTop: Height / 5.4,
     marginStart: Width / 1.7,
     borderRadius: 20,
+  },
+  img: {
+    height: 150,
+    width: 150,
+    resizeMode: 'contain',
+    borderRadius: 100,
+  },
+  imgborder: {
+    height: 158,
+    width: 158,
+    resizeMode: 'contain',
+    borderRadius: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

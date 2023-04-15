@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ToastAndroid,
   FlatList,
+  ActivityIndicator,
 } from 'react-native';
 import Theme from '../../utils/Theme';
 import Ionic from 'react-native-vector-icons/Ionicons';
@@ -15,6 +16,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {SaveArticle} from '../../Redux/actions';
 import {smallString} from '../../utils';
+import {ArticalLoader} from '../loaders';
 
 function ArticleCard() {
   const state = useSelector(state => state.UserReducer);
@@ -87,37 +89,54 @@ function ArticleCard() {
 
   return (
     <>
-      <FlatList
-        data={articalData}
-        nestedScrollEnabled={true}
-        showsVerticalScrollIndicator={false}
-        keyExtractor={item => item.id}
-        renderItem={({item, index}) => (
-          <TouchableOpacity key={index} style={styles.container}>
-            <View style={{width: '23%'}}>
-              <Image source={{uri: item?.image?.imageUrl}} style={styles.img} />
-            </View>
+      {loading ? (
+        <View style={{}}>
+          <ArticalLoader />
+        </View>
+      ) : (
+        <FlatList
+          data={articalData}
+          nestedScrollEnabled={true}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={item => item.id}
+          renderItem={({item, index}) => (
+            <TouchableOpacity
+              onPress={() => {
+                console.log('artdkh');
+                navigation.navigate('ArticalDetails', {
+                  articalData: item,
+                });
+              }}
+              key={index}
+              style={styles.container}>
+              <View style={{width: '23%'}}>
+                <Image
+                  source={{uri: item?.image?.imageUrl}}
+                  style={styles.img}
+                />
+              </View>
 
-            <View
-              style={{
-                paddingLeft: 10,
-                width: '80%',
-                justifyContent: 'space-evenly',
-              }}>
-              <Text style={styles.title}> {item.heading}</Text>
-              <View style={styles.line} />
-              <Text numberOfLines={2} style={styles.desc}>
-                {smallString(item.body, 100)}
-              </Text>
-            </View>
+              <View
+                style={{
+                  paddingLeft: 10,
+                  width: '80%',
+                  justifyContent: 'space-evenly',
+                }}>
+                <Text style={styles.title}> {item.heading}</Text>
+                <View style={styles.line} />
+                <Text numberOfLines={2} style={styles.desc}>
+                  {smallString(item.body, 100)}
+                </Text>
+              </View>
 
-            {/* <View style={styles.corner}>
+              {/* <View style={styles.corner}>
               <Image source={Theme.triangle} style={styles.triangle} />
               <Text style={styles.number}>169</Text>
             </View> */}
-          </TouchableOpacity>
-        )}
-      />
+            </TouchableOpacity>
+          )}
+        />
+      )}
     </>
   );
 }

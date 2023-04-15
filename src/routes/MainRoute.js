@@ -24,6 +24,7 @@ import MyCourses from '../screens/Drawer/MyCourses';
 import MyBooks from '../screens/Drawer/MyBooks';
 import Settings from '../screens/Drawer/Settings';
 import {
+  ArticalDetails,
   CalanderAppointments,
   ChatScreen,
   ChatVibeScreen,
@@ -35,22 +36,23 @@ import {
   LikeScreen,
   LoginViaEmail,
   LoginViaPhone,
-  MentorList,
   Messages,
   NewsDetails,
   OpenBook,
-  Plans,
-  PremiumPlans,
   ReadingInstruction,
   Requests,
   StartCourse,
   StartLogin,
   Vibe,
+  Webview,
 } from '../scenes';
 import MentorsList from '../screens/MentorsList';
 import ProfileSettings from '../screens/Drawer/Settings';
 import NewVibe from '../screens/Tabs/Vibe';
 import OthersProfile from '../screens/OthersProfile';
+import PremiumPlans from '../screens/PremiumPlans';
+import SelectPlan from '../screens/SelectPlan';
+import {ApplyFunds} from '../screens/Tabs/ApplyFunds';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -234,14 +236,29 @@ function HomeStack() {
         component={ChatVibeScreen}
       />
       <Stack.Screen
-        name="plans"
+        name="premiumPlans"
         options={{headerShown: false}}
         component={PremiumPlans}
+      />
+      <Stack.Screen
+        name="selectedPlan"
+        options={{headerShown: false}}
+        component={SelectPlan}
+      />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="ArticalDetails"
+        component={ArticalDetails}
       />
       <Stack.Screen
         options={{headerShown: false}}
         name="NewsDetails"
         component={NewsDetails}
+      />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="WebView"
+        component={Webview}
       />
     </Stack.Navigator>
   );
@@ -269,6 +286,23 @@ function MentorStack() {
         name="CalanderAppointments"
         options={{headerShown: false}}
         component={CalanderAppointments}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function FundStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="fund"
+        component={Funds}
+      />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="applyNow"
+        component={ApplyFunds}
       />
     </Stack.Navigator>
   );
@@ -354,7 +388,7 @@ function TabView() {
       <Tab.Screen
         options={{headerShown: false}}
         name="Funds"
-        component={Funds}
+        component={FundStack}
       />
       <Tab.Screen
         options={{headerShown: false}}

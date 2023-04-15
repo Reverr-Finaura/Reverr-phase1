@@ -21,10 +21,13 @@ import {AppColors} from '../utils';
 import {CancelRequest, ConnectToSocial} from '../utils/FirebaseFunctionality';
 import {useDispatch, useSelector} from 'react-redux';
 import {setUser} from '../Redux/actions';
+import PostCard from '../Components/components/PostCard';
 
 const OthersProfile = props => {
   const othersData = props.route.params.otherUserData;
   const [connectLoading, setConnectLoading] = useState(false);
+
+  const [postData, setPostData] = useState([]);
   const state = useSelector(state => state.UserReducer);
 
   const dispatch = useDispatch();
@@ -62,8 +65,13 @@ const OthersProfile = props => {
     );
   };
 
-  useEffect(() => {}, [dispatch, state]);
-  console.log(state.user?.sendRequests, 'userUpdated');
+  useEffect(() => {
+    let filterData = state?.Rooms?.filter(
+      f => f.postedby.email === othersData.email,
+    );
+    setPostData(filterData);
+  }, [dispatch, state]);
+  ///console.log(state.user?.sendRequests, 'userUpdated');
   return (
     <View style={styles.container}>
       <RegularHeader
@@ -220,11 +228,11 @@ const OthersProfile = props => {
           </View>
         ) : (
           <View style={{paddingHorizontal: '5%'}}>
-            {/* {postData?.map((item, index) => (
+            {postData?.map((item, index) => (
               <View key={index}>
                 <PostCard item={item} />
               </View>
-            ))} */}
+            ))}
           </View>
         )}
       </ScrollView>

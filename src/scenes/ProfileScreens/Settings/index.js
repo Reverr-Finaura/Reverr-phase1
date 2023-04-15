@@ -119,18 +119,28 @@ const Settings = props => {
           style={{
             color: AppColors.FontsColor,
             fontFamily: 'Poppins-Regular',
-            marginStart: Width / 3.3,
+            marginStart: '28%',
             fontSize: 22,
           }}>
           Settings
         </Text>
+      </View>
+      <View style={{alignItems: 'center'}}>
+        <LinearGradient
+          colors={['#3D85E3', '#79C0F2']}
+          style={styles.imgborder}>
+          <Image
+            source={{uri: state.user && state.user.image}}
+            style={styles.img}
+          />
+        </LinearGradient>
       </View>
       <View style={styles.mainContainer}>
         <TouchableOpacity
           onPress={() => {
             savedScreen();
           }}
-          style={{height: '7%', marginTop: '25%'}}>
+          style={{height: '7%'}}>
           <TitleCard firstText="Saved" />
         </TouchableOpacity>
         <TouchableOpacity
@@ -141,7 +151,7 @@ const Settings = props => {
             //navigation.navigate('EditMentorProfile')
             //}
           }}
-          style={{height: '7%', marginTop: '7%'}}>
+          style={{height: '7%', marginTop: '5%'}}>
           <TitleCard firstText="Edit profile" />
         </TouchableOpacity>
         <TouchableOpacity
@@ -150,20 +160,20 @@ const Settings = props => {
           <TitleCard firstText="Change password" />
         </TouchableOpacity>
         <TouchableOpacity
-          style={{height: '7%', marginTop: '7%'}}
+          style={{height: '7%', marginTop: '5%'}}
           onPress={() => {
             navigation.navigate('TermConditions');
           }}>
           <TitleCard firstText="Terms and conditions" />
         </TouchableOpacity>
-        <TouchableOpacity style={{height: '7%', marginTop: '7%'}}>
+        <TouchableOpacity style={{height: '7%', marginTop: '5%'}}>
           <TitleCard firstText="Contact us" />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             logout();
           }}
-          style={{height: '7%', marginTop: '7%'}}>
+          style={{height: '7%', marginTop: '5%'}}>
           <TitleCard firstText="Logout" />
         </TouchableOpacity>
         <TouchableOpacity
@@ -177,14 +187,14 @@ const Settings = props => {
           onPress={() => {
             navigation.navigate('LikeScreen');
           }}
-          style={{height: '7%', marginTop: '7%'}}>
+          style={{height: '7%', marginTop: '5%'}}>
           <TitleCard firstText="LikeVibe" />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             createTwoButtonAlert();
           }}
-          style={{height: '7%', marginTop: '7%'}}>
+          style={{height: '7%', marginTop: '5%'}}>
           <TitleCard firstText="Delete Account" />
         </TouchableOpacity>
         <Modal
@@ -210,12 +220,13 @@ const Settings = props => {
           </View>
         </Modal>
       </View>
-      <View style={styles.dp}>
+
+      {/* <View style={styles.dp}>
         <Image
           style={{width: '100%', height: '100%'}}
           source={{uri: state.user && state.user.image}}
         />
-      </View>
+      </View> */}
     </LinearGradient>
   );
 };

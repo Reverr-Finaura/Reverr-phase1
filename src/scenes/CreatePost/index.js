@@ -71,6 +71,8 @@ const CreatePost = props => {
       image: imageUrl,
       comments: [],
       likes: [],
+      saved: [],
+      share: [],
       text,
       createdAt: firestore.Timestamp.fromDate(new Date()),
     };

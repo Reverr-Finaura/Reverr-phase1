@@ -11,11 +11,7 @@ const BackButton = props => {
       <TouchableOpacity
         style={{...styles.btn, ...props.style}}
         onPress={() => navigation.goBack()}>
-        <Icon
-          name="angle-left"
-          size={30}
-          color={AppColors.FontsColor}
-        />
+        <Icon name="angle-left" size={30} color={AppColors.FontsColor} />
       </TouchableOpacity>
       <Text
         style={{
