@@ -1,22 +1,20 @@
-import React, { useState } from "react";
-import { 
-    View,
-    Text,
-    StyleSheet,
-    TouchableOpacity,
-    ScrollView
-} from "react-native";
-import GradientHeader from "../Components/components/GradientHeader";
-import NotificationCard from "../Components/components/NotificationCard";
-import { notifications } from "../utils/sampledata";
-import Theme from "../utils/Theme";
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
+import GradientHeader from '../Components/components/GradientHeader';
+import NotificationCard from '../Components/components/NotificationCard';
+import {notifications} from '../utils/sampledata';
+import Theme from '../utils/Theme';
 
+function Notifications({navigation}) {
+  const [selectedText, setSelectedText] = useState('all');
 
-function Notifications({navigation}){
-
-  const [selectedText, setSelectedText] = useState('all'); 
-
-  const handleTextClick = (text) => {
+  const handleTextClick = text => {
     switch (text) {
       case 'all':
         setSelectedText('all');
@@ -27,18 +25,17 @@ function Notifications({navigation}){
       case 'unanswered':
         setSelectedText('unanswered');
         break;
-        default:
+      default:
         setSelectedText('all');
     }
   };
 
-  
-    return (
-      <View style={styles.container}>
-        <GradientHeader />
+  return (
+    <View style={styles.container}>
+      <GradientHeader />
 
-        <ScrollView>
-        <View style={{ padding: 25 }}>
+      <ScrollView>
+        <View style={{padding: 25}}>
           <Text style={styles.title}>Notifications</Text>
 
           <View style={styles.tabWrapper}>
@@ -47,25 +44,24 @@ function Notifications({navigation}){
                 styles.activeStyle,
                 {
                   borderBottomColor:
-                    selectedText === "all"
+                    selectedText === 'all'
                       ? Theme.primaryColor
-                      : "rgba(5,5,5,0)",
+                      : 'rgba(5,5,5,0)',
                 },
               ]}
-              onPress={() => handleTextClick("all")}
-            >
+              onPress={() => handleTextClick('all')}>
               <Text
                 style={[
                   styles.text,
                   {
-                    color: selectedText === "all" ? Theme.primaryColor : "#FFF",
+                    color: selectedText === 'all' ? Theme.primaryColor : '#FFF',
                   },
-                ]}
-              >
+                ]}>
                 All
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity
+
+            {/* <TouchableOpacity
               style={[
                 styles.activeStyle,
                 {
@@ -114,7 +110,7 @@ function Notifications({navigation}){
               >
                 Unanswered
               </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
         </View>
 
@@ -124,7 +120,7 @@ function Notifications({navigation}){
         keyExtractor={item => item.id}
       /> */}
 
-        {notifications.map((item) => {
+        {/* {notifications.map((item) => {
           return (
             <NotificationCard
               key={item.id}
@@ -135,10 +131,11 @@ function Notifications({navigation}){
               active={item.active}
             />
           );
-        })}
-        </ScrollView>
-      </View>
-    );}
+        })} */}
+      </ScrollView>
+    </View>
+  );
+}
 export default Notifications;
 
 const styles = StyleSheet.create({
@@ -148,25 +145,25 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    color: "#FFF",
-    fontWeight: "bold",
+    color: '#FFF',
+    fontWeight: 'bold',
     marginTop: 10,
   },
   subtitle: {
-    color: "#FFF",
-    fontWeight: "bold",
+    color: '#FFF',
+    fontWeight: 'bold',
   },
   tabWrapper: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginTop: 20,
   },
   text: {
-    color: "#FFF",
+    color: '#FFF',
     fontSize: 15,
-    fontWeight: "500",
-    textAlign: "center",
-    marginBottom:3
+    fontWeight: '500',
+    textAlign: 'center',
+    marginBottom: 3,
   },
   activeStyle: {
     borderBottomWidth: 2,

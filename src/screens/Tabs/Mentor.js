@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Image,
   FlatList,
+  Dimensions,
 } from 'react-native';
 import CateogryCard from '../../Components/components/CategoryCard';
 import GradientHeader from '../../Components/components/GradientHeader';
@@ -18,6 +19,8 @@ import Theme from '../../utils/Theme';
 import firestore from '@react-native-firebase/firestore';
 import {mentorsCategory} from '../../dumy-Data/mentorsCategory';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+
+const Width = Dimensions.get('window').width;
 
 function Mentor() {
   const [column, setColumn] = useState(2);
@@ -40,8 +43,11 @@ function Mentor() {
         const m2 = mentors.filter(
           user => user.email === '1mail2kumarraja@gmail.com',
         );
+        const m3 = mentors.filter(
+          user => user.email === 'shivannamahesh@gmail.com',
+        );
 
-        setRandomMentors([...m, ...m2]);
+        setRandomMentors([...m, ...m2, ...m3]);
         setLoading(false);
       });
   };
@@ -89,7 +95,7 @@ function Mentor() {
         {!loading ? (
           <>
             <FlatList
-              style={{paddingLeft: 20}}
+              style={{paddingHorizontal: '2%'}}
               showsHorizontalScrollIndicator={false}
               horizontal={true}
               data={randomMentors}
@@ -107,7 +113,7 @@ function Mentor() {
             <SkeletonPlaceholder backgroundColor="#012437">
               <View
                 style={{
-                  width: 180,
+                  width: Width / 3.38,
                   height: 170,
                   marginHorizontal: '2%',
                   borderRadius: 10,
@@ -116,7 +122,16 @@ function Mentor() {
             <SkeletonPlaceholder backgroundColor="#012437">
               <View
                 style={{
-                  width: 180,
+                  width: Width / 3.38,
+                  height: 170,
+                  borderRadius: 10,
+                  marginHorizontal: '2%',
+                }}></View>
+            </SkeletonPlaceholder>
+            <SkeletonPlaceholder backgroundColor="#012437">
+              <View
+                style={{
+                  width: Width / 3.38,
                   height: 170,
                   borderRadius: 10,
                   marginHorizontal: '2%',

@@ -101,6 +101,8 @@ def enableSeparateBuildPerCPUArchitecture = true
  */
 def enableProguardInReleaseBuilds = true
 
+
+
 /**
  * The preferred build flavor of JavaScriptCore.
  *
@@ -227,7 +229,7 @@ android {
         abi {
             reset()
             enable enableSeparateBuildPerCPUArchitecture
-            universalApk false  // If true, also generate a universal APK
+            universalApk true  // If true, also generate a universal APK
             include (*reactNativeArchitectures())
         }
     }

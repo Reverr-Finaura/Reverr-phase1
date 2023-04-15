@@ -138,7 +138,7 @@ const Settings = props => {
       <View style={styles.mainContainer}>
         <TouchableOpacity
           onPress={() => {
-            savedScreen();
+            navigation.navigate('Saved');
           }}
           style={{height: '7%'}}>
           <TitleCard firstText="Saved" />
@@ -176,20 +176,20 @@ const Settings = props => {
           style={{height: '7%', marginTop: '5%'}}>
           <TitleCard firstText="Logout" />
         </TouchableOpacity>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => {
             navigation.navigate('newVibes');
           }}
           style={{height: '7%', marginTop: '7%'}}>
           <TitleCard firstText="Vibe" />
-        </TouchableOpacity>
-        <TouchableOpacity
+        </TouchableOpacity> */}
+        {/* <TouchableOpacity
           onPress={() => {
             navigation.navigate('LikeScreen');
           }}
           style={{height: '7%', marginTop: '5%'}}>
           <TitleCard firstText="LikeVibe" />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <TouchableOpacity
           onPress={() => {
             createTwoButtonAlert();

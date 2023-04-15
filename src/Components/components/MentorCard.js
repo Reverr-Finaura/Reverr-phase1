@@ -1,7 +1,16 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+
+const Width = Dimensions.get('window').width;
 
 function MentorCard({item}) {
   const navigation = useNavigation();
@@ -28,7 +37,7 @@ export default MentorCard;
 const styles = StyleSheet.create({
   container: {
     height: 190,
-    width: 180,
+    width: Width / 3.38,
     borderRadius: 10,
     overflow: 'hidden',
     marginRight: 15,

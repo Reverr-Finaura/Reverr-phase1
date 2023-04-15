@@ -28,7 +28,7 @@ function GradientHeader(props) {
         <Image source={{uri: state.user?.image}} style={styles.user} />
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Premium')}>
+      <TouchableOpacity onPress={() => navigation.navigate('premiumPlans')}>
         <Image source={Theme.crown} style={styles.crown} />
       </TouchableOpacity>
 

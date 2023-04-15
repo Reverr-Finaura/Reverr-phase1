@@ -168,12 +168,9 @@ function Home() {
             </View>
           )}
 
-          <View
-            style={{
-              height: Height / 2,
-            }}>
+          <View style={{}}>
             {menu === 'Discussion' && (
-              <View>
+              <View style={{height: Height / 1.5, paddingBottom: '2%'}}>
                 {state.Rooms.length === 0 ? (
                   <SkeltonLoader />
                 ) : (
@@ -209,7 +206,7 @@ function Home() {
               </View>
             )}
             {menu === 'Articles' && (
-              <View View style={{paddingBottom: '30%'}}>
+              <View style={{paddingBottom: '25%'}}>
                 <ArticleCard />
               </View>
             )}
