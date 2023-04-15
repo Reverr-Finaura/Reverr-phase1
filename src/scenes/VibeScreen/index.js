@@ -740,7 +740,7 @@ const Vibe = () => {
           });
         // console.log('noo');
         // const TotalSwipe = state.user.Number_Of_Swips_Done;
-        const LastEmailSwipe = state.user.Last_Card_Email_Swiped;
+        var LastEmailSwipe = state.user.Last_Card_Email_Swiped;
         // const To_Show_Vibe_Screen = No_Of_Swipes.data().Vibe;
         // if (To_Show_Vibe_Screen) {
         //   return;
@@ -767,7 +767,12 @@ const Vibe = () => {
 
         // let tempList = passeduserids.map(item => item.email);
 
-        const passedusers = state.user.passedUser;
+        var passedusers = state.user.passedUser;
+
+        if(passedusers == undefined || passedusers == [] || passedusers == ""){
+          passedusers = ["reverr@reverr.io"] ;
+          LastEmailSwipe = "reverr@reverr.io"
+        }
 
         setNumberOfSwipsDone(state.user.Number_Of_Swips_Done)
 
