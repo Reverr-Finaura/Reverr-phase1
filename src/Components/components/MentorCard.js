@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontWeight: '500',
     opacity: 0.6,
-    fontSize: 13,
+    fontSize: 11,
     marginTop: 1,
   },
 });

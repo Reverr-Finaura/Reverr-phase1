@@ -56,7 +56,7 @@ const StartLogin = () => {
         />
         <Text style={styles.buttonText}>Login with email</Text>
       </TouchableOpacity>
-      <View style={{marginVertical: '5%'}}>
+      {/* <View style={{marginVertical: '5%'}}>
         <View
           style={{
             height: 1.5,
@@ -94,7 +94,7 @@ const StartLogin = () => {
         <Text style={[styles.buttonText, {color: AppColors.primarycolor}]}>
           Google
         </Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <View style={styles.signuplink}>
         <Text
           style={{color: AppColors.infoFonts, fontFamily: 'Poppins-Regular'}}>
