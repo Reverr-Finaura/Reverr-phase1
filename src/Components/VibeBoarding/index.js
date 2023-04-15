@@ -12,84 +12,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { opacity } from 'react-native-redash';
 
-const items = [
-  {
-    id: '92iijs7yta',
-    name: 'Ondo',
-  },
-  {
-    id: 'a0s0a8ssbsd',
-    name: 'Ogun',
-  },
-  {
-    id: '16hbajsabsd',
-    name: 'Calabar',
-  },
-  {
-    id: 'nahs75a5sg',
-    name: 'Lagos',
-  },
-  {
-    id: '667atsas',
-    name: 'Maiduguri',
-  },
-  {
-    id: 'hsyasajs',
-    name: 'Anambra',
-  },
-  {
-    id: 'djsjudksjd',
-    name: 'Benue',
-  },
-  {
-    id: 'sdhyaysdj',
-    name: 'Kaduna',
-  },
-  {
-    id: 'suudydjsjd',
-    name: 'Abuja',
-  },
-];
-
-const items2 = [
-  {
-    id: '92iijs7yta',
-    name: 'Ondo',
-  },
-  {
-    id: 'a0s0a8ssbsd',
-    name: 'Ogun',
-  },
-  {
-    id: '16hbajsabsd',
-    name: 'Calabar',
-  },
-  {
-    id: 'nahs75a5sg',
-    name: 'Lagos',
-  },
-  {
-    id: '667atsas',
-    name: 'Maiduguri',
-  },
-  {
-    id: 'hsyasajs',
-    name: 'Anambra',
-  },
-  {
-    id: 'djsjudksjd',
-    name: 'Benue',
-  },
-  {
-    id: 'sdhyaysdj',
-    name: 'Kaduna',
-  },
-  {
-    id: 'suudydjsjd',
-    name: 'Abuja',
-  },
-];
-
 const experience = [
   {
     id: '< 1',
@@ -148,7 +70,7 @@ const herefor = [
 const meetdata = [
   { id: 'At Coffee', name: 'At Coffee' },
   { id: 'Video Call', name: 'Video Call' },
-  { id: 'Local Cafe', name: 'Local Cafe' },
+  { id: 'Phone Call', name: 'Phone Call' },
 ];
 const VibeBoarding = ({ showboarding, setshowboarding }) => {
   const navigation = useNavigation();
@@ -453,7 +375,7 @@ const VibeBoarding = ({ showboarding, setshowboarding }) => {
                       marginBottom: 10
                     }}
                   >
-                    Previous Designation
+                    Designation
                   </Text>
                   <TextInput
                     style={{
@@ -516,7 +438,7 @@ const VibeBoarding = ({ showboarding, setshowboarding }) => {
                       marginBottom: 10,
                     }}
                   >
-                    Previous Organistation
+                    Organistation / Company
                   </Text>
                   <TextInput
                     style={{

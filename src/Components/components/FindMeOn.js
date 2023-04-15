@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import Theme from '../../utils/Theme';
 
-function FindMeOn({title, mob, email, linkdin, twitter}) {
+function FindMeOn({title, phone , email, linkedin, twitter}) {
   return (
     <View style={styles.container}>
       <View style={{width: '40%'}}>
@@ -12,27 +12,28 @@ function FindMeOn({title, mob, email, linkdin, twitter}) {
       <View style={styles.wrapper}>
         <View style={styles.contentWrapper}>
           <Image source={Theme.phone} style={styles.icn} />
-          <Text style={styles.findtext}>{mob}</Text>
+          <Text style={styles.findtext}>{phone}</Text>
         </View>
 
         <View style={styles.contentWrapper}>
           <Image source={Theme.email} style={styles.icn} />
           <Text style={styles.findtext}>{email}</Text>
         </View>
-
+        {linkedin != "" &&
         <View style={styles.contentWrapper}>
           <Image source={Theme.linkedin} style={styles.icn} />
           <Text style={styles.findtext}>
-            {linkdin === '' ? '....' : linkdin}
+            {linkedin === '' ? '....' : linkedin}
           </Text>
         </View>
+        }
 
-        <View style={styles.contentWrapper}>
+        {/* <View style={styles.contentWrapper}>
           <Image source={Theme.twitter} style={styles.icn} />
           <Text style={styles.findtext}>
             {twitter === '' ? '....' : twitter}
           </Text>
-        </View>
+        </View> */}
       </View>
     </View>
   );
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
   },
   findtext: {
     fontWeight: '600',
-    fontSize: 14,
+    fontSize: 12.36,
     color: '#fff',
   },
   contentWrapper: {

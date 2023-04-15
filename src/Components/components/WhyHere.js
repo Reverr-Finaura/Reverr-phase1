@@ -2,16 +2,16 @@ import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import RoundedButton from './RoundedButton';
 
-function WhyHere() {
+function WhyHere({hereFor}) {
   return (
     <View style={styles.container}>
       <View style={{width: '40%'}}>
         <Text style={styles.tabTitle}>Why am i Here?</Text>
       </View>
       <View style={styles.wrapper}>
-        <RoundedButton label={'Marketing'} />
-        <RoundedButton label={'Finance'} />
-        <RoundedButton label={'Sales & Marketing'} />
+        {hereFor&& hereFor.length>0 && hereFor.map(item =>
+           <RoundedButton key={item} label={item} />
+          )}
       </View>
     </View>
   );

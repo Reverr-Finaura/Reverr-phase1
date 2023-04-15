@@ -8,7 +8,7 @@ import {
 import LinearGradient from "react-native-linear-gradient";
 import Theme from "../../utils/Theme";
 
-function HowToMeet(){
+function HowToMeet({htm}){
     return(
     <View style={styles.container}>
 
@@ -16,18 +16,24 @@ function HowToMeet(){
 
 
        <View style={styles.wrapper}>
+        {htm.includes('Video Call')&&
        <LinearGradient style={styles.card} colors={['#76BAFA', '#6F88ED',]}>
         <Image source={Theme.meet1} style={styles.meet} />
         <Text style={styles.label}>Video Call</Text>
        </LinearGradient>
+        }   
+        {(htm.includes('Phone Call') || htm.includes('Local Cafe')) &&
        <LinearGradient style={styles.card} colors={['#76BAFA', '#6F88ED',]}>
        <Image source={Theme.meet2} style={styles.meet} />
        <Text style={styles.label}>Phone call</Text>
         </LinearGradient>
+        }
+        {htm.includes('At Coffee')&&
         <LinearGradient style={styles.card} colors={['#76BAFA', '#6F88ED',]}>
         <Image source={Theme.meet3} style={styles.meet} />
         <Text style={styles.label}>At Coffee</Text>
         </LinearGradient>
+        }
        </View>
 
 
