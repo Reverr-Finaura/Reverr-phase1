@@ -97,7 +97,7 @@ const MentorsList = props => {
                       justifyContent: 'center',
                     }}>
                     <Text style={{color: Theme.textLightColor}}>
-                      😒There is No any Mentor in this Category
+                      😒 There is No any Mentor in this Category
                     </Text>
                   </View>
                 ) : (

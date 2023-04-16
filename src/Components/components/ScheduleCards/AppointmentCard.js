@@ -7,11 +7,12 @@ import {
 import LinearGradient from "react-native-linear-gradient";
 import Theme from "../../../utils/Theme";
 
-function AppointmentCard(){
+function AppointmentCard({plans}){
+    console.log(plans)
     return(
         <LinearGradient colors={['#030F2D', '#0B2661']} style={styles.container}>
         <Text style={styles.title}>Appointment</Text>
-        <Text style={styles.rate}>Rs. 1500/Hour</Text>
+        <Text style={styles.rate}>Rs. {plans[0]/2} / 30 min</Text>
         <Text style={styles.desc}>Half-Hourly sessions + Free Introductory sessions</Text>
         </LinearGradient>
     )}

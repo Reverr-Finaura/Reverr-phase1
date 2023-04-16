@@ -42,8 +42,12 @@ import {
   Messages,
   NewsDetails,
   OpenBook,
+<<<<<<< HEAD
   OtpScreen,
   PersonalProfile,
+=======
+  ScheduleAppointment,
+>>>>>>> 2cc336b1e466e710668f3cb58b6934e9f277732f
   ReadingInstruction,
   Requests,
   SignupForm,
@@ -303,6 +307,10 @@ function HomeStack() {
         name="NewsDetails"
         component={NewsDetails}
       />
+      <Stack.Screen
+          name="scheduleappointment"
+          component={ScheduleAppointment}
+        />
       <Stack.Screen
         options={{headerShown: false}}
         name="WebView"
