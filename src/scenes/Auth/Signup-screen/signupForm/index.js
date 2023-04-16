@@ -9,7 +9,7 @@ import {
   ActivityIndicator,
   Image,
   Dimensions,
-  Modal
+  Modal,
 } from 'react-native';
 import React, {useState} from 'react';
 import {AppColors} from '../../../../utils';
@@ -42,7 +42,7 @@ const SignupForm = props => {
   const [loading, setLoading] = useState(false);
   const [showPicker, setShowPicker] = useState(false);
   const [dob, setDob] = useState('');
-  const [dobError, setDobError] = useState(false)
+  const [dobError, setDobError] = useState(false);
   const navigation = useNavigation();
   // Get UserType from UserSelectScreen
   const UserType = props?.route?.params?.UserType;
@@ -54,92 +54,87 @@ const SignupForm = props => {
     Mobile: mobile,
   };
 
- 
   const signup = async () => {
-    console.log(nameerror)
+    console.log(nameerror);
     // console.log('i ma enpty');
     if (name === '') {
       setnameerror(true);
-      return
-    } 
-    if (email==="") {
-        setemailerror(true)
-        return
+      return;
     }
-    if (mobile==='') {
-      setMobileError(true)
-      return
+    if (email === '') {
+      setemailerror(true);
+      return;
     }
-    if (dob==='') {
-      setDobError(true)
-      return
+    if (mobile === '') {
+      setMobileError(true);
+      return;
     }
-     if (password==="") {
-      setPasswordError(true)
-      return
-     }
-     if (confirmPassword==='') {
-      setConfirmPasswordError(true)
-      return
-     }
-     if (password!=confirmPassword) {
-        alert("password not matched")
-        return
-     }
-     setLoading(true)
-        const savedUser = await firestore()
-          .collection('Users')
-          .doc(email)
-          .get();
-        if (savedUser._data != undefined) {
-          setLoading(false);
-          alert('user already exists with that email');
-        } else {
-          var OTP = EmailOtp();
-          //alert('Please check your inbox');
-          setLoading(false);
-          navigation.navigate('OtpVerification', {
-            OTP: OTP,
-            Email: email.toLowerCase().trim(),
-            Password: password,
-            Name: name.toLowerCase(),
-            Mobile: mobile,
-            Dob:DDMMYYYY(dob),
-            UserType: UserType,
-          });
-          setname('');
-          setemail('');
-          setpassword('');
-          setConfirmPassword('');
-          setMobile('');
-          setDob("")
-        }
+    if (dob === '') {
+      setDobError(true);
+      return;
     }
-  
+    if (password === '') {
+      setPasswordError(true);
+      return;
+    }
+    if (confirmPassword === '') {
+      setConfirmPasswordError(true);
+      return;
+    }
+    if (password != confirmPassword) {
+      alert('password not matched');
+      return;
+    }
+    setLoading(true);
+    const savedUser = await firestore().collection('Users').doc(email).get();
+    if (savedUser._data != undefined) {
+      setLoading(false);
+      alert('user already exists with that email');
+    } else {
+      var OTP = EmailOtp();
+      //alert('Please check your inbox');
+      setLoading(false);
+      navigation.navigate('OtpVerification', {
+        OTP: OTP,
+        Email: email.toLowerCase().trim(),
+        Password: password,
+        Name: name.toLowerCase(),
+        Mobile: mobile,
+        Dob: DDMMYYYY(dob),
+        UserType: UserType,
+      });
+      setname('');
+      setemail('');
+      setpassword('');
+      setConfirmPassword('');
+      setMobile('');
+      setDob('');
+    }
+  };
 
-    const EmailOtp = () => {
-      const OTP = Math.floor(Math.random() * 90000) + 10000;
-      const msg = 'Your OTP for verification is ' + OTP;
-  
-      var templateParams = {
-        from_name: "Reverr",
-        to_name: data.Name,
-        to_email: data.Email,
-        otp:OTP,
-      };
-      emailjs.init('user_FR6AulWQMZry87FBzhKNu');
-      emailjs
-        .send('service_lfmmz8k', 'template_n3pcht5', templateParams)
-        .then(res => {
-          console.log(res);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-      console.log(templateParams, 'send email');
-  
-      return OTP;
+  const EmailOtp = () => {
+    const OTP = Math.floor(Math.random() * 90000) + 10000;
+    const msg = 'Your OTP for verification is ' + OTP;
+
+    var templateParams = {
+      from_name: 'Reverr',
+      to_name: data.Name,
+      to_email: data.Email,
+      otp: OTP,
     };
+    emailjs.init('user_FR6AulWQMZry87FBzhKNu');
+    emailjs
+      .send('service_lfmmz8k', 'template_n3pcht5', templateParams)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    console.log(templateParams, 'send email');
+
+    return OTP;
+  };
   // const EmailOtp = () => {
   //   const OTP = Math.floor(Math.random() * 100000 + 1);
   //   const msg = 'Your OTP for verification is ' + OTP;
@@ -163,38 +158,40 @@ const SignupForm = props => {
 
   //   return OTP;
   // };
-  
+
   return (
     <View style={{flex: 1}}>
       <LinearGradient colors={['#070972', '#0C0C0D']} style={styles.screen}>
-        <View style={{paddingVertical:'3%'}}><BackButton /></View>
+        <View style={{paddingVertical: '3%'}}>
+          <BackButton />
+        </View>
         <Modal
-            visible={loading}
-            onRequestClose={() => {
-              setLoading(false);
-            }}
-            transparent={true}>
+          visible={loading}
+          onRequestClose={() => {
+            setLoading(false);
+          }}
+          transparent={true}>
+          <View
+            style={{
+              backgroundColor: 'rgba(1, 1, 1, 0.6)',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              height: '100%',
+            }}>
             <View
               style={{
-                backgroundColor: 'rgba(1, 1, 1, 0.6)',
+                backgroundColor: 'white',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: '100%',
-                height: '100%',
+                width: '35%',
+                height: '17%',
+                borderRadius: 20,
               }}>
-              <View
-                style={{
-                  backgroundColor: 'white',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '35%',
-                  height: '17%',
-                  borderRadius: 20,
-                }}>
-                <ActivityIndicator size="large" color={AppColors.buttonColor} />
-              </View>
+              <ActivityIndicator size="large" color={AppColors.buttonColor} />
             </View>
-          </Modal>
+          </View>
+        </Modal>
         {showPicker && (
           <DateTimePicker
             value={dob == '' ? new Date() : new Date(dob)}
@@ -285,8 +282,8 @@ const SignupForm = props => {
               </Text>
               <TouchableOpacity
                 onPress={() => {
-                  setShowPicker(true)
-                  setDobError(false)
+                  setShowPicker(true);
+                  setDobError(false);
                 }}
                 activeOpacity={0.6}
                 style={{
@@ -295,8 +292,8 @@ const SignupForm = props => {
                   paddingVertical: '3.5%',
                   borderRadius: 6,
                   paddingHorizontal: '4%',
-                  borderWidth:dobError?2:0,
-                  borderColor:dobError?'red':AppColors.FontsColor,
+                  borderWidth: dobError ? 2 : 0,
+                  borderColor: dobError ? 'red' : AppColors.FontsColor,
                   backgroundColor: AppColors.FontsColor,
                   justifyContent: 'space-between',
                 }}>
@@ -354,7 +351,9 @@ const SignupForm = props => {
           <View style={{paddingVertical: '5%'}}>
             <CustomButton
               Title="Create Account"
-              onPress={()=>{signup()}}
+              onPress={() => {
+                signup();
+              }}
               style={{marginTop: 10}}
             />
             <View style={styles.signuplink}>
@@ -367,7 +366,7 @@ const SignupForm = props => {
               </Text>
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate('Login');
+                  navigation.navigate('login');
                 }}>
                 <Text
                   style={{

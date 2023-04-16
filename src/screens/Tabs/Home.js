@@ -65,6 +65,7 @@ function Home() {
       dispatch(load_room_data(state.lastDocument));
     }
   }, []);
+  //console.log(state.Rooms, 'state.Rooms');
   // useEffect(() => {
   //   const backAction = () => {
   //     Alert.alert('Hold on!', 'Are you sure you want to close App?', [

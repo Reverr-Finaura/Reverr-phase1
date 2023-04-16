@@ -12,6 +12,7 @@ import {
   Dimensions,
   Modal,
   TouchableWithoutFeedback,
+  ActivityIndicator,
 } from 'react-native';
 import styles from './styles';
 import LinearGradient from 'react-native-linear-gradient';
@@ -35,6 +36,7 @@ export const PersonalProfile = props => {
   const [picker, setPicker] = useState(false);
   const [profilepicError, setProfilepicError] = useState(false);
   const [bioError, setBioError] = useState(false);
+  const [dpLoader, setDpLoader] = useState(false);
   const navigation = useNavigation();
 
   console.log(profilePicLink, 'link');
@@ -49,17 +51,17 @@ export const PersonalProfile = props => {
       return;
     }
     const personalInfo = {
-      name:name,
-      email:email,
-      mobile:mobile,
-      password:password,
-      dob:dob,
-      image:profilePicLink,
-      bio:bio
-    }
-    navigation.navigate('eduAndexp',{
-      userDetailsObj:personalInfo
-    })
+      name: name,
+      email: email,
+      mobile: mobile,
+      password: password,
+      dob: dob,
+      image: profilePicLink,
+      bio: bio,
+    };
+    navigation.navigate('eduAndexp', {
+      userDetailsObj: personalInfo,
+    });
   };
 
   return (
@@ -98,7 +100,7 @@ export const PersonalProfile = props => {
               <TouchableOpacity
                 onPress={() => {
                   setPicker(false);
-                  AddGalleryImage(setProfilePicLink);
+                  AddGalleryImage(setProfilePicLink, setDpLoader);
                 }}
                 style={{
                   paddingVertical: '6%',
@@ -118,7 +120,7 @@ export const PersonalProfile = props => {
               <TouchableOpacity
                 onPress={() => {
                   setPicker(false);
-                  AddCameraImage(setProfilePicLink);
+                  AddCameraImage(setProfilePicLink, setDpLoader);
                 }}
                 style={{
                   paddingBottom: '6%',
@@ -154,56 +156,73 @@ export const PersonalProfile = props => {
               }}
               activeOpacity={0.5}>
               {profilePicLink === '' ? (
-                <ImageBackground
-                  style={{
-                    width: Width / 3,
-                    height: Height / 5.42,
-                    alignSelf: 'center',
+                <View>
+                  {dpLoader ? (
+                    <View
+                      style={{
+                        backgroundColor: AppColors.BtnClr,
+                        paddingVertical: '40%',
+                        borderRadius: 80,
+                      }}>
+                      <ActivityIndicator
+                        size={30}
+                        color={AppColors.FontsColor}
+                      />
+                    </View>
+                  ) : (
+                    <ImageBackground
+                      style={{
+                        width: Width / 3,
+                        height: Height / 5.42,
+                        alignSelf: 'center',
 
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                  source={require('../../../assets/images/illustration/dp.png')}>
-                  <Text
-                    style={{
-                      color: AppColors.BtnClr,
-                      fontSize: 17,
-                      textAlign: 'center',
-                      marginTop: '10%',
-                    }}>
-                    Upload your photo
-                  </Text>
-                  <Icon name="plus" size={25} color={AppColors.BtnClr} />
-                </ImageBackground>
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                      source={require('../../../assets/images/illustration/dp.png')}>
+                      <Text
+                        style={{
+                          color: AppColors.BtnClr,
+                          fontSize: 17,
+                          textAlign: 'center',
+                          marginTop: '10%',
+                        }}>
+                        Upload your photo
+                      </Text>
+                      <Icon name="plus" size={25} color={AppColors.BtnClr} />
+                    </ImageBackground>
+                  )}
+                </View>
               ) : (
-                <View style={{width: Width / 3,
-                height: Height / 5.42,
-                borderRadius:100,
-                overflow:'hidden'}}>
-                  <ImageBackground
+                <View
                   style={{
                     width: Width / 3,
                     height: Height / 5.42,
-                    borderRadius:100,
-                    alignSelf: 'center',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    
-                  }}
-                  source={{uri: profilePicLink}}>
-                  <Text
+                    borderRadius: 100,
+                    overflow: 'hidden',
+                  }}>
+                  <ImageBackground
                     style={{
-                      color: AppColors.FontsColor,
-                      fontSize: 17,
-                      textAlign: 'center',
-                      marginTop: '10%',
-                    }}>
-                    Change your photo
-                  </Text>
-                  <Icon name="plus" size={25} color={AppColors.BtnClr} />
-                </ImageBackground>
+                      width: Width / 3,
+                      height: Height / 5.42,
+                      borderRadius: 100,
+                      alignSelf: 'center',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                    source={{uri: profilePicLink}}>
+                    <Text
+                      style={{
+                        color: AppColors.FontsColor,
+                        fontSize: 17,
+                        textAlign: 'center',
+                        marginTop: '10%',
+                      }}>
+                      Change your photo
+                    </Text>
+                    <Icon name="plus" size={25} color={AppColors.BtnClr} />
+                  </ImageBackground>
                 </View>
-                
               )}
             </TouchableOpacity>
             {profilepicError && (

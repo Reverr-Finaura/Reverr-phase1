@@ -31,18 +31,26 @@ import {
   CommentsScreen,
   CreatePost,
   EditProfile,
+  EduAndExp,
+  Intrest,
   IntroSplash,
   LearnScreen,
   LikeScreen,
   LoginViaEmail,
   LoginViaPhone,
+  LookingFor,
   Messages,
   NewsDetails,
   OpenBook,
+  OtpScreen,
+  PersonalProfile,
   ReadingInstruction,
   Requests,
+  SignupForm,
+  Social,
   StartCourse,
   StartLogin,
+  StartSignup,
   Vibe,
   Webview,
 } from '../scenes';
@@ -106,6 +114,46 @@ export default function Route() {
           options={{headerShown: false}}
           name="LikeScreen"
           component={LikeScreen}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="SignUp"
+          component={StartSignup}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="SignUpForm"
+          component={SignupForm}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="OtpVerification"
+          component={OtpScreen}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="PersonalProfile"
+          component={PersonalProfile}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="eduAndexp"
+          component={EduAndExp}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="lookingfor"
+          component={LookingFor}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="intrest"
+          component={Intrest}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="social"
+          component={Social}
         />
       </Stack.Navigator>
     </NavigationContainer>
