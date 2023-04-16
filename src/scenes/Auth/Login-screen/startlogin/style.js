@@ -1,5 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
-import { AppColors } from '../../../../utils';
+import {AppColors} from '../../../../utils';
 const Height = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   screen: {
@@ -10,17 +10,17 @@ const styles = StyleSheet.create({
     color: AppColors.FontsColor,
     textAlign: 'center',
     fontSize: 29,
-    fontFamily:'Poppins-Bold'
+    fontFamily: 'Poppins-Bold',
   },
   button: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginHorizontal:'5%',
-    marginTop:'7%',
-    paddingVertical:'3%',
-    borderRadius:10
+    marginHorizontal: '5%',
+    marginTop: '7%',
+    paddingVertical: '3%',
+    borderRadius: 10,
   },
-  buttonText:{
+  buttonText: {
     color: AppColors.FontsColor,
     fontSize: 17,
     fontWeight: '500',

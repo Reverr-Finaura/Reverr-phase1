@@ -35,13 +35,13 @@ const LoginViaEmail = () => {
   const [password, setPassword] = useState('');
   const [serverError, SetServerError] = useState('');
   const [userLogedin, setUserLogedin] = useState(true);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   // const test = useSelector(state => state.app.tesing);
   // console.log(test);
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   var dispatch = useDispatch();
   const loginUser = async (useremail, password) => {
-    const email = useremail.toLowerCase()
+    const email = useremail.toLowerCase();
     var user_request_obj = {
       success: false,
       failiure: false,
@@ -53,14 +53,14 @@ const LoginViaEmail = () => {
       await auth().signInWithEmailAndPassword(email.toLowerCase(), password);
     } catch (e) {
       if (e.code === 'auth/wrong-password') {
-       // alert('Wrong password try again!');
+        // alert('Wrong password try again!');
         user_request_obj.failiure = true;
         user_request_obj.failiure_message = 'Wrong Password try again!';
         return user_request_obj;
         //console.log("Wrong password try again")
       }
       if (e.code === 'auth/user-not-found') {
-       // alert('No user registered with this email!');
+        // alert('No user registered with this email!');
         user_request_obj.failiure = true;
         user_request_obj.failiure_message =
           'No user registered with this email!';
@@ -77,8 +77,8 @@ const LoginViaEmail = () => {
   };
 
   const Login = async () => {
-    console.log(password)
-    setLoading(true)
+    console.log(password);
+    setLoading(true);
     firestore()
       .collection('Users')
       .doc(email.trim())
@@ -90,21 +90,20 @@ const LoginViaEmail = () => {
             var response = await loginUser(email.trim(), password);
             if (response.success == true) {
               setUserLogedin(true);
-              setLoading(false)
+              setLoading(false);
               navigation.replace('MyDrawer');
             } else if (response.failiure == true) {
               setUserLogedin(true);
-              setLoading(false)
+              setLoading(false);
               alert('Invalid Credentials!');
               //navigation.replace('Login')
             }
           } else {
-            setLoading(false)
+            setLoading(false);
             alert('User Not Register');
-            
           }
         } else {
-          setLoading(false)
+          setLoading(false);
           alert('User not Register');
         }
       });
@@ -126,32 +125,32 @@ const LoginViaEmail = () => {
       <LinearGradient colors={['#070972', '#0C0C0D']} style={styles.screen}>
         <BackButton />
         <Modal
-            visible={loading}
-            onRequestClose={() => {
-              setLoading(false);
-            }}
-            transparent={true}>
+          visible={loading}
+          onRequestClose={() => {
+            setLoading(false);
+          }}
+          transparent={true}>
+          <View
+            style={{
+              backgroundColor: 'rgba(1, 1, 1, 0.6)',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              height: '100%',
+            }}>
             <View
               style={{
-                backgroundColor: 'rgba(1, 1, 1, 0.6)',
+                backgroundColor: 'white',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: '100%',
-                height: '100%',
+                width: '35%',
+                height: '17%',
+                borderRadius: 20,
               }}>
-              <View
-                style={{
-                  backgroundColor: 'white',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '35%',
-                  height: '17%',
-                  borderRadius: 20,
-                }}>
-                <ActivityIndicator size="large" color={AppColors.buttonColor} />
-              </View>
+              <ActivityIndicator size="large" color={AppColors.buttonColor} />
             </View>
-          </Modal>
+          </View>
+        </Modal>
         <ScrollView>
           <Text style={styles.heading}>Login</Text>
           <Text
@@ -173,7 +172,9 @@ const LoginViaEmail = () => {
               placeholder="Enter Your Email"
               size={25}
               error={emailerror}
-              onChangeText={e => {  setEmail(e) }}
+              onChangeText={e => {
+                setEmail(e);
+              }}
               Title="Email Address"
             />
             <InputField
@@ -194,11 +195,7 @@ const LoginViaEmail = () => {
               Title="Password"
             />
           </View>
-          <CustomButton
-            Title="Login"
-            onPress={() => Login()}
-            style={{marginTop: 20}}
-          />
+          <CustomButton Title="Login" onPress={() => Login()} style={{}} />
           <View style={styles.signuplink}>
             <Text
               style={{

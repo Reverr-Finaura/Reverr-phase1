@@ -523,10 +523,11 @@ export const fetchMoreData = async ({setData, setIsLoading}) => {
   setIsLoading(false);
 };
 
-export const savePost = async ({postID, currentUserEmail}) => {
+export const savePost = async (postID, currentUserEmail) => {
+  console.log(postID, currentUserEmail);
   let userData = [];
   await firestore()
-    .collection('posts')
+    .collection('Posts')
     .doc(postID)
     .update({
       saved: firestore.FieldValue.arrayUnion(currentUserEmail),
@@ -548,16 +549,15 @@ export const savePost = async ({postID, currentUserEmail}) => {
               // dispatch(setUser(inst._data));
               userData = inst._data;
             });
-          setLoading(false);
         });
     });
   return userData;
 };
 
-export const unsavePost = async ({postID, currentUserEmail}) => {
+export const unsavePost = async (postID, currentUserEmail) => {
   let userData = [];
   await firestore()
-    .collection('posts')
+    .collection('Posts')
     .doc(postID)
     .update({
       saved: firestore.FieldValue.arrayRemove(currentUserEmail),

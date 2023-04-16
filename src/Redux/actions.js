@@ -329,7 +329,6 @@ export const refresh_rooms_list = () => {
             response = response.data();
             delete response.password;
             post.postedby = response;
-
             if (post.comments.length > 0)
               for (var i = 0; i < post.comments.length; i++) {
                 let commentor = await post.comments[i].commentedby.get();

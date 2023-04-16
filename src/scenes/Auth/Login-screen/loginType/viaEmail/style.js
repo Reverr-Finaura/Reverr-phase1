@@ -1,5 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
-import { AppColors } from '../../../../../utils';
+import {AppColors} from '../../../../../utils';
 const Height = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   screen: {
@@ -7,20 +7,21 @@ const styles = StyleSheet.create({
     backgroundColor: AppColors.primarycolor,
   },
   heading: {
-    fontFamily:'Poppins-Bold',
+    fontFamily: 'Poppins-Bold',
     color: AppColors.FontsColor,
     textAlign: 'center',
     fontSize: 29,
+    marginTop: '1%',
   },
   button: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginHorizontal:'5%',
-    marginTop:'7%',
-    paddingVertical:'3%',
-    borderRadius:10
+    marginHorizontal: '5%',
+    marginTop: '5%',
+    paddingVertical: '3%',
+    borderRadius: 10,
   },
-  buttonText:{
+  buttonText: {
     color: AppColors.FontsColor,
     fontSize: 17,
     fontWeight: '500',
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
   signuplink: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: '7%',
+    marginTop: '3%',
     justifyContent: 'center',
   },
 });

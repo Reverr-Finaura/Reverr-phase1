@@ -84,6 +84,7 @@ function PostCard({item, index}) {
   };
 
   const saveYourPost = postID => {
+    // console.log(postID, 'jhds');
     if (item.saved.includes(postID)) {
       unsavePost(postID, state?.user?.email).then(res => {
         console.log(res, 'unsaved');
@@ -305,7 +306,7 @@ function PostCard({item, index}) {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => saveYourPost()}
+          onPress={() => saveYourPost(item.id)}
           style={{flexDirection: 'row', alignItems: 'center'}}>
           <Image
             source={Theme.bookmark}
