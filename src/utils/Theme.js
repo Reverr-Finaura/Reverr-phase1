@@ -3,6 +3,9 @@ export default {
   backgroundColor: '#000C12',
   textLightColor: '#D0CBCB',
   //assets
+  likenew: require('../assets/images/likeshapes-2.png'),
+  supernew: require('../assets/images/likeshapes-1.png'),
+  nopenew: require('../assets/images/likeshapes.png'),
   user: require('../assets/assets/user.png'),
   bell: require('../assets/assets/bell.png'),
   chat: require('../assets/assets/chat.png'),
