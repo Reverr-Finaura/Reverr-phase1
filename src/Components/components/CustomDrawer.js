@@ -30,7 +30,7 @@ function CustomDrawer(props) {
           <View
             style={{marginTop: 20, flexDirection: 'row', alignItems: 'center'}}>
             <Text style={styles.usertitle}>{state?.user?.name}</Text>
-            <Image source={Theme.verify} style={styles.verify} />
+            {state?.user?.verified? <Image source={Theme.verify} style={styles.verify} />: null}
           </View>
         </View>
       </View>

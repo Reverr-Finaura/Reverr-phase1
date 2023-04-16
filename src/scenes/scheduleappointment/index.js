@@ -8,15 +8,14 @@ const ScheduleAppointment = props => {
   console.log("mentorName",(props.route.params.mentor.name))
   console.log("userName",state.user.name)
   return (
-    <View style={{flex: 1}}>
+  
       <WebView
         source={{
-          // uri: 'https://calendly.com/reverrmeet/30min',
-          uri:props.route.params.mentor.mentorCalendlyLink,
+          uri: 'https://calendly.com/reverrmeet/30min?embed_domain=example',
+          // uri:props.route.params.mentor.mentorCalendlyLink,
         }}
-        style={{paddingTop: 20}}
       />
-    </View>
+    
   );
 };
 

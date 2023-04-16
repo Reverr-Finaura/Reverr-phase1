@@ -975,7 +975,13 @@ const Vibe = () => {
             <Image source={Theme.hearttick} style={styles.icon} />
             <Text style={styles.text}>view likes</Text>
           </TouchableOpacity>
-            <TouchableOpacity onPress={() => setFilter(true)}>
+            <TouchableOpacity onPress={() => {
+              if(hasPremiumOfVibe){
+                setFilter(true)
+              }else{
+                alert("You need Vibe Premium to use filters.")
+              }
+            }  }>
             <Image source={Theme.filter} style={styles.icon} />
             </TouchableOpacity>
         </View>

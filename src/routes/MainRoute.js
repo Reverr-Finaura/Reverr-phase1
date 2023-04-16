@@ -39,6 +39,7 @@ import {
   Messages,
   NewsDetails,
   OpenBook,
+  ScheduleAppointment,
   ReadingInstruction,
   Requests,
   StartCourse,
@@ -255,6 +256,10 @@ function HomeStack() {
         name="NewsDetails"
         component={NewsDetails}
       />
+      <Stack.Screen
+          name="scheduleappointment"
+          component={ScheduleAppointment}
+        />
       <Stack.Screen
         options={{headerShown: false}}
         name="WebView"

@@ -110,10 +110,10 @@ function Home() {
         }}>
         <View>
           <Text style={styles.title}>
-            Hello,
+            Hello 
             <Text
               style={{color: Theme.primaryColor, textTransform: 'capitalize'}}>
-              {state.user.name}
+              {" "+ state.user.name}
             </Text>
           </Text>
           <TouchableOpacity
