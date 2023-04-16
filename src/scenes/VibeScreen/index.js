@@ -660,13 +660,13 @@ const Vibe = () => {
         .get()
         .then(doc => {
           if (doc.data().Vibe_Data) {
-            // console.log('Document vibe data:', doc.data().Vibe_Data);
+            console.log('Document vibe data:', doc.data().Vibe_Data);
             setshowCards(true);
             // console.log('yoooi');
           } else {
             // doc.data() will be undefined in this case
             setshowCards(false);
-            // console.log('No such document!');
+            console.log('No such document!');
             navigation.navigate('VibeBoarding');
           }
         })
@@ -971,7 +971,7 @@ const Vibe = () => {
     return (
       <>
         <View style={styles.likewrapper}>
-          <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}} onPress={() => navigation.navigate('LikeScreen')}>
+          <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}} onPress={() => navigation.navigate('Premium')}>
             <Image source={Theme.hearttick} style={styles.icon} />
             <Text style={styles.text}>view likes</Text>
           </TouchableOpacity>

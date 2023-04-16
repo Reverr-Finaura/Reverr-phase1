@@ -8,15 +8,15 @@ import {
 import LinearGradient from "react-native-linear-gradient";
 import Theme from "../../utils/Theme";
 
-function ProfileCard(){
+function ProfileCard({user}){
     return(
 
     <LinearGradient colors={[ '#022538','#061B41',]} style={styles.container}>
-      <Image source={Theme.chinauser} style={styles.user} />
+      <Image source={{uri:user.Image}} style={styles.user} />
       <View style={styles.textwrapper}>
-        <Text style={styles.name}>Wiliam vetros</Text>
-        <Text style={styles.desig}>Market Research</Text>
-        <Text style={styles.desc}>Lorem ipsim is a dummy text for ypesettings and texting.</Text>
+        <Text style={styles.name}>{user.name}</Text>
+        <Text style={styles.desig}>{user.designation}</Text>
+        <Text style={styles.desc}>{user.about}</Text>
       </View>
     </LinearGradient>
 

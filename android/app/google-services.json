@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "710745964607-u14vvrt4kqpb9f8o9uai35vvvr2effkl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reverr",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
           "client_id": "710745964607-oiv3jlrl61v1f0v5lortvfq4tns1ldmn.apps.googleusercontent.com",
           "client_type": 3
         }

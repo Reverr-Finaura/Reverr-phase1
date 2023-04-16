@@ -5,18 +5,34 @@ import {
   TouchableOpacity,
   Dimensions,
   StatusBar,
+  Platform,
 } from 'react-native';
 import React from 'react';
 import {styles} from './style';
 import LinearGradient from 'react-native-linear-gradient';
+import auth from '@react-native-firebase/auth';
 import {AppColors} from '../../../../utils';
 import {useNavigation} from '@react-navigation/native';
+import { GoogleSignin } from '@react-native-community/google-signin';
 
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
 
 const StartLogin = () => {
   const navigation = useNavigation();
+  const googleLogin = async ()=>{
+    try{
+      const {idToken} = await GoogleSignin.signIn();
+
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+      await auth().signInWithCredential(googleCredential);
+    }
+    catch (Err){
+      alert(Err)
+      console.log(Err)
+    }
+  }
   return (
     <LinearGradient colors={['#070972', '#0C0C0D']} style={styles.screen}>
       <StatusBar backgroundColor={'#070972'} />
@@ -56,7 +72,9 @@ const StartLogin = () => {
         />
         <Text style={styles.buttonText}>Login with email</Text>
       </TouchableOpacity>
-      {/* <View style={{marginVertical: '5%'}}>
+      {Platform.OS === 'android' ?(
+        <>
+        <View style={{marginVertical: '5%'}}>
         <View
           style={{
             height: 1.5,
@@ -79,6 +97,7 @@ const StartLogin = () => {
       </View>
       <TouchableOpacity
         activeOpacity={0.6}
+        onPress={()=>googleLogin()}
         style={[
           styles.button,
           {
@@ -94,7 +113,10 @@ const StartLogin = () => {
         <Text style={[styles.buttonText, {color: AppColors.primarycolor}]}>
           Google
         </Text>
-      </TouchableOpacity> */}
+      </TouchableOpacity>
+        </>
+      ):null}
+      
       <View style={styles.signuplink}>
         <Text
           style={{color: AppColors.infoFonts, fontFamily: 'Poppins-Regular'}}>
