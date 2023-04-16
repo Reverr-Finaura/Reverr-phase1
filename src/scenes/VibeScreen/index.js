@@ -1058,7 +1058,7 @@ const Vibe = () => {
                                     swipeLeft(index);
                                   }}
                               >
-                                <Image source={Theme.nope} style={styles.btn} />
+                                <Image source={Theme.nopenew} style={styles.btn} />
                                 <Text style={styles.btntext}>nope</Text>
                               </TouchableOpacity>
                               <TouchableOpacity style={styles.align}
@@ -1066,7 +1066,7 @@ const Vibe = () => {
                                   superLikeCenter(index);
                                 }}
                               >
-                                <Image source={Theme.superlike} style={styles.btn} />
+                                <Image source={Theme.supernew} style={styles.btn} />
                                 <Text style={styles.btntext}>superlike</Text>
                               </TouchableOpacity>
                               <TouchableOpacity style={styles.align}
@@ -1077,7 +1077,7 @@ const Vibe = () => {
                                   // setIndex(indexs+1)
                                 }}
                               >
-                                <Image source={Theme.like} style={styles.btn} />
+                                <Image source={Theme.likenew} style={styles.btn} />
                                 <Text style={styles.btntext}>like</Text>
                               </TouchableOpacity>
                             </View>
