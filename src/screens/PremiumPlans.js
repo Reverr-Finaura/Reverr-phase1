@@ -295,14 +295,14 @@ const PremiumPlans = () => {
             Plan{' '}
           </Text>
         </View>
-        <Text
+        {/* <Text
           style={{
             fontFamily: 'Poppins-Regular',
             color: AppColors.BtnClr,
             marginStart: '6%',
           }}>
           Lorem ipsum is a dummy text used for typography
-        </Text>
+        </Text> */}
         <View
           style={{
             marginTop: 50,
@@ -398,14 +398,19 @@ const PremiumPlans = () => {
                         paddingHorizontal: 20,
                         paddingVertical: 8,
                       }}>
-                      <Text
-                        style={{
-                          fontSize: 17,
-                          color: AppColors.primarycolor,
-                          fontFamily: 'Poppins-SemiBold',
-                        }}>
-                        {item.text}
-                      </Text>
+                      <TouchableOpacity onPress={() => {
+                        navigate.navigate('selectedPlan', {
+                          planDetails: selectedPlan,
+                        })}}>
+                        <Text
+                          style={{
+                            fontSize: 17,
+                            color: AppColors.primarycolor,
+                            fontFamily: 'Poppins-SemiBold',
+                          }}>
+                          {item.text}
+                        </Text>
+                      </TouchableOpacity>
                     </View>
                     <Text
                       style={{
@@ -414,7 +419,7 @@ const PremiumPlans = () => {
                         fontSize: 18,
                         fontWeight: '600',
                       }}>
-                      ‘Click’ to know more
+                      ‘Click’ Select to know more
                     </Text>
                   </View>
                 </LinearGradient>

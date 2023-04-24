@@ -162,8 +162,8 @@ const CreatePost = props => {
               setText(e);
             }}
             placeholder="What do you want to share?"
-            numberOfLines={8}
-            maxLength={150}
+            numberOfLines={10}
+            placeholderTextColor="white"
           />
           <View
             style={{

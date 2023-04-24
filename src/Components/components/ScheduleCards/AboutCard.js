@@ -3,8 +3,21 @@ import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Theme from '../../../utils/Theme';
 import BulletSubPoint from '../BulletSubPoint';
+import Clipboard from '@react-native-clipboard/clipboard';
+import {
+  ToastAndroid,
+  Platform,
+  AlertIOS,
+  } from 'react-native';
 
 function AboutCard({about}) {
+  function notifyMessage(msg) {
+    if (Platform.OS === 'android') {
+    ToastAndroid.show(msg, ToastAndroid.SHORT)
+    } else {
+    AlertIOS.alert(msg);
+    }
+    }
   return (
     <LinearGradient colors={['#030F2D', '#0B2661']} style={styles.container}>
       <Text style={styles.title}>About</Text>
@@ -36,13 +49,22 @@ function AboutCard({about}) {
 
       <Text style={[styles.title, {marginTop: 25}]}>Contact</Text>
       <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 10}}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>{
+          Clipboard.setString(about.linkedin)
+          notifyMessage("copied")
+        }}>
           <Image source={Theme.li} style={styles.icon} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>{
+          Clipboard.setString(about.mobile)
+          notifyMessage("copied")
+        }}>
           <Image source={Theme.phonestroke} style={styles.icon} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>{
+          Clipboard.setString(about.email)
+          notifyMessage("copied")
+        }}>
           <Image source={Theme.mail} style={styles.icon} />
         </TouchableOpacity>
         {/* <TouchableOpacity>

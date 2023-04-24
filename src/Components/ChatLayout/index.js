@@ -75,7 +75,7 @@ export const ChatLayout = ({usersArray, loader}) => {
                   paddingVertical: '50%',
                 }}>
                 <Text style={{color: AppColors.FontsColor}}>
-                  You Have No any Mentors
+                  No chats found
                 </Text>
               </View>
             )}

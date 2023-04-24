@@ -300,7 +300,7 @@ const VibeBoarding = ({ showboarding, setshowboarding }) => {
                     marginBottom: 10
                   }}
                 >
-                  Previous Organistation Duration
+                  Experience
                 </Text>
 
                 <MultiSelect
@@ -309,7 +309,7 @@ const VibeBoarding = ({ showboarding, setshowboarding }) => {
                   uniqueKey="id"
                   onSelectedItemsChange={data => onSelectedItemsChange1(data)}
                   selectedItems={selected1}
-                  selectText="  Enter previous designation"
+                  selectText="Experience in Year..."
                   searchInputPlaceholderText="Search Items..."
                   onChangeInput={text => console.log(text)}
                   tagRemoveIconColor="#CCC"
@@ -384,7 +384,7 @@ const VibeBoarding = ({ showboarding, setshowboarding }) => {
                       color: '#000000',
                       paddingLeft: 8
                     }}
-                    placeholder={"Enter previous designation"}
+                    placeholder={"Enter Designation"}
                     placeholderTextColor={"#6B6A71"}
                     selectionColor={"#ccc"}
                     onChangeText={text => setprevdesignation(text)}
@@ -448,7 +448,7 @@ const VibeBoarding = ({ showboarding, setshowboarding }) => {
                       paddingLeft: 8
                     }}
                     onChangeText={text => setprevorg(text)}
-                    placeholder={"Enter Previous Organization"}
+                    placeholder={"Enter Organization / Company"}
                     placeholderTextColor={"#6B6A71"}
                     selectionColor={"#ccc"}
                   />
@@ -478,7 +478,7 @@ const VibeBoarding = ({ showboarding, setshowboarding }) => {
                   uniqueKey="id"
                   onSelectedItemsChange={data => onSelectedItemsChange2(data)}
                   selectedItems={selected2}
-                  selectText="  Enter hare for"
+                  selectText="  Enter here for"
                   tagContainerStyle={{
                     backgroundColor: '#0077B7',
                     width: Dimensions.get('window').width / 2.7,
@@ -520,7 +520,7 @@ const VibeBoarding = ({ showboarding, setshowboarding }) => {
                   uniqueKey="id"
                   onSelectedItemsChange={data => onSelectedItemsChange3(data)}
                   selectedItems={selected3}
-                  selectText="  Enter we meet"
+                  selectText="  Enter how to connect"
                   searchInputPlaceholderText="Search Items..."
                   onChangeInput={text => console.log(text)}
                   tagRemoveIconColor="#CCC"
