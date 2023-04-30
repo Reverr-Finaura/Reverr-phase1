@@ -103,8 +103,8 @@ export const MessageHeader = props => {
             <Image source={require('../../assets/images/Back.png')} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => {
-            navigation.navigate('ViewProfile', {
-              postData: userData,
+            navigation.navigate('OthersProfile', {
+              otherUserData: userData,
             });
           }}
           >
@@ -113,8 +113,14 @@ export const MessageHeader = props => {
               source={{ uri: userData.image }}
             />
           </TouchableOpacity>
-
+          <TouchableOpacity onPress={() => {
+            navigation.navigate('OthersProfile', {
+              otherUserData: userData,
+            });
+          }}
+          >
           <Text style={styles.text}>{userData.name}</Text>
+          </TouchableOpacity>
         </View>
 
         <View
@@ -123,16 +129,16 @@ export const MessageHeader = props => {
             justifyContent: 'space-between',
             marginStart: '15%',
           }}>
-          <TouchableOpacity onPress={MakeCall}>
+          {/* <TouchableOpacity onPress={MakeCall}>
             <Image
               source={require('../../assets/images/Call.png')}
               style={styles.call}
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
-          <TouchableOpacity>
+          {/* <TouchableOpacity>
             <Image source={require('../../assets/images/Options.png')} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </View>
     </View>

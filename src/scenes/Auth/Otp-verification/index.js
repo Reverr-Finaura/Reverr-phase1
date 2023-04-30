@@ -105,7 +105,7 @@ const userDetailsObj = {
             textAlign: 'center',
             marginVertical: '2%',
           }}>
-          Please enter the OTP sent to your mobile / Email
+          Please enter the OTP sent to your Email
         </Text>
         <View style={{alignItems: 'center', marginTop: '8%'}}>
           <Image

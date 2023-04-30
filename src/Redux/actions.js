@@ -320,7 +320,11 @@ export const refresh_rooms_list = () => {
           querySnapshot.forEach(doc => {
             let post = doc.data();
             post.id = doc.id;
-            list3.push(post);
+            if(list3.includes(post)){
+              console.log("includeds")
+            }else{
+              list3.push(post);
+            }
             //console.log(list3);
           });
           for (const post of list3) {
@@ -464,6 +468,7 @@ const deleteFirestoreData = postId => {
 
 export const deletePost = (post, postId) => {
   try {
+    console.log(post)
     return async dispatch => {
       dispatch(delete_post_from_rooms(post));
       deletePostFunction(post);
@@ -550,7 +555,7 @@ export const set_allLoaded = value => dispatch => {
     payload: value,
   });
 };
-export const load_room_data = lastDocument => {
+export const load_room_data = (lastDocument, setLastPost) => {
   try {
     var lastdoc = null;
     var obj = null;
@@ -568,10 +573,17 @@ export const load_room_data = lastDocument => {
         // .onSna
         .then(async querySnapshot => {
           lastdoc = querySnapshot.docs[querySnapshot.docs.length - 1];
+          if(querySnapshot.docs.length==0){
+            setLastPost(true)
+          }
           querySnapshot.forEach(doc => {
             let post = doc.data();
             post.id = doc.id;
-            list3.push(post);
+            if(list3.includes(post)){
+              console.log("includeds")
+            }else{
+              list3.push(post);
+            }
             //console.log(list3);
           });
           for (const post of list3) {
@@ -602,7 +614,7 @@ export const load_room_data = lastDocument => {
           }
         });
 
-      console.log('Hello2:' + obj);
+      // console.log('Hello2:' + obj);
     };
   } catch (e) {
     console.log('error:' + e);
