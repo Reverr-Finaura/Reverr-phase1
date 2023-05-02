@@ -12,6 +12,7 @@ import {
   Dimensions,
   RefreshControlComponent,
   RefreshControl,
+  Spinner
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import ArticleCard from '../../Components/components/ArticleCard';
@@ -36,6 +37,7 @@ import {
   set_allLoaded,
 } from '../../Redux/actions';
 import {SkeltonLoader} from '../../Components';
+import { ShortSkeltonLoader } from '../../Components/ShortSkeletonLoader';
 import {NewsList} from '../../scenes/news-screen';
 import {AppColors} from '../../utils';
 
@@ -52,6 +54,7 @@ function Home() {
   const [menu, setMenu] = useState('Discussion');
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [refreshRoom, setRefreshRoom] = useState(false);
+  const [lastPost, setLastPost] = useState(false);
   const dispatch = useDispatch();
 
   const menuItems = ['Discussion', 'News', 'Articles'];
@@ -62,7 +65,7 @@ function Home() {
       dispatch(set_allLoaded(false));
       dispatch(load_room_data(undefined));
     } else {
-      dispatch(load_room_data(state.lastDocument));
+      dispatch(load_room_data(state.lastDocument, setLastPost));
     }
   }, []);
   //console.log(state.Rooms, 'state.Rooms');
@@ -88,13 +91,14 @@ function Home() {
   // }, []);
 
   const _handleLoadMore = () => {
-    console.log('on end reached dispatched');
-    dispatch(load_room_data(state?.lastDocument || undefined));
+    // console.log('on end reached dispatched');
+    dispatch(load_room_data(state?.lastDocument || undefined , setLastPost));
   };
 
   const handleRefresh = () => {
+    setLastPost(false)
     dispatch(set_allLoaded(false));
-    dispatch(refresh_rooms_list());
+    dispatch(load_room_data(undefined , setLastPost));
   };
 
   // console.log(state?.Rooms, 'Rooms');
@@ -179,7 +183,9 @@ function Home() {
                     <FlatList
                       data={state?.Rooms}
                       onEndReached={_handleLoadMore}
-                      onEndReachedThreshold={1}
+                      onEndReachedThreshold={0.1}
+                      scrollEventThrottle={150}
+                      ListFooterComponent={()=> !lastPost? <ShortSkeltonLoader /> : null}
                       refreshing={state.refreshing}
                       onRefresh={handleRefresh}
                       renderItem={({item, index}) => (

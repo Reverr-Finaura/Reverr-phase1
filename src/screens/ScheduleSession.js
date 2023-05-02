@@ -55,8 +55,19 @@ const handlePrePayment = ()=>{
     mentorid+=mentoremail[i];
     
   }
+
+  var uemail = state.user.email;
+  var uid = "";
+
+  for(var i =0; i<uemail.length; i++){
+    
+    if(uemail[i]=='@')
+      break;
+      uid+=uemail[i];
+    
+  }
    
-  var url = "https://founder.reverr.io/schedule/"+mentorid;
+  var url = "https://founder.reverr.io/schedule/"+mentorid+"/"+uid;
   Clipboard.setString(url)
   
   alert("The link to schedule the meeting with this mentor has been copied to your clipboard, please open that link in a browser to our website to continue scheduling...")

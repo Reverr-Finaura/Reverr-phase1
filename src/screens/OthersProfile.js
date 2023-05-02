@@ -88,11 +88,18 @@ const OthersProfile = props => {
           <View
             style={{marginTop: 20, flexDirection: 'row', alignItems: 'center'}}>
             <Text style={styles.usertitle}>{othersData?.name}</Text>
-            <Image source={Theme.verify} style={styles.verify} />
+          {othersData?.verified && <Image source={Theme.verify} style={styles.verify} />}
           </View>
-          <Text style={styles.tag}>{othersData?.designation}</Text>
+          {othersData?.organisation && othersData?.designation?
+          <Text style={styles.tag}>{othersData?.designation} at {othersData?.organisation}</Text>
+          :null
+          }
         </View>
-        {connectLoading ? (
+        
+ 
+
+        
+        {state.user.network.includes(othersData.email)? null: connectLoading ? (
           <View
             style={{
               alignItems: 'center',
@@ -145,6 +152,7 @@ const OthersProfile = props => {
             )}
           </View>
         )}
+       
         <View style={styles.tabWrapper}>
           <TouchableOpacity
             style={[

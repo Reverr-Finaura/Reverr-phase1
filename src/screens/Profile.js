@@ -72,9 +72,13 @@ function Profile() {
           <View
             style={{marginTop: 20, flexDirection: 'row', alignItems: 'center'}}>
             <Text style={styles.usertitle}>{state.user?.name}</Text>
-            <Image source={Theme.verify} style={styles.verify} />
+            {state.user?.verified && <Image source={Theme.verify} style={styles.verify} />}
           </View>
-          <Text style={styles.tag}>{state.user?.designation}</Text>
+          {state.user?.organisation && state.user?.designation?
+          <Text style={styles.tag}>{state.user?.designation} at {state.user?.organisation}</Text>
+          :null
+          }
+          
         </View>
 
         <View style={styles.tabWrapper}>

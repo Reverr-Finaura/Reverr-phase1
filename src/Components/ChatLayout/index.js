@@ -75,7 +75,11 @@ export const ChatLayout = ({usersArray, loader}) => {
                   paddingVertical: '50%',
                 }}>
                 <Text style={{color: AppColors.FontsColor}}>
+<<<<<<< HEAD
                   You Have No Chat
+=======
+                  No chats found
+>>>>>>> c886a3baac1215e2c0da1659a2f4be6c2994c12b
                 </Text>
               </View>
             )}

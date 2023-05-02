@@ -87,7 +87,7 @@ const Requests = () => {
                   fontFamily: 'Poppins-Regular',
                   color: AppColors.FontsColor,
                 }}>
-                You have no any requests
+                No Requests Found Pending ...
               </Text>
             </View>
           ) : (

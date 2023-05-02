@@ -11,7 +11,7 @@ function NoteCard(){
     return(
         <LinearGradient colors={['#030F2D', '#0B2661']} style={styles.container}>
         <Text style={styles.title}>Funding?</Text>
-        <Text style={styles.desc}>Terminal where all industrial and profitmaking venture that will get the best research report.</Text>
+        <Text style={styles.desc}>It is a financial investment in a company for product development, manufacturing, expansion, sales and marketing, office spaces, and inventory.</Text>
         </LinearGradient>
     )}
 export default NoteCard;

@@ -60,43 +60,7 @@ import {CountdownTimer} from '../CountdownTimer';
 import {useLayoutEffect} from 'react';
 import {blue} from 'react-native-redash';
 import {black} from 'react-native-paper/lib/typescript/styles/colors';
-const data = [
-  {
-    id: 1,
-    name: 'John',
-    hareFor: 'Find Investors',
-    howMeet: 'At Coffee',
-    yearsExperience: 1,
-  },
-  {
-    id: 2,
-    name: 'Jane',
-    hareFor: 'Networking',
-    howMeet: 'Video Call',
-    yearsExperience: 1,
-  },
-  {
-    id: 3,
-    name: 'Jack',
-    hareFor: 'Hire Employees',
-    howMeet: 'Local Cafe',
-    yearsExperience: 1,
-  },
-  {
-    id: 4,
-    name: 'Jill',
-    hareFor: 'Find Mentor',
-    howMeet: 'Video Call',
-    yearsExperience: 1,
-  },
-  {
-    id: 5,
-    name: 'T',
-    hareFor: 'Find Cofounders',
-    howMeet: 'At Coffee',
-    yearsExperience: 1,
-  },
-];
+
 const Vibe = () => {
   const state = useSelector(state => state.UserReducer);
   //  console.log("",JSON.stringify (state.Rooms,2,4))

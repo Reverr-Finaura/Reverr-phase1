@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {
   DrawerContentScrollView,
@@ -11,8 +11,24 @@ import {useNavigation} from '@react-navigation/native';
 
 function CustomDrawer(props) {
   const state = useSelector(state => state.UserReducer);
-
+  const [hasPremiumOfVibe, setHasPremiumOfVibe] = useState(false);
   const navigation = useNavigation();
+
+  useEffect(()=>{
+    if (state.user.hasVibePremium) {
+      if (state.user.hasVibePremium === true) {
+        state.user.Premium.map(item => {
+          if (item.id === 'VIBE') {
+            if (
+              new Date(item.DateOfExpiry.seconds * 1000) >= new Date()
+            ) {
+              setHasPremiumOfVibe(true);
+            }
+          }
+        });
+      }
+    }
+  },[])
 
   return (
     <LinearGradient
@@ -38,10 +54,9 @@ function CustomDrawer(props) {
       <DrawerContentScrollView>
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
-
+      {!hasPremiumOfVibe? 
       <View style={styles.label}>
         <Text style={styles.labeltext}>Upgrade to Premium</Text>
-        <Text style={styles.labeltext}>and receive exclusive access to</Text>
 
         <TouchableOpacity
           onPress={() => navigation.navigate('premiumPlans')}
@@ -51,6 +66,7 @@ function CustomDrawer(props) {
           </Text>
         </TouchableOpacity>
       </View>
+      :null}
     </LinearGradient>
   );
 }
@@ -92,6 +108,7 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   },
   label: {
+    width:"100%",
     position: 'absolute',
     bottom: '8%',
     alignItems: 'center',

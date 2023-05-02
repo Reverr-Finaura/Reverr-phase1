@@ -12,7 +12,7 @@ function ProfileCard({user}){
     return(
 
     <LinearGradient colors={[ '#022538','#061B41',]} style={styles.container}>
-      <Image source={{uri:user.Image}} style={styles.user} />
+      <Image source={{uri:user.image}} style={styles.user} />
       <View style={styles.textwrapper}>
         <Text style={styles.name}>{user.name}</Text>
         <Text style={styles.desig}>{user.designation}</Text>
