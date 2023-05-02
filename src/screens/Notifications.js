@@ -10,6 +10,7 @@ import GradientHeader from '../Components/components/GradientHeader';
 import NotificationCard from '../Components/components/NotificationCard';
 import {notifications} from '../utils/sampledata';
 import Theme from '../utils/Theme';
+import {AppColors} from '../utils';
 
 function Notifications({navigation}) {
   const [selectedText, setSelectedText] = useState('all');
@@ -132,6 +133,14 @@ function Notifications({navigation}) {
             />
           );
         })} */}
+        <View
+          style={{
+            alignItems: 'center',
+          }}>
+          <Text style={{color: AppColors.FontsColor}}>
+            You Have No Any Notification
+          </Text>
+        </View>
       </ScrollView>
     </View>
   );

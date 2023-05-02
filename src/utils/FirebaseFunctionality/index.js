@@ -388,6 +388,8 @@ export const rejectRequest = async (
   setLoading,
 ) => {
   let userData = [];
+
+  let recivedReq = [];
   setLoading(true);
   await firestore()
     .collection('Users')
@@ -412,10 +414,26 @@ export const rejectRequest = async (
           //console.log(inst);
           // dispatch(setUser(inst._data));
           userData = inst._data;
+        })
+        .then(async () => {
+          //let rec = [];
+          for (
+            let index = 0;
+            index < userData.recivedRequests.length;
+            index++
+          ) {
+            let req = await firestore()
+              .collection('Users')
+              .doc(userData.recivedRequests[index])
+              .get();
+            recivedReq.push(req._data);
+            if (index === userData.recivedRequests.length - 1) {
+            }
+          }
+          setLoading(false);
         });
-      setLoading(false);
     });
-  return userData;
+  return {userData, recivedReq};
 };
 export const ApprovedReq = async (
   currentcUseremail,
@@ -423,6 +441,7 @@ export const ApprovedReq = async (
   setLoading,
 ) => {
   let userData = [];
+  let recivedReq = [];
   setLoading(true);
   await firestore()
     .collection('Users')
@@ -495,11 +514,27 @@ export const ApprovedReq = async (
                   // dispatch(setUser(inst._data));
                   userData = inst._data;
                 });
+            })
+            .then(async () => {
+              //let rec = [];
+              for (
+                let index = 0;
+                index < userData.recivedRequests.length;
+                index++
+              ) {
+                let req = await firestore()
+                  .collection('Users')
+                  .doc(userData.recivedRequests[index])
+                  .get();
+                recivedReq.push(req._data);
+                if (index === userData.recivedRequests.length - 1) {
+                }
+              }
               setLoading(false);
             });
         });
     });
-  return userData;
+  return {userData, recivedReq};
 };
 
 export const fetchInitialData = async ({setData, setIsLoading}) => {
@@ -524,38 +559,47 @@ export const fetchMoreData = async ({setData, setIsLoading}) => {
 };
 
 export const savePost = async (postID, currentUserEmail) => {
-  console.log(postID, currentUserEmail);
-  let userData = [];
   await firestore()
     .collection('Posts')
     .doc(postID)
-    .update({
-      saved: firestore.FieldValue.arrayUnion(currentUserEmail),
-    })
-    .then(async () => {
-      await firestore()
-        .collection('Users')
-        .doc(currentUserEmail)
-        .update({
-          saved: firestore.FieldValue.arrayUnion(postID),
-        })
-        .then(async () => {
-          await firestore()
-            .collection('Users')
-            .doc(currentUserEmail)
-            .get()
-            .then(inst => {
-              console.log(inst._data, 'inst');
-              // dispatch(setUser(inst._data));
-              userData = inst._data;
-            });
-        });
+    .get()
+    .then(async r => {
+      // console.log(r.data()?.saved?.includes(), 'sdjshjdsk');
+      if (r.data()?.saved?.includes(currentUserEmail)) {
+        await firestore()
+          .collection('Posts')
+          .doc(postID)
+          .update({
+            saved: firestore.FieldValue.arrayRemove(currentUserEmail),
+          })
+          .then(async () => {
+            await firestore()
+              .collection('Users')
+              .doc(currentUserEmail)
+              .update({
+                saved: firestore.FieldValue.arrayRemove(postID),
+              });
+          });
+      } else {
+        await firestore()
+          .collection('Posts')
+          .doc(postID)
+          .update({
+            saved: firestore.FieldValue.arrayUnion(currentUserEmail),
+          })
+          .then(async () => {
+            await firestore()
+              .collection('Users')
+              .doc(currentUserEmail)
+              .update({
+                saved: firestore.FieldValue.arrayUnion(postID),
+              });
+          });
+      }
     });
-  return userData;
 };
 
 export const unsavePost = async (postID, currentUserEmail) => {
-  let userData = [];
   await firestore()
     .collection('Posts')
     .doc(postID)
@@ -568,20 +612,8 @@ export const unsavePost = async (postID, currentUserEmail) => {
         .doc(currentUserEmail)
         .update({
           saved: firestore.FieldValue.arrayRemove(postID),
-        })
-        .then(async () => {
-          await firestore()
-            .collection('Users')
-            .doc(currentUserEmail)
-            .get()
-            .then(inst => {
-              console.log(inst._data, 'inst');
-              // dispatch(setUser(inst._data));
-              userData = inst._data;
-            });
         });
     });
-  return userData;
 };
 
 export const sharePost = async (postID, currentUserEmail) => {

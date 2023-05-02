@@ -97,7 +97,7 @@ function Home() {
     dispatch(refresh_rooms_list());
   };
 
-  // console.log(state?.Rooms[0].id, 'Rooms');
+  // console.log(state?.Rooms, 'Rooms');
 
   return (
     <View style={{flex: 1}}>
@@ -111,10 +111,10 @@ function Home() {
         }}>
         <View>
           <Text style={styles.title}>
-            Hello 
+            Hello
             <Text
               style={{color: Theme.primaryColor, textTransform: 'capitalize'}}>
-              {" "+ state.user.name}
+              {' ' + state.user.name}
             </Text>
           </Text>
           <TouchableOpacity

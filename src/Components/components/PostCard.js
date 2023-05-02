@@ -17,6 +17,7 @@ import {
   load_room_data,
   pin_post,
   refresh_rooms_list,
+  save_post,
   setUser,
   set_allLoaded,
 } from '../../Redux/actions';
@@ -50,6 +51,10 @@ function PostCard({item, index}) {
     dispatch(like_post(id, item, state.user.email));
   };
 
+  const savePost = (id, item) => {
+    dispatch(save_post(id, item, state.user.email));
+  };
+
   const _handleLoadMore = () => {
     console.log('on end reached dispatched');
     dispatch(load_room_data(state?.lastDocument || undefined));
@@ -67,12 +72,13 @@ function PostCard({item, index}) {
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
           // shared with activity type of result.activityType
+          console.log('kakajkdjajd');
+          sharePost(id, state?.user?.email);
           console.log(result.activityType, 'result.activityType');
         } else {
           // shared
-
-          sharePost(id, state?.user?.email);
-          console.log('Post Shared');
+          // sharePost(id, state?.user?.email);
+          console.log('start sharing...');
         }
       } else if (result.action === Share.dismissedAction) {
         // dismissed
@@ -83,20 +89,21 @@ function PostCard({item, index}) {
     }
   };
 
-  const saveYourPost = postID => {
-    // console.log(postID, 'jhds');
-    if (item.saved.includes(postID)) {
-      unsavePost(postID, state?.user?.email).then(res => {
-        console.log(res, 'unsaved');
-        dispatch(setUser(res));
-      });
-    } else {
-      savePost(postID, state?.user?.email).then(res => {
-        console.log(res, 'saved');
-        dispatch(setUser(res));
-      });
-    }
-  };
+  // const saveYourPost = postID => {
+  //   // console.log(postID, 'jhds');
+  //   if (item.saved.includes(postID)) {
+  //     unsavePost(postID, state?.user?.email).then(res => {
+  //       console.log(res, 'unsaved');
+  //       dispatch(setUser(res));
+  //     });
+  //   } else {
+  //     savePost(postID, state?.user?.email).then(res => {
+  //       console.log(res, 'saved');
+  //       dispatch(setUser(res));
+  //     });
+  //   }
+  // };
+
   return (
     <View style={[styles.container, {position: 'relative'}]}>
       {item?.id === _id && (
@@ -287,7 +294,7 @@ function PostCard({item, index}) {
 
         <TouchableOpacity
           onPress={() => {
-            SharePost(item?.text, item.id);
+            sharePost(item?.text, item.id);
           }}
           style={{flexDirection: 'row', alignItems: 'center'}}>
           <Image
@@ -306,7 +313,7 @@ function PostCard({item, index}) {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => saveYourPost(item.id)}
+          onPress={() => savePost(item.id, item)}
           style={{flexDirection: 'row', alignItems: 'center'}}>
           <Image
             source={Theme.bookmark}

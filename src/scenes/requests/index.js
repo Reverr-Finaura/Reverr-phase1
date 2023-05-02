@@ -15,14 +15,19 @@ import {useDispatch, useSelector} from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
 import {ApprovedReq, rejectRequest} from '../../utils/FirebaseFunctionality';
 import {add_user, setUser} from '../../Redux/actions';
+import RequestCard from '../../Components/components/RequestCard';
 
 const Requests = () => {
   const state = useSelector(state => state.UserReducer);
   const [loading, setLoading] = useState(false);
   const [recivedReq, setRecivedReq] = useState([]);
   const [loader, setLoader] = useState(false);
+  const [clmn, setClmn] = useState(2);
+  const [aprovedLoader, setAprovedLoader] = useState(false);
+  const [rejectLoader, setRejectLoader] = useState(false);
+  const [selectedUser, setSelectedUser] = useState('');
 
-  const getRequested = async () => {
+  const onLoadData = async () => {
     setLoader(true);
     let rec = [];
     for (let index = 0; index < state.user.recivedRequests.length; index++) {
@@ -38,13 +43,13 @@ const Requests = () => {
     setRecivedReq(rec);
     setLoader(false);
   };
-  //console.log(state.user.recivedRequests, 'jjhjh');
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getRequested();
-  }, [dispatch, loading]);
+    onLoadData();
+    return () => {};
+  }, []);
 
   return (
     <View style={styles.screen}>
@@ -89,80 +94,37 @@ const Requests = () => {
             <View>
               <FlatList
                 data={recivedReq}
+                numColumns={clmn}
                 keyExtractor={item => item.email}
                 renderItem={({item, index}) => (
-                  <View
-                    key={index}
-                    style={{
-                      width: '47%',
-                      marginVertical: '2%',
-                      marginHorizontal: '2%',
-                      alignItems: 'center',
-                    }}>
-                    <LinearGradient
-                      colors={[AppColors.primarycolor, '#012437']}
-                      start={{x: 0, y: 1}}
-                      end={{x: 1, y: 0.5}}
-                      style={styles.Card}>
-                      <Image source={{uri: item.image}} style={[styles.dp]} />
-                      <Text style={styles.name}>{item.name}</Text>
-                      <Text style={styles.industry}>
-                        {smallString(item.industry, 20)}
-                      </Text>
-                      <View
-                        style={{
-                          flexDirection: 'row',
-                          width: '100%',
-                          justifyContent: 'space-around',
-                          paddingHorizontal: '6%',
-                        }}>
-                        {loading ? (
-                          <View>
-                            <ActivityIndicator />
-                          </View>
-                        ) : (
-                          <TouchableOpacity
-                            onPress={() => {
-                              ApprovedReq(
-                                state.user.email,
-                                item.email,
-                                setLoading,
-                              ).then(r => {
-                                //  console.log(r, 'aproved');
-                                dispatch(setUser(r));
-                              });
-                            }}
-                            style={styles.button}>
-                            <Text style={{color: AppColors.FontsColor}}>
-                              Approve
-                            </Text>
-                          </TouchableOpacity>
-                        )}
-                        {loading ? (
-                          <View>
-                            <ActivityIndicator />
-                          </View>
-                        ) : (
-                          <TouchableOpacity
-                            onPress={() => {
-                              rejectRequest(
-                                state.user.email,
-                                item.email,
-                                setLoading,
-                              ).then(r => {
-                                console.log(r, 'reject');
-                                dispatch(setUser(r));
-                              });
-                            }}
-                            style={[styles.button, {backgroundColor: 'red'}]}>
-                            <Text style={{color: AppColors.FontsColor}}>
-                              Reject
-                            </Text>
-                          </TouchableOpacity>
-                        )}
-                      </View>
-                    </LinearGradient>
-                  </View>
+                  <RequestCard
+                    item={item}
+                    aprovedLoader={aprovedLoader}
+                    onApprove={() => {
+                      setSelectedUser(item.email);
+                      ApprovedReq(
+                        state.user.email,
+                        item.email,
+                        setLoading,
+                      ).then(r => {
+                        //  console.log(r, 'aproved');
+                        dispatch(setUser(r.userData));
+                        setRecivedReq(r.recivedReq);
+                      });
+                    }}
+                    rejectLoader={rejectLoader}
+                    onReject={() => {
+                      rejectRequest(
+                        state.user.email,
+                        item.email,
+                        setLoading,
+                      ).then(r => {
+                        console.log(r, 'reject');
+                        dispatch(setUser(r.userData));
+                        setRecivedReq(r.recivedReq);
+                      });
+                    }}
+                  />
                 )}
               />
             </View>

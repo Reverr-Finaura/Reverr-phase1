@@ -2,6 +2,7 @@ import {firebase} from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import {Alert} from 'react-native';
+import {savePost} from '../utils/FirebaseFunctionality';
 // import { SavedCourses } from '../Components/SavedCourses';
 export const ADD_USER = 'ADD_USER';
 export const UPDATE_IMAGE = 'UPDATE_IMAGE';
@@ -12,6 +13,7 @@ export const LOAD_ROOM_DATA = 'LOAD_ROOM_DATA';
 export const ALL_LOADED = 'ALL_LOADED';
 export const REFRESH_ROOMS_LIST = 'REFRESH_ROOMS_LIST';
 export const LIKE_POST = 'LIKE_POST';
+export const SAVE_POST = 'SAVE_POST';
 export const POST_COMMENT = 'POST_COMMENT';
 export const PIN_POST = 'PIN_POST';
 export const DELETE_POST = 'DELETE_POST';
@@ -632,6 +634,22 @@ export const like_post = (postId, post, email) => {
   }
 };
 
+export const save_post = (postId, post, email) => {
+  console.log(postId, 'nsankjk');
+  try {
+    return async dispatch => {
+      dispatch(save_a_single_post(postId, post));
+      savePost(postId, email);
+    };
+  } catch (e) {
+    console.log('error:' + e);
+    dispatch({
+      type: 'Error',
+      error: 'error',
+    });
+  }
+};
+
 export const setUser = data => {
   try {
     return async dispatch => {
@@ -778,6 +796,12 @@ export const pin_an_item = item => {
 export const like_a_single_post = (postId, post) => {
   return {
     type: 'LIKE_POST',
+    payload: {postId, post},
+  };
+};
+export const save_a_single_post = (postId, post) => {
+  return {
+    type: 'SAVE_POST',
     payload: {postId, post},
   };
 };

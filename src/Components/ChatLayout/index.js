@@ -34,7 +34,7 @@ export const ChatLayout = ({usersArray, loader}) => {
         style={styles.chatContainer}
         source={require('../../assets/images/Rectangle2.png')}>
         {loader ? (
-          <View style={{paddingVertical:'40%'}}>
+          <View style={{paddingVertical: '40%'}}>
             <ActivityIndicator size={40} color={AppColors.FontsColor} />
           </View>
         ) : (
@@ -75,7 +75,7 @@ export const ChatLayout = ({usersArray, loader}) => {
                   paddingVertical: '50%',
                 }}>
                 <Text style={{color: AppColors.FontsColor}}>
-                  You Have No any Mentors
+                  You Have No Chat
                 </Text>
               </View>
             )}
