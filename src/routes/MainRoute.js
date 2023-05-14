@@ -55,7 +55,7 @@ import {
   Vibe,
   Webview,
 } from '../scenes';
-import { VibeBoarding } from '../Components/VibeBoarding';
+import {VibeBoarding} from '../Components/VibeBoarding';
 import MentorsList from '../screens/MentorsList';
 import ProfileSettings from '../screens/Drawer/Settings';
 import NewVibe from '../screens/Tabs/Vibe';
@@ -63,20 +63,21 @@ import OthersProfile from '../screens/OthersProfile';
 import PremiumPlans from '../screens/PremiumPlans';
 import SelectPlan from '../screens/SelectPlan';
 import {ApplyFunds} from '../screens/Tabs/ApplyFunds';
-import { useEffect } from 'react';
-import { GoogleSignin } from '@react-native-community/google-signin';
+import {useEffect} from 'react';
+import {GoogleSignin} from '@react-native-community/google-signin';
+import SavedPosts from '../screens/Drawer/SavedPosts';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
 export default function Route() {
-
-  useEffect(()=>{
+  useEffect(() => {
     GoogleSignin.configure({
-      webClientId:'710745964607-oiv3jlrl61v1f0v5lortvfq4tns1ldmn.apps.googleusercontent.com',
-    })
-  },[])
+      webClientId:
+        '710745964607-oiv3jlrl61v1f0v5lortvfq4tns1ldmn.apps.googleusercontent.com',
+    });
+  }, []);
 
   return (
     <NavigationContainer>
@@ -212,7 +213,7 @@ function MyDrawer() {
           ),
         }}
         name="Saved"
-        component={MyCourses}
+        component={SavedPosts}
       />
       <Drawer.Screen
         options={{
@@ -294,10 +295,11 @@ function HomeStack() {
         name="ChatVibeScreen"
         component={ChatVibeScreen}
       />
-      <Stack.Screen 
-      options={{headerShown: false}}
-      name="VibeBoarding" 
-      component={VibeBoarding} />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="VibeBoarding"
+        component={VibeBoarding}
+      />
       <Stack.Screen
         name="premiumPlans"
         options={{headerShown: false}}
