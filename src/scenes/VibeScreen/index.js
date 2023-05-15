@@ -307,16 +307,28 @@ const Vibe = () => {
           if(sup){
             await firestore()
             .collection('Users')
-            .doc(tempUser)
+            .doc(tempUser.email)
             .update({
               super_liked_people: firestore.FieldValue.arrayRemove(My_Email),
+            });
+            await firestore()
+            .collection('Users')
+            .doc(My_Email)
+            .update({
+              people_super_liked_me: firestore.FieldValue.arrayRemove(tempUser.email),
             });
           }else{
             await firestore()
             .collection('Users')
-            .doc(tempUser)
+            .doc(tempUser.email)
             .update({
               liked: firestore.FieldValue.arrayRemove(My_Email),
+            });
+            await firestore()
+            .collection('Users')
+            .doc(My_Email)
+            .update({
+              people_liked_me: firestore.FieldValue.arrayRemove(tempUser.email),
             });
           }
           await firestore()
@@ -336,7 +348,8 @@ const Vibe = () => {
           dispatch(matchedpeople(tempUser.email));
           // Match screen is called here
           navigation.navigate('MatchScreen', {
-            tempUser,
+            data:tempUser,
+            data2:state.user
           });
 
           setPrevDailog(true);
@@ -344,7 +357,7 @@ const Vibe = () => {
         }
         catch(err){
           console.log(err)
-          alert("Please Check your internet connection")
+          // alert("Please Check your internet connection")
         }
       }
       //else add likeduser's email to user's liked array
@@ -368,7 +381,7 @@ const Vibe = () => {
         }
         catch (err){
           console.log(err)
-          alert("Please Check your internet connection")
+          // alert("Please Check your internet connection")
         }
 
       }

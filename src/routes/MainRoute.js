@@ -55,6 +55,7 @@ import {
   Vibe,
   Webview,
 } from '../scenes';
+import {MatchScreen} from '../scenes/MatchScreen';
 import {VibeBoarding} from '../Components/VibeBoarding';
 import MentorsList from '../screens/MentorsList';
 import ProfileSettings from '../screens/Drawer/Settings';
@@ -167,6 +168,7 @@ export default function Route() {
           name="social"
           component={Social}
         />
+          <Stack.Screen options={{headerShown: false}} name="MatchScreen" component={MatchScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

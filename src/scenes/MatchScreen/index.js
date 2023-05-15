@@ -9,13 +9,16 @@ import {
 import React, { useState } from 'react';
 import { Header } from '../../Components/Header';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const MatchScreen = () => {
   const navigation = useNavigation();
   const { params } = useRoute();
-  const { data } = params;
+  const { data, data2 } = params
+  
+  console.log(data)
 
-  const userimage = data.image;
+  const userimage = data2.image;
   const matchedimage = data.image;
   return (
     <View
@@ -103,7 +106,7 @@ const MatchScreen = () => {
             color: 'white',
           }}
         >
-          You and {data.name} matched. Go send a hello !
+          You and {data.name} matched!
         </Text>
       </View>
       <View
@@ -118,6 +121,9 @@ const MatchScreen = () => {
           backgroundColor: '#2A72DE',
         }}
       >
+        <TouchableOpacity onPress={()=> {
+          console.log("vibe")
+          navigation.navigate("Vibe")}}>
         <View style={{ alignSelf: 'center' }}>
           <Text
             style={{
@@ -130,9 +136,10 @@ const MatchScreen = () => {
               textAlign: 'center',
             }}
           >
-            Start messaging
+            Okay
           </Text>
         </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
