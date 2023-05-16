@@ -31,7 +31,7 @@ import {
   sharePost,
   unsavePost,
 } from '../../utils/FirebaseFunctionality';
-import {log} from 'react-native-reanimated';
+import Icon2 from 'react-native-vector-icons/Ionicons';
 
 function PostCard({item, index}) {
   // console.log(item,"kdhskhd");
@@ -319,6 +319,16 @@ function PostCard({item, index}) {
             source={Theme.bookmark}
             style={{height: 17, width: 17, resizeMode: 'contain'}}
           />
+
+          {/* {state?.user?.saved?.includes(item.id) ? (
+            <Icon2 name="bookmark" size={22} color={AppColors.FontsColor} />
+          ) : (
+            <Icon2
+              name="bookmark-outline"
+              size={22}
+              color={AppColors.FontsColor}
+            />
+          )} */}
           <Text
             style={{
               color: '#FFF',

@@ -307,16 +307,28 @@ const Vibe = () => {
           if(sup){
             await firestore()
             .collection('Users')
-            .doc(tempUser)
+            .doc(tempUser.email)
             .update({
               super_liked_people: firestore.FieldValue.arrayRemove(My_Email),
+            });
+            await firestore()
+            .collection('Users')
+            .doc(My_Email)
+            .update({
+              people_super_liked_me: firestore.FieldValue.arrayRemove(tempUser.email),
             });
           }else{
             await firestore()
             .collection('Users')
-            .doc(tempUser)
+            .doc(tempUser.email)
             .update({
               liked: firestore.FieldValue.arrayRemove(My_Email),
+            });
+            await firestore()
+            .collection('Users')
+            .doc(My_Email)
+            .update({
+              people_liked_me: firestore.FieldValue.arrayRemove(tempUser.email),
             });
           }
           await firestore()
@@ -336,7 +348,8 @@ const Vibe = () => {
           dispatch(matchedpeople(tempUser.email));
           // Match screen is called here
           navigation.navigate('MatchScreen', {
-            tempUser,
+            data:tempUser,
+            data2:state.user
           });
 
           setPrevDailog(true);
@@ -344,7 +357,7 @@ const Vibe = () => {
         }
         catch(err){
           console.log(err)
-          alert("Please Check your internet connection")
+          // alert("Please Check your internet connection")
         }
       }
       //else add likeduser's email to user's liked array
@@ -368,7 +381,7 @@ const Vibe = () => {
         }
         catch (err){
           console.log(err)
-          alert("Please Check your internet connection")
+          // alert("Please Check your internet connection")
         }
 
       }
@@ -630,7 +643,7 @@ const Vibe = () => {
           } else {
             // doc.data() will be undefined in this case
             setshowCards(false);
-            console.log('No such document!');
+            // console.log('No such document!');
             navigation.navigate('VibeBoarding');
           }
         })
@@ -641,7 +654,7 @@ const Vibe = () => {
 
     // This will run after VibeBoarding screen
     if (params) {
-      console.log('after boarding screen here');
+      // console.log('after boarding screen here');
       setshowCards(true);
     }
     //CHECK WHETHER USER HAS PREMIUM SUBSCRIBE FOR VIBE
@@ -683,7 +696,7 @@ const Vibe = () => {
           // console.log('Expiredtime', NewExpiredDate.getTime());
           const NewExpiredTime = NewExpiredDate.getTime();
 
-          if (NewExpiredTime <= state.user.CardsUpdatedTime) {
+          if (NewExpiredTime > state.user.CardsUpdatedTime) {
             // console.log('hello');
             settoshowtimer(true);
           }
@@ -878,33 +891,59 @@ const Vibe = () => {
         if (hasPremiumOfVibe === true) {
           return;
         }
-        setcontinueshowingcard(false);
-        // console.log('card ind inside', cardindex);
-        // var DeletePassedUserReference = firestore()
-        //   .collection('Users')
-        //   .doc(state.user.email)
-        //   .collection('passeduser');
-        // DeletePassedUserReference.get().then(querysnapshot => {
-        //   Promise.all(querysnapshot.docs.map(d => d.ref.delete()));
-        // });
-        setAllswiped(true);
         const ExpiredDate = new Date();
         // console.log(ExpiredDate);
         // console.log(ExpiredDate.getTime());
         const ExpiredTime = ExpiredDate.getTime();
-        const UpdatedTime = ExpiredTime + 86400000;
-        const SetFirebaseswipedData = async () => {
-          await firestore().collection('Users').doc(state.user.email).update({
-            CardsExpiredTime: UpdatedTime,
-            CardsUpdatedTime: UpdatedTime,
-            AllCardsSwiped: true,
-          });
-        };
+        const UpdatedTime = ExpiredTime + 86397500;
+        if(ExpiredTime > state.user.CardsUpdatedTime){
+          setcontinueshowingcard(true);
+          // console.log('card ind inside', cardindex);
+          // var DeletePassedUserReference = firestore()
+          //   .collection('Users')
+          //   .doc(state.user.email)
+          //   .collection('passeduser');
+          // DeletePassedUserReference.get().then(querysnapshot => {
+          //   Promise.all(querysnapshot.docs.map(d => d.ref.delete()));
+          // });
+          setAllswiped(false);
+    
+          const SetFirebaseswipedData = async () => {
+            await firestore().collection('Users').doc(state.user.email).update({
+              AllCardsSwiped: false,
+              numberOfSwipsDone: 0
+            });
+          };
+  
+          SetFirebaseswipedData();
+          settoshowtimer(false);
+        }
+        else{
+          setcontinueshowingcard(false);
+          // console.log('card ind inside', cardindex);
+          // var DeletePassedUserReference = firestore()
+          //   .collection('Users')
+          //   .doc(state.user.email)
+          //   .collection('passeduser');
+          // DeletePassedUserReference.get().then(querysnapshot => {
+          //   Promise.all(querysnapshot.docs.map(d => d.ref.delete()));
+          // });
+          setAllswiped(true);
+    
+          const SetFirebaseswipedData = async () => {
+            await firestore().collection('Users').doc(state.user.email).update({
+              CardsExpiredTime: UpdatedTime,
+              CardsUpdatedTime: UpdatedTime,
+              AllCardsSwiped: true,
+            });
+          };
+  
+          SetFirebaseswipedData();
+          settoshowtimer(true);
+        }
 
-        SetFirebaseswipedData();
-        settoshowtimer(true);
         // It is 24 hrrs in milli second 86400000;86397500;
-        const ToChecKAfter = 12000;
+        // const ToChecKAfter = 12000;
         // console.log('updated time', UpdatedTime);
 
         // setTimeout(async () => {
@@ -1093,7 +1132,7 @@ const Vibe = () => {
                               <LineBar />
                             </View>
 
-                            <FindMeOn title={'Find Me On:'} linkedin={item.linkedin} phone={item.mobile} email={item.email} />
+                            <FindMeOn title={'Find Me On:'} linkedin={item.linkedin} phone={item.phone} email={item.email} />
                           </LinearGradient>
 
                           <View style={{height: 110}} />
