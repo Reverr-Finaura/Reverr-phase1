@@ -278,108 +278,118 @@ function Home() {
           <View style={{height: '84%'}}>
             {menu === 'All' && (
               <View>
-                <FlatList
-                  data={allData}
-                  onEndReached={() => {
-                    let check = allData.filter(r => r.type === 'post');
-                    if (check.length !== state?.Rooms?.length) {
-                      console.log(check.length, 'reached');
-                      loadMore();
-                    } else {
-                      ToastAndroid.showWithGravity(
-                        'No More Post avilable',
-                        ToastAndroid.LONG,
-                        ToastAndroid.CENTER,
-                      );
-                    }
-                  }}
-                  renderItem={({item, index}) => (
-                    <View>
-                      {item.type === 'post' && (
-                        <PostCard item={item} index={index} />
-                      )}
-                      {item.type === 'news' && (
-                        <TouchableOpacity
-                          style={{
-                            marginTop: '7%',
-                            flexDirection: 'row',
-                            borderWidth: 1,
-                            borderColor: AppColors.CardColor,
-                            borderRadius: 10,
-                          }}
-                          onPress={() => {
-                            navigation.navigate('NewsDetails', {
-                              articalData: item,
-                            });
-                          }}>
-                          <Image
+                {allData.length === 0 ? (
+                  <SkeltonLoader />
+                ) : (
+                  <FlatList
+                    data={allData}
+                    onEndReached={() => {
+                      let check = allData.filter(r => r.type === 'post');
+                      // console.log(check.length, 'check');
+                      // console.log(state?.Rooms?.length, 'room');
+                      // console.log(check.length != state?.Rooms?.length);
+                      if (check.length != state?.Rooms?.length) {
+                        console.log(check.length, 'reached');
+                        loadMore();
+                      } else {
+                        ToastAndroid.showWithGravity(
+                          'No More Post avilable',
+                          ToastAndroid.LONG,
+                          ToastAndroid.CENTER,
+                        );
+                      }
+                    }}
+                    renderItem={({item, index}) => (
+                      <View>
+                        {item.type === 'post' && (
+                          <PostCard item={item} index={index} />
+                        )}
+                        {item.type === 'news' && (
+                          <TouchableOpacity
                             style={{
-                              height: 100,
-                              width: '30%',
+                              marginTop: '7%',
+                              flexDirection: 'row',
+                              borderWidth: 1,
+                              borderColor: AppColors.CardColor,
                               borderRadius: 10,
                             }}
-                            source={{uri: item.image.thumbnail.contentUrl}}
-                          />
-                          <View
-                            style={{
-                              marginHorizontal: '4%',
-                              marginTop: '2%',
-                              width: '90%',
-                              overflow: 'hidden',
+                            onPress={() => {
+                              navigation.navigate('NewsDetails', {
+                                articalData: item,
+                              });
                             }}>
-                            <Text style={styles2.title}> {item.category}</Text>
-                            <Text
-                              style={{
-                                color: AppColors.FontsColor,
-                                fontFamily: 'Poppins-Regular',
-                                textAlign: 'justify',
-                                marginTop: '2%',
-                                width: '70%',
-                              }}>
-                              {item.name}
-                            </Text>
-                          </View>
-                        </TouchableOpacity>
-                      )}
-                      {item.type === 'artical' && (
-                        <TouchableOpacity
-                          onPress={() => {
-                            console.log('artdkh');
-                            navigation.navigate('ArticalDetails', {
-                              articalData: item,
-                            });
-                          }}
-                          key={index}
-                          style={styles2.container}>
-                          <View style={{width: '23%'}}>
                             <Image
-                              source={{uri: item?.image?.imageUrl}}
-                              style={styles2.img}
+                              style={{
+                                height: 100,
+                                width: '30%',
+                                borderRadius: 10,
+                              }}
+                              source={{uri: item.image.thumbnail.contentUrl}}
                             />
-                          </View>
+                            <View
+                              style={{
+                                marginHorizontal: '4%',
+                                marginTop: '2%',
+                                width: '90%',
+                                overflow: 'hidden',
+                              }}>
+                              <Text style={styles2.title}>
+                                {' '}
+                                {item.category}
+                              </Text>
+                              <Text
+                                style={{
+                                  color: AppColors.FontsColor,
+                                  fontFamily: 'Poppins-Regular',
+                                  textAlign: 'justify',
+                                  marginTop: '2%',
+                                  width: '70%',
+                                }}>
+                                {item.name}
+                              </Text>
+                            </View>
+                          </TouchableOpacity>
+                        )}
+                        {item.type === 'artical' && (
+                          <TouchableOpacity
+                            onPress={() => {
+                              console.log('artdkh');
+                              navigation.navigate('ArticalDetails', {
+                                articalData: item,
+                              });
+                            }}
+                            key={index}
+                            style={styles2.container}>
+                            <View style={{width: '23%'}}>
+                              <Image
+                                source={{uri: item?.image?.imageUrl}}
+                                style={styles2.img}
+                              />
+                            </View>
 
-                          <View
-                            style={{
-                              paddingLeft: 10,
-                              width: '80%',
-                              justifyContent: 'space-evenly',
-                            }}>
-                            <Text style={styles2.title}> {item.heading}</Text>
-                            <View style={styles2.line} />
-                            <Text numberOfLines={2} style={styles2.desc}>
-                              {smallString(item.body, 100)}
-                            </Text>
-                          </View>
+                            <View
+                              style={{
+                                paddingLeft: 10,
+                                width: '80%',
+                                justifyContent: 'space-evenly',
+                              }}>
+                              <Text style={styles2.title}> {item.heading}</Text>
+                              <View style={styles2.line} />
+                              <Text numberOfLines={2} style={styles2.desc}>
+                                {smallString(item.body, 100)}
+                              </Text>
+                            </View>
 
-                          {/* <View style={styles.corner}>
+                            {/* <View style={styles.corner}>
                         <Image source={Theme.triangle} style={styles.triangle} />
                         <Text style={styles.number}>169</Text>
                       </View> */}
-                        </TouchableOpacity>
-                      )}
-                    </View>
-                  )}
-                />
+                          </TouchableOpacity>
+                        )}
+                      </View>
+                    )}
+                  />
+                )}
               </View>
             )}
             {menu === 'Discussion' && (
