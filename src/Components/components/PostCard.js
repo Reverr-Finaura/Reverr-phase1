@@ -175,7 +175,7 @@ function PostCard({item, index}) {
                       color: AppColors.primarycolor,
                       fontFamily: 'Poppins-Regular',
                     }}>
-                    {state.savedPosts && state.savedPosts.includes(item.id)
+                    {state?.savedPosts && state?.savedPosts?.includes(item.id)
                       ? 'Unsave'
                       : 'Save'}
                   </Text>
@@ -253,7 +253,7 @@ function PostCard({item, index}) {
         <TouchableOpacity
           onPress={() => likePost(item.id, item)}
           style={{flexDirection: 'row', alignItems: 'center'}}>
-          {item.likes.includes(state.user.email) ? (
+          {item?.likes?.includes(state.user.email) ? (
             <Icon name="heart" size={19} color="red" />
           ) : (
             <Icon name="heart-outline" size={20} color={AppColors.CardColor} />
