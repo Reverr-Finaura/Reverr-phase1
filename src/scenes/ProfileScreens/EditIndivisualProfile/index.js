@@ -424,7 +424,7 @@ const EditProfile = () => {
         </View>
 
         <EditCard
-          Title="Linkdin"
+          Title="Linkedin"
           onChangeText={e => {
             setEd2(e);
           }}

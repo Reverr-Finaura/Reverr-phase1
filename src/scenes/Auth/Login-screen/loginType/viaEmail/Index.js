@@ -170,12 +170,15 @@ const LoginViaEmail = () => {
           <View style={{marginHorizontal: '4%'}}>
             <InputField
               placeholder="Enter Your Email"
+              
+
               size={25}
               error={emailerror}
               onChangeText={e => {
                 setEmail(e);
               }}
               Title="Email Address"
+              
             />
             <InputField
               size={35}

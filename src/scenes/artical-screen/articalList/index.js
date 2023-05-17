@@ -118,7 +118,7 @@ const ArticleList = props => {
                         }
                       }}
                       style={{justifyContent: 'center', alignItems: 'center'}}>
-                      <Ionic
+                       <Ionic
                         name="heart"
                         size={20}
                         // color="gray"
