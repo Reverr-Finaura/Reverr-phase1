@@ -14,76 +14,74 @@ import Ionic from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
-import {SaveArticle} from '../../Redux/actions';
 import {smallString} from '../../utils';
 import {ArticalLoader} from '../loaders';
 
-function ArticleCard() {
+function ArticleCard({articalData, loading}) {
   const state = useSelector(state => state.UserReducer);
   const dispatch = useDispatch();
-  const [articalData, setArticalData] = useState();
-  const [loading, setLoading] = useState(false);
-  //console.log(state.user.savedArticles);
-  async function getArticles() {
-    setLoading(true);
-    const snapshot = await firestore()
-      .collection('Blogs')
-      .get()
-      .then(res => {
-        setArticalData(res.docs.map(doc => doc.data()));
-        setLoading(false);
-      });
-  }
-
+  // const [articalData, setArticalData] = useState();
+  // const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
+  //console.log(state.user.savedArticles);
+  // async function getArticles() {
+  //   setLoading(true);
+  //   const snapshot = await firestore()
+  //     .collection('Blogs')
+  //     .get()
+  //     .then(res => {
+  //       setArticalData(res.docs.map(doc => doc.data()));
+  //       setLoading(false);
+  //     });
+  // }
 
-  useEffect(() => {
-    getArticles();
-  }, []);
+  // useEffect(() => {
+  //   getArticles();
+  // }, []);
 
-  const showToast = msg => {
-    ToastAndroid.show(msg, ToastAndroid.SHORT);
-  };
+  // const showToast = msg => {
+  //   ToastAndroid.show(msg, ToastAndroid.SHORT);
+  // };
 
-  const removeArticleFromSaves = async item => {
-    var bucket = [];
-    for (var i = 0; i < state?.user?.savedArticles.length; i++) {
-      if (item.id != state?.user?.savedArticles[i]) {
-        bucket.push(state?.user?.savedArticles[i]);
-      }
-    }
-    //console.log("bucket:"+bucket);
-    dispatch(RemoveArticle(item.id));
-    await firestore()
-      .collection('Users')
-      .doc(state.user.email)
-      .update({
-        savedArticles: bucket,
-      })
-      .then(() => {
-        showToast('Article Removed Successfully!');
-      })
-      .catch(err => {
-        showToast('Problem in removing Article!');
-      });
-  };
+  // const removeArticleFromSaves = async item => {
+  //   var bucket = [];
+  //   for (var i = 0; i < state?.user?.savedArticles.length; i++) {
+  //     if (item.id != state?.user?.savedArticles[i]) {
+  //       bucket.push(state?.user?.savedArticles[i]);
+  //     }
+  //   }
+  //   //console.log("bucket:"+bucket);
+  //   dispatch(RemoveArticle(item.id));
+  //   await firestore()
+  //     .collection('Users')
+  //     .doc(state.user.email)
+  //     .update({
+  //       savedArticles: bucket,
+  //     })
+  //     .then(() => {
+  //       showToast('Article Removed Successfully!');
+  //     })
+  //     .catch(err => {
+  //       showToast('Problem in removing Article!');
+  //     });
+  // };
 
-  const saveArticle = async item => {
-    //console.log(item);
-    dispatch(SaveArticle(item.id));
-    await firestore()
-      .collection('Users')
-      .doc(state.user.email)
-      .update({
-        savedArticles: [...state?.user?.savedArticles, item.id],
-      })
-      .then(() => {
-        showToast('Article saved Successfully!');
-      })
-      .catch(err => {
-        showToast('Problem in saving Article!');
-      });
-  };
+  // const saveArticle = async item => {
+  //   //console.log(item);
+  //   dispatch(SaveArticle(item.id));
+  //   await firestore()
+  //     .collection('Users')
+  //     .doc(state.user.email)
+  //     .update({
+  //       savedArticles: [...state?.user?.savedArticles, item.id],
+  //     })
+  //     .then(() => {
+  //       showToast('Article saved Successfully!');
+  //     })
+  //     .catch(err => {
+  //       showToast('Problem in saving Article!');
+  //     });
+  // };
 
   // console.log(articalData,"articalData");
 

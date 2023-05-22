@@ -3,53 +3,50 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  Animated,
   Dimensions,
   FlatList,
-  ImageBackground,
   Image,
 } from 'react-native';
-import React, {useEffect, useState, useRef, useContext} from 'react';
+import React, {useState} from 'react';
 import {AppColors, smallString} from '../../../utils';
-import axios from 'axios';
 import {useNavigation} from '@react-navigation/native';
 import {NewsLoader} from '../../../Components';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
-const NewsList = () => {
-  const [newsData, setNewsData] = useState();
+const NewsList = ({newsData, loading}) => {
+  // const [newsData, setNewsData] = useState();
   const [clmn, setClmn] = useState(2);
   const navigation = useNavigation();
-  const [loading, setLoading] = useState(false);
+  //const [loading, setLoading] = useState(false);
 
-  const options = {
-    method: 'GET',
-    url: 'https://api.bing.microsoft.com/v7.0/news/search',
-    params: {q: 'startup', safeSearch: 'Off', textFormat: 'Raw'},
-    headers: {
-      'Content-Type': 'application/json',
-      'Ocp-Apim-Subscription-Key': 'bd03e8f8f29b46479ee4c2004280308f',
-    },
-  };
+  // const options = {
+  //   method: 'GET',
+  //   url: 'https://api.bing.microsoft.com/v7.0/news/search',
+  //   params: {q: 'startup', safeSearch: 'Off', textFormat: 'Raw'},
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //     'Ocp-Apim-Subscription-Key': 'bd03e8f8f29b46479ee4c2004280308f',
+  //   },
+  // };
 
-  async function getNews() {
-    setLoading(true);
-    try {
-      await axios.request(options).then(res => {
-        console.log(res.data.value, 'sdhjshdjs');
-        setNewsData(res.data.value);
-        setLoading(false);
-      });
-    } catch (err) {
-      console.log(err, 'news error');
-    }
-  }
-  useEffect(() => {
-    getNews();
-    //console.log(newsData?.length, 'newsData');
-  }, []);
+  // async function getNews() {
+  //   setLoading(true);
+  //   try {
+  //     await axios.request(options).then(res => {
+  //       console.log(res.data.value, 'sdhjshdjs');
+  //       setNewsData(res.data.value);
+  //       setLoading(false);
+  //     });
+  //   } catch (err) {
+  //     console.log(err, 'news error');
+  //   }
+  // }
+  // useEffect(() => {
+  //   getNews();
+  //   //console.log(newsData?.length, 'newsData');
+  // }, []);
 
   return (
     <View style={styles.screen}>
@@ -78,19 +75,7 @@ const NewsList = () => {
                       style={{height: '70%', width: '100%'}}
                       source={{uri: item.image.thumbnail.contentUrl}}
                     />
-                    {/* <ImageBackground
-                      style={{flex: 1}}
-                      source={{uri: item.image.thumbnail.contentUrl}}>
-                      <View style={styles.title}>
-                        <Text
-                          style={{
-                            color: AppColors.FontsColor,
-                            fontFamily: 'Poppins-Regular',
-                          }}>
-                          {smallString(item.name, 30)}
-                        </Text>
-                      </View>
-                    </ImageBackground> */}
+
                     <View style={styles.title}>
                       <Text
                         style={{
