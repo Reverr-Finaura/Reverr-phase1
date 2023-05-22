@@ -41,15 +41,7 @@ const ArticalDetails = props => {
                 activeOpacity={0.7}
                 /*  onPress={() => saveArticle(articaldetails)}> */
               >
-                <Ionic
-                  name="heart"
-                  size={30}
-                  /* color={
-                      state.savedArticles.includes(articaldetails.id)
-                        ? 'red'
-                        : 'grey'
-                    } */
-                />
+                
               </TouchableOpacity>
             </View>
             <Text style={styles.title}>{articaldetails.heading}</Text>

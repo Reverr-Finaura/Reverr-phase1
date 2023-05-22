@@ -23,7 +23,7 @@ const MentorsList = props => {
   const [column, setColumn] = useState(2);
   const [loading, setLoading] = useState(false);
 
-  // console.log(mentorsList);
+ //console.log(mentorsList);
 
   const getMentors = async () => {
     setLoading(true);
@@ -56,7 +56,7 @@ const MentorsList = props => {
     <View style={styles.container}>
       <GradientHeader />
       <View>
-        <View style={{paddingHorizontal: '5%', paddingTop: '3%'}}>
+        <View style={{paddingHorizontal: '4%', paddingTop: '3%'}}>
           <View
             style={{
               flexDirection: 'row',
@@ -92,7 +92,7 @@ const MentorsList = props => {
                 {mentorsList?.length === 0 ? (
                   <View
                     style={{
-                      height: '80%',
+                      height: '60%',
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
@@ -125,7 +125,7 @@ const MentorsList = props => {
                 )}
               </>
             )}
-            <View style={{height: 160}} />
+            <View style={{height: 100}} />
           </ScrollView>
         </View>
       </View>
@@ -161,7 +161,8 @@ const styles = StyleSheet.create({
     marginBottom: 3,
   },
   activeStyle: {
-    borderBottomWidth: 2,
+    
+    borderBottomWidth: 4,
     marginRight: 15,
   },
 });

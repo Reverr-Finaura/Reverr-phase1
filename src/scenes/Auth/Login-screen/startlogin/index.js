@@ -22,10 +22,21 @@ const StartLogin = () => {
   const navigation = useNavigation();
   const googleLogin = async ()=>{
     try{
-      const {idToken} = await GoogleSignin.signIn();
 
+      //await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+      // Get the users ID token
+
+      const  {idToken} = await GoogleSignin.signIn();
+      
+    console.log("akjldladkldanljadnjadnljdsa");
+      // Create a Google credential with the token
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
+    
+      // Sign-in the user with the credential
+     // return auth().signInWithCredential(googleCredential);
+     
+      alert("dfkn.erkwijgf;oiawjg'oia");
+       
       await auth().signInWithCredential(googleCredential);
     }
     catch (Err){
