@@ -79,7 +79,9 @@ export const Messages = () => {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
-            paddingHorizontal: '5%',
+            paddingHorizontal: '1%',
+            paddingStart:'5%',
+            paddingEnd:'36%'
           }}>
           <TouchableOpacity
             onPress={() => {
@@ -90,7 +92,7 @@ export const Messages = () => {
               backgroundColor: mentors ? AppColors.ActiveColor : null,
               width: '45%',
               alignItems: 'center',
-              paddingVertical: '3%',
+              paddingVertical: '1%',
               borderWidth: 2,
               borderColor: AppColors.ActiveColor,
               borderRadius: 30,
@@ -110,17 +112,17 @@ export const Messages = () => {
               backgroundColor: networks ? AppColors.ActiveColor : null,
               width: '45%',
               alignItems: 'center',
-              paddingVertical: '3%',
+              paddingVertical: '1%',
               borderWidth: 2,
               borderColor: AppColors.ActiveColor,
-              borderRadius: 5,
+              borderRadius: 45,
             }}>
             <Text style={styles.subTitle}>Network</Text>
           </TouchableOpacity>
         </View>
 
         {mentors && (
-          <View style={{marginTop: '3%'}}>
+          <View style={{marginTop: '1%'}}>
             {state?.user?.mentors?.length > 0 ? (
               <FlatList
                 showsHorizontalScrollIndicator={false}
@@ -129,8 +131,8 @@ export const Messages = () => {
                 renderItem={({item}) => <MentorList mentor={item} />}
               />
             ) : (
-              <Text style={{color: 'grey', fontSize: 14, marginLeft: 50}}>
-                Please Subscribe To Mentors for Guidence
+              <Text style={{color: 'grey', fontSize: 14,}}>
+               
               </Text>
             )}
             <ChatLayout
