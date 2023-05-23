@@ -43,7 +43,7 @@ const TermConditions = () => {
               styles.heading,
               {textAlign: 'auto', paddingVertical: '7%'},
             ]}>
-            Information we collect
+              Information we collect
           </Text>
           <Text style={styles.details}>
             <Text
@@ -776,6 +776,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: '2%',
   },
   heading: {
+    padding:10,
     color: AppColors.FontsColor,
     fontFamily: 'Poppins-Bold',
     fontSize: 16,

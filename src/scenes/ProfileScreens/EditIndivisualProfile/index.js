@@ -380,24 +380,11 @@ const EditProfile = () => {
                       borderRadius: 5,
                       marginVertical: '3%',
                       marginStart: '10%',
-                      width: '40%',
+                      width: '100%',
                     }}
-                    value="From"
+                    
                   />
-                  <TextInput
-                    style={{
-                      backgroundColor: AppColors.FontsColor,
-                      paddingStart: '3%',
-                      paddingVertical: 6,
-                      color: AppColors.FontsColor,
-                      fontFamily: 'Poppins-Regular',
-                      borderRadius: 5,
-                      marginVertical: '3%',
-                      marginStart: '10%',
-                      width: '40%',
-                    }}
-                    value="To"
-                  />
+                  
                 </View>
               </View>
             )}

@@ -109,7 +109,7 @@ function Mentor() {
               
               flexDirection: 'row',
               width: '100%',
-              justifyContent: 'space-around',
+              justifyContent:'flex-start',
             }}>
             <SkeletonPlaceholder backgroundColor="#012437">
               <View
