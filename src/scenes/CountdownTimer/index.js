@@ -31,6 +31,10 @@ const CountdownTimer = ({toshowtimer, settoshowtimer,finalSetVibePremium}) => {
     console.log('current', CurrentTimeInMilliSecond);
     const ToStartFrom = ExpiredMilliSecond - CurrentTimeInMilliSecond;
     console.log('yo', ToStartFrom);
+    if(ToStartFrom <=0){
+      LoadMoreVibeCard()
+      return;
+    }
     const ToSecond = Math.abs(ToStartFrom / 1000);
     console.log("ToSecond",ToSecond)
     settostart(ToSecond);
@@ -44,8 +48,8 @@ const CountdownTimer = ({toshowtimer, settoshowtimer,finalSetVibePremium}) => {
   const LoadMoreVibeCard = async () => {
     console.log('loadingMoreCard');
     await firestore().collection('Users').doc(state.user.email).update({
-      CardsExpiredTime: 0,
-      CardsUpdatedTime: 0,
+      CardsExpiredTime: -1,
+      CardsUpdatedTime: -1,
       AllCardsSwiped: false,
       Number_Of_Swips_Done:0
     });

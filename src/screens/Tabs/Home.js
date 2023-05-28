@@ -220,7 +220,7 @@ function Home() {
             Hello
             <Text
               style={{color: Theme.primaryColor, textTransform: 'capitalize'}}>
-              {' ' + state.user.name}
+              {' ' + state.user.name.trim().split(" ")[0]}
             </Text>
           </Text>
           <TouchableOpacity
