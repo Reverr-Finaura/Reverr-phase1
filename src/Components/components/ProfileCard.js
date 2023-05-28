@@ -25,6 +25,7 @@ export default ProfileCard;
 
 const styles = StyleSheet.create({
     container: {
+       
         width:'85%',
         borderWidth:1.5,
         borderColor:Theme.primaryColor,

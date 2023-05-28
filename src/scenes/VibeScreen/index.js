@@ -12,7 +12,7 @@ import {
   TouchableOpacity,
   Modal,
 } from 'react-native';
-import Swiper from 'react-native-deck-swiper';
+{/*import Swiper from 'react-native-deck-swiper';*/}
 import Button from '../../Components/Button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';

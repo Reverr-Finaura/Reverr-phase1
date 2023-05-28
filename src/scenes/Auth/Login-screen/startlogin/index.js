@@ -22,10 +22,21 @@ const StartLogin = () => {
   const navigation = useNavigation();
   const googleLogin = async ()=>{
     try{
-      const {idToken} = await GoogleSignin.signIn();
 
+      //await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+      // Get the users ID token
+
+      const  {idToken} = await GoogleSignin.signIn();
+      
+    console.log("akjldladkldanljadnjadnljdsa");
+      // Create a Google credential with the token
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
+    
+      // Sign-in the user with the credential
+     // return auth().signInWithCredential(googleCredential);
+     
+      alert("dfkn.erkwijgf;oiawjg'oia");
+       
       await auth().signInWithCredential(googleCredential);
     }
     catch (Err){
@@ -36,10 +47,12 @@ const StartLogin = () => {
   return (
     <LinearGradient colors={['#070972', '#0C0C0D']} style={styles.screen}>
       <StatusBar backgroundColor={'#070972'} />
+      <View style={{alignItems:"center"}}>
       <Image
         style={{width: Width / 1.3, height: Height / 2.6}}
         source={require('../../../../assets/images/illustration/loginillusto.png')}
       />
+      </View>
       <Text style={styles.heading}>Login</Text>
       <View
         style={{
@@ -101,13 +114,14 @@ const StartLogin = () => {
         style={[
           styles.button,
           {
+            
             borderWidth: 2,
             borderColor: AppColors.FontsColor,
             backgroundColor: AppColors.FontsColor,
           },
         ]}>
         <Image
-          style={{marginHorizontal: '5%'}}
+          style={{marginHorizontal: '4%'}}
           source={require('../../../../assets/images/illustration/google.png')}
         />
         <Text style={[styles.buttonText, {color: AppColors.primarycolor}]}>

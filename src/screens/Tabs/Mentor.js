@@ -95,7 +95,7 @@ function Mentor() {
         {!loading ? (
           <>
             <FlatList
-              style={{paddingHorizontal: '2%'}}
+              style={{paddingHorizontal: '4%'}}
               showsHorizontalScrollIndicator={false}
               horizontal={true}
               data={randomMentors}
@@ -106,9 +106,10 @@ function Mentor() {
         ) : (
           <View
             style={{
+              
               flexDirection: 'row',
               width: '100%',
-              justifyContent: 'space-around',
+              justifyContent:'flex-start',
             }}>
             <SkeletonPlaceholder backgroundColor="#012437">
               <View
@@ -137,6 +138,8 @@ function Mentor() {
                   marginHorizontal: '2%',
                 }}></View>
             </SkeletonPlaceholder>
+          
+           
           </View>
         )}
 

@@ -93,7 +93,7 @@ export const Messages = () => {
               paddingVertical: '3%',
               borderWidth: 2,
               borderColor: AppColors.ActiveColor,
-              borderRadius: 5,
+              borderRadius: 30,
             }}>
             {state?.user?.userType == 'Mentor' ? (
               <Text style={styles.subTitle}>Clients</Text>
