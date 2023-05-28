@@ -483,14 +483,14 @@ const Vibe = () => {
       const Data = cards[cardindex];
       // console.log('datattaa', Data);
 
-      // await firestore().collection('Users').doc(state.user.email).update({
-      //   Number_Of_Swips_Done: swipe,
-      // });
+      await firestore().collection('Users').doc(state.user.email).update({
+        Number_Of_Swips_Done: swipe,
+      });
 
-      // await firestore()
-      //   .collection('Users')
-      //   .doc(state.user.email)
-      //   .update({Last_Card_Email_Swiped: Data.id});
+      await firestore()
+        .collection('Users')
+        .doc(state.user.email)
+        .update({Last_Card_Email_Swiped: Data.id});
     };
 
     // console.log('state card is', state.vibe.length);
@@ -563,6 +563,15 @@ const Vibe = () => {
 
           if (NewExpiredTime < state.user.CardsUpdatedTime) {
             settoshowtimer(true);
+          }else{
+
+            //Reset the user
+            await firestore()
+              .collection('Users')
+              .doc(state.user.email)
+              .update({AllCardsSwiped: false,CardsUpdatedTime:-1, CardsExpiredTime:-1,Number_Of_Swips_Done: 0});
+            settoshowtimer(false);
+            
           }
         }
         // CheckIfBoarding();
