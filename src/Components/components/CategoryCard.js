@@ -5,14 +5,15 @@ import LinearGradient from 'react-native-linear-gradient';
 function CateogryCard({key, image, title, handlePress}) {
   return (
     <TouchableOpacity onPress={handlePress} style={styles.container}>
+  
       <View style={styles.imageWrapper}>
         <Image
           source={image}
-          style={{height: '100%', width: '100%', resizeMode: 'contain'}}
+          style={{height: '100%', width: '100%', resizeMode: 'center', borderRadius: 10,}}
         />
       </View>
       <LinearGradient
-        colors={['#0A255F', '#061A46']}
+        colors={['#202020', '#202020']}
         style={styles.infowrapper}>
         <Text style={styles.title}>{title}</Text>
       </LinearGradient>
@@ -23,7 +24,7 @@ export default CateogryCard;
 
 const styles = StyleSheet.create({
   container: {
-    height: 150,
+    height: 130,
     width: '45%',
     borderRadius: 10,
     overflow: 'hidden',
@@ -31,16 +32,19 @@ const styles = StyleSheet.create({
     marginHorizontal: '2.5%',
   },
   imageWrapper: {
-    height: '70%',
+    
+    padding:5,
+    backgroundColor:'#202020',
+    height: '80%',
     width: '100%',
   },
   infowrapper: {
     height: '30%',
     width: '100%',
-    justifyContent: 'center',
     alignItems: 'center',
   },
   title: {
+    fontSize:9,
     fontFamily: 'Poppins-Bold',
     color: '#FFF',
   },

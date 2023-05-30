@@ -24,7 +24,7 @@ function BusinessCard({fulldetails, key}) {
         <View style={styles.halfWrapper}>
           <Image
             source={{uri: fulldetails?.image}}
-            style={{width: 75, height: 75, borderRadius: 100}}
+            style={{width: 70, height: 70, borderRadius: 100}}
           />
           <Text style={styles.title}>{fulldetails?.name}</Text>
           <Text style={styles.desc}>{fulldetails?.designation}</Text>
@@ -59,16 +59,17 @@ export default BusinessCard;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 15,
+    marginTop: 10,
     width: '100%',
     borderRadius: 15,
-    paddingVertical: 20,
     flexDirection: 'row',
   },
   halfWrapper: {
     width: '50%',
+    paddingStart:30,
     paddingHorizontal: 20,
     alignfulldetailss: 'center',
+    
   },
   halfWrapper2: {
     width: '50%',
@@ -76,14 +77,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
   },
   title: {
+    
     color: '#FFF',
-    fontSize: 17,
+    fontSize: 12,
     fontWeight: 'bold',
     marginTop: 5,
   },
   desc: {
     color: '#FFF',
-    fontSize: 13,
+    fontSize: 8,
     fontWeight: '500',
     marginTop: 5,
     opacity: 0.5,

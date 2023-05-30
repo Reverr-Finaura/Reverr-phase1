@@ -1,4 +1,5 @@
 export default {
+  privicypolicybackground:'#979797',
   primaryColor: '#2274EF',
   backgroundColor: '#000C12',
   textLightColor: '#D0CBCB',

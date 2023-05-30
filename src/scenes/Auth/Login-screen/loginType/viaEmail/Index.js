@@ -41,7 +41,7 @@ const LoginViaEmail = () => {
   const navigation = useNavigation();
   var dispatch = useDispatch();
   const loginUser = async (useremail, password) => {
-    const email = useremail.toLowerCase();
+
     var user_request_obj = {
       success: false,
       failiure: false,
@@ -50,24 +50,24 @@ const LoginViaEmail = () => {
     };
 
     try {
-      await auth().signInWithEmailAndPassword(email.toLowerCase(), password);
+      await auth().signInWithEmailAndPassword(useremail, password);
     } catch (e) {
       if (e.code === 'auth/wrong-password') {
         // alert('Wrong password try again!');
         user_request_obj.failiure = true;
         user_request_obj.failiure_message = 'Wrong Password try again!';
+        console.log("Wrong password try again")
         return user_request_obj;
-        //console.log("Wrong password try again")
       }
       if (e.code === 'auth/user-not-found') {
-        // alert('No user registered with this email!');
+        console.log('No user registered with this email!');
         user_request_obj.failiure = true;
         user_request_obj.failiure_message =
           'No user registered with this email!';
         return user_request_obj;
       }
     }
-    const savedUser = await firestore().collection('Users').doc(email).get();
+    const savedUser = await firestore().collection('Users').doc(useremail).get();
     //  console.log('Its a :' + savedUser._data.userType);
     dispatch(add_user(savedUser._data));
     user_request_obj.success = true;
@@ -77,22 +77,23 @@ const LoginViaEmail = () => {
   };
 
   const Login = async () => {
-    console.log(password);
     setLoading(true);
+    var useremail = email.toLowerCase()
     firestore()
       .collection('Users')
-      .doc(email.trim())
+      .doc(useremail.trim())
       .get()
       .then(async documentSnapshot => {
         if (documentSnapshot.exists) {
           if (documentSnapshot.data().userType === 'Individual') {
             setUserLogedin(false);
-            var response = await loginUser(email.trim(), password);
+            var response = await loginUser(useremail.trim(), password);
             if (response.success == true) {
               setUserLogedin(true);
               setLoading(false);
               navigation.replace('MyDrawer');
             } else if (response.failiure == true) {
+              console.log(useremail.trim(), password, password)
               setUserLogedin(true);
               setLoading(false);
               alert('Invalid Credentials!');
@@ -170,12 +171,15 @@ const LoginViaEmail = () => {
           <View style={{marginHorizontal: '4%'}}>
             <InputField
               placeholder="Enter Your Email"
+              
+
               size={25}
               error={emailerror}
               onChangeText={e => {
                 setEmail(e);
               }}
               Title="Email Address"
+              
             />
             <InputField
               size={35}

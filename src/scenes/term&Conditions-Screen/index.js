@@ -10,7 +10,7 @@ const TermConditions = () => {
   const navigation = useNavigation();
   return (
     <LinearGradient
-      colors={['#1B1D8B', Theme.backgroundColor]}
+      colors={['#808080', Theme.privicypolicybackground]}
       style={styles.screen}>
       <View
         style={{
@@ -43,7 +43,7 @@ const TermConditions = () => {
               styles.heading,
               {textAlign: 'auto', paddingVertical: '7%'},
             ]}>
-            Information we collect
+              Information we collect
           </Text>
           <Text style={styles.details}>
             <Text
@@ -770,17 +770,21 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   privacyContainer: {
+    
+    textAlign:"justify",
     paddingTop: '7%',
     paddingHorizontal: '2%',
   },
   heading: {
+    padding:10,
     color: AppColors.FontsColor,
     fontFamily: 'Poppins-Bold',
     fontSize: 16,
     textAlign: 'center',
   },
   details: {
-    color: AppColors.BtnClr,
+    padding:10,
+    color: AppColors.termColor,
     fontFamily: 'Poppins-Regular',
     paddingVertical: '2%',
     textAlign: 'justify',

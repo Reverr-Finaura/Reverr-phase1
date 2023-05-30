@@ -22,23 +22,23 @@ const styles = StyleSheet.create({
     container: {
        width:'100%',
        borderRadius:15,
-       marginTop:15,
-       paddingVertical:25,
-       paddingHorizontal:25
+       marginTop:10,
+       paddingVertical:15,
+       paddingHorizontal:15
     },
     title:{
-        fontSize:20,
+        fontSize:15,
         fontWeight:'bold',
         color:Theme.primaryColor,
     },
     desc:{
-        fontSize:14,
+        fontSize:11,
         fontWeight:'400',
         color:'#fff',
         paddingTop:2,
     },
     rate:{
-        fontSize:14,
+        fontSize:11,
         fontWeight:'bold',
         color:'#fff',
         paddingTop:10,

@@ -32,6 +32,7 @@ const InputField = props => {
               paddingStart: '2%',
               width: '88%',
             }}
+            autoCapitalize="none"
             placeholder={props.placeholder}
             placeholderTextColor={AppColors.infoFonts}
             onChangeText={props.onChangeText}

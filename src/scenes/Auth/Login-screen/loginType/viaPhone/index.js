@@ -114,7 +114,7 @@ const LoginViaPhone = () => {
         Keyboard.dismiss();
       }}>
       <LinearGradient colors={['#070972', '#0C0C0D']} style={styles.screen}>
-        <BackButton />
+        <BackButton/>
         <ScrollView>
           <Text style={styles.heading}>Login</Text>
           <Text
