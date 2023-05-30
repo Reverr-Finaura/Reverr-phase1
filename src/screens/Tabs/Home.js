@@ -159,7 +159,7 @@ function Home() {
     let newstype = newsData?.map(obj => ({...obj, type: 'news'}));
     let articaltype = articalData?.map(obj => ({...obj, type: 'artical'}));
     if (posttype && newstype && articaltype) {
-      let b = posttype.splice(8);
+      let b = posttype.splice(4);
       let t = newstype.splice(2);
       let t2 = articaltype.splice(1);
       // let p = posttype.splice(8);
@@ -190,7 +190,7 @@ function Home() {
     const h = [...state?.Rooms];
     const post = h.slice(postType.length);
     const newPost = post?.map(obj => ({...obj, type: 'post'}));
-    newPost.splice(8);
+    newPost.splice(4);
     const n = newsData.slice(newsType.length);
     const newNews = n?.map(obj => ({...obj, type: 'news'}));
     newNews.splice(2);
@@ -283,6 +283,8 @@ function Home() {
                 ) : (
                   <FlatList
                     data={allData}
+                    refreshing={state.refreshing}
+                    onRefresh={handleRefresh}
                     onEndReached={() => {
                       let check = allData.filter(r => r.type === 'post');
                       // console.log(check.length, 'check');
