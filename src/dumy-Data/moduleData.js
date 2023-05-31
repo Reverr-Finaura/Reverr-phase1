@@ -1,4 +1,4 @@
-export const ModulesData = {
+export const moduleData = {
   frontscreen: {
     images: [
       'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FfrontScreenImg.png?alt=media&token=0aa4d74c-2c40-4ec5-85f3-73906bf6e996',
@@ -304,4 +304,3 @@ export const ModulesData = {
    }
   ],
 };
-
