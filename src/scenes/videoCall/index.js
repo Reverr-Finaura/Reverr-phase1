@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import { Text,View } from "react-native-paper";
-import AgoraUiKit from 'agora-rn-uikit';
+// import AgoraUiKit from 'agora-rn-uikit';
 import {useNavigation} from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
 import { useDispatch, useSelector } from "react-redux";
@@ -43,14 +43,15 @@ const VideoCall = (props)=>{
     return (
         <>
         {vc ? (
-        <AgoraUiKit
-            rtcProps={{
-                appId:'904538e9e76546c49aabef629237f0fd',
-                channel:'demo',
-                token:token
-            }}
-            callbacks = {{EndCall:()=>meetingEnded()}}
-        />    
+        // <AgoraUiKit
+        //     rtcProps={{
+        //         appId:'904538e9e76546c49aabef629237f0fd',
+        //         channel:'demo',
+        //         token:token
+        //     }}
+        //     callbacks = {{EndCall:()=>meetingEnded()}}
+        // />    
+        null
     ):null}
     </>
     )

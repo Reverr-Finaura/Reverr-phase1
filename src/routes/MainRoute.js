@@ -168,7 +168,11 @@ export default function Route() {
           name="social"
           component={Social}
         />
-          <Stack.Screen options={{headerShown: false}} name="MatchScreen" component={MatchScreen} />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="MatchScreen"
+          component={MatchScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
