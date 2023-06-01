@@ -18,13 +18,13 @@ import {AppColors} from '../../../utils';
 import {useSelector, useDispatch} from 'react-redux';
 import {saveCourse, removeCourse} from '../../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
-import {courseDataEquityAndEverything} from '../../../dumy-Data/courseDataEquityAndEverything';
+import {courseDataIdeaValidation} from '../../../dumy-Data/courseDataIdeaValidation';
 import LinearGradient from 'react-native-linear-gradient';
 import Theme from '../../../utils/Theme';
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 const StartCourse = props => {
-  const courseData = courseDataEquityAndEverything.modules; // props.route.params.CourseDetails;
+  const courseData = courseDataIdeaValidation.modules; // props.route.params.CourseDetails;
   const navigation = useNavigation();
   const [chp, setchp] = useState(0);
   const [slide, setslide] = useState(0);
