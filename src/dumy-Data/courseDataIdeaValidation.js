@@ -379,6 +379,199 @@ export const courseDataIdeaValidation = {
     },
     ]
    },
+   {
+    name:"model4",
+    slides:[
+    {
+      heading: 'Customer discovery',
+      image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fresearch%20and%20development1.png?alt=media&token=18536b83-f6f3-41b5-b1ae-f45bb7e4e3a6',
+      type: 'intro',
+    },
+    {
+      text: "Customer discovery is an extensive approach to make sure that the problem aligns with the solution you’ve identified with what customers actually want at a price they are willing and able to pay.",
+      image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fresearch%20and%20development1.png?alt=media&token=18536b83-f6f3-41b5-b1ae-f45bb7e4e3a6',
+      type: 'textimg',
+    },
+    {
+      text: "Let’s look at some of the steps involved in the phase of customer discovery.:",
+      image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FRectangle.png?alt=media&token=55922d7d-e254-49c2-8f70-be01bf5d8023',
+      type: 'textimg',
+    },
+    {
+      heading: 'Step 1: Create Customer Archetypes',
+      text: "It basically spells out an archetype featuring all the customer profiles representing different use cases of the product like what would attract people to buy your product, what problem is your product  capable of solving, what are the different ways your product can be used by customers.",
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fimage%205.png?alt=media&token=d095c9aa-7647-45af-8635-bcd9b439327c',
+      type: 'headtextimg',
+    },
+    {
+      text: "Getting validation from the potential customers adds lucidity and perspicacity to your business idea.",
+      image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fimage%205.png?alt=media&token=d095c9aa-7647-45af-8635-bcd9b439327c',
+      type: 'textimg',
+    },
+    {
+      question: 'what is a customer archetype?',
+      options: [
+        'Refers to bringing in customers to buy your product',
+        'Customer who make repeat purchases',
+        'It is percentage of an organization\'s customer base lost during a given period of time',
+        'Refers to the customer profiles representing different use cases of the product',
+      ],
+      ans: 3,
+      type: 'quiz',
+    },
+    {
+      heading: 'A) LANDING PAGE',
+      text: "Landing page is the star or let’s just say the main highlight of your hours and hours of hard work. Under the landing page, people would have to input their name and email to see if they are interested in what you offer. Pre-selling your solution is evident to know if people are willing to pay for what you have.",
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202907.png?alt=media&token=13bf82eb-3c83-4c9d-9ef1-703272c75794',
+      type: 'headtextimg',
+    },
+    {
+      heading: 'b) Digital Advertising',
+      text: "Advertising via social media can be a real game-changer to explore the interest area of your target customer base.\n\nThis gives an insight of business metrics like- Cost incurred to acquire a potential user, word of mouth with which you can resonate with your target audience.",
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FConcept%20about%20business%20Failure.png?alt=media&token=2724829e-e3de-4354-b4d8-601a43292f05',
+      type: 'headtextimg',
+    },
+    {
+      heading: 'c) Surveys',
+      text: "Surveys can be conducted online capturing various channels. Or alternatively, in-person enumeration can be quite effective and you could potentially conduct those one-on-one sessions.",
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Ffinancial%20year.png?alt=media&token=9789bf57-4450-42eb-bc4e-bb9360d69842',
+      type: 'headtextimg',
+    },
+    {
+      question: 'Getting validation from the potential customers adds',
+      options: [
+        'lucidity and perspicacity to your idea.',
+        'Difference in my product from existing ones',
+        'Leads to our idea',
+        'Value to the product',
+      ],
+      ans: 0,
+      type: 'quiz',
+    },
+    {
+      heading: 'Step 3: Conduct Customer Validation',
+      text: "3 steps to seeking customer validation involves\n\n- the Problem\n- Solution\n- Revenue Model",
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202907.png?alt=media&token=13bf82eb-3c83-4c9d-9ef1-703272c75794',
+      type: 'headtextimg',
+    },
+    {
+      heading: 'Problem',
+      text: "Every new business concept begins with a problem that needs to be solved. Difference lies in the perspective of how you want to solve that problem and how customers would want to get that problem resolved.",
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FAsk%20Customer%20Feedback.png?alt=media&token=ab82a077-5334-4460-bf9f-10f7bd4162e2',
+      type: 'headtextimg',
+    },
+    {
+      heading: 'Solution',
+      text: "The solution you provide should be in synchronization with where the problem is mostly targeted at. Going through the various features of your solution must align with where you’re focusing your product efforts to where customers need attention should have the greatest demand.",
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FIndian%20male%20achieved%20his%20dream.png?alt=media&token=f2bb49fb-8131-4d26-a453-cdd3c451bae7',
+      type: 'headtextimg',
+    },
+    {
+      heading: 'Revenue model',
+      text: "The revenue model questions checks for price sensitivity, frequency and flexibility or complexity of product, if any.",
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FBusiness%20woman%20achieving%20the%20goal%20successfully.png?alt=media&token=5dabf0f3-c682-4974-9580-2af08284ed4f',
+      type: 'headtextimg',
+    },
+    {
+      question: 'which one of the following is NOT a step towards seeking customer validation',
+      options: [
+        'Problem',
+        'Make commitments',
+        'Solution',
+        'Revenue Model',
+      ],
+      ans: 1,
+      type: 'quiz',
+    },
+    ]
+   },
+   {
+    name:"model5",
+    slides:[
+    {
+      heading: 'End Questions',
+      image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FBusiness%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=34b61281-ea5d-48a3-9b4f-9b3f3eb7052b',
+      type: 'intro',
+    },
+    {
+      question: 'On what base you can analyse your startup business?',
+      options: [
+        'Competitor Analysis',
+        'SWOT Analysis',
+        'Google Analytics',
+        'All of the above',
+      ],
+      ans: 3,
+      type: 'quiz',
+    },
+    {
+      question: 'What is one of the key questions that we should ask from experts',
+      options: [
+        'What was the most consistent opportunity FOR US',
+        'Is it time to talk to customers?',
+        'What pitfalls should we avoid?',
+        'Did we hit a hard stop or reset?',
+      ],
+      ans: 2,
+      type: 'quiz',
+    },
+    {
+      question: 'What is the 2nd step of Customer Discovery',
+      options: [
+        'Create Customer Archetypes',
+        'Choose your expert',
+        'Conduct Customer Validation',
+        'NONE of these',
+      ],
+      ans: 1,
+      type: 'quiz',
+    },
+    {
+      question: 'When starting a startup company, what are the things required?',
+      options: [
+        'Legal Approvals',
+        'Eligibility Criteria',
+        'Feasible Idea',
+        'all of these',
+      ],
+      ans: 3,
+      type: 'quiz',
+    },
+    {
+      question: 'Why Investors are considered while choosing an expert to help validate your idea',
+      options: [
+        'They can provide us with a pragmatic view as to how challenging each aspect of our business model can be.',
+        'can also aid us in setting the criticality aspect right that can accelerate your plan dramatically',
+        'They can give you useful feedback on how big they envision your market arena',
+        'Both A & B',
+      ],
+      ans: 2,
+      type: 'quiz',
+    },
+    {
+      question: 'What are the three questions you ask while analysing your results after talking to an expert.',
+      options: [
+        'Did we hit a hard stop or reset',
+        'What was the most consistent opportunity',
+        'Is it time to talk to customers?',
+        'all of these',
+      ],
+      ans: 3,
+      type: 'quiz',
+    },
+    {
+      question: 'What is the first step towards creating your research plan?',
+      options: [
+        'Tap reliable research sources',
+        'Evaluate your findings',
+        'Establishing research goals',
+        'Doing a swot analysis',
+      ],
+      ans: 2,
+      type: 'quiz',
+    },
+    ]
+   },
   ],
 };
 
