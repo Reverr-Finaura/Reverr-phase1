@@ -22,6 +22,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {DDMMYYYY} from '../../../../utils/Helper/helper';
+import axios from 'axios'
 
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
@@ -30,6 +31,7 @@ const SignupForm = props => {
   var [isSecure1, setisSecure1] = useState(true);
   var [isSecure2, setisSecure2] = useState(true);
   const [name, setname] = useState('');
+  const [code, setcode] = useState('');
   const [nameerror, setnameerror] = useState(false);
   const [email, setemail] = useState('');
   const [emailerror, setemailerror] = useState(false);
@@ -92,6 +94,7 @@ const SignupForm = props => {
       alert('user already exists with that email');
     } else {
       var OTP = EmailOtp();
+      await SendSMS(OTP);
       //alert('Please check your inbox');
       setLoading(false);
       navigation.navigate('OtpVerification', {
@@ -122,7 +125,7 @@ const SignupForm = props => {
       to_email: data.Email,
       otp: OTP,
     };
-    emailjs.init('user_FR6AulWQMZry87FBzhKNu');
+    emailjs.init('dVExxiI8hYMCyc0sY');
     emailjs
       .send('service_lfmmz8k', 'template_n3pcht5', templateParams)
       .then(res => {
@@ -135,6 +138,15 @@ const SignupForm = props => {
 
     return OTP;
   };
+
+  const SendSMS = async (OTP)=>{
+    const res = await axios.post("https://server.reverr.io/sendSmsCode", {
+      to: data.Mobile,
+      message: `Your Reverr Signup OTP is ${OTP}`,
+      code: code
+    });
+    console.log("otpMobile SUCCESS!",res)
+  }
   // const EmailOtp = () => {
   //   const OTP = Math.floor(Math.random() * 100000 + 1);
   //   const msg = 'Your OTP for verification is ' + OTP;
@@ -269,6 +281,23 @@ const SignupForm = props => {
               style={styles.inputstyle}
               keyboardType="number-pad"
               Title="Phone Number"
+            />
+            <InputField
+              iconName="Code"
+              placeholder="Enter Your Country code like 91 for India"
+              size={45}
+              value={code}
+              error={mobileError}
+              onChangeText={m => {
+                setcode(m);
+                if (m != '') {
+                  setMobileError(false);
+                }
+              }}
+              maxLength={10}
+              style={styles.inputstyle}
+              keyboardType="number-pad"
+              Title="Country Code"
             />
             <View style={{marginTop: '3%'}}>
               <Text

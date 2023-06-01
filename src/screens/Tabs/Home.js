@@ -53,7 +53,7 @@ function Home() {
   const [news, setNews] = useState(false);
   const [_id, set_Id] = useState('');
   const navigation = useNavigation();
-  const [menu, setMenu] = useState('All');
+  const [menu, setMenu] = useState('Featured');
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [refreshRoom, setRefreshRoom] = useState(false);
   const [lastPost, setLastPost] = useState(false);
@@ -64,7 +64,7 @@ function Home() {
 
   const [allPosts, setAllPosts] = useState([]);
 
-  const menuItems = ['All', 'Discussion', 'News', 'Articles'];
+  const menuItems = ['Featured', 'Discussion', 'News', 'Articles'];
   const [newsData, setNewsData] = useState();
   const [newsLoading, setNewsLoading] = useState(false);
   const options = {
@@ -89,7 +89,7 @@ function Home() {
         });
         setAllPosts(post);
 
-        console.log(allPosts.length, 'all');
+        console.log(allPosts.length, 'Featured');
       });
   };
 
@@ -220,7 +220,7 @@ function Home() {
             Hello
             <Text
               style={{color: Theme.primaryColor, textTransform: 'capitalize'}}>
-              {' ' + state.user.name.trim().split(" ")[0]}
+              {state? ' ' + state.user.name.trim().split(" ")[0]:null}
             </Text>
           </Text>
           <TouchableOpacity
@@ -276,7 +276,7 @@ function Home() {
           )}
 
           <View style={{height: '84%'}}>
-            {menu === 'All' && (
+            {menu === 'Featured' && (
               <View>
                 {allData.length === 0 ? (
                   <SkeltonLoader />

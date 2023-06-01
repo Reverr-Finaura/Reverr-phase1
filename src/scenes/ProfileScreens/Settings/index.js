@@ -22,6 +22,7 @@ import {deleteUser, firebase} from '@react-native-firebase/auth';
 import {set_allLoaded} from '../../../Redux/actions';
 import LinearGradient from 'react-native-linear-gradient';
 import Theme from '../../../utils/Theme';
+// import { getAuth } from "firebase/auth";
 
 const Width = Dimensions.get('screen').width;
 const Height = Dimensions.get('screen').height;
@@ -85,6 +86,7 @@ const Settings = props => {
       .then(() => {
         console.log('User deleted!');
       });
+    UserDetail.currentUser.delete().then(console.log('delete perm'));
     setVisible(true);
   };
 
