@@ -513,6 +513,14 @@ export const courseDataEquityAndEverything = {
     },
     ]
    },
+
+
+
+
+
+
+
+
    {
     name:"model3",
     slides:[
@@ -793,6 +801,257 @@ export const courseDataEquityAndEverything = {
       text: "We'll have to make some adjustments over time, but we'll want to make sure we know what to expect in terms of how to do so equitably and what to do if we want to avoid a huge swing in equity.",
       image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
       type: 'textimg',
+    },
+    ]
+   },
+   {
+    name:"model4",
+    slides:[
+    {
+      heading: 'MANAGING EQUITY',
+      image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+      type: 'intro',
+    },
+    {
+      text: "Holding ownership is only half a thing but what’s more important is that how you manage your equity or the fact that how significant of a contribution each person can make and what their long-term trajectory at the company is.",
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+      type: 'textimg',
+    },
+    {
+      heading: '4 Keys to Managing Equity',
+      image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+      type: 'intro',
+    },
+    {
+      text: "It ultimately boils down to \"What happens when someone leaves?\" when it comes to stock management. There isn't much to have disagreement about if the company is sold and we all get a heavy paycheck. However, if someone leaves, we must determine what happens to their shares and how this affects the remaining employees.",
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+      type: 'textimg',
+    },
+    {
+      text: "We’ll learn to manage our equity with 4 tools :",
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
+      type: 'textimg',
+    },
+    {
+      heading: '1. CLAWBACK',
+      text: 'If it\'s about giving away equity, then that would still be child’s play. Getting it back, on the other hand, is a whole different matter!',
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20investment.png?alt=media&token=722a9291-7ffd-4be5-87ff-99282c0120e8',
+      type: 'headtextimg',
+    },
+    {
+      text: "\"Clawback Provisions\" are made to return equity (stock) to the business if one or more provisions are met. Because no one loves giving their money back, the Clawback Provisions are by far the most contentious form of legality involved. That could be a hell lot cumbersome, mind you!!",
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20investment.png?alt=media&token=722a9291-7ffd-4be5-87ff-99282c0120e8',
+      type: 'textimg',
+    },
+    {
+      text: "Clawback Provisions would certainly be the most essential aspect of how we manage our equity plan in the long run. They're what helps us avoid some of the \"absentee landlord\" issues that result in a lot of dormant equity in the Cap Table. It also offers some protection against making poor stock grants.",
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20investment.png?alt=media&token=722a9291-7ffd-4be5-87ff-99282c0120e8',
+      type: 'textimg',
+    },
+    {
+      heading: 'Most Common Clawback Provisions:',
+      text: 'Certain hypothetical situations may arise as a result of Clawback Provision. Such scenarios may take the following form-',
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20investment.png?alt=media&token=722a9291-7ffd-4be5-87ff-99282c0120e8',
+      type: 'headtextimg',
+    },
+    {
+      heading: 'Someone is fired for an apparent reason-',
+      text: 'This means someone was fired for a good reason they did something that was materially wrong. \n\nThis might include everything from job performance to illegal conduct, but it would be mentioned as "out of limits"in the Operating Agreement (for members), Stock Agreement (for participants), or Employment Agreement (for everyone). \n\nTermination for cause usually results in a considerably higher Clawback penalty, and in some situations, benefits may be revoked entirely.',
+      image: '',
+      type: 'headtextimg',
+    },
+    {
+      question: '"Clawback Provisions" are made to…..',
+      options: [
+        'sell stock of the business if one or more provisions are met.',
+        'return equity (stock) to the business if one or more provisions are met.',
+        'purchase equity of the business if one or more provisions are met.',
+        'None of these',
+      ],
+      ans: 1,
+      type: 'quiz',
+    },
+    {
+      heading: 'Someone is fired for NO apparent reason-',
+      text: '"Without reason" suggests the individual did not do something improper on purpose. This could be due to a workforce downsizing or someone simply resigning. We may have a minimal clawback or none at all in this scenario. These are usually deviations from mutually agreed-upon circumstances, or at the very least, ones that do not affect the organisation purposely.',
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+      type: 'headtextimg',
+    },
+    {
+      heading: 'The Exercise Period ends.',
+      text: 'A stock returns to the Cap Table when an "exercise window" expires. It usually occurs if a Stock Option is not exercised within the specified period. The issue may not be whether or not there was a termination for cause, but how the exercise window is allocated and elapsed.',
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+      type: 'headtextimg',
+    },
+    {
+      heading: 'How to Handle the Clawback',
+      text: 'For this, we\'ll have to look whether HR policies appear fair and equitable to our employees, we\'d have to think through the personal choice on what we believe would be fair to our employees and the company as a whole.',
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+      type: 'headtextimg',
+    },
+    {
+      heading: '1.  Plan for Change',
+      text: 'The key to knowing how long-term equity splits operate is to comprehend that practically everything changes and evolves over time, so the decisions we make now must account for the multitudes of big changes in value and contribution that will occur over the next decade or longer.',
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FWireframe.png?alt=media&token=af9357e7-ae82-4f0f-b65d-f6f8dcb9203f',
+      type: 'headtextimg',
+    },
+    {
+      heading: '2. Skill Value Changes',
+      text: 'It\'s common for us to take on the tasks of entire departments or C-level executives in our early days, but the overall value or skill level of our efforts may be primarily predicated on the fact that no one else is willing to do them!',
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+      type: 'headtextimg',
+    },
+    {
+      heading: '3. Time Investment Changes',
+      text: 'My time investment can go from "every minute, all the time" to "whenever I can find the time" in a matter of seconds. It\'s unrealistic to think that no life events will ever occur and that our time commitments will never alter. As a result, we must know what to do if and when our future time commitments diverge from our current work obligations.',
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FGroup%202906.png?alt=media&token=e19bd754-7201-4475-aee2-47fc453e0bce',
+      type: 'headtextimg',
+    },
+    {
+      heading: '4. Capital Investment Changes',
+      text: 'The sum required by the organization will fluctuate significantly over time. Say $10,000 in investment may seem like a large sum today, but it will be a day\'s earnings in a few years. While there is undoubtedly a premium to be gained by investing early, there is also a realistic limit to how much of the cap table one should receive.',
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FLayer_1-2.png?alt=media&token=dec59880-8082-4a55-9244-aba71ffc0d1c',
+      type: 'headtextimg',
+    },
+    {
+      heading: '',
+      text: 'Typically, the amount of stock a capital contribution returns is proportional to the company\'s "value". To summarize, the first $10,000 should produce a healthy return for being the riskiest capital, but only within a stock ownership cap that reflects the company\'s future, not simply at present.',
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FLayer_1-2.png?alt=media&token=dec59880-8082-4a55-9244-aba71ffc0d1c',
+      type: 'headtextimg',
+    },
+    {
+      heading: '5. Founding Team Changes',
+      text: 'The issue with validating a "founding team" and the ownership stakes that people receive is that often the sole qualification for stock is that everyone agrees to stay on for the foreseeable future. However, unlike working for a pay, when our only obligation is to show up every day, working on a startup means we may never receive a payday, which tends to drive people away.',
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fteam%20success.png?alt=media&token=834c0990-208b-4f80-9738-36007c8e4cfb',
+      type: 'headtextimg',
+    },
+    {
+      heading: '',
+      text: 'As a result, regardless of how strongly the Founders feel about their current commitment to the company, it\'s critical that they make some basic arrangements for what would happen if that commitment changes.',
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fteam%20success.png?alt=media&token=834c0990-208b-4f80-9738-36007c8e4cfb',
+      type: 'headtextimg',
+    },
+    {
+      question: '“Capital requirements for the organization will never fluctuate over time.”',
+      options: [
+        'true',
+        'false',
+      ],
+      ans: 1,
+      type: 'quiz',
+    },
+    {
+      heading: 'Dormant Equity',
+      text: 'The crux of all of these changes usually results in one major problem: dormant equity. When the Cap Table fills up with participants who possess a share in the company but don\'t participate in its growth any longer, this is known as dormant equity.',
+      image: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+      type: 'headtextimg',
+    },
+    {
+      question: 'When the Cap Table fills up with participants who possess a share in the company but don\'t participate in its growth any longer, this is known as ___________.',
+      options: [
+        'Regular Equity',
+        'DORMANT Equity',
+        'PHANTOM Equity',
+        'NONE of these',
+      ],
+      ans: 1,
+      type: 'quiz',
+    },
+    ]
+   },
+   {
+    name:"model5",
+    slides:[
+    {
+      heading: 'End Questions',
+      image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
+      type: 'intro',
+    },
+    {
+      question: 'Which one of the following is a non-cash contribution?',
+      options: [
+        'Time(Sweat Equity)',
+        'Ideas and Intangibles',
+        'Facilities and Hard goods',
+        'all of these',
+      ],
+      ans: 3,
+      type: 'quiz',
+    },
+    {
+      question: 'Vesting is……',
+      options: [
+        'sell stock of the business if one or more provisions are met.',
+        'return equity (stock) to the business if one or more provisions are met.',
+        'purchase equity of the business if one or more provisions are met.',
+        'a method of allowing members to "earn" their stock over time or in response to certain milestones.',
+      ],
+      ans: 3,
+      type: 'quiz',
+    },
+    {
+      question: '“Through the audit, we can calculate each proposed contribution versus the actual contribution and sum up the numbers.”',
+      options: [
+        'true',
+        'false',
+      ],
+      ans: 0,
+      type: 'quiz',
+    },
+    {
+      question: 'The backbone of the startups in one sense is __________',
+      options: [
+        'equity',
+        'goodwill',
+        'Debt',
+        'patents',
+      ],
+      ans: 0,
+      type: 'quiz',
+    },
+    {
+      question: '________is the most significant investment made by startups.',
+      options: [
+        'Time(Sweat Equity)',
+        'GOODWILL',
+        'GOOD FOUNDING TEAM',
+        'all of these',
+      ],
+      ans: 0,
+      type: 'quiz',
+    },
+    {
+      question: 'phantom equity is………',
+      options: [
+        'To purchase equity of the business if one or more provisions are met.',
+        'a method of allowing members to "earn" their stock over time or in response to certain milestones.',
+        'a contractual right, not an equity stake, we can grant upside without having to issue actual equity ownership shares.',
+        'none of these',
+      ],
+      ans: 2,
+      type: 'quiz',
+    },
+    {
+      question: 'When should you use regular equity?',
+      options: [
+        'you don’t know how to properly allocate contributions in capital.',
+        'When we want to divide the company amongst a small number of active members.',
+        'you know how to properly allocate contributions in capital.',
+        'You have to split the equity equally.',
+      ],
+      ans: 1,
+      type: 'quiz',
+    },
+    {
+      question: '_________ means that the employee have a privilege to avail the “option” to buy stock in the company at a later date implicating that right now they don’t “own” anything.',
+      options: [
+        'Stock Option',
+        'DORMANT Equity',
+        'PHANTOM Equity',
+        'NONE of these',
+      ],
+      ans: 0,
+      type: 'quiz',
     },
     ]
    }
