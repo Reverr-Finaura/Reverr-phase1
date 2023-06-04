@@ -465,11 +465,11 @@ function TabView() {
         name="Funds"
         component={FundStack}
       />
-      {/* <Tab.Screen
+       <Tab.Screen
         options={{headerShown: false}}
         name="Learn"
         component={LearnStack}
-      /> */}
+      /> 
     </Tab.Navigator>
   );
 }
