@@ -24,7 +24,7 @@ export const courseDataProductDevelopment = {
         text: "A product roadmap is a sophisticated visual that depicts your product's progression over a foreseeable period of time. The product roadmap outlines where the company is now, where it wants to go, and how it will get there. It is a great resource for teams to plan tasks and carry out the strategy.",
              image:
              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fproduct%20planning.png?alt=media&token=3f10622b-7e0f-4665-824b-dae64cb486a2&_gl=1*15qkhte*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQxMTkuMC4wLjA.',
-             type: 'textimg',
+             type: 'headtextimg',
       },
        
       {
@@ -40,7 +40,7 @@ export const courseDataProductDevelopment = {
         text: "Because different audiences' needs  and demands will vary, the information and structure of your plan must be adjusted to them.",
             image:
             'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=45c92f41-df7f-4a9e-bef9-e54b5779fea2&_gl=1*9ak7aw*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQyOTcuMC4wLjA.', 
-            type: 'textimg',
+            type: 'headtextimg',
       },
 
 
@@ -155,10 +155,10 @@ export const courseDataProductDevelopment = {
   type:'textimg'
   },
   {
-    
-    text:'Common Pitfalls :\n\nWhy is it so minimal? \n\nConsider the concept you want to develop.  \n\nHow many days should you devote to developing a working prototype?',
+    heading:'Common Pitfalls :',
+    text:'Why is it so minimal? \n\nConsider the concept you want to develop.  \n\nHow many days should you devote to developing a working prototype?',
     image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FConcept%20about%20business%20Failure.png?alt=media&token=56f4358c-7958-4c2b-bd0a-41f94e81d686&_gl=1*1r3bdy3*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTYwMDUuMC4wLjA.',
-  type:'textimg'
+  type:'headtextimg'
   },
   {
     
@@ -234,7 +234,7 @@ export const courseDataProductDevelopment = {
 
 ]},
 {
-name:"model2",
+name:"model3",
 slides:[
 
 
@@ -246,9 +246,10 @@ slides:[
     ,
 
     {
-        text:"STEP 1:  Decide that reaching a diverse audience is important to you.\n\nMaking a conscious decision to prioritize diversity and inclusion as an individual or as an organization is the first and most important action you can take. There's a common misconception that if we all look and think alike, business culture the pinnacle of the startup sector will be easier.",
+      heading:'STEP 1:  Decide that reaching a diverse audience is important to you.',
+        text:"Making a conscious decision to prioritize diversity and inclusion as an individual or as an organization is the first and most important action you can take. There's a common misconception that if we all look and think alike, business culture the pinnacle of the startup sector will be easier.",
         image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FMan%20thinking%20to%20start%20a%20startup.png?alt=media&token=69fc7dc8-4e40-4ea7-bc1e-ff8b5e074116&_gl=1*nx5don*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTg5MjQuMC4wLjA.'   ,
-        type:'textimg'
+        type:'headtextimg'
     },
 
     {
@@ -259,9 +260,10 @@ slides:[
 
 
     {
-        text:"STEP 2:  User Interviews and User Persona Creation\n\n User research is another crucial phase in the product design process for companies. Because your customers are at the heart of your product decision, user interviews are critical for gathering their feedback. You can effectively assess the interests of your user base if you do it right.",
+      heading:'STEP 2:  User Interviews and User Persona Creation',
+        text:" User research is another crucial phase in the product design process for companies. Because your customers are at the heart of your product decision, user interviews are critical for gathering their feedback. You can effectively assess the interests of your user base if you do it right.",
       image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FLayer%202.png?alt=media&token=d7401f59-cccb-4ce0-91c2-b876c75e92fa&_gl=1*e12zjq*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTkyMjIuMC4wLjA.',
-           type:'textimg'
+           type:'headtextimg'
     },
 
     {
@@ -270,9 +272,10 @@ slides:[
         type:'textimg'
     },
     {
-        text:"STEP 3:  Competitor Research\n\nIn order to establish a product design for a startup, you must perform competitive research in addition to user research. Examine the market performance of your immediate competitors' offerings.",
+      heading:'STEP 3:  Competitor Research',
+        text:"In order to establish a product design for a startup, you must perform competitive research in addition to user research. Examine the market performance of your immediate competitors' offerings.",
         image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fresearch%20and%20development.png?alt=media&token=eecbeadc-5fab-4d31-8dff-092871468af5&_gl=1*1ikq2q7*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTkzNjAuMC4wLjA.',
-        type:'textimg'
+        type:'headtextimg'
     },
     {
         text:"Analyzing the competitor's strategy will assist you in determining its efficacy and exploitable loopholes. To distinguish yourself from the competition, figure out what your product's unique selling proposition is.",
@@ -280,9 +283,10 @@ slides:[
         type:'textimg'
     },
     {
-        text:"Step 4. User Journey Mapping\n\nCreate a user journey map to better understand the potential interactions between the user and your product. This map depicts the actions a user must take to address a certain problem. It might be as simple as a series of stages or it can branch out into several directions.",
+      heading:'Step 4. User Journey Mapping',
+        text:"Create a user journey map to better understand the potential interactions between the user and your product. This map depicts the actions a user must take to address a certain problem. It might be as simple as a series of stages or it can branch out into several directions.",
         image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fmultitasking%20or%20branding%20or%20product%20planninh.png?alt=media&token=e48b2520-4771-49bb-9f4f-81b46c63286b&_gl=1*18qcjbz*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk0NzkuMC4wLjA.',
-      type:'textimg'
+      type:'headtextimg'
     },
     {
         text:"The more paths you can anticipate the user taking, the better you'll be able to predict how they'll engage with your product. However, complex user path maps can frequently make the process more difficult.        ",
@@ -305,9 +309,10 @@ slides:[
           }
   ,
   {
-    text:"Step 5. Sketching and Wireframing \n\n    The ideas for the user interface are visualized via sketching and wireframing. Sketching focuses on the concept representation itself, allowing the designer to experiment with different choices before deciding on the best one.",
+    heading:'Step 5. Sketching and Wireframing ',
+    text:" The ideas for the user interface are visualized via sketching and wireframing. Sketching focuses on the concept representation itself, allowing the designer to experiment with different choices before deciding on the best one.",
         image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fdrawing.png?alt=media&token=52676fef-70aa-4740-8180-3da33b3142d6&_gl=1*4ml2fy*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk3MDAuMC4wLjA.',
-         type:'textimg'
+         type:'headtextimg'
 },
 
 {
@@ -316,9 +321,10 @@ slides:[
          type:'textimg'
 },
 {
-    text:"Step 6. Prototyping\n\nA prototype is a representation of a concept before it is turned into a finished product. Prototyping should be quick and easy to use, with enough functionality to allow for thorough testing. They typically begin small and expand as new features and concepts become integrated into the product.",
+  heading:'Step 6. Prototyping',
+    text:"A prototype is a representation of a concept before it is turned into a finished product. Prototyping should be quick and easy to use, with enough functionality to allow for thorough testing. They typically begin small and expand as new features and concepts become integrated into the product.",
     image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWorkshop%20for%20Growth.png?alt=media&token=40ef8008-0bdc-4eb2-be76-91d1b5478c69&_gl=1*j7h60v*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk4MjYuMC4wLjA.',
-  type:'textimg'
+  type:'headtextimg'
 },
 {
     text:"You can experiment with ideas and visualize alterations while working on the prototype. The prototype, on the other hand, can act as a specification for developers.    ",
@@ -327,10 +333,10 @@ slides:[
 },
 
 
-{
-    text:"Step7. Testing with the Product Team\n\nIterative testing is an important part of the design process since it allows us to find and correct defects and inconsistencies that were missed during earlier stages. You can also come up with new concepts and acquire information about the product's potential success.",
+{  heading:'Step7. Testing with the Product Team',
+    text:"Iterative testing is an important part of the design process since it allows us to find and correct defects and inconsistencies that were missed during earlier stages. You can also come up with new concepts and acquire information about the product's potential success.",
        image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWebsite%20Maintenance.png?alt=media&token=d8870d31-de82-4661-8898-ef76456939d0&_gl=1*dpsn8l*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk5NTIuMC4wLjA.',
-         type:'textimg'
+         type:'headtextimg'
 },
 {
     text:"A technique that does not necessitate a lot of resources is product testing with your team. However, with input from your specialized team, it enables you to weed out important flows before the launch.    ",
@@ -339,9 +345,10 @@ slides:[
 },
 
 {
-    text:"Step 8. Testing with Users\n\n Because it directly addresses future customers, testing the product with users is a more practical technique. To begin, usability testing is required to identify any immediate issues with the UX design and interaction. You'll be able to watch how your target audience utilises the product up close and personal, as well as gain some performance data.", 
+  heading:'Step 8. Testing with Users',
+    text:" Because it directly addresses future customers, testing the product with users is a more practical technique. To begin, usability testing is required to identify any immediate issues with the UX design and interaction. You'll be able to watch how your target audience utilises the product up close and personal, as well as gain some performance data.", 
     image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fblog.png?alt=media&token=b58eaf4d-acbe-4097-8f2a-7ccf72f188bf&_gl=1*3b8z75*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjAxMjkuMC4wLjA.',
-        type:'textimg'
+        type:'headtextimg'
 },
 {
     text:"You can do 'diary testing' to see how the product will perform in the long run. Solicit long-term responses to specific questions regarding the app from the participants so that you may get a definitive judgment on the software's performance.",
@@ -372,51 +379,54 @@ slides:[
 
 
 {
-   text:'Foster a pool of qualified users\n\n Find people who are enthusiastic about your product or service and rely on them heavily. Allow them to provide comments, include them in decision-making, and keep them informed about new developments. These are the folks who will be your initial clients and prospective investors.',
+  heading:'Foster a pool of qualified users',
+   text:' Find people who are enthusiastic about your product or service and rely on them heavily. Allow them to provide comments, include them in decision-making, and keep them informed about new developments. These are the folks who will be your initial clients and prospective investors.',
       image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FPeople%20standing%20together.png?alt=media&token=72f2a2d4-d2b6-4c2c-bc95-25ad606d0671&_gl=1*17angmn*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjA0NzcuMC4wLjA.',
-          type:'textimg'
+          type:'headtextimg'
 },
 
 {
-    text:"Get advice from strangers\n\nFind your target audience and use them as a proving ground for your ideas. It's crucial to remember that you should build what people genuinely want, not what you believe they want."
+  heading:'Get advice from strangers',
+    text:"Find your target audience and use them as a proving ground for your ideas. It's crucial to remember that you should build what people genuinely want, not what you believe they want."
     , image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FFemale%20holding%20calendar%20looking%20for%20vacant%20date%20for%20appointment.png?alt=media&token=97212dd8-3300-4c36-91be-3dc2abccff82&_gl=1*1o15y92*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjE1MzYuMC4wLjA.',
-      type:'textimg'
+      type:'headtextimg'
  },
 
 
-{
-    text:"Grow your team\n\n Before you start constructing your app, take the time to identify the right people and assemble a fantastic squad. It will save you time later and guarantee that you are involving the appropriate individuals for the correct reasons.",
+{ heading:'Grow your team',
+    text:"Before you start constructing your app, take the time to identify the right people and assemble a fantastic squad. It will save you time later and guarantee that you are involving the appropriate individuals for the correct reasons.",
      image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FDeveloper%20Team.png?alt=media&token=69dadeb5-8f0c-4b21-a5b2-d75136004913&_gl=1*19ya2op*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjE2NzAuMC4wLjA.',
-        type:'textimg'
+        type:'headtextimg'
  },
  {
-    text:"Code with someone you trust\n\n App design is a significant investment that you want to get right. Make sure the designers are individuals you can trust to complete the project to your specifications.",
+  heading:'Code with someone you trust',
+    text:" App design is a significant investment that you want to get right. Make sure the designers are individuals you can trust to complete the project to your specifications.",
      image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fsoftware%20engineer.png?alt=media&token=f8aaf73b-855b-41a4-9cbe-9435e082487d&_gl=1*10h1a4a*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjE3NTcuMC4wLjA.',
-       type:'textimg'
+       type:'headtextimg'
  },
- {
-    text:"Functionality > Looks\n\n It's preferable to have an unattractive software that functions well than a beautiful app that doesn't accomplish what it's supposed to. Prioritize the functionality first, then devote work to the design later.",
+ { heading:'Functionality > Looks',
+    text:" It's preferable to have an unattractive software that functions well than a beautiful app that doesn't accomplish what it's supposed to. Prioritize the functionality first, then devote work to the design later.",
      image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWebsite%20development.png?alt=media&token=6c07646c-70e6-47c3-9b23-c1aed950dce9&_gl=1*jacvsm*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjE4NjguMC4wLjA.',
-         type:'textimg'
+         type:'headtextimg'
  },
 
- {
-    text:"Pay attention to analytics\n\n Another wonderful technique to see where users are having issues is to employ this method. Perhaps something in your coding is erroneous, or the instructions are difficult to follow. Sifting through the stats will help you figure out where consumers have stopped using the app and find any issues.",
+ {heading:'Pay attention to analytics',
+    text:" Another wonderful technique to see where users are having issues is to employ this method. Perhaps something in your coding is erroneous, or the instructions are difficult to follow. Sifting through the stats will help you figure out where consumers have stopped using the app and find any issues.",
      image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FSales%20executive%20doing%20sales%20analysis.png?alt=media&token=8bad409c-f2cb-420d-bf3c-a70d58e430d9&_gl=1*1e3v0vl*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjE5NTAuMC4wLjA.',
-           type:'textimg'
+           type:'headtextimg'
  },
 
- {
-    text:"Create a landing page\n\nIf you need assistance creating a landing page, consider using Launchrock's services. This will drive traffic to your website and allow them to discover more about your products or services.",
+ {heading:'Create a landing page',
+    text:"If you need assistance creating a landing page, consider using Launchrock's services. This will drive traffic to your website and allow them to discover more about your products or services.",
      image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWebsite%20development.png?alt=media&token=6c07646c-70e6-47c3-9b23-c1aed950dce9&_gl=1*b7ex7*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjIwMzUuMC4wLjA.',
-          type:'textimg'
+          type:'headtextimg'
  },
 
 
- {
-    text:"Build by example\n\nFind apps that run on similar platforms to yours and research how they evolved as businesses. While it isn't infallible, following their marketing strategy and improving as you go can be beneficial.   ",
+ {heading:'Build by example',
+    text:"Find apps that run on similar platforms to yours and research how they evolved as businesses. While it isn't infallible, following their marketing strategy and improving as you go can be beneficial.   ",
        image:'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FCollaborate.png?alt=media&token=78f7df8f-a375-4e92-a14e-1e766dfb3d03&_gl=1*drs0qs*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjIxMDQuMC4wLjA.',
-              type:'textimg'
+              type:'headtextimg'
  },
  {
     heading:'End Questions',

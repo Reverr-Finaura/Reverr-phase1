@@ -17,10 +17,11 @@ export const courseDataElevatorPitch = {
             type: 'intro',
       },
       {
-        text:'ELEVATOR PITCH\n\nElevator Pitch is something that can give “Do or die!” A real meaning. It can either have a long lasting impression or can go totally ignored. It’s a verbatim, appealing, interactive sales pitch that you can deliver to your end customers to have them grabbing the opportunity to try your products/services!',
+        heading:'ELEVATOR PITCH',
+        text:'Elevator Pitch is something that can give “Do or die!” A real meaning. It can either have a long lasting impression or can go totally ignored. It’s a verbatim, appealing, interactive sales pitch that you can deliver to your end customers to have them grabbing the opportunity to try your products/services!',
           image:
           'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20of%20finding%20creative%20employees%20for%20company%20startup%20(1).png?alt=media&token=b196aaf6-ec21-4f18-963a-6f7b50a4029a&_gl=1*11hsb5n*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjMwMDUuMC4wLjA.',
-                       type: 'textimg',
+                       type: 'headtextimg',
       },
       {
         text:'A well-crafted Elevator Pitch can open all kinds of doors with potential partners, customers, future employees, and investors        ',
@@ -138,24 +139,26 @@ export const courseDataElevatorPitch = {
 
 
       {
-        text: 'Step 1: Nail The Problem\n\nFounders at times miss out on giving due importance to the bottlenecks and the Solution. A finely tailored problem adds the value of your solution and can put your plan running in different directions.',
+        heading:'Step 1: Nail The Problem',
+        text: 'Founders at times miss out on giving due importance to the bottlenecks and the Solution. A finely tailored problem adds the value of your solution and can put your plan running in different directions.',
               image:
         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FSign%20Up%20form.png?alt=media&token=551168c9-0cde-45fe-8bf6-7bbc287a2fa2&_gl=1*l6obyp*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjQxOTAuMC4wLjA.',
-          type: 'textimg',
+          type: 'headtextimg',
       },
 
       {
-        text: "Step 2: Explain The Solution\n Once you've articulated the Problem, the next step is to enunciate how this problem can be fixed.      \n  Founders usually presume that their customer base already has a need for their product. \n Take time to figure out the actual need and potential reach of your product.    ",
+        heading:'Step 2: Explain The Solution',
+        text: "Once you've articulated the Problem, the next step is to enunciate how this problem can be fixed.      \n  Founders usually presume that their customer base already has a need for their product. \n Take time to figure out the actual need and potential reach of your product.    ",
              image:
         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FYoung%20man%20working%20on%20strategic%20planning%20(1).png?alt=media&token=16eec2ff-6ac9-4fdc-97dc-e76e8a1edf2a&_gl=1*tb8haf*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjQyODguMC4wLjA.',
-            type: 'textimg',
+            type: 'headtextimg',
       },
 
-      {
-        text: "Step 3: Identify the TAM \n\n Another option is to employ a market research or market analysis firm or consultant to assist you with this crucial duty. \nStartup founders frequently believe that they must do everything and try to save money by wearing all the hats, but it's perfectly acceptable to confess that you lack the abilities for certain tasks. \n  If market analysis is something you're not comfortable with, do some research and discover a company that can handle it for you  ",
+      {heading:'Step 3: Identify the TAM ',
+        text: "Another option is to employ a market research or market analysis firm or consultant to assist you with this crucial duty. \nStartup founders frequently believe that they must do everything and try to save money by wearing all the hats, but it's perfectly acceptable to confess that you lack the abilities for certain tasks. \n  If market analysis is something you're not comfortable with, do some research and discover a company that can handle it for you  ",
             image:
        "https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FMarketing.png?alt=media&token=7c76f21e-0976-4d9d-8cce-183e18a4b2ae&_gl=1*1sf2aoa*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjQzODMuMC4wLjA.",     
-        type: 'textimg',
+        type: 'headtextimg',
       },
 
       {

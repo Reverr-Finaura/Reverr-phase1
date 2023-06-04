@@ -29,11 +29,12 @@ export const courseDataEquityAndEverything = {
         type: 'textimg',
       },
       {
-        text:'Market analysis\n\n Market analysis is the evaluation of any given market that includes both quality and volume research. Doing in-depth market analysis as an important part of your business plan ensures that you know everything you need to know about your market.\n\n Coincidentally, it assures any current or future investors that you know what you are doing, that you have done your homework and that you are the right entrepreneur to address the gap in this particular market. ',
+        heading:'Market analysis',
+        text:' Market analysis is the evaluation of any given market that includes both quality and volume research. Doing in-depth market analysis as an important part of your business plan ensures that you know everything you need to know about your market.\n\n Coincidentally, it assures any current or future investors that you know what you are doing, that you have done your homework and that you are the right entrepreneur to address the gap in this particular market. ',
 
             image:
                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FYoung%20lady%20working%20on%20laptop.png?alt=media&token=5826f7ec-4087-49ef-88c8-e7c2fcbd217e&_gl=1*1g74d0h*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzEyOTYuMC4wLjA.',
-            type: 'textimg',
+            type: 'headtextimg',
       },
       {
         question: 'Best way to evaluate your startup idea is…',
@@ -56,12 +57,13 @@ export const courseDataEquityAndEverything = {
         text:'What does a start-up industry or a small business look like? Be sure to include size, trends, life cycle, and any expected growth. It is good to start with an industry definition and perspective because it gives all your market analysis a solid, comprehensive view to start with.',
         image:
         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FGroup.png?alt=media&token=d65cf345-2273-4a30-a308-7292ceb7bba7&_gl=1*1epf34y*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc5Mjc1OS4yNC4xLjE2ODU3OTI4NzEuMC4wLjA.',
-        type: 'headtextimgpoints',
+        type: 'headtextimg',
       },
       {
         heading: '2. Demographics and segmentation' ,
        text:'If your startup is focused on more than one market segment, you need to define that in the segregation and segregation category. Start with demographics and explore other potential features. Other factors to consider include geographical segregation (where people live) and behavioral segregation (what specific things, appropriate actions taken by people).',
-        image:
+       
+       image:
       'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FPie%20Chart.png?alt=media&token=f79963ec-0d4e-4c06-80ec-5f19f2102bef&_gl=1*1ncjgj4*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc5Mjc1OS4yNC4xLjE2ODU3OTI5ODguMC4wLjA.',
         type: 'headtextimgpoints',
       },
@@ -136,12 +138,12 @@ export const courseDataEquityAndEverything = {
       {
         heading: '8. How much will the customers pay?',
         text:"You must be able to estimate how much your project will cost your consumers. Imagine being an investor and receiving a pitch for a product that was actually a reference pen, and the entrepreneur was attempting to convince you that people would be willing to spend Rs 4,000 for it. Isn't it true that you can disregard that point? \n\n So, let's face it: the facts are what they are. Do your homework. Examine the market. Look at what others are charging for similar products and set your price within that range. You don't want to put your goods down, but you also don't want to be too pricey.",
-        type: 'headsubtextimg',
+        type: 'headtextimg',
       },
       {
         heading: '9. Barriers to Entry',
         text: 'The barriers to getting into your market analysis are about what prevents a competitor from taking your position in the market and what makes you a better person and your company is the best company to do what you do. You must be able to respond to the question of what prevents a competitor from entering your market and stealing the majority or all of it away from you. You must also be able to explain why you have achieved success in this industry.\n\n What are some specific barriers to entry for your competitors? Consider such things as the technology needed, any rules in your market, the required investment, access to services, product visibility, and location, depending on your business and market.',
-        type: 'headsubtextimg',
+        type: 'headtextimg',
       },
      
       {
@@ -164,7 +166,7 @@ export const courseDataEquityAndEverything = {
      ,]
      },
      {
-      name:"Resources for \n market analysis",
+      name:"module2",
       slides:[
       {
         heading: ' Resources for \n market analysis',
@@ -190,24 +192,25 @@ export const courseDataEquityAndEverything = {
 
      
       {
-        text: 'Online tools \n\n If you’re looking to gather information about your competition and your company is primarily online, check out SimilarWeb for extensive data. It’s a great resource for boosting up the credibility of your numbers. ',
+        heading:'Online tools ',
+        text: ' If you’re looking to gather information about your competition and your company is primarily online, check out SimilarWeb for extensive data. It’s a great resource for boosting up the credibility of your numbers. ',
         image:
              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FBusiness%20discussion.png?alt=media&token=ce74934f-52d7-4eb4-956c-cee73001cc2b&_gl=1*1sgozdq*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjAwODkuMC4wLjA.',
             type: 'textimg',
       },
 
-      {
-        text: 'Surveys \n\n When you’re trying to learn more about your market, why not ask them yourself? \n\n A well-designed survey can give you information about your users that you never would have expected. \n You can design and conduct surveys yourself, if that’s in your skill set, or you can hire a professional firm to conduct them for you. ',
+      {heading:'Surveys ',
+        text: ' When you’re trying to learn more about your market, why not ask them yourself? \n\n A well-designed survey can give you information about your users that you never would have expected. \n You can design and conduct surveys yourself, if that’s in your skill set, or you can hire a professional firm to conduct them for you. ',
         image:
             'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2Fteam%20success.png?alt=media&token=da5bcc4a-d5b7-4ca8-8f2c-c865c1ecd749&_gl=1*r28duf*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjAyNjcuMC4wLjA.',
-            type: 'textimg',
+            type: 'headtextimg',
       },
        
-      {
-            text:"Market Analysis Companies \n\n Another option is to employ a market research or market analysis firm or consultant to assist you with this crucial duty. \nStartup founders frequently believe that they must do everything and try to save money by 'wearing all the hats,' but it's perfectly acceptable to confess that you lack the abilities for certain tasks. \n If market analysis is something you're not comfortable with, do some research and discover a company that can handle it for you. ",
+      {heading:'Market Analysis Companies',
+            text:" Another option is to employ a market research or market analysis firm or consultant to assist you with this crucial duty. \nStartup founders frequently believe that they must do everything and try to save money by 'wearing all the hats,' but it's perfectly acceptable to confess that you lack the abilities for certain tasks. \n If market analysis is something you're not comfortable with, do some research and discover a company that can handle it for you. ",
          image:
             'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FYoung%20lady%20working%20on%20laptop.png?alt=media&token=5826f7ec-4087-49ef-88c8-e7c2fcbd217e&_gl=1*1v61ia9*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjA0NTYuMC4wLjA.',
-               type: 'textimg',
+               type: 'headtextimg',
       },
 
 
@@ -220,33 +223,36 @@ export const courseDataEquityAndEverything = {
       },
 
       {
-        text:"Specialize Further\n\nThere is one thing that a client will always value above low cost: specialty. \n\nIf a customer has the option of choosing between a low-cost offer and one that is tailored to their needs, they will almost always choose the latter.\n\nFind a technique to customise your product or service for specific customer segments. By providing several specialised solutions for each sub-category, you can still reach the entire market.",
+        heading:'Specialize Further',
+        text:"There is one thing that a client will always value above low cost: specialty. \n\nIf a customer has the option of choosing between a low-cost offer and one that is tailored to their needs, they will almost always choose the latter.\n\nFind a technique to customise your product or service for specific customer segments. By providing several specialised solutions for each sub-category, you can still reach the entire market.",
         image:
         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FYoung%20lady%20working%20on%20laptop.png?alt=media&token=5826f7ec-4087-49ef-88c8-e7c2fcbd217e&_gl=1*1v61ia9*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjA0NTYuMC4wLjA.',
-           type: 'textimg',
+           type: 'headtextimg',
   },
       
   {
-    text:"Do Not Race to Bottom\n\nMake a statement about quality with your one-of-a-kind items. \nYou may need to explain to your consumers why you deserve more money, but don't hurry into a price war with another team. \nRunning downhill can be detrimental to your business for a long time. Respect your competitor's pricing strategy to hold yourself accountable. People will look up to you because of that.",
+    heading:'Do Not Race to Bottom',
+    text:"Make a statement about quality with your one-of-a-kind items. \nYou may need to explain to your consumers why you deserve more money, but don't hurry into a price war with another team. \nRunning downhill can be detrimental to your business for a long time. Respect your competitor's pricing strategy to hold yourself accountable. People will look up to you because of that.",
     image:
     'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FGrowing%20Up.png?alt=media&token=56044382-5260-4c31-9f44-1e1beb7e2239&_gl=1*ri9d62*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjA4OTYuMC4wLjA.',   
-    type: 'textimg',
+    type: 'headtextimg',
 },
 
 {
-    text:'Learn About Your Market\n\n Because you believe that your competitor is of low quality, it may not be. The market determines quality, and if it likes a competitor, that is an opportunity for you to learn why. \nYou will probably understand the marketing angle they use or the feature they use in a different way that attracts customers to them. \n\nUse your competition to learn more about your market, and move around accordingly.',
+  heading:'Learn About Your Market',
+    text:' Because you believe that your competitor is of low quality, it may not be. The market determines quality, and if it likes a competitor, that is an opportunity for you to learn why. \nYou will probably understand the marketing angle they use or the feature they use in a different way that attracts customers to them. \n\nUse your competition to learn more about your market, and move around accordingly.',
       image:
       'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FMarketing.png?alt=media&token=87446859-8650-4219-9c99-3e5ec1ab528b&_gl=1*xu724f*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc5Mjc1OS4yNC4xLjE2ODU3OTMxODYuMC4wLjA.',
    
-      type: 'textimg',
+      type: 'headtextimg',
 },
 
-{
-    text:"Polish Your Brand \n\nYou've put money into your business. Your team is exceptional. You're also well prepared to enter the market. \nHowever, keep in mind that the most important client for your product is you. \n Create an interesting tale that helps your client base achieve true product balance. Please sympathize with them. They are aware of the situation. Constantly add value to them. Never take anything for granted when it comes to them. \nThis is the storyline you want to tell, and flexible pricing strategies should follow." ,
+{heading:'Polish Your Brand ',
+    text:"You've put money into your business. Your team is exceptional. You're also well prepared to enter the market. \nHowever, keep in mind that the most important client for your product is you. \n Create an interesting tale that helps your client base achieve true product balance. Please sympathize with them. They are aware of the situation. Constantly add value to them. Never take anything for granted when it comes to them. \nThis is the storyline you want to tell, and flexible pricing strategies should follow." ,
       image:
       'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FMarketing.png?alt=media&token=87446859-8650-4219-9c99-3e5ec1ab528b&_gl=1*xu724f*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc5Mjc1OS4yNC4xLjE2ODU3OTMxODYuMC4wLjA.',
    
-      type: 'textimg',
+      type: 'headtextimg',
 },
 
 

@@ -5,7 +5,7 @@ export const courseDataPitchDeck = {
      },
     modules: [
      {
-      
+      name:"model1",
       slides:[
       {
        text:"A pitch deck is a presentation used by entrepreneurs and startup owners to highlight their business, entice investors, and possibly seek cash to help them build their firm.\n You can't discount the importance of a good pitch deck in persuading investors since it helps you create powerful visual stories.",
