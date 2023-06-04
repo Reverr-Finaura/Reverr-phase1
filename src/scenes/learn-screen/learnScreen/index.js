@@ -58,6 +58,10 @@ const LearnScreen = () => {
           //console.log(sort);
           sortedCourseData.push(sort[0]);
         }
+
+        sortedCourseData?.map((item, i) =>
+          console.log(item.name, '😆', item.image, '😆'),
+        );
         setCourseData(sortedCourseData);
         setLoading(false);
         setLoader(false);
