@@ -430,9 +430,9 @@ function TabView() {
             case 'Funds':
               iconSource = focused ? Theme.fundsactive : Theme.funds;
               break;
-            // case 'Learn':
-            //   iconSource = focused ? Theme.learnactive : Theme.learn;
-            //   break;
+            case 'Learn':
+              iconSource = focused ? Theme.learnactive : Theme.learn;
+              break;
           }
 
           return (

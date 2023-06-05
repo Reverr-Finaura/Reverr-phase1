@@ -163,7 +163,7 @@ const LearnScreen = () => {
                     activeOpacity={0.6}
                     onPress={() => {
                       navigation.navigate('StartCourse', {
-                        CourseDetails: item,
+                        CourseDetails: {name: item?.frontscreen.name, image: item?.frontscreen.coverImg}          //item,
                       });
                     }}
                     style={{
