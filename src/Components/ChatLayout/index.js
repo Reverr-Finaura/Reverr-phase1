@@ -19,17 +19,7 @@ export const ChatLayout = ({usersArray, loader}) => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <ImageBackground
-        style={{
-          marginHorizontal: '2.6%',
-          paddingVertical: '1%',
-          marginBottom: '3%',
-          borderRadius: 10,
-          overflow: 'hidden',
-        }}
-        source={require('../../assets/images/Rectangle2.png')}>
-        <Text style={styles.text}>Chats</Text>
-      </ImageBackground>
+      
       <ImageBackground
         style={styles.chatContainer}
         source={require('../../assets/images/Rectangle2.png')}>
@@ -52,13 +42,14 @@ export const ChatLayout = ({usersArray, loader}) => {
                       })
                     }>
                     <View
-                      style={{flexDirection: 'row', justifyContent: 'center'}}>
+                      style={{flexDirection: 'row', justifyContent: 'center',}}>
                       <Image style={styles2.image} source={{uri: item.image}} />
                       <View
                         style={{
+      
                           width: '70%',
                           justifyContent: 'center',
-                          marginHorizontal: '5%',
+                          marginHorizontal: '8%',
                         }}>
                         <Text style={styles2.name}>{item.name}</Text>
                         <Text style={styles2.message}>Tap to Chat</Text>
@@ -94,17 +85,23 @@ const styles2 = StyleSheet.create({
     borderBottomWidth: 2,
   },
   image: {
-    width: 60,
-    height: 60,
+    width: 45,
+    height: 45,
+    borderRadius: 45 / 2,
+    overflow: "hidden",
+    borderWidth: 3,
+   
   },
   name: {
+    marginHorizontal: '-4%',
     fontSize: 14,
     fontWeight: '400',
-    marginVertical: '2%',
+    marginVertical: '1%',
     color: 'white',
     // backgroundColor: 'blue',
   },
   message: {
+    marginHorizontal: '-4%',
     color: '#939292',
     fontSize: 12,
   },
