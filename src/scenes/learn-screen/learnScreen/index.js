@@ -28,6 +28,7 @@ import {arrangeList} from '../../../assets/data/dummyData';
 import {capitalizeFirstLetter} from '../../../utils/Helper/helper';
 import GradientHeader from '../../../Components/components/GradientHeader';
 import Theme from '../../../utils/Theme';
+import {AllCourseModuleData} from '../../../dumy-Data/AllCourseModuleData';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
@@ -71,6 +72,7 @@ const LearnScreen = () => {
     getCourses();
   }, []);
 
+  console.log(AllCourseModuleData.length, 'jkj');
   return (
     <View style={{backgroundColor: AppColors.primarycolor, flex: 1}}>
       <GradientHeader />
@@ -139,8 +141,69 @@ const LearnScreen = () => {
             <Icon name="angle-right" size={55} color={AppColors.FontsColor} />
           </TouchableOpacity>
         </View>
-        <View style={{height: '100%'}}>
-          {loader ? (
+        <View style={{height: '55%'}}>
+          <View
+            style={{
+              marginVertical: '8%',
+              backgroundColor: AppColors.primarycolor,
+            }}>
+            <FlatList
+              data={AllCourseModuleData}
+              numColumns={column}
+              showsVerticalScrollIndicator={false}
+              renderItem={({item}) => (
+                <View
+                  style={{
+                    width: Width / 2.2,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    margin: '2%',
+                  }}>
+                  <TouchableOpacity
+                    activeOpacity={0.6}
+                    onPress={() => {
+                      navigation.navigate('StartCourse', {
+                        CourseDetails: item,
+                      });
+                    }}
+                    style={{
+                      borderRadius: 20,
+                      overflow: 'hidden',
+                      width: Width / 2.2,
+                    }}>
+                    <ImageBackground
+                      source={{uri: item?.frontscreen.coverImg}}
+                      style={{
+                        width: Width / 2.2,
+                        height: Height / 4,
+                        borderRadius: 20,
+                      }}>
+                      <View
+                        style={{
+                          backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                          marginTop: '70%',
+                          height: '100%',
+                          alignItems: 'center',
+                          paddingTop: '4%',
+                          paddingHorizontal: '3%',
+                        }}>
+                        <Text
+                          style={{
+                            color: AppColors.FontsColor,
+                            fontSize: 17,
+                            textAlign: 'center',
+                          }}>
+                          {item?.frontscreen.name}
+                        </Text>
+                      </View>
+                    </ImageBackground>
+                  </TouchableOpacity>
+                </View>
+              )}
+            />
+            {/* <View style={{height: 200}} /> */}
+          </View>
+          {/* {loader ? (
             <View
               style={{
                 marginTop: '8%',
@@ -171,7 +234,7 @@ const LearnScreen = () => {
                 backgroundColor: AppColors.primarycolor,
               }}>
               <FlatList
-                data={courseData}
+                data={AllCourseModuleData}
                 numColumns={column}
                 showsVerticalScrollIndicator={false}
                 renderItem={({item}) => (
@@ -195,7 +258,7 @@ const LearnScreen = () => {
                         width: Width / 2.2,
                       }}>
                       <ImageBackground
-                        source={{uri: item.image}}
+                        source={{uri: item?.frontscreen.coverImg}}
                         style={{
                           width: Width / 2.2,
                           height: Height / 4,
@@ -216,7 +279,7 @@ const LearnScreen = () => {
                               fontSize: 17,
                               textAlign: 'center',
                             }}>
-                            {capitalizeFirstLetter(item.name)}
+                            {item?.frontscreen.name}
                           </Text>
                         </View>
                       </ImageBackground>
@@ -224,9 +287,9 @@ const LearnScreen = () => {
                   </View>
                 )}
               />
-              {/* <View style={{height: 200}} /> */}
+           
             </View>
-          )}
+          )} */}
         </View>
       </View>
     </View>
