@@ -43,7 +43,7 @@ const SwipeCard = ({
               activeOpacity={0.6}
               onPress={() => {
                 navigation.navigate('StartCourse', {
-                  CourseDetails: item,
+                  CourseDetails: item, // {name: item?.frontscreen.name, image: item?.frontscreen.coverImg, modules: item?.modules}   // item,
                 });
               }}
               style={{
@@ -52,7 +52,7 @@ const SwipeCard = ({
                 width: Width / 1.06,
               }}>
               <ImageBackground
-                source={{uri: item.image}}
+                source={{uri: item?.frontscreen.coverImg}}
                 style={{
                   width: Width / 1.06,
                   height: Height / 4,
@@ -73,7 +73,7 @@ const SwipeCard = ({
                       fontSize: 17,
                       textAlign: 'center',
                     }}>
-                    {capitalizeFirstLetter(item.name)}
+                    {capitalizeFirstLetter(item?.frontscreen.name)}
                   </Text>
                 </View>
               </ImageBackground>

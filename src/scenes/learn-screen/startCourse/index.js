@@ -24,8 +24,8 @@ import Theme from '../../../utils/Theme';
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 const StartCourse = props => {
-  const courseData = courseDataBusinessPlanning.modules; // props.route.params.CourseDetails;
-  const CourseDetailsFromProps = props.route.params.CourseDetails;
+  // const courseData = courseDataBusinessPlanning.modules // props.route.params.CourseDetails;
+  const courseData = props.route.params.CourseDetails;
   const navigation = useNavigation();
   const [chp, setchp] = useState(0);
   const [slide, setslide] = useState(0);
@@ -62,7 +62,7 @@ const StartCourse = props => {
   //   })
 
   // }
-  console.log(courseData, 'cddg');
+  // console.log(courseData, 'cddg');
   const SaveCourses = async id => {
     dispatch(saveCourse(id));
     await firestore()
@@ -101,7 +101,7 @@ const StartCourse = props => {
       });
   };
 
-  console.log(courseData, 'akjdskhdsh');
+  // console.log(courseData, 'akjdskhdsh');
 
   return (
     <LinearGradient
@@ -109,7 +109,7 @@ const StartCourse = props => {
       style={styles.screen}>
       <ImageBackground
         style={{width: '100%', height: Height / 2.7, paddingTop: '5%'}}
-        source={{uri: CourseDetailsFromProps.image}}>
+        source={{uri: courseData.frontscreen.coverImg}}>
         <BackButton
           IconSize={30}
           onPress={() => {
@@ -130,7 +130,7 @@ const StartCourse = props => {
               fontFamily: 'Poppins-SemiBold',
               fontSize: 16,
             }}>
-            {CourseDetailsFromProps.name}
+            {courseData.frontscreen.name}
           </Text>
         </View>
       </ImageBackground>
@@ -152,7 +152,7 @@ const StartCourse = props => {
         >
           <Icon2
             name={
-              state.user?.savedCourses?.includes(courseData.id)
+              state.user?.savedCourses?.includes(courseData.modules.id)
                 ? 'bookmark'
                 : 'bookmark-outline'
             }
@@ -164,16 +164,17 @@ const StartCourse = props => {
           style={styles.ContinueButton}
           onPress={() => {
             navigation.navigate('Instruction', {
-              BookData: courseData.chapter[chp],
+              BookData: courseData.modules[0],
+              moduleNumber: 1,
             });
           }}>
-          <Text style={styles.btnTxt}>Continue</Text>
+          <Text style={styles.btnTxt}>Start</Text>
         </TouchableOpacity>
       </View>
       <Text style={styles.txt}>Chapters</Text>
       <ScrollView style={styles.ChapterContainer}>
         <FlatList
-          data={courseData}
+          data={courseData.modules}
           renderItem={({item, index}) => (
             <View key={index} style={styles.ChapterCard}>
               <View

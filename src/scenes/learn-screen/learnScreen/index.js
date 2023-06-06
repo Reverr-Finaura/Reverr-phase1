@@ -91,7 +91,7 @@ const LearnScreen = () => {
             </SkeletonPlaceholder>
           ) : (
             <SwipeCard
-              data={courseData}
+              data={AllCourseModuleData}
               pagingEnabled={true}
               showsHorizontalScrollIndicator={false}
               horizontal={true}
@@ -163,7 +163,7 @@ const LearnScreen = () => {
                     activeOpacity={0.6}
                     onPress={() => {
                       navigation.navigate('StartCourse', {
-                        CourseDetails: {name: item?.frontscreen.name, image: item?.frontscreen.coverImg}          //item,
+                        CourseDetails: item,  //{name: item?.frontscreen.name, image: item?.frontscreen.coverImg, modules: item?.modules}          //item,
                       });
                     }}
                     style={{

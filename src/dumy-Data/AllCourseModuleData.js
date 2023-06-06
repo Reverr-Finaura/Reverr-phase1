@@ -1166,4053 +1166,4054 @@ export const AllCourseModuleData = [
       },
     ],
   },
-//   {
-//     frontscreen: {
-//       images: [
-//         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=798bb50f-ebf3-4acf-b766-18c06b00c418',
-//         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//       ],
-//       name: 'Equity & Everything',
-//       coverImg:
-//         'https://img.freepik.com/free-photo/education-day-arrangement-table-with-copy-space_23-2148721266.jpg?w=1060&t=st=1685954048~exp=1685954648~hmac=b79f735f955de7a19f85aacc636b4ed01bc39cef06592ca0191e41c9f6146e7d',
-//     },
-//     modules: [
-//       {
-//         name: 'model1',
-//         slides: [
-//           {
-//             heading: 'What is Equity?',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FGroup%202902.png?alt=media&token=d5e99aa3-6c17-4695-8317-19e47ac993da',
-//             type: 'intro',
-//           },
-//           {
-//             text: "Equity, typically referred to as shareholders' equity (or owners' equity for privately held companies), represents the amount of money that would be returned to a company's shareholders if all of the assets were liquidated and all of the company's debt was paid off in the case of liquidation. In the case of acquisition, it is the value of company sales minus any liabilities owed by the company not transferred with the sale.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances%20(1).png?alt=media&token=1dc2949e-52c8-4bb7-a661-fd775de221b7',
-//             type: 'textimg',
-//           },
-//           {
-//             text: "In addition, shareholder equity can represent the book value of a company. Equity can sometimes be offered as payment-in-kind. It also represents the pro-rata ownership of a company's shares.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: "Equity can be found on a company's balance sheet and is one of the most common pieces of data employed by analysts to assess a company's financial health.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=53d2a4d6-60b3-4144-9d97-ffb7abad253b',
-//             type: 'textimg',
-//           },
-//           {
-//             question: 'What is Beta Testing?',
-//             options: [
-//               'Beta testing is the process of releasing an old product to a limited audience to understand how they respond to it.',
-//               'Beta testing is the process of releasing unstable product',
-//               'Beta testing is the process of releasing a new product directly to the whole target audience.',
-//               'Beta testing is the process of releasing a new product to a limited audience to understand how they respond to it.',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-//           //this is intro!!!
-//           {
-//             heading: 'Key Issues',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=53d2a4d6-60b3-4144-9d97-ffb7abad253b',
-//             type: 'intro',
-//           },
-//           {
-//             text: 'Well well well, you might think splitting equity is a no-brainer,\n\nTHAT IS A BIG NO!!!',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FPie%20Chart.png?alt=media&token=5d6b75e6-f051-431a-974b-decae77c7be2',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'So, let’s just be very honest.\n\nTrust me that’s the biggest misconception you can have if you think so.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FPie%20Chart.png?alt=media&token=5d6b75e6-f051-431a-974b-decae77c7be2',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Mind you, it is the most important consideration while deciding the capital structure of your startup.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Therefore,without further ado, let’s dive deep into it and get a thorough understanding of the so-called “Splitting Equity”.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FPie%20Chart.png?alt=media&token=5d6b75e6-f051-431a-974b-decae77c7be2',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Phase 1',
-//             subheading: 'TREAT EQUITY LIKE GOLD',
-//             text: '',
-//             sub_text: '',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20for%20Investment%20concept.png?alt=media&token=5fb2c805-2a26-4373-b75f-acaddbf3be1a',
-//             type: 'headsubtextimg',
-//           },
-//           {
-//             text: 'There’s no better way than to learn from others’ shortcomings and modify your plan of action beforehand!',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20Tasklist.png?alt=media&token=46ca21cb-3aad-48d5-8260-70285c6e0e3e',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'So, before jumping directly to structuring and managing our equity, it’s pivotal to understand the biggest pitfalls in handing out early equity, especially when we’re putting the appropriate value on every decision we make.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20Tasklist.png?alt=media&token=46ca21cb-3aad-48d5-8260-70285c6e0e3e',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Phase 1',
-//             subheading: 'Don’t treat equity like monopoly money',
-//             text: '',
-//             sub_text: '',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//             type: 'headsubtextimg',
-//           },
-//           {
-//             text: 'The biggest mistake that the entrepreneur ends up making is that they don’t understand the worth of their business idea and are unable to take in the exchange for real value at whatever equity the other side is quoting for!',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'But no! That’s where you’re going wrong despite having everything sailing smoothly!One of our most valuable assets is our equity.\n\nIn the future, it will likely be the only asset class we own that will likely be worth exponentially more than it is today. We don’t get it back.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: "Giving away equity reduces the future payout we will earn over the rest of our career. The issue is not that equity shouldn't be used - the backbone of the startups in one sense - but that we must recognize just how valuable it is.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'The biggest mistake that the entrepreneur ends up making is that they don’t understand the worth of their business idea and are unable to take in the exchange for real value at whatever equity the other side is quoting for!',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             question: 'What is Beta Testing?',
-//             options: [
-//               'Beta testing is the process of releasing an old product to a limited audience to understand how they respond to it.',
-//               'Beta testing is the process of releasing unstable product',
-//               'Beta testing is the process of releasing a new product directly to the whole target audience.',
-//               'Beta testing is the process of releasing a new product to a limited audience to understand how they respond to it.',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'Understand the Future Value of Equity!',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//             type: 'intro',
-//           },
-//           {
-//             text: 'Understanding the future value of equity is just as important as taking some current business decision that might influence the profitability of the business.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'As we’ve grown up hearing,”Power of compounding works wonders”, that is not all! If you don”t understand its true worth, then I’m sorry to say mate, you didn’t appreciate the time value of equity when you just gave it away to some investor at a high rate - and now you’ll have to pay for it for the rest of our lives.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Understand the Future Value of Equity!',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//             type: 'intro',
-//           },
-//           {
-//             text: 'Not only do startups go on making hasty decisions by issuing and treating equity like Monopoly money, they also tend to run into issues like giving it away all at once – up front. If it were cash we’d never imagine doing that, but for some reason we’re propelled to think that equity should be a lump sum payment despite the services rendered.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Give Equity as Slowly as Possible',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//             type: 'intro',
-//           },
-//           {
-//             question: 'What is Beta Testing?',
-//             options: [
-//               'Beta testing is the process of releasing an old product to a limited audience to understand how they respond to it.',
-//               'Beta testing is the process of releasing unstable product',
-//               'Beta testing is the process of releasing a new product directly to the whole target audience.',
-//               'Beta testing is the process of releasing a new product to a limited audience to understand how they respond to it.',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'NOTE-',
-//             text: 'Now, beware! That would mean moving slowly towards disaster. That doesn’t mean we are running out of options as to how we can manage our equity or should we consider giving it out. It simply implies that when we do, we want to retrospect where we were and where we are today and think about the greater angles of the business in the long run.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Get it in Writing',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//             type: 'intro',
-//           },
-//           {
-//             text: 'There can be no plausible explanation as to why we need to wait until we’ve got a final affirmation on our equity arrangements to finally put it on paper. We can gradually start regulating each step individually and then eventually compile them all into a single formalized document with our startup lawyers.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Time to Wheel in the Lawyers',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//             type: 'intro',
-//           },
-//           {
-//             text: 'There can be no plausible explanation as to why we need to wait until we’ve got a final affirmation on our equity arrangements to finally put it on paper. We can gradually start regulating each step individually and then eventually compile them all into a single formalized document with our startup lawyers.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//         ],
-//       },
-//       {
-//         name: 'model2',
-//         slides: [
-//           {
-//             heading: 'STOCK STRUCTURE',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//             type: 'intro',
-//           },
-//           {
-//             text: 'There are essentially 4 components to setting up the fundamental structure of our Stock Plan:',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Stock Structure-\n\nWe need to understand exactly how our stock will be structured to allocate. There are several ways we can counter this on the basis of how we want to manage control of the company.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'By default, the Founders of a business have equity. They’re directly responsible for the management of the company like paying taxes and covering payroll. On the other side the employees, however, don’t necessarily need to own equity or maintain the same liabilities that founders do. This is where the stock structure bridges the gap.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'There are 3 ways employees can be granted stocks in our company:',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Regular Equity',
-//             text: 'Employees can get the same types of shares that managerial people possess implying that they shall be eligible for the same benefits along with the same liabilities. Simply allocating the share amongst a handful of co-founders is different, but doing that across a larger group of people can get way more cumbersome.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'When to use it',
-//             text: 'When we want to divide the company amongst a small number of active members who will all share the responsibility of managing the company long term.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Drawbacks',
-//             text: '- Potential control issues with adding more members\n- May not be financially able to buy it back\n- Will likely have tax consequences for the recipient\n- May add members who cannot financially support the business\n- May accumulate dormant Equity holders',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Drawbacks of Regular Equity',
-//             text: '',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: 'Introduction of control issues. The owner of a legal share in a company often has specific rights, such as voting rights and fiduciary duties. It is not necessary to introduce complex control issues as well if our goal is to create cash incentives on upside.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Inability to afford to buyback of shares. It is likely that there is a fair market value for buying back actual equity. The issue is that we probably won’t have idle cash to “buy someone out”.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Tax consequences. If we get handed a share of equity, and that equity has marketable value, the IRS may tax us on the value, regardless of the cashflow to show as evidence. This can become a tight spot for someone. This is a complicated legal and tax matter that requires advisors’ say.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             question: 'Regular equity has which of the following drawbacks?',
-//             options: [
-//               'Introduction of control issues.',
-//               'May accumulate dormant Equity holders',
-//               'Both are correct',
-//               'None of these',
-//             ],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-//           {
-//             text: 'Recipients can’t financially contribute. Employees do not intend to put money back into the company as their share of ownership to cut down liabilities of the business including paying taxes and absorbing additional costs.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: "May accumulate dormant equity. Eventually, if we can't buy back the equity from people who have left, we may end up with a lot of equity holders who aren't contributing any ongoing value while eating up valuable equity that could be used to raise more capital or to reward current employees.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Stock Options',
-//             text: 'This means that the employee have a privilege to avail the “option” to buy stock in the company at a later date implicating that right now they don’t “own” anything, but if the company chose to go public, they can “exercise” the option to buy stock and earn the benefit at that time.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'When to use it',
-//             text: 'When we want to offer the benefits of equity while mitigating some of the consequences of handing out regular equity.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Benefits',
-//             text: '- Minimizes “loss of control” issues compared to equity\n- Can be easily returned\n- Minimizes tax consequences for employees\n- Well understood in the startup community',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Drawbacks',
-//             text: '- Employees may not be able to exercise them\n- Requires us to value the company\n- May create dormant equity holders',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: '3. Strike Price- Most Stock Options have a “strike price” which means the price at which the user can purchase their options. For example, if the Strike Price were $1, we would have the option to buy stock in the company for $1 per share.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             question: 'What are the benefits of using stock options?',
-//             options: [
-//               'Minimizes tax consequences for employees',
-//               'Well understood in the startup community',
-//               'Requires us to value the company',
-//               'Both A and B',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-//           {
-//             text: '- If the company were worth less than $1 per share, our options would be of no worth.\n\n- If the company were worth $3 per share, like at the time of a sale, we would buy the options for $1, sell them for $3, thereby making a profit of $2 per share.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: "During our tenure as employees of the company, if we join at a strike price of $1 and the company's value never exceeds $1, we may not reap any benefit because the company's value didn't \"improve\" during our tenure.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'In startups, stock options are issued with a strike price so that new employees can gain from the surge in the value of the company.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             question:
-//               '“strike price”  means the price at which the user can dump their options.',
-//             options: ['true', 'false'],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'Benefits of Stock Options',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//             type: 'intro',
-//           },
-//           {
-//             heading: 'Zero imposition of control issue.',
-//             text: "Unless the stock option is availed, the employees would typically have no rights within the company such as voting or other control-based problems. It is typically by design since we don't want a lot of people with no ownership stake to have direct control.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'They can easily be returned.',
-//             text: 'If an employee terminates and chooses not to exercise his options, then those options will be forfeited, and the stock would be retained back to reward future employees.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Less tax consequence.',
-//             text: "Being granted Stock Options doesn’t guarantee add tax-issues until the options are exercised. The taxable consequences typically don't arise until the options are exercised, which is only likely to occur if there is a sale to offset the tax liability.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Everyone understands them.',
-//             text: 'The concept of "stock options" has become standard fare in the startup world, so even if a potential recipient has not experienced them before, they will most likely understand what they are.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Drawbacks of Stock Options',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//             type: 'intro',
-//           },
-//           {
-//             heading: 'Employees may lose benefits',
-//             text: 'The person who worked for the company for say 5 years, left without exercising their options, and the company sold 4 years later may receive no benefit at all. This might be hard to digest and may not be aligned with how we want to compensate people.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Requires a valuation.',
-//             text: 'In order to mark a Strike Price at which the employee would pay for their option, it would be necessary to know the valuation of the company.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'May create dormant holders.',
-//             text: 'In the event that people exercise their options but do not participate in the business moving forward, we might have to get a dormant cap table.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Phantom Equity',
-//             text: 'People can be offered the option of holding equity (getting a cash payout) without actually needing to give them equity ownership in the firm. This acts more like a company bonus structure, whereby if the company size gets bigger and bigger, the team gets a percentage of the proceeds.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: 'As phantom equity is a contractual right, not an equity stake, we can grant upside without having to issue actual equity ownership shares. For example, we may not want our employees to materially own the company.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Benefits of Phantom Equity',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//             type: 'intro',
-//           },
-//           {
-//             heading: '1. No tax consequence upon grant',
-//             text: 'A significant issue in granting equity is that it doesn’t come easy since it is taxable upon transfer. Unless money is exchanged, phantom equity units are not a legal ownership of any actual profit.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '2.No dilution of actual equity',
-//             text: 'As phantom equity is a contractual right, not an equity stake, we can grant upside without having to issue actual equity ownership shares. For example, we may not want our employees to materially own the company.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '3.Avoids dormant equity issues.',
-//             text: 'Phantom equity is not the original equity ownership of the company; technically, the Cap Table will never replace it.  That said, company still might be liable if the phantom equity holders leave and still have provisions in their agreement to be paid on outstanding basis.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Other Benefits :',
-//             text: '- Investors won’t take this form of stock\n- Employees may not understand it vs. typical equity\n- Employees are taxed as “regular income” vs. “capital gains”',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Drawbacks of Phantom Equity',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//             type: 'intro',
-//           },
-//           {
-//             heading: '1. Not investor-friendly.',
-//             text: "Investors won't be inquisitive about phantom value since they very much want both proprietorship and the rights that come with equity.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '2. Not well-understood in the market.',
-//             text: "We may discover that potential employees and partners are more interested in learning about a phantom equity plan than in the amount of their grant. We'd have to be ready with a standard description of how the system operates.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '3.Employees are taxed as “regular income”.',
-//             text: 'Unlike normal equity gains, which are taxed at a lower rate ("capital gains tax") than regular income in the United States, any benefit received through a phantom equity plan is just regular income to the receiver.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Vesting',
-//             text: 'Vesting is a method of allowing members to "earn" their stock over time or in response to certain milestones. A typical "4-year vesting schedule" means that a company member will earn 25% of their stock each year for a total of four years. This is the equivalent of being paid over time based on our participation, similar to a paycheck, rather than receiving our four-year paycheck all at once and praying everything works out.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             question: 'What are the benefits of using stock options?',
-//             options: [
-//               'Regular Equity',
-//               'Stock Options',
-//               'Phantom Equity',
-//               'all of the above',
-//             ],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'Vesting Schedule',
-//             text: 'Vesting schedule refers to the period of time it takes for us to earn all of our stock. In the previous example, if our equity has a "4 Year Vest," we will possess 25% of our total 100% stake at the end of the first year. We shall possess a total of 50% by the end of Year 2 and so on. To earn 100% of our share utilizing a time-based scheme, we must hold it for four years.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Time-Based',
-//             text: 'Equity is built up over a set duration of time (usually in years), with a certain percentage of it vested at each stage. This is the most typical method of vesting equity.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Milestone-Based',
-//             text: "Equity is obtained when a member meets specific requirements. A salesperson's milestone, for example, could be a specific sales target.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             question: 'Vesting is…….',
-//             options: [
-//               'a method of allowing members to “return" their stock over time or in response to certain milestones.',
-//               'a method of allowing members to “sell" their stock over time or in response to certain milestones.',
-//               'a method of allowing members to "earn" their stock over time or in response to certain milestones.',
-//               'Both A and B',
-//             ],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-//         ],
-//       },
-
-//       {
-//         name: 'model3',
-//         slides: [
-//           {
-//             heading: 'SPLITTING EQUITY',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//             type: 'intro',
-//           },
-//           {
-//             heading: 'The Even Split',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//             type: 'intro',
-//           },
-//           {
-//             text: 'Ok, let’s assume there are only two partners in the business agreeing on a 50/50 split because that sounds fair.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Splitting 50/50 feels just and helps allay doubts about whether one person’s contributions deserve more equity or not.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Even split is done when you don’t know how to properly allocate contributions in capital.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'As it happens, an even split is absolutely OK if it turns out that over the long period, both contribute equally to the business but it’s not that easy as it may look like.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'That is when you go about getting your around these questions-\n1. What’s our contribution worth now?\n2. What will our contribution be worth over some period of time?\n3. How do we make adjustments if necessary?',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
-//             type: 'textimg',
-//           },
-//           {
-//             question: 'Even split is done when…….',
-//             options: [
-//               'you don’t know how to properly allocate contributions in capital.',
-//               'you know how to properly allocate contributions in capital.',
-//               'Both are corrYou have to split the equity equally',
-//               'None of these',
-//             ],
-//             ans: 0,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'What’s Our Contribution Worth Now?',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
-//             type: 'intro',
-//           },
-//           {
-//             text: 'We can make a variety of contributions, but they generally fall into two categories: monetary and non-monetary contributions.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Monetary Contributions',
-//             text: 'The funds that has been invested in the company which has been spent.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20for%20Investment%20concept.png?alt=media&token=5fb2c805-2a26-4373-b75f-acaddbf3be1a',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Contributions in kind.',
-//             text: 'Time (sweat equity), relationships, the concept, and tangible resources are all important.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FSmall%20team%20discussing%20ideas.png?alt=media&token=3907b80a-825d-43c9-b981-bd10d22b5d72',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: "The method of evaluating our contributions is as simple as adding up everyone's current and future contributions and weighing them correctly.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FSmall%20team%20discussing%20ideas.png?alt=media&token=3907b80a-825d-43c9-b981-bd10d22b5d72',
-//             type: 'textimg',
-//           },
-//           {
-//             question: 'How do you define monetary contributions?',
-//             options: [
-//               'The funds that has been withdrawn from the company.',
-//               'The funds that has been invested in the company which has been spent.',
-//               'Both are correct',
-//               'Time, relationships, the concept, and tangible resources are all important.',
-//             ],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'Value Multiplier',
-//             text: 'Not all contributions are the same. Due to scarcity, some contributions are just more valuable than others.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: 'Because of the nature of our business, all contributions come with a risk. Putting $1 of any contribution into a business carries a considerably higher risk than investing that same money in publicly listed stocks or taking a salary. \nAs a result, we use  a "Value Multiplier" to weight cash and non-monetary contributions separately.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'The goal is to assess the risk that someone is incurring by investing those funds in our company at such an initial stage.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             question: 'Which of the following is sweat equity?',
-//             options: ['cash', 'goodwill', 'time', 'all of these'],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'Cash Contribution',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
-//             type: 'intro',
-//           },
-//           {
-//             text: 'The easiest to value are monetary contributions. We compute the total value by multiplying the value of the cash invested by the "value multiplier."Cash Invested ($1) x Value Multiplier (4x for cash) = $4 Contribution',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Cash must have been transferred to the business before it may be considered "contributed." I haven\'t actually invested $1 million if I claim "I\'m putting capital of $1 million to the company" but only put $100 into the account. I need a way to "commit" the funds, or at the very least a legal arrangement that binds me to either put the remaining balance in or forfeit the value of my investment.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Loans as Cash',
-//             text: "It's possible that the investment will take the form of a bank loan or another structured investment. Most often, this will necessitate someone physically signing for the loan to secure it. It's answer varies depending on how everyone is involved.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: 'Signing parties are compensated in cash- In this case, whoever signs receives the monetary value irrespective of whether it is repaid.  If it pays off, like any investment, there is potentially no danger, but we must accept 100 percent risk to find out.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: "Signing parties is halved- In this scenario, we believe the loan's risk is low, so the signing party receives a 2x multiplier.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Non-Cash Contribution',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
-//             type: 'intro',
-//           },
-//           {
-//             heading: 'Time (Sweat Equity)',
-//             text: "Time is the most significant investment made by startups. To value time, we divide the average market rate you'd get paid by 2,000 hours in the year, then multiply by the amount of hours you'll commit.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Relationships',
-//             text: 'If the contribution was related to an important customer, we\'d offer a commission for the commencement, and possibly more if they helped us close the deal. It\'s important to talk about the commission rate so that the sale price may be allocated. "What is the market rate for this type of transition?" and "What trigger ensures it has been provided?"',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Facilities and Hard Goods',
-//             text: 'Some items, such as office space, equipment, inventory, and tangible products, can have a very "real" fair market value. Offering these things may appear to have "monetary value," but they don\'t always have the same versatility as cash and hence don\'t attract the same price value.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: 'When we calculate everyone else’s contribution in Year 1 we will use the same formula. This will help us determine how equity splits will work relative to the contribution amount each person will make in Year 1.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Ideas and Intangibles',
-//             text: "It's worth noting that ideas and intangibles don't always necessitate the usage of a Value Multiplier because they don't usually come with any \"risk\" attached to them. The Value Multiplier is primarily intended for contributions that would be rewarded without this risk if they had a market value.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             question: 'Which of the following is a non-cash contribution?',
-//             options: [
-//               'Time(Sweat Equity)',
-//               'Facilities and Hard goods',
-//               'Ideas and Intangibles',
-//               'all of these',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'How to manage and audit Yearly Contributions?',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
-//             type: 'intro',
-//           },
-//           {
-//             text: "To quickly get started with this, we'll have to offer our intended contributions each year, and then audit those contributions at the end of the year. We can compare what we anticipated to do to what we really contributed in this way.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Step 1: Lock Down Proposals',
-//             text: "We can propose our contributions at the beginning of each year, and certainly when we first put up the cap table, we can raise our contribution. Simply prorate the contributions for the first year, and we'll be able to put them on the same schedule as the rest of us do.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Step 2: Audit Last Year',
-//             text: 'Through the audit, we can calculate each proposed contribution versus the actual contribution and sum up the numbers.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Step 3: Next Year Proposals',
-//             text: 'Following our year-end audit, we will go with the new round of proposals each year, knowing that our understanding of what we want to provide and what we can deliver will likely improve year after year.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading:
-//               'What will our contribution be worth over some period of time?',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
-//             type: 'intro',
-//           },
-//           {
-//             text: "We may preferentially reward members who have more value in Year 1 but don't necessarily continue to pay in that value in following years if we merely consider a single year to account for the overall growth of the firm.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             question:
-//               'Through the audit, we can calculate each proposed contribution versus the actual contribution and sum up the numbers',
-//             options: ['true', 'false'],
-//             ans: 0,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'What Changes after Year 1?',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
-//             type: 'intro',
-//           },
-//           {
-//             heading: '1. People Leave',
-//             text: "This is the most frequent alteration, and while we address it when we get to \"Question: How do we make adjustments later?\" it's worth mentioning because it's so widespread. It's highly probable that any contributions made in the first year will not be used after that year. As a result, allocating a percentage of ownership to someone based on what we expected them to contribute in Year 2 or 3 is a genuine difficulty.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '2. Relative Value Changes.',
-//             text: "We often require a lot of resources to get started in the first year — legal, marketing, accounting, engineering, design, and so on. Those were crucial in Year 1 to getting us off the ground, but their relative significance will certainly shift once we're up and going. Our attorney may be the most important person when we need thousands of dollars in legal work to get started, but it doesn't indicate their relative contribution in Year 2 and past that will be the same.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '3. Individual Contributions Change.',
-//             text: "In the first year, I may have put $50,000 into the business, in addition to my time. But, if I didn't put in another $50,000 in Year 2, wouldn't my contribution in Year 2 be lower? Right, if you think so. We must ensure that the value of your investment in Year 1 is not at par with that in Years 2 and beyond.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '4. One-Time Contributions Expire (this is a big one!)',
-//             text: "Many of our contributions will be one-time, usually in the first year. These often include the concept, relationships, financial investments, and other resources. We'll come to regret it if we merely project our Year 1 contributions as if they'll be made every year after that",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'How do we make adjustments later?',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
-//             type: 'intro',
-//           },
-//           {
-//             text: "The next years (and adjustments) are quite similar to the first year, with one exception: our equity may swing quite one way or the other in the future years, which tends to frighten people. Technically, we should all support the contribution we attempted to make and ensure that everyone gets what they deserve, but we've previously proven that this is unlikely to happen.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: "We'll have to make some adjustments over time, but we'll want to make sure we know what to expect in terms of how to do so equitably and what to do if we want to avoid a huge swing in equity.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//         ],
-//       },
-//       {
-//         name: 'model4',
-//         slides: [
-//           {
-//             heading: 'MANAGING EQUITY',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//             type: 'intro',
-//           },
-//           {
-//             text: 'Holding ownership is only half a thing but what’s more important is that how you manage your equity or the fact that how significant of a contribution each person can make and what their long-term trajectory at the company is.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: '4 Keys to Managing Equity',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
-//             type: 'intro',
-//           },
-//           {
-//             text: 'It ultimately boils down to "What happens when someone leaves?" when it comes to stock management. There isn\'t much to have disagreement about if the company is sold and we all get a heavy paycheck. However, if someone leaves, we must determine what happens to their shares and how this affects the remaining employees.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'We’ll learn to manage our equity with 4 tools :',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: '1. CLAWBACK',
-//             text: "If it's about giving away equity, then that would still be child’s play. Getting it back, on the other hand, is a whole different matter!",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20investment.png?alt=media&token=722a9291-7ffd-4be5-87ff-99282c0120e8',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: '"Clawback Provisions" are made to return equity (stock) to the business if one or more provisions are met. Because no one loves giving their money back, the Clawback Provisions are by far the most contentious form of legality involved. That could be a hell lot cumbersome, mind you!!',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20investment.png?alt=media&token=722a9291-7ffd-4be5-87ff-99282c0120e8',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Clawback Provisions would certainly be the most essential aspect of how we manage our equity plan in the long run. They\'re what helps us avoid some of the "absentee landlord" issues that result in a lot of dormant equity in the Cap Table. It also offers some protection against making poor stock grants.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20investment.png?alt=media&token=722a9291-7ffd-4be5-87ff-99282c0120e8',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Most Common Clawback Provisions:',
-//             text: 'Certain hypothetical situations may arise as a result of Clawback Provision. Such scenarios may take the following form-',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20investment.png?alt=media&token=722a9291-7ffd-4be5-87ff-99282c0120e8',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Someone is fired for an apparent reason-',
-//             text: 'This means someone was fired for a good reason they did something that was materially wrong. \n\nThis might include everything from job performance to illegal conduct, but it would be mentioned as "out of limits"in the Operating Agreement (for members), Stock Agreement (for participants), or Employment Agreement (for everyone). \n\nTermination for cause usually results in a considerably higher Clawback penalty, and in some situations, benefits may be revoked entirely.',
-//             image: '',
-//             type: 'headtextimg',
-//           },
-//           {
-//             question: '"Clawback Provisions" are made to…..',
-//             options: [
-//               'sell stock of the business if one or more provisions are met.',
-//               'return equity (stock) to the business if one or more provisions are met.',
-//               'purchase equity of the business if one or more provisions are met.',
-//               'None of these',
-//             ],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'Someone is fired for NO apparent reason-',
-//             text: '"Without reason" suggests the individual did not do something improper on purpose. This could be due to a workforce downsizing or someone simply resigning. We may have a minimal clawback or none at all in this scenario. These are usually deviations from mutually agreed-upon circumstances, or at the very least, ones that do not affect the organisation purposely.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'The Exercise Period ends.',
-//             text: 'A stock returns to the Cap Table when an "exercise window" expires. It usually occurs if a Stock Option is not exercised within the specified period. The issue may not be whether or not there was a termination for cause, but how the exercise window is allocated and elapsed.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'How to Handle the Clawback',
-//             text: "For this, we'll have to look whether HR policies appear fair and equitable to our employees, we'd have to think through the personal choice on what we believe would be fair to our employees and the company as a whole.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '1.  Plan for Change',
-//             text: 'The key to knowing how long-term equity splits operate is to comprehend that practically everything changes and evolves over time, so the decisions we make now must account for the multitudes of big changes in value and contribution that will occur over the next decade or longer.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FWireframe.png?alt=media&token=af9357e7-ae82-4f0f-b65d-f6f8dcb9203f',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '2. Skill Value Changes',
-//             text: "It's common for us to take on the tasks of entire departments or C-level executives in our early days, but the overall value or skill level of our efforts may be primarily predicated on the fact that no one else is willing to do them!",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '3. Time Investment Changes',
-//             text: 'My time investment can go from "every minute, all the time" to "whenever I can find the time" in a matter of seconds. It\'s unrealistic to think that no life events will ever occur and that our time commitments will never alter. As a result, we must know what to do if and when our future time commitments diverge from our current work obligations.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FGroup%202906.png?alt=media&token=e19bd754-7201-4475-aee2-47fc453e0bce',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '4. Capital Investment Changes',
-//             text: "The sum required by the organization will fluctuate significantly over time. Say $10,000 in investment may seem like a large sum today, but it will be a day's earnings in a few years. While there is undoubtedly a premium to be gained by investing early, there is also a realistic limit to how much of the cap table one should receive.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FLayer_1-2.png?alt=media&token=dec59880-8082-4a55-9244-aba71ffc0d1c',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '',
-//             text: 'Typically, the amount of stock a capital contribution returns is proportional to the company\'s "value". To summarize, the first $10,000 should produce a healthy return for being the riskiest capital, but only within a stock ownership cap that reflects the company\'s future, not simply at present.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FLayer_1-2.png?alt=media&token=dec59880-8082-4a55-9244-aba71ffc0d1c',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '5. Founding Team Changes',
-//             text: 'The issue with validating a "founding team" and the ownership stakes that people receive is that often the sole qualification for stock is that everyone agrees to stay on for the foreseeable future. However, unlike working for a pay, when our only obligation is to show up every day, working on a startup means we may never receive a payday, which tends to drive people away.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fteam%20success.png?alt=media&token=834c0990-208b-4f80-9738-36007c8e4cfb',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '',
-//             text: "As a result, regardless of how strongly the Founders feel about their current commitment to the company, it's critical that they make some basic arrangements for what would happen if that commitment changes.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fteam%20success.png?alt=media&token=834c0990-208b-4f80-9738-36007c8e4cfb',
-//             type: 'headtextimg',
-//           },
-//           {
-//             question:
-//               '“Capital requirements for the organization will never fluctuate over time.”',
-//             options: ['true', 'false'],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'Dormant Equity',
-//             text: "The crux of all of these changes usually results in one major problem: dormant equity. When the Cap Table fills up with participants who possess a share in the company but don't participate in its growth any longer, this is known as dormant equity.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             question:
-//               "When the Cap Table fills up with participants who possess a share in the company but don't participate in its growth any longer, this is known as ___________.",
-//             options: [
-//               'Regular Equity',
-//               'DORMANT Equity',
-//               'PHANTOM Equity',
-//               'NONE of these',
-//             ],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-//         ],
-//       },
-//       {
-//         name: 'model5',
-//         slides: [
-//           {
-//             heading: 'End Questions',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
-//             type: 'intro',
-//           },
-//           {
-//             question: 'Which one of the following is a non-cash contribution?',
-//             options: [
-//               'Time(Sweat Equity)',
-//               'Ideas and Intangibles',
-//               'Facilities and Hard goods',
-//               'all of these',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-//           {
-//             question: 'Vesting is……',
-//             options: [
-//               'sell stock of the business if one or more provisions are met.',
-//               'return equity (stock) to the business if one or more provisions are met.',
-//               'purchase equity of the business if one or more provisions are met.',
-//               'a method of allowing members to "earn" their stock over time or in response to certain milestones.',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-//           {
-//             question:
-//               '“Through the audit, we can calculate each proposed contribution versus the actual contribution and sum up the numbers.”',
-//             options: ['true', 'false'],
-//             ans: 0,
-//             type: 'quiz',
-//           },
-//           {
-//             question: 'The backbone of the startups in one sense is __________',
-//             options: ['equity', 'goodwill', 'Debt', 'patents'],
-//             ans: 0,
-//             type: 'quiz',
-//           },
-//           {
-//             question:
-//               '________is the most significant investment made by startups.',
-//             options: [
-//               'Time(Sweat Equity)',
-//               'GOODWILL',
-//               'GOOD FOUNDING TEAM',
-//               'all of these',
-//             ],
-//             ans: 0,
-//             type: 'quiz',
-//           },
-//           {
-//             question: 'phantom equity is………',
-//             options: [
-//               'To purchase equity of the business if one or more provisions are met.',
-//               'a method of allowing members to "earn" their stock over time or in response to certain milestones.',
-//               'a contractual right, not an equity stake, we can grant upside without having to issue actual equity ownership shares.',
-//               'none of these',
-//             ],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-//           {
-//             question: 'When should you use regular equity?',
-//             options: [
-//               'you don’t know how to properly allocate contributions in capital.',
-//               'When we want to divide the company amongst a small number of active members.',
-//               'you know how to properly allocate contributions in capital.',
-//               'You have to split the equity equally.',
-//             ],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-//           {
-//             question:
-//               '_________ means that the employee have a privilege to avail the “option” to buy stock in the company at a later date implicating that right now they don’t “own” anything.',
-//             options: [
-//               'Stock Option',
-//               'DORMANT Equity',
-//               'PHANTOM Equity',
-//               'NONE of these',
-//             ],
-//             ans: 0,
-//             type: 'quiz',
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     frontscreen: {
-//       images: [
-//         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FCrowdfunding%20idea.png?alt=media&token=7a3dbcce-424c-4cac-9587-1693c491b06c',
-//         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FLayer_7.png?alt=media&token=bf0587d3-9839-474e-95a0-1f17c85a9c6b',
-//       ],
-//       name: 'Idea Validation',
-//       coverImg:
-//         'https://img.freepik.com/free-photo/front-view-stacked-books-graduation-cap-open-book-education-day_23-2149241017.jpg?w=996&t=st=1685954120~exp=1685954720~hmac=ef10d733e457491e72c5221533bac5e3586d214847f158a277766a77f664d421',
-//     },
-//     modules: [
-//       {
-//         name: 'model1',
-//         slides: [
-//           {
-//             heading: 'Introduction',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fanalytics.png?alt=media&token=7ff3ff45-d4c2-4ff4-9793-794ecc96c419',
-//             type: 'intro',
-//           },
-//           {
-//             text: "Hello folks! Looking forward to establishing your own start-up but don’t know how to? Obviously yes…. Knowing all about it must be your main concern now that you're here.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fe%20commerce%20or%20online%20shopping.png?alt=media&token=daadcc22-8e5c-4889-9525-a483e8d37092',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Well, don’t worry because that’s our work now as we’re here to guide you every step of your way!!',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fe%20commerce%20or%20online%20shopping.png?alt=media&token=daadcc22-8e5c-4889-9525-a483e8d37092',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Where business is involved, busy-ness in its real sense is also involved! And so is the inquisitiveness to dream and turn your business vision into reality.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Frunning%20late.png?alt=media&token=32b2f364-55b4-4e19-9ada-dc4d20ecdc5e',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'I’m sure now you can easily guess that the first thing to give a structure to your business outlook starts with the ideation process. A striking solution you need to come up with to solve the problem you’re targeting. But wait, the ideation process is not over yet.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=54e82a94-62a2-45dd-8e79-d450725cc52f',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Why? The reason founders end up giving it all up is that they fail to pause, take a step back, and review the key indicators that would tell them whether their specific version of the idea is worth doing. That’s when the feasibility test of your idea gets a green signal in your to-do-list.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FTask%20list.png?alt=media&token=42d15243-e29a-4cfc-9919-d0d24cea2801',
-//             type: 'textimg',
-//           },
-
-//           {
-//             question: 'What is a Startup?',
-//             options: [
-//               'A newly listed company at stock market',
-//               'A newly launch business product',
-//               'A newly ranked business',
-//               'A newly established business',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'How is it done?',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202902.png?alt=media&token=50d9ee05-888e-48ea-9239-9e2b60659b27',
-//             type: 'intro',
-//           },
-//           {
-//             heading: 'Step 1- Create a research plan',
-//             text: 'Aaahhh! This seems tedious but yes, the research plan acts as a bulletproof shield against any perceived threats. It helps you to understand the problem you want to solve, thereby looking for any feasible solution,if any.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=54e82a94-62a2-45dd-8e79-d450725cc52f',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Step 2- Expert Opinion',
-//             text: 'Getting an expert recommendation/approval will help bring clarity and a sense of purpose to your potential business idea.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FOffice%20employee%20making%20checklist.png?alt=media&token=54566a04-8c3f-4ea9-b65f-20389d514a43',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Step 3- Customer engagement',
-//             text: 'As a procedure for testing the feasibility of an idea, there’s no better way to get validation than gaining insights from the potential customer base.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fresearch%20and%20development.png?alt=media&token=ce1fdd99-c30e-4cd8-aa9c-dbc1d7591814',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Step 4 - Crafting elevator pitch',
-//             text: 'Hurry up! Time to tie the loose ends together.\n\nDesigning a comprehensive elevator pitch helps you bring about all the critical pieces of information you would want to deliver to your end consumer.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FWireframe.png?alt=media&token=0391219b-5f80-469d-a2ff-7c802456cfd4',
-//             type: 'headtextimg',
-//           },
-//         ],
-//       },
-//       {
-//         name: 'model2',
-//         slides: [
-//           {
-//             heading: 'RESEARCH PLAN',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Ffinancial%20year.png?alt=media&token=9789bf57-4450-42eb-bc4e-bb9360d69842',
-//             type: 'intro',
-//           },
-//           {
-//             text: "No wonder everything eventually boils down to how good your research outlay is. Yes, it becomes imperative to run through the checks and validation checklists as part of your Research Plan to make sure you understand the market you're venturing.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FWoman%20thinking%20of%20investment.png?alt=media&token=916e1787-563c-4448-a6cc-d208aee85d70',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Step-1: Looking for research goals',
-//             text: 'To clear off the blurry picture of your research objective, focus on the questions that’s pulling your business idea down.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FWoman%20doing%20online%20market%20analysis.png?alt=media&token=32704213-26f4-4ca4-b7a1-da62a0cf9c95',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Step-2: Tap reliable research sources',
-//             text: 'Search for the research sources that are suitable enough to give a proper understanding of your research plan.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FSign%20Up%20form.png?alt=media&token=e7b4e9f2-e7bc-4528-bd66-ebe24ea51df4',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Step-3: Evaluate your findings',
-//             text: 'Evaluating the checklist finding helps you mark the critical point that can add value to your research set.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FEmployee%20performance.png?alt=media&token=702ebf5b-b873-4f77-9cce-706bbd65a8c3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             question:
-//               'What is the final step towards creating your research plan?',
-//             options: [
-//               'Tap reliable research sources',
-//               'Evaluate your findings',
-//               'Looking for research goals',
-//               'Doing a swot analysis',
-//             ],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-//           {
-//             text: 'Now that you know about the steps involved in creating a research plan let’s talk about them in detail.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202907.png?alt=media&token=355f3490-76f4-4929-bc01-de10c31047a2',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Step 1: Establish your research goals',
-//             text: "Since we don't want to spend the rest of our lives researching, we'll focus on three key questions:",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FConcept%20about%20business%20Failure.png?alt=media&token=2724829e-e3de-4354-b4d8-601a43292f05',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading:
-//               'Q1. What is the problem that my startup or idea solves, and how painful is it?',
-//             text: 'Target the issue that you think requires sincere attention and address that and fulfill the need.\n\nAsk yourself this first question as a litmus test for your startup idea: “What problem is my startup solving, and how critical is that problem?”',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Ffinancial%20year.png?alt=media&token=9789bf57-4450-42eb-bc4e-bb9360d69842',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading:
-//               'Q2. What is the extent of the problem and who is affected?',
-//             text: 'Let’s get this straight! To answer this question, you really need to know who your target base is and to what extent they are getting affected. Basically, you are essentially figuring out the market size for your solution.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Ffinancial%20year.png?alt=media&token=9789bf57-4450-42eb-bc4e-bb9360d69842',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: 'First thing first, quickly access your Total Addressable Market (TAM) by defining the industry you are operating in. Give yourself a pat on your back as you’ve determined that you have a market worth pursuing, it’s time to look out who you’ll be competing with.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202906.png?alt=media&token=4190f292-555d-4b4a-a63e-dfdef60947ba',
-//             type: 'textimg',
-//           },
-//           {
-//             heading:
-//               'Q3. What are the strengths and weaknesses of those who are already working on solving the problem?',
-//             text: 'Now that you’ve reached this stage, I’m sure that you know what to do next?\n\nYes, you got it right. SWOT ANALYSIS!',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202906.png?alt=media&token=4190f292-555d-4b4a-a63e-dfdef60947ba',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: 'SWOT Analysis can serve as an effective tool to have a quick check on your competitors’ position, the other they’ve not entered into taking advantage of which you can exploit those opportunities better, the recurring threats that you should avoid and what not!',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202906.png?alt=media&token=4190f292-555d-4b4a-a63e-dfdef60947ba',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Step 2: Search for reliable sources',
-//             text: 'Having a comprehensive insight of what you’re entering widens the ambit of your business outlook and helps you gain a better perspective of the industry on whole.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FBusiness%20woman%20achieving%20the%20goal%20successfully.png?alt=media&token=5dabf0f3-c682-4974-9580-2af08284ed4f',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Industry specific searches',
-//             text: 'Doing some extra work is never a harm! Keep an eye on the sources where your competitors might be selling similar products, such as marketplaces, crowdfunding sites, and trade associations.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fstrategy%20or%20planning.png?alt=media&token=917369c6-6247-409f-8ca9-898399e886be',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Funded Companies',
-//             text: "After you've figured out who some of the competition is, you'll have to measure them up and identify which of your competitors may be more qualified, which may lead to the discovery of tangential competitors.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fstrategy%20or%20planning.png?alt=media&token=917369c6-6247-409f-8ca9-898399e886be',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Step 3: Evaluate your Findings',
-//             text: 'Once you’re done with your research, the next thing is to keep a critical eye on what you’ve found.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fstrategy%20or%20planning.png?alt=media&token=917369c6-6247-409f-8ca9-898399e886be',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: "Is our market opportunity big enough to build a meaningful business?\n\nSometimes an opportunity exists, but it's not that important to carve a meaningful business out of. Some businesses are not huge opportunities. But it’s OK!",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fstrategy%20or%20planning.png?alt=media&token=917369c6-6247-409f-8ca9-898399e886be',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Can you beat the competition?',
-//             text: 'Creating an insightful competitive report would enable you to properly stack up your potential features with what’s currently there in the market. Those striking features can enable your business to reach new heights.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fstrategy%20or%20planning.png?alt=media&token=917369c6-6247-409f-8ca9-898399e886be',
-//             type: 'headtextimg',
-//           },
-//         ],
-//       },
-//       {
-//         name: 'model3',
-//         slides: [
-//           {
-//             heading: 'EXPERT VALIDATION',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FOffice%20employee%20making%20checklist.png?alt=media&token=54566a04-8c3f-4ea9-b65f-20389d514a43',
-//             type: 'intro',
-//           },
-//           {
-//             text: 'Yes, you heard it right! Expert opinion can work wonders in giving your business vision a clarity. \n\nThe big task is to find the right experts and present them with very specific questions about your idea.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FOffice%20employee%20making%20checklist.png?alt=media&token=54566a04-8c3f-4ea9-b65f-20389d514a43',
-//             type: 'textimg',
-//           },
-//           {
-//             text: "After that, you also need to be able to assess the feedback you've gotten objectively, as per your suitability.\n\nThere are 3 steps involved in the process:",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fteam%20work.png?alt=media&token=fce9a1df-8288-4e01-8e5c-311c2ca27454',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: '1. Expert Selection',
-//             text: "We'll figure out which areas of your proposal need expert advice and then select the best experts to comment on those specific issues.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FLayer%201.png?alt=media&token=c928183e-35e6-4703-ae88-541f5c308016',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '2. Key Questions',
-//             text: 'Asking and seeking opinion on critical questions can allay your doubts regarding the risks you foresee that might hinder your business progress.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202902.png?alt=media&token=7c4bb87b-5d61-42ed-880a-b42f0935f6d3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '3. Results Analysis',
-//             text: 'Comparing the results can help us recognize any patterns we can infer in order to restructure our business model.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FEmployee%20performance.png?alt=media&token=702ebf5b-b873-4f77-9cce-706bbd65a8c3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: 'Let’s look at these steps in detail:',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fresearch%20and%20development.png?alt=media&token=2bf16c68-408a-4f8a-a42f-882e92ddf0e1',
-//             type: 'textimg',
-//           },
-//           {
-//             question: 'What is the second step of expert validation',
-//             options: [
-//               'Key questions',
-//               'Result analysis',
-//               'expert selection',
-//               'none of these',
-//             ],
-//             ans: 0,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'Step 1: Expert Selection',
-//             text: '',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FLayer%201.png?alt=media&token=c928183e-35e6-4703-ae88-541f5c308016',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: 'The experts we identify are typically:\n\nSubject Matter Experts:\nSubject matter experts can provide us with a pragmatic view as to how challenging each aspect of our business model can be.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FBusinesswoman%20working%20on%20laptop.png?alt=media&token=22b36cad-0087-48ed-972d-8469270c6493',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Expert Founders:\nA smooth conversation with an expert Founder can also aid us in setting the criticality aspect right that can accelerate your plan dramatically.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FWoman%20working%20on%20computer.png?alt=media&token=6b1b6715-b02e-4b51-b54b-ee4ea579a81b',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Investors:\nInvestors can give you useful feedback on how big they envision your market arena. So in that sense, you don’t need to be raising capital to get good feedback from investors.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fsales%20team.png?alt=media&token=a7ed841d-39f6-440b-a1f1-d1aec8946c9c',
-//             type: 'textimg',
-//           },
-//           {
-//             question: 'Who all can be expert mentors for your startup?',
-//             options: [
-//               'Subject Matter Experts',
-//               'Expert Founders',
-//               'INVESTORS',
-//               'all of theM',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'Step 2: Key Questions',
-//             text: '',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202902.png?alt=media&token=7c4bb87b-5d61-42ed-880a-b42f0935f6d3',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: 'The key questions model vary based on your particular concept or precisely on the basis of following questions:',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202902.png?alt=media&token=7c4bb87b-5d61-42ed-880a-b42f0935f6d3',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Q1. Is this feasible?',
-//             text: 'Feasibility test sets everything right by telling the likelihood of any major hurdles acting as a threat toward your growing business.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FBusiness%20Solution.png?alt=media&token=18882daf-2f7f-4074-82c1-c78990b57d06',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Q2. What pitfalls should we avoid?',
-//             text: 'Experts can tell you what shortcomings to avoid altogether. We must list and address such problems these experts may identify and build a safety plan in order to avoid such barriers.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FResearch%20analysis%20report.png?alt=media&token=f8947380-5d39-4a56-8a5a-b7bc1f8387f6',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Q3. What are we not asking?',
-//             text: 'A Questionnaire should be formulated and tailored with the intent of getting actionable feedback from the expert in a detailed and insightful manner.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FAsk%20Customer%20Feedback.png?alt=media&token=ab82a077-5334-4460-bf9f-10f7bd4162e2',
-//             type: 'headtextimg',
-//           },
-//           {
-//             question: 'What are the Key points when you analyse the results?',
-//             options: [
-//               'Weighing Expert Interviews',
-//               'Getting a Second Opinion',
-//               'Both A & B',
-//               'Focusing only on the numbers',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'Step 3: Analysis of Results',
-//             text: '',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fmultitasking%20or%20branding%20or%20product%20planninh.png?alt=media&token=01c43547-34ec-4db9-85fa-782345cb2318',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: 'Mind you, the experts can guide you in getting your answers, not the final decision as to whether we should give a green signal to this idea or not.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FSoftware%20bug.png?alt=media&token=07ebb81f-81f8-4a4c-8507-ceb53cdbed6b',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: '1. Did we hit a hard stop or reset?',
-//             text: 'Sometimes the interviews will yield an answer that can plunge you to the state of dropping that idea altogether. In this case we may have to get back to square one- to the research phase.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FSoftware%20bug.png?alt=media&token=07ebb81f-81f8-4a4c-8507-ceb53cdbed6b',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '2. What was the most consistent opportunity?',
-//             text: 'After seeking expert opinion, you can explore which aspect of your new product created the most obvious benefit or opportunity?',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FSoftware%20bug.png?alt=media&token=07ebb81f-81f8-4a4c-8507-ceb53cdbed6b',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '3. Is it time to talk to customers?',
-//             text: 'If we are of the view that we passed our feasibility test , it’s time to talk to customers directly.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FSoftware%20bug.png?alt=media&token=07ebb81f-81f8-4a4c-8507-ceb53cdbed6b',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Weighing Expert Interviews',
-//             text: 'Weighing expert recommendation with other sources can definitely be an eye-opener as it may enable us to expand the ambit of our expert validation exercise to some other sources as well.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FSoftware%20bug.png?alt=media&token=07ebb81f-81f8-4a4c-8507-ceb53cdbed6b',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Getting a Second Opinion',
-//             text: 'Second opinions are always welcome, no doubt about that. For example, if a single investor we spoke to says “it will never get funded” we may want to seek validation from 1 or 2 other investors to make sure it’s not partial.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FSoftware%20bug.png?alt=media&token=07ebb81f-81f8-4a4c-8507-ceb53cdbed6b',
-//             type: 'headtextimg',
-//           },
-//           {
-//             question:
-//               'What is one of the key questions that we should ask from expert?',
-//             options: [
-//               'What was the most consistent opportunity?',
-//               'Is it time to talk to customers?',
-//               'What pitfalls should we avoid?',
-//               'Both A & B',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-//         ],
-//       },
-//       {
-//         name: 'model4',
-//         slides: [
-//           {
-//             heading: 'Customer discovery',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fresearch%20and%20development1.png?alt=media&token=18536b83-f6f3-41b5-b1ae-f45bb7e4e3a6',
-//             type: 'intro',
-//           },
-//           {
-//             text: 'Customer discovery is an extensive approach to make sure that the problem aligns with the solution you’ve identified with what customers actually want at a price they are willing and able to pay.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fresearch%20and%20development1.png?alt=media&token=18536b83-f6f3-41b5-b1ae-f45bb7e4e3a6',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Let’s look at some of the steps involved in the phase of customer discovery.:',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FRectangle.png?alt=media&token=55922d7d-e254-49c2-8f70-be01bf5d8023',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Step 1: Create Customer Archetypes',
-//             text: 'It basically spells out an archetype featuring all the customer profiles representing different use cases of the product like what would attract people to buy your product, what problem is your product  capable of solving, what are the different ways your product can be used by customers.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fimage%205.png?alt=media&token=d095c9aa-7647-45af-8635-bcd9b439327c',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: 'Getting validation from the potential customers adds lucidity and perspicacity to your business idea.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fimage%205.png?alt=media&token=d095c9aa-7647-45af-8635-bcd9b439327c',
-//             type: 'textimg',
-//           },
-//           {
-//             question: 'what is a customer archetype?',
-//             options: [
-//               'Refers to bringing in customers to buy your product',
-//               'Customer who make repeat purchases',
-//               "It is percentage of an organization's customer base lost during a given period of time",
-//               'Refers to the customer profiles representing different use cases of the product',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'A) LANDING PAGE',
-//             text: 'Landing page is the star or let’s just say the main highlight of your hours and hours of hard work. Under the landing page, people would have to input their name and email to see if they are interested in what you offer. Pre-selling your solution is evident to know if people are willing to pay for what you have.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202907.png?alt=media&token=13bf82eb-3c83-4c9d-9ef1-703272c75794',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'b) Digital Advertising',
-//             text: 'Advertising via social media can be a real game-changer to explore the interest area of your target customer base.\n\nThis gives an insight of business metrics like- Cost incurred to acquire a potential user, word of mouth with which you can resonate with your target audience.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FConcept%20about%20business%20Failure.png?alt=media&token=2724829e-e3de-4354-b4d8-601a43292f05',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'c) Surveys',
-//             text: 'Surveys can be conducted online capturing various channels. Or alternatively, in-person enumeration can be quite effective and you could potentially conduct those one-on-one sessions.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Ffinancial%20year.png?alt=media&token=9789bf57-4450-42eb-bc4e-bb9360d69842',
-//             type: 'headtextimg',
-//           },
-//           {
-//             question: 'Getting validation from the potential customers adds',
-//             options: [
-//               'lucidity and perspicacity to your idea.',
-//               'Difference in my product from existing ones',
-//               'Leads to our idea',
-//               'Value to the product',
-//             ],
-//             ans: 0,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'Step 3: Conduct Customer Validation',
-//             text: '3 steps to seeking customer validation involves\n\n- the Problem\n- Solution\n- Revenue Model',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202907.png?alt=media&token=13bf82eb-3c83-4c9d-9ef1-703272c75794',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Problem',
-//             text: 'Every new business concept begins with a problem that needs to be solved. Difference lies in the perspective of how you want to solve that problem and how customers would want to get that problem resolved.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FAsk%20Customer%20Feedback.png?alt=media&token=ab82a077-5334-4460-bf9f-10f7bd4162e2',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Solution',
-//             text: 'The solution you provide should be in synchronization with where the problem is mostly targeted at. Going through the various features of your solution must align with where you’re focusing your product efforts to where customers need attention should have the greatest demand.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FIndian%20male%20achieved%20his%20dream.png?alt=media&token=f2bb49fb-8131-4d26-a453-cdd3c451bae7',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Revenue model',
-//             text: 'The revenue model questions checks for price sensitivity, frequency and flexibility or complexity of product, if any.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FBusiness%20woman%20achieving%20the%20goal%20successfully.png?alt=media&token=5dabf0f3-c682-4974-9580-2af08284ed4f',
-//             type: 'headtextimg',
-//           },
-//           {
-//             question:
-//               'which one of the following is NOT a step towards seeking customer validation',
-//             options: [
-//               'Problem',
-//               'Make commitments',
-//               'Solution',
-//               'Revenue Model',
-//             ],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-//         ],
-//       },
-//       {
-//         name: 'model5',
-//         slides: [
-//           {
-//             heading: 'End Questions',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FBusiness%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=34b61281-ea5d-48a3-9b4f-9b3f3eb7052b',
-//             type: 'intro',
-//           },
-//           {
-//             question: 'On what base you can analyse your startup business?',
-//             options: [
-//               'Competitor Analysis',
-//               'SWOT Analysis',
-//               'Google Analytics',
-//               'All of the above',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-//           {
-//             question:
-//               'What is one of the key questions that we should ask from experts',
-//             options: [
-//               'What was the most consistent opportunity FOR US',
-//               'Is it time to talk to customers?',
-//               'What pitfalls should we avoid?',
-//               'Did we hit a hard stop or reset?',
-//             ],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-//           {
-//             question: 'What is the 2nd step of Customer Discovery',
-//             options: [
-//               'Create Customer Archetypes',
-//               'Choose your expert',
-//               'Conduct Customer Validation',
-//               'NONE of these',
-//             ],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-//           {
-//             question:
-//               'When starting a startup company, what are the things required?',
-//             options: [
-//               'Legal Approvals',
-//               'Eligibility Criteria',
-//               'Feasible Idea',
-//               'all of these',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-//           {
-//             question:
-//               'Why Investors are considered while choosing an expert to help validate your idea',
-//             options: [
-//               'They can provide us with a pragmatic view as to how challenging each aspect of our business model can be.',
-//               'can also aid us in setting the criticality aspect right that can accelerate your plan dramatically',
-//               'They can give you useful feedback on how big they envision your market arena',
-//               'Both A & B',
-//             ],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-//           {
-//             question:
-//               'What are the three questions you ask while analysing your results after talking to an expert.',
-//             options: [
-//               'Did we hit a hard stop or reset',
-//               'What was the most consistent opportunity',
-//               'Is it time to talk to customers?',
-//               'all of these',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-//           {
-//             question:
-//               'What is the first step towards creating your research plan?',
-//             options: [
-//               'Tap reliable research sources',
-//               'Evaluate your findings',
-//               'Establishing research goals',
-//               'Doing a swot analysis',
-//             ],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     frontscreen: {
-//       images: [
-//         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FSearching%20data.png?alt=media&token=af379944-03e3-49e5-9497-1d443ac535c8&_gl=1*900u4d*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzAyMDEuMC4wLjA.',
-//         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FEmployee%20performance.png?alt=media&token=268cb1cc-96e0-4005-a150-bfe01859b9f0&_gl=1*1hfhfu6*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzAyNjUuMC4wLjA.',
-//       ],
-//       name: 'COMPETITOR \n ANALYSIS',
-//       coverImg:
-//         'https://img.freepik.com/premium-photo/open-book-with-abstract-business-illustration_488220-4978.jpg?w=1060',
-//     },
-//     modules: [
-//       {
-//         name: 'model1',
-//         slides: [
-//           {
-//             heading: 'What is Competitor analysis ?',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FGroup%202902.png?alt=media&token=1aca4b06-cb9a-444a-8b5b-b775d8ba307f&_gl=1*9a25cq*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzA1OTUuMC4wLjA.',
-//             type: 'intro',
-//           },
-//           {
-//             text: 'The competitive analysis section of your market analysis is important. Knowing your competition is just as important as knowing your product and your customer. Market spaces tell you where to improve your product and internal weaknesses tell you that you are at risk of losing customers.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2Ffinding%20jobs.png?alt=media&token=dc03f001-d571-4a76-8944-4da4ddbe5bc1&_gl=1*1r0x493*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzA4MzQuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Strong competition analysis is your way of showing that you know exactly where you stand among your fierce rivals and that you have a way to outdo them. \n\n Your competitive analysis should start with your SWOT Analysis Strengths, Opportunities, Weaknesses and Threats',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FBusiness%20Way%20to%20success.png?alt=media&token=f0790459-166c-4ac1-90cc-b5ddb773e67f&_gl=1*1tdnppk*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzEwMjYuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Market analysis',
-//             text: ' Market analysis is the evaluation of any given market that includes both quality and volume research. Doing in-depth market analysis as an important part of your business plan ensures that you know everything you need to know about your market.\n\n Coincidentally, it assures any current or future investors that you know what you are doing, that you have done your homework and that you are the right entrepreneur to address the gap in this particular market. ',
-
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FYoung%20lady%20working%20on%20laptop.png?alt=media&token=5826f7ec-4087-49ef-88c8-e7c2fcbd217e&_gl=1*1g74d0h*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzEyOTYuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             question: 'Best way to evaluate your startup idea is…',
-//             options: [
-//               'Ask friend and family',
-//               'to look for existing large companies that do something similar.',
-//               'Consult a financial advisor',
-//             ],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: ' TOP 10 Topics to cover \n in your Market Analysis',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FIllustration%20-%20Finances.png?alt=media&token=a870cc3c-6e28-462b-99ca-bf20551750e4&_gl=1*1ngkkvb*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzE5MzQuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '1. Industry Description and Outlook',
-//             text: 'What does a start-up industry or a small business look like? Be sure to include size, trends, life cycle, and any expected growth. It is good to start with an industry definition and perspective because it gives all your market analysis a solid, comprehensive view to start with.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FGroup.png?alt=media&token=d65cf345-2273-4a30-a308-7292ceb7bba7&_gl=1*1epf34y*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc5Mjc1OS4yNC4xLjE2ODU3OTI4NzEuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '2. Demographics and segmentation',
-//             text: 'If your startup is focused on more than one market segment, you need to define that in the segregation and segregation category. Start with demographics and explore other potential features. Other factors to consider include geographical segregation (where people live) and behavioral segregation (what specific things, appropriate actions taken by people).',
-
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FPie%20Chart.png?alt=media&token=f79963ec-0d4e-4c06-80ec-5f19f2102bef&_gl=1*1ncjgj4*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc5Mjc1OS4yNC4xLjE2ODU3OTI5ODguMC4wLjA.',
-//             type: 'headtextimgpoints',
-//           },
-//           {
-//             heading: '3. Target Market',
-//             text: 'If the definition of a sector is a broad idea to analyze the market you are starting from, then the target market is a microscope view. This is where you will decide and determine who owns your product. Explain. The target market description should include the size of the market and the specific person.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FMarketing.png?alt=media&token=87446859-8650-4219-9c99-3e5ec1ab528b&_gl=1*xu724f*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc5Mjc1OS4yNC4xLjE2ODU3OTMxODYuMC4wLjA.',
-//             type: 'headtextimgpoints',
-//           },
-//           {
-//             question: 'On what base you can analyse your startup business?',
-//             options: [
-//               'Competitor Analysis',
-//               'SWOT Analysis',
-//               'Google Analytics',
-//               'all of these',
-//             ],
-//             ans: 4,
-//             type: 'quiz',
-//           },
-
-//           {
-//             heading: '4.  Total Addressable Market (TAM)',
-//             text: "The total addressable market (TAM) illustrates how big your startup's growth potential is.\n\n Investors want to know you're addressing a major issue in a massive market. They seek to invest in good companies with large potential returns to compensate for whatever negative investments they may have made. 'If this startup doesn't go after a huge enough market, it won't be able to achieve an exponential consequence for me,' they reason.\n\n TAM responds to the inquiry,'How many people might use this product?'It has nothing to do with the number of people who will utilise your product.",
-//             type: 'headtextimgpoints',
-//           },
-//           {
-//             heading: '5. Market Demand',
-//             text: 'Market demand is about determining the drivers for the need for your product. Why do potential customers need your product? What will make them spend their money on it? In this section, we will look at the current behavior of the market you are targeting and highlight how those behaviors prove that they will be interested in spending money on your product.\n\nThe need for the market is not your competition analysis, but it helps to look at your competition to find out how people are behaving. It also helps because you can find gaps in unmet market needs that your company cannot afford. ',
-//             type: 'headtextimgpoints',
-//           },
-
-//           {
-//             heading: '6. Market Test Results',
-
-//             text: 'If you have been able to do market tests or if you have been able to access the results of another market test you should write it in the market results test section. \n\n What conclusions did you reach after you did your tests or did your research?\n How did you reach those conclusions?\n Do you have experts who can support you?',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FEmployee%20performance.png?alt=media&token=268cb1cc-96e0-4005-a150-bfe01859b9f0&_gl=1*1hfhfu6*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzAyNjUuMC4wLjA.',
-//             type: 'headtextimgpoints',
-//           },
-
-//           {
-//             question: 'TAM in its full form is……',
-//             options: [
-//               'Total Admissible  Management ',
-//               'Total Addressable Market ',
-//               'Total Administered Market',
-//               'none of these',
-//             ],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-
-//           {
-//             heading: '7. Competition',
-//             text: 'An important part of market analysis is deciding who is on the field. Who are your rivals? \n Describe their strengths and weaknesses. Once you have decided on those, you will be able to use them to determine your initial profit and marketing status.',
-
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FGroup.png?alt=media&token=d65cf345-2273-4a30-a308-7292ceb7bba7&_gl=1*1wo5ju1*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzIyMDIuMC4wLjA.',
-
-//             type: 'headtextimgpoints',
-//           },
-
-//           {
-//             heading: '8. How much will the customers pay?',
-//             text: "You must be able to estimate how much your project will cost your consumers. Imagine being an investor and receiving a pitch for a product that was actually a reference pen, and the entrepreneur was attempting to convince you that people would be willing to spend Rs 4,000 for it. Isn't it true that you can disregard that point? \n\n So, let's face it: the facts are what they are. Do your homework. Examine the market. Look at what others are charging for similar products and set your price within that range. You don't want to put your goods down, but you also don't want to be too pricey.",
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '9. Barriers to Entry',
-//             text: 'The barriers to getting into your market analysis are about what prevents a competitor from taking your position in the market and what makes you a better person and your company is the best company to do what you do. You must be able to respond to the question of what prevents a competitor from entering your market and stealing the majority or all of it away from you. You must also be able to explain why you have achieved success in this industry.\n\n What are some specific barriers to entry for your competitors? Consider such things as the technology needed, any rules in your market, the required investment, access to services, product visibility, and location, depending on your business and market.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: '10. Regulation',
-//             text: 'What guidelines are needed in your market? Explain what they are and the steps you will take to maintain them.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FChecklist.png?alt=media&token=703035c3-6c38-4589-8ada-b505e6928eef&_gl=1*10dq4ve*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxNjQxMS4yNS4xLjE2ODU4MTY0MjIuMC4wLjA.',
-//             type: 'headtextimgpoints',
-//           },
-//           {
-//             question:
-//               'What are some specific barriers to entry for your competitors?',
-//             options: [
-//               ' Technology Needed',
-//               'Any rules in your market',
-//               'Access to services, product visibility',
-//               'all of these',
-//             ],
-//             ans: 4,
-//             type: 'quiz',
-//           },
-//           ,
-//         ],
-//       },
-//       {
-//         name: 'module2',
-//         slides: [
-//           {
-//             heading: ' Resources for \n market analysis',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FEmployee%20performance.png?alt=media&token=268cb1cc-96e0-4005-a150-bfe01859b9f0&_gl=1*1hfhfu6*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzAyNjUuMC4wLjA.',
-//             type: 'intro',
-//           },
-
-//           {
-//             text: ' Few Resources For \n Conducting Market \n Analysis:',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FIllustration%20-%20Finances.png?alt=media&token=a870cc3c-6e28-462b-99ca-bf20551750e4&_gl=1*16hs60c*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MTk3NTIuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: 'The Census Bureau When you’re looking for demographic info, look no further than the US Census Bureau. You can find great information ranging from locations to age to race (to name just a few) on their site. ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FBusiness%20location.png?alt=media&token=033c1cab-f12f-4a5e-9a73-695ded348750&_gl=1*1ty09oo*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MTk5ODUuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             heading: 'Online tools ',
-//             text: ' If you’re looking to gather information about your competition and your company is primarily online, check out SimilarWeb for extensive data. It’s a great resource for boosting up the credibility of your numbers. ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FBusiness%20discussion.png?alt=media&token=ce74934f-52d7-4eb4-956c-cee73001cc2b&_gl=1*1sgozdq*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjAwODkuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             heading: 'Surveys ',
-//             text: ' When you’re trying to learn more about your market, why not ask them yourself? \n\n A well-designed survey can give you information about your users that you never would have expected. \n You can design and conduct surveys yourself, if that’s in your skill set, or you can hire a professional firm to conduct them for you. ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2Fteam%20success.png?alt=media&token=da5bcc4a-d5b7-4ca8-8f2c-c865c1ecd749&_gl=1*r28duf*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjAyNjcuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Market Analysis Companies',
-//             text: " Another option is to employ a market research or market analysis firm or consultant to assist you with this crucial duty. \nStartup founders frequently believe that they must do everything and try to save money by 'wearing all the hats,' but it's perfectly acceptable to confess that you lack the abilities for certain tasks. \n If market analysis is something you're not comfortable with, do some research and discover a company that can handle it for you. ",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FYoung%20lady%20working%20on%20laptop.png?alt=media&token=5826f7ec-4087-49ef-88c8-e7c2fcbd217e&_gl=1*1v61ia9*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjA0NTYuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Completive \n Pricing Strategy',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FIllustration%20-%20Finances.png?alt=media&token=a870cc3c-6e28-462b-99ca-bf20551750e4&_gl=1*z22hov*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjA2MTUuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Specialize Further',
-//             text: 'There is one thing that a client will always value above low cost: specialty. \n\nIf a customer has the option of choosing between a low-cost offer and one that is tailored to their needs, they will almost always choose the latter.\n\nFind a technique to customise your product or service for specific customer segments. By providing several specialised solutions for each sub-category, you can still reach the entire market.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FYoung%20lady%20working%20on%20laptop.png?alt=media&token=5826f7ec-4087-49ef-88c8-e7c2fcbd217e&_gl=1*1v61ia9*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjA0NTYuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Do Not Race to Bottom',
-//             text: "Make a statement about quality with your one-of-a-kind items. \nYou may need to explain to your consumers why you deserve more money, but don't hurry into a price war with another team. \nRunning downhill can be detrimental to your business for a long time. Respect your competitor's pricing strategy to hold yourself accountable. People will look up to you because of that.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FGrowing%20Up.png?alt=media&token=56044382-5260-4c31-9f44-1e1beb7e2239&_gl=1*ri9d62*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjA4OTYuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Learn About Your Market',
-//             text: ' Because you believe that your competitor is of low quality, it may not be. The market determines quality, and if it likes a competitor, that is an opportunity for you to learn why. \nYou will probably understand the marketing angle they use or the feature they use in a different way that attracts customers to them. \n\nUse your competition to learn more about your market, and move around accordingly.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FMarketing.png?alt=media&token=87446859-8650-4219-9c99-3e5ec1ab528b&_gl=1*xu724f*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc5Mjc1OS4yNC4xLjE2ODU3OTMxODYuMC4wLjA.',
-
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Polish Your Brand ',
-//             text: "You've put money into your business. Your team is exceptional. You're also well prepared to enter the market. \nHowever, keep in mind that the most important client for your product is you. \n Create an interesting tale that helps your client base achieve true product balance. Please sympathize with them. They are aware of the situation. Constantly add value to them. Never take anything for granted when it comes to them. \nThis is the storyline you want to tell, and flexible pricing strategies should follow.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FMarketing.png?alt=media&token=87446859-8650-4219-9c99-3e5ec1ab528b&_gl=1*xu724f*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc5Mjc1OS4yNC4xLjE2ODU3OTMxODYuMC4wLjA.',
-
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             question:
-//               'When it comes to price, going downward might be detrimental to your business for a long time.',
-//             options: ['True', 'False'],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-
-//           {
-//             heading: 'Have Depth and Wide Scope',
-//             text: ' We do SEO services with a broader scope and greater depth.\n\n  To set a higher price than your competitors, you must first demonstrate that you are superior. \n Then, with the correct marketing and messaging, you can set yourself apart. If you`re having trouble figuring out why you`re better, take a look at your business strategy and see where you can add the greatest value.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FTick.png?alt=media&token=b8005209-8144-4ad6-9252-112b8e3b5f6b&_gl=1*kezibv*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjIxMjYuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             heading: 'Provide a Better Customer experience',
-//             text: " After all, it's all about making a stronger initial impression than your opponent. If someone is visiting your site for the first time, provide them with exactly what they require and remove any unnecessary distractions.\n Create a white board or animated film to demonstrate the benefits of your product if your competitors employ text and visuals. Make your short storey as simple as feasible for your readers.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2Fcommunity.png?alt=media&token=ded7eb70-7634-48e1-b0e6-0fa2cfcf1308&_gl=1*rbo7ze*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjIyODguMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             question: 'What is the full form of SEO?',
-//             options: [
-//               'Search Engine Optimum',
-//               'Search Engine Optimization',
-//               'Search Electronic Optimization',
-//             ],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-
-//           {
-//             text: 'End Questions ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=3d8ff70f-a5e9-4e89-8778-1d464ef2818b&_gl=1*66h02c*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjI0NjkuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             question: 'Market research is…….',
-//             options: [
-//               'the procedure for establishing the viability of a new service or product by doing direct customer research',
-//               'is the process of releasing an old product to a small group of people to see how they react to it',
-//               "the type of funding utilised to launch a business. Private investors usually give funding in exchange for an equity stake in the company or a percentage of the product's earnings.",
-//               'none of these',
-//             ],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-
-//           {
-//             question: 'How to attract Beta Testers through Social Networks?',
-//             options: [
-//               'the quantity demanded across all countries for a given good.',
-//               'the total quantity demanded across segmented  consumers in a market for a given time period.',
-//               'the total quantity demanded across all consumers in a market for a given good.',
-//               'none of these',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-
-//           {
-//             question: 'SWOT analysis assesses',
-//             options: [
-//               'Market price of the commodity',
-//               'internal and external factors, as well as current and future potential.',
-//               'current and future potential of company’s stock price',
-//               'all of these',
-//             ],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-
-//           {
-//             question: 'A target market encapsulates',
-//             options: [
-//               'a group of people who share some common interests and who a business has recognised as possible buyers for its products.',
-//               "a group of persons identified as possible clients for a company's services because they share some common qualities.",
-//               'a group of persons who share particular characteristics and have been identified by a firm as possible customers for its products.',
-//               'all of these',
-//             ],
-//             ans: 4,
-//             type: 'quiz',
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     frontscreen: {
-//       images: [
-//         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20of%20finding%20creative%20employees%20for%20company%20startup%20(1).png?alt=media&token=b196aaf6-ec21-4f18-963a-6f7b50a4029a&_gl=1*11hsb5n*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjMwMDUuMC4wLjA.',
-//         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FBusinesswoman%20working%20on%20laptop.png?alt=media&token=324aee7d-c286-49a9-85a7-e90e53b181ba&_gl=1*18o2dl9*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjMwNDMuMC4wLjA.',
-//       ],
-//       name: 'ELEVATOR\nPITCH',
-//       coverImg:
-//         'https://img.freepik.com/free-photo/front-view-female-student-white-shirt-black-jacket-wearing-backpack-holding-files-with-copybooks-blue-wall-college-university-lessons_140725-43393.jpg?w=996&t=st=1685954778~exp=1685955378~hmac=1bd56a749b79b3a4f7dd0360ef5d398d4404b7a4754404f012bda290d75ce2aa',
-//     },
-//     modules: [
-//       {
-//         name: 'model1',
-//         slides: [
-//           {
-//             heading: 'Elevator pitch and its uses',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FYoung%20man%20working%20on%20strategic%20planning.png?alt=media&token=80acf4e7-1c0c-4f07-8289-fc1ca5aa176b&_gl=1*1i0xl3e*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjMxMDkuMC4wLjA.',
-//             type: 'intro',
-//           },
-//           {
-//             heading: 'ELEVATOR PITCH',
-//             text: 'Elevator Pitch is something that can give “Do or die!” A real meaning. It can either have a long lasting impression or can go totally ignored. It’s a verbatim, appealing, interactive sales pitch that you can deliver to your end customers to have them grabbing the opportunity to try your products/services!',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20of%20finding%20creative%20employees%20for%20company%20startup%20(1).png?alt=media&token=b196aaf6-ec21-4f18-963a-6f7b50a4029a&_gl=1*11hsb5n*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjMwMDUuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: 'A well-crafted Elevator Pitch can open all kinds of doors with potential partners, customers, future employees, and investors        ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20of%20finding%20creative%20employees%20for%20company%20startup%20(1).png?alt=media&token=b196aaf6-ec21-4f18-963a-6f7b50a4029a&_gl=1*11hsb5n*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjMwMDUuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: 'Do you need one?',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2Fanalytics.png?alt=media&token=6bc00fda-e9bc-4a1f-94dd-8940f7b6f1c5&_gl=1*ktrlsp*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjMyNzkuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             question:
-//               '_________is a slang term used to describe a brief speech that outlines an idea for a product, service, or project.',
-//             options: [
-//               'Elevator Pitch',
-//               'Served Addressable Market',
-//               'Total Addressable Market',
-//               'All of the above',
-//             ],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-
-//           {
-//             text: 'If you’re an entrepreneur, business owner, an aspiring one—then “Yes, you are in need of an elevator pitch!” A 30-second elevator pitch helps you to sell yourself, your goals, and your big ideas to the end customers.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FLayer_3.png?alt=media&token=c703eedc-2c4d-4115-8512-0f9edfcbd440&_gl=1*1o6ks8x*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjM0MDYuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Where and when to use your elevator speech?',
-
-//             text: 'You can use your elevator pitch to spur interest in your customer’s mind about your business in lot many situations:',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20of%20finding%20creative%20employees%20for%20company%20startup%20(1).png?alt=media&token=b196aaf6-ec21-4f18-963a-6f7b50a4029a&_gl=1*1caf6bi*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjM1NjIuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             text: 'When you meet a potential client or business connection.\n On your website’s homepage.\n At networking events.\nAt social gatherings.\nTo help you secure funding or investment.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20of%20finding%20creative%20employees%20for%20company%20startup%20(2).png?alt=media&token=3cedd605-acb6-4be6-9188-61341aa37b58&_gl=1*1pua20a*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjM3MTMuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: 'Basically, anytime a potential lead or new relationship appears.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20of%20finding%20creative%20employees%20for%20company%20startup%20(2).png?alt=media&token=3cedd605-acb6-4be6-9188-61341aa37b58&_gl=1*1pua20a*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjM3MTMuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             question:
-//               'In which of the following case Elevator Pitch can be used?',
-//             options: [
-//               'When you meet a potential client or business connection.',
-//               'On your website’s homepage.',
-//               'At networking events. ',
-//               'all of these',
-//             ],
-//             ans: 4,
-//             type: 'quiz',
-//           },
-
-//           {
-//             text: 'Other modes to use your elevator pitch:\n  In your LinkedIn, Facebook, and other social bios.\n When pitching new clients by email.\nIn your company’s brand guidelin \n Every Thanksgiving when Aunt Urma asks when you’ll be getting a job.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20of%20finding%20creative%20employees%20for%20company%20startup%20(2).png?alt=media&token=3cedd605-acb6-4be6-9188-61341aa37b58&_gl=1*1pua20a*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjM3MTMuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             question: 'What are the modes available to use you elevator pitch?',
-//             options: [
-//               'LinkedIn , Facebook',
-//               'Email',
-//               'BOTH A & B ',
-//               '  NONE of these',
-//             ],
-//             ans: 4,
-//             type: 'quiz',
-//           },
-//         ],
-//       },
-//       {
-//         name: 'module2',
-//         slides: [
-//           {
-//             heading: ' How to write  \nan elevator pitch?',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FBusinesswoman%20working%20on%20laptop.png?alt=media&token=324aee7d-c286-49a9-85a7-e90e53b181ba&_gl=1*1mgh236*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjQwMjAuMC4wLjA.',
-//             type: 'intro',
-//           },
-
-//           {
-//             text: ' The bigger question is what information you should include? \n How long should an elevator pitch be?',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20about%20business%20Failure.png?alt=media&token=e030107c-348e-4367-8213-9d90eff76105&_gl=1*1wb06jk*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjQwNzMuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: 'Who are you?  \n What do you do?\n What problem do your customers face?\n How do you help them solve it?\n Why is your solution better than those offered by competitors? ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20about%20business%20Failure.png?alt=media&token=e030107c-348e-4367-8213-9d90eff76105&_gl=1*1wb06jk*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjQwNzMuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             heading: 'Step 1: Nail The Problem',
-//             text: 'Founders at times miss out on giving due importance to the bottlenecks and the Solution. A finely tailored problem adds the value of your solution and can put your plan running in different directions.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FSign%20Up%20form.png?alt=media&token=551168c9-0cde-45fe-8bf6-7bbc287a2fa2&_gl=1*l6obyp*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjQxOTAuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Step 2: Explain The Solution',
-//             text: "Once you've articulated the Problem, the next step is to enunciate how this problem can be fixed.      \n  Founders usually presume that their customer base already has a need for their product. \n Take time to figure out the actual need and potential reach of your product.    ",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FYoung%20man%20working%20on%20strategic%20planning%20(1).png?alt=media&token=16eec2ff-6ac9-4fdc-97dc-e76e8a1edf2a&_gl=1*tb8haf*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjQyODguMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Step 3: Identify the TAM ',
-//             text: "Another option is to employ a market research or market analysis firm or consultant to assist you with this crucial duty. \nStartup founders frequently believe that they must do everything and try to save money by wearing all the hats, but it's perfectly acceptable to confess that you lack the abilities for certain tasks. \n  If market analysis is something you're not comfortable with, do some research and discover a company that can handle it for you  ",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FMarketing.png?alt=media&token=7c76f21e-0976-4d9d-8cce-183e18a4b2ae&_gl=1*1sf2aoa*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjQzODMuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             question:
-//               '_________is a slang term used to describe a brief speech that outlines an idea for a product, service, or project.',
-//             options: [
-//               'Elevator Pitch',
-//               'Served Addressable Market',
-//               'Total Addressable Market ',
-//               '  All of the above',
-//             ],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-
-//           {
-//             question: 'State the full form of CTA.',
-//             options: [
-//               'Call To Artifact',
-//               'Call To Affirmation',
-//               'Call To animation ',
-//               '  Call To Action',
-//             ],
-//             ans: 4,
-//             type: 'quiz',
-//           },
-//         ],
-//       },
-//       {
-//         name: 'module3',
-//         slides: [
-//           {
-//             heading: ' The Three Pies of Market Size',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FPie%20Chart.png?alt=media&token=3120cefb-d3de-4bb7-b08f-b8df9c9b0b59&_gl=1*mw43e9*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjQ3MDguMC4wLjA.',
-//             type: 'intro',
-//           },
-
-//           {
-//             heading: 'A. TOTAL ADDRESSABLE MARKET',
-//             text: 'This encapsulates the market share you feel your product/service has the capacity to reach.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FMarketing.png?alt=media&token=7c76f21e-0976-4d9d-8cce-183e18a4b2ae&_gl=1*6spoxm*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjU2NDkuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'B. SERVED ADDRESSABLE MARKET',
-//             text: ' Customize the entire TAM by how many of those potential customers you can reasonably convert into actual ones. Remember you can only serve as many customers as your sales and marketing channels will require you to.',
-//             image:
-//               '  https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FWomen%20doing%20shopping%20with%20trolley%20with%20market.png?alt=media&token=dfcaf5d6-43a4-46e3-9770-190fe0c80a5c&_gl=1*oirvso*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjU3MzAuMC4wLjA. ',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'C. TARGET MARKET',
-//             text: 'Time to put your thinking caps on! This is where you need to be clear about your target market to actually put the key to your business vision.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FWoman%20doing%20online%20market%20analysis.png?alt=media&token=af2b463e-4b90-4a09-8803-cac000dc5cb6&_gl=1*1i2a2af*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4wLjE2ODU4NzMyNzMuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             question:
-//               ' _______ encapsulates the market share you feel your product/service has the capacity to reach.',
-//             options: [
-//               'Served Addressable Market',
-//               'Total Addressable Market',
-//               'Target Market',
-//               '  NONE of the above',
-//             ],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-
-//           {
-//             heading: ' Tips on how to deliver a confident elevator pitch:',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20of%20finding%20creative%20employees%20for%20company%20startup.png?alt=media&token=0f71d228-a82b-4c51-b9c5-c762232d1588&_gl=1*1lkbuaw*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzM0NDYuMC4wLjA.',
-//             type: 'intro',
-//           },
-
-//           {
-//             heading: 'Get them hooked',
-//             text: ' Once you’ve introduced yourself, you’ve got to keep the audience hooked by stressing on the main highlights/features which would compel them to use your product/service over the others.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FWoman%20working%20on%20computer.png?alt=media&token=290cf443-4a26-47f6-adde-1706c6afe480&_gl=1*4ee08j*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzM1MjguMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Avoid Jargons',
-//             text: 'Delivering a confident elevator pinch doesn’t mean you should make it too complex so that the end users are not able to get it. Better is to keep it short, precise and engaging but not monotonous.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FTeam%20Discussion.png?alt=media&token=2891d97b-0ba7-4838-8edc-3bf7409aa89a&_gl=1*15v1tg1*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzM2MzcuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Using comparison',
-//             text: 'Comparing it to something that already exists can help you meet your set benchmark.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FChecklist.png?alt=media&token=76799896-ef05-42c4-ad26-6d3b56610fd1&_gl=1*1culagi*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzM3MTAuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Add emotional touch',
-//             text: 'Adding an emotional touch can help you pull your audience towards your business concept.So yes, be a tad dramatic and you’re done!!',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FLayer%202.png?alt=media&token=db0144fd-423d-419c-a050-ee5f78e04e2a&_gl=1*7lbo3k*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzM4NjIuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'End by asking an open question',
-//             text: ' Making your pitch persuasive is the key. This can be done by employing the use of conversation instead of just saying everything in one go.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2Fques%20mark%201.png?alt=media&token=089186a2-7e65-423f-a66a-e2b41ea2822b&_gl=1*lgggja*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzM5NDkuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Close with a call-to-action:',
-//             text: 'A vivid call-to-action (CTA) lets your audience get a sneak-peak of your startup. Think about your end goal. \n Do answer most sought after questions like- Do you want the chance to pitch for investment, make a new business connection or interview for your dream job?  ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2Fbranding%20or%20marketing%20for%20product.png?alt=media&token=45054272-2510-4b6c-b669-ab73f168c836&_gl=1*qxfy14*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzQwMzQuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             question: 'State the full form of CTA.',
-//             options: [
-//               'Call To Artifact',
-//               'Call To Affirmation',
-//               'Call To animation',
-//               '  Call To Action',
-//             ],
-//             ans: 4,
-//             type: 'quiz',
-//           },
-
-//           {
-//             heading: ' End Questions',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=4cbb516a-a800-4b7a-9920-3717d8103c2d&_gl=1*1ie00f3*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzQxNzMuMC4wLjA.',
-//             type: 'intro',
-//           },
-
-//           {
-//             question:
-//               'Select the steps involved in writing the elevator pitch.    ',
-//             options: [
-//               'Reach to investors',
-//               'Identify the TAM',
-//               'Both A and B',
-//               '  None of these',
-//             ],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-
-//           {
-//             question: 'What are the pies of Market Size?',
-//             options: ['tam', 'sam', 'target market', '  all of these'],
-//             ans: 4,
-//             type: 'quiz',
-//           },
-//           {
-//             question: 'Target Market is ……',
-//             options: [
-//               'the entire TAM by how many of those potential customers you can reasonably convert into actual ones.',
-//               'where you need to be clear about your market to actually put the key to your business vision.',
-//               'how much potential for growth your startup has.',
-//               ' where you need to be clear about your market to actually put the key to your business vision.',
-//             ],
-//             ans: 4,
-//             type: 'quiz',
-//           },
-//           {
-//             question: 'Served Addressable Market customize……',
-//             options: [
-//               'the entire TAM by how many of those potential customers you can reasonably convert into actual ones.',
-//               'where you need to be clear about your market to actually put the key to your business vision.',
-//               'how much potential for growth your startup has.',
-//               ' where you need to be clear about your market to actually put the key to your business vision.',
-//             ],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-
-//           {
-//             question: 'Total Addressable Market encapsulates…….',
-//             options: [
-//               'the entire TAM by how many of those potential customers you can reasonably convert into actual ones.',
-//               'where you need to be clear about your market to actually put the key to your business vision.',
-//               'how much potential for growth your startup has.',
-//               ' where you need to be clear about your market to actually put the key to your business vision.',
-//             ],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-
-//           {
-//             question: 'The Market Size shows……',
-//             options: [
-//               'the entire TAM by how many of those potential customers you can reasonably convert into actual ones.',
-//               'where you need to be clear about your market to actually put the key to your business vision.',
-//               'how much potential for growth your startup has.',
-//               ' where you need to be clear about your market to actually put the key to your business vision.',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     frontscreen: {
-//       image: [
-//         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FFinances.png?alt=media&token=53b1ee45-6ffa-44bc-9fba-d0659111b7e9&_gl=1*c2k78d*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ1NjIuMC4wLjA.',
-//         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FEmployee%20performance.png?alt=media&token=3a2e8c8b-bc72-490a-be05-5175e61451ed&_gl=1*apnom0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ2NDIuMC4wLjA.',
-//       ],
-//       name: 'Fundraising and its means',
-//       coverImg:
-//         'https://img.freepik.com/free-photo/entrepreneurs-meeting-office_23-2148898688.jpg?w=996&t=st=1685954824~exp=1685955424~hmac=3e1aafbff6203126df03604b22169ef92a34335a9fed93df0e11251c395e81dd',
-//     },
-//     modules: [
-//       {
-//         name: 'model1',
-//         slides: [
-//           {
-//             heading: 'Introduction ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fanalytics.png?alt=media&token=55fa5dea-a0bb-4155-90d9-ac60045d76f0&_gl=1*15jszpy*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ3MzAuMC4wLjA.',
-//             type: 'intro',
-//           },
-//           {
-//             text: 'Startup funding, or startup capital, is the amount of money needed to start a new business. It can come from a variety of sources and can be used for any purpose that helps startups transform their ideas into real businesses.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fproduct%20planning%20discussion.png?alt=media&token=a190db44-4381-4128-9f07-880d76394aef&_gl=1*jfl4fn*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ4MDUuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             text: "Unlike the Car loan application, there is no standard for securing start-up funds. There is no form to fill out and wait for approval. It is driven much more by the founder's ability to convince others of what the vision is and to pool resources quite naturally while they do so.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fproduct%20planning%20discussion.png?alt=media&token=a190db44-4381-4128-9f07-880d76394aef&_gl=1*jfl4fn*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ4MDUuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             heading: 'importance of funds',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=d43344da-5190-4632-93aa-da0087666dc6&_gl=1*u6caip*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ5MTIuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Without startup funding, most startups die. The amount of funding required to make a startup profitable is usually beyond the capabilities of the founders, friends and family.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=d43344da-5190-4632-93aa-da0087666dc6&_gl=1*u6caip*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ5MTIuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: 'A startup here means a company built for rapid growth. Fast-growing companies almost always have to burn capital to sustain growth until they reach profitability.          ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=d43344da-5190-4632-93aa-da0087666dc6&_gl=1*u6caip*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ5MTIuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: 'Some startups succeed in raising their own funds, but this is an exception. Of course, there are many great companies that are not startups. Management of capital requirements for these companies is beyond the scope of this document.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FWireframe.png?alt=media&token=e0523f7e-c3f2-485e-bec6-1b00b6aa276a&_gl=1*1kwek7z*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODUwNTUuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: 'cash not only allows startups to survive and grow, but is almost always a competitive advantage in all important aspects, such as key personnel recruitment, public relations, marketing and sales. So, most startups will almost certainly want to raise money.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fproduct%20planning%20discussion.png?alt=media&token=a190db44-4381-4128-9f07-880d76394aef&_gl=1*1xaxcqo*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODUxMTUuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: 'The good news is that there are many investors looking to put the right money into startups. The bad news is that "funding is brutal." The process of raising this money is often long, difficult, complex, and self-defeating. But this is the path that almost all companies and founders must go through. When is the right time to raise?',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FWireframe.png?alt=media&token=e0523f7e-c3f2-485e-bec6-1b00b6aa276a&_gl=1*1kwek7z*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODUwNTUuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//         ],
-//       },
-//       {
-//         name: 'model2',
-//         slides: [
-//           {
-//             heading: 'Funding Terms',
-//             Image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FWorkshop%20for%20Growth.png?alt=media&token=58856e2a-c8e9-44a7-9154-e5a1a6ec7a84&_gl=1*c3g0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODUyNDMuMC4wLjA.',
-//             type: 'intro',
-//           },
-//           {
-//             heading: 'Funding Jargons',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FWoman%20thinking%20of%20investment.png?alt=media&token=84b2ddb9-e546-451e-b9ba-a7bdb4f7c512&_gl=1*sg4m6u*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODUzMjIuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: 'Angel Investor - A wealthy private investor in startup companies.\n  Cap Valuation - The maximum effective valuation for an investor in a convertible note.',
-//             Image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FWorkshop%20for%20Growth.png?alt=media&token=58856e2a-c8e9-44a7-9154-e5a1a6ec7a84&_gl=1*c3g0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODUyNDMuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: '3. Convertible Note - This is a debt instrument that will convert into stock; usually preferred stock but sometimes common stock.\n\n 4. Common Stock - Capital stock typically issued to founders and employees, having the fewest, or no, rights, privileges and preferences.',
-//             Image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fimage%205.png?alt=media&token=135fdb59-dd87-4002-9cf5-dc619e03d151&_gl=1*b57aly*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU0NTguMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: '5. Dilution - The percentage an ownership share is decreased via the issuance of new shares.\n\n6. Discount - A percentage discount from the pre-money valuation to give safe or note holders an effectively lower price.',
-//             Image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FGroup%202907.png?alt=media&token=deafae06-f5dc-48a6-a41f-886dbaaf4ce8&_gl=1*d9aql2*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU1NTYuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: '7. Equity Round - A financing round in which the investor purchases equity in the company.\n\n 8. Fully Diluted Shares - The total number of issued and outstanding shares of capital stock in the company, including outstanding warrants, option grants and other convertible securities.',
-//             Image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FConcept%20about%20business%20Failure.png?alt=media&token=a0d13d11-5d3f-4e1f-8a8b-ed6271d6a78e&_gl=1*zz1gxe*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU2MTYuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: '9. IPO - Initial Public Offering - the first sale of stock by a private company to the public.\n\n 10. Lead Investor - Usually the first and largest investor in a round who brings others into the round.   ',
-//             Image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Ffinancial%20year.png?alt=media&token=e9e89cb8-fb0f-4443-8f08-a502e764b66d&_gl=1*16mdt5q*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU2OTQuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: '11. Liquidation Preference - A legal provision in a company’s charter that allows stockholders with preferred stock to get their money out of a company before the holders of common stock in the event of an exit.\n\n12. Maturity Date - The date at which a promissory note becomes due.',
-//             Image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Ffinancial%20year.png?alt=media&token=e9e89cb8-fb0f-4443-8f08-a502e764b66d&_gl=1*16mdt5q*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU2OTQuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: '13. Equity Incentive Plan / Option Pool - The shares allocated and set aside for grants to employees and consultants.\n\n 14. Preferred Stock - Capital stock issued in a company that have specific rights, privileges and preferences compared to the common stock. Convertible into common stock, either automatically or at the option of the preferred stockholder.',
-//             Image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FGroup%202906.png?alt=media&token=a32a596c-1c2b-4fb1-9370-a4e6e2cadf88&_gl=1*83s8q0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU4MTQuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: '15. Pre-money Valuation - The value of a company prior to when investor money is added.\n\n 16. Pro-rata rights - Contractual rights that allow the holder to maintain their percentage ownership in subsequent financing rounds.',
-//             Image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FGroup%202906.png?alt=media&token=a32a596c-1c2b-4fb1-9370-a4e6e2cadf88&_gl=1*83s8q0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU4MTQuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: '17. Protective Provisions - Provisions in a company’s charter that give exclusive voting rights to holders of preferred stock. For example, the approval of these stockholders, voting separately from other stockholders, may be required for an acquisition.',
-//             Image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FBusiness%20woman%20achieving%20the%20goal%20successfully.png?alt=media&token=e2a873d0-44df-4155-8f4f-fb7d310c7742&_gl=1*1hyqt1s*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU4OTAuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: '18. TAM - Total Available Market. In pitches, this is the estimated total revenue available for the product(s) you are selling.\n\n19. Venture Capitalist - A professional investor in companies, investing limited partners’ funds.',
-//             Image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fstrategy%20or%20planning.png?alt=media&token=a4a87477-4de3-4552-be1d-bf21b6c5833c&_gl=1*1p9mem6*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU5ODEuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//         ],
-//       },
-//       {
-//         name: 'model3',
-//         slides: [
-//           {
-//             heading: 'Funding Stages',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fdrawing.png?alt=media&token=5b2a47eb-af58-45c9-afc2-0c2085c1ff14&_gl=1*126z1uf*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODYwODAuMC4wLjA.',
-//             type: 'intro',
-//           },
-//           {
-//             heading: 'Funding Types',
-//             text: "Before teaching you how to raise capital, you must first identify the type of capital you are seeking. Understanding all the pros and cons of different capital sources can be confusing, and most founders don't really know why one capital source is better than another.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FMan%20thinking%20to%20start%20a%20startup.png?alt=media&token=ec5195f0-cfba-4505-a9d4-7581b1ee0c3c&_gl=1*qdr8vb*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODY1MjAuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             text: 'We will change everything for you. You are about to learn everything you need to know about the various forms of capital. No, it is not as exciting as watching a Marvel movie, but it costs more.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fteam%20work.png?alt=media&token=cbdd7acc-1803-4ab0-ade8-674dbb71e2de&_gl=1*pe1lii*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODY1ODkuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'BOOTSRAPPING',
-
-//             text: ' Bootstrapping is a process of starting a company with only personal savings, including borrowed or invested funds from family and friends, as well as income from initial revenue. \n\nBootstrapped businesses do not rely on traditional financing methods, such as the support of investors, crowdfunding or bank loans.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FBusiness%20Task%20list.png?alt=media&token=15c57612-3f1b-41db-986f-40eddcf00970&_gl=1*1ql5o08*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODY2OTAuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Equity',
-
-//             text: '  Equity financing takes place when an investor invests funds in a startup, with a motive of earning back a multiplied amount of the investment made in the form of returns.\n\nIn case of equity the startup doesn’t need to pay back the fund invested to the investor but instead has to part with a part of company shares and give it to the investor. The company share is called equity, thus naming this funding process equity financing.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FLayer%202.png?alt=media&token=7459448d-5b8f-4e09-a111-ff67ce92ce47&_gl=1*1u4ec8n*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODY3OTMuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'DEBT',
-
-//             text: 'Debt funding is the process in which an investor lends money to an entrepreneur for their business over a certain period at a given rate of interest. \n\nIn exchange, the company sells the investors bonds that act as a certificate for the loan. Here, the startup has to pay the debt fund back on a pre-scheduled date along with the interest payment.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fresearch%20and%20development.png?alt=media&token=91e6f64e-3555-4e6c-b2a7-efae732e0d55&_gl=1*p5td6i*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODY4OTYuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Funding Stages',
-
-//             text: ' Startups raise money in a series of stages based on how much growth and evolution they have had.\n\nThink of it like a student going to school. There’s pre-primary, primary, secondary, senior secondary, college. Each of those stages represents an evolution of the student, and there are a number of teachers who has expertise in helping students at each stage.  ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fresearch%20and%20development.png?alt=media&token=91e6f64e-3555-4e6c-b2a7-efae732e0d55&_gl=1*p5td6i*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODY4OTYuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             text: 'Startups are the same way. If you’re just getting started (the Seed Stage) you’ll be talking to different investors than if you have already raised money previously and are in the Expansion stage. These aren’t strict definitions, mind you, but just general guidelines a company goes through as they grow.   ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fmultitasking%20or%20branding%20or%20product%20planninh.png?alt=media&token=4a8ece40-d8c0-41d4-bc6b-ab115a1c2f65&_gl=1*1ivh3ez*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcwNDcuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             heading: '1. Seed Stage (less than Rs. 1cr.)',
-
-//             text: "Friends and Family, Angel Investors, Incubators\n\nThe seed stage is the most formative stage of a startup. It usually starts with an idea, but most early-stage startups looking to raise money have more than just an idea. You're already working on a product prototype, and you've started working with a business plan in mind. This is where you get customers. ",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fmultitasking%20or%20branding%20or%20product%20planninh.png?alt=media&token=4a8ece40-d8c0-41d4-bc6b-ab115a1c2f65&_gl=1*1ivh3ez*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcwNDcuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             text: 'Investors in the seed stage usually get their first money and often have some sort of connection or relationship with the founder. The investment is usually small because the idea is still in its infancy and you bet more on the overall concept than the actual company.    ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Ffinancial%20year.png?alt=media&token=e9e89cb8-fb0f-4443-8f08-a502e764b66d&_gl=1*r22cn0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcyNDkuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Key Requirements:',
-
-//             text: '  Business Plan \n Minimum Viable Product  \n Some Customers  \n Founding Team',
-
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Ffinancial%20year.png?alt=media&token=e9e89cb8-fb0f-4443-8f08-a502e764b66d&_gl=1*r22cn0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcyNDkuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: '2. Early Stage (less than Rs. 10cr.)',
-//             text: ' Angel Investors, Venture Capital\n\n Early-stage companies have usually achieved at least MVP (minimum viable product), meaning their product or service is being provided to at least a small test subset of customers, and is meeting with customer approval.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fmultitasking%20or%20branding%20or%20product%20planninh.png?alt=media&token=4a8ece40-d8c0-41d4-bc6b-ab115a1c2f65&_gl=1*1ivh3ez*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcwNDcuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             text: 'Early-stage companies are also often generating enough revenue to be worth talking about, although that varies from company to company.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Ffinancial%20year.png?alt=media&token=e9e89cb8-fb0f-4443-8f08-a502e764b66d&_gl=1*r22cn0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcyNDkuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             heading: 'Key Requirements:',
-
-//             text: '\nFunctional Product \nPaying Customers\nEarly Key Team Members\nEarly Growth',
-
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Ffinancial%20year.png?alt=media&token=e9e89cb8-fb0f-4443-8f08-a502e764b66d&_gl=1*r22cn0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcyNDkuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: '3. Expansion Stage (more than Rs. 10cr.)',
-//             text: 'Venture Capital, Private Equity\n\nBy the time you are searching for Expansion Stage capital amongst venture capital and private equity investors, it’s clear that your business has major upside potential. You may not have strong financials yet, but you may have just developed the next Amazon.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fmultitasking%20or%20branding%20or%20product%20planninh.png?alt=media&token=4a8ece40-d8c0-41d4-bc6b-ab115a1c2f65&_gl=1*1ivh3ez*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcwNDcuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             text: 'The investors at this stage are looking for companies that have proven they have found “lightning in a bottle” and just need a bit of a turbo boost to really accelerate to next level.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             heading: 'Key Requirements:',
-
-//             text: ' Significant Revenue (Rs.30 lakh+.)\nHuge Market Potential (greater than Rs.10Cr.)\nStrong Market Leadership',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: '4. Late Stage (less than Rs. 50cr.)',
-//             text: 'Private Equity, Investment Banks\n\nOnce a company has built a product that’s become a darling in the market, that’s when the Private Equity and Investment Bankers show up. These folks aren’t looking for a lot of risk they let the angel investors and venture capital firms deal with that. ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fmultitasking%20or%20branding%20or%20product%20planninh.png?alt=media&token=4a8ece40-d8c0-41d4-bc6b-ab115a1c2f65&_gl=1*1ivh3ez*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcwNDcuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             text: 'They are looking to put massive sums of money into companies that are already winning to allow them to secure their leadership position. \n\n If you make it to this stage you’ve won!',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             heading: 'Key Requirements:',
-
-//             text: ' Significant Revenue (Rs. 1Cr+)\nMarket Leadership Position',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Investor Types',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20testing.png?alt=media&token=417a7602-e1da-4a0a-ad88-1f04bf26de3b&_gl=1*1tosry2*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc5NzguMC4wLjA.',
-//             type: 'intro',
-//           },
-
-//           {
-//             text: 'Whether you need to expand your team, pay for product development, or just need to be self-sufficient, at some point you may need to look outside for capital input.    ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: 'Fortunately, there are several ways to find funds. Banking, federal, or state governments may be a good option for some companies, but this guide focuses on the different types of investors you can bring when you run out of these options: friends and family, angel investors, and venture capitalists.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             heading: 'Friends and Family (less than Rs. 1Cr.)',
-
-//             text: ' While a bank or independent investor might be hesitant to risk money on your venture, your friends and family might be more willing to take a chance on your vision',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: 'With individual rounds typically raising around Rs.2,50,000 to Rs5,00,000, seeking investments from your personal network be an ideal way to raise seed money to get your company off the ground. These close circles generally consist of individuals most likely to feel a strong affinity for your brand -or, simply, to you -motivated more by loyalty and support than a return on investment alone.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Securing capital from friends and family can also act as an effective stepping stone toward future investment deals, as it demonstrates to potential future backers that you’ve validated your business plan among those closest to you.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'However, mixing business with family is notoriously risky, and for good reason. To that end, it is of the utmost importance that all investments are thoroughly documented. You should require that they sign a document acknowledging the risk and clarifying that they may not get their money back.    ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Before accepting any money, do some soul-searching to be sure that your ties are strong enough to withstand any worst-case-scenarios. Have each party sign a promissory note spelling out the repayment terms or, if you’re partnering with a friend or family member, sign a partnership agreement.    ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             heading: 'Angel Investors (Rs 1Cr.-Rs 2.5Cr.)',
-
-//             text: 'An angel is a high-net-worth individual who invests directly into genuine entrepreneurial businesses. This capital usually allows the startup to accomplish some of the early milestones like building out an MVP, generating revenue, etc. ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: 'While certainly savvy businesspeople, angel investors are also less likely than venture capitalists to get caught up in bottom lines and profit margins, and might not be as apprehensive about the numerous unknowns that often come attached to seed-stage investments.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: 'Angels can be an ideal fit for startups because their personal interest in the healthy growth of the business and their own litany of past successes and failures often prompt them to act as mentor and coach to their portfolio companies.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Many angel investors also belong to networks of other angel investors. These networks, or “Angel Groups,” pool their money and invest as a group in the deals they like the best. These networks are also beneficial to startups because it can make it much easier to raise larger amounts of capital.    ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             heading: 'Quick facts about Angel Investments:',
-//             text: 'There are over 6,000 active angel investors in the India alone\nMedian funding round size for angel investments: $1.5 million',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Venture Capital Firms (Rs 2Cr. – Rs 50Cr.)',
-
-//             text: 'Of the four investor types, Venture Capital firms write the biggest checks with an average investment size of $2.6MM to seed stage companies.  ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             text: 'VCs are in the business of reviewing, assessing, and investing in new and emerging businesses. As a result, they look at a very high volume of deals, and on average only invest in 1 out of every 100 deals they consider compared to angels, who invest in 1 out of every 10 deals. Furthermore, VCs conduct significantly more due diligence than angel investors, spending an average of 5 months vetting each investment opportunity.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Venture capital is consistently an active, rather than passive, form of financing. These investors seek to add value, in addition to capital, to the companies in which they invest, both to help your company grow and to achieve a greater ROI. This means virtually all VCs will want a seat on the Board of Directors.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: 'Although most VC firms will have a website, or other means of sending in cold call solicitations, it is always best to have a referral to a VC by a mutual acquaintance.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: 'This is one of the many benefits of equity crowdfunding: by asking your existing supporters to share you fundraise with their own networks, you open yourself up to the possibility of making connections that you may have previously thought were impossible.    ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
-//             type: 'textimg',
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     frontscreen: {
-//       image: [
-//         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FFinances.png?alt=media&token=53b1ee45-6ffa-44bc-9fba-d0659111b7e9&_gl=1*c2k78d*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ1NjIuMC4wLjA.',
-//         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FEmployee%20performance.png?alt=media&token=3a2e8c8b-bc72-490a-be05-5175e61451ed&_gl=1*apnom0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ2NDIuMC4wLjA.',
-//       ],
-//       name: 'How to Create \n a Pitch Deck \n for Investors',
-//       coverImg:
-//         'https://img.freepik.com/free-photo/person-drawing-symbols-coming-out-light-bulb-top-book_1232-907.jpg?w=996&t=st=1685954908~exp=1685955508~hmac=48b791b36e06e1dad299b20606dfe787f9b22aa44c4eccafe9b5821610abf0ca',
-//     },
-//     modules: [
-//       {
-//         name: 'model1',
-//         slides: [
-//           {
-//             text: "A pitch deck is a presentation used by entrepreneurs and startup owners to highlight their business, entice investors, and possibly seek cash to help them build their firm.\n You can't discount the importance of a good pitch deck in persuading investors since it helps you create powerful visual stories.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fproduct%20planning.png?alt=media&token=78e15eba-e45f-4157-b9c2-8f7d9d8a90e0&_gl=1*yh9nkk*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzQ5MjAuMC4wLjA. ',
-//             type: 'textimg',
-//           },
-
-//           {
-//             heading:
-//               'However, how can you construct a pitch deck that genuinely attracts investors? ',
-
-//             text: ' What a pitch deck is and why you need one     \n What slides to include in your pitch deck and what documents to bundle it with     \nThe secrets to creating a winning investor presentation including design tips to follow',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FMarketing%20employee%20working%20on%20marketing%20strategy.png?alt=media&token=89437946-2216-4732-8a0f-bc5f54f39f2d&_gl=1*1yc012g*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzUwNDUuMC4wLjA.',
-
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             question:
-//               'A ________is a presentation used by entrepreneurs and startup owners to highlight their business',
-//             options: [
-//               'BUSINESS MODEL',
-//               'PITCH DECK',
-//               'IDEA ',
-//               'ELEVATOR PITCH',
-//             ],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-
-//           {
-//             name: 'model1',
-//             slides: [
-//               {
-//                 heading: 'When Do You Need a Pitch Deck?',
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fanalytics.png?alt=media&token=755a66b7-f62c-4bd1-9fe0-159120c88c20&_gl=1*ojls7*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzU1NTAuMC4wLjA.',
-//                 type: 'intro',
-//               },
-
-//               {
-//                 text: "When you need to pitch your company to someone, you'll need a pitch deck. This might be anyone from a venture capitalist to a co-founder you believe would be a good fit. It may also be a company pitching competition's prescient panel of judges. You'll need a pitch deck to communicate your thoughts and request to anyone you're presenting to.",
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FGoogle%20Trends.png?alt=media&token=6ce20a75-4ccc-4ead-b937-3b3508089176&_gl=1*ic46ca*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzU2MTguMC4wLjA.',
-//                 type: 'textimg',
-//               },
-
-//               {
-//                 text: 'Yes, you can also communicate your concept verbally. However, because you could either underdeliver or overdeliver the required information, this is an unproductive method of presenting your business proposal.',
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FGoogle%20Trends.png?alt=media&token=6ce20a75-4ccc-4ead-b937-3b3508089176&_gl=1*ic46ca*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzU2MTguMC4wLjA.',
-//                 type: 'textimg',
-//               },
-
-//               {
-//                 text: ' A pitch deck allows you to leverage  visuals like photographs, graphics, samples, and videos to better communicate your message and create a lasting impression on your audience.',
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=d8cb10fd-a0c5-4398-a46b-71df67830a3e&_gl=1*4g0s9u*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzU3MDIuMC4wLjA.',
-//                 type: 'textimg',
-//               },
-
-//               {
-//                 text: ' For example, a pitch deck presentation allows you to communicate your financial estimates and display your mobile app more successfully than speaking or without visual aids.',
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FMobile%20application.png?alt=media&token=916b2f0c-656c-4abf-bdb9-ddc4b62a99b1&_gl=1*1guutkn*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzU3NTAuMC4wLjA.',
-//                 type: 'textimg',
-//               },
-
-//               {
-//                 question:
-//                   "You'll need a pitch deck to communicate your thoughts and request to anyone you're presenting to",
-//                 options: ['true', 'false'],
-//                 ans: 1,
-//                 type: 'quiz',
-//               },
-
-//               {
-//                 question:
-//                   'Communicating your concept verbally is an unproductive method of presenting your business proposal because                 ',
-//                 options: [
-//                   'we could underdeliver',
-//                   'we could overdeliver                  ',
-//                   'it look unprofessional                  ',
-//                   'Both 1&2',
-//                 ],
-//                 ans: 4,
-//                 type: 'quiz',
-//               },
-
-//               {
-//                 question:
-//                   'A pitch deck presentation allows you to communicate your financial estimates and display your mobile app more successfully than speaking or without visual aids.',
-//                 options: ['true', 'false'],
-//                 ans: 1,
-//                 type: 'quiz',
-//               },
-
-//               {
-//                 heading: '1. Title',
-
-//                 text: " In your pitch deck, the title is the first slide that appears. As a result, you can refer to it as your impression-making slide that sets the tone for your business concepts. Pay attention to the visual aspects (colors, fonts, and any images) because they help to set the tone — more on that later.\nIt's also wise to keep things simple here. Meaning: your name plus the name of your company are sufficient. If you have one, you can also include a short and catchy tagline. ",
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FAsk%20Customer%20Feedback.png?alt=media&token=637d1228-5367-4fc7-a7be-4371bab9f7bd&_gl=1*1ujh2sp*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzYxMDguMC4wLjA.',
-
-//                 type: 'headtextimg',
-//               },
-//               {
-//                 heading: '2. Introduction',
-
-//                 text: '  To establish credibility, use the introductory slide to introduce yourself. The shorter the introduction, the better, because you want to draw attention to the business idea rather than yourself. As in the example before, you can use this slide to express your unique selling point (USP) or value proposition. Alternatively, quickly describe your company and what it does. ',
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FDigital%20contract.png?alt=media&token=51cb1238-82d5-41e6-a411-a92a4c8fcbcb&_gl=1*ncd3dv*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzYxNzkuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-//               {
-//                 heading: '3. Problem',
-
-//                 text: "Use as many visual signals as you need to effectively communicate your situation. You can begin by telling a scenario that puts your investors in the shoes of your clients, such as the one below:\nYou'll want to make sure you successfully communicate your target buyer's issue. If you fail here, it's unlikely that you'll be able to persuade your audience that your product is necessary \n You might also begin your presentation with the problem rather than the introduction. There are no hard and fast rules; do whatever works to pique investors' interest and persuade them to invest in your company  ",
-
-//                 type: 'headtext',
-//               },
-
-//               {
-//                 heading: '4. Solution',
-
-//                 text: ' You can provide the solution in a variety of ways, including sharing your product MVP or a list of the features you provide; whichever makes the most persuasive case.\n   However, in your presentation, emphasize the benefits of each feature rather than the feature itself. Instead of simply promoting your product, approach this slide in such a way that it ties to the problem presented and demonstrates how your company concept may address it.\n   You can also merge your problem and solution slides into one slide to make it easier for your audience to connect the dots and see how your answer fits into the bigger picture.   ',
-//                 type: 'headtext',
-//               },
-//               {
-//                 heading: '5. Market Size, Opportunity and Trends',
-
-//                 text: ' You can use figures to indicate the market size, or you can utilize data visualizations like a pie chart or bar graph to convey your point. \n  Another method to approach this slide is to concentrate on market trends and why now is the best moment for your company to enter the picture. You may demonstrate this, for example, using a timeline that depicts the progression of consumer behavior. \n Data is presented in a visually appealing way, making it simple to comprehend and absorb.',
-//                 type: 'headtext',
-//               },
-
-//               {
-//                 question:
-//                   'You can use _____to indicate the market size                ',
-//                 options: [
-//                   'PIE CHART',
-//                   'BAR GRAPH                  ',
-//                   'FIGURES                  ',
-//                   'DATA',
-//                 ],
-//                 ans: 2,
-//                 type: 'quiz',
-//               },
-//               {
-//                 question:
-//                   'In your pitch deck,the title slide can also be referred as  ',
-//                 options: [
-//                   'Impression making slide',
-//                   'presentation                  ',
-//                   'introduction                  ',
-//                   'None of these',
-//                 ],
-//                 ans: 2,
-//                 type: 'quiz',
-//               },
-
-//               {
-//                 heading: '6. Product Comparison',
-
-//                 text: "If your product has competitors, you'll want to use a product comparison slide to show how your product compares to others in a visually appealing way. \n   Product comparison slides are very beneficial for comparing features and pricing in SaaS organizations. Product comparisons can also be used in other industries, such as real estate.",
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fstrategy%20or%20planning.png?alt=media&token=75dc997d-0296-4e8d-8ee7-20cd6dc20ce9&_gl=1*dowp4n*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzc5OTQuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-
-//               {
-//                 heading: '7. Testimonials',
-
-//                 text: ' Including client testimonials adds social proof to your page, which is a terrific method to wow your audience, develop trust, and reinforce the necessity for your product or service. You can still use this slide to show client complaints about your competitors. Make sure that all of the reviews you collect point to the same issue that your solution will help to fix. ',
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FMarketing.png?alt=media&token=3b975f9d-04bf-42fe-ba9c-4988e5ea0afe&_gl=1*14m3at9*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4NzgxMzcuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-
-//               {
-//                 heading: '8. Team',
-
-//                 text: " Your team slide can also demonstrate potential investors or people you're trying to persuade to join you, as well as the creative minds who are advising you on your idea.",
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fresearch%20and%20development.png?alt=media&token=dca66611-3f64-4927-bf9b-8351665bec68&_gl=1*1i1w8hy*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4NzgzMzguMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-
-//               {
-//                 heading: '9. Traction',
-
-//                 text: "   Don't worry about this slip if you don't have any traction at this stage. Concentrate as much as possible on promoting your business idea and its possibilities.    ",
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fteam%20work.png?alt=media&token=13a266a3-ec2b-477d-99d4-93dbd4617608&_gl=1*1po76yh*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzg0MjIuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-
-//               {
-//                 heading: '10. Financials',
-
-//                 text: "  The financial forecasts for your business idea are shown on this slide. To make the information easier to absorb, you can present it in the form of a table or employ data visualisation. Include information on how you'll charge individuals, how you came to the conclusion that they'd pay the amount, and how the plan will help you meet your financial goals on this slide.",
-
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FBitcoin%20Investment%20Profit.png?alt=media&token=df037fb9-3b55-4469-8840-6c019ef31977&_gl=1*1ahs8ax*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzg1MjYuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-
-//               {
-//                 heading: '11. Sales & Marketing Strategy',
-
-//                 text: " Interested investors will also want to know how you intend to achieve the objectives and financial predictions you've set forth here is where your sales and marketing strategy comes into play.To explain your sales and marketing strategy, use a flowchart, a graphic list of actions, a timeline, or any other visual.   ",
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FBusinesswoman%20working%20on%20laptop.png?alt=media&token=920f0fc5-943a-4b71-b284-2c3bd205cab8&_gl=1*laeewa*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzg2MDMuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-
-//               {
-//                 heading: '12. Call-to-Action',
-
-//                 text: " There's no need for anything spectacular here. Your audience will be happy to contact you, spend money, or take whatever action you request if you've delivered a captivating narrative. ",
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FSign%20Up%20form.png?alt=media&token=3b7f6399-0d39-4920-b81e-f58d9675f78d&_gl=1*1e1lhh6*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzg2ODMuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-
-//               {
-//                 question:
-//                   'Product comparison slides are very beneficial for comparing ______ and _____in SaaS     ',
-//                 options: [
-//                   'features,pricing',
-//                   'audience,features                ',
-//                   'data,audience',
-//                   'pricing,data',
-//                 ],
-//                 ans: 1,
-//                 type: 'quiz',
-//               },
-//               {
-//                 question:
-//                   'Including client testimonials adds social proof to your page, which is a terrific method to                ',
-//                 options: [
-//                   'wow your audience',
-//                   'develop trust',
-//                   'reinforce the necessity for your product or service',
-//                   'All of these',
-//                 ],
-//                 ans: 4,
-//                 type: 'quiz',
-//               },
-//             ],
-//           },
-
-//           {
-//             name: 'model2',
-//             slides: [
-//               {
-//                 heading:
-//                   'Why an investor pitch deck is vital for startups and tips  ',
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=d8cb10fd-a0c5-4398-a46b-71df67830a3e&_gl=1*1jcv50g*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzg5ODguMC4wLjA.',
-//                 type: 'intro',
-//               },
-
-//               {
-//                 text: 'For startups, raising financing is arguably the most critical step in getting their firm off the ground.\n\n And getting funds is a difficult task. Planning, persuasion, and presentation are all required to persuade stakeholders that your company is worth investing in.',
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FWoman%20thinking%20of%20investment.png?alt=media&token=ba994959-be69-459e-b92d-8d060d4e686f&_gl=1*9fcku0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4NzkwOTMuMC4wLjA.',
-//                 type: 'textimg',
-//               },
-
-//               {
-//                 heading: '1. TO PROVE THEMSELVES',
-
-//                 text: '   An investor presentation deck is a way of showing off your entire portfolio. Put your cards on the table and persuade potential investors that your company has the potential to flourish. Demonstrate the viability of your business.',
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fresearch%20and%20development%20(1).png?alt=media&token=9055e1d4-c728-44d7-9c7a-12775c365fe0&_gl=1*1tmm42f*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4NzkyMTEuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-//               {
-//                 heading: '2. TO STAND OUT',
-
-//                 text: " Every year, around 300 million new businesses are founded. When pitching to investors, you'll need to stand out if you're seeking to raise money. Your startup pitch deck should help you to stand out among hundreds, if not thousands, of other pitches.",
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FLayer_3.png?alt=media&token=49b481db-d259-4050-8463-32cf98f12df0&_gl=1*872nul*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4NzkyOTAuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-
-//               {
-//                 heading: '3. TO SPARK INTEREST',
-
-//                 text: '  Your pitch deck should get people excited about your startup. And using video to create your pitch deck will help.',
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FIdea.png?alt=media&token=dd20607b-5b7e-48db-90ef-5751d6c56b57&_gl=1*hr9jo2*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4NzkzNjMuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-
-//               {
-//                 heading: '4. TO INVITE DISCUSSION',
-
-//                 text: ' After viewing your pitch deck, your audience will certainly have questions. Inviting a debate is also a positive thing. It enables you to expand the market for your firm.\n\nAnother reason why a video is a good choice for your pitch deck is that it allows you to communicate with your audience. Take advantage of this to pique the interest of possible investors.             ',
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fundraw_engineering_team_a7n2%201.png?alt=media&token=4385a693-dd34-465a-9cd9-f39c55872da5&_gl=1*n3nqr3*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzk0NjAuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-
-//               {
-//                 heading: '5. TO SECURE FUNDING',
-
-//                 text: '  Above all, your pitch deck is critical for obtaining capital to help your firm get off the ground. Because video can be persuasive, using a pitch deck video to explain the value of your company is a terrific idea.',
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fto-do%20list.png?alt=media&token=fca0c252-2b98-462b-af0a-daa0c8744121&_gl=1*7fffih*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzk1NTguMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-
-//               {
-//                 question: 'Why an investor pitch deck is vital for startups',
-//                 options: [
-//                   'To secure funding',
-//                   'To spark interest',
-//                   'TO STAND OUT  ',
-//                   'All of these',
-//                 ],
-//                 ans: 4,
-//                 type: 'quiz',
-//               },
-
-//               {
-//                 heading: '1. ALLOW YOUR PITCH DECK TO WORK FOR YOU.',
-
-//                 text: "  You'll need your pitch deck to contain enough information and power to persuade potential investors if you ever give it to them without giving a presentation.\n\nThis is why making a video pitch deck is such a good idea. A video has a better chance than a live presentation of replacing it. ",
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Ffinancial%20year.png?alt=media&token=e562e627-327b-47f0-8a9d-d8557d10fffb&_gl=1*1aiob59*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzk3NzAuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-
-//               {
-//                 question:
-//                   'A video pitch deck has a better chance than live presentation. ',
-//                 options: ['true', 'false'],
-//                 ans: 1,
-//                 type: 'quiz',
-//               },
-//               {
-//                 heading: ' 2. KEEP IT SHORT AND SIMPLE',
-
-//                 text: " We've already noted it, but it's worth repeating. Your audience will be bored with an abundance of material and a long pitch deck video.\n\n Make your pitch deck as simple as possible. Concentrate only on the most significant and relevant information.",
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FClip%20path%20group.png?alt=media&token=f88ef0c1-834a-4016-b6af-e720893f5972&_gl=1*15r2bxf*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzk4NzkuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-
-//               {
-//                 heading: '3. BALANCE CREATIVITY WITH FACTS',
-
-//                 text: ' Make sure your pitch deck reflects creativity and data. You want to share your ideas and passions, but you also want to back them up with facts.',
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FCollaborate.png?alt=media&token=2ad6e06d-538d-4913-968a-7c1033495551&_gl=1*134m7dy*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzk5NTUuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-
-//               {
-//                 heading: ' 4. PRACTICE AHEAD OF TIME ',
-
-//                 text: " If you prepare a solid pitch deck video in advance, your presentation will have a better chance of success. And don't forget to practise how you'll convey your knowledge and enthusiasm.  ",
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FGroup%202906.png?alt=media&token=4632e78c-ccf5-4e04-8d77-33b96546facb&_gl=1*1pu3xrb*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODAwNjQuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-//               {
-//                 heading: ' 5. TELL A STORY',
-
-//                 text: " You want to pique your investors' interest and keep them entertained so you can make a good first impression. You can use captivating video clips and dynamic background music to improve your storytelling with a pitch deck video.",
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fbranding%20or%20marketing%20for%20product.png?alt=media&token=ee894b54-0c96-4cbe-b78b-2c7f9945d139&_gl=1*sz7z4q*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODAxNjMuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-//             ],
-//           },
-
-//           {
-//             name: 'model3',
-//             slides: [
-//               {
-//                 heading: "Investor pitch deck: do’s and don'ts",
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FTick.png?alt=media&token=5778a620-8e4c-4337-bb99-5d282cff92f4&_gl=1*gnw73a*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODA0NzkuMC4wLjA.',
-//                 type: 'intro',
-//               },
-//               {
-//                 heading: 'DO COME PREPARED',
-
-//                 text: " You should be able to remember your metrics off the top of your head. Make sure you can persuade investors that there is a viable market potential. Demonstrate that your company is more than simply a concept. Demonstrate that you've put in the time and effort to get it started.",
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FTick%20(1).png?alt=media&token=d4bc9ba4-5bbb-468f-89a5-cd60b167ff82&_gl=1*7pkz0d*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODA1ODQuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-
-//               {
-//                 heading: 'DO MAKE A GOOD FIRST IMPRESSION',
-
-//                 text: "  Early in your presentation, wow your potential investors. Treat your pitch as if you're narrating a narrative. Show your enthusiasm and make your company memorable. A video pitch deck is sure to make an impression.",
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FTick%20(1).png?alt=media&token=d4bc9ba4-5bbb-468f-89a5-cd60b167ff82&_gl=1*7pkz0d*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODA1ODQuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-//               {
-//                 heading: 'DO MAKE IT VISUALLY APPEALING',
-
-//                 text: '  You may believe that the content of your pitch deck is more important than how it looks, but both are essential. Make sure your branding is consistent across your pitch deck. Make use of eye-catching infographics and visuals. ',
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FTick%20(1).png?alt=media&token=d4bc9ba4-5bbb-468f-89a5-cd60b167ff82&_gl=1*7pkz0d*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODA1ODQuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-//               {
-//                 heading: "DON'T MAKE IT TOO LONG",
-
-//                 text: " You don't have to go into every detail of your company. After your presentation, you can supply your audience with detailed papers.",
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FCross.png?alt=media&token=948ade80-64a6-42c4-8ea0-46fe14943d21&_gl=1*zl4ooi*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODA3OTcuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-//               {
-//                 heading: "DON'T MAKE IT TOO WORDY",
-
-//                 text: "   Walls of text aren't going to make your pitch deck engaging and intriguing. Make sure the words you use have meaning and that the language you employ is appropriate. You may convey your message with more than just words when you use a pitch deck video.",
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FCross.png?alt=media&token=948ade80-64a6-42c4-8ea0-46fe14943d21&_gl=1*zl4ooi*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODA3OTcuMC4wLjA.',
-//                 type: 'headtextimg',
-//               },
-
-//               {
-//                 question: 'Investor pitch deck don’ts',
-//                 options: [
-//                   'Make it visually appealing',
-//                   'Forget about',
-//                   'COME PREPARED',
-//                   'NONE of these',
-//                 ],
-//                 ans: 2,
-//                 type: 'quiz',
-//               },
-
-//               {
-//                 heading: 'End Questions',
-
-//                 image:
-//                   'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=c58d9b8e-f557-41a4-b22a-736a163fe98b&_gl=1*lfujij*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODA5OTEuMC4wLjA.',
-
-//                 type: 'intro',
-//               },
-
-//               {
-//                 question:
-//                   'Instead of simply promoting your product, approach solutions slide in such a way that it ties to the problem presented and demonstrates how your company concept may address it.',
-//                 options: ['true', 'false'],
-//                 ans: 1,
-//                 type: 'quiz',
-//               },
-
-//               {
-//                 question:
-//                   'Your team slide can also demonstrate ________ to join you in your idea.',
-//                 options: [
-//                   'potential investors',
-//                   'audience',
-//                   'creative minds',
-//                   'both 1 & 3 ',
-//                 ],
-//                 ans: 4,
-//                 type: 'quiz',
-//               },
-
-//               {
-//                 question:
-//                   'If your product has competitors you’ll want to use a ________ slide.',
-//                 options: [
-//                   'Solution',
-//                   'Product comparison',
-//                   'Testimonials',
-//                   'Financial',
-//                 ],
-//                 ans: 2,
-//                 type: 'quiz',
-//               },
-//               {
-//                 question: 'Investor pitch deck do’s:            ',
-//                 options: [
-//                   'Make it long',
-//                   'Forget About your product ',
-//                   'Make a good first impression',
-//                   'NONE of these',
-//                 ],
-//                 ans: 3,
-//                 type: 'quiz',
-//               },
-//               {
-//                 question: ' A pitch deck allows you to leverage visuals like',
-//                 options: ['photographs', 'graphics', 'videos', 'ALL of these'],
-//                 ans: 3,
-//                 type: 'quiz',
-//               },
-//             ],
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     frontscreen: {
-//       image: [
-//         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FFinances.png?alt=media&token=53b1ee45-6ffa-44bc-9fba-d0659111b7e9&_gl=1*c2k78d*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ1NjIuMC4wLjA.',
-//         'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FEmployee%20performance.png?alt=media&token=3a2e8c8b-bc72-490a-be05-5175e61451ed&_gl=1*apnom0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ2NDIuMC4wLjA.',
-//       ],
-//       name: 'Product \n Development',
-//     },
-//     modules: [
-//       {
-//         name: 'model1',
-//         slides: [
-//           {
-//             text: "When it comes to product design for startups, there are a few things to keep in mind. Let's discuss the main elements and procedures you must follow to design a product if you don't know how to construct a product design for a startup.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fproduct%20planning.png?alt=media&token=3f10622b-7e0f-4665-824b-dae64cb486a2&_gl=1*lhzejp*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjM2NjMuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'Product Roadmap ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fanalytics.png?alt=media&token=19646a71-c379-4e08-9064-ee36c5994776&_gl=1*1dtmyym*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjM5MjEuMC4wLjA.',
-//             type: 'intro',
-//           },
-//           {
-//             heading: 'Product Roadmap:',
-//             text: "A product roadmap is a sophisticated visual that depicts your product's progression over a foreseeable period of time. The product roadmap outlines where the company is now, where it wants to go, and how it will get there. It is a great resource for teams to plan tasks and carry out the strategy.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fproduct%20planning.png?alt=media&token=3f10622b-7e0f-4665-824b-dae64cb486a2&_gl=1*15qkhte*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQxMTkuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             text: 'Product roadmaps can be used in conjunction with other business strategies such as marketing and business plans. They can even assist you in developing a marketing growth strategy.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fproduct%20planning.png?alt=media&token=3f10622b-7e0f-4665-824b-dae64cb486a2&_gl=1*15qkhte*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQxMTkuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             heading: 'Planning a product roadmap:',
-//             text: "Because different audiences' needs  and demands will vary, the information and structure of your plan must be adjusted to them.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=45c92f41-df7f-4a9e-bef9-e54b5779fea2&_gl=1*9ak7aw*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQyOTcuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             text: 'External stakeholders, for example, would most certainly need a high-level overview of strategic initiatives, which should be planned out across several quarters to a few years. They might be more interested in long-term, medium-term, and long-term time horizons.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=45c92f41-df7f-4a9e-bef9-e54b5779fea2&_gl=1*9ak7aw*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQyOTcuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: "Internal product team members, on the other hand, will require a more detailed picture of certain features and tasks. Instead of years, it's usually better to plan these out over a few weeks or months.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=45c92f41-df7f-4a9e-bef9-e54b5779fea2&_gl=1*9ak7aw*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQyOTcuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             question: 'A product roadmap is………',
-//             options: [
-//               "a sophisticated visual that depicts your stock's progression over a foreseeable period of time. ",
-//               "a sophisticated visual that depicts your company's progression over a foreseeable period of time.",
-//               "a sophisticated visual that depicts your product's progression over a foreseeable period of time.",
-//               'none of these',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-
-//           {
-//             text: 'The timescale must be fair in addition to aligning with the needs of your audience. It must be long enough to achieve major project developments while being short enough to estimate accurate timelines.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWireframe.png?alt=media&token=6e843010-5a65-4e33-9dee-4c8811355ee4&_gl=1*11u0rij*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQ3NjIuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: "You may start putting things into place about the product development once you've identified your target customer and set an acceptable deadline. This includes the following:\n \nHigh-level goals and initiatives\nLow-level tasks and their time requirements\n Task priorities\nKey milestones\n Task dependencies",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fproduct%20planning.png?alt=media&token=3f10622b-7e0f-4665-824b-dae64cb486a2&_gl=1*15qkhte*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQxMTkuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: 'A product roadmap can improve communication within an organization, resulting in better alignment within and among teams, and allowing for more real work to be completed.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWireframe.png?alt=media&token=6e843010-5a65-4e33-9dee-4c8811355ee4&_gl=1*11u0rij*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQ3NjIuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             question:
-//               'A product roadmap includes which of the following features?',
-//             options: [
-//               'Can improve communication within an organization',
-//               'Resulting in better alignment within and among teams',
-//               'Allowing for more real work to be completed.',
-//               'all of these',
-//             ],
-//             ans: 4,
-//             type: 'quiz',
-//           },
-//         ],
-//       },
-//       {
-//         name: 'model2',
-//         slides: [
-//           {
-//             heading: 'Minimum Viable Product',
-//             Image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWorkshop%20for%20Growth.png?alt=media&token=40ef8008-0bdc-4eb2-be76-91d1b5478c69&_gl=1*1ghk88p*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTUxNDMuMC4wLjA.',
-//             type: 'intro',
-//           },
-//           {
-//             text: 'So, you have this brilliant idea that has piqued your curiosity. It may or may not have the same effect on the other persons to whom you will present your project. That is why people participate in MVPs. To quickly test something, construct it and receive comments to see if you should continue. You may be thrilled with the concept!',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWoman%20thinking%20of%20investment.png?alt=media&token=e1c44c07-386b-416d-b3cf-9736c0c19242&_gl=1*17h4uxg*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTUyNDUuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'A minimum viable product (MVP) is a concept that emphasizes the importance of learning in product development. An MVP is a version of a new product that allows a team to collect the most amount of validated customer learning with the least amount of effort. This verified knowledge is in the form of whether or not your clients will actually buy your product.',
-//             Image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWorkshop%20for%20Growth.png?alt=media&token=40ef8008-0bdc-4eb2-be76-91d1b5478c69&_gl=1*1ghk88p*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTUxNDMuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             text: 'A crucial premise behind the MVP concept is that you create an actual product (which might be as simple as a landing page or a service that appears to be automated but is entirely manual behind the scenes) that you can give to clients and monitor their conduct with it. Observing what people do with a product rather than asking them what they would do is far more reliable.        ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fimage%205.png?alt=media&token=5dc73a17-9b44-42f1-a586-f8d7c329f238&_gl=1*14xzfdo*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTUzODIuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             question: 'What is the full form of MVP?',
-//             options: [
-//               'Master Vulnerable Product',
-//               'Maximum Visible Product',
-//               'Minimum Viable Product',
-//               'none of these',
-//             ],
-//             ans: 3,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'Expected Benefits',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FLayer_3.png?alt=media&token=b013fc3e-9943-45b0-aec1-e4b1fcb3a67d&_gl=1*ds97m0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTU3MjEuMC4wLjA.',
-//             type: 'intro',
-//           },
-//           {
-//             text: "The main advantage of an MVP is that it allows you to learn about your clients' interest in your product without having to fully construct it. The sooner you can determine whether your product will appeal to clients, the less time and money you'll waste on a product that won't sell.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FGroup%202907.png?alt=media&token=446a7199-ee9b-47d8-9a74-1bb9d46aa8d2&_gl=1*10t4s9w*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTU4MjEuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Common Pitfalls :',
-//             text: 'Why is it so minimal? \n\nConsider the concept you want to develop.  \n\nHow many days should you devote to developing a working prototype?',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FConcept%20about%20business%20Failure.png?alt=media&token=56f4358c-7958-4c2b-bd0a-41f94e81d686&_gl=1*1r3bdy3*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTYwMDUuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: "Let's do the math:\n4 functionalities, plus 3 integrations, and the ability to pay in all countries, and one more feature to display cool metrics, and an awesome user interface, and..., and... It would take you 9 months, hmm. Alright! It took you 13 months to construct (some unexpected adjustments here and there).\nYou put it out to an alpha test and discovered that no one is interested.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Ffinancial%20year.png?alt=media&token=e5cd525e-d6ad-4149-bbab-348feca12599&_gl=1*1n471sx*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTYxNTUuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             text: "You may argue that it's due to a lack of adequate market research. You identified the private households in a village as your target market. You spoke with a number of them and inquired about the problem you were attempting to solve.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Ffinancial%20year.png?alt=media&token=e5cd525e-d6ad-4149-bbab-348feca12599&_gl=1*1n471sx*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTYxNTUuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             question: 'The main advantage of an MVP is',
-//             options: [
-//               "that it allows you to learn about your clients' interest in your product without having to fully construct it.",
-
-//               'Can improve communication within an organization ',
-//               'Resulting in better alignment within and among teams',
-//               'Allowing for more real work to be completed.',
-//             ],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-//           {
-//             text: "So you've concluded that spending 13 months constructing a solution is acceptable. You then exhibited it to your target potential clients, who discovered that your solution does not solve their problem. Okay, you gathered feedback and corrected your MVP in two months.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FGroup%202906.png?alt=media&token=b6ef91b6-9ca3-4b09-8bdc-99e1c585683e&_gl=1*1hb72wv*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTY0NzQuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: " Then, over the course of a year, you repeated the release-receive feedback cycle a few times to get a few people interested in using your solution. \n\nSo, simply to get started, it'll take at least two years.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FGroup%202906.png?alt=media&token=b6ef91b6-9ca3-4b09-8bdc-99e1c585683e&_gl=1*1hb72wv*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTY0NzQuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             text: "The MVP concept's key goal is to adapt quickly. \n\n You build something quickly, show it to potential users, get feedback on what's wrong, and make changes as needed. Repeat this process until you have a few users. Then some more until you have a product-market fit and your scaling issue is solved.",
-//             iamge:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FBusiness%20woman%20achieving%20the%20goal%20successfully.png?alt=media&token=db29aa17-9ae8-44a6-9430-75031f417299&_gl=1*1u8i9dn*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTY2MTcuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             question:
-//               'The correct order for product development process is ?\n\nBuild something quickly \nRepeat this process until you have a few users.\nShow it to potential users ,get feedback and make changes as needed. ',
-//             options: ['1>2>3', '1>3>2', '3>2>1', '3>1>2'],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'Potential Costs',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fstrategy%20or%20planning.png?alt=media&token=f58152e0-e7c7-4b72-a5cc-59d82cf86687&_gl=1*x6jbx0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTY4NjYuMC4wLjA.',
-//             type: 'intro',
-//           },
-//           {
-//             text: 'When an MVP is used correctly, a team can drastically alter a product that they give to their clients or drop the product altogether based on customer feedback. MVP encourages teams to undertake the least amount of effort possible to get relevant feedback, which helps them avoid working on a product that no one wants.    ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fstrategy%20or%20planning.png?alt=media&token=f58152e0-e7c7-4b72-a5cc-59d82cf86687&_gl=1*x6jbx0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTY4NjYuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//         ],
-//       },
-//       {
-//         name: 'model3',
-//         slides: [
-//           {
-//             heading: 'DESIGNING',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fdrawing.png?alt=media&token=52676fef-70aa-4740-8180-3da33b3142d6&_gl=1*oc2ly7*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTg2MTMuMC4wLjA.',
-//             type: 'intro',
-//           },
-//           {
-//             heading:
-//               'STEP 1:  Decide that reaching a diverse audience is important to you.',
-//             text: "Making a conscious decision to prioritize diversity and inclusion as an individual or as an organization is the first and most important action you can take. There's a common misconception that if we all look and think alike, business culture the pinnacle of the startup sector will be easier.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FMan%20thinking%20to%20start%20a%20startup.png?alt=media&token=69fc7dc8-4e40-4ea7-bc1e-ff8b5e074116&_gl=1*nx5don*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTg5MjQuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             text: 'So make the decision. \n\n Build it as a part of your company’s essential values. \nDiscuss about it over a meeting or so. \nBut you can’t let it stop there.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fteam%20work.png?alt=media&token=5d8f7b7c-dea7-4d40-9b7c-64ff1c707b70&_gl=1*qwrxvf*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTkxMTUuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             heading: 'STEP 2:  User Interviews and User Persona Creation',
-//             text: ' User research is another crucial phase in the product design process for companies. Because your customers are at the heart of your product decision, user interviews are critical for gathering their feedback. You can effectively assess the interests of your user base if you do it right.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FLayer%202.png?alt=media&token=d7401f59-cccb-4ce0-91c2-b876c75e92fa&_gl=1*e12zjq*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTkyMjIuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             text: "Make sure the questions are well-thought-out and prepared before the interview. An interview's conclusions can be tainted by poor phrasing or bias.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FLayer%202.png?alt=media&token=d7401f59-cccb-4ce0-91c2-b876c75e92fa&_gl=1*e12zjq*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTkyMjIuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'STEP 3:  Competitor Research',
-//             text: "In order to establish a product design for a startup, you must perform competitive research in addition to user research. Examine the market performance of your immediate competitors' offerings.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fresearch%20and%20development.png?alt=media&token=eecbeadc-5fab-4d31-8dff-092871468af5&_gl=1*1ikq2q7*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTkzNjAuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: "Analyzing the competitor's strategy will assist you in determining its efficacy and exploitable loopholes. To distinguish yourself from the competition, figure out what your product's unique selling proposition is.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fresearch%20and%20development.png?alt=media&token=eecbeadc-5fab-4d31-8dff-092871468af5&_gl=1*1ikq2q7*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTkzNjAuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Step 4. User Journey Mapping',
-//             text: 'Create a user journey map to better understand the potential interactions between the user and your product. This map depicts the actions a user must take to address a certain problem. It might be as simple as a series of stages or it can branch out into several directions.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fmultitasking%20or%20branding%20or%20product%20planninh.png?alt=media&token=e48b2520-4771-49bb-9f4f-81b46c63286b&_gl=1*18qcjbz*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk0NzkuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: "The more paths you can anticipate the user taking, the better you'll be able to predict how they'll engage with your product. However, complex user path maps can frequently make the process more difficult.        ",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fmultitasking%20or%20branding%20or%20product%20planninh.png?alt=media&token=e48b2520-4771-49bb-9f4f-81b46c63286b&_gl=1*18qcjbz*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk0NzkuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             question:
-//               'Which one of the following is/are a part of the process of designing a product?',
-//             options: [
-//               'User Journey Mapping',
-//               'Competitor Research',
-//               'User Interviews and User Persona Creation',
-//               'Decide that reaching a diverse audience is important to you.',
-//               'all of these',
-//             ],
-//             ans: 5,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'Step 5. Sketching and Wireframing ',
-//             text: ' The ideas for the user interface are visualized via sketching and wireframing. Sketching focuses on the concept representation itself, allowing the designer to experiment with different choices before deciding on the best one.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fdrawing.png?alt=media&token=52676fef-70aa-4740-8180-3da33b3142d6&_gl=1*4ml2fy*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk3MDAuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             text: "Wireframing is concerned with the element structure, page structure, and interactions between them. Because it acts as the product's backbone, the wireframe must be well-structured. They are less engaging, though, and should not be deployed for testing. Always check that the wireframes are the right size for the device that the product will be used on.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fdrawing.png?alt=media&token=52676fef-70aa-4740-8180-3da33b3142d6&_gl=1*4ml2fy*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk3MDAuMC4wLjA.',
-//             type: 'textimg',
-//           },
-//           {
-//             heading: 'Step 6. Prototyping',
-//             text: 'A prototype is a representation of a concept before it is turned into a finished product. Prototyping should be quick and easy to use, with enough functionality to allow for thorough testing. They typically begin small and expand as new features and concepts become integrated into the product.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWorkshop%20for%20Growth.png?alt=media&token=40ef8008-0bdc-4eb2-be76-91d1b5478c69&_gl=1*j7h60v*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk4MjYuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: 'You can experiment with ideas and visualize alterations while working on the prototype. The prototype, on the other hand, can act as a specification for developers.    ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWorkshop%20for%20Growth.png?alt=media&token=40ef8008-0bdc-4eb2-be76-91d1b5478c69&_gl=1*j7h60v*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk4MjYuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             heading: 'Step7. Testing with the Product Team',
-//             text: "Iterative testing is an important part of the design process since it allows us to find and correct defects and inconsistencies that were missed during earlier stages. You can also come up with new concepts and acquire information about the product's potential success.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWebsite%20Maintenance.png?alt=media&token=d8870d31-de82-4661-8898-ef76456939d0&_gl=1*dpsn8l*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk5NTIuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: 'A technique that does not necessitate a lot of resources is product testing with your team. However, with input from your specialized team, it enables you to weed out important flows before the launch.    ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWebsite%20Maintenance.png?alt=media&token=d8870d31-de82-4661-8898-ef76456939d0&_gl=1*dpsn8l*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk5NTIuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             heading: 'Step 8. Testing with Users',
-//             text: " Because it directly addresses future customers, testing the product with users is a more practical technique. To begin, usability testing is required to identify any immediate issues with the UX design and interaction. You'll be able to watch how your target audience utilises the product up close and personal, as well as gain some performance data.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fblog.png?alt=media&token=b58eaf4d-acbe-4097-8f2a-7ccf72f188bf&_gl=1*3b8z75*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjAxMjkuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             text: "You can do 'diary testing' to see how the product will perform in the long run. Solicit long-term responses to specific questions regarding the app from the participants so that you may get a definitive judgment on the software's performance.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fblog.png?alt=media&token=b58eaf4d-acbe-4097-8f2a-7ccf72f188bf&_gl=1*3b8z75*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjAxMjkuMC4wLjA.',
-//             type: 'textimg',
-//           },
-
-//           {
-//             question: 'A prototype is…….',
-//             options: [
-//               'a representation of a concept before it is turned into a finished product.',
-//               'a representation of a concept after it is turned into a finished product.',
-//               'a representation of a concept before it is turned into a new product.     ',
-//               'allowing for more real work to be completed.',
-//             ],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-//           {
-//             heading: 'HOW TO CREATE A MOBILE APP \nTHAT PEOPLE WOULD LOVE    ',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FMobile%20application.png?alt=media&token=8686feee-c302-425a-b9ff-1167d0e467ec&_gl=1*k9yev9*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjAzNjYuMC4wLjA.',
-//             type: 'intro',
-//           },
-
-//           {
-//             heading: 'Foster a pool of qualified users',
-//             text: ' Find people who are enthusiastic about your product or service and rely on them heavily. Allow them to provide comments, include them in decision-making, and keep them informed about new developments. These are the folks who will be your initial clients and prospective investors.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FPeople%20standing%20together.png?alt=media&token=72f2a2d4-d2b6-4c2c-bc95-25ad606d0671&_gl=1*17angmn*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjA0NzcuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Get advice from strangers',
-//             text: "Find your target audience and use them as a proving ground for your ideas. It's crucial to remember that you should build what people genuinely want, not what you believe they want.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FFemale%20holding%20calendar%20looking%20for%20vacant%20date%20for%20appointment.png?alt=media&token=97212dd8-3300-4c36-91be-3dc2abccff82&_gl=1*1o15y92*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjE1MzYuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Grow your team',
-//             text: 'Before you start constructing your app, take the time to identify the right people and assemble a fantastic squad. It will save you time later and guarantee that you are involving the appropriate individuals for the correct reasons.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FDeveloper%20Team.png?alt=media&token=69dadeb5-8f0c-4b21-a5b2-d75136004913&_gl=1*19ya2op*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjE2NzAuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Code with someone you trust',
-//             text: ' App design is a significant investment that you want to get right. Make sure the designers are individuals you can trust to complete the project to your specifications.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fsoftware%20engineer.png?alt=media&token=f8aaf73b-855b-41a4-9cbe-9435e082487d&_gl=1*10h1a4a*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjE3NTcuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'Functionality > Looks',
-//             text: " It's preferable to have an unattractive software that functions well than a beautiful app that doesn't accomplish what it's supposed to. Prioritize the functionality first, then devote work to the design later.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWebsite%20development.png?alt=media&token=6c07646c-70e6-47c3-9b23-c1aed950dce9&_gl=1*jacvsm*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjE4NjguMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Pay attention to analytics',
-//             text: ' Another wonderful technique to see where users are having issues is to employ this method. Perhaps something in your coding is erroneous, or the instructions are difficult to follow. Sifting through the stats will help you figure out where consumers have stopped using the app and find any issues.',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FSales%20executive%20doing%20sales%20analysis.png?alt=media&token=8bad409c-f2cb-420d-bf3c-a70d58e430d9&_gl=1*1e3v0vl*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjE5NTAuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Create a landing page',
-//             text: "If you need assistance creating a landing page, consider using Launchrock's services. This will drive traffic to your website and allow them to discover more about your products or services.",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWebsite%20development.png?alt=media&token=6c07646c-70e6-47c3-9b23-c1aed950dce9&_gl=1*b7ex7*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjIwMzUuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-
-//           {
-//             heading: 'Build by example',
-//             text: "Find apps that run on similar platforms to yours and research how they evolved as businesses. While it isn't infallible, following their marketing strategy and improving as you go can be beneficial.   ",
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FCollaborate.png?alt=media&token=78f7df8f-a375-4e92-a14e-1e766dfb3d03&_gl=1*drs0qs*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjIxMDQuMC4wLjA.',
-//             type: 'headtextimg',
-//           },
-//           {
-//             heading: 'End Questions',
-//             image:
-//               'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=d2ffdd62-98fd-4404-bf6c-413249d5198e&_gl=1*1s8iwry*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjIxNzYuMC4wLjA.',
-//             type: 'intro',
-//           },
-
-//           {
-//             question: 'Wireframing is…….',
-//             options: [
-//               'concerned with the element structure, page structure, and interactions between them.    ',
-//               'a concept that emphasizes the importance of learning in product development.',
-//               'Both A and B',
-//               'none of these',
-//             ],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-//           {
-//             question: 'Why is User research a crucial phase in product design?',
-//             options: [
-//               'Because your customers are at the heart of your product decision.',
-//               'user interviews are critical for gathering their feedback.',
-//               'You can effectively assess the interests of your user base if you do it right.',
-//               'All of the above',
-//             ],
-//             ans: 4,
-//             type: 'quiz',
-//           },
-//           {
-//             question: 'A minimum viable product (MVP) is……..',
-//             options: [
-//               'a concept that emphasizes the importance of learning in product development.',
-//               'User Interviews and User Persona Creation ',
-//               'Both A and B',
-//               'none of these',
-//             ],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-//           {
-//             question:
-//               "A _________ is a sophisticated visual that depicts your product's progression over a foreseeable period of time.    ",
-//             options: [
-//               'Product roadmap',
-//               'Competitor Research     ',
-//               'User Interviews and User Persona Creation',
-//               'none of these',
-//             ],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-//           {
-//             question:
-//               'Internal product team members External stakeholders, would most certainly need a high-level overview of strategic initiatives.',
-//             options: ['true', 'false'],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-//           {
-//             question:
-//               'External stakeholders, will require a more detailed picture of certain features and tasks. ',
-//             options: ['true', 'false'],
-//             ans: 2,
-//             type: 'quiz',
-//           },
-//           {
-//             question:
-//               '“A product Roadmap can improve communication within an organization”',
-//             options: ['true', 'false'],
-//             ans: 1,
-//             type: 'quiz',
-//           },
-//         ],
-//       },
-//     ],
-//   },
+  {
+    frontscreen: {
+      images: [
+        'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=798bb50f-ebf3-4acf-b766-18c06b00c418',
+        'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+      ],
+      name: 'Equity & Everything',
+      coverImg:
+        'https://img.freepik.com/free-photo/education-day-arrangement-table-with-copy-space_23-2148721266.jpg?w=1060&t=st=1685954048~exp=1685954648~hmac=b79f735f955de7a19f85aacc636b4ed01bc39cef06592ca0191e41c9f6146e7d',
+    },
+    modules: [
+      {
+        name: 'model1',
+        slides: [
+          {
+            heading: 'What is Equity?',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FGroup%202902.png?alt=media&token=d5e99aa3-6c17-4695-8317-19e47ac993da',
+            type: 'intro',
+          },
+          {
+            text: "Equity, typically referred to as shareholders' equity (or owners' equity for privately held companies), represents the amount of money that would be returned to a company's shareholders if all of the assets were liquidated and all of the company's debt was paid off in the case of liquidation. In the case of acquisition, it is the value of company sales minus any liabilities owed by the company not transferred with the sale.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances%20(1).png?alt=media&token=1dc2949e-52c8-4bb7-a661-fd775de221b7',
+            type: 'textimg',
+          },
+          {
+            text: "In addition, shareholder equity can represent the book value of a company. Equity can sometimes be offered as payment-in-kind. It also represents the pro-rata ownership of a company's shares.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: "Equity can be found on a company's balance sheet and is one of the most common pieces of data employed by analysts to assess a company's financial health.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=53d2a4d6-60b3-4144-9d97-ffb7abad253b',
+            type: 'textimg',
+          },
+          {
+            question: 'What is Beta Testing?',
+            options: [
+              'Beta testing is the process of releasing an old product to a limited audience to understand how they respond to it.',
+              'Beta testing is the process of releasing unstable product',
+              'Beta testing is the process of releasing a new product directly to the whole target audience.',
+              'Beta testing is the process of releasing a new product to a limited audience to understand how they respond to it.',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+          //this is intro!!!
+          {
+            heading: 'Key Issues',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=53d2a4d6-60b3-4144-9d97-ffb7abad253b',
+            type: 'intro',
+          },
+          {
+            text: 'Well well well, you might think splitting equity is a no-brainer,\n\nTHAT IS A BIG NO!!!',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FPie%20Chart.png?alt=media&token=5d6b75e6-f051-431a-974b-decae77c7be2',
+            type: 'textimg',
+          },
+          {
+            text: 'So, let’s just be very honest.\n\nTrust me that’s the biggest misconception you can have if you think so.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FPie%20Chart.png?alt=media&token=5d6b75e6-f051-431a-974b-decae77c7be2',
+            type: 'textimg',
+          },
+          {
+            text: 'Mind you, it is the most important consideration while deciding the capital structure of your startup.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: 'Therefore,without further ado, let’s dive deep into it and get a thorough understanding of the so-called “Splitting Equity”.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FPie%20Chart.png?alt=media&token=5d6b75e6-f051-431a-974b-decae77c7be2',
+            type: 'textimg',
+          },
+          {
+            heading: 'Phase 1',
+            subheading: 'TREAT EQUITY LIKE GOLD',
+            text: '',
+            sub_text: '',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20for%20Investment%20concept.png?alt=media&token=5fb2c805-2a26-4373-b75f-acaddbf3be1a',
+            type: 'headsubtextimg',
+          },
+          {
+            text: 'There’s no better way than to learn from others’ shortcomings and modify your plan of action beforehand!',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20Tasklist.png?alt=media&token=46ca21cb-3aad-48d5-8260-70285c6e0e3e',
+            type: 'textimg',
+          },
+          {
+            text: 'So, before jumping directly to structuring and managing our equity, it’s pivotal to understand the biggest pitfalls in handing out early equity, especially when we’re putting the appropriate value on every decision we make.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20Tasklist.png?alt=media&token=46ca21cb-3aad-48d5-8260-70285c6e0e3e',
+            type: 'textimg',
+          },
+          {
+            heading: 'Phase 1',
+            subheading: 'Don’t treat equity like monopoly money',
+            text: '',
+            sub_text: '',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+            type: 'headsubtextimg',
+          },
+          {
+            text: 'The biggest mistake that the entrepreneur ends up making is that they don’t understand the worth of their business idea and are unable to take in the exchange for real value at whatever equity the other side is quoting for!',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: 'But no! That’s where you’re going wrong despite having everything sailing smoothly!One of our most valuable assets is our equity.\n\nIn the future, it will likely be the only asset class we own that will likely be worth exponentially more than it is today. We don’t get it back.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: "Giving away equity reduces the future payout we will earn over the rest of our career. The issue is not that equity shouldn't be used - the backbone of the startups in one sense - but that we must recognize just how valuable it is.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: 'The biggest mistake that the entrepreneur ends up making is that they don’t understand the worth of their business idea and are unable to take in the exchange for real value at whatever equity the other side is quoting for!',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            question: 'What is Beta Testing?',
+            options: [
+              'Beta testing is the process of releasing an old product to a limited audience to understand how they respond to it.',
+              'Beta testing is the process of releasing unstable product',
+              'Beta testing is the process of releasing a new product directly to the whole target audience.',
+              'Beta testing is the process of releasing a new product to a limited audience to understand how they respond to it.',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+          {
+            heading: 'Understand the Future Value of Equity!',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+            type: 'intro',
+          },
+          {
+            text: 'Understanding the future value of equity is just as important as taking some current business decision that might influence the profitability of the business.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: 'As we’ve grown up hearing,”Power of compounding works wonders”, that is not all! If you don”t understand its true worth, then I’m sorry to say mate, you didn’t appreciate the time value of equity when you just gave it away to some investor at a high rate - and now you’ll have to pay for it for the rest of our lives.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            heading: 'Understand the Future Value of Equity!',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+            type: 'intro',
+          },
+          {
+            text: 'Not only do startups go on making hasty decisions by issuing and treating equity like Monopoly money, they also tend to run into issues like giving it away all at once – up front. If it were cash we’d never imagine doing that, but for some reason we’re propelled to think that equity should be a lump sum payment despite the services rendered.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            heading: 'Give Equity as Slowly as Possible',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+            type: 'intro',
+          },
+          {
+            question: 'What is Beta Testing?',
+            options: [
+              'Beta testing is the process of releasing an old product to a limited audience to understand how they respond to it.',
+              'Beta testing is the process of releasing unstable product',
+              'Beta testing is the process of releasing a new product directly to the whole target audience.',
+              'Beta testing is the process of releasing a new product to a limited audience to understand how they respond to it.',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+          {
+            heading: 'NOTE-',
+            text: 'Now, beware! That would mean moving slowly towards disaster. That doesn’t mean we are running out of options as to how we can manage our equity or should we consider giving it out. It simply implies that when we do, we want to retrospect where we were and where we are today and think about the greater angles of the business in the long run.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Get it in Writing',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+            type: 'intro',
+          },
+          {
+            text: 'There can be no plausible explanation as to why we need to wait until we’ve got a final affirmation on our equity arrangements to finally put it on paper. We can gradually start regulating each step individually and then eventually compile them all into a single formalized document with our startup lawyers.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            heading: 'Time to Wheel in the Lawyers',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+            type: 'intro',
+          },
+          {
+            text: 'There can be no plausible explanation as to why we need to wait until we’ve got a final affirmation on our equity arrangements to finally put it on paper. We can gradually start regulating each step individually and then eventually compile them all into a single formalized document with our startup lawyers.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+        ],
+      },
+      {
+        name: 'model2',
+        slides: [
+          {
+            heading: 'STOCK STRUCTURE',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+            type: 'intro',
+          },
+          {
+            text: 'There are essentially 4 components to setting up the fundamental structure of our Stock Plan:',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: 'Stock Structure-\n\nWe need to understand exactly how our stock will be structured to allocate. There are several ways we can counter this on the basis of how we want to manage control of the company.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: 'By default, the Founders of a business have equity. They’re directly responsible for the management of the company like paying taxes and covering payroll. On the other side the employees, however, don’t necessarily need to own equity or maintain the same liabilities that founders do. This is where the stock structure bridges the gap.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+            type: 'textimg',
+          },
+          {
+            text: 'There are 3 ways employees can be granted stocks in our company:',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
+            type: 'textimg',
+          },
+          {
+            heading: 'Regular Equity',
+            text: 'Employees can get the same types of shares that managerial people possess implying that they shall be eligible for the same benefits along with the same liabilities. Simply allocating the share amongst a handful of co-founders is different, but doing that across a larger group of people can get way more cumbersome.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'When to use it',
+            text: 'When we want to divide the company amongst a small number of active members who will all share the responsibility of managing the company long term.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Drawbacks',
+            text: '- Potential control issues with adding more members\n- May not be financially able to buy it back\n- Will likely have tax consequences for the recipient\n- May add members who cannot financially support the business\n- May accumulate dormant Equity holders',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Drawbacks of Regular Equity',
+            text: '',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            text: 'Introduction of control issues. The owner of a legal share in a company often has specific rights, such as voting rights and fiduciary duties. It is not necessary to introduce complex control issues as well if our goal is to create cash incentives on upside.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: 'Inability to afford to buyback of shares. It is likely that there is a fair market value for buying back actual equity. The issue is that we probably won’t have idle cash to “buy someone out”.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: 'Tax consequences. If we get handed a share of equity, and that equity has marketable value, the IRS may tax us on the value, regardless of the cashflow to show as evidence. This can become a tight spot for someone. This is a complicated legal and tax matter that requires advisors’ say.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            question: 'Regular equity has which of the following drawbacks?',
+            options: [
+              'Introduction of control issues.',
+              'May accumulate dormant Equity holders',
+              'Both are correct',
+              'None of these',
+            ],
+            ans: 2,
+            type: 'quiz',
+          },
+          {
+            text: 'Recipients can’t financially contribute. Employees do not intend to put money back into the company as their share of ownership to cut down liabilities of the business including paying taxes and absorbing additional costs.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: "May accumulate dormant equity. Eventually, if we can't buy back the equity from people who have left, we may end up with a lot of equity holders who aren't contributing any ongoing value while eating up valuable equity that could be used to raise more capital or to reward current employees.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            heading: 'Stock Options',
+            text: 'This means that the employee have a privilege to avail the “option” to buy stock in the company at a later date implicating that right now they don’t “own” anything, but if the company chose to go public, they can “exercise” the option to buy stock and earn the benefit at that time.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'When to use it',
+            text: 'When we want to offer the benefits of equity while mitigating some of the consequences of handing out regular equity.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Benefits',
+            text: '- Minimizes “loss of control” issues compared to equity\n- Can be easily returned\n- Minimizes tax consequences for employees\n- Well understood in the startup community',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Drawbacks',
+            text: '- Employees may not be able to exercise them\n- Requires us to value the company\n- May create dormant equity holders',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            text: '3. Strike Price- Most Stock Options have a “strike price” which means the price at which the user can purchase their options. For example, if the Strike Price were $1, we would have the option to buy stock in the company for $1 per share.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            question: 'What are the benefits of using stock options?',
+            options: [
+              'Minimizes tax consequences for employees',
+              'Well understood in the startup community',
+              'Requires us to value the company',
+              'Both A and B',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+          {
+            text: '- If the company were worth less than $1 per share, our options would be of no worth.\n\n- If the company were worth $3 per share, like at the time of a sale, we would buy the options for $1, sell them for $3, thereby making a profit of $2 per share.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: "During our tenure as employees of the company, if we join at a strike price of $1 and the company's value never exceeds $1, we may not reap any benefit because the company's value didn't \"improve\" during our tenure.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: 'In startups, stock options are issued with a strike price so that new employees can gain from the surge in the value of the company.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            question:
+              '“strike price”  means the price at which the user can dump their options.',
+            options: ['true', 'false'],
+            ans: 1,
+            type: 'quiz',
+          },
+          {
+            heading: 'Benefits of Stock Options',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+            type: 'intro',
+          },
+          {
+            heading: 'Zero imposition of control issue.',
+            text: "Unless the stock option is availed, the employees would typically have no rights within the company such as voting or other control-based problems. It is typically by design since we don't want a lot of people with no ownership stake to have direct control.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'They can easily be returned.',
+            text: 'If an employee terminates and chooses not to exercise his options, then those options will be forfeited, and the stock would be retained back to reward future employees.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Less tax consequence.',
+            text: "Being granted Stock Options doesn’t guarantee add tax-issues until the options are exercised. The taxable consequences typically don't arise until the options are exercised, which is only likely to occur if there is a sale to offset the tax liability.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Everyone understands them.',
+            text: 'The concept of "stock options" has become standard fare in the startup world, so even if a potential recipient has not experienced them before, they will most likely understand what they are.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Drawbacks of Stock Options',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+            type: 'intro',
+          },
+          {
+            heading: 'Employees may lose benefits',
+            text: 'The person who worked for the company for say 5 years, left without exercising their options, and the company sold 4 years later may receive no benefit at all. This might be hard to digest and may not be aligned with how we want to compensate people.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Requires a valuation.',
+            text: 'In order to mark a Strike Price at which the employee would pay for their option, it would be necessary to know the valuation of the company.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'May create dormant holders.',
+            text: 'In the event that people exercise their options but do not participate in the business moving forward, we might have to get a dormant cap table.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Phantom Equity',
+            text: 'People can be offered the option of holding equity (getting a cash payout) without actually needing to give them equity ownership in the firm. This acts more like a company bonus structure, whereby if the company size gets bigger and bigger, the team gets a percentage of the proceeds.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            text: 'As phantom equity is a contractual right, not an equity stake, we can grant upside without having to issue actual equity ownership shares. For example, we may not want our employees to materially own the company.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            heading: 'Benefits of Phantom Equity',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+            type: 'intro',
+          },
+          {
+            heading: '1. No tax consequence upon grant',
+            text: 'A significant issue in granting equity is that it doesn’t come easy since it is taxable upon transfer. Unless money is exchanged, phantom equity units are not a legal ownership of any actual profit.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: '2.No dilution of actual equity',
+            text: 'As phantom equity is a contractual right, not an equity stake, we can grant upside without having to issue actual equity ownership shares. For example, we may not want our employees to materially own the company.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: '3.Avoids dormant equity issues.',
+            text: 'Phantom equity is not the original equity ownership of the company; technically, the Cap Table will never replace it.  That said, company still might be liable if the phantom equity holders leave and still have provisions in their agreement to be paid on outstanding basis.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Other Benefits :',
+            text: '- Investors won’t take this form of stock\n- Employees may not understand it vs. typical equity\n- Employees are taxed as “regular income” vs. “capital gains”',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Drawbacks of Phantom Equity',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+            type: 'intro',
+          },
+          {
+            heading: '1. Not investor-friendly.',
+            text: "Investors won't be inquisitive about phantom value since they very much want both proprietorship and the rights that come with equity.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: '2. Not well-understood in the market.',
+            text: "We may discover that potential employees and partners are more interested in learning about a phantom equity plan than in the amount of their grant. We'd have to be ready with a standard description of how the system operates.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: '3.Employees are taxed as “regular income”.',
+            text: 'Unlike normal equity gains, which are taxed at a lower rate ("capital gains tax") than regular income in the United States, any benefit received through a phantom equity plan is just regular income to the receiver.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Vesting',
+            text: 'Vesting is a method of allowing members to "earn" their stock over time or in response to certain milestones. A typical "4-year vesting schedule" means that a company member will earn 25% of their stock each year for a total of four years. This is the equivalent of being paid over time based on our participation, similar to a paycheck, rather than receiving our four-year paycheck all at once and praying everything works out.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            question: 'What are the benefits of using stock options?',
+            options: [
+              'Regular Equity',
+              'Stock Options',
+              'Phantom Equity',
+              'all of the above',
+            ],
+            ans: 2,
+            type: 'quiz',
+          },
+          {
+            heading: 'Vesting Schedule',
+            text: 'Vesting schedule refers to the period of time it takes for us to earn all of our stock. In the previous example, if our equity has a "4 Year Vest," we will possess 25% of our total 100% stake at the end of the first year. We shall possess a total of 50% by the end of Year 2 and so on. To earn 100% of our share utilizing a time-based scheme, we must hold it for four years.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Time-Based',
+            text: 'Equity is built up over a set duration of time (usually in years), with a certain percentage of it vested at each stage. This is the most typical method of vesting equity.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Milestone-Based',
+            text: "Equity is obtained when a member meets specific requirements. A salesperson's milestone, for example, could be a specific sales target.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            question: 'Vesting is…….',
+            options: [
+              'a method of allowing members to “return" their stock over time or in response to certain milestones.',
+              'a method of allowing members to “sell" their stock over time or in response to certain milestones.',
+              'a method of allowing members to "earn" their stock over time or in response to certain milestones.',
+              'Both A and B',
+            ],
+            ans: 2,
+            type: 'quiz',
+          },
+        ],
+      },
+
+      {
+        name: 'model3',
+        slides: [
+          {
+            heading: 'SPLITTING EQUITY',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+            type: 'intro',
+          },
+          {
+            heading: 'The Even Split',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+            type: 'intro',
+          },
+          {
+            text: 'Ok, let’s assume there are only two partners in the business agreeing on a 50/50 split because that sounds fair.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: 'Splitting 50/50 feels just and helps allay doubts about whether one person’s contributions deserve more equity or not.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: 'Even split is done when you don’t know how to properly allocate contributions in capital.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: 'As it happens, an even split is absolutely OK if it turns out that over the long period, both contribute equally to the business but it’s not that easy as it may look like.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: 'That is when you go about getting your around these questions-\n1. What’s our contribution worth now?\n2. What will our contribution be worth over some period of time?\n3. How do we make adjustments if necessary?',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
+            type: 'textimg',
+          },
+          {
+            question: 'Even split is done when…….',
+            options: [
+              'you don’t know how to properly allocate contributions in capital.',
+              'you know how to properly allocate contributions in capital.',
+              'Both are corrYou have to split the equity equally',
+              'None of these',
+            ],
+            ans: 0,
+            type: 'quiz',
+          },
+          {
+            heading: 'What’s Our Contribution Worth Now?',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
+            type: 'intro',
+          },
+          {
+            text: 'We can make a variety of contributions, but they generally fall into two categories: monetary and non-monetary contributions.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
+            type: 'textimg',
+          },
+          {
+            heading: 'Monetary Contributions',
+            text: 'The funds that has been invested in the company which has been spent.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20for%20Investment%20concept.png?alt=media&token=5fb2c805-2a26-4373-b75f-acaddbf3be1a',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Contributions in kind.',
+            text: 'Time (sweat equity), relationships, the concept, and tangible resources are all important.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FSmall%20team%20discussing%20ideas.png?alt=media&token=3907b80a-825d-43c9-b981-bd10d22b5d72',
+            type: 'headtextimg',
+          },
+          {
+            text: "The method of evaluating our contributions is as simple as adding up everyone's current and future contributions and weighing them correctly.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FSmall%20team%20discussing%20ideas.png?alt=media&token=3907b80a-825d-43c9-b981-bd10d22b5d72',
+            type: 'textimg',
+          },
+          {
+            question: 'How do you define monetary contributions?',
+            options: [
+              'The funds that has been withdrawn from the company.',
+              'The funds that has been invested in the company which has been spent.',
+              'Both are correct',
+              'Time, relationships, the concept, and tangible resources are all important.',
+            ],
+            ans: 1,
+            type: 'quiz',
+          },
+          {
+            heading: 'Value Multiplier',
+            text: 'Not all contributions are the same. Due to scarcity, some contributions are just more valuable than others.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            text: 'Because of the nature of our business, all contributions come with a risk. Putting $1 of any contribution into a business carries a considerably higher risk than investing that same money in publicly listed stocks or taking a salary. \nAs a result, we use  a "Value Multiplier" to weight cash and non-monetary contributions separately.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: 'The goal is to assess the risk that someone is incurring by investing those funds in our company at such an initial stage.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            question: 'Which of the following is sweat equity?',
+            options: ['cash', 'goodwill', 'time', 'all of these'],
+            ans: 2,
+            type: 'quiz',
+          },
+          {
+            heading: 'Cash Contribution',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
+            type: 'intro',
+          },
+          {
+            text: 'The easiest to value are monetary contributions. We compute the total value by multiplying the value of the cash invested by the "value multiplier."Cash Invested ($1) x Value Multiplier (4x for cash) = $4 Contribution',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: 'Cash must have been transferred to the business before it may be considered "contributed." I haven\'t actually invested $1 million if I claim "I\'m putting capital of $1 million to the company" but only put $100 into the account. I need a way to "commit" the funds, or at the very least a legal arrangement that binds me to either put the remaining balance in or forfeit the value of my investment.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            heading: 'Loans as Cash',
+            text: "It's possible that the investment will take the form of a bank loan or another structured investment. Most often, this will necessitate someone physically signing for the loan to secure it. It's answer varies depending on how everyone is involved.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            text: 'Signing parties are compensated in cash- In this case, whoever signs receives the monetary value irrespective of whether it is repaid.  If it pays off, like any investment, there is potentially no danger, but we must accept 100 percent risk to find out.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: "Signing parties is halved- In this scenario, we believe the loan's risk is low, so the signing party receives a 2x multiplier.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            heading: 'Non-Cash Contribution',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
+            type: 'intro',
+          },
+          {
+            heading: 'Time (Sweat Equity)',
+            text: "Time is the most significant investment made by startups. To value time, we divide the average market rate you'd get paid by 2,000 hours in the year, then multiply by the amount of hours you'll commit.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Relationships',
+            text: 'If the contribution was related to an important customer, we\'d offer a commission for the commencement, and possibly more if they helped us close the deal. It\'s important to talk about the commission rate so that the sale price may be allocated. "What is the market rate for this type of transition?" and "What trigger ensures it has been provided?"',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Facilities and Hard Goods',
+            text: 'Some items, such as office space, equipment, inventory, and tangible products, can have a very "real" fair market value. Offering these things may appear to have "monetary value," but they don\'t always have the same versatility as cash and hence don\'t attract the same price value.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            text: 'When we calculate everyone else’s contribution in Year 1 we will use the same formula. This will help us determine how equity splits will work relative to the contribution amount each person will make in Year 1.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            heading: 'Ideas and Intangibles',
+            text: "It's worth noting that ideas and intangibles don't always necessitate the usage of a Value Multiplier because they don't usually come with any \"risk\" attached to them. The Value Multiplier is primarily intended for contributions that would be rewarded without this risk if they had a market value.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            question: 'Which of the following is a non-cash contribution?',
+            options: [
+              'Time(Sweat Equity)',
+              'Facilities and Hard goods',
+              'Ideas and Intangibles',
+              'all of these',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+          {
+            heading: 'How to manage and audit Yearly Contributions?',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
+            type: 'intro',
+          },
+          {
+            text: "To quickly get started with this, we'll have to offer our intended contributions each year, and then audit those contributions at the end of the year. We can compare what we anticipated to do to what we really contributed in this way.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            heading: 'Step 1: Lock Down Proposals',
+            text: "We can propose our contributions at the beginning of each year, and certainly when we first put up the cap table, we can raise our contribution. Simply prorate the contributions for the first year, and we'll be able to put them on the same schedule as the rest of us do.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Step 2: Audit Last Year',
+            text: 'Through the audit, we can calculate each proposed contribution versus the actual contribution and sum up the numbers.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Step 3: Next Year Proposals',
+            text: 'Following our year-end audit, we will go with the new round of proposals each year, knowing that our understanding of what we want to provide and what we can deliver will likely improve year after year.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading:
+              'What will our contribution be worth over some period of time?',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
+            type: 'intro',
+          },
+          {
+            text: "We may preferentially reward members who have more value in Year 1 but don't necessarily continue to pay in that value in following years if we merely consider a single year to account for the overall growth of the firm.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            question:
+              'Through the audit, we can calculate each proposed contribution versus the actual contribution and sum up the numbers',
+            options: ['true', 'false'],
+            ans: 0,
+            type: 'quiz',
+          },
+          {
+            heading: 'What Changes after Year 1?',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
+            type: 'intro',
+          },
+          {
+            heading: '1. People Leave',
+            text: "This is the most frequent alteration, and while we address it when we get to \"Question: How do we make adjustments later?\" it's worth mentioning because it's so widespread. It's highly probable that any contributions made in the first year will not be used after that year. As a result, allocating a percentage of ownership to someone based on what we expected them to contribute in Year 2 or 3 is a genuine difficulty.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: '2. Relative Value Changes.',
+            text: "We often require a lot of resources to get started in the first year — legal, marketing, accounting, engineering, design, and so on. Those were crucial in Year 1 to getting us off the ground, but their relative significance will certainly shift once we're up and going. Our attorney may be the most important person when we need thousands of dollars in legal work to get started, but it doesn't indicate their relative contribution in Year 2 and past that will be the same.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: '3. Individual Contributions Change.',
+            text: "In the first year, I may have put $50,000 into the business, in addition to my time. But, if I didn't put in another $50,000 in Year 2, wouldn't my contribution in Year 2 be lower? Right, if you think so. We must ensure that the value of your investment in Year 1 is not at par with that in Years 2 and beyond.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: '4. One-Time Contributions Expire (this is a big one!)',
+            text: "Many of our contributions will be one-time, usually in the first year. These often include the concept, relationships, financial investments, and other resources. We'll come to regret it if we merely project our Year 1 contributions as if they'll be made every year after that",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'How do we make adjustments later?',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
+            type: 'intro',
+          },
+          {
+            text: "The next years (and adjustments) are quite similar to the first year, with one exception: our equity may swing quite one way or the other in the future years, which tends to frighten people. Technically, we should all support the contribution we attempted to make and ensure that everyone gets what they deserve, but we've previously proven that this is unlikely to happen.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: "We'll have to make some adjustments over time, but we'll want to make sure we know what to expect in terms of how to do so equitably and what to do if we want to avoid a huge swing in equity.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+        ],
+      },
+      {
+        name: 'model4',
+        slides: [
+          {
+            heading: 'MANAGING EQUITY',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+            type: 'intro',
+          },
+          {
+            text: 'Holding ownership is only half a thing but what’s more important is that how you manage your equity or the fact that how significant of a contribution each person can make and what their long-term trajectory at the company is.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            heading: '4 Keys to Managing Equity',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Finances.png?alt=media&token=50868d45-41ed-47ee-8d29-9179e766d9d8',
+            type: 'intro',
+          },
+          {
+            text: 'It ultimately boils down to "What happens when someone leaves?" when it comes to stock management. There isn\'t much to have disagreement about if the company is sold and we all get a heavy paycheck. However, if someone leaves, we must determine what happens to their shares and how this affects the remaining employees.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'textimg',
+          },
+          {
+            text: 'We’ll learn to manage our equity with 4 tools :',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
+            type: 'textimg',
+          },
+          {
+            heading: '1. CLAWBACK',
+            text: "If it's about giving away equity, then that would still be child’s play. Getting it back, on the other hand, is a whole different matter!",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20investment.png?alt=media&token=722a9291-7ffd-4be5-87ff-99282c0120e8',
+            type: 'headtextimg',
+          },
+          {
+            text: '"Clawback Provisions" are made to return equity (stock) to the business if one or more provisions are met. Because no one loves giving their money back, the Clawback Provisions are by far the most contentious form of legality involved. That could be a hell lot cumbersome, mind you!!',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20investment.png?alt=media&token=722a9291-7ffd-4be5-87ff-99282c0120e8',
+            type: 'textimg',
+          },
+          {
+            text: 'Clawback Provisions would certainly be the most essential aspect of how we manage our equity plan in the long run. They\'re what helps us avoid some of the "absentee landlord" issues that result in a lot of dormant equity in the Cap Table. It also offers some protection against making poor stock grants.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20investment.png?alt=media&token=722a9291-7ffd-4be5-87ff-99282c0120e8',
+            type: 'textimg',
+          },
+          {
+            heading: 'Most Common Clawback Provisions:',
+            text: 'Certain hypothetical situations may arise as a result of Clawback Provision. Such scenarios may take the following form-',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FBusiness%20investment.png?alt=media&token=722a9291-7ffd-4be5-87ff-99282c0120e8',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Someone is fired for an apparent reason-',
+            text: 'This means someone was fired for a good reason they did something that was materially wrong. \n\nThis might include everything from job performance to illegal conduct, but it would be mentioned as "out of limits"in the Operating Agreement (for members), Stock Agreement (for participants), or Employment Agreement (for everyone). \n\nTermination for cause usually results in a considerably higher Clawback penalty, and in some situations, benefits may be revoked entirely.',
+            image: '',
+            type: 'headtextimg',
+          },
+          {
+            question: '"Clawback Provisions" are made to…..',
+            options: [
+              'sell stock of the business if one or more provisions are met.',
+              'return equity (stock) to the business if one or more provisions are met.',
+              'purchase equity of the business if one or more provisions are met.',
+              'None of these',
+            ],
+            ans: 1,
+            type: 'quiz',
+          },
+          {
+            heading: 'Someone is fired for NO apparent reason-',
+            text: '"Without reason" suggests the individual did not do something improper on purpose. This could be due to a workforce downsizing or someone simply resigning. We may have a minimal clawback or none at all in this scenario. These are usually deviations from mutually agreed-upon circumstances, or at the very least, ones that do not affect the organisation purposely.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'The Exercise Period ends.',
+            text: 'A stock returns to the Cap Table when an "exercise window" expires. It usually occurs if a Stock Option is not exercised within the specified period. The issue may not be whether or not there was a termination for cause, but how the exercise window is allocated and elapsed.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'How to Handle the Clawback',
+            text: "For this, we'll have to look whether HR policies appear fair and equitable to our employees, we'd have to think through the personal choice on what we believe would be fair to our employees and the company as a whole.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: '1.  Plan for Change',
+            text: 'The key to knowing how long-term equity splits operate is to comprehend that practically everything changes and evolves over time, so the decisions we make now must account for the multitudes of big changes in value and contribution that will occur over the next decade or longer.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FWireframe.png?alt=media&token=af9357e7-ae82-4f0f-b65d-f6f8dcb9203f',
+            type: 'headtextimg',
+          },
+          {
+            heading: '2. Skill Value Changes',
+            text: "It's common for us to take on the tasks of entire departments or C-level executives in our early days, but the overall value or skill level of our efforts may be primarily predicated on the fact that no one else is willing to do them!",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            heading: '3. Time Investment Changes',
+            text: 'My time investment can go from "every minute, all the time" to "whenever I can find the time" in a matter of seconds. It\'s unrealistic to think that no life events will ever occur and that our time commitments will never alter. As a result, we must know what to do if and when our future time commitments diverge from our current work obligations.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FGroup%202906.png?alt=media&token=e19bd754-7201-4475-aee2-47fc453e0bce',
+            type: 'headtextimg',
+          },
+          {
+            heading: '4. Capital Investment Changes',
+            text: "The sum required by the organization will fluctuate significantly over time. Say $10,000 in investment may seem like a large sum today, but it will be a day's earnings in a few years. While there is undoubtedly a premium to be gained by investing early, there is also a realistic limit to how much of the cap table one should receive.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FLayer_1-2.png?alt=media&token=dec59880-8082-4a55-9244-aba71ffc0d1c',
+            type: 'headtextimg',
+          },
+          {
+            heading: '',
+            text: 'Typically, the amount of stock a capital contribution returns is proportional to the company\'s "value". To summarize, the first $10,000 should produce a healthy return for being the riskiest capital, but only within a stock ownership cap that reflects the company\'s future, not simply at present.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FLayer_1-2.png?alt=media&token=dec59880-8082-4a55-9244-aba71ffc0d1c',
+            type: 'headtextimg',
+          },
+          {
+            heading: '5. Founding Team Changes',
+            text: 'The issue with validating a "founding team" and the ownership stakes that people receive is that often the sole qualification for stock is that everyone agrees to stay on for the foreseeable future. However, unlike working for a pay, when our only obligation is to show up every day, working on a startup means we may never receive a payday, which tends to drive people away.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fteam%20success.png?alt=media&token=834c0990-208b-4f80-9738-36007c8e4cfb',
+            type: 'headtextimg',
+          },
+          {
+            heading: '',
+            text: "As a result, regardless of how strongly the Founders feel about their current commitment to the company, it's critical that they make some basic arrangements for what would happen if that commitment changes.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2Fteam%20success.png?alt=media&token=834c0990-208b-4f80-9738-36007c8e4cfb',
+            type: 'headtextimg',
+          },
+          {
+            question:
+              '“Capital requirements for the organization will never fluctuate over time.”',
+            options: ['true', 'false'],
+            ans: 1,
+            type: 'quiz',
+          },
+          {
+            heading: 'Dormant Equity',
+            text: "The crux of all of these changes usually results in one major problem: dormant equity. When the Cap Table fills up with participants who possess a share in the company but don't participate in its growth any longer, this is known as dormant equity.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%20Plan.png?alt=media&token=503cc3c6-c253-436e-ad32-3d018404ccf3',
+            type: 'headtextimg',
+          },
+          {
+            question:
+              "When the Cap Table fills up with participants who possess a share in the company but don't participate in its growth any longer, this is known as ___________.",
+            options: [
+              'Regular Equity',
+              'DORMANT Equity',
+              'PHANTOM Equity',
+              'NONE of these',
+            ],
+            ans: 1,
+            type: 'quiz',
+          },
+        ],
+      },
+      {
+        name: 'model5',
+        slides: [
+          {
+            heading: 'End Questions',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FEquity%26Everything%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=faea3c6a-20ca-4f95-9e0e-ecc21484c387',
+            type: 'intro',
+          },
+          {
+            question: 'Which one of the following is a non-cash contribution?',
+            options: [
+              'Time(Sweat Equity)',
+              'Ideas and Intangibles',
+              'Facilities and Hard goods',
+              'all of these',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+          {
+            question: 'Vesting is……',
+            options: [
+              'sell stock of the business if one or more provisions are met.',
+              'return equity (stock) to the business if one or more provisions are met.',
+              'purchase equity of the business if one or more provisions are met.',
+              'a method of allowing members to "earn" their stock over time or in response to certain milestones.',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+          {
+            question:
+              '“Through the audit, we can calculate each proposed contribution versus the actual contribution and sum up the numbers.”',
+            options: ['true', 'false'],
+            ans: 0,
+            type: 'quiz',
+          },
+          {
+            question: 'The backbone of the startups in one sense is __________',
+            options: ['equity', 'goodwill', 'Debt', 'patents'],
+            ans: 0,
+            type: 'quiz',
+          },
+          {
+            question:
+              '________is the most significant investment made by startups.',
+            options: [
+              'Time(Sweat Equity)',
+              'GOODWILL',
+              'GOOD FOUNDING TEAM',
+              'all of these',
+            ],
+            ans: 0,
+            type: 'quiz',
+          },
+          {
+            question: 'phantom equity is………',
+            options: [
+              'To purchase equity of the business if one or more provisions are met.',
+              'a method of allowing members to "earn" their stock over time or in response to certain milestones.',
+              'a contractual right, not an equity stake, we can grant upside without having to issue actual equity ownership shares.',
+              'none of these',
+            ],
+            ans: 2,
+            type: 'quiz',
+          },
+          {
+            question: 'When should you use regular equity?',
+            options: [
+              'you don’t know how to properly allocate contributions in capital.',
+              'When we want to divide the company amongst a small number of active members.',
+              'you know how to properly allocate contributions in capital.',
+              'You have to split the equity equally.',
+            ],
+            ans: 1,
+            type: 'quiz',
+          },
+          {
+            question:
+              '_________ means that the employee have a privilege to avail the “option” to buy stock in the company at a later date implicating that right now they don’t “own” anything.',
+            options: [
+              'Stock Option',
+              'DORMANT Equity',
+              'PHANTOM Equity',
+              'NONE of these',
+            ],
+            ans: 0,
+            type: 'quiz',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    frontscreen: {
+      images: [
+        'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FCrowdfunding%20idea.png?alt=media&token=7a3dbcce-424c-4cac-9587-1693c491b06c',
+        'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FLayer_7.png?alt=media&token=bf0587d3-9839-474e-95a0-1f17c85a9c6b',
+      ],
+      name: 'Idea Validation',
+      coverImg:
+        'https://img.freepik.com/free-photo/front-view-stacked-books-graduation-cap-open-book-education-day_23-2149241017.jpg?w=996&t=st=1685954120~exp=1685954720~hmac=ef10d733e457491e72c5221533bac5e3586d214847f158a277766a77f664d421',
+    },
+    modules: [
+      {
+        name: 'model1',
+        slides: [
+          {
+            heading: 'Introduction',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fanalytics.png?alt=media&token=7ff3ff45-d4c2-4ff4-9793-794ecc96c419',
+            type: 'intro',
+          },
+          {
+            text: "Hello folks! Looking forward to establishing your own start-up but don’t know how to? Obviously yes…. Knowing all about it must be your main concern now that you're here.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fe%20commerce%20or%20online%20shopping.png?alt=media&token=daadcc22-8e5c-4889-9525-a483e8d37092',
+            type: 'textimg',
+          },
+          {
+            text: 'Well, don’t worry because that’s our work now as we’re here to guide you every step of your way!!',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fe%20commerce%20or%20online%20shopping.png?alt=media&token=daadcc22-8e5c-4889-9525-a483e8d37092',
+            type: 'textimg',
+          },
+          {
+            text: 'Where business is involved, busy-ness in its real sense is also involved! And so is the inquisitiveness to dream and turn your business vision into reality.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Frunning%20late.png?alt=media&token=32b2f364-55b4-4e19-9ada-dc4d20ecdc5e',
+            type: 'textimg',
+          },
+          {
+            text: 'I’m sure now you can easily guess that the first thing to give a structure to your business outlook starts with the ideation process. A striking solution you need to come up with to solve the problem you’re targeting. But wait, the ideation process is not over yet.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=54e82a94-62a2-45dd-8e79-d450725cc52f',
+            type: 'textimg',
+          },
+          {
+            text: 'Why? The reason founders end up giving it all up is that they fail to pause, take a step back, and review the key indicators that would tell them whether their specific version of the idea is worth doing. That’s when the feasibility test of your idea gets a green signal in your to-do-list.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FTask%20list.png?alt=media&token=42d15243-e29a-4cfc-9919-d0d24cea2801',
+            type: 'textimg',
+          },
+
+          {
+            question: 'What is a Startup?',
+            options: [
+              'A newly listed company at stock market',
+              'A newly launch business product',
+              'A newly ranked business',
+              'A newly established business',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+          {
+            heading: 'How is it done?',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202902.png?alt=media&token=50d9ee05-888e-48ea-9239-9e2b60659b27',
+            type: 'intro',
+          },
+          {
+            heading: 'Step 1- Create a research plan',
+            text: 'Aaahhh! This seems tedious but yes, the research plan acts as a bulletproof shield against any perceived threats. It helps you to understand the problem you want to solve, thereby looking for any feasible solution,if any.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=54e82a94-62a2-45dd-8e79-d450725cc52f',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Step 2- Expert Opinion',
+            text: 'Getting an expert recommendation/approval will help bring clarity and a sense of purpose to your potential business idea.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FOffice%20employee%20making%20checklist.png?alt=media&token=54566a04-8c3f-4ea9-b65f-20389d514a43',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Step 3- Customer engagement',
+            text: 'As a procedure for testing the feasibility of an idea, there’s no better way to get validation than gaining insights from the potential customer base.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fresearch%20and%20development.png?alt=media&token=ce1fdd99-c30e-4cd8-aa9c-dbc1d7591814',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Step 4 - Crafting elevator pitch',
+            text: 'Hurry up! Time to tie the loose ends together.\n\nDesigning a comprehensive elevator pitch helps you bring about all the critical pieces of information you would want to deliver to your end consumer.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FWireframe.png?alt=media&token=0391219b-5f80-469d-a2ff-7c802456cfd4',
+            type: 'headtextimg',
+          },
+        ],
+      },
+      {
+        name: 'model2',
+        slides: [
+          {
+            heading: 'RESEARCH PLAN',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Ffinancial%20year.png?alt=media&token=9789bf57-4450-42eb-bc4e-bb9360d69842',
+            type: 'intro',
+          },
+          {
+            text: "No wonder everything eventually boils down to how good your research outlay is. Yes, it becomes imperative to run through the checks and validation checklists as part of your Research Plan to make sure you understand the market you're venturing.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FWoman%20thinking%20of%20investment.png?alt=media&token=916e1787-563c-4448-a6cc-d208aee85d70',
+            type: 'textimg',
+          },
+          {
+            heading: 'Step-1: Looking for research goals',
+            text: 'To clear off the blurry picture of your research objective, focus on the questions that’s pulling your business idea down.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FWoman%20doing%20online%20market%20analysis.png?alt=media&token=32704213-26f4-4ca4-b7a1-da62a0cf9c95',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Step-2: Tap reliable research sources',
+            text: 'Search for the research sources that are suitable enough to give a proper understanding of your research plan.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FSign%20Up%20form.png?alt=media&token=e7b4e9f2-e7bc-4528-bd66-ebe24ea51df4',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Step-3: Evaluate your findings',
+            text: 'Evaluating the checklist finding helps you mark the critical point that can add value to your research set.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FEmployee%20performance.png?alt=media&token=702ebf5b-b873-4f77-9cce-706bbd65a8c3',
+            type: 'headtextimg',
+          },
+          {
+            question:
+              'What is the final step towards creating your research plan?',
+            options: [
+              'Tap reliable research sources',
+              'Evaluate your findings',
+              'Looking for research goals',
+              'Doing a swot analysis',
+            ],
+            ans: 1,
+            type: 'quiz',
+          },
+          {
+            text: 'Now that you know about the steps involved in creating a research plan let’s talk about them in detail.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202907.png?alt=media&token=355f3490-76f4-4929-bc01-de10c31047a2',
+            type: 'textimg',
+          },
+          {
+            heading: 'Step 1: Establish your research goals',
+            text: "Since we don't want to spend the rest of our lives researching, we'll focus on three key questions:",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FConcept%20about%20business%20Failure.png?alt=media&token=2724829e-e3de-4354-b4d8-601a43292f05',
+            type: 'headtextimg',
+          },
+          {
+            heading:
+              'Q1. What is the problem that my startup or idea solves, and how painful is it?',
+            text: 'Target the issue that you think requires sincere attention and address that and fulfill the need.\n\nAsk yourself this first question as a litmus test for your startup idea: “What problem is my startup solving, and how critical is that problem?”',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Ffinancial%20year.png?alt=media&token=9789bf57-4450-42eb-bc4e-bb9360d69842',
+            type: 'headtextimg',
+          },
+          {
+            heading:
+              'Q2. What is the extent of the problem and who is affected?',
+            text: 'Let’s get this straight! To answer this question, you really need to know who your target base is and to what extent they are getting affected. Basically, you are essentially figuring out the market size for your solution.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Ffinancial%20year.png?alt=media&token=9789bf57-4450-42eb-bc4e-bb9360d69842',
+            type: 'headtextimg',
+          },
+          {
+            text: 'First thing first, quickly access your Total Addressable Market (TAM) by defining the industry you are operating in. Give yourself a pat on your back as you’ve determined that you have a market worth pursuing, it’s time to look out who you’ll be competing with.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202906.png?alt=media&token=4190f292-555d-4b4a-a63e-dfdef60947ba',
+            type: 'textimg',
+          },
+          {
+            heading:
+              'Q3. What are the strengths and weaknesses of those who are already working on solving the problem?',
+            text: 'Now that you’ve reached this stage, I’m sure that you know what to do next?\n\nYes, you got it right. SWOT ANALYSIS!',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202906.png?alt=media&token=4190f292-555d-4b4a-a63e-dfdef60947ba',
+            type: 'headtextimg',
+          },
+          {
+            text: 'SWOT Analysis can serve as an effective tool to have a quick check on your competitors’ position, the other they’ve not entered into taking advantage of which you can exploit those opportunities better, the recurring threats that you should avoid and what not!',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202906.png?alt=media&token=4190f292-555d-4b4a-a63e-dfdef60947ba',
+            type: 'textimg',
+          },
+          {
+            heading: 'Step 2: Search for reliable sources',
+            text: 'Having a comprehensive insight of what you’re entering widens the ambit of your business outlook and helps you gain a better perspective of the industry on whole.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FBusiness%20woman%20achieving%20the%20goal%20successfully.png?alt=media&token=5dabf0f3-c682-4974-9580-2af08284ed4f',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Industry specific searches',
+            text: 'Doing some extra work is never a harm! Keep an eye on the sources where your competitors might be selling similar products, such as marketplaces, crowdfunding sites, and trade associations.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fstrategy%20or%20planning.png?alt=media&token=917369c6-6247-409f-8ca9-898399e886be',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Funded Companies',
+            text: "After you've figured out who some of the competition is, you'll have to measure them up and identify which of your competitors may be more qualified, which may lead to the discovery of tangential competitors.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fstrategy%20or%20planning.png?alt=media&token=917369c6-6247-409f-8ca9-898399e886be',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Step 3: Evaluate your Findings',
+            text: 'Once you’re done with your research, the next thing is to keep a critical eye on what you’ve found.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fstrategy%20or%20planning.png?alt=media&token=917369c6-6247-409f-8ca9-898399e886be',
+            type: 'headtextimg',
+          },
+          {
+            text: "Is our market opportunity big enough to build a meaningful business?\n\nSometimes an opportunity exists, but it's not that important to carve a meaningful business out of. Some businesses are not huge opportunities. But it’s OK!",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fstrategy%20or%20planning.png?alt=media&token=917369c6-6247-409f-8ca9-898399e886be',
+            type: 'textimg',
+          },
+          {
+            heading: 'Can you beat the competition?',
+            text: 'Creating an insightful competitive report would enable you to properly stack up your potential features with what’s currently there in the market. Those striking features can enable your business to reach new heights.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fstrategy%20or%20planning.png?alt=media&token=917369c6-6247-409f-8ca9-898399e886be',
+            type: 'headtextimg',
+          },
+        ],
+      },
+      {
+        name: 'model3',
+        slides: [
+          {
+            heading: 'EXPERT VALIDATION',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FOffice%20employee%20making%20checklist.png?alt=media&token=54566a04-8c3f-4ea9-b65f-20389d514a43',
+            type: 'intro',
+          },
+          {
+            text: 'Yes, you heard it right! Expert opinion can work wonders in giving your business vision a clarity. \n\nThe big task is to find the right experts and present them with very specific questions about your idea.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FOffice%20employee%20making%20checklist.png?alt=media&token=54566a04-8c3f-4ea9-b65f-20389d514a43',
+            type: 'textimg',
+          },
+          {
+            text: "After that, you also need to be able to assess the feedback you've gotten objectively, as per your suitability.\n\nThere are 3 steps involved in the process:",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fteam%20work.png?alt=media&token=fce9a1df-8288-4e01-8e5c-311c2ca27454',
+            type: 'textimg',
+          },
+          {
+            heading: '1. Expert Selection',
+            text: "We'll figure out which areas of your proposal need expert advice and then select the best experts to comment on those specific issues.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FLayer%201.png?alt=media&token=c928183e-35e6-4703-ae88-541f5c308016',
+            type: 'headtextimg',
+          },
+          {
+            heading: '2. Key Questions',
+            text: 'Asking and seeking opinion on critical questions can allay your doubts regarding the risks you foresee that might hinder your business progress.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202902.png?alt=media&token=7c4bb87b-5d61-42ed-880a-b42f0935f6d3',
+            type: 'headtextimg',
+          },
+          {
+            heading: '3. Results Analysis',
+            text: 'Comparing the results can help us recognize any patterns we can infer in order to restructure our business model.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FEmployee%20performance.png?alt=media&token=702ebf5b-b873-4f77-9cce-706bbd65a8c3',
+            type: 'headtextimg',
+          },
+          {
+            text: 'Let’s look at these steps in detail:',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fresearch%20and%20development.png?alt=media&token=2bf16c68-408a-4f8a-a42f-882e92ddf0e1',
+            type: 'textimg',
+          },
+          {
+            question: 'What is the second step of expert validation',
+            options: [
+              'Key questions',
+              'Result analysis',
+              'expert selection',
+              'none of these',
+            ],
+            ans: 0,
+            type: 'quiz',
+          },
+          {
+            heading: 'Step 1: Expert Selection',
+            text: '',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FLayer%201.png?alt=media&token=c928183e-35e6-4703-ae88-541f5c308016',
+            type: 'headtextimg',
+          },
+          {
+            text: 'The experts we identify are typically:\n\nSubject Matter Experts:\nSubject matter experts can provide us with a pragmatic view as to how challenging each aspect of our business model can be.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FBusinesswoman%20working%20on%20laptop.png?alt=media&token=22b36cad-0087-48ed-972d-8469270c6493',
+            type: 'textimg',
+          },
+          {
+            text: 'Expert Founders:\nA smooth conversation with an expert Founder can also aid us in setting the criticality aspect right that can accelerate your plan dramatically.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FWoman%20working%20on%20computer.png?alt=media&token=6b1b6715-b02e-4b51-b54b-ee4ea579a81b',
+            type: 'textimg',
+          },
+          {
+            text: 'Investors:\nInvestors can give you useful feedback on how big they envision your market arena. So in that sense, you don’t need to be raising capital to get good feedback from investors.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fsales%20team.png?alt=media&token=a7ed841d-39f6-440b-a1f1-d1aec8946c9c',
+            type: 'textimg',
+          },
+          {
+            question: 'Who all can be expert mentors for your startup?',
+            options: [
+              'Subject Matter Experts',
+              'Expert Founders',
+              'INVESTORS',
+              'all of theM',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+          {
+            heading: 'Step 2: Key Questions',
+            text: '',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202902.png?alt=media&token=7c4bb87b-5d61-42ed-880a-b42f0935f6d3',
+            type: 'headtextimg',
+          },
+          {
+            text: 'The key questions model vary based on your particular concept or precisely on the basis of following questions:',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202902.png?alt=media&token=7c4bb87b-5d61-42ed-880a-b42f0935f6d3',
+            type: 'textimg',
+          },
+          {
+            heading: 'Q1. Is this feasible?',
+            text: 'Feasibility test sets everything right by telling the likelihood of any major hurdles acting as a threat toward your growing business.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FBusiness%20Solution.png?alt=media&token=18882daf-2f7f-4074-82c1-c78990b57d06',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Q2. What pitfalls should we avoid?',
+            text: 'Experts can tell you what shortcomings to avoid altogether. We must list and address such problems these experts may identify and build a safety plan in order to avoid such barriers.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FResearch%20analysis%20report.png?alt=media&token=f8947380-5d39-4a56-8a5a-b7bc1f8387f6',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Q3. What are we not asking?',
+            text: 'A Questionnaire should be formulated and tailored with the intent of getting actionable feedback from the expert in a detailed and insightful manner.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FAsk%20Customer%20Feedback.png?alt=media&token=ab82a077-5334-4460-bf9f-10f7bd4162e2',
+            type: 'headtextimg',
+          },
+          {
+            question: 'What are the Key points when you analyse the results?',
+            options: [
+              'Weighing Expert Interviews',
+              'Getting a Second Opinion',
+              'Both A & B',
+              'Focusing only on the numbers',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+          {
+            heading: 'Step 3: Analysis of Results',
+            text: '',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fmultitasking%20or%20branding%20or%20product%20planninh.png?alt=media&token=01c43547-34ec-4db9-85fa-782345cb2318',
+            type: 'headtextimg',
+          },
+          {
+            text: 'Mind you, the experts can guide you in getting your answers, not the final decision as to whether we should give a green signal to this idea or not.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FSoftware%20bug.png?alt=media&token=07ebb81f-81f8-4a4c-8507-ceb53cdbed6b',
+            type: 'textimg',
+          },
+          {
+            heading: '1. Did we hit a hard stop or reset?',
+            text: 'Sometimes the interviews will yield an answer that can plunge you to the state of dropping that idea altogether. In this case we may have to get back to square one- to the research phase.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FSoftware%20bug.png?alt=media&token=07ebb81f-81f8-4a4c-8507-ceb53cdbed6b',
+            type: 'headtextimg',
+          },
+          {
+            heading: '2. What was the most consistent opportunity?',
+            text: 'After seeking expert opinion, you can explore which aspect of your new product created the most obvious benefit or opportunity?',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FSoftware%20bug.png?alt=media&token=07ebb81f-81f8-4a4c-8507-ceb53cdbed6b',
+            type: 'headtextimg',
+          },
+          {
+            heading: '3. Is it time to talk to customers?',
+            text: 'If we are of the view that we passed our feasibility test , it’s time to talk to customers directly.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FSoftware%20bug.png?alt=media&token=07ebb81f-81f8-4a4c-8507-ceb53cdbed6b',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Weighing Expert Interviews',
+            text: 'Weighing expert recommendation with other sources can definitely be an eye-opener as it may enable us to expand the ambit of our expert validation exercise to some other sources as well.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FSoftware%20bug.png?alt=media&token=07ebb81f-81f8-4a4c-8507-ceb53cdbed6b',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Getting a Second Opinion',
+            text: 'Second opinions are always welcome, no doubt about that. For example, if a single investor we spoke to says “it will never get funded” we may want to seek validation from 1 or 2 other investors to make sure it’s not partial.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FSoftware%20bug.png?alt=media&token=07ebb81f-81f8-4a4c-8507-ceb53cdbed6b',
+            type: 'headtextimg',
+          },
+          {
+            question:
+              'What is one of the key questions that we should ask from expert?',
+            options: [
+              'What was the most consistent opportunity?',
+              'Is it time to talk to customers?',
+              'What pitfalls should we avoid?',
+              'Both A & B',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+        ],
+      },
+      {
+        name: 'model4',
+        slides: [
+          {
+            heading: 'Customer discovery',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fresearch%20and%20development1.png?alt=media&token=18536b83-f6f3-41b5-b1ae-f45bb7e4e3a6',
+            type: 'intro',
+          },
+          {
+            text: 'Customer discovery is an extensive approach to make sure that the problem aligns with the solution you’ve identified with what customers actually want at a price they are willing and able to pay.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fresearch%20and%20development1.png?alt=media&token=18536b83-f6f3-41b5-b1ae-f45bb7e4e3a6',
+            type: 'textimg',
+          },
+          {
+            text: 'Let’s look at some of the steps involved in the phase of customer discovery.:',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FRectangle.png?alt=media&token=55922d7d-e254-49c2-8f70-be01bf5d8023',
+            type: 'textimg',
+          },
+          {
+            heading: 'Step 1: Create Customer Archetypes',
+            text: 'It basically spells out an archetype featuring all the customer profiles representing different use cases of the product like what would attract people to buy your product, what problem is your product  capable of solving, what are the different ways your product can be used by customers.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fimage%205.png?alt=media&token=d095c9aa-7647-45af-8635-bcd9b439327c',
+            type: 'headtextimg',
+          },
+          {
+            text: 'Getting validation from the potential customers adds lucidity and perspicacity to your business idea.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Fimage%205.png?alt=media&token=d095c9aa-7647-45af-8635-bcd9b439327c',
+            type: 'textimg',
+          },
+          {
+            question: 'what is a customer archetype?',
+            options: [
+              'Refers to bringing in customers to buy your product',
+              'Customer who make repeat purchases',
+              "It is percentage of an organization's customer base lost during a given period of time",
+              'Refers to the customer profiles representing different use cases of the product',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+          {
+            heading: 'A) LANDING PAGE',
+            text: 'Landing page is the star or let’s just say the main highlight of your hours and hours of hard work. Under the landing page, people would have to input their name and email to see if they are interested in what you offer. Pre-selling your solution is evident to know if people are willing to pay for what you have.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202907.png?alt=media&token=13bf82eb-3c83-4c9d-9ef1-703272c75794',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'b) Digital Advertising',
+            text: 'Advertising via social media can be a real game-changer to explore the interest area of your target customer base.\n\nThis gives an insight of business metrics like- Cost incurred to acquire a potential user, word of mouth with which you can resonate with your target audience.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FConcept%20about%20business%20Failure.png?alt=media&token=2724829e-e3de-4354-b4d8-601a43292f05',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'c) Surveys',
+            text: 'Surveys can be conducted online capturing various channels. Or alternatively, in-person enumeration can be quite effective and you could potentially conduct those one-on-one sessions.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2Ffinancial%20year.png?alt=media&token=9789bf57-4450-42eb-bc4e-bb9360d69842',
+            type: 'headtextimg',
+          },
+          {
+            question: 'Getting validation from the potential customers adds',
+            options: [
+              'lucidity and perspicacity to your idea.',
+              'Difference in my product from existing ones',
+              'Leads to our idea',
+              'Value to the product',
+            ],
+            ans: 0,
+            type: 'quiz',
+          },
+          {
+            heading: 'Step 3: Conduct Customer Validation',
+            text: '3 steps to seeking customer validation involves\n\n- the Problem\n- Solution\n- Revenue Model',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FGroup%202907.png?alt=media&token=13bf82eb-3c83-4c9d-9ef1-703272c75794',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Problem',
+            text: 'Every new business concept begins with a problem that needs to be solved. Difference lies in the perspective of how you want to solve that problem and how customers would want to get that problem resolved.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FAsk%20Customer%20Feedback.png?alt=media&token=ab82a077-5334-4460-bf9f-10f7bd4162e2',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Solution',
+            text: 'The solution you provide should be in synchronization with where the problem is mostly targeted at. Going through the various features of your solution must align with where you’re focusing your product efforts to where customers need attention should have the greatest demand.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FIndian%20male%20achieved%20his%20dream.png?alt=media&token=f2bb49fb-8131-4d26-a453-cdd3c451bae7',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Revenue model',
+            text: 'The revenue model questions checks for price sensitivity, frequency and flexibility or complexity of product, if any.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FBusiness%20woman%20achieving%20the%20goal%20successfully.png?alt=media&token=5dabf0f3-c682-4974-9580-2af08284ed4f',
+            type: 'headtextimg',
+          },
+          {
+            question:
+              'which one of the following is NOT a step towards seeking customer validation',
+            options: [
+              'Problem',
+              'Make commitments',
+              'Solution',
+              'Revenue Model',
+            ],
+            ans: 1,
+            type: 'quiz',
+          },
+        ],
+      },
+      {
+        name: 'model5',
+        slides: [
+          {
+            heading: 'End Questions',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FIdeaValidation%2FBusiness%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=34b61281-ea5d-48a3-9b4f-9b3f3eb7052b',
+            type: 'intro',
+          },
+          {
+            question: 'On what base you can analyse your startup business?',
+            options: [
+              'Competitor Analysis',
+              'SWOT Analysis',
+              'Google Analytics',
+              'All of the above',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+          {
+            question:
+              'What is one of the key questions that we should ask from experts',
+            options: [
+              'What was the most consistent opportunity FOR US',
+              'Is it time to talk to customers?',
+              'What pitfalls should we avoid?',
+              'Did we hit a hard stop or reset?',
+            ],
+            ans: 2,
+            type: 'quiz',
+          },
+          {
+            question: 'What is the 2nd step of Customer Discovery',
+            options: [
+              'Create Customer Archetypes',
+              'Choose your expert',
+              'Conduct Customer Validation',
+              'NONE of these',
+            ],
+            ans: 1,
+            type: 'quiz',
+          },
+          {
+            question:
+              'When starting a startup company, what are the things required?',
+            options: [
+              'Legal Approvals',
+              'Eligibility Criteria',
+              'Feasible Idea',
+              'all of these',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+          {
+            question:
+              'Why Investors are considered while choosing an expert to help validate your idea',
+            options: [
+              'They can provide us with a pragmatic view as to how challenging each aspect of our business model can be.',
+              'can also aid us in setting the criticality aspect right that can accelerate your plan dramatically',
+              'They can give you useful feedback on how big they envision your market arena',
+              'Both A & B',
+            ],
+            ans: 2,
+            type: 'quiz',
+          },
+          {
+            question:
+              'What are the three questions you ask while analysing your results after talking to an expert.',
+            options: [
+              'Did we hit a hard stop or reset',
+              'What was the most consistent opportunity',
+              'Is it time to talk to customers?',
+              'all of these',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+          {
+            question:
+              'What is the first step towards creating your research plan?',
+            options: [
+              'Tap reliable research sources',
+              'Evaluate your findings',
+              'Establishing research goals',
+              'Doing a swot analysis',
+            ],
+            ans: 2,
+            type: 'quiz',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    frontscreen: {
+      images: [
+        'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FSearching%20data.png?alt=media&token=af379944-03e3-49e5-9497-1d443ac535c8&_gl=1*900u4d*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzAyMDEuMC4wLjA.',
+        'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FEmployee%20performance.png?alt=media&token=268cb1cc-96e0-4005-a150-bfe01859b9f0&_gl=1*1hfhfu6*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzAyNjUuMC4wLjA.',
+      ],
+      name: 'COMPETITOR \n ANALYSIS',
+      coverImg:
+        'https://img.freepik.com/premium-photo/open-book-with-abstract-business-illustration_488220-4978.jpg?w=1060',
+    },
+    modules: [
+      {
+        name: 'model1',
+        slides: [
+          {
+            heading: 'What is Competitor analysis ?',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FGroup%202902.png?alt=media&token=1aca4b06-cb9a-444a-8b5b-b775d8ba307f&_gl=1*9a25cq*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzA1OTUuMC4wLjA.',
+            type: 'intro',
+          },
+          {
+            text: 'The competitive analysis section of your market analysis is important. Knowing your competition is just as important as knowing your product and your customer. Market spaces tell you where to improve your product and internal weaknesses tell you that you are at risk of losing customers.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2Ffinding%20jobs.png?alt=media&token=dc03f001-d571-4a76-8944-4da4ddbe5bc1&_gl=1*1r0x493*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzA4MzQuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            text: 'Strong competition analysis is your way of showing that you know exactly where you stand among your fierce rivals and that you have a way to outdo them. \n\n Your competitive analysis should start with your SWOT Analysis Strengths, Opportunities, Weaknesses and Threats',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FBusiness%20Way%20to%20success.png?alt=media&token=f0790459-166c-4ac1-90cc-b5ddb773e67f&_gl=1*1tdnppk*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzEwMjYuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            heading: 'Market analysis',
+            text: ' Market analysis is the evaluation of any given market that includes both quality and volume research. Doing in-depth market analysis as an important part of your business plan ensures that you know everything you need to know about your market.\n\n Coincidentally, it assures any current or future investors that you know what you are doing, that you have done your homework and that you are the right entrepreneur to address the gap in this particular market. ',
+
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FYoung%20lady%20working%20on%20laptop.png?alt=media&token=5826f7ec-4087-49ef-88c8-e7c2fcbd217e&_gl=1*1g74d0h*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzEyOTYuMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            question: 'Best way to evaluate your startup idea is…',
+            options: [
+              'Ask friend and family',
+              'to look for existing large companies that do something similar.',
+              'Consult a financial advisor',
+            ],
+            ans: 2,
+            type: 'quiz',
+          },
+          {
+            heading: ' TOP 10 Topics to cover \n in your Market Analysis',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FIllustration%20-%20Finances.png?alt=media&token=a870cc3c-6e28-462b-99ca-bf20551750e4&_gl=1*1ngkkvb*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzE5MzQuMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            heading: '1. Industry Description and Outlook',
+            text: 'What does a start-up industry or a small business look like? Be sure to include size, trends, life cycle, and any expected growth. It is good to start with an industry definition and perspective because it gives all your market analysis a solid, comprehensive view to start with.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FGroup.png?alt=media&token=d65cf345-2273-4a30-a308-7292ceb7bba7&_gl=1*1epf34y*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc5Mjc1OS4yNC4xLjE2ODU3OTI4NzEuMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            heading: '2. Demographics and segmentation',
+            text: 'If your startup is focused on more than one market segment, you need to define that in the segregation and segregation category. Start with demographics and explore other potential features. Other factors to consider include geographical segregation (where people live) and behavioral segregation (what specific things, appropriate actions taken by people).',
+
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FPie%20Chart.png?alt=media&token=f79963ec-0d4e-4c06-80ec-5f19f2102bef&_gl=1*1ncjgj4*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc5Mjc1OS4yNC4xLjE2ODU3OTI5ODguMC4wLjA.',
+            type: 'headtextimgpoints',
+          },
+          {
+            heading: '3. Target Market',
+            text: 'If the definition of a sector is a broad idea to analyze the market you are starting from, then the target market is a microscope view. This is where you will decide and determine who owns your product. Explain. The target market description should include the size of the market and the specific person.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FMarketing.png?alt=media&token=87446859-8650-4219-9c99-3e5ec1ab528b&_gl=1*xu724f*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc5Mjc1OS4yNC4xLjE2ODU3OTMxODYuMC4wLjA.',
+            type: 'headtextimgpoints',
+          },
+          {
+            question: 'On what base you can analyse your startup business?',
+            options: [
+              'Competitor Analysis',
+              'SWOT Analysis',
+              'Google Analytics',
+              'all of these',
+            ],
+            ans: 4,
+            type: 'quiz',
+          },
+
+          {
+            heading: '4.  Total Addressable Market (TAM)',
+            text: "The total addressable market (TAM) illustrates how big your startup's growth potential is.\n\n Investors want to know you're addressing a major issue in a massive market. They seek to invest in good companies with large potential returns to compensate for whatever negative investments they may have made. 'If this startup doesn't go after a huge enough market, it won't be able to achieve an exponential consequence for me,' they reason.\n\n TAM responds to the inquiry,'How many people might use this product?'It has nothing to do with the number of people who will utilise your product.",
+            type: 'headtextimgpoints',
+          },
+          {
+            heading: '5. Market Demand',
+            text: 'Market demand is about determining the drivers for the need for your product. Why do potential customers need your product? What will make them spend their money on it? In this section, we will look at the current behavior of the market you are targeting and highlight how those behaviors prove that they will be interested in spending money on your product.\n\nThe need for the market is not your competition analysis, but it helps to look at your competition to find out how people are behaving. It also helps because you can find gaps in unmet market needs that your company cannot afford. ',
+            type: 'headtextimgpoints',
+          },
+
+          {
+            heading: '6. Market Test Results',
+
+            text: 'If you have been able to do market tests or if you have been able to access the results of another market test you should write it in the market results test section. \n\n What conclusions did you reach after you did your tests or did your research?\n How did you reach those conclusions?\n Do you have experts who can support you?',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FEmployee%20performance.png?alt=media&token=268cb1cc-96e0-4005-a150-bfe01859b9f0&_gl=1*1hfhfu6*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzAyNjUuMC4wLjA.',
+            type: 'headtextimgpoints',
+          },
+
+          {
+            question: 'TAM in its full form is……',
+            options: [
+              'Total Admissible  Management ',
+              'Total Addressable Market ',
+              'Total Administered Market',
+              'none of these',
+            ],
+            ans: 1,
+            type: 'quiz',
+          },
+
+          {
+            heading: '7. Competition',
+            text: 'An important part of market analysis is deciding who is on the field. Who are your rivals? \n Describe their strengths and weaknesses. Once you have decided on those, you will be able to use them to determine your initial profit and marketing status.',
+
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FGroup.png?alt=media&token=d65cf345-2273-4a30-a308-7292ceb7bba7&_gl=1*1wo5ju1*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzIyMDIuMC4wLjA.',
+
+            type: 'headtextimgpoints',
+          },
+
+          {
+            heading: '8. How much will the customers pay?',
+            text: "You must be able to estimate how much your project will cost your consumers. Imagine being an investor and receiving a pitch for a product that was actually a reference pen, and the entrepreneur was attempting to convince you that people would be willing to spend Rs 4,000 for it. Isn't it true that you can disregard that point? \n\n So, let's face it: the facts are what they are. Do your homework. Examine the market. Look at what others are charging for similar products and set your price within that range. You don't want to put your goods down, but you also don't want to be too pricey.",
+            type: 'headtextimg',
+          },
+          {
+            heading: '9. Barriers to Entry',
+            text: 'The barriers to getting into your market analysis are about what prevents a competitor from taking your position in the market and what makes you a better person and your company is the best company to do what you do. You must be able to respond to the question of what prevents a competitor from entering your market and stealing the majority or all of it away from you. You must also be able to explain why you have achieved success in this industry.\n\n What are some specific barriers to entry for your competitors? Consider such things as the technology needed, any rules in your market, the required investment, access to services, product visibility, and location, depending on your business and market.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: '10. Regulation',
+            text: 'What guidelines are needed in your market? Explain what they are and the steps you will take to maintain them.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FChecklist.png?alt=media&token=703035c3-6c38-4589-8ada-b505e6928eef&_gl=1*10dq4ve*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxNjQxMS4yNS4xLjE2ODU4MTY0MjIuMC4wLjA.',
+            type: 'headtextimgpoints',
+          },
+          {
+            question:
+              'What are some specific barriers to entry for your competitors?',
+            options: [
+              ' Technology Needed',
+              'Any rules in your market',
+              'Access to services, product visibility',
+              'all of these',
+            ],
+            ans: 4,
+            type: 'quiz',
+          },
+          ,
+        ],
+      },
+      {
+        name: 'module2',
+        slides: [
+          {
+            heading: ' Resources for \n market analysis',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FEmployee%20performance.png?alt=media&token=268cb1cc-96e0-4005-a150-bfe01859b9f0&_gl=1*1hfhfu6*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc2OTg5Mi4yMy4xLjE2ODU3NzAyNjUuMC4wLjA.',
+            type: 'intro',
+          },
+
+          {
+            text: ' Few Resources For \n Conducting Market \n Analysis:',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FIllustration%20-%20Finances.png?alt=media&token=a870cc3c-6e28-462b-99ca-bf20551750e4&_gl=1*16hs60c*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MTk3NTIuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: 'The Census Bureau When you’re looking for demographic info, look no further than the US Census Bureau. You can find great information ranging from locations to age to race (to name just a few) on their site. ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FBusiness%20location.png?alt=media&token=033c1cab-f12f-4a5e-9a73-695ded348750&_gl=1*1ty09oo*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MTk5ODUuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            heading: 'Online tools ',
+            text: ' If you’re looking to gather information about your competition and your company is primarily online, check out SimilarWeb for extensive data. It’s a great resource for boosting up the credibility of your numbers. ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FBusiness%20discussion.png?alt=media&token=ce74934f-52d7-4eb4-956c-cee73001cc2b&_gl=1*1sgozdq*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjAwODkuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            heading: 'Surveys ',
+            text: ' When you’re trying to learn more about your market, why not ask them yourself? \n\n A well-designed survey can give you information about your users that you never would have expected. \n You can design and conduct surveys yourself, if that’s in your skill set, or you can hire a professional firm to conduct them for you. ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2Fteam%20success.png?alt=media&token=da5bcc4a-d5b7-4ca8-8f2c-c865c1ecd749&_gl=1*r28duf*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjAyNjcuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Market Analysis Companies',
+            text: " Another option is to employ a market research or market analysis firm or consultant to assist you with this crucial duty. \nStartup founders frequently believe that they must do everything and try to save money by 'wearing all the hats,' but it's perfectly acceptable to confess that you lack the abilities for certain tasks. \n If market analysis is something you're not comfortable with, do some research and discover a company that can handle it for you. ",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FYoung%20lady%20working%20on%20laptop.png?alt=media&token=5826f7ec-4087-49ef-88c8-e7c2fcbd217e&_gl=1*1v61ia9*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjA0NTYuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Completive \n Pricing Strategy',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FIllustration%20-%20Finances.png?alt=media&token=a870cc3c-6e28-462b-99ca-bf20551750e4&_gl=1*z22hov*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjA2MTUuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Specialize Further',
+            text: 'There is one thing that a client will always value above low cost: specialty. \n\nIf a customer has the option of choosing between a low-cost offer and one that is tailored to their needs, they will almost always choose the latter.\n\nFind a technique to customise your product or service for specific customer segments. By providing several specialised solutions for each sub-category, you can still reach the entire market.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FYoung%20lady%20working%20on%20laptop.png?alt=media&token=5826f7ec-4087-49ef-88c8-e7c2fcbd217e&_gl=1*1v61ia9*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjA0NTYuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Do Not Race to Bottom',
+            text: "Make a statement about quality with your one-of-a-kind items. \nYou may need to explain to your consumers why you deserve more money, but don't hurry into a price war with another team. \nRunning downhill can be detrimental to your business for a long time. Respect your competitor's pricing strategy to hold yourself accountable. People will look up to you because of that.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FGrowing%20Up.png?alt=media&token=56044382-5260-4c31-9f44-1e1beb7e2239&_gl=1*ri9d62*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjA4OTYuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Learn About Your Market',
+            text: ' Because you believe that your competitor is of low quality, it may not be. The market determines quality, and if it likes a competitor, that is an opportunity for you to learn why. \nYou will probably understand the marketing angle they use or the feature they use in a different way that attracts customers to them. \n\nUse your competition to learn more about your market, and move around accordingly.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FMarketing.png?alt=media&token=87446859-8650-4219-9c99-3e5ec1ab528b&_gl=1*xu724f*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc5Mjc1OS4yNC4xLjE2ODU3OTMxODYuMC4wLjA.',
+
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Polish Your Brand ',
+            text: "You've put money into your business. Your team is exceptional. You're also well prepared to enter the market. \nHowever, keep in mind that the most important client for your product is you. \n Create an interesting tale that helps your client base achieve true product balance. Please sympathize with them. They are aware of the situation. Constantly add value to them. Never take anything for granted when it comes to them. \nThis is the storyline you want to tell, and flexible pricing strategies should follow.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FMarketing.png?alt=media&token=87446859-8650-4219-9c99-3e5ec1ab528b&_gl=1*xu724f*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTc5Mjc1OS4yNC4xLjE2ODU3OTMxODYuMC4wLjA.',
+
+            type: 'headtextimg',
+          },
+
+          {
+            question:
+              'When it comes to price, going downward might be detrimental to your business for a long time.',
+            options: ['True', 'False'],
+            ans: 1,
+            type: 'quiz',
+          },
+
+          {
+            heading: 'Have Depth and Wide Scope',
+            text: ' We do SEO services with a broader scope and greater depth.\n\n  To set a higher price than your competitors, you must first demonstrate that you are superior. \n Then, with the correct marketing and messaging, you can set yourself apart. If you`re having trouble figuring out why you`re better, take a look at your business strategy and see where you can add the greatest value.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FTick.png?alt=media&token=b8005209-8144-4ad6-9252-112b8e3b5f6b&_gl=1*kezibv*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjIxMjYuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            heading: 'Provide a Better Customer experience',
+            text: " After all, it's all about making a stronger initial impression than your opponent. If someone is visiting your site for the first time, provide them with exactly what they require and remove any unnecessary distractions.\n Create a white board or animated film to demonstrate the benefits of your product if your competitors employ text and visuals. Make your short storey as simple as feasible for your readers.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2Fcommunity.png?alt=media&token=ded7eb70-7634-48e1-b0e6-0fa2cfcf1308&_gl=1*rbo7ze*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjIyODguMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            question: 'What is the full form of SEO?',
+            options: [
+              'Search Engine Optimum',
+              'Search Engine Optimization',
+              'Search Electronic Optimization',
+            ],
+            ans: 2,
+            type: 'quiz',
+          },
+
+          {
+            text: 'End Questions ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FCompetitorAnalysis%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=3d8ff70f-a5e9-4e89-8778-1d464ef2818b&_gl=1*66h02c*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjI0NjkuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            question: 'Market research is…….',
+            options: [
+              'the procedure for establishing the viability of a new service or product by doing direct customer research',
+              'is the process of releasing an old product to a small group of people to see how they react to it',
+              "the type of funding utilised to launch a business. Private investors usually give funding in exchange for an equity stake in the company or a percentage of the product's earnings.",
+              'none of these',
+            ],
+            ans: 1,
+            type: 'quiz',
+          },
+
+          {
+            question: 'How to attract Beta Testers through Social Networks?',
+            options: [
+              'the quantity demanded across all countries for a given good.',
+              'the total quantity demanded across segmented  consumers in a market for a given time period.',
+              'the total quantity demanded across all consumers in a market for a given good.',
+              'none of these',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+
+          {
+            question: 'SWOT analysis assesses',
+            options: [
+              'Market price of the commodity',
+              'internal and external factors, as well as current and future potential.',
+              'current and future potential of company’s stock price',
+              'all of these',
+            ],
+            ans: 2,
+            type: 'quiz',
+          },
+
+          {
+            question: 'A target market encapsulates',
+            options: [
+              'a group of people who share some common interests and who a business has recognised as possible buyers for its products.',
+              "a group of persons identified as possible clients for a company's services because they share some common qualities.",
+              'a group of persons who share particular characteristics and have been identified by a firm as possible customers for its products.',
+              'all of these',
+            ],
+            ans: 4,
+            type: 'quiz',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    frontscreen: {
+      images: [
+        'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20of%20finding%20creative%20employees%20for%20company%20startup%20(1).png?alt=media&token=b196aaf6-ec21-4f18-963a-6f7b50a4029a&_gl=1*11hsb5n*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjMwMDUuMC4wLjA.',
+        'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FBusinesswoman%20working%20on%20laptop.png?alt=media&token=324aee7d-c286-49a9-85a7-e90e53b181ba&_gl=1*18o2dl9*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjMwNDMuMC4wLjA.',
+      ],
+      name: 'ELEVATOR\nPITCH',
+      coverImg:
+        'https://img.freepik.com/free-photo/front-view-female-student-white-shirt-black-jacket-wearing-backpack-holding-files-with-copybooks-blue-wall-college-university-lessons_140725-43393.jpg?w=996&t=st=1685954778~exp=1685955378~hmac=1bd56a749b79b3a4f7dd0360ef5d398d4404b7a4754404f012bda290d75ce2aa',
+    },
+    modules: [
+      {
+        name: 'model1',
+        slides: [
+          {
+            heading: 'Elevator pitch and its uses',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FYoung%20man%20working%20on%20strategic%20planning.png?alt=media&token=80acf4e7-1c0c-4f07-8289-fc1ca5aa176b&_gl=1*1i0xl3e*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjMxMDkuMC4wLjA.',
+            type: 'intro',
+          },
+          {
+            heading: 'ELEVATOR PITCH',
+            text: 'Elevator Pitch is something that can give “Do or die!” A real meaning. It can either have a long lasting impression or can go totally ignored. It’s a verbatim, appealing, interactive sales pitch that you can deliver to your end customers to have them grabbing the opportunity to try your products/services!',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20of%20finding%20creative%20employees%20for%20company%20startup%20(1).png?alt=media&token=b196aaf6-ec21-4f18-963a-6f7b50a4029a&_gl=1*11hsb5n*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjMwMDUuMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            text: 'A well-crafted Elevator Pitch can open all kinds of doors with potential partners, customers, future employees, and investors        ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20of%20finding%20creative%20employees%20for%20company%20startup%20(1).png?alt=media&token=b196aaf6-ec21-4f18-963a-6f7b50a4029a&_gl=1*11hsb5n*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjMwMDUuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: 'Do you need one?',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2Fanalytics.png?alt=media&token=6bc00fda-e9bc-4a1f-94dd-8940f7b6f1c5&_gl=1*ktrlsp*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjMyNzkuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            question:
+              '_________is a slang term used to describe a brief speech that outlines an idea for a product, service, or project.',
+            options: [
+              'Elevator Pitch',
+              'Served Addressable Market',
+              'Total Addressable Market',
+              'All of the above',
+            ],
+            ans: 1,
+            type: 'quiz',
+          },
+
+          {
+            text: 'If you’re an entrepreneur, business owner, an aspiring one—then “Yes, you are in need of an elevator pitch!” A 30-second elevator pitch helps you to sell yourself, your goals, and your big ideas to the end customers.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FLayer_3.png?alt=media&token=c703eedc-2c4d-4115-8512-0f9edfcbd440&_gl=1*1o6ks8x*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjM0MDYuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            heading: 'Where and when to use your elevator speech?',
+
+            text: 'You can use your elevator pitch to spur interest in your customer’s mind about your business in lot many situations:',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20of%20finding%20creative%20employees%20for%20company%20startup%20(1).png?alt=media&token=b196aaf6-ec21-4f18-963a-6f7b50a4029a&_gl=1*1caf6bi*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjM1NjIuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            text: 'When you meet a potential client or business connection.\n On your website’s homepage.\n At networking events.\nAt social gatherings.\nTo help you secure funding or investment.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20of%20finding%20creative%20employees%20for%20company%20startup%20(2).png?alt=media&token=3cedd605-acb6-4be6-9188-61341aa37b58&_gl=1*1pua20a*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjM3MTMuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: 'Basically, anytime a potential lead or new relationship appears.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20of%20finding%20creative%20employees%20for%20company%20startup%20(2).png?alt=media&token=3cedd605-acb6-4be6-9188-61341aa37b58&_gl=1*1pua20a*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjM3MTMuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            question:
+              'In which of the following case Elevator Pitch can be used?',
+            options: [
+              'When you meet a potential client or business connection.',
+              'On your website’s homepage.',
+              'At networking events. ',
+              'all of these',
+            ],
+            ans: 4,
+            type: 'quiz',
+          },
+
+          {
+            text: 'Other modes to use your elevator pitch:\n  In your LinkedIn, Facebook, and other social bios.\n When pitching new clients by email.\nIn your company’s brand guidelin \n Every Thanksgiving when Aunt Urma asks when you’ll be getting a job.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20of%20finding%20creative%20employees%20for%20company%20startup%20(2).png?alt=media&token=3cedd605-acb6-4be6-9188-61341aa37b58&_gl=1*1pua20a*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjM3MTMuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            question: 'What are the modes available to use you elevator pitch?',
+            options: [
+              'LinkedIn , Facebook',
+              'Email',
+              'BOTH A & B ',
+              '  NONE of these',
+            ],
+            ans: 4,
+            type: 'quiz',
+          },
+        ],
+      },
+      {
+        name: 'module2',
+        slides: [
+          {
+            heading: ' How to write  \nan elevator pitch?',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FBusinesswoman%20working%20on%20laptop.png?alt=media&token=324aee7d-c286-49a9-85a7-e90e53b181ba&_gl=1*1mgh236*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjQwMjAuMC4wLjA.',
+            type: 'intro',
+          },
+
+          {
+            text: ' The bigger question is what information you should include? \n How long should an elevator pitch be?',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20about%20business%20Failure.png?alt=media&token=e030107c-348e-4367-8213-9d90eff76105&_gl=1*1wb06jk*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjQwNzMuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: 'Who are you?  \n What do you do?\n What problem do your customers face?\n How do you help them solve it?\n Why is your solution better than those offered by competitors? ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20about%20business%20Failure.png?alt=media&token=e030107c-348e-4367-8213-9d90eff76105&_gl=1*1wb06jk*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjQwNzMuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            heading: 'Step 1: Nail The Problem',
+            text: 'Founders at times miss out on giving due importance to the bottlenecks and the Solution. A finely tailored problem adds the value of your solution and can put your plan running in different directions.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FSign%20Up%20form.png?alt=media&token=551168c9-0cde-45fe-8bf6-7bbc287a2fa2&_gl=1*l6obyp*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjQxOTAuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Step 2: Explain The Solution',
+            text: "Once you've articulated the Problem, the next step is to enunciate how this problem can be fixed.      \n  Founders usually presume that their customer base already has a need for their product. \n Take time to figure out the actual need and potential reach of your product.    ",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FYoung%20man%20working%20on%20strategic%20planning%20(1).png?alt=media&token=16eec2ff-6ac9-4fdc-97dc-e76e8a1edf2a&_gl=1*tb8haf*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjQyODguMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Step 3: Identify the TAM ',
+            text: "Another option is to employ a market research or market analysis firm or consultant to assist you with this crucial duty. \nStartup founders frequently believe that they must do everything and try to save money by wearing all the hats, but it's perfectly acceptable to confess that you lack the abilities for certain tasks. \n  If market analysis is something you're not comfortable with, do some research and discover a company that can handle it for you  ",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FMarketing.png?alt=media&token=7c76f21e-0976-4d9d-8cce-183e18a4b2ae&_gl=1*1sf2aoa*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjQzODMuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            question:
+              '_________is a slang term used to describe a brief speech that outlines an idea for a product, service, or project.',
+            options: [
+              'Elevator Pitch',
+              'Served Addressable Market',
+              'Total Addressable Market ',
+              '  All of the above',
+            ],
+            ans: 1,
+            type: 'quiz',
+          },
+
+          {
+            question: 'State the full form of CTA.',
+            options: [
+              'Call To Artifact',
+              'Call To Affirmation',
+              'Call To animation ',
+              '  Call To Action',
+            ],
+            ans: 4,
+            type: 'quiz',
+          },
+        ],
+      },
+      {
+        name: 'module3',
+        slides: [
+          {
+            heading: ' The Three Pies of Market Size',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FPie%20Chart.png?alt=media&token=3120cefb-d3de-4bb7-b08f-b8df9c9b0b59&_gl=1*mw43e9*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjQ3MDguMC4wLjA.',
+            type: 'intro',
+          },
+
+          {
+            heading: 'A. TOTAL ADDRESSABLE MARKET',
+            text: 'This encapsulates the market share you feel your product/service has the capacity to reach.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FMarketing.png?alt=media&token=7c76f21e-0976-4d9d-8cce-183e18a4b2ae&_gl=1*6spoxm*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjU2NDkuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'B. SERVED ADDRESSABLE MARKET',
+            text: ' Customize the entire TAM by how many of those potential customers you can reasonably convert into actual ones. Remember you can only serve as many customers as your sales and marketing channels will require you to.',
+            image:
+              '  https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FWomen%20doing%20shopping%20with%20trolley%20with%20market.png?alt=media&token=dfcaf5d6-43a4-46e3-9770-190fe0c80a5c&_gl=1*oirvso*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjU3MzAuMC4wLjA. ',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'C. TARGET MARKET',
+            text: 'Time to put your thinking caps on! This is where you need to be clear about your target market to actually put the key to your business vision.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FWoman%20doing%20online%20market%20analysis.png?alt=media&token=af2b463e-4b90-4a09-8803-cac000dc5cb6&_gl=1*1i2a2af*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4wLjE2ODU4NzMyNzMuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            question:
+              ' _______ encapsulates the market share you feel your product/service has the capacity to reach.',
+            options: [
+              'Served Addressable Market',
+              'Total Addressable Market',
+              'Target Market',
+              '  NONE of the above',
+            ],
+            ans: 2,
+            type: 'quiz',
+          },
+
+          {
+            heading: ' Tips on how to deliver a confident elevator pitch:',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FConcept%20of%20finding%20creative%20employees%20for%20company%20startup.png?alt=media&token=0f71d228-a82b-4c51-b9c5-c762232d1588&_gl=1*1lkbuaw*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzM0NDYuMC4wLjA.',
+            type: 'intro',
+          },
+
+          {
+            heading: 'Get them hooked',
+            text: ' Once you’ve introduced yourself, you’ve got to keep the audience hooked by stressing on the main highlights/features which would compel them to use your product/service over the others.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FWoman%20working%20on%20computer.png?alt=media&token=290cf443-4a26-47f6-adde-1706c6afe480&_gl=1*4ee08j*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzM1MjguMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Avoid Jargons',
+            text: 'Delivering a confident elevator pinch doesn’t mean you should make it too complex so that the end users are not able to get it. Better is to keep it short, precise and engaging but not monotonous.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FTeam%20Discussion.png?alt=media&token=2891d97b-0ba7-4838-8edc-3bf7409aa89a&_gl=1*15v1tg1*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzM2MzcuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Using comparison',
+            text: 'Comparing it to something that already exists can help you meet your set benchmark.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FChecklist.png?alt=media&token=76799896-ef05-42c4-ad26-6d3b56610fd1&_gl=1*1culagi*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzM3MTAuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Add emotional touch',
+            text: 'Adding an emotional touch can help you pull your audience towards your business concept.So yes, be a tad dramatic and you’re done!!',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FLayer%202.png?alt=media&token=db0144fd-423d-419c-a050-ee5f78e04e2a&_gl=1*7lbo3k*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzM4NjIuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'End by asking an open question',
+            text: ' Making your pitch persuasive is the key. This can be done by employing the use of conversation instead of just saying everything in one go.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2Fques%20mark%201.png?alt=media&token=089186a2-7e65-423f-a66a-e2b41ea2822b&_gl=1*lgggja*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzM5NDkuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Close with a call-to-action:',
+            text: 'A vivid call-to-action (CTA) lets your audience get a sneak-peak of your startup. Think about your end goal. \n Do answer most sought after questions like- Do you want the chance to pitch for investment, make a new business connection or interview for your dream job?  ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2Fbranding%20or%20marketing%20for%20product.png?alt=media&token=45054272-2510-4b6c-b669-ab73f168c836&_gl=1*qxfy14*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzQwMzQuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            question: 'State the full form of CTA.',
+            options: [
+              'Call To Artifact',
+              'Call To Affirmation',
+              'Call To animation',
+              '  Call To Action',
+            ],
+            ans: 4,
+            type: 'quiz',
+          },
+
+          {
+            heading: ' End Questions',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FElevatorPitch%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=4cbb516a-a800-4b7a-9920-3717d8103c2d&_gl=1*1ie00f3*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzQxNzMuMC4wLjA.',
+            type: 'intro',
+          },
+
+          {
+            question:
+              'Select the steps involved in writing the elevator pitch.    ',
+            options: [
+              'Reach to investors',
+              'Identify the TAM',
+              'Both A and B',
+              '  None of these',
+            ],
+            ans: 2,
+            type: 'quiz',
+          },
+
+          {
+            question: 'What are the pies of Market Size?',
+            options: ['tam', 'sam', 'target market', '  all of these'],
+            ans: 4,
+            type: 'quiz',
+          },
+          {
+            question: 'Target Market is ……',
+            options: [
+              'the entire TAM by how many of those potential customers you can reasonably convert into actual ones.',
+              'where you need to be clear about your market to actually put the key to your business vision.',
+              'how much potential for growth your startup has.',
+              ' where you need to be clear about your market to actually put the key to your business vision.',
+            ],
+            ans: 4,
+            type: 'quiz',
+          },
+          {
+            question: 'Served Addressable Market customize……',
+            options: [
+              'the entire TAM by how many of those potential customers you can reasonably convert into actual ones.',
+              'where you need to be clear about your market to actually put the key to your business vision.',
+              'how much potential for growth your startup has.',
+              ' where you need to be clear about your market to actually put the key to your business vision.',
+            ],
+            ans: 1,
+            type: 'quiz',
+          },
+
+          {
+            question: 'Total Addressable Market encapsulates…….',
+            options: [
+              'the entire TAM by how many of those potential customers you can reasonably convert into actual ones.',
+              'where you need to be clear about your market to actually put the key to your business vision.',
+              'how much potential for growth your startup has.',
+              ' where you need to be clear about your market to actually put the key to your business vision.',
+            ],
+            ans: 2,
+            type: 'quiz',
+          },
+
+          {
+            question: 'The Market Size shows……',
+            options: [
+              'the entire TAM by how many of those potential customers you can reasonably convert into actual ones.',
+              'where you need to be clear about your market to actually put the key to your business vision.',
+              'how much potential for growth your startup has.',
+              ' where you need to be clear about your market to actually put the key to your business vision.',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    frontscreen: {
+      image: [
+        'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FFinances.png?alt=media&token=53b1ee45-6ffa-44bc-9fba-d0659111b7e9&_gl=1*c2k78d*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ1NjIuMC4wLjA.',
+        'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FEmployee%20performance.png?alt=media&token=3a2e8c8b-bc72-490a-be05-5175e61451ed&_gl=1*apnom0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ2NDIuMC4wLjA.',
+      ],
+      name: 'Fundraising and its means',
+      coverImg:
+        'https://img.freepik.com/free-photo/entrepreneurs-meeting-office_23-2148898688.jpg?w=996&t=st=1685954824~exp=1685955424~hmac=3e1aafbff6203126df03604b22169ef92a34335a9fed93df0e11251c395e81dd',
+    },
+    modules: [
+      {
+        name: 'model1',
+        slides: [
+          {
+            heading: 'Introduction ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fanalytics.png?alt=media&token=55fa5dea-a0bb-4155-90d9-ac60045d76f0&_gl=1*15jszpy*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ3MzAuMC4wLjA.',
+            type: 'intro',
+          },
+          {
+            text: 'Startup funding, or startup capital, is the amount of money needed to start a new business. It can come from a variety of sources and can be used for any purpose that helps startups transform their ideas into real businesses.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fproduct%20planning%20discussion.png?alt=media&token=a190db44-4381-4128-9f07-880d76394aef&_gl=1*jfl4fn*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ4MDUuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            text: "Unlike the Car loan application, there is no standard for securing start-up funds. There is no form to fill out and wait for approval. It is driven much more by the founder's ability to convince others of what the vision is and to pool resources quite naturally while they do so.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fproduct%20planning%20discussion.png?alt=media&token=a190db44-4381-4128-9f07-880d76394aef&_gl=1*jfl4fn*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ4MDUuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            heading: 'importance of funds',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=d43344da-5190-4632-93aa-da0087666dc6&_gl=1*u6caip*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ5MTIuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            text: 'Without startup funding, most startups die. The amount of funding required to make a startup profitable is usually beyond the capabilities of the founders, friends and family.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=d43344da-5190-4632-93aa-da0087666dc6&_gl=1*u6caip*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ5MTIuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: 'A startup here means a company built for rapid growth. Fast-growing companies almost always have to burn capital to sustain growth until they reach profitability.          ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=d43344da-5190-4632-93aa-da0087666dc6&_gl=1*u6caip*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ5MTIuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: 'Some startups succeed in raising their own funds, but this is an exception. Of course, there are many great companies that are not startups. Management of capital requirements for these companies is beyond the scope of this document.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FWireframe.png?alt=media&token=e0523f7e-c3f2-485e-bec6-1b00b6aa276a&_gl=1*1kwek7z*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODUwNTUuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: 'cash not only allows startups to survive and grow, but is almost always a competitive advantage in all important aspects, such as key personnel recruitment, public relations, marketing and sales. So, most startups will almost certainly want to raise money.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fproduct%20planning%20discussion.png?alt=media&token=a190db44-4381-4128-9f07-880d76394aef&_gl=1*1xaxcqo*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODUxMTUuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: 'The good news is that there are many investors looking to put the right money into startups. The bad news is that "funding is brutal." The process of raising this money is often long, difficult, complex, and self-defeating. But this is the path that almost all companies and founders must go through. When is the right time to raise?',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FWireframe.png?alt=media&token=e0523f7e-c3f2-485e-bec6-1b00b6aa276a&_gl=1*1kwek7z*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODUwNTUuMC4wLjA.',
+            type: 'textimg',
+          },
+        ],
+      },
+      {
+        name: 'model2',
+        slides: [
+          {
+            heading: 'Funding Terms',
+            Image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FWorkshop%20for%20Growth.png?alt=media&token=58856e2a-c8e9-44a7-9154-e5a1a6ec7a84&_gl=1*c3g0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODUyNDMuMC4wLjA.',
+            type: 'intro',
+          },
+          {
+            heading: 'Funding Jargons',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FWoman%20thinking%20of%20investment.png?alt=media&token=84b2ddb9-e546-451e-b9ba-a7bdb4f7c512&_gl=1*sg4m6u*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODUzMjIuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: 'Angel Investor - A wealthy private investor in startup companies.\n  Cap Valuation - The maximum effective valuation for an investor in a convertible note.',
+            Image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FWorkshop%20for%20Growth.png?alt=media&token=58856e2a-c8e9-44a7-9154-e5a1a6ec7a84&_gl=1*c3g0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODUyNDMuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: '3. Convertible Note - This is a debt instrument that will convert into stock; usually preferred stock but sometimes common stock.\n\n 4. Common Stock - Capital stock typically issued to founders and employees, having the fewest, or no, rights, privileges and preferences.',
+            Image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fimage%205.png?alt=media&token=135fdb59-dd87-4002-9cf5-dc619e03d151&_gl=1*b57aly*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU0NTguMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: '5. Dilution - The percentage an ownership share is decreased via the issuance of new shares.\n\n6. Discount - A percentage discount from the pre-money valuation to give safe or note holders an effectively lower price.',
+            Image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FGroup%202907.png?alt=media&token=deafae06-f5dc-48a6-a41f-886dbaaf4ce8&_gl=1*d9aql2*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU1NTYuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: '7. Equity Round - A financing round in which the investor purchases equity in the company.\n\n 8. Fully Diluted Shares - The total number of issued and outstanding shares of capital stock in the company, including outstanding warrants, option grants and other convertible securities.',
+            Image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FConcept%20about%20business%20Failure.png?alt=media&token=a0d13d11-5d3f-4e1f-8a8b-ed6271d6a78e&_gl=1*zz1gxe*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU2MTYuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: '9. IPO - Initial Public Offering - the first sale of stock by a private company to the public.\n\n 10. Lead Investor - Usually the first and largest investor in a round who brings others into the round.   ',
+            Image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Ffinancial%20year.png?alt=media&token=e9e89cb8-fb0f-4443-8f08-a502e764b66d&_gl=1*16mdt5q*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU2OTQuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: '11. Liquidation Preference - A legal provision in a company’s charter that allows stockholders with preferred stock to get their money out of a company before the holders of common stock in the event of an exit.\n\n12. Maturity Date - The date at which a promissory note becomes due.',
+            Image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Ffinancial%20year.png?alt=media&token=e9e89cb8-fb0f-4443-8f08-a502e764b66d&_gl=1*16mdt5q*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU2OTQuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: '13. Equity Incentive Plan / Option Pool - The shares allocated and set aside for grants to employees and consultants.\n\n 14. Preferred Stock - Capital stock issued in a company that have specific rights, privileges and preferences compared to the common stock. Convertible into common stock, either automatically or at the option of the preferred stockholder.',
+            Image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FGroup%202906.png?alt=media&token=a32a596c-1c2b-4fb1-9370-a4e6e2cadf88&_gl=1*83s8q0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU4MTQuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: '15. Pre-money Valuation - The value of a company prior to when investor money is added.\n\n 16. Pro-rata rights - Contractual rights that allow the holder to maintain their percentage ownership in subsequent financing rounds.',
+            Image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FGroup%202906.png?alt=media&token=a32a596c-1c2b-4fb1-9370-a4e6e2cadf88&_gl=1*83s8q0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU4MTQuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: '17. Protective Provisions - Provisions in a company’s charter that give exclusive voting rights to holders of preferred stock. For example, the approval of these stockholders, voting separately from other stockholders, may be required for an acquisition.',
+            Image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FBusiness%20woman%20achieving%20the%20goal%20successfully.png?alt=media&token=e2a873d0-44df-4155-8f4f-fb7d310c7742&_gl=1*1hyqt1s*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU4OTAuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: '18. TAM - Total Available Market. In pitches, this is the estimated total revenue available for the product(s) you are selling.\n\n19. Venture Capitalist - A professional investor in companies, investing limited partners’ funds.',
+            Image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fstrategy%20or%20planning.png?alt=media&token=a4a87477-4de3-4552-be1d-bf21b6c5833c&_gl=1*1p9mem6*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODU5ODEuMC4wLjA.',
+            type: 'textimg',
+          },
+        ],
+      },
+      {
+        name: 'model3',
+        slides: [
+          {
+            heading: 'Funding Stages',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fdrawing.png?alt=media&token=5b2a47eb-af58-45c9-afc2-0c2085c1ff14&_gl=1*126z1uf*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODYwODAuMC4wLjA.',
+            type: 'intro',
+          },
+          {
+            heading: 'Funding Types',
+            text: "Before teaching you how to raise capital, you must first identify the type of capital you are seeking. Understanding all the pros and cons of different capital sources can be confusing, and most founders don't really know why one capital source is better than another.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FMan%20thinking%20to%20start%20a%20startup.png?alt=media&token=ec5195f0-cfba-4505-a9d4-7581b1ee0c3c&_gl=1*qdr8vb*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODY1MjAuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            text: 'We will change everything for you. You are about to learn everything you need to know about the various forms of capital. No, it is not as exciting as watching a Marvel movie, but it costs more.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fteam%20work.png?alt=media&token=cbdd7acc-1803-4ab0-ade8-674dbb71e2de&_gl=1*pe1lii*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODY1ODkuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            heading: 'BOOTSRAPPING',
+
+            text: ' Bootstrapping is a process of starting a company with only personal savings, including borrowed or invested funds from family and friends, as well as income from initial revenue. \n\nBootstrapped businesses do not rely on traditional financing methods, such as the support of investors, crowdfunding or bank loans.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FBusiness%20Task%20list.png?alt=media&token=15c57612-3f1b-41db-986f-40eddcf00970&_gl=1*1ql5o08*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODY2OTAuMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Equity',
+
+            text: '  Equity financing takes place when an investor invests funds in a startup, with a motive of earning back a multiplied amount of the investment made in the form of returns.\n\nIn case of equity the startup doesn’t need to pay back the fund invested to the investor but instead has to part with a part of company shares and give it to the investor. The company share is called equity, thus naming this funding process equity financing.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FLayer%202.png?alt=media&token=7459448d-5b8f-4e09-a111-ff67ce92ce47&_gl=1*1u4ec8n*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODY3OTMuMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'DEBT',
+
+            text: 'Debt funding is the process in which an investor lends money to an entrepreneur for their business over a certain period at a given rate of interest. \n\nIn exchange, the company sells the investors bonds that act as a certificate for the loan. Here, the startup has to pay the debt fund back on a pre-scheduled date along with the interest payment.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fresearch%20and%20development.png?alt=media&token=91e6f64e-3555-4e6c-b2a7-efae732e0d55&_gl=1*p5td6i*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODY4OTYuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Funding Stages',
+
+            text: ' Startups raise money in a series of stages based on how much growth and evolution they have had.\n\nThink of it like a student going to school. There’s pre-primary, primary, secondary, senior secondary, college. Each of those stages represents an evolution of the student, and there are a number of teachers who has expertise in helping students at each stage.  ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fresearch%20and%20development.png?alt=media&token=91e6f64e-3555-4e6c-b2a7-efae732e0d55&_gl=1*p5td6i*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODY4OTYuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            text: 'Startups are the same way. If you’re just getting started (the Seed Stage) you’ll be talking to different investors than if you have already raised money previously and are in the Expansion stage. These aren’t strict definitions, mind you, but just general guidelines a company goes through as they grow.   ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fmultitasking%20or%20branding%20or%20product%20planninh.png?alt=media&token=4a8ece40-d8c0-41d4-bc6b-ab115a1c2f65&_gl=1*1ivh3ez*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcwNDcuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            heading: '1. Seed Stage (less than Rs. 1cr.)',
+
+            text: "Friends and Family, Angel Investors, Incubators\n\nThe seed stage is the most formative stage of a startup. It usually starts with an idea, but most early-stage startups looking to raise money have more than just an idea. You're already working on a product prototype, and you've started working with a business plan in mind. This is where you get customers. ",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fmultitasking%20or%20branding%20or%20product%20planninh.png?alt=media&token=4a8ece40-d8c0-41d4-bc6b-ab115a1c2f65&_gl=1*1ivh3ez*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcwNDcuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            text: 'Investors in the seed stage usually get their first money and often have some sort of connection or relationship with the founder. The investment is usually small because the idea is still in its infancy and you bet more on the overall concept than the actual company.    ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Ffinancial%20year.png?alt=media&token=e9e89cb8-fb0f-4443-8f08-a502e764b66d&_gl=1*r22cn0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcyNDkuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            heading: 'Key Requirements:',
+
+            text: '  Business Plan \n Minimum Viable Product  \n Some Customers  \n Founding Team',
+
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Ffinancial%20year.png?alt=media&token=e9e89cb8-fb0f-4443-8f08-a502e764b66d&_gl=1*r22cn0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcyNDkuMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            heading: '2. Early Stage (less than Rs. 10cr.)',
+            text: ' Angel Investors, Venture Capital\n\n Early-stage companies have usually achieved at least MVP (minimum viable product), meaning their product or service is being provided to at least a small test subset of customers, and is meeting with customer approval.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fmultitasking%20or%20branding%20or%20product%20planninh.png?alt=media&token=4a8ece40-d8c0-41d4-bc6b-ab115a1c2f65&_gl=1*1ivh3ez*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcwNDcuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            text: 'Early-stage companies are also often generating enough revenue to be worth talking about, although that varies from company to company.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Ffinancial%20year.png?alt=media&token=e9e89cb8-fb0f-4443-8f08-a502e764b66d&_gl=1*r22cn0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcyNDkuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            heading: 'Key Requirements:',
+
+            text: '\nFunctional Product \nPaying Customers\nEarly Key Team Members\nEarly Growth',
+
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Ffinancial%20year.png?alt=media&token=e9e89cb8-fb0f-4443-8f08-a502e764b66d&_gl=1*r22cn0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcyNDkuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: '3. Expansion Stage (more than Rs. 10cr.)',
+            text: 'Venture Capital, Private Equity\n\nBy the time you are searching for Expansion Stage capital amongst venture capital and private equity investors, it’s clear that your business has major upside potential. You may not have strong financials yet, but you may have just developed the next Amazon.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fmultitasking%20or%20branding%20or%20product%20planninh.png?alt=media&token=4a8ece40-d8c0-41d4-bc6b-ab115a1c2f65&_gl=1*1ivh3ez*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcwNDcuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            text: 'The investors at this stage are looking for companies that have proven they have found “lightning in a bottle” and just need a bit of a turbo boost to really accelerate to next level.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            heading: 'Key Requirements:',
+
+            text: ' Significant Revenue (Rs.30 lakh+.)\nHuge Market Potential (greater than Rs.10Cr.)\nStrong Market Leadership',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+
+            type: 'headtextimg',
+          },
+
+          {
+            heading: '4. Late Stage (less than Rs. 50cr.)',
+            text: 'Private Equity, Investment Banks\n\nOnce a company has built a product that’s become a darling in the market, that’s when the Private Equity and Investment Bankers show up. These folks aren’t looking for a lot of risk they let the angel investors and venture capital firms deal with that. ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2Fmultitasking%20or%20branding%20or%20product%20planninh.png?alt=media&token=4a8ece40-d8c0-41d4-bc6b-ab115a1c2f65&_gl=1*1ivh3ez*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODcwNDcuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            text: 'They are looking to put massive sums of money into companies that are already winning to allow them to secure their leadership position. \n\n If you make it to this stage you’ve won!',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            heading: 'Key Requirements:',
+
+            text: ' Significant Revenue (Rs. 1Cr+)\nMarket Leadership Position',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Investor Types',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20testing.png?alt=media&token=417a7602-e1da-4a0a-ad88-1f04bf26de3b&_gl=1*1tosry2*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc5NzguMC4wLjA.',
+            type: 'intro',
+          },
+
+          {
+            text: 'Whether you need to expand your team, pay for product development, or just need to be self-sufficient, at some point you may need to look outside for capital input.    ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: 'Fortunately, there are several ways to find funds. Banking, federal, or state governments may be a good option for some companies, but this guide focuses on the different types of investors you can bring when you run out of these options: friends and family, angel investors, and venture capitalists.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            heading: 'Friends and Family (less than Rs. 1Cr.)',
+
+            text: ' While a bank or independent investor might be hesitant to risk money on your venture, your friends and family might be more willing to take a chance on your vision',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            text: 'With individual rounds typically raising around Rs.2,50,000 to Rs5,00,000, seeking investments from your personal network be an ideal way to raise seed money to get your company off the ground. These close circles generally consist of individuals most likely to feel a strong affinity for your brand -or, simply, to you -motivated more by loyalty and support than a return on investment alone.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            text: 'Securing capital from friends and family can also act as an effective stepping stone toward future investment deals, as it demonstrates to potential future backers that you’ve validated your business plan among those closest to you.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            text: 'However, mixing business with family is notoriously risky, and for good reason. To that end, it is of the utmost importance that all investments are thoroughly documented. You should require that they sign a document acknowledging the risk and clarifying that they may not get their money back.    ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            text: 'Before accepting any money, do some soul-searching to be sure that your ties are strong enough to withstand any worst-case-scenarios. Have each party sign a promissory note spelling out the repayment terms or, if you’re partnering with a friend or family member, sign a partnership agreement.    ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            heading: 'Angel Investors (Rs 1Cr.-Rs 2.5Cr.)',
+
+            text: 'An angel is a high-net-worth individual who invests directly into genuine entrepreneurial businesses. This capital usually allows the startup to accomplish some of the early milestones like building out an MVP, generating revenue, etc. ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            text: 'While certainly savvy businesspeople, angel investors are also less likely than venture capitalists to get caught up in bottom lines and profit margins, and might not be as apprehensive about the numerous unknowns that often come attached to seed-stage investments.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: 'Angels can be an ideal fit for startups because their personal interest in the healthy growth of the business and their own litany of past successes and failures often prompt them to act as mentor and coach to their portfolio companies.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            text: 'Many angel investors also belong to networks of other angel investors. These networks, or “Angel Groups,” pool their money and invest as a group in the deals they like the best. These networks are also beneficial to startups because it can make it much easier to raise larger amounts of capital.    ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            heading: 'Quick facts about Angel Investments:',
+            text: 'There are over 6,000 active angel investors in the India alone\nMedian funding round size for angel investments: $1.5 million',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Venture Capital Firms (Rs 2Cr. – Rs 50Cr.)',
+
+            text: 'Of the four investor types, Venture Capital firms write the biggest checks with an average investment size of $2.6MM to seed stage companies.  ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            text: 'VCs are in the business of reviewing, assessing, and investing in new and emerging businesses. As a result, they look at a very high volume of deals, and on average only invest in 1 out of every 100 deals they consider compared to angels, who invest in 1 out of every 10 deals. Furthermore, VCs conduct significantly more due diligence than angel investors, spending an average of 5 months vetting each investment opportunity.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            text: 'Venture capital is consistently an active, rather than passive, form of financing. These investors seek to add value, in addition to capital, to the companies in which they invest, both to help your company grow and to achieve a greater ROI. This means virtually all VCs will want a seat on the Board of Directors.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: 'Although most VC firms will have a website, or other means of sending in cold call solicitations, it is always best to have a referral to a VC by a mutual acquaintance.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: 'This is one of the many benefits of equity crowdfunding: by asking your existing supporters to share you fundraise with their own networks, you open yourself up to the possibility of making connections that you may have previously thought were impossible.    ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FSoftware%20bug.png?alt=media&token=e679e7b4-f3de-4704-9e1b-8f085b6c04d3&_gl=1*t3eu0m*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODc2NTguMC4wLjA.',
+            type: 'textimg',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    frontscreen: {
+      image: [
+        'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FFinances.png?alt=media&token=53b1ee45-6ffa-44bc-9fba-d0659111b7e9&_gl=1*c2k78d*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ1NjIuMC4wLjA.',
+        'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FEmployee%20performance.png?alt=media&token=3a2e8c8b-bc72-490a-be05-5175e61451ed&_gl=1*apnom0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ2NDIuMC4wLjA.',
+      ],
+      name: 'How to Create \n a Pitch Deck \n for Investors',
+      coverImg:
+        'https://img.freepik.com/free-photo/person-drawing-symbols-coming-out-light-bulb-top-book_1232-907.jpg?w=996&t=st=1685954908~exp=1685955508~hmac=48b791b36e06e1dad299b20606dfe787f9b22aa44c4eccafe9b5821610abf0ca',
+    },
+    modules: [
+      {
+        name: 'model1',
+        slides: [
+          {
+            text: "A pitch deck is a presentation used by entrepreneurs and startup owners to highlight their business, entice investors, and possibly seek cash to help them build their firm.\n You can't discount the importance of a good pitch deck in persuading investors since it helps you create powerful visual stories.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fproduct%20planning.png?alt=media&token=78e15eba-e45f-4157-b9c2-8f7d9d8a90e0&_gl=1*yh9nkk*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzQ5MjAuMC4wLjA. ',
+            type: 'textimg',
+          },
+
+          {
+            heading:
+              'However, how can you construct a pitch deck that genuinely attracts investors? ',
+
+            text: ' What a pitch deck is and why you need one     \n What slides to include in your pitch deck and what documents to bundle it with     \nThe secrets to creating a winning investor presentation including design tips to follow',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FMarketing%20employee%20working%20on%20marketing%20strategy.png?alt=media&token=89437946-2216-4732-8a0f-bc5f54f39f2d&_gl=1*1yc012g*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzUwNDUuMC4wLjA.',
+
+            type: 'headtextimg',
+          },
+
+          {
+            question:
+              'A ________is a presentation used by entrepreneurs and startup owners to highlight their business',
+            options: [
+              'BUSINESS MODEL',
+              'PITCH DECK',
+              'IDEA ',
+              'ELEVATOR PITCH',
+            ],
+            ans: 2,
+            type: 'quiz',
+          },
+
+          {
+            name: 'model1',
+            slides: [
+              {
+                heading: 'When Do You Need a Pitch Deck?',
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fanalytics.png?alt=media&token=755a66b7-f62c-4bd1-9fe0-159120c88c20&_gl=1*ojls7*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzU1NTAuMC4wLjA.',
+                type: 'intro',
+              },
+
+              {
+                text: "When you need to pitch your company to someone, you'll need a pitch deck. This might be anyone from a venture capitalist to a co-founder you believe would be a good fit. It may also be a company pitching competition's prescient panel of judges. You'll need a pitch deck to communicate your thoughts and request to anyone you're presenting to.",
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FGoogle%20Trends.png?alt=media&token=6ce20a75-4ccc-4ead-b937-3b3508089176&_gl=1*ic46ca*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzU2MTguMC4wLjA.',
+                type: 'textimg',
+              },
+
+              {
+                text: 'Yes, you can also communicate your concept verbally. However, because you could either underdeliver or overdeliver the required information, this is an unproductive method of presenting your business proposal.',
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FGoogle%20Trends.png?alt=media&token=6ce20a75-4ccc-4ead-b937-3b3508089176&_gl=1*ic46ca*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzU2MTguMC4wLjA.',
+                type: 'textimg',
+              },
+
+              {
+                text: ' A pitch deck allows you to leverage  visuals like photographs, graphics, samples, and videos to better communicate your message and create a lasting impression on your audience.',
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=d8cb10fd-a0c5-4398-a46b-71df67830a3e&_gl=1*4g0s9u*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzU3MDIuMC4wLjA.',
+                type: 'textimg',
+              },
+
+              {
+                text: ' For example, a pitch deck presentation allows you to communicate your financial estimates and display your mobile app more successfully than speaking or without visual aids.',
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FMobile%20application.png?alt=media&token=916b2f0c-656c-4abf-bdb9-ddc4b62a99b1&_gl=1*1guutkn*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzU3NTAuMC4wLjA.',
+                type: 'textimg',
+              },
+
+              {
+                question:
+                  "You'll need a pitch deck to communicate your thoughts and request to anyone you're presenting to",
+                options: ['true', 'false'],
+                ans: 1,
+                type: 'quiz',
+              },
+
+              {
+                question:
+                  'Communicating your concept verbally is an unproductive method of presenting your business proposal because                 ',
+                options: [
+                  'we could underdeliver',
+                  'we could overdeliver                  ',
+                  'it look unprofessional                  ',
+                  'Both 1&2',
+                ],
+                ans: 4,
+                type: 'quiz',
+              },
+
+              {
+                question:
+                  'A pitch deck presentation allows you to communicate your financial estimates and display your mobile app more successfully than speaking or without visual aids.',
+                options: ['true', 'false'],
+                ans: 1,
+                type: 'quiz',
+              },
+
+              {
+                heading: '1. Title',
+
+                text: " In your pitch deck, the title is the first slide that appears. As a result, you can refer to it as your impression-making slide that sets the tone for your business concepts. Pay attention to the visual aspects (colors, fonts, and any images) because they help to set the tone — more on that later.\nIt's also wise to keep things simple here. Meaning: your name plus the name of your company are sufficient. If you have one, you can also include a short and catchy tagline. ",
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FAsk%20Customer%20Feedback.png?alt=media&token=637d1228-5367-4fc7-a7be-4371bab9f7bd&_gl=1*1ujh2sp*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzYxMDguMC4wLjA.',
+
+                type: 'headtextimg',
+              },
+              {
+                heading: '2. Introduction',
+
+                text: '  To establish credibility, use the introductory slide to introduce yourself. The shorter the introduction, the better, because you want to draw attention to the business idea rather than yourself. As in the example before, you can use this slide to express your unique selling point (USP) or value proposition. Alternatively, quickly describe your company and what it does. ',
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FDigital%20contract.png?alt=media&token=51cb1238-82d5-41e6-a411-a92a4c8fcbcb&_gl=1*ncd3dv*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3MzI3My4yOC4xLjE2ODU4NzYxNzkuMC4wLjA.',
+                type: 'headtextimg',
+              },
+              {
+                heading: '3. Problem',
+
+                text: "Use as many visual signals as you need to effectively communicate your situation. You can begin by telling a scenario that puts your investors in the shoes of your clients, such as the one below:\nYou'll want to make sure you successfully communicate your target buyer's issue. If you fail here, it's unlikely that you'll be able to persuade your audience that your product is necessary \n You might also begin your presentation with the problem rather than the introduction. There are no hard and fast rules; do whatever works to pique investors' interest and persuade them to invest in your company  ",
+
+                type: 'headtext',
+              },
+
+              {
+                heading: '4. Solution',
+
+                text: ' You can provide the solution in a variety of ways, including sharing your product MVP or a list of the features you provide; whichever makes the most persuasive case.\n   However, in your presentation, emphasize the benefits of each feature rather than the feature itself. Instead of simply promoting your product, approach this slide in such a way that it ties to the problem presented and demonstrates how your company concept may address it.\n   You can also merge your problem and solution slides into one slide to make it easier for your audience to connect the dots and see how your answer fits into the bigger picture.   ',
+                type: 'headtext',
+              },
+              {
+                heading: '5. Market Size, Opportunity and Trends',
+
+                text: ' You can use figures to indicate the market size, or you can utilize data visualizations like a pie chart or bar graph to convey your point. \n  Another method to approach this slide is to concentrate on market trends and why now is the best moment for your company to enter the picture. You may demonstrate this, for example, using a timeline that depicts the progression of consumer behavior. \n Data is presented in a visually appealing way, making it simple to comprehend and absorb.',
+                type: 'headtext',
+              },
+
+              {
+                question:
+                  'You can use _____to indicate the market size                ',
+                options: [
+                  'PIE CHART',
+                  'BAR GRAPH                  ',
+                  'FIGURES                  ',
+                  'DATA',
+                ],
+                ans: 2,
+                type: 'quiz',
+              },
+              {
+                question:
+                  'In your pitch deck,the title slide can also be referred as  ',
+                options: [
+                  'Impression making slide',
+                  'presentation                  ',
+                  'introduction                  ',
+                  'None of these',
+                ],
+                ans: 2,
+                type: 'quiz',
+              },
+
+              {
+                heading: '6. Product Comparison',
+
+                text: "If your product has competitors, you'll want to use a product comparison slide to show how your product compares to others in a visually appealing way. \n   Product comparison slides are very beneficial for comparing features and pricing in SaaS organizations. Product comparisons can also be used in other industries, such as real estate.",
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fstrategy%20or%20planning.png?alt=media&token=75dc997d-0296-4e8d-8ee7-20cd6dc20ce9&_gl=1*dowp4n*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzc5OTQuMC4wLjA.',
+                type: 'headtextimg',
+              },
+
+              {
+                heading: '7. Testimonials',
+
+                text: ' Including client testimonials adds social proof to your page, which is a terrific method to wow your audience, develop trust, and reinforce the necessity for your product or service. You can still use this slide to show client complaints about your competitors. Make sure that all of the reviews you collect point to the same issue that your solution will help to fix. ',
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FMarketing.png?alt=media&token=3b975f9d-04bf-42fe-ba9c-4988e5ea0afe&_gl=1*14m3at9*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4NzgxMzcuMC4wLjA.',
+                type: 'headtextimg',
+              },
+
+              {
+                heading: '8. Team',
+
+                text: " Your team slide can also demonstrate potential investors or people you're trying to persuade to join you, as well as the creative minds who are advising you on your idea.",
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fresearch%20and%20development.png?alt=media&token=dca66611-3f64-4927-bf9b-8351665bec68&_gl=1*1i1w8hy*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4NzgzMzguMC4wLjA.',
+                type: 'headtextimg',
+              },
+
+              {
+                heading: '9. Traction',
+
+                text: "   Don't worry about this slip if you don't have any traction at this stage. Concentrate as much as possible on promoting your business idea and its possibilities.    ",
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fteam%20work.png?alt=media&token=13a266a3-ec2b-477d-99d4-93dbd4617608&_gl=1*1po76yh*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzg0MjIuMC4wLjA.',
+                type: 'headtextimg',
+              },
+
+              {
+                heading: '10. Financials',
+
+                text: "  The financial forecasts for your business idea are shown on this slide. To make the information easier to absorb, you can present it in the form of a table or employ data visualisation. Include information on how you'll charge individuals, how you came to the conclusion that they'd pay the amount, and how the plan will help you meet your financial goals on this slide.",
+
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FBitcoin%20Investment%20Profit.png?alt=media&token=df037fb9-3b55-4469-8840-6c019ef31977&_gl=1*1ahs8ax*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzg1MjYuMC4wLjA.',
+                type: 'headtextimg',
+              },
+
+              {
+                heading: '11. Sales & Marketing Strategy',
+
+                text: " Interested investors will also want to know how you intend to achieve the objectives and financial predictions you've set forth here is where your sales and marketing strategy comes into play.To explain your sales and marketing strategy, use a flowchart, a graphic list of actions, a timeline, or any other visual.   ",
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FBusinesswoman%20working%20on%20laptop.png?alt=media&token=920f0fc5-943a-4b71-b284-2c3bd205cab8&_gl=1*laeewa*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzg2MDMuMC4wLjA.',
+                type: 'headtextimg',
+              },
+
+              {
+                heading: '12. Call-to-Action',
+
+                text: " There's no need for anything spectacular here. Your audience will be happy to contact you, spend money, or take whatever action you request if you've delivered a captivating narrative. ",
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FSign%20Up%20form.png?alt=media&token=3b7f6399-0d39-4920-b81e-f58d9675f78d&_gl=1*1e1lhh6*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzg2ODMuMC4wLjA.',
+                type: 'headtextimg',
+              },
+
+              {
+                question:
+                  'Product comparison slides are very beneficial for comparing ______ and _____in SaaS     ',
+                options: [
+                  'features,pricing',
+                  'audience,features                ',
+                  'data,audience',
+                  'pricing,data',
+                ],
+                ans: 1,
+                type: 'quiz',
+              },
+              {
+                question:
+                  'Including client testimonials adds social proof to your page, which is a terrific method to                ',
+                options: [
+                  'wow your audience',
+                  'develop trust',
+                  'reinforce the necessity for your product or service',
+                  'All of these',
+                ],
+                ans: 4,
+                type: 'quiz',
+              },
+            ],
+          },
+
+          {
+            name: 'model2',
+            slides: [
+              {
+                heading:
+                  'Why an investor pitch deck is vital for startups and tips  ',
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=d8cb10fd-a0c5-4398-a46b-71df67830a3e&_gl=1*1jcv50g*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzg5ODguMC4wLjA.',
+                type: 'intro',
+              },
+
+              {
+                text: 'For startups, raising financing is arguably the most critical step in getting their firm off the ground.\n\n And getting funds is a difficult task. Planning, persuasion, and presentation are all required to persuade stakeholders that your company is worth investing in.',
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FWoman%20thinking%20of%20investment.png?alt=media&token=ba994959-be69-459e-b92d-8d060d4e686f&_gl=1*9fcku0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4NzkwOTMuMC4wLjA.',
+                type: 'textimg',
+              },
+
+              {
+                heading: '1. TO PROVE THEMSELVES',
+
+                text: '   An investor presentation deck is a way of showing off your entire portfolio. Put your cards on the table and persuade potential investors that your company has the potential to flourish. Demonstrate the viability of your business.',
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fresearch%20and%20development%20(1).png?alt=media&token=9055e1d4-c728-44d7-9c7a-12775c365fe0&_gl=1*1tmm42f*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4NzkyMTEuMC4wLjA.',
+                type: 'headtextimg',
+              },
+              {
+                heading: '2. TO STAND OUT',
+
+                text: " Every year, around 300 million new businesses are founded. When pitching to investors, you'll need to stand out if you're seeking to raise money. Your startup pitch deck should help you to stand out among hundreds, if not thousands, of other pitches.",
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FLayer_3.png?alt=media&token=49b481db-d259-4050-8463-32cf98f12df0&_gl=1*872nul*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4NzkyOTAuMC4wLjA.',
+                type: 'headtextimg',
+              },
+
+              {
+                heading: '3. TO SPARK INTEREST',
+
+                text: '  Your pitch deck should get people excited about your startup. And using video to create your pitch deck will help.',
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FIdea.png?alt=media&token=dd20607b-5b7e-48db-90ef-5751d6c56b57&_gl=1*hr9jo2*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4NzkzNjMuMC4wLjA.',
+                type: 'headtextimg',
+              },
+
+              {
+                heading: '4. TO INVITE DISCUSSION',
+
+                text: ' After viewing your pitch deck, your audience will certainly have questions. Inviting a debate is also a positive thing. It enables you to expand the market for your firm.\n\nAnother reason why a video is a good choice for your pitch deck is that it allows you to communicate with your audience. Take advantage of this to pique the interest of possible investors.             ',
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fundraw_engineering_team_a7n2%201.png?alt=media&token=4385a693-dd34-465a-9cd9-f39c55872da5&_gl=1*n3nqr3*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzk0NjAuMC4wLjA.',
+                type: 'headtextimg',
+              },
+
+              {
+                heading: '5. TO SECURE FUNDING',
+
+                text: '  Above all, your pitch deck is critical for obtaining capital to help your firm get off the ground. Because video can be persuasive, using a pitch deck video to explain the value of your company is a terrific idea.',
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fto-do%20list.png?alt=media&token=fca0c252-2b98-462b-af0a-daa0c8744121&_gl=1*7fffih*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzk1NTguMC4wLjA.',
+                type: 'headtextimg',
+              },
+
+              {
+                question: 'Why an investor pitch deck is vital for startups',
+                options: [
+                  'To secure funding',
+                  'To spark interest',
+                  'TO STAND OUT  ',
+                  'All of these',
+                ],
+                ans: 4,
+                type: 'quiz',
+              },
+
+              {
+                heading: '1. ALLOW YOUR PITCH DECK TO WORK FOR YOU.',
+
+                text: "  You'll need your pitch deck to contain enough information and power to persuade potential investors if you ever give it to them without giving a presentation.\n\nThis is why making a video pitch deck is such a good idea. A video has a better chance than a live presentation of replacing it. ",
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Ffinancial%20year.png?alt=media&token=e562e627-327b-47f0-8a9d-d8557d10fffb&_gl=1*1aiob59*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzk3NzAuMC4wLjA.',
+                type: 'headtextimg',
+              },
+
+              {
+                question:
+                  'A video pitch deck has a better chance than live presentation. ',
+                options: ['true', 'false'],
+                ans: 1,
+                type: 'quiz',
+              },
+              {
+                heading: ' 2. KEEP IT SHORT AND SIMPLE',
+
+                text: " We've already noted it, but it's worth repeating. Your audience will be bored with an abundance of material and a long pitch deck video.\n\n Make your pitch deck as simple as possible. Concentrate only on the most significant and relevant information.",
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FClip%20path%20group.png?alt=media&token=f88ef0c1-834a-4016-b6af-e720893f5972&_gl=1*15r2bxf*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzk4NzkuMC4wLjA.',
+                type: 'headtextimg',
+              },
+
+              {
+                heading: '3. BALANCE CREATIVITY WITH FACTS',
+
+                text: ' Make sure your pitch deck reflects creativity and data. You want to share your ideas and passions, but you also want to back them up with facts.',
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FCollaborate.png?alt=media&token=2ad6e06d-538d-4913-968a-7c1033495551&_gl=1*134m7dy*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4Nzk5NTUuMC4wLjA.',
+                type: 'headtextimg',
+              },
+
+              {
+                heading: ' 4. PRACTICE AHEAD OF TIME ',
+
+                text: " If you prepare a solid pitch deck video in advance, your presentation will have a better chance of success. And don't forget to practise how you'll convey your knowledge and enthusiasm.  ",
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FGroup%202906.png?alt=media&token=4632e78c-ccf5-4e04-8d77-33b96546facb&_gl=1*1pu3xrb*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODAwNjQuMC4wLjA.',
+                type: 'headtextimg',
+              },
+              {
+                heading: ' 5. TELL A STORY',
+
+                text: " You want to pique your investors' interest and keep them entertained so you can make a good first impression. You can use captivating video clips and dynamic background music to improve your storytelling with a pitch deck video.",
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2Fbranding%20or%20marketing%20for%20product.png?alt=media&token=ee894b54-0c96-4cbe-b78b-2c7f9945d139&_gl=1*sz7z4q*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODAxNjMuMC4wLjA.',
+                type: 'headtextimg',
+              },
+            ],
+          },
+
+          {
+            name: 'model3',
+            slides: [
+              {
+                heading: "Investor pitch deck: do’s and don'ts",
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FTick.png?alt=media&token=5778a620-8e4c-4337-bb99-5d282cff92f4&_gl=1*gnw73a*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODA0NzkuMC4wLjA.',
+                type: 'intro',
+              },
+              {
+                heading: 'DO COME PREPARED',
+
+                text: " You should be able to remember your metrics off the top of your head. Make sure you can persuade investors that there is a viable market potential. Demonstrate that your company is more than simply a concept. Demonstrate that you've put in the time and effort to get it started.",
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FTick%20(1).png?alt=media&token=d4bc9ba4-5bbb-468f-89a5-cd60b167ff82&_gl=1*7pkz0d*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODA1ODQuMC4wLjA.',
+                type: 'headtextimg',
+              },
+
+              {
+                heading: 'DO MAKE A GOOD FIRST IMPRESSION',
+
+                text: "  Early in your presentation, wow your potential investors. Treat your pitch as if you're narrating a narrative. Show your enthusiasm and make your company memorable. A video pitch deck is sure to make an impression.",
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FTick%20(1).png?alt=media&token=d4bc9ba4-5bbb-468f-89a5-cd60b167ff82&_gl=1*7pkz0d*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODA1ODQuMC4wLjA.',
+                type: 'headtextimg',
+              },
+              {
+                heading: 'DO MAKE IT VISUALLY APPEALING',
+
+                text: '  You may believe that the content of your pitch deck is more important than how it looks, but both are essential. Make sure your branding is consistent across your pitch deck. Make use of eye-catching infographics and visuals. ',
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FTick%20(1).png?alt=media&token=d4bc9ba4-5bbb-468f-89a5-cd60b167ff82&_gl=1*7pkz0d*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODA1ODQuMC4wLjA.',
+                type: 'headtextimg',
+              },
+              {
+                heading: "DON'T MAKE IT TOO LONG",
+
+                text: " You don't have to go into every detail of your company. After your presentation, you can supply your audience with detailed papers.",
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FCross.png?alt=media&token=948ade80-64a6-42c4-8ea0-46fe14943d21&_gl=1*zl4ooi*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODA3OTcuMC4wLjA.',
+                type: 'headtextimg',
+              },
+              {
+                heading: "DON'T MAKE IT TOO WORDY",
+
+                text: "   Walls of text aren't going to make your pitch deck engaging and intriguing. Make sure the words you use have meaning and that the language you employ is appropriate. You may convey your message with more than just words when you use a pitch deck video.",
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FCross.png?alt=media&token=948ade80-64a6-42c4-8ea0-46fe14943d21&_gl=1*zl4ooi*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODA3OTcuMC4wLjA.',
+                type: 'headtextimg',
+              },
+
+              {
+                question: 'Investor pitch deck don’ts',
+                options: [
+                  'Make it visually appealing',
+                  'Forget about',
+                  'COME PREPARED',
+                  'NONE of these',
+                ],
+                ans: 2,
+                type: 'quiz',
+              },
+
+              {
+                heading: 'End Questions',
+
+                image:
+                  'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FPitchDeck%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=c58d9b8e-f557-41a4-b22a-736a163fe98b&_gl=1*lfujij*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg3Nzk4NC4yOS4xLjE2ODU4ODA5OTEuMC4wLjA.',
+
+                type: 'intro',
+              },
+
+              {
+                question:
+                  'Instead of simply promoting your product, approach solutions slide in such a way that it ties to the problem presented and demonstrates how your company concept may address it.',
+                options: ['true', 'false'],
+                ans: 1,
+                type: 'quiz',
+              },
+
+              {
+                question:
+                  'Your team slide can also demonstrate ________ to join you in your idea.',
+                options: [
+                  'potential investors',
+                  'audience',
+                  'creative minds',
+                  'both 1 & 3 ',
+                ],
+                ans: 4,
+                type: 'quiz',
+              },
+
+              {
+                question:
+                  'If your product has competitors you’ll want to use a ________ slide.',
+                options: [
+                  'Solution',
+                  'Product comparison',
+                  'Testimonials',
+                  'Financial',
+                ],
+                ans: 2,
+                type: 'quiz',
+              },
+              {
+                question: 'Investor pitch deck do’s:            ',
+                options: [
+                  'Make it long',
+                  'Forget About your product ',
+                  'Make a good first impression',
+                  'NONE of these',
+                ],
+                ans: 3,
+                type: 'quiz',
+              },
+              {
+                question: ' A pitch deck allows you to leverage visuals like',
+                options: ['photographs', 'graphics', 'videos', 'ALL of these'],
+                ans: 3,
+                type: 'quiz',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    frontscreen: {
+      image: [
+        'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FFinances.png?alt=media&token=53b1ee45-6ffa-44bc-9fba-d0659111b7e9&_gl=1*c2k78d*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ1NjIuMC4wLjA.',
+        'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FFundraising%2FEmployee%20performance.png?alt=media&token=3a2e8c8b-bc72-490a-be05-5175e61451ed&_gl=1*apnom0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg4NDUzNS4zMC4xLjE2ODU4ODQ2NDIuMC4wLjA.',
+      ],
+      name: 'Product \n Development',
+      // coverImg: 'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fpd1.png?alt=media&token=09fb6e95-af14-4796-9b3b-8cddd039752f',
+    },
+    modules: [
+      {
+        name: 'model1',
+        slides: [
+          {
+            text: "When it comes to product design for startups, there are a few things to keep in mind. Let's discuss the main elements and procedures you must follow to design a product if you don't know how to construct a product design for a startup.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fproduct%20planning.png?alt=media&token=3f10622b-7e0f-4665-824b-dae64cb486a2&_gl=1*lhzejp*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjM2NjMuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            text: 'Product Roadmap ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fanalytics.png?alt=media&token=19646a71-c379-4e08-9064-ee36c5994776&_gl=1*1dtmyym*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjM5MjEuMC4wLjA.',
+            type: 'intro',
+          },
+          {
+            heading: 'Product Roadmap:',
+            text: "A product roadmap is a sophisticated visual that depicts your product's progression over a foreseeable period of time. The product roadmap outlines where the company is now, where it wants to go, and how it will get there. It is a great resource for teams to plan tasks and carry out the strategy.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fproduct%20planning.png?alt=media&token=3f10622b-7e0f-4665-824b-dae64cb486a2&_gl=1*15qkhte*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQxMTkuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            text: 'Product roadmaps can be used in conjunction with other business strategies such as marketing and business plans. They can even assist you in developing a marketing growth strategy.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fproduct%20planning.png?alt=media&token=3f10622b-7e0f-4665-824b-dae64cb486a2&_gl=1*15qkhte*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQxMTkuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            heading: 'Planning a product roadmap:',
+            text: "Because different audiences' needs  and demands will vary, the information and structure of your plan must be adjusted to them.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=45c92f41-df7f-4a9e-bef9-e54b5779fea2&_gl=1*9ak7aw*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQyOTcuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            text: 'External stakeholders, for example, would most certainly need a high-level overview of strategic initiatives, which should be planned out across several quarters to a few years. They might be more interested in long-term, medium-term, and long-term time horizons.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=45c92f41-df7f-4a9e-bef9-e54b5779fea2&_gl=1*9ak7aw*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQyOTcuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: "Internal product team members, on the other hand, will require a more detailed picture of certain features and tasks. Instead of years, it's usually better to plan these out over a few weeks or months.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FBusiness%20man%20illustrate%20Product%20Planning%20option.png?alt=media&token=45c92f41-df7f-4a9e-bef9-e54b5779fea2&_gl=1*9ak7aw*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQyOTcuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            question: 'A product roadmap is………',
+            options: [
+              "a sophisticated visual that depicts your stock's progression over a foreseeable period of time. ",
+              "a sophisticated visual that depicts your company's progression over a foreseeable period of time.",
+              "a sophisticated visual that depicts your product's progression over a foreseeable period of time.",
+              'none of these',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+
+          {
+            text: 'The timescale must be fair in addition to aligning with the needs of your audience. It must be long enough to achieve major project developments while being short enough to estimate accurate timelines.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWireframe.png?alt=media&token=6e843010-5a65-4e33-9dee-4c8811355ee4&_gl=1*11u0rij*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQ3NjIuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: "You may start putting things into place about the product development once you've identified your target customer and set an acceptable deadline. This includes the following:\n \nHigh-level goals and initiatives\nLow-level tasks and their time requirements\n Task priorities\nKey milestones\n Task dependencies",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fproduct%20planning.png?alt=media&token=3f10622b-7e0f-4665-824b-dae64cb486a2&_gl=1*15qkhte*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQxMTkuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: 'A product roadmap can improve communication within an organization, resulting in better alignment within and among teams, and allowing for more real work to be completed.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWireframe.png?alt=media&token=6e843010-5a65-4e33-9dee-4c8811355ee4&_gl=1*11u0rij*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTgxOTc0Ni4yNi4xLjE2ODU4MjQ3NjIuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            question:
+              'A product roadmap includes which of the following features?',
+            options: [
+              'Can improve communication within an organization',
+              'Resulting in better alignment within and among teams',
+              'Allowing for more real work to be completed.',
+              'all of these',
+            ],
+            ans: 4,
+            type: 'quiz',
+          },
+        ],
+      },
+      {
+        name: 'model2',
+        slides: [
+          {
+            heading: 'Minimum Viable Product',
+            Image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWorkshop%20for%20Growth.png?alt=media&token=40ef8008-0bdc-4eb2-be76-91d1b5478c69&_gl=1*1ghk88p*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTUxNDMuMC4wLjA.',
+            type: 'intro',
+          },
+          {
+            text: 'So, you have this brilliant idea that has piqued your curiosity. It may or may not have the same effect on the other persons to whom you will present your project. That is why people participate in MVPs. To quickly test something, construct it and receive comments to see if you should continue. You may be thrilled with the concept!',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWoman%20thinking%20of%20investment.png?alt=media&token=e1c44c07-386b-416d-b3cf-9736c0c19242&_gl=1*17h4uxg*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTUyNDUuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            text: 'A minimum viable product (MVP) is a concept that emphasizes the importance of learning in product development. An MVP is a version of a new product that allows a team to collect the most amount of validated customer learning with the least amount of effort. This verified knowledge is in the form of whether or not your clients will actually buy your product.',
+            Image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWorkshop%20for%20Growth.png?alt=media&token=40ef8008-0bdc-4eb2-be76-91d1b5478c69&_gl=1*1ghk88p*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTUxNDMuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            text: 'A crucial premise behind the MVP concept is that you create an actual product (which might be as simple as a landing page or a service that appears to be automated but is entirely manual behind the scenes) that you can give to clients and monitor their conduct with it. Observing what people do with a product rather than asking them what they would do is far more reliable.        ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fimage%205.png?alt=media&token=5dc73a17-9b44-42f1-a586-f8d7c329f238&_gl=1*14xzfdo*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTUzODIuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            question: 'What is the full form of MVP?',
+            options: [
+              'Master Vulnerable Product',
+              'Maximum Visible Product',
+              'Minimum Viable Product',
+              'none of these',
+            ],
+            ans: 3,
+            type: 'quiz',
+          },
+          {
+            heading: 'Expected Benefits',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FLayer_3.png?alt=media&token=b013fc3e-9943-45b0-aec1-e4b1fcb3a67d&_gl=1*ds97m0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTU3MjEuMC4wLjA.',
+            type: 'intro',
+          },
+          {
+            text: "The main advantage of an MVP is that it allows you to learn about your clients' interest in your product without having to fully construct it. The sooner you can determine whether your product will appeal to clients, the less time and money you'll waste on a product that won't sell.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FGroup%202907.png?alt=media&token=446a7199-ee9b-47d8-9a74-1bb9d46aa8d2&_gl=1*10t4s9w*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTU4MjEuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            heading: 'Common Pitfalls :',
+            text: 'Why is it so minimal? \n\nConsider the concept you want to develop.  \n\nHow many days should you devote to developing a working prototype?',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FConcept%20about%20business%20Failure.png?alt=media&token=56f4358c-7958-4c2b-bd0a-41f94e81d686&_gl=1*1r3bdy3*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTYwMDUuMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            text: "Let's do the math:\n4 functionalities, plus 3 integrations, and the ability to pay in all countries, and one more feature to display cool metrics, and an awesome user interface, and..., and... It would take you 9 months, hmm. Alright! It took you 13 months to construct (some unexpected adjustments here and there).\nYou put it out to an alpha test and discovered that no one is interested.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Ffinancial%20year.png?alt=media&token=e5cd525e-d6ad-4149-bbab-348feca12599&_gl=1*1n471sx*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTYxNTUuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            text: "You may argue that it's due to a lack of adequate market research. You identified the private households in a village as your target market. You spoke with a number of them and inquired about the problem you were attempting to solve.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Ffinancial%20year.png?alt=media&token=e5cd525e-d6ad-4149-bbab-348feca12599&_gl=1*1n471sx*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTYxNTUuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            question: 'The main advantage of an MVP is',
+            options: [
+              "that it allows you to learn about your clients' interest in your product without having to fully construct it.",
+
+              'Can improve communication within an organization ',
+              'Resulting in better alignment within and among teams',
+              'Allowing for more real work to be completed.',
+            ],
+            ans: 1,
+            type: 'quiz',
+          },
+          {
+            text: "So you've concluded that spending 13 months constructing a solution is acceptable. You then exhibited it to your target potential clients, who discovered that your solution does not solve their problem. Okay, you gathered feedback and corrected your MVP in two months.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FGroup%202906.png?alt=media&token=b6ef91b6-9ca3-4b09-8bdc-99e1c585683e&_gl=1*1hb72wv*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTY0NzQuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: " Then, over the course of a year, you repeated the release-receive feedback cycle a few times to get a few people interested in using your solution. \n\nSo, simply to get started, it'll take at least two years.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FGroup%202906.png?alt=media&token=b6ef91b6-9ca3-4b09-8bdc-99e1c585683e&_gl=1*1hb72wv*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTY0NzQuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            text: "The MVP concept's key goal is to adapt quickly. \n\n You build something quickly, show it to potential users, get feedback on what's wrong, and make changes as needed. Repeat this process until you have a few users. Then some more until you have a product-market fit and your scaling issue is solved.",
+            iamge:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FBusiness%20woman%20achieving%20the%20goal%20successfully.png?alt=media&token=db29aa17-9ae8-44a6-9430-75031f417299&_gl=1*1u8i9dn*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTY2MTcuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            question:
+              'The correct order for product development process is ?\n\nBuild something quickly \nRepeat this process until you have a few users.\nShow it to potential users ,get feedback and make changes as needed. ',
+            options: ['1>2>3', '1>3>2', '3>2>1', '3>1>2'],
+            ans: 2,
+            type: 'quiz',
+          },
+          {
+            heading: 'Potential Costs',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fstrategy%20or%20planning.png?alt=media&token=f58152e0-e7c7-4b72-a5cc-59d82cf86687&_gl=1*x6jbx0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTY4NjYuMC4wLjA.',
+            type: 'intro',
+          },
+          {
+            text: 'When an MVP is used correctly, a team can drastically alter a product that they give to their clients or drop the product altogether based on customer feedback. MVP encourages teams to undertake the least amount of effort possible to get relevant feedback, which helps them avoid working on a product that no one wants.    ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fstrategy%20or%20planning.png?alt=media&token=f58152e0-e7c7-4b72-a5cc-59d82cf86687&_gl=1*x6jbx0*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTY4NjYuMC4wLjA.',
+            type: 'textimg',
+          },
+        ],
+      },
+      {
+        name: 'model3',
+        slides: [
+          {
+            heading: 'DESIGNING',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fdrawing.png?alt=media&token=52676fef-70aa-4740-8180-3da33b3142d6&_gl=1*oc2ly7*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTg2MTMuMC4wLjA.',
+            type: 'intro',
+          },
+          {
+            heading:
+              'STEP 1:  Decide that reaching a diverse audience is important to you.',
+            text: "Making a conscious decision to prioritize diversity and inclusion as an individual or as an organization is the first and most important action you can take. There's a common misconception that if we all look and think alike, business culture the pinnacle of the startup sector will be easier.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FMan%20thinking%20to%20start%20a%20startup.png?alt=media&token=69fc7dc8-4e40-4ea7-bc1e-ff8b5e074116&_gl=1*nx5don*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTg5MjQuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            text: 'So make the decision. \n\n Build it as a part of your company’s essential values. \nDiscuss about it over a meeting or so. \nBut you can’t let it stop there.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fteam%20work.png?alt=media&token=5d8f7b7c-dea7-4d40-9b7c-64ff1c707b70&_gl=1*qwrxvf*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTkxMTUuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            heading: 'STEP 2:  User Interviews and User Persona Creation',
+            text: ' User research is another crucial phase in the product design process for companies. Because your customers are at the heart of your product decision, user interviews are critical for gathering their feedback. You can effectively assess the interests of your user base if you do it right.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FLayer%202.png?alt=media&token=d7401f59-cccb-4ce0-91c2-b876c75e92fa&_gl=1*e12zjq*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTkyMjIuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            text: "Make sure the questions are well-thought-out and prepared before the interview. An interview's conclusions can be tainted by poor phrasing or bias.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FLayer%202.png?alt=media&token=d7401f59-cccb-4ce0-91c2-b876c75e92fa&_gl=1*e12zjq*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTkyMjIuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            heading: 'STEP 3:  Competitor Research',
+            text: "In order to establish a product design for a startup, you must perform competitive research in addition to user research. Examine the market performance of your immediate competitors' offerings.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fresearch%20and%20development.png?alt=media&token=eecbeadc-5fab-4d31-8dff-092871468af5&_gl=1*1ikq2q7*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTkzNjAuMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            text: "Analyzing the competitor's strategy will assist you in determining its efficacy and exploitable loopholes. To distinguish yourself from the competition, figure out what your product's unique selling proposition is.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fresearch%20and%20development.png?alt=media&token=eecbeadc-5fab-4d31-8dff-092871468af5&_gl=1*1ikq2q7*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTkzNjAuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            heading: 'Step 4. User Journey Mapping',
+            text: 'Create a user journey map to better understand the potential interactions between the user and your product. This map depicts the actions a user must take to address a certain problem. It might be as simple as a series of stages or it can branch out into several directions.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fmultitasking%20or%20branding%20or%20product%20planninh.png?alt=media&token=e48b2520-4771-49bb-9f4f-81b46c63286b&_gl=1*18qcjbz*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk0NzkuMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            text: "The more paths you can anticipate the user taking, the better you'll be able to predict how they'll engage with your product. However, complex user path maps can frequently make the process more difficult.        ",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fmultitasking%20or%20branding%20or%20product%20planninh.png?alt=media&token=e48b2520-4771-49bb-9f4f-81b46c63286b&_gl=1*18qcjbz*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk0NzkuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            question:
+              'Which one of the following is/are a part of the process of designing a product?',
+            options: [
+              'User Journey Mapping',
+              'Competitor Research',
+              'User Interviews and User Persona Creation',
+              'Decide that reaching a diverse audience is important to you.',
+              'all of these',
+            ],
+            ans: 5,
+            type: 'quiz',
+          },
+          {
+            heading: 'Step 5. Sketching and Wireframing ',
+            text: ' The ideas for the user interface are visualized via sketching and wireframing. Sketching focuses on the concept representation itself, allowing the designer to experiment with different choices before deciding on the best one.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fdrawing.png?alt=media&token=52676fef-70aa-4740-8180-3da33b3142d6&_gl=1*4ml2fy*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk3MDAuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            text: "Wireframing is concerned with the element structure, page structure, and interactions between them. Because it acts as the product's backbone, the wireframe must be well-structured. They are less engaging, though, and should not be deployed for testing. Always check that the wireframes are the right size for the device that the product will be used on.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fdrawing.png?alt=media&token=52676fef-70aa-4740-8180-3da33b3142d6&_gl=1*4ml2fy*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk3MDAuMC4wLjA.',
+            type: 'textimg',
+          },
+          {
+            heading: 'Step 6. Prototyping',
+            text: 'A prototype is a representation of a concept before it is turned into a finished product. Prototyping should be quick and easy to use, with enough functionality to allow for thorough testing. They typically begin small and expand as new features and concepts become integrated into the product.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWorkshop%20for%20Growth.png?alt=media&token=40ef8008-0bdc-4eb2-be76-91d1b5478c69&_gl=1*j7h60v*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk4MjYuMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            text: 'You can experiment with ideas and visualize alterations while working on the prototype. The prototype, on the other hand, can act as a specification for developers.    ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWorkshop%20for%20Growth.png?alt=media&token=40ef8008-0bdc-4eb2-be76-91d1b5478c69&_gl=1*j7h60v*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk4MjYuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            heading: 'Step7. Testing with the Product Team',
+            text: "Iterative testing is an important part of the design process since it allows us to find and correct defects and inconsistencies that were missed during earlier stages. You can also come up with new concepts and acquire information about the product's potential success.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWebsite%20Maintenance.png?alt=media&token=d8870d31-de82-4661-8898-ef76456939d0&_gl=1*dpsn8l*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk5NTIuMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            text: 'A technique that does not necessitate a lot of resources is product testing with your team. However, with input from your specialized team, it enables you to weed out important flows before the launch.    ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWebsite%20Maintenance.png?alt=media&token=d8870d31-de82-4661-8898-ef76456939d0&_gl=1*dpsn8l*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NTk5NTIuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            heading: 'Step 8. Testing with Users',
+            text: " Because it directly addresses future customers, testing the product with users is a more practical technique. To begin, usability testing is required to identify any immediate issues with the UX design and interaction. You'll be able to watch how your target audience utilises the product up close and personal, as well as gain some performance data.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fblog.png?alt=media&token=b58eaf4d-acbe-4097-8f2a-7ccf72f188bf&_gl=1*3b8z75*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjAxMjkuMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            text: "You can do 'diary testing' to see how the product will perform in the long run. Solicit long-term responses to specific questions regarding the app from the participants so that you may get a definitive judgment on the software's performance.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fblog.png?alt=media&token=b58eaf4d-acbe-4097-8f2a-7ccf72f188bf&_gl=1*3b8z75*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjAxMjkuMC4wLjA.',
+            type: 'textimg',
+          },
+
+          {
+            question: 'A prototype is…….',
+            options: [
+              'a representation of a concept before it is turned into a finished product.',
+              'a representation of a concept after it is turned into a finished product.',
+              'a representation of a concept before it is turned into a new product.     ',
+              'allowing for more real work to be completed.',
+            ],
+            ans: 1,
+            type: 'quiz',
+          },
+          {
+            heading: 'HOW TO CREATE A MOBILE APP \nTHAT PEOPLE WOULD LOVE    ',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FMobile%20application.png?alt=media&token=8686feee-c302-425a-b9ff-1167d0e467ec&_gl=1*k9yev9*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjAzNjYuMC4wLjA.',
+            type: 'intro',
+          },
+
+          {
+            heading: 'Foster a pool of qualified users',
+            text: ' Find people who are enthusiastic about your product or service and rely on them heavily. Allow them to provide comments, include them in decision-making, and keep them informed about new developments. These are the folks who will be your initial clients and prospective investors.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FPeople%20standing%20together.png?alt=media&token=72f2a2d4-d2b6-4c2c-bc95-25ad606d0671&_gl=1*17angmn*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjA0NzcuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Get advice from strangers',
+            text: "Find your target audience and use them as a proving ground for your ideas. It's crucial to remember that you should build what people genuinely want, not what you believe they want.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FFemale%20holding%20calendar%20looking%20for%20vacant%20date%20for%20appointment.png?alt=media&token=97212dd8-3300-4c36-91be-3dc2abccff82&_gl=1*1o15y92*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjE1MzYuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Grow your team',
+            text: 'Before you start constructing your app, take the time to identify the right people and assemble a fantastic squad. It will save you time later and guarantee that you are involving the appropriate individuals for the correct reasons.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FDeveloper%20Team.png?alt=media&token=69dadeb5-8f0c-4b21-a5b2-d75136004913&_gl=1*19ya2op*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjE2NzAuMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Code with someone you trust',
+            text: ' App design is a significant investment that you want to get right. Make sure the designers are individuals you can trust to complete the project to your specifications.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2Fsoftware%20engineer.png?alt=media&token=f8aaf73b-855b-41a4-9cbe-9435e082487d&_gl=1*10h1a4a*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjE3NTcuMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'Functionality > Looks',
+            text: " It's preferable to have an unattractive software that functions well than a beautiful app that doesn't accomplish what it's supposed to. Prioritize the functionality first, then devote work to the design later.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWebsite%20development.png?alt=media&token=6c07646c-70e6-47c3-9b23-c1aed950dce9&_gl=1*jacvsm*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjE4NjguMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Pay attention to analytics',
+            text: ' Another wonderful technique to see where users are having issues is to employ this method. Perhaps something in your coding is erroneous, or the instructions are difficult to follow. Sifting through the stats will help you figure out where consumers have stopped using the app and find any issues.',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FSales%20executive%20doing%20sales%20analysis.png?alt=media&token=8bad409c-f2cb-420d-bf3c-a70d58e430d9&_gl=1*1e3v0vl*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjE5NTAuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Create a landing page',
+            text: "If you need assistance creating a landing page, consider using Launchrock's services. This will drive traffic to your website and allow them to discover more about your products or services.",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FWebsite%20development.png?alt=media&token=6c07646c-70e6-47c3-9b23-c1aed950dce9&_gl=1*b7ex7*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjIwMzUuMC4wLjA.',
+            type: 'headtextimg',
+          },
+
+          {
+            heading: 'Build by example',
+            text: "Find apps that run on similar platforms to yours and research how they evolved as businesses. While it isn't infallible, following their marketing strategy and improving as you go can be beneficial.   ",
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FCollaborate.png?alt=media&token=78f7df8f-a375-4e92-a14e-1e766dfb3d03&_gl=1*drs0qs*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjIxMDQuMC4wLjA.',
+            type: 'headtextimg',
+          },
+          {
+            heading: 'End Questions',
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/reverr-25fb3.appspot.com/o/courses%2FProductDevelopment%2FIllustration%20-%20Business%2C%20analytics%2C%20sucess%2C%20startup%2C%20Technology%20_%20account%2C%20setting%2C%20options%2C%20preferences.png?alt=media&token=d2ffdd62-98fd-4404-bf6c-413249d5198e&_gl=1*1s8iwry*_ga*MTg2ODEyMzkyOS4xNjcwMzkyOTY5*_ga_CW55HF8NVT*MTY4NTg1NTEzNS4yNy4xLjE2ODU4NjIxNzYuMC4wLjA.',
+            type: 'intro',
+          },
+
+          {
+            question: 'Wireframing is…….',
+            options: [
+              'concerned with the element structure, page structure, and interactions between them.    ',
+              'a concept that emphasizes the importance of learning in product development.',
+              'Both A and B',
+              'none of these',
+            ],
+            ans: 1,
+            type: 'quiz',
+          },
+          {
+            question: 'Why is User research a crucial phase in product design?',
+            options: [
+              'Because your customers are at the heart of your product decision.',
+              'user interviews are critical for gathering their feedback.',
+              'You can effectively assess the interests of your user base if you do it right.',
+              'All of the above',
+            ],
+            ans: 4,
+            type: 'quiz',
+          },
+          {
+            question: 'A minimum viable product (MVP) is……..',
+            options: [
+              'a concept that emphasizes the importance of learning in product development.',
+              'User Interviews and User Persona Creation ',
+              'Both A and B',
+              'none of these',
+            ],
+            ans: 1,
+            type: 'quiz',
+          },
+          {
+            question:
+              "A _________ is a sophisticated visual that depicts your product's progression over a foreseeable period of time.    ",
+            options: [
+              'Product roadmap',
+              'Competitor Research     ',
+              'User Interviews and User Persona Creation',
+              'none of these',
+            ],
+            ans: 1,
+            type: 'quiz',
+          },
+          {
+            question:
+              'Internal product team members External stakeholders, would most certainly need a high-level overview of strategic initiatives.',
+            options: ['true', 'false'],
+            ans: 2,
+            type: 'quiz',
+          },
+          {
+            question:
+              'External stakeholders, will require a more detailed picture of certain features and tasks. ',
+            options: ['true', 'false'],
+            ans: 2,
+            type: 'quiz',
+          },
+          {
+            question:
+              '“A product Roadmap can improve communication within an organization”',
+            options: ['true', 'false'],
+            ans: 1,
+            type: 'quiz',
+          },
+        ],
+      },
+    ],
+  },
 ];
