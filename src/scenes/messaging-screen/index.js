@@ -70,6 +70,7 @@ export const Messages = () => {
   }, [networks, mentors]);
 
   return (
+    <ScrollView style={styles.container}>
     <View style={styles.container}>
       <GradientHeader />
       <View>
@@ -176,5 +177,6 @@ export const Messages = () => {
         )}
       </View>
     </View>
+    </ScrollView>
   );
 };

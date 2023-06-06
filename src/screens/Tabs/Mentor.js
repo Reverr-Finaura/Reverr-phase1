@@ -46,8 +46,11 @@ function Mentor() {
         const m3 = mentors.filter(
           user => user.email === 'shivannamahesh@gmail.com',
         );
+        const m4 = mentors.filter(
+          user => user.email === 'shivannamahesh@gmail.com',
+        );
 
-        setRandomMentors([...m, ...m2, ...m3]);
+        setRandomMentors([...m, ...m2, ...m3, ...m4]);
         setLoading(false);
       });
   };
@@ -215,7 +218,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   chooseCatWrapper: {
-    paddingHorizontal: 20,
+    paddingHorizontal:20,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',

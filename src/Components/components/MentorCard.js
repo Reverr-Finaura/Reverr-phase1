@@ -21,7 +21,7 @@ function MentorCard({item}) {
       style={styles.container}>
       <View style={styles.imageWrapper}>
         {item?.image !== '' && (
-          <Image source={{uri: item?.image}} style={{flex: 1,height:'50%',width:'60%'}} />
+          <Image source={{uri: item?.image}} style={{flex: 1,height:'50%',width:'60%',borderRadius:160}} />
         )}
       </View>
       <LinearGradient
@@ -37,22 +37,24 @@ export default MentorCard;
 
 const styles = StyleSheet.create({
   container: {
-   
-    height: 140,
-    width: Width / 3,
+   backgroundColor:'#202020',
+    height: 120,
+    width: Width / 4,
     borderRadius: 10,
     overflow: 'hidden',
     marginRight: 15,
   },
   imageWrapper: {
-    alignContent:'center',
-    height: '50%',
-    width: '100%',
-    justifyContent:'center'
+    paddingLeft:8,
+    padding:5,
+    width: '160%',
+    height: '70%',
+    borderWidth: 2,
+
   },
   infowrapper: {
     height: '30%',
-    width: '60%',
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -69,4 +71,5 @@ const styles = StyleSheet.create({
     fontSize: 7,
     marginTop: 1,
   },
+
 });
