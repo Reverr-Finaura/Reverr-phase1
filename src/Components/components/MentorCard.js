@@ -21,14 +21,15 @@ function MentorCard({item}) {
       style={styles.container}>
       <View style={styles.imageWrapper}>
         {item?.image !== '' && (
-          <Image source={{uri: item?.image}} style={{flex: 1,height:'50%',width:'60%',borderRadius:160}} />
+          <Image source={{uri: item?.image}} style={{flex: 1,height:'50%',width:'60%',borderRadius:160, borderColor:"black", borderWidth: 1.5}} />
         )}
       </View>
+
       <LinearGradient
          colors={['#202020', '#202020']}
          style={styles.infowrapper}>
-        <Text style={styles.title}>{item?.name}</Text>
-        <Text style={styles.desig}>{item?.designation}</Text>
+          <Text style={styles.title}>{item?.name}</Text>
+          <Text style={styles.desig}>{item?.designation}</Text>
       </LinearGradient>
     </TouchableOpacity>
   );
@@ -38,18 +39,17 @@ export default MentorCard;
 const styles = StyleSheet.create({
   container: {
    backgroundColor:'#202020',
-    height: 120,
-    width: Width / 4,
-    borderRadius: 10,
+    height: 145,
+    width: Width / 3.5,
     overflow: 'hidden',
     marginRight: 15,
+    borderRadius: 12
   },
   imageWrapper: {
-    paddingLeft:8,
+    paddingLeft:7,
     padding:5,
-    width: '160%',
-    height: '70%',
-    borderWidth: 2,
+    width: "155%",
+    height: '72.5%',
 
   },
   infowrapper: {
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingBottom: 5
   },
   title: {
     fontWeight: 'bold',
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontWeight: '500',
     opacity: 0.6,
-    fontSize: 7,
+    fontSize: 8,
     marginTop: 1,
   },
 

@@ -47,7 +47,7 @@ function Mentor() {
           user => user.email === 'shivannamahesh@gmail.com',
         );
         const m4 = mentors.filter(
-          user => user.email === 'shivannamahesh@gmail.com',
+          user => user.email === 'shathyanr@gmail.com',
         );
 
         setRandomMentors([...m, ...m2, ...m3, ...m4]);

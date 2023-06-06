@@ -447,7 +447,7 @@ function Home() {
           {/* <PostCard hasArt={true} /> */}
         </View>
       </View>
-      {menu === 'Discussion' && (
+      {(menu === 'Discussion' || menu ==="Featured") && (
         <TouchableOpacity onPress={() => navigation.navigate('createpost')}>
           <Image source={Theme.addbtn} style={styles.corner} />
         </TouchableOpacity>
