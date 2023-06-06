@@ -18,13 +18,14 @@ import {AppColors} from '../../../utils';
 import {useSelector, useDispatch} from 'react-redux';
 import {saveCourse, removeCourse} from '../../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
-import {ModulesData} from '../../../dumy-Data/moduleData';
+import {courseDataBusinessPlanning} from '../../../dumy-Data/courseDataBusinessPlanning';
 import LinearGradient from 'react-native-linear-gradient';
 import Theme from '../../../utils/Theme';
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 const StartCourse = props => {
-  const courseData = ModulesData.modules; // props.route.params.CourseDetails;
+  const courseData = courseDataBusinessPlanning.modules; // props.route.params.CourseDetails;
+  const CourseDetailsFromProps = props.route.params.CourseDetails;
   const navigation = useNavigation();
   const [chp, setchp] = useState(0);
   const [slide, setslide] = useState(0);
@@ -108,7 +109,7 @@ const StartCourse = props => {
       style={styles.screen}>
       <ImageBackground
         style={{width: '100%', height: Height / 2.7, paddingTop: '5%'}}
-        source={{uri: courseData.image}}>
+        source={{uri: CourseDetailsFromProps.image}}>
         <BackButton
           IconSize={30}
           onPress={() => {
@@ -129,7 +130,7 @@ const StartCourse = props => {
               fontFamily: 'Poppins-SemiBold',
               fontSize: 16,
             }}>
-            {courseData.name}
+            {CourseDetailsFromProps.name}
           </Text>
         </View>
       </ImageBackground>

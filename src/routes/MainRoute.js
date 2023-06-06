@@ -168,7 +168,11 @@ export default function Route() {
           name="social"
           component={Social}
         />
-          <Stack.Screen options={{headerShown: false}} name="MatchScreen" component={MatchScreen} />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="MatchScreen"
+          component={MatchScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -426,9 +430,9 @@ function TabView() {
             case 'Funds':
               iconSource = focused ? Theme.fundsactive : Theme.funds;
               break;
-            // case 'Learn':
-            //   iconSource = focused ? Theme.learnactive : Theme.learn;
-            //   break;
+            case 'Learn':
+              iconSource = focused ? Theme.learnactive : Theme.learn;
+              break;
           }
 
           return (
@@ -461,11 +465,11 @@ function TabView() {
         name="Funds"
         component={FundStack}
       />
-      {/* <Tab.Screen
+      <Tab.Screen
         options={{headerShown: false}}
         name="Learn"
         component={LearnStack}
-      /> */}
+      />
     </Tab.Navigator>
   );
 }

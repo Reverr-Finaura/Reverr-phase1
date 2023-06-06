@@ -12,7 +12,7 @@ import {
   TouchableOpacity,
   Modal,
 } from 'react-native';
-{/*import Swiper from 'react-native-deck-swiper';*/}
+import Swiper from 'react-native-deck-swiper';
 import Button from '../../Components/Button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -143,6 +143,7 @@ const Vibe = () => {
     const [getcard, setgetcards] = useState(0);
     const [show, setshow] = useState(false);
     const [vertical, setvertical] = useState(false);
+    const [maxSwipes, setmaxSwipes] = useState(10)
 
     const [filters, setFilters] = useState({
       hareFor: [],
@@ -311,12 +312,24 @@ const Vibe = () => {
             .update({
               super_liked_people: firestore.FieldValue.arrayRemove(My_Email),
             });
+            await firestore()
+            .collection('Users')
+            .doc(My_Email)
+            .update({
+              people_super_liked_me: firestore.FieldValue.arrayRemove(tempUser.email),
+            });
           }else{
             await firestore()
             .collection('Users')
             .doc(tempUser.email)
             .update({
               liked: firestore.FieldValue.arrayRemove(My_Email),
+            });
+            await firestore()
+            .collection('Users')
+            .doc(My_Email)
+            .update({
+              people_liked_me: firestore.FieldValue.arrayRemove(tempUser.email),
             });
           }
           await firestore()
@@ -336,7 +349,8 @@ const Vibe = () => {
           dispatch(matchedpeople(tempUser.email));
           // Match screen is called here
           navigation.navigate('MatchScreen', {
-            tempUser,
+            data:tempUser,
+            data2:state.user
           });
 
           setPrevDailog(true);
@@ -372,8 +386,80 @@ const Vibe = () => {
         }
 
       }
+      
 
+      // const data = cards[CurrentIndex];
+      // // console.log('right datta', data);
+
+      // // dispatch(RemoveTopCard());
+      // // console.log('stae  vibe swipe right isss', state.vibe);
+      // console.log('data is', data);
+      
+      // var Liked_Email = data.id;
+      // var Liked_People = data.liked_people;
+      // console.log(Liked_Email, "LIKED EMAIL")
+      // console.log(Liked_People, "LIKED PEOPLE")
+      // await firestore()
+      //   .collection('Users')
+      //   .doc(state.user.email)
+      //   .update({
+      //     liked: firestore.FieldValue.arrayUnion(Liked_Email),
+      //   });
+
+      // if (Liked_People) {
+      //   var check = Liked_People.includes(My_Email);
+      //   if (check) {
+      //     await firestore()
+      //       .collection('Users')
+      //       .doc(state.user.email)
+      //       .update({
+      //         Matched_People: firestore.FieldValue.arrayUnion(Liked_Email),
+      //       });
+      //     // action dispacthed to store matchedpeople
+      //     dispatch(matchedpeople(Liked_Email));
+      //     // Match screen is called here
+      //     navigation.navigate('MatchScreen', {
+      //       data,
+      //     });
+
+      //     setPrevDailog(true);
+      //     setPrevData(prev);
+      //   }
+      // } else {
+      //   await firestore()
+      //     .collection('Users')
+      //     .doc(state.user.email)
+      //     .update({
+      //       liked_people: firestore.FieldValue.arrayUnion(Liked_Email),
+      //     })
+      //     .then(async () => {
+      //       await firestore()
+      //         .collection('Users')
+      //         .doc(Liked_Email)
+      //         .update({
+      //           people_liked_me: firestore.FieldValue.arrayUnion(
+      //             state.user.email,
+      //           ),
+      //         });
+      //       // console.log('userswiped');
+      //     })
+      //     .catch(err => {
+      //       console.log(err.message);
+      //       console.log('please check your internet connection');
+      //     });
+      // }
     };
+
+    const reset = async ()=>{
+      await firestore()
+      .collection('Users')
+      .doc(state.user.email)
+      .update({
+        Number_Of_Swips_Done : 0,
+        CardsUpdatedTime: -1,
+        AllCardsSwiped: false
+      });
+    }
     const superLikeCenter = async CurrentIndex => {
 
       var tempCards = filteringData.filter(
@@ -401,14 +487,14 @@ const Vibe = () => {
           if(sup){
             await firestore()
             .collection('Users')
-            .doc(tempUser.email)
+            .doc(tempUser)
             .update({
               super_liked_people: firestore.FieldValue.arrayRemove(My_Email),
             });
           }else{
             await firestore()
             .collection('Users')
-            .doc(tempUser.email)
+            .doc(tempUser)
             .update({
               liked: firestore.FieldValue.arrayRemove(My_Email),
             });
@@ -466,6 +552,67 @@ const Vibe = () => {
         }
 
       }
+
+      // // console.log("===>", CurrentIndex)
+
+      // setCount(count + 1);
+
+      // HandleOnSwiped(CurrentIndex);
+      // // var currCard = cards[idx];
+
+      // const data = cards[CurrentIndex];
+      // // console.log('right datta', data);
+
+      // // dispatch(RemoveTopCard());
+      // // console.log('stae  vibe swipe right isss', state.vibe);
+      // // console.log('data is', data);
+
+      // var Liked_Email = data.id;
+      // var My_Email = state.user.email;
+      // var Liked_People = data.liked_people;
+
+      // if (Liked_People) {
+      //   var check = Liked_People.includes(My_Email);
+      //   if (check) {
+      //     await firestore()
+      //       .collection('Users')
+      //       .doc(state.user.email)
+      //       .update({
+      //         Matched_People: firestore.FieldValue.arrayUnion(Liked_Email),
+      //       });
+      //     // action dispacthed to store matchedpeople
+      //     dispatch(matchedpeople(Liked_Email));
+      //     // Match screen is called here
+      //     navigation.navigate('MatchScreen', {
+      //       data,
+      //     });
+
+      //     setPrevDailog(true);
+      //     setPrevData(prev);
+      //   }
+      // } else {
+      //   await firestore()
+      //     .collection('Users')
+      //     .doc(state.user.email)
+      //     .update({
+      //       super_liked_people: firestore.FieldValue.arrayUnion(Liked_Email),
+      //     })
+      //     .then(async () => {
+      //       await firestore()
+      //         .collection('Users')
+      //         .doc(Liked_Email)
+      //         .update({
+      //           super_people_liked_me: firestore.FieldValue.arrayUnion(
+      //             state.user.email,
+      //           ),
+      //         });
+      //       // console.log('userswiped');
+      //     })
+      //     .catch(err => {
+      //       console.log(err.message);
+      //       console.log('please check your internet connection');
+      //     });
+      // }
     };
     const [cards, setcards] = useState([]);
     // console.log('What is item dddd', cards);
@@ -479,18 +626,18 @@ const Vibe = () => {
     const HandleOnSwiped = async cardindex => {
       setcardindex(prev => prev + 1);
       setswipe(prev => prev + 1);
-
+      setTotalswipe(prev => prev +1);
       const Data = cards[cardindex];
       // console.log('datattaa', Data);
 
-      await firestore().collection('Users').doc(state.user.email).update({
-        Number_Of_Swips_Done: swipe,
-      });
+      // await firestore().collection('Users').doc(state.user.email).update({
+      //   Number_Of_Swips_Done: swipe,
+      // });
 
-      await firestore()
-        .collection('Users')
-        .doc(state.user.email)
-        .update({Last_Card_Email_Swiped: Data.id});
+      // await firestore()
+      //   .collection('Users')
+      //   .doc(state.user.email)
+      //   .update({Last_Card_Email_Swiped: Data.id});
     };
 
     // console.log('state card is', state.vibe.length);
@@ -552,131 +699,123 @@ const Vibe = () => {
     useEffect(() => {
       CheckIfBoarding();
 
-      let Afterquery;
+      var Afterquery;
       const FetchUsersCard = async () => {
- 
-        if (state.user.AllCardsSwiped) {
-          const NewExpiredDate = new Date();
-          // console.log(NewExpiredDate);
-          // console.log('Expiredtime', NewExpiredDate.getTime());
-          const NewExpiredTime = NewExpiredDate.getTime();
+        const NewExpiredDate = new Date();
 
-          if (NewExpiredTime < state.user.CardsUpdatedTime) {
-            settoshowtimer(true);
-          }else{
+        const NewExpiredTime = NewExpiredDate.getTime();
 
-            //Reset the user
-            await firestore()
-              .collection('Users')
-              .doc(state.user.email)
-              .update({AllCardsSwiped: false,CardsUpdatedTime:-1, CardsExpiredTime:-1,Number_Of_Swips_Done: 0});
-            settoshowtimer(false);
-            
-          }
-        }
-        // CheckIfBoarding();
-        // console.log('after boarding');
+        if(state.user.CardsUpdatedTime =-1){
 
-        await firestore()
+          await firestore()
           .collection('Users')
           .doc(state.user.email)
           .get()
           .then(doc => {
             if (doc.data().Vibe_Data) {
-              setTotalswipe(doc.data().Number_Of_Swips_Done);
+              setTotalswipe(maxSwipes - doc.data().Number_Of_Swips_Done);
+              setNumberOfSwipsDone(doc.data().Number_Of_Swips_Done)
               // setshowCards(true);
               // console.log('yoooi', showCards);
             }
           });
+
+          var LastEmailSwipe = state.user.Last_Card_Email_Swiped;
+  
+          var passedusers = state.user.passedUser;
+  
+          if(passedusers == undefined || passedusers == [] || passedusers == ""){
+            passedusers = ["reverr@reverr.io"] ;
+            LastEmailSwipe = "reverr@reverr.io"
+          }
+  
+          // setNumberOfSwipsDone(state.user.Number_Of_Swips_Done)
+          let Intialquery = await firestore()
+          .collection('Users')
+          // .where('email', 'not-in', ["rgupta.success@gmail.com",'kunnugarg2@gmail.com','kohlibhavya18@gmail.com','19103098@mail.jiit.ac.in']);
+
+
+
+        Intialquery.get().then(snapshot => {
+          let result = snapshot.docs
+          result =result.filter(doc=> {
+            if(passedusers.indexOf(doc.id) === -1)
+            return doc
+          })
+
+            setcards(
+              result.map(doc => ({
+                id: doc.id,
+                ...doc.data(),
+              })),
+            );
+            setFilteringData(
+              result.map(doc => ({
+                id: doc.id,
+                ...doc.data(),
+              })),
+            );
+       
+        
+        });
+          
+        if (TotalSwipe > 0 && continueshowingcard) {
+
+
+          Afterquery = await firestore()
+            .collection('Users')
+            .orderBy('email')
+            // .where('email', 'not-in', [...passedusers])
+            .startAfter(LastEmailSwipe)
+            .onSnapshot(snapshot => {
+              setcards(
+                snapshot.docs.map(doc =>{ 
+                  if(passedusers.indexOf(doc.id) === -1)
+                  return({id: doc.id,
+                          ...doc.data(),
+                  })}
+                ),
+              );
+              setshowCards(true);
+            });
+        }
+        } else if (NewExpiredTime < state.user.CardsUpdatedTime)  {
+          // console.log(state.user, 'what is this');
+          settoshowtimer(true);
+          if (state.user.AllCardsSwiped) {
+            // console.log('hello');
+          }
+
+        } else{
+          reset();
+          settoshowtimer(false);
+         setTotalswipe(maxSwipes)
         // console.log('noo');
         // const TotalSwipe = state.user.Number_Of_Swips_Done;
         var LastEmailSwipe = state.user.Last_Card_Email_Swiped;
-        // const To_Show_Vibe_Screen = No_Of_Swipes.data().Vibe;
-        // if (To_Show_Vibe_Screen) {
-        //   return;
-        // }
-        // console.log('what is total swipe', TotalSwipe);
-        // const passeduserdata = await firestore()
-        //   .collection('Users')
-        //   .doc(state.user.email)
-        //   .collection('passeduser')
-        //   .get()
-        //   .then(snapshot =>
-        //     snapshot.docs.map(
-        //       data => data.data().id,
-        //       setLoading(false),
-        //       //  data=>   console.log('what is .dta.', typeof(data.data().id)),
-        //     ),
-        //   );
-        // // console.log('what is passed data', passeduserdata);
-        // // alert(passeduserdata)
-
-        // const passeduserids =
-        //   passeduserdata.length > 0 ? passeduserdata : ['test'];
-        // // console.log('what is passed user ids', passeduserids);
-
-        // let tempList = passeduserids.map(item => item.email);
 
         var passedusers = state.user.passedUser;
 
-        if(passedusers == undefined || passedusers.length==0 || passedusers == ""){
+        if(passedusers == undefined || passedusers == [] || passedusers == ""){
           passedusers = ["reverr@reverr.io"] ;
           LastEmailSwipe = "reverr@reverr.io"
         }
 
-        passedusers = passedusers.slice(-10)
+        setNumberOfSwipsDone(0)
 
-        setNumberOfSwipsDone(state.user.Number_Of_Swips_Done)
-
-        let result = cards.filter(item => passedusers.includes(item.email));
-        // alert(result)
-
-        {
-          // if (passeduserids.length >= 10) {
-          //   passeduserids.splice(0, 3);
-          // }
-        }
-        // console.log('what is passed user after ids', passeduserids);
-        // const data=["rgupta.success@gmail.com",'kunnugarg2@gmail.com','kohlibhavya18@gmail.com','19103098@mail.jiit.ac.in']
-        // if (TotalSwipe == 0) {
-        // console.log('heree at 0');
         let Intialquery = await firestore()
           .collection('Users')
-          .where('email', 'not-in', [...passedusers]);
+          // .where('email', 'not-in', ["rgupta.success@gmail.com",'kunnugarg2@gmail.com','kohlibhavya18@gmail.com','19103098@mail.jiit.ac.in']);
+
+
 
         Intialquery.get().then(snapshot => {
           let result = snapshot.docs
-          // like
-          // let tempList = state.user.likedDislike.map(item => item);
-          // let result = snapshot.docs.filter(item =>
-          //   (!tempList.includes(item.data().email))
-          //   // console.log("--------1222", item)
-          // )
-
-          // dislike
-          // let tempList2 = state.user.dislike.map(item => item);
-          // let result2 = result.filter(item =>
-          //   (!tempList2.includes(item.data().email))
-          // )
-          // result.map((i, index) => {
-          //   console.log(index + 1, "ifrer part", i.data().email)
-          // })
-          // console.log(result.length, '--------------------', snapshot.docs.length);
-
-          // Intialquery.onSnapshot(snapshot => {
-          // console.log('value of snap', snapshot.docs.length);
-
-          // let resultss = results.filter(o1 => !reject.some(o2 => o1.email === o2));
-
-          if (state.user.liked != undefined) {
-            // let result = snapshot.docs.filter(
-            //   o1 => !state.user.liked.some(o2 => o1.email === o2),
-            // );
-            // console.log(
-            //   '🚀 ~ file: index.js:603 ~ Intialquery.get ~ result:',
-            //   result.length,
-            // );
-
+          result =result.filter(doc=> {
+            if(passedusers.indexOf(doc.id) === -1)
+            return doc
+          })
+           //have not filtered user id and liked people
             setcards(
               result.map(doc => ({
                 id: doc.id,
@@ -689,52 +828,51 @@ const Vibe = () => {
                 ...doc.data(),
               })),
             );
-          } else {
-            setcards(
-              snapshot.docs
-                // .filter(doc => doc.id !== state.user.email)
-                .map(doc => ({
-                  id: doc.id,
-                  ...doc.data(),
-                })),
-            );
-
-            setFilteringData(
-              snapshot.docs
-                // .filter(doc => doc.id !== state.user.email)
-                .map(doc => ({
-                  id: doc.id,
-                  ...doc.data(),
-                })),
-            );
-          }
+          
           setshowCards(true);
         });
+        }
+       
         // }
 
         if (TotalSwipe > 0 && continueshowingcard) {
+
+
           Afterquery = await firestore()
             .collection('Users')
             .orderBy('email')
-            .where('email', 'not-in', [...passedusers])
+            // .where('email', 'not-in', [...passedusers])
             .startAfter(LastEmailSwipe)
             .onSnapshot(snapshot => {
               setcards(
-                snapshot.docs.map(doc => ({
-                  // console.log(doc.id,'doc id is')
-                  // console.log('doc new data is', doc.data());
-                  id: doc.id,
-                  ...doc.data(),
-                })),
+                snapshot.docs.map(doc =>{ 
+                  if(passedusers.indexOf(doc.id) === -1)
+                  return({id: doc.id,
+                          ...doc.data(),
+                  })}
+                ),
               );
               setshowCards(true);
             });
+            // try{
+            //   if(Afterquery!=undefined)
+            //   Afterquery= Afterquery.filter(doc=> {
+            //     if(passedusers.indexOf(doc.id) === -1)
+            //     return doc
+            //   });  
+            // }catch(err){
+            //   console.log(err)
+            // }
+        
         }
       };
       if (showCards) {
         FetchUsersCard();
       }
-      return Afterquery;
+    
+      // console.log("AFTER QUERY ITEMS", Afterquery)
+      // Afterquery.map(item=>console.log(item))
+      return Afterquery
     }, []);
 
     //IF USER HAS VALID PREMIUM FOR VIBE
@@ -752,7 +890,7 @@ const Vibe = () => {
           await firestore()
             .collection('Users')
             .doc(state.user.email)
-            .update({AllCardsSwiped: false, Number_Of_Swips_Done: 0, CardsExpiredTime:ExpiredTime});
+            .update({AllCardsSwiped: false, Number_Of_Swips_Done: 0, CardsExpiredTime:-1});
         }
       };
 
@@ -760,41 +898,20 @@ const Vibe = () => {
     }, [hasPremiumOfVibe]);
 
     useEffect(() => {
-      // console.log('card ind q', cardindex);
+      
 
-      if (numberOfSwipsDone >= 10) {
+      if (TotalSwipe <=0) {
         if (hasPremiumOfVibe === true) {
           return;
         }
+        console.log("🙂🙂🙈🌑", TotalSwipe, numberOfSwipsDone);
         const ExpiredDate = new Date();
         // console.log(ExpiredDate);
         // console.log(ExpiredDate.getTime());
         const ExpiredTime = ExpiredDate.getTime();
         const UpdatedTime = ExpiredTime + 86397500;
-        if(ExpiredTime > state.user.CardsUpdatedTime){
-          setcontinueshowingcard(true);
-          // console.log('card ind inside', cardindex);
-          // var DeletePassedUserReference = firestore()
-          //   .collection('Users')
-          //   .doc(state.user.email)
-          //   .collection('passeduser');
-          // DeletePassedUserReference.get().then(querysnapshot => {
-          //   Promise.all(querysnapshot.docs.map(d => d.ref.delete()));
-          // });
-          setAllswiped(false);
-    
-          const SetFirebaseswipedData = async () => {
-            await firestore().collection('Users').doc(state.user.email).update({
-              AllCardsSwiped: false,
-              numberOfSwipsDone: 0
-            });
-          };
-  
-          SetFirebaseswipedData();
-          settoshowtimer(false);
-        }
-        else{
-          setcontinueshowingcard(false);
+
+        setcontinueshowingcard(false);
           // console.log('card ind inside', cardindex);
           // var DeletePassedUserReference = firestore()
           //   .collection('Users')
@@ -815,7 +932,51 @@ const Vibe = () => {
   
           SetFirebaseswipedData();
           settoshowtimer(true);
-        }
+        // if(ExpiredTime > state.user.CardsUpdatedTime){
+        //   setcontinueshowingcard(true);
+        //   // console.log('card ind inside', cardindex);
+        //   // var DeletePassedUserReference = firestore()
+        //   //   .collection('Users')
+        //   //   .doc(state.user.email)
+        //   //   .collection('passeduser');
+        //   // DeletePassedUserReference.get().then(querysnapshot => {
+        //   //   Promise.all(querysnapshot.docs.map(d => d.ref.delete()));
+        //   // });
+        //   setAllswiped(false);
+    
+        //   const SetFirebaseswipedData = async () => {
+        //     await firestore().collection('Users').doc(state.user.email).update({
+        //       AllCardsSwiped: false,
+        //       Number_Of_Swips_Done: numberOfSwipsDone
+        //     });
+        //   };
+  
+        //   SetFirebaseswipedData();
+        //   settoshowtimer(false);
+        // }
+        // else{
+        //   setcontinueshowingcard(false);
+        //   // console.log('card ind inside', cardindex);
+        //   // var DeletePassedUserReference = firestore()
+        //   //   .collection('Users')
+        //   //   .doc(state.user.email)
+        //   //   .collection('passeduser');
+        //   // DeletePassedUserReference.get().then(querysnapshot => {
+        //   //   Promise.all(querysnapshot.docs.map(d => d.ref.delete()));
+        //   // });
+        //   setAllswiped(true);
+    
+        //   const SetFirebaseswipedData = async () => {
+        //     await firestore().collection('Users').doc(state.user.email).update({
+        //       CardsExpiredTime: UpdatedTime,
+        //       CardsUpdatedTime: UpdatedTime,
+        //       AllCardsSwiped: true,
+        //     });
+        //   };
+  
+        //   SetFirebaseswipedData();
+        //   settoshowtimer(true);
+        // }
 
         // It is 24 hrrs in milli second 86400000;86397500;
         // const ToChecKAfter = 12000;
@@ -1011,6 +1172,257 @@ const Vibe = () => {
                           </LinearGradient>
 
                           <View style={{height: 110}} />
+                        
+
+                        
+                          {/* <View style={styles.MainCard}>
+                            <ScrollView
+                              scrollEnabled={true}
+                              style={{flexGrow: 1}}
+                              showsVerticalScrollIndicator={false}>
+                              <View style={{flex: 1}}>
+                                <View
+                                  style={{alignSelf: 'center', marginTop: 10}}>
+                                  {item.image ? (
+                                    <Image
+                                      style={styles.coverImage}
+                                      source={{
+                                        uri: item.image,
+                                      }}
+                                    />
+                                  ) : (
+                                    <Image
+                                      style={styles.coverImage}
+                                      source={{
+                                        uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
+                                      }}
+                                    />
+                                  )}
+                                </View>
+                                <View style={styles.viewText}>
+                                  <Text style={styles.txtName}>
+                                    {item?.name}
+                                  </Text>
+                                  <Text style={styles.ceo}>
+                                    {item.Vibe_Data == undefined
+                                      ? ''
+                                      : item?.Vibe_Data?.Education}
+                                  </Text>
+                                  <Text style={styles.Delhi}>
+                                    New Delhi, India
+                                  </Text>
+                                </View>
+
+                                <View>
+                                  <Text style={styles.about}>About Me</Text>
+
+                                  <Text style={styles.detial} numberOfLines={2}>
+                                    Don’t ship it. Don’t settle for good enough.
+                                    Do better work than you did yesterday. Get
+                                    out of your comfort zone and give it your
+                                    all – every day.
+                                  </Text>
+                                </View>
+                                <View style={styles.likebar}>
+                                  <View style={styles.nopeText}>
+                                    <TouchableOpacity
+                                      onPress={() => {
+                                        // navigation.navigate('LikeMatchScreen')
+                                        // swipeLefts(index)
+                                        // setIndex(indexs+1)
+                                        swipeLeft(index);
+                                      }}>
+                                      <Image
+                                        style={styles.nope}
+                                        source={require('../../../src/assets/images/nope.png')}
+                                      />
+                                    </TouchableOpacity>
+                                    <Text style={styles.textwhite}>nope</Text>
+                                  </View>
+
+                                  <View style={styles.superLike}>
+                                    <TouchableOpacity
+                                      onPress={() => {
+                                        superLikeCenter(index);
+                                      }}>
+                                      <Image
+                                        style={styles.nopes}
+                                        source={require('../../../src/assets/images/superlike.png')}
+                                      />
+                                      <Text style={styles.textwhite}>
+                                        superlike
+                                      </Text>
+                                    </TouchableOpacity>
+                                  </View>
+                                  <View style={{marginEnd: 10}}>
+                                    <TouchableOpacity
+                                      onPress={() => {
+                                        // navigation.navigate('LikeMatchScreen')
+                                        // swipeLefts(index)
+                                        swipeRight(index);
+                                        // setIndex(indexs+1)
+                                      }}>
+                                      <Image
+                                        style={styles.nope}
+                                        source={require('../../../src/assets/images/liketic.png')}
+                                      />
+                                      <Text style={styles.textwhites}>
+                                        like
+                                      </Text>
+                                    </TouchableOpacity>
+                                  </View>
+                                </View>
+                                <TouchableOpacity
+                                  onPress={() => setVisible(index)}>
+                                  <Entypo
+                                    style={styles.entypo}
+                                    name={
+                                      visible === index
+                                        ? ''
+                                        : 'chevron-small-down'
+                                    }
+                                    size={40}
+                                    color="#ffffff"></Entypo>
+                                </TouchableOpacity>
+
+                                {visible === index && (
+                                  <View style={{flex: 1}}>
+                                    <View>
+                                      <View>
+                                        {item.Vibe_Data != undefined && (
+                                          <>
+                                            <Text style={styles.vibeText}>
+                                              What I am here for
+                                            </Text>
+                                            <View style={styles.viewVibe}>
+                                              {item.Vibe_Data != undefined &&
+                                                item?.Vibe_Data?.Here_for?.map(
+                                                  Here_for => {
+                                                    // console.log(">>>>>>>>", Here_for);
+                                                    return (
+                                                      <TouchableOpacity
+                                                        onPress={data =>
+                                                          navigation.navigate(
+                                                            'ShowMoreVibe',
+                                                            {
+                                                              data,
+                                                            },
+                                                          )
+                                                        }>
+                                                        <View
+                                                          style={styles.circle}>
+                                                          <Text
+                                                            style={
+                                                              styles.hareFor
+                                                            }>
+                                                            {Here_for}
+                                                          </Text>
+                                                        </View>
+                                                      </TouchableOpacity>
+                                                    );
+                                                  },
+                                                )}
+                                            </View>
+                                          </>
+                                        )}
+                                        {item.Vibe_Data != undefined && (
+                                          <>
+                                            <View>
+                                              <Text style={styles.vibeText}>
+                                                Education:
+                                              </Text>
+                                              <Text style={styles.dataDatabase}>
+                                                {item.Vibe_Data == undefined
+                                                  ? 'N/A'
+                                                  : item?.Vibe_Data?.Education}
+                                              </Text>
+
+                                              <Text style={styles.vibeText}>
+                                                Industry:
+                                              </Text>
+
+                                              <Text style={styles.dataDatabase}>
+                                                {item.Vibe_Data == undefined
+                                                  ? 'N/A'
+                                                  : item?.Vibe_Data?.Industry}
+                                              </Text>
+
+                                              <Text style={styles.vibeText}>
+                                                Previous Designation:
+                                              </Text>
+                                              <Text style={styles.dataDatabase}>
+                                                {item.Vibe_Data == undefined
+                                                  ? 'N/A'
+                                                  : item?.Vibe_Data
+                                                      ?.Previous_Designation}
+                                              </Text>
+                                              <Text style={styles.vibeText}>
+                                                Previous Organization:
+                                              </Text>
+                                              <Text style={styles.dataDatabase}>
+                                                {item.Vibe_Data == undefined
+                                                  ? 'N/A'
+                                                  : item?.Vibe_Data
+                                                      ?.Previous_Org}
+                                              </Text>
+                                              <Text style={styles.vibeText}>
+                                                How can we meet:
+                                              </Text>
+                                              {item.Vibe_Data == undefined && (
+                                                <Text style={styles.noData}>
+                                                  N/A
+                                                </Text>
+                                              )}
+                                              {item.Vibe_Data != undefined &&
+                                                item?.Vibe_Data?.How_To_Meet?.map(
+                                                  How_To_Meet => {
+                                                    // console.log(item);
+                                                    return (
+                                                      <View>
+                                                        <Text
+                                                          style={
+                                                            styles.dataDatabase
+                                                          }>
+                                                          {How_To_Meet}
+                                                        </Text>
+                                                      </View>
+                                                    );
+                                                  },
+                                                )}
+                                              <Text style={styles.vibeText}>
+                                                Experience:
+                                              </Text>
+                                              {item.Vibe_Data == undefined && (
+                                                <Text style={styles.noData}>
+                                                  N/A
+                                                </Text>
+                                              )}
+                                              {item.Vibe_Data != undefined &&
+                                                item?.Vibe_Data?.Years_Of_Experience?.map(
+                                                  Years_Of_Experience => {
+                                                    // console.log(item);
+                                                    return (
+                                                      <View>
+                                                        <Text
+                                                          style={
+                                                            styles.dataDatabase
+                                                          }>
+                                                          {Years_Of_Experience}
+                                                        </Text>
+                                                      </View>
+                                                    );
+                                                  },
+                                                )}
+                                            </View>
+                                          </>
+                                        )}
+                                      </View>
+                                    </View>
+                                  </View>
+                                )}
+                              </View> 
+                            </ScrollView>
+                          </View> */}
                           
                         </ScrollView>
                       );
@@ -1175,4 +1587,4 @@ const colors = [
   '#1B1D8B',
 ];
 
-export {Vibe};
+// export {Vibe};

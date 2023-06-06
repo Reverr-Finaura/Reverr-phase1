@@ -12,8 +12,42 @@ export default function ChatVibeScreen(props) {
   const userData = props?.route?.params?.userData;
   console.log('userDattttt', userData);
 
-  const senderId = authentication().currentUser.email.split('@')[0];
-  const receiverId = userData.email.split('@')[0];
+  var senderId = authentication().currentUser.email.split('@')[0];
+  var receiverId = userData.email.split('@')[0];
+
+  const specialChar = (str)=>{
+    var result = null;
+    if(str.includes('.'))
+      result='.';
+    if(str.includes('#'))
+      result='#';
+    if(str.includes('$'))
+      result='$';
+    if(str.includes('['))
+      result='['; 
+    if(str.includes(']'))
+      result=']'; 
+
+    return result;
+  }
+
+  const removeChar = (str, c)=>{
+    var temp = str.split(c)
+    var result="";
+    for(var i =0 ; i<temp.length; i++){
+      result = result+temp[i]
+    }
+    return result;
+  }
+
+  var splChar1 = specialChar(senderId)
+  var splChar2 = specialChar(receiverId)
+  if(splChar1!=null){
+    senderId = removeChar(senderId, splChar1)
+  }
+  if(splChar2!=null){
+    receiverId = removeChar(receiverId, splChar2)
+  }
 
   const docid =
     receiverId > senderId
@@ -23,19 +57,26 @@ export default function ChatVibeScreen(props) {
     getAllMessages();
   }, []);
   const getAllMessages = () => {
-    let temArray = [];
-    let querySanp = database().ref('messages').child(docid);
-    querySanp.on('value', snapshot => {
-      if (snapshot.val()) {
-        const msg = Object.values(snapshot.val());
-        let sortedbyDate = msg.sort(
-          (a, b) =>
-            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-        );
-        setMessages(sortedbyDate);
-        setLoading(false);
-      }
-    });
+    try{
+      console.log(docid)
+      let temArray = [];
+      let querySanp = database().ref('messages').child(docid);
+      querySanp.on('value', snapshot => {
+        if (snapshot.val()) {
+          const msg = Object.values(snapshot.val());
+          let sortedbyDate = msg.sort(
+            (a, b) =>
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+          );
+          setMessages(sortedbyDate);
+          setLoading(false);
+        }
+      });
+    }
+    catch(err){
+      console.log(docid)
+      console.log(err)
+    }
   };
   const onSend = messagesArray => {
     let myMsg = null;
