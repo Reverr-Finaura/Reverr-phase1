@@ -46,19 +46,19 @@ const PremiumPlans = () => {
     {
       name: 'Monthly',
       id: 0,
-      price: '499',
+      price: '199',
       text: 'Buy 1 MONTH',
     },
     {
       name: 'Quaterly',
       id: 1,
-      price: '1299',
+      price: '499',
       text: 'Buy 3 MONTH',
     },
     {
       name: 'Semi-Annually',
       id: 2,
-      price: '4999',
+      price: '799',
       text: 'Buy 6 MONTH',
     },
   ];
