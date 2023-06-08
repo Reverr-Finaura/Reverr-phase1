@@ -7,17 +7,19 @@ import {
   StatusBar,
   Platform,
 } from 'react-native';
-import React from 'react';
+import React, {useState, useRef} from 'react';
 import {styles} from './style';
 import LinearGradient from 'react-native-linear-gradient';
 import auth from '@react-native-firebase/auth';
 import {AppColors} from '../../../../utils';
 import {useNavigation} from '@react-navigation/native';
 import { GoogleSignin } from '@react-native-community/google-signin';
+import LinkedInModal from 'react-native-linkedin';
 
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
-
+const [reloadpage, setReloadpage] = useState()
+const linkedinRef = useRef(null) 
 const StartLogin = () => {
   const navigation = useNavigation();
   const googleLogin = async ()=>{
@@ -28,13 +30,12 @@ const StartLogin = () => {
 
       const  {idToken} = await GoogleSignin.signIn();
       
-    console.log("akjldladkldanljadnjadnljdsa");
+      console.log("akjldladkldanljadnjadnljdsa");
       // Create a Google credential with the token
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
     
       // Sign-in the user with the credential
      // return auth().signInWithCredential(googleCredential);
-     
       alert("dfkn.erkwijgf;oiawjg'oia");
        
       await auth().signInWithCredential(googleCredential);
@@ -44,6 +45,11 @@ const StartLogin = () => {
       console.log(Err)
     }
   }
+
+ 
+
+
+
   return (
     <LinearGradient colors={['#070972', '#0C0C0D']} style={styles.screen}>
       <StatusBar backgroundColor={'#070972'} />
@@ -76,8 +82,9 @@ const StartLogin = () => {
         onPress={() => navigation.navigate('viaEmail')}
         activeOpacity={0.6}
         style={[
+          
           styles.button,
-          {borderWidth: 2, borderColor: AppColors.BtnClr},
+          {borderWidth: 2, height:50,borderColor: AppColors.BtnClr},
         ]}>
         <Image
           style={{marginHorizontal: '5%'}}
@@ -114,7 +121,7 @@ const StartLogin = () => {
         style={[
           styles.button,
           {
-            
+            height:50,
             borderWidth: 2,
             borderColor: AppColors.FontsColor,
             backgroundColor: AppColors.FontsColor,
@@ -128,6 +135,55 @@ const StartLogin = () => {
           Google
         </Text>
       </TouchableOpacity>
+        
+         <View>
+         <LinkedInModal 
+          ref={linkedinRef}
+          clientID= {'77k09msokpmnc9'}
+          clientSecret= {'9kEpUnHQo5c7kpu6'}
+          redirectUri= "http://localhost:8081/auth/linkedin/callback"
+          onSuccess= {
+            token =>{
+              let name_surname = "https://api.linkedin.com/v2/me";
+              let user_mail = "https://api.linkedin.com/v2/clientAwareMemberHandles?q=members&projection=(elements*(primary,type,handle~))";
+              let namereq = new XMLHttpRequest();
+                namereq.open("GET", user_mail);
+                namereq.setRequestHeader("Authorization", "Bearer " + token.access_token);
+                namereq.onreadystatechange = function(){
+                  if(namereq.readyState === 4){
+                    console.log("Text:" , namereq.responseText);;
+                  }
+                }
+                namereq.send();
+            }
+          }
+        />
+
+
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={()=>{
+          linkedinRef.current.state.modalVisible = true
+          setReloadpage("Refresh page to see modal")
+
+        }}
+        style={[
+          styles.button,
+          { height:50,
+            borderWidth: 2,
+            borderColor: AppColors.FontsColor,
+            backgroundColor: AppColors.FontsColor,
+          },
+        ]}>
+        <Image
+          style={{marginHorizontal: '3%'}}
+          source={require('../../../../assets/images/linkdin.png')}
+        />
+        <Text style={[styles.buttonText, {color: AppColors.primarycolor}]}>
+          LinkedIn
+        </Text>
+      </TouchableOpacity>
+   </View>
         </>
       ):null}
       

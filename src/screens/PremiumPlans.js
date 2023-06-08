@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useState, useRef, useCallback} from 'react';
 import {
+  Animated,
   SafeAreaView,
   View,
   Image,
@@ -13,6 +14,7 @@ import {
   Modal,
   Alert,
   ImageBackground,
+  ScrollView
 } from 'react-native';
 
 // import styles from './styles';
@@ -25,8 +27,11 @@ import {AppColors} from '../utils';
 import Theme from '../utils/Theme';
 import {BackButton} from '../Components/Buttons/BackButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+const OFFSET = 60
+const Width = Dimensions.get('window').width- (OFFSET * 2);
+const ITEM_HEIGHT = 400
 
-const Width = Dimensions.get('window').width;
+
 
 const PremiumPlans = () => {
   const navigate = useNavigation();
@@ -41,6 +46,8 @@ const PremiumPlans = () => {
   //   setListIndex(changed[0].index);
   // });
 
+
+  const scrollX= useRef(new Animated.Value(0)).current;
   const viewConfigRef = useRef({viewAreaCoveragePercentThreshold: 50});
   const PlanData = [
     {
@@ -52,13 +59,13 @@ const PremiumPlans = () => {
     {
       name: 'Quaterly',
       id: 1,
-      price: '1299',
+      price: '1200',
       text: 'Buy 3 MONTH',
     },
     {
-      name: 'Semi-Annually',
+      name: 'Half-Annually',
       id: 2,
-      price: '4999',
+      price: '2000',
       text: 'Buy 6 MONTH',
     },
   ];
@@ -71,7 +78,7 @@ const PremiumPlans = () => {
   }, []); // any dependencies that require the function to be "redeclared"
   //TO GET EXPIRY DATE
   function getDesireDay(date, days) {
-    return new Date(date.setDate(date.getDate() + days));
+    return new Date(date.setDate(date.getDate() + dayss));
   }
   //TO MAKE ORDER ID
   function makeid(length) {
@@ -263,10 +270,11 @@ const PremiumPlans = () => {
           style={{
             color: AppColors.FontsColor,
             fontFamily: 'Poppins-SemiBold',
-            fontSize: 22,
-            marginStart: '16%',
+            fontSize: 20,
+            marginStart: '19%',
+            
           }}>
-          Premium Plans
+          Premium 
         </Text>
       </View>
       <View style={styles.container}>
@@ -282,7 +290,7 @@ const PremiumPlans = () => {
             style={{
               fontFamily: 'Poppins-Bold',
               color: AppColors.FontsColor,
-              fontSize: 22,
+              fontSize: 18,
             }}>
             Choose your{' '}
           </Text>
@@ -290,7 +298,7 @@ const PremiumPlans = () => {
             style={{
               fontFamily: 'Poppins-Bold',
               color: AppColors.ActiveColor,
-              fontSize: 22,
+              fontSize: 18,
             }}>
             Plan{' '}
           </Text>
@@ -304,53 +312,92 @@ const PremiumPlans = () => {
           Lorem ipsum is a dummy text used for typography
         </Text> */}
         <View
+              
+
           style={{
             marginTop: 50,
             width: '100%',
+            flex:1,
             alignItems: 'center',
             justifyContent: 'center',
           }}>
           {/* linear-gradient(202.17deg, rgba(0, 119, 183, 0.55) 3.78%, rgba(42, 114, 222, 0.1705) 38.41%, rgba(42, 114, 222, 0.55) 63.23%, rgba(0, 119, 183, 0) 114.61%); */}
-          <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={PlanData}
-            pagingEnabled={true}
-            viewabilityConfig={viewConfigRef.current}
-            onViewableItemsChanged={onViewCallBack}
-            keyExtractor={item => item.id}
-            renderItem={({item, index}) => (
-              <View
-                style={{
+          <ScrollView
+        horizontal={true}
+        decelerationRate={"normal"}
+        snapToInterval={Width}
+        style={{ marginTop: 40, paddingHorizontal: 0 }}
+        showsHorizontalScrollIndicator={false}
+        bounces={false}
+        disableIntervalMomentum
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+          { useNativeDriver: false }
+        )}
+        scrollEventThrottle={12}
+      >
+        {PlanData.map((item, index) => {
+          const inputRange = [
+            (index - 1) * Width,
+            index * Width,
+            (index + 1) * Width,
+          ]
+
+          const translate = scrollX.interpolate({
+            inputRange,
+            outputRange: [0.85, 1, 0.85],
+          })
+
+          const opacity = scrollX.interpolate({
+            inputRange,
+            outputRange: [0.5, 1, 0.5],
+          })
+
+          return (
+            <Animated.View
+              style={{
+                width: Width,
+                height: ITEM_HEIGHT,
+                marginLeft: index === 0 ? OFFSET : undefined,
+                marginRight: index === PlanData.length - 1 ? OFFSET : undefined,
+                opacity: opacity,
+                transform: [{ scale: translate }],
+              }}>
+              {/* <View */}
+                {/* style={{
                   width: Width,
                   paddingHorizontal: '4%',
-                }}>
+                }}> */}
                 <LinearGradient
+                
                   colors={
                     index == 0
                       ? ['#02e1eb', '#047378']
                       : index == 1
-                      ? ['#1ba3f7', '#014975']
+                      ? ['#E4FFF9', '#0066FF']
                       : ['#752bed', '#3c0c8a']
                   }
                   style={{
-                    zIndex: 10,
+                    marginTop:160,
+                    Index: 10,
                     borderRadius: 20,
                     width: '100%',
-                    height: 340,
+                    height: 230,
                   }}>
                   <View style={styles.planCard}>
                     <Text
                       style={{
                         marginTop: 20,
-                        color: '#fff',
-                        fontSize: 30,
+                        color: '#000000',
+                        fontSize: 20,
                         fontFamily: 'Poppins-Regular',
                       }}>
                       {item.name}
                     </Text>
                     <View
                       style={{
+                        
+                       backgroundColor:'#000000',
                         width: '70%',
                         height: 1.6,
                         backgroundColor: AppColors.FontsColor,
@@ -359,21 +406,21 @@ const PremiumPlans = () => {
                     <View
                       style={{
                         flexDirection: 'row',
-                        marginVertical: '5%',
+                        marginVertical: '4%',
                         alignItems: 'center',
                       }}>
                       <Image
                         source={require('../assets/images/indian.png')}
                         style={{
-                          height: 30,
-                          width: 30,
+                          height: 15,
+                          width: 15,
                           tintColor: AppColors.FontsColor,
                         }}
                       />
                       <Text
                         style={{
-                          color: '#fff',
-                          fontSize: 38,
+                          color: '#000000',
+                          fontSize: 18,
                           fontFamily: 'Poppins-SemiBold',
                         }}>
                         {item.price}
@@ -388,59 +435,45 @@ const PremiumPlans = () => {
                     </View>
 
                     <View
-                      // onPress={() => getPriceHandler(item.price, item.name)}
                       style={{
-                        marginTop: 50,
-                        width: '50%',
-                        alignItems: 'center',
-                        borderRadius: 40,
+                        marginTop: 60,
+                        width: '70%',
+                        height: 1.6,
                         backgroundColor: AppColors.FontsColor,
-                        paddingHorizontal: 20,
-                        paddingVertical: 8,
-                      }}>
-                      <TouchableOpacity onPress={() => {
-                        navigate.navigate('selectedPlan', {
-                          planDetails: selectedPlan,
-                        })}}>
-                        <Text
-                          style={{
-                            fontSize: 17,
-                            color: AppColors.primarycolor,
-                            fontFamily: 'Poppins-SemiBold',
-                          }}>
-                          {item.text}
-                        </Text>
-                      </TouchableOpacity>
-                    </View>
+                      }}
+                    />
                     <Text
                       style={{
-                        marginTop: 22,
-                        color: '#fff',
-                        fontSize: 18,
+                       padding:10,
+                        color: '#000000',
+                        fontSize: 15,
                         fontWeight: '600',
                       }}>
-                      ‘Click’ Select to know more
+                      Access all the features above
                     </Text>
                   </View>
                 </LinearGradient>
-              </View>
-            )}
-          />
-          <FlatList
+              {/* </View> */}
+            
+            </Animated.View>
+          )
+        })}
+      </ScrollView>
+      <FlatList
             data={[1, 2, 3]}
             horizontal
             renderItem={({item, index}) => (
               <View style={{marginTop: 30}}>
                 <View
                   style={{
-                    width: 8,
-                    height: 8,
+                    width: 6,
+                    height: 6,
                     backgroundColor:
                       index === viewwedItemIndex
                         ? AppColors.ActiveColor
                         : AppColors.BtnClr,
                     borderRadius: 20,
-                    margin: 10,
+                    margin: 5,
                   }}
                 />
               </View>
@@ -448,32 +481,31 @@ const PremiumPlans = () => {
           />
           <View
             style={{
-              marginTop: '6%',
               width: Dimensions.get('window').width,
-              paddingHorizontal: 30,
+              paddingHorizontal: 10,
               paddingTop: 10,
               justifyContent: 'center',
               alignItems: 'center',
               alignContent: 'center',
             }}>
             <TouchableOpacity
-              onPress={() => {
+              on={() => {
                 navigate.navigate('selectedPlan', {
                   planDetails: selectedPlan,
                 });
               }}
               style={{
                 borderRadius: 20,
-                width: '50%',
+                width: '30%',
                 alignItems: 'center',
                 backgroundColor: '#2A72DE',
-                paddingHorizontal: 20,
-                paddingVertical: 7,
+                paddingHorizontal: 10,
+                paddingVertical: 5,
               }}>
               <Text
                 style={{
                   color: '#ffffff',
-                  fontSize: 18,
+                  fontSize: 10,
                   fontFamily: 'Poppins-Bold',
                 }}>
                 Select
@@ -549,7 +581,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
   },
   description: {
-    fontSize: 19,
+    fontSize: 8,
     color: '#ffff',
   },
   planCard: {
