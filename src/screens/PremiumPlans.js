@@ -32,23 +32,20 @@ const PlanData = [
   {
     name: 'Monthly',
     id: 0,
-    price: '499',
+    price: '199',
     text: 'Buy 1 MONTH',
-    color: '#02e1eb',
   },
   {
     name: 'Quaterly',
     id: 1,
-    price: '1299',
+    price: '499',
     text: 'Buy 3 MONTH',
-    color: '#1ba3f7',
   },
   {
     name: 'Semi-Annually',
     id: 2,
-    price: '4999',
+    price: '799',
     text: 'Buy 6 MONTH',
-    color: '#752bed',
   },
 ];
 
@@ -319,12 +316,9 @@ const PremiumPlans = () => {
 
       <View
         style={{
-          // flex: 1,
           position: 'absolute',
           bottom: 0,
           alignItems: 'center',
-          // backgroundColor: AppColors.secoundrycolor,
-          // width: '100%',
         }}>
         {/* linear-gradient(202.17deg, rgba(0, 119, 183, 0.55) 3.78%, rgba(42, 114, 222, 0.1705) 38.41%, rgba(42, 114, 222, 0.55) 63.23%, rgba(0, 119, 183, 0) 114.61%); */}
 
@@ -332,11 +326,6 @@ const PremiumPlans = () => {
           horizontal={true}
           decelerationRate={'normal'}
           snapToInterval={ITEM_WIDTH}
-          // style={{
-          //   alignSelf: 'flex-end',
-          //   marginBottom: 0,
-          //   paddingHorizontal: 0,
-          // }}
           showsHorizontalScrollIndicator={false}
           bounces={false}
           disableIntervalMomentum
@@ -363,79 +352,91 @@ const PremiumPlans = () => {
             });
 
             return (
-              <Animated.View
-                style={{
-                  width: ITEM_WIDTH,
-                  height: ITEM_HEIGHT,
-                  backgroundColor: item.color,
-                  borderRadius: 15,
-                  marginLeft: index === 0 ? OFFSET : undefined,
-                  marginRight:
-                    index === PlanData.length - 1 ? OFFSET : undefined,
-                  opacity: opacity,
-                  transform: [{scale: translate}],
+              <TouchableOpacity
+                onPress={() => {
+                  navigate.navigate('selectedPlan', {
+                    planDetails: selectedPlan,
+                  });
                 }}>
-                <View style={styles.planCard}>
-                  <Text
-                    style={{
-                      marginTop: 15,
-                      color: '#fff',
-                      fontSize: 20,
-                      fontFamily: 'Poppins-Regular',
-                    }}>
-                    {item.name}
-                  </Text>
-                  <View
-                    style={{
-                      width: '70%',
-                      height: 1.6,
-                      backgroundColor: AppColors.FontsColor,
-                    }}
-                  />
-                  <Text
-                    style={{
-                      color: '#fff',
-                      fontSize: 28,
-                      marginTop: 5,
-                      fontFamily: 'Poppins-SemiBold',
-                    }}>
-                    {item.price}
-                    {`${
+                <Animated.View
+                  style={{
+                    width: ITEM_WIDTH,
+                    height: ITEM_HEIGHT,
+                    borderRadius: 15,
+                    marginLeft: index === 0 ? OFFSET : undefined,
+                    marginRight:
+                      index === PlanData.length - 1 ? OFFSET : undefined,
+                    opacity: opacity,
+                    transform: [{scale: translate}],
+                  }}>
+                  <LinearGradient
+                    colors={
                       index == 0
-                        ? '/Month'
-                        : index === 1
-                        ? '/3Month'
-                        : '/6Month'
-                    }`}
-                  </Text>
-                  <View
-                    // onPress={() => getPriceHandler(item.price, item.name)}
+                        ? ['#02e1eb', '#047378']
+                        : index == 1
+                        ? ['#1ba3f7', '#014975']
+                        : ['#752bed', '#3c0c8a']
+                    }
                     style={{
-                      marginTop: 20,
-                      width: '50%',
-                      alignItems: 'center',
-                      borderRadius: 30,
-                      backgroundColor: AppColors.FontsColor,
-                      paddingHorizontal: 20,
+                      flex: 1,
+                      borderRadius: 15,
                     }}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        navigate.navigate('selectedPlan', {
-                          planDetails: selectedPlan,
-                        });
-                      }}>
+                    <View style={styles.planCard}>
                       <Text
                         style={{
-                          fontSize: 15,
-                          color: AppColors.primarycolor,
+                          marginTop: 15,
+                          color: '#fff',
+                          fontSize: 20,
+                          fontFamily: 'Poppins-Regular',
+                        }}>
+                        {item.name}
+                      </Text>
+                      <View
+                        style={{
+                          width: '70%',
+                          height: 1.6,
+                          backgroundColor: AppColors.FontsColor,
+                        }}
+                      />
+                      <Text
+                        style={{
+                          color: '#fff',
+                          fontSize: 28,
+                          marginTop: 5,
                           fontFamily: 'Poppins-SemiBold',
                         }}>
-                        {item.text}
+                        {item.price}
+                        {`${
+                          index == 0
+                            ? '/Month'
+                            : index === 1
+                            ? '/3Month'
+                            : '/6Month'
+                        }`}
                       </Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
-              </Animated.View>
+                      <View
+                        // onPress={() => getPriceHandler(item.price, item.name)}
+                        style={{
+                          marginTop: 20,
+                          width: '50%',
+                          alignItems: 'center',
+                          borderRadius: 30,
+                          backgroundColor: AppColors.FontsColor,
+                          paddingHorizontal: 20,
+                        }}>
+                        <Text
+                          style={{
+                            fontSize: 15,
+                            color: AppColors.primarycolor,
+                            fontFamily: 'Poppins-SemiBold',
+                          }}>
+                          {item.text}
+                        </Text>
+                      </View>
+                    </View>
+                  </LinearGradient>
+                </Animated.View>
+              </TouchableOpacity>
             );
           })}
         </ScrollView>
