@@ -28,16 +28,28 @@ import Theme from '../utils/Theme';
 import {BackButton} from '../Components/Buttons/BackButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Width = Dimensions.get('window').width;
-const OFFSET = 45;
-const ITEM_WIDTH = Dimensions.get('window').width - OFFSET * 2;
-const ITEM_HEIGHT = 200;
-
-const cards = [
-  {title: 'Movie 1', color: '#02e1eb'},
-  {title: 'Movie 2', color: '#1ba3f7'},
-  {title: 'Movie 3', color: '#752bed'},
-  {title: 'Movie 4', color: '#1ba3f7'},
+const PlanData = [
+  {
+    name: 'Monthly',
+    id: 0,
+    price: '499',
+    text: 'Buy 1 MONTH',
+    color: '#02e1eb',
+  },
+  {
+    name: 'Quaterly',
+    id: 1,
+    price: '1299',
+    text: 'Buy 3 MONTH',
+    color: '#1ba3f7',
+  },
+  {
+    name: 'Semi-Annually',
+    id: 2,
+    price: '4999',
+    text: 'Buy 6 MONTH',
+    color: '#752bed',
+  },
 ];
 
 const PremiumPlans = () => {
@@ -48,38 +60,19 @@ const PremiumPlans = () => {
   const CardRef = useRef();
   const [ListIndex, setListIndex] = useState(0);
   const [viewwedItemIndex, setViewwedItemIndex] = useState(0);
-  const [selectedPlan, setSelectedPlan] = useState({});
+  const [selectedPlan, setSelectedPlan] = useState(PlanData[0]);
 
   const scrollX = React.useRef(new Animated.Value(0)).current;
+  const Width = Dimensions.get('window').width;
+  const OFFSET = 45;
+  const ITEM_WIDTH = Dimensions.get('window').width - OFFSET * 2;
+  const ITEM_HEIGHT = 200;
 
   // const onViewRef = useRef(({changed}) => {
   //   setListIndex(changed[0].index);
   // });
 
   const viewConfigRef = useRef({viewAreaCoveragePercentThreshold: 50});
-  const PlanData = [
-    {
-      name: 'Monthly',
-      id: 0,
-      price: '499',
-      text: 'Buy 1 MONTH',
-      color: '#02e1eb',
-    },
-    {
-      name: 'Quaterly',
-      id: 1,
-      price: '1299',
-      text: 'Buy 3 MONTH',
-      color: '#1ba3f7',
-    },
-    {
-      name: 'Semi-Annually',
-      id: 2,
-      price: '4999',
-      text: 'Buy 6 MONTH',
-      color: '#752bed',
-    },
-  ];
 
   const onViewCallBack = useCallback(viewableItems => {
     // console.log(viewableItems);
@@ -91,6 +84,7 @@ const PremiumPlans = () => {
   const handleScroll = event => {
     const {contentOffset} = event.nativeEvent;
     const index = Math.round(contentOffset.x / ITEM_WIDTH);
+    setSelectedPlan(PlanData[index]);
     setViewwedItemIndex(index);
   };
 
@@ -295,158 +289,158 @@ const PremiumPlans = () => {
         </Text>
       </View>
       {/* <View style={styles.container}> */}
-        <View
+      <View
+        style={{
+          marginTop: 15,
+          width: '100%',
+          flexDirection: 'row',
+          alignItems: 'center',
+          paddingStart: '6%',
+        }}>
+        <Text
           style={{
-            marginTop: 15,
-            width: '100%',
-            flexDirection: 'row',
-            alignItems: 'center',
-            paddingStart: '6%',
+            fontFamily: 'Poppins-Bold',
+            color: AppColors.FontsColor,
+            fontSize: 22,
           }}>
-          <Text
-            style={{
-              fontFamily: 'Poppins-Bold',
-              color: AppColors.FontsColor,
-              fontSize: 22,
-            }}>
-            Choose your{' '}
-          </Text>
-          <Text
-            style={{
-              fontFamily: 'Poppins-Bold',
-              color: AppColors.ActiveColor,
-              fontSize: 22,
-            }}>
-            Plan{' '}
-          </Text>
-        </View>
-
-        <Text style={{margin: 50}}>Current index is: {viewwedItemIndex}</Text>
-
-        <View
+          Choose your{' '}
+        </Text>
+        <Text
           style={{
-            // flex: 1,
-            position: 'absolute',
-            bottom: 0,
-            alignItems: 'center',
-            // backgroundColor: AppColors.secoundrycolor,
-            // width: '100%',
+            fontFamily: 'Poppins-Bold',
+            color: AppColors.ActiveColor,
+            fontSize: 22,
           }}>
-          {/* linear-gradient(202.17deg, rgba(0, 119, 183, 0.55) 3.78%, rgba(42, 114, 222, 0.1705) 38.41%, rgba(42, 114, 222, 0.55) 63.23%, rgba(0, 119, 183, 0) 114.61%); */}
+          Plan{' '}
+        </Text>
+      </View>
 
-          <ScrollView
-            horizontal={true}
-            decelerationRate={'normal'}
-            snapToInterval={ITEM_WIDTH}
-            // style={{
-            //   alignSelf: 'flex-end',
-            //   marginBottom: 0,
-            //   paddingHorizontal: 0,
-            // }}
-            showsHorizontalScrollIndicator={false}
-            bounces={false}
-            disableIntervalMomentum
-            onScroll={Animated.event(
-              [{nativeEvent: {contentOffset: {x: scrollX}}}],
-              {useNativeDriver: false, listener: handleScroll},
-            )}
-            scrollEventThrottle={16}>
-            {PlanData.map((item, index) => {
-              const inputRange = [
-                (index - 1) * ITEM_WIDTH,
-                index * ITEM_WIDTH,
-                (index + 1) * ITEM_WIDTH,
-              ];
+      <Text style={{margin: 50}}>Current index is: {viewwedItemIndex}</Text>
 
-              const translate = scrollX.interpolate({
-                inputRange,
-                outputRange: [0.85, 1, 0.85],
-              });
+      <View
+        style={{
+          // flex: 1,
+          position: 'absolute',
+          bottom: 0,
+          alignItems: 'center',
+          // backgroundColor: AppColors.secoundrycolor,
+          // width: '100%',
+        }}>
+        {/* linear-gradient(202.17deg, rgba(0, 119, 183, 0.55) 3.78%, rgba(42, 114, 222, 0.1705) 38.41%, rgba(42, 114, 222, 0.55) 63.23%, rgba(0, 119, 183, 0) 114.61%); */}
 
-              const opacity = scrollX.interpolate({
-                inputRange,
-                outputRange: [0.5, 1, 0.5],
-              });
+        <ScrollView
+          horizontal={true}
+          decelerationRate={'normal'}
+          snapToInterval={ITEM_WIDTH}
+          // style={{
+          //   alignSelf: 'flex-end',
+          //   marginBottom: 0,
+          //   paddingHorizontal: 0,
+          // }}
+          showsHorizontalScrollIndicator={false}
+          bounces={false}
+          disableIntervalMomentum
+          onScroll={Animated.event(
+            [{nativeEvent: {contentOffset: {x: scrollX}}}],
+            {useNativeDriver: false, listener: handleScroll},
+          )}
+          scrollEventThrottle={16}>
+          {PlanData.map((item, index) => {
+            const inputRange = [
+              (index - 1) * ITEM_WIDTH,
+              index * ITEM_WIDTH,
+              (index + 1) * ITEM_WIDTH,
+            ];
 
-              return (
-                <Animated.View
-                  style={{
-                    width: ITEM_WIDTH,
-                    height: ITEM_HEIGHT,
-                    backgroundColor: item.color,
-                    borderRadius: 15,
-                    marginLeft: index === 0 ? OFFSET : undefined,
-                    marginRight:
-                      index === PlanData.length - 1 ? OFFSET : undefined,
-                    opacity: opacity,
-                    transform: [{scale: translate}],
-                  }}>
-                  <View style={styles.planCard}>
-                    <Text
-                      style={{
-                        marginTop: 15,
-                        color: '#fff',
-                        fontSize: 20,
-                        fontFamily: 'Poppins-Regular',
+            const translate = scrollX.interpolate({
+              inputRange,
+              outputRange: [0.85, 1, 0.85],
+            });
+
+            const opacity = scrollX.interpolate({
+              inputRange,
+              outputRange: [0.5, 1, 0.5],
+            });
+
+            return (
+              <Animated.View
+                style={{
+                  width: ITEM_WIDTH,
+                  height: ITEM_HEIGHT,
+                  backgroundColor: item.color,
+                  borderRadius: 15,
+                  marginLeft: index === 0 ? OFFSET : undefined,
+                  marginRight:
+                    index === PlanData.length - 1 ? OFFSET : undefined,
+                  opacity: opacity,
+                  transform: [{scale: translate}],
+                }}>
+                <View style={styles.planCard}>
+                  <Text
+                    style={{
+                      marginTop: 15,
+                      color: '#fff',
+                      fontSize: 20,
+                      fontFamily: 'Poppins-Regular',
+                    }}>
+                    {item.name}
+                  </Text>
+                  <View
+                    style={{
+                      width: '70%',
+                      height: 1.6,
+                      backgroundColor: AppColors.FontsColor,
+                    }}
+                  />
+                  <Text
+                    style={{
+                      color: '#fff',
+                      fontSize: 28,
+                      marginTop: 5,
+                      fontFamily: 'Poppins-SemiBold',
+                    }}>
+                    {item.price}
+                    {`${
+                      index == 0
+                        ? '/Month'
+                        : index === 1
+                        ? '/3Month'
+                        : '/6Month'
+                    }`}
+                  </Text>
+                  <View
+                    // onPress={() => getPriceHandler(item.price, item.name)}
+                    style={{
+                      marginTop: 20,
+                      width: '50%',
+                      alignItems: 'center',
+                      borderRadius: 30,
+                      backgroundColor: AppColors.FontsColor,
+                      paddingHorizontal: 20,
+                    }}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        navigate.navigate('selectedPlan', {
+                          planDetails: selectedPlan,
+                        });
                       }}>
-                      {item.name}
-                    </Text>
-                    <View
-                      style={{
-                        width: '70%',
-                        height: 1.6,
-                        backgroundColor: AppColors.FontsColor,
-                      }}
-                    />
-                    <Text
-                      style={{
-                        color: '#fff',
-                        fontSize: 28,
-                        marginTop: 5,
-                        fontFamily: 'Poppins-SemiBold',
-                      }}>
-                      {item.price}
-                      {`${
-                        index == 0
-                          ? '/Month'
-                          : index === 1
-                          ? '/3Month'
-                          : '/6Month'
-                      }`}
-                    </Text>
-                    <View
-                      // onPress={() => getPriceHandler(item.price, item.name)}
-                      style={{
-                        marginTop: 20,
-                        width: '50%',
-                        alignItems: 'center',
-                        borderRadius: 30,
-                        backgroundColor: AppColors.FontsColor,
-                        paddingHorizontal: 20,
-                      }}>
-                      <TouchableOpacity
-                        onPress={() => {
-                          navigate.navigate('selectedPlan', {
-                            planDetails: selectedPlan,
-                          });
+                      <Text
+                        style={{
+                          fontSize: 15,
+                          color: AppColors.primarycolor,
+                          fontFamily: 'Poppins-SemiBold',
                         }}>
-                        <Text
-                          style={{
-                            fontSize: 15,
-                            color: AppColors.primarycolor,
-                            fontFamily: 'Poppins-SemiBold',
-                          }}>
-                          {item.text}
-                        </Text>
-                      </TouchableOpacity>
-                    </View>
+                        {item.text}
+                      </Text>
+                    </TouchableOpacity>
                   </View>
-                </Animated.View>
-              );
-            })}
-          </ScrollView>
+                </View>
+              </Animated.View>
+            );
+          })}
+        </ScrollView>
 
-          {/* <FlatList
+        {/* <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
             data={PlanData}
@@ -563,27 +557,27 @@ const PremiumPlans = () => {
             )}
           /> */}
 
-          <FlatList
-            data={[1, 2, 3]}
-            horizontal
-            style={{marginTop: 20, marginBottom: 20}}
-            renderItem={({item, index}) => (
-              <View
-                style={{
-                  width: 8,
-                  height: 8,
-                  backgroundColor:
-                    index === viewwedItemIndex
-                      ? AppColors.ActiveColor
-                      : AppColors.BtnClr,
-                  borderRadius: 20,
-                  marginHorizontal: 7,
-                }}
-              />
-            )}
-          />
+        <FlatList
+          data={[1, 2, 3]}
+          horizontal
+          style={{marginTop: 20, marginBottom: 20}}
+          renderItem={({item, index}) => (
+            <View
+              style={{
+                width: 8,
+                height: 8,
+                backgroundColor:
+                  index === viewwedItemIndex
+                    ? AppColors.ActiveColor
+                    : AppColors.BtnClr,
+                borderRadius: 20,
+                marginHorizontal: 7,
+              }}
+            />
+          )}
+        />
 
-          {/* <View
+        {/* <View
             style={{
               marginTop: '6%',
               width: Dimensions.get('window').width,
@@ -618,47 +612,44 @@ const PremiumPlans = () => {
             </TouchableOpacity>
           </View> */}
 
-          <Modal
-            visible={loader}
-            onRequestClose={() => {
-              setLoader(false);
-            }}
-            transparent={true}>
+        <Modal
+          visible={loader}
+          onRequestClose={() => {
+            setLoader(false);
+          }}
+          transparent={true}>
+          <View
+            style={{
+              flex: 1,
+              backgroundColor: 'rgba(1, 1, 1, 0.08)',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
             <View
               style={{
-                flex: 1,
-                backgroundColor: 'rgba(1, 1, 1, 0.08)',
+                backgroundColor: AppColors.FontsColor,
+                width: '90%',
                 alignItems: 'center',
-                justifyContent: 'center',
+                paddingVertical: '5%',
+                borderRadius: 20,
               }}>
-              <View
+              <Text
                 style={{
-                  backgroundColor: AppColors.FontsColor,
-                  width: '90%',
-                  alignItems: 'center',
-                  paddingVertical: '5%',
-                  borderRadius: 20,
+                  color: AppColors.primarycolor,
+                  fontSize: 19,
+                  marginVertical: '10%',
                 }}>
-                <Text
-                  style={{
-                    color: AppColors.primarycolor,
-                    fontSize: 19,
-                    marginVertical: '10%',
-                  }}>
-                  Please Wait..
-                </Text>
-                <ActivityIndicator
-                  color={AppColors.ActiveColor}
-                  size={45}
-                  // style={{marginBottom: '5%'}}
-                />
-              </View>
+                Please Wait..
+              </Text>
+              <ActivityIndicator
+                color={AppColors.ActiveColor}
+                size={45}
+                // style={{marginBottom: '5%'}}
+              />
             </View>
-          </Modal>
-
-
-          
-        </View>
+          </View>
+        </Modal>
+      </View>
       {/* </View> */}
     </View>
   );
