@@ -131,7 +131,9 @@ const PremiumPlans = () => {
         cashfree(order, name);
       })
       .catch(err => {
+        setLoader(false);
         console.log(err);
+        alert('Something Went Wrong!! Try Again ');
       });
   };
 
@@ -353,11 +355,12 @@ const PremiumPlans = () => {
 
             return (
               <TouchableOpacity
-                onPress={() => {
-                  navigate.navigate('selectedPlan', {
-                    planDetails: selectedPlan,
-                  });
-                }}>
+                // onPress={() => {
+                //   navigate.navigate('selectedPlan', {
+                //     planDetails: selectedPlan,
+                //   });
+                // }}
+                onPress={() => getPriceHandler(item.price, item.name)}>
                 <Animated.View
                   style={{
                     width: ITEM_WIDTH,
