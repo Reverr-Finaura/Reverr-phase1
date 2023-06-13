@@ -26,6 +26,7 @@ import firestore from '@react-native-firebase/firestore';
 import {AppColors} from '../utils';
 import Theme from '../utils/Theme';
 import {BackButton} from '../Components/Buttons/BackButton';
+import BulletPoints from '../Components/components/BulletPoints';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const PlanData = [
@@ -299,22 +300,22 @@ const PremiumPlans = () => {
         <Text
           style={{
             fontFamily: 'Poppins-Bold',
-            color: AppColors.FontsColor,
-            fontSize: 22,
-          }}>
-          Choose your{' '}
-        </Text>
-        <Text
-          style={{
-            fontFamily: 'Poppins-Bold',
             color: AppColors.ActiveColor,
             fontSize: 22,
           }}>
-          Plan{' '}
+          Features
         </Text>
       </View>
 
-      <Text style={{margin: 50}}>Current index is: {viewwedItemIndex}</Text>
+      <View style={{width: '100%', marginTop: '3%', paddingStart: '10%'}}>
+        <BulletPoints text="Get access to all the courses" />
+        <BulletPoints text="Access all the tools" />
+        <BulletPoints text="Unlimited VIBE swipes" />
+        <BulletPoints text="Additional 4 handshakes per month" />
+        <BulletPoints text="View who wants to connect with you" />
+        <BulletPoints text="Get discovered more" />
+        <BulletPoints text="Unlimited filters" />
+      </View>
 
       <View
         style={{
@@ -322,6 +323,25 @@ const PremiumPlans = () => {
           bottom: 0,
           alignItems: 'center',
         }}>
+        <View style={{flexDirection: 'row', marginBottom: 15}}>
+          <Text
+            style={{
+              fontFamily: 'Poppins-Bold',
+              color: AppColors.FontsColor,
+              fontSize: 22,
+            }}>
+            Choose your{' '}
+          </Text>
+          <Text
+            style={{
+              fontFamily: 'Poppins-Bold',
+              color: AppColors.ActiveColor,
+              fontSize: 22,
+            }}>
+            Plan
+          </Text>
+        </View>
+
         {/* linear-gradient(202.17deg, rgba(0, 119, 183, 0.55) 3.78%, rgba(42, 114, 222, 0.1705) 38.41%, rgba(42, 114, 222, 0.55) 63.23%, rgba(0, 119, 183, 0) 114.61%); */}
 
         <ScrollView
