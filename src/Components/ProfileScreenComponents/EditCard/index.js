@@ -11,17 +11,19 @@ const EditCard = props => {
       <Text
         style={{
           color: AppColors.FontsColor,
-          paddingStart: 12,
+          paddingVertical: '2%',
           fontFamily: 'Poppins-Regular',
         }}>
         {props.Title}
       </Text>
       <TextInput
         style={{
-          marginStart: 12,
-          paddingVertical: 0,
-          color: AppColors.infoFonts,
+          backgroundColor: AppColors.FontsColor,
+          paddingStart: '3%',
+          paddingVertical: 6,
+          color: AppColors.primarycolor,
           fontFamily: 'Poppins-Regular',
+          borderRadius: 5,
         }}
         onChangeText={props.onChangeText}
         value={props.value}
@@ -31,10 +33,8 @@ const EditCard = props => {
 };
 const styles = StyleSheet.create({
   Card: {
-    backgroundColor: AppColors.CardColor,
     borderRadius: 10,
     marginBottom: '2%',
-    marginTop: Height / 90,
   },
 });
 export {EditCard};

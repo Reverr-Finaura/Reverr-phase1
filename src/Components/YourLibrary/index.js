@@ -1,10 +1,10 @@
-import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
 import firestore from '@react-native-firebase/firestore';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import styles from './styles';
-import {smallString} from '../../utils';
-import {useNavigation} from '@react-navigation/native';
+import { smallString } from '../../utils';
+import { useNavigation } from '@react-navigation/native';
 
 export const YourLibrary = () => {
   const state = useSelector(state => state.UserReducer);
@@ -34,7 +34,7 @@ export const YourLibrary = () => {
             <FlatList
               data={savedArticals}
               horizontal
-              renderItem={({item, index}) => (
+              renderItem={({ item, index }) => (
                 <TouchableOpacity
                   key={index}
                   activeOpacity={0.6}
@@ -44,7 +44,7 @@ export const YourLibrary = () => {
                     })
                   }
                   style={styles.Card}>
-                  <Image style={styles.dp} source={{uri: item.image}} />
+                  <Image style={styles.dp} source={{ uri: item.image }} />
                   <Text style={styles.Name}>
                     {smallString(item.heading, 17)}
                   </Text>

@@ -5,46 +5,25 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
+  FlatList,
 } from 'react-native';
 import React from 'react';
-import {AppColors} from '../../utils';
+import { AppColors } from '../../utils';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const ProfileDetailsBox = ({userData}) => {
+const ProfileDetailsBox = ({ userData }) => {
+  console.log(userData?.designation, 'jhjh');
   return (
-    <View style={{marginHorizontal: '5%'}}>
+    <View style={{ marginHorizontal: '5%' }}>
       <View style={styles.container}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={[styles.text, {color: AppColors.FontsColor}]}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={[styles.text, { color: AppColors.FontsColor }]}>
             Current
           </Text>
           <Text
             style={[
               styles.text,
-              {color: AppColors.ActiveColor, paddingHorizontal: '2%'},
-            ]}>
-            Work
-          </Text>
-        </View>
-        <Text
-          style={{
-            color: AppColors.FontsColor,
-            fontSize: 13,
-            marginStart: '7%',
-            marginVertical: '2%',
-          }}>
-          Marketing research at Fintech
-        </Text>
-      </View>
-      <View style={styles.container}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={[styles.text, {color: AppColors.FontsColor}]}>
-            Current
-          </Text>
-          <Text
-            style={[
-              styles.text,
-              {color: AppColors.ActiveColor, paddingHorizontal: '2%'},
+              { color: AppColors.ActiveColor, paddingHorizontal: '2%' },
             ]}>
             Title
           </Text>
@@ -56,10 +35,10 @@ const ProfileDetailsBox = ({userData}) => {
             marginStart: '7%',
             marginVertical: '2%',
           }}>
-          Director of Market reserch
+          {userData?.designation ? userData.designation : "N?A"}
         </Text>
       </View>
-      <View style={styles.container}>
+      {/* <View style={styles.container}>
         <View style={{flexDirection: 'row'}}>
           <View style={{width: '45%', paddingStart: '12%'}}>
             <Text style={[styles.text, {color: AppColors.FontsColor}]}>
@@ -78,79 +57,70 @@ const ProfileDetailsBox = ({userData}) => {
             </Text>
           </View>
         </View>
-      </View>
-      <View style={styles.container}>
-        <Text style={[styles.text, {color: AppColors.FontsColor}]}>
-          Experience
-        </Text>
-        <View style={{paddingHorizontal: '10%', marginTop: '2.5%'}}>
-          <Text
-            style={{
-              color: AppColors.FontsColor,
-              fontWeight: 'bold',
-              fontSize: 16,
-            }}>
-            Fintech
+      </View> */}
+      {userData?.experience?.length > 0 && (
+        <View style={styles.container}>
+          <Text style={[styles.text, { color: AppColors.FontsColor }]}>
+            Experience
           </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginStart: '4%',
-              marginTop: '2%',
-            }}>
-            <Icon name="ellipse" size={10} color={AppColors.ActiveColor} />
-            <Text style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
-              Marketing research
-            </Text>
-          </View>
+          <FlatList
+            data={userData?.experience}
+            renderItem={({ item, index }) => (
+              <View style={{ paddingHorizontal: '10%', marginTop: '2.5%' }}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginStart: '4%',
+                    marginTop: '2%',
+                  }}>
+                  <Icon
+                    name="ellipse"
+                    size={10}
+                    color={AppColors.ActiveColor}
+                  />
+                  <Text
+                    style={{ color: AppColors.BtnClr, marginHorizontal: '3%' }}>
+                    {item}
+                  </Text>
+                </View>
+              </View>
+            )}
+          />
         </View>
-        <View style={{paddingHorizontal: '10%', marginTop: '2.5%'}}>
-          <Text
-            style={{
-              color: AppColors.FontsColor,
-              fontWeight: 'bold',
-              fontSize: 16,
-            }}>
-            Microsoft
+      )}
+      {userData?.education?.length > 0 && (
+        <View style={styles.container}>
+          <Text style={[styles.text, { color: AppColors.FontsColor }]}>
+            Education
           </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginStart: '4%',
-              marginTop: '2%',
-            }}>
-            <Icon name="ellipse" size={10} color={AppColors.ActiveColor} />
-            <Text style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
-              Full stack developer
-            </Text>
-          </View>
+          <FlatList
+            data={userData?.education}
+            renderItem={({ item, index }) => (
+              <View style={{ paddingHorizontal: '10%', marginTop: '2.5%' }}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginStart: '4%',
+                    marginTop: '2%',
+                  }}>
+                  <Icon
+                    name="ellipse"
+                    size={10}
+                    color={AppColors.ActiveColor}
+                  />
+                  <Text
+                    style={{ color: AppColors.BtnClr, marginHorizontal: '3%' }}>
+                    {item}
+                  </Text>
+                </View>
+              </View>
+            )}
+          />
         </View>
-        <View style={{paddingHorizontal: '10%', marginTop: '2.5%'}}>
-          <Text
-            style={{
-              color: AppColors.FontsColor,
-              fontWeight: 'bold',
-              fontSize: 16,
-            }}>
-            Kery solutions lt.
-          </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginStart: '4%',
-              marginTop: '2%',
-            }}>
-            <Icon name="ellipse" size={10} color={AppColors.ActiveColor} />
-            <Text style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
-              Graphic designer - Intern
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View style={styles.container}>
+      )}
+      {/* <View style={styles.container}>
         <Text style={[styles.text, {color: AppColors.FontsColor}]}>
           Education
         </Text>
@@ -220,10 +190,10 @@ const ProfileDetailsBox = ({userData}) => {
             </Text>
           </View>
         </View>
-      </View>
+      </View> */}
       <View style={styles.container}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={[styles.text, {color: AppColors.FontsColor}]}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={[styles.text, { color: AppColors.FontsColor }]}>
             Industry
           </Text>
         </View>
@@ -234,12 +204,12 @@ const ProfileDetailsBox = ({userData}) => {
             marginStart: '7%',
             marginVertical: '2%',
           }}>
-          Marketing research
+          {userData?.industry ? userData?.industry : "N/A"}
         </Text>
       </View>
       <View style={styles.container}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={[styles.text, {color: AppColors.FontsColor}]}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={[styles.text, { color: AppColors.FontsColor }]}>
             Years of experience
           </Text>
         </View>
@@ -254,10 +224,10 @@ const ProfileDetailsBox = ({userData}) => {
         </Text>
       </View>
       <View style={styles.container}>
-        <Text style={[styles.text, {color: AppColors.FontsColor}]}>
+        <Text style={[styles.text, { color: AppColors.FontsColor }]}>
           Personal Information
         </Text>
-        <View style={{paddingHorizontal: '10%', marginTop: '2.5%'}}>
+        <View style={{ paddingHorizontal: '10%', marginTop: '2.5%' }}>
           <Text
             style={{
               color: AppColors.FontsColor,
@@ -274,12 +244,12 @@ const ProfileDetailsBox = ({userData}) => {
               marginTop: '2%',
             }}>
             <Icon name="ellipse" size={10} color={AppColors.ActiveColor} />
-            <Text style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
-              Male
+            <Text style={{ color: AppColors.BtnClr, marginHorizontal: '3%' }}>
+              {userData?.gender ? userData?.gender : "N/A"}
             </Text>
           </View>
         </View>
-        <View style={{paddingHorizontal: '10%', marginTop: '2.5%'}}>
+        <View style={{ paddingHorizontal: '10%', marginTop: '2.5%' }}>
           <Text
             style={{
               color: AppColors.FontsColor,
@@ -296,19 +266,19 @@ const ProfileDetailsBox = ({userData}) => {
               marginTop: '2%',
             }}>
             <Icon name="ellipse" size={10} color={AppColors.ActiveColor} />
-            <Text style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
-              India, Delhi
+            <Text style={{ color: AppColors.BtnClr, marginHorizontal: '3%' }}>
+              {userData?.state ? userData?.state : "N/A"}
             </Text>
           </View>
         </View>
-        <View style={{paddingHorizontal: '10%', marginTop: '2.5%'}}>
+        <View style={{ paddingHorizontal: '10%', marginTop: '2.5%' }}>
           <Text
             style={{
               color: AppColors.FontsColor,
               fontWeight: 'bold',
               fontSize: 16,
             }}>
-            Hometown
+            Country
           </Text>
           <View
             style={{
@@ -318,15 +288,15 @@ const ProfileDetailsBox = ({userData}) => {
               marginTop: '2%',
             }}>
             <Icon name="ellipse" size={10} color={AppColors.ActiveColor} />
-            <Text style={{color: AppColors.BtnClr, marginHorizontal: '3%'}}>
-              New delhi, India
+            <Text style={{ color: AppColors.BtnClr, marginHorizontal: '3%' }}>
+              {userData?.country ? userData?.country : "N/A"}
             </Text>
           </View>
         </View>
       </View>
       <View style={styles.container}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={[styles.text, {color: AppColors.FontsColor}]}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={[styles.text, { color: AppColors.FontsColor }]}>
             Interests
           </Text>
         </View>
@@ -345,7 +315,7 @@ const ProfileDetailsBox = ({userData}) => {
               paddingVertical: '3%',
               paddingHorizontal: '3%',
             }}>
-            <Text style={{color: AppColors.FontsColor, fontWeight: 'bold'}}>
+            <Text style={{ color: AppColors.FontsColor, fontWeight: 'bold' }}>
               #Networking
             </Text>
           </View>
@@ -356,7 +326,7 @@ const ProfileDetailsBox = ({userData}) => {
               paddingVertical: '3%',
               paddingHorizontal: '3%',
             }}>
-            <Text style={{color: AppColors.FontsColor, fontWeight: 'bold'}}>
+            <Text style={{ color: AppColors.FontsColor, fontWeight: 'bold' }}>
               #Networking
             </Text>
           </View>
@@ -367,15 +337,15 @@ const ProfileDetailsBox = ({userData}) => {
               paddingVertical: '3%',
               paddingHorizontal: '3%',
             }}>
-            <Text style={{color: AppColors.FontsColor, fontWeight: 'bold'}}>
+            <Text style={{ color: AppColors.FontsColor, fontWeight: 'bold' }}>
               #Networking
             </Text>
           </View>
         </View>
       </View>
       <View style={styles.container}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={[styles.text, {color: AppColors.FontsColor}]}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={[styles.text, { color: AppColors.FontsColor }]}>
             How can we meet
           </Text>
         </View>
@@ -385,11 +355,14 @@ const ProfileDetailsBox = ({userData}) => {
             alignItems: 'center',
             paddingStart: '7%',
           }}>
+          {userData?.linkedinLink === "" && userData?.twitterLink === "" ? <Text style={{ color: AppColors.BtnClr, marginHorizontal: '3%' }}>
+            N/A
+          </Text> : null}
           <TouchableOpacity>
-            <Image source={require('../../assets/images/linkdin.png')} />
+            {userData?.linkedinLink !== "" ? <Image source={require('../../assets/images/linkdin.png')} /> : null}
           </TouchableOpacity>
           <TouchableOpacity>
-            <Image source={require('../../assets/images/twitter.png')} />
+            {userData?.twitterLink !== "" ? <Image source={require('../../assets/images/twitter.png')} /> : null}
           </TouchableOpacity>
         </View>
       </View>
@@ -407,4 +380,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-export {ProfileDetailsBox};
+export { ProfileDetailsBox };

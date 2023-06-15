@@ -8,17 +8,18 @@ import {
   Dimensions,
   ActivityIndicator,
 } from 'react-native';
-import React, {useState} from 'react';
-import {AppColors} from '../../../utils';
-import {BackButton, ProfileDetailsBox} from '../../../Components';
+import React, { useState, useEffect } from 'react';
+import { AppColors } from '../../../utils';
+import { ProfileDetailsBox } from '../../../Components';
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
-import Ionic from 'react-native-vector-icons/Ionicons';
-import {useNavigation} from '@react-navigation/native';
-import {useDispatch, useSelector} from 'react-redux';
-import {styles} from '../viewProfile/style';
-import auth from '@react-native-firebase/auth';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { styles } from '../viewProfile/style';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
+import { load_room_data, set_allLoaded } from '../../../Redux/actions';
+import { mentorService } from '../../../Redux/services/mentor.service';
+import PostCard from '../../../Components/postCard';
 
 const Width = Dimensions.get('screen').width;
 const Height = Dimensions.get('screen').height;
@@ -28,7 +29,25 @@ const IndividuaProfile = props => {
   const state = useSelector(state => state.UserReducer);
   const [posts, setPosts] = useState(false);
   const [about, setAbout] = useState(true);
+  const [_id, set_Id] = useState('');
   const dispatch = useDispatch();
+  const [postData, setPostData] = useState('');
+  console.log("state", state.user)
+
+  // console.log(state.Rooms.postedby === state.user.email, 'RoomsData');
+
+  useEffect(() => {
+    dispatch(mentorService);
+    if (state.lastDocument == undefined) {
+      dispatch(set_allLoaded(false));
+      dispatch(load_room_data(undefined));
+    } else {
+      dispatch(load_room_data(state.lastDocument));
+    }
+    let t = state.Rooms.filter(item => item.postedby.email == state.user.email);
+    setPostData(t);
+    console.log(state.Rooms, 'filtered');
+  }, []);
 
   if (!state) {
     return (
@@ -40,8 +59,8 @@ const IndividuaProfile = props => {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
-      style={{flex: 1, backgroundColor: AppColors.primarycolor}}>
-      <View style={{height: Height / 2.4, width: '100%'}}>
+      style={{ flex: 1, backgroundColor: AppColors.primarycolor }}>
+      <View style={{ height: Height / 2.4, width: '100%' }}>
         <View
           style={{
             backgroundColor: '#093B6A80',
@@ -74,8 +93,8 @@ const IndividuaProfile = props => {
 
         <LinearGradient
           colors={[AppColors.ActiveColor, '#012437']}
-          start={{x: 0.3, y: 1.3}}
-          end={{x: 2, y: 0.9}}
+          start={{ x: 0.3, y: 1.3 }}
+          end={{ x: 2, y: 0.9 }}
           style={{
             position: 'absolute',
             top: '40%',
@@ -87,7 +106,7 @@ const IndividuaProfile = props => {
             elevation: 10,
             zIndex: 5,
           }}>
-          <View style={{marginTop: '20%'}}>
+          <View style={{ marginTop: '20%' }}>
             <Text
               style={{
                 fontSize: 18,
@@ -104,7 +123,7 @@ const IndividuaProfile = props => {
                 color: AppColors.BtnClr,
                 textAlign: 'center',
               }}>
-              @ {state.user.name}
+              {state.user.name}
             </Text>
             <View
               style={{
@@ -123,19 +142,19 @@ const IndividuaProfile = props => {
                 paddingStart: '12%',
                 marginTop: '5%',
               }}>
-              <View style={{alignItems: 'center'}}>
-                <Text style={{color: AppColors.FontsColor}}>Gender</Text>
-                <Text style={{color: AppColors.FontsColor}}>Male</Text>
+              <View style={{ alignItems: 'center' }}>
+                <Text style={{ color: AppColors.FontsColor }}>Gender</Text>
+                <Text style={{ color: AppColors.FontsColor }}>{state.user.gender ? state.user.gender : "N/A"}</Text>
               </View>
-              <View style={{alignItems: 'center'}}>
-                <Text style={{color: AppColors.FontsColor}}>Hometown</Text>
-                <Text style={{color: AppColors.FontsColor}}>
-                  New Delhi, India
+              <View style={{ alignItems: 'center' }}>
+                <Text style={{ color: AppColors.FontsColor }}>Country</Text>
+                <Text style={{ color: AppColors.FontsColor }}>
+                  {state.user.country ? state.user.country : "N/A"}
                 </Text>
               </View>
-              <View style={{alignItems: 'center'}}>
-                <Text style={{color: AppColors.FontsColor}}>Location</Text>
-                <Text style={{color: AppColors.FontsColor}}>New Delhi</Text>
+              <View style={{ alignItems: 'center' }}>
+                <Text style={{ color: AppColors.FontsColor }}>Location</Text>
+                <Text style={{ color: AppColors.FontsColor }}> {state.user.state ? state.user.state : "N/A"}</Text>
               </View>
             </View>
           </View>
@@ -164,7 +183,7 @@ const IndividuaProfile = props => {
             </ImageBackground>
           </TouchableOpacity>
           <Image
-            source={{uri: state.user.image}}
+            source={{ uri: state.user.image }}
             style={{
               width: 110,
               height: 110,
@@ -173,7 +192,7 @@ const IndividuaProfile = props => {
               borderColor: AppColors.FontsColor,
             }}
           />
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
             <ImageBackground
               source={require('../../../assets/images/shadow.png')}
               style={{
@@ -247,17 +266,13 @@ const IndividuaProfile = props => {
             </Text>
           </TouchableOpacity>
         </View>
-        {posts && (
-          <View>
-            <Text>skhsjfj</Text>
-          </View>
-        )}
+        {posts && <PostCard postData={postData} />}
         {about && (
           <View>
             <LinearGradient
               colors={[AppColors.primarycolor, AppColors.poupopbg]}
-              start={{x: 0, y: 0.8}}
-              end={{x: 0.9, y: 0}}
+              start={{ x: 0, y: 0.8 }}
+              end={{ x: 0.9, y: 0 }}
               style={{
                 marginHorizontal: '5%',
                 borderRadius: 40,
@@ -266,21 +281,20 @@ const IndividuaProfile = props => {
                 marginTop: '3%',
                 paddingHorizontal: '2%',
               }}>
-              <Text style={[styles.text, {fontWeight: 'bold', fontSize: 15}]}>
-                “I like being aware of new things around me ”
-              </Text>
               <Text
                 style={{
-                  color: AppColors.ActiveColor,
+                  color: AppColors.FontsColor,
                   fontSize: 14,
                   textAlign: 'center',
                   paddingHorizontal: '5%',
                 }}>
-                I am a marketing research , looking for mentorship, I am an IIM
-                Bangalore graduate and have worked with Fintech for 5 years.
+                {state.user.about ? state.user.about : "N/A"}
               </Text>
             </LinearGradient>
-            <ProfileDetailsBox />
+
+            <ProfileDetailsBox
+            // userData={state.user} 
+            />
           </View>
         )}
       </View>
@@ -288,4 +302,4 @@ const IndividuaProfile = props => {
   );
 };
 
-export {IndividuaProfile};
+export { IndividuaProfile };

@@ -28,3 +28,20 @@ export const Data = [
       'https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
   },
 ];
+
+export const arrangeList = [
+  'THINKING OF A STARTUP IDEA &  SHORTLISTING Questions',
+  'Idea Validation',
+  'Business model canvas',
+  'Competitor Analysis',
+  'Business Planning',
+  'Equity & Everything',
+  'PRODUCT DEVELOPMENT',
+  'Beta Testing',
+  'Building an Audience',
+  'FINANCE FOR STARTUPS',
+  'Fundraising and its means',
+  'How to Create a Pitch Deck for Investors',
+  'ELEVATOR PITCH',
+  'REACHING OUT TO INVESTOR',
+];

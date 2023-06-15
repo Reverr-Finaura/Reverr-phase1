@@ -1,22 +1,40 @@
 import React, {useCallback, useRef, useState, useEffect} from 'react';
 import {
   View,
-  StyleSheet,
   Text,
-  Dimensions,
   Image,
   Animated,
   PanResponder,
   ActivityIndicator,
-  Button,
+  FlatList,
+  ScrollView,
   ImageBackground,
   TouchableOpacity,
+  Modal,
 } from 'react-native';
-import Swiper from 'react-native-deck-swiper';
+{/*import Swiper from 'react-native-deck-swiper';*/}
+import Button from '../../Components/Button';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Entypo from 'react-native-vector-icons/Entypo';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MultiSelect from 'react-native-multiple-select';
+import styles from './styles';
+import authentication from '@react-native-firebase/auth';
+import LinearGradient from 'react-native-linear-gradient';
+import AboutMeSection from '../../Components/components/AboutMeSection';
+import FindMeOn from '../../Components/components/FindMeOn';
+import GradientHeader from '../../Components/components/GradientHeader';
+import HowToMeet from '../../Components/components/HowToMeet';
+import LineBar from '../../Components/components/LineBar';
+import ProfileTitle from '../../Components/components/ProfileTitle';
+import WhyHere from '../../Components/components/WhyHere';
+import Theme from '../../utils/Theme';
 
 // import { useNavigation } from '@react-navigation/native';
-import {FlatList, ScrollView} from 'react-native-gesture-handler';
+// import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import {useDispatch, useSelector} from 'react-redux';
+
 import {CustomPopup, IndividualHeaderLayout} from '../../Components';
 import {Choice} from '../../Components';
 import {AppColors} from '../../utils';
@@ -28,766 +46,85 @@ import {
   RemoveTopCard,
 } from '../../Redux/actions';
 import firestore from '@react-native-firebase/firestore';
-import {useNavigation} from '@react-navigation/native';
+import {
+  useFocusEffect,
+  useIsFocused,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
 import {cardData} from '../../dumy-Data/defaultHomeCardData';
-import { VibeBoarding } from '../../Components/VibeBoarding';
+import {VibeBoarding} from '../../Components/VibeBoarding';
+import CountDown from 'react-native-countdown-component';
+import {firebase} from '@react-native-firebase/database';
+import {CountdownTimer} from '../CountdownTimer';
+import {useLayoutEffect} from 'react';
+import {blue} from 'react-native-redash';
+import {black} from 'react-native-paper/lib/typescript/styles/colors';
+
 const Vibe = () => {
+  const state = useSelector(state => state.UserReducer);
+  //  console.log("",JSON.stringify (state.Rooms,2,4))
+
+  //  console.log(">>>",state.Rooms[7].postedby)
+
+  // state.Rooms.map((room,i) => {
+  //   if(room?.postedby?.Vibe_Data !=undefined){
+  //     console.log(i,'=======================>', room?.postedby?.Vibe_Data);
+
+  //   }else{
+  //     console.log(i,'===========UNDEFINED============>', room?.postedby?.Vibe_Data);
+
+  //   }
+  // });
+
+  const [continueshowingcard, setcontinueshowingcard] = useState(true);
   const [prevDailog, setPrevDailog] = useState(false);
   const [allswiped, setAllswiped] = useState(false);
-  const [more, setMore] = useState(false);
-  const LoadMoreVibeCard = () => {
-    setMore(false);
-    setTimeout(() => {
-      setAllswiped(false);
-    }, 1500);
+  const [toshowtimer, settoshowtimer] = useState(false);
+  const [TotalSwipe, setTotalswipe] = useState(0);
+  const [showCards, setshowCards] = useState(false);
+  const [hasPremiumOfVibe, setHasPremiumOfVibe] = useState(false);
+  // console.log('hasPremiumm', hasPremiumOfVibe);
+  const [selected1, setselected1] = useState([]);
+
+  // const [filter, setFilter] = useState(false);
+  // console.log("🚀 ~ file: index.js:135 ~ Vibe ~ filter:", filter)
+
+  const filterModal = () => {
+    setFilter(v => !v);
   };
-  const PremiumTab = () => {
+  const navigation = useNavigation();
+
+  // const isFocused = useIsFocused();
+
+  const LikeTab = () => {
     return (
-      <View
-        style={{
-          width: Dimensions.get('window').width / 1.1,
-          padding: 20,
-          justifyContent: 'center',
-          alignItems: 'center',
-          alignContent: 'center',
-        }}
-      >
-        <Text style={styles.heading}>
-          Buy Premium to connect with people who are interested in your profile.
-        </Text>
-        <Text
-          style={{
-            color: '#fff',
-            marginTop: 20,
-            fontSize: 16,
-            fontWeight: 'bold',
-          }}
-        >
-          Many people viewed your profile
-        </Text>
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            paddingLeft: 180,
-            marginVertical: 20,
-            alignContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <View
-            style={{
-              borderWidth: 2,
-              borderColor: 'dodgerblue',
-              width: 180,
-              height: 180,
-              justifyContent: 'center',
-              alignContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <Image
-              style={{width: 100, height: 100}}
-              source={require('../../assets/images/MentorCard.png')}
-            />
-            <Text style={{color: 'grey'}}>Alice</Text>
+      <View style={styles.viewLike}>
+        <TouchableOpacity onPress={() => navigation.navigate('LikeScreen')}>
+          <View style={styles.viewLike1}>
+            <Text style={styles.likeText}>likes</Text>
           </View>
-          <Image
-            style={{width: 250, height: 100}}
-            source={require('../../assets/images/Rectangleimg.png')}
-          />
-        </View>
-        <Text style={{color: 'grey', marginLeft: 40}}>
-          Explore more options with our premium service.
-        </Text>
-        <View style={styles.button}>
-          <Image
-            style={{marginRight: 40}}
-            source={require('../../assets/images/badge.png')}
-          />
-          <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 20}}>
-            Buy premium
-          </Text>
-          {true ? (
-            <TouchableOpacity
-              style={{
-                flexDirection: 'column',
-                bottom: -45,
-                alignItems: 'center',
-              }}
-              onPress={() => LoadMoreVibeCard()}
-            >
-              <View style={{alignSelf: 'center'}}>
-                <Text
-                  style={{
-                    color: '#0077B7',
-                    fontFamily: 'Poppins',
-                    fontSize: 18,
-                    fontWeight: '700',
-                    marginTop: 6,
-                    textAlign: 'center',
-                  }}
-                >
-                  More Card
-                </Text>
-              </View>
-            </TouchableOpacity>
-          ) : (
-            <Text>wait...</Text>
-          )}
+        </TouchableOpacity>
+        <View style={{paddingRight: 35}}>
+          <TouchableOpacity onPress={() => setFilter(true)}>
+            <Icon name="filter" color="#ffffff" size={25} />
+          </TouchableOpacity>
         </View>
       </View>
     );
   };
-
-  const MoreInfo = item => {
-    const [id, setId] = useState('');
-
-    if (id == item.id) {
-      return (
-        <TouchableOpacity onPress={() => setId('')}>
-          {/* <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text>
-        <Text> MORE INFO</Text> */}
-
-          <View>
-            <View>
-              <View>
-                <Text
-                  style={{
-                    color: '#0077B7',
-                    fontFamily: 'Poppins',
-                    fontSize: 18,
-                    fontWeight: '700',
-                    marginLeft: 15,
-                  }}
-                >
-                  What I am here for
-                </Text>
-                <View
-                  style={{
-                    marginTop: 5,
-                    flexDirection: 'row',
-                    justifyContent: 'space-around',
-                  }}
-                >
-                  <View
-                    style={{
-                      boxShadow: '4px -5px 5px 0px #00000040 inset',
-                      height: 91,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: 91,
-                      borderRadius: 91 / 2,
-                      borderWidth: 3,
-                      borderColor: 'white',
-                      backgroundColor: '#0077B7',
-                    }}
-                  >
-                    <Text
-                      style={{
-                        color: 'white',
-                        textAlign: 'center',
-                        fontFamily: 'Poppins',
-                        fontSize: 16,
-                        fontWeight: '500',
-                      }}
-                    >
-                      Hire Employee
-                    </Text>
-                  </View>
-
-                  <View
-                    style={{
-                      boxShadow: '4px -5px 5px 0px #00000040 inset',
-                      height: 91,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: 91,
-                      borderRadius: 91 / 2,
-                      borderWidth: 3,
-                      borderColor: 'white',
-                      backgroundColor: '#0077B7',
-                    }}
-                  >
-                    <Text
-                      style={{
-                        color: 'white',
-                        textAlign: 'center',
-                        fontFamily: 'Poppins',
-                        fontSize: 16,
-                        fontWeight: '500',
-                      }}
-                    >
-                      Hire Employee
-                    </Text>
-                  </View>
-
-                  <View
-                    style={{
-                      boxShadow: '4px -5px 5px 0px #00000040 inset',
-                      height: 91,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: 91,
-                      borderRadius: 91 / 2,
-                      borderWidth: 3,
-                      borderColor: 'white',
-                      backgroundColor: '#0077B7',
-                    }}
-                  >
-                    <Text
-                      style={{
-                        color: 'white',
-                        textAlign: 'center',
-                        fontFamily: 'Poppins',
-                        fontSize: 16,
-                        fontWeight: '500',
-                      }}
-                    >
-                      Hire Employee
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View>
-              <Text
-                style={{
-                  color: '#0077B7',
-                  fontFamily: 'Poppins',
-                  fontSize: 18,
-                  fontWeight: '700',
-                  marginTop: 6,
-                  marginLeft: 15,
-                }}
-              >
-                How can we meet
-              </Text>
-            </View>
-            <View
-              style={{
-                marginTop: 3,
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-              }}
-            >
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <ImageBackground
-                  style={{width: 20, height: 20, borderRadius: 10}}
-                  source={{
-                    uri:
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                  }}
-                ></ImageBackground>
-
-                <Text
-                  style={{
-                    marginLeft: 4,
-                    color: 'white',
-                    fontFamily: 'Poppins',
-                    fontSize: 16,
-                    fontWeight: '400',
-                  }}
-                >
-                  At Coffee
-                </Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <ImageBackground
-                  style={{width: 20, height: 20, borderRadius: 10}}
-                  source={{
-                    uri:
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                  }}
-                ></ImageBackground>
-
-                <Text
-                  style={{
-                    marginLeft: 4,
-                    color: 'white',
-                    fontFamily: 'Poppins',
-                    fontSize: 16,
-                    fontWeight: '400',
-                  }}
-                >
-                  At Coffee
-                </Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <ImageBackground
-                  style={{width: 20, height: 20, borderRadius: 10}}
-                  source={{
-                    uri:
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                  }}
-                ></ImageBackground>
-
-                <Text
-                  style={{
-                    marginLeft: 4,
-                    color: 'white',
-                    fontFamily: 'Poppins',
-                    fontSize: 16,
-                    fontWeight: '400',
-                  }}
-                >
-                  At Coffee
-                </Text>
-              </View>
-            </View>
-            <View>
-              <Text
-                style={{
-                  color: '#0077B7',
-                  fontFamily: 'Poppins',
-                  fontSize: 18,
-                  fontWeight: '700',
-                  marginTop: 4,
-                  marginLeft: 15,
-                }}
-              >
-                About Me
-              </Text>
-            </View>
-
-            <View
-              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}
-            >
-              <View>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <ImageBackground
-                    style={{width: 20, height: 20, borderRadius: 10}}
-                    source={{
-                      uri:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                    }}
-                  ></ImageBackground>
-                  <Text
-                    style={{
-                      color: '#8AB9FF',
-                      fontFamily: 'Poppins',
-                      fontSize: 16,
-
-                      marginLeft: 4,
-                      fontWeight: '500',
-                      marginTop: 4,
-                    }}
-                  >
-                    What am I looking for{' '}
-                  </Text>
-                </View>
-                <Text
-                  style={{
-                    color: '#FFFFFF',
-                    fontFamily: 'Inter',
-                    fontSize: 14,
-                    textAlign: 'center',
-                    fontWeight: '400',
-                    marginTop: 1,
-                  }}
-                >
-                  Mentor ship {''} Get Inspired{' '}
-                </Text>
-              </View>
-
-              <View>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <ImageBackground
-                    style={{width: 20, height: 20, borderRadius: 10}}
-                    source={{
-                      uri:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                    }}
-                  ></ImageBackground>
-                  <Text
-                    style={{
-                      color: '#8AB9FF',
-                      fontFamily: 'Poppins',
-                      fontSize: 16,
-                      fontWeight: '500',
-                      marginTop: 4,
-                      marginLeft: 4,
-                    }}
-                  >
-                    Past Experience
-                  </Text>
-                </View>
-                <Text
-                  style={{
-                    color: '#FFFFFF',
-                    fontFamily: 'Inter',
-                    fontSize: 14,
-                    textAlign: 'center',
-                    fontWeight: '400',
-                    marginTop: 1,
-                  }}
-                >
-                  Amazon
-                </Text>
-              </View>
-            </View>
-            <View
-              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}
-            >
-              <View>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <ImageBackground
-                    style={{width: 20, height: 20, borderRadius: 10}}
-                    source={{
-                      uri:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                    }}
-                  ></ImageBackground>
-                  <Text
-                    style={{
-                      color: '#8AB9FF',
-                      fontFamily: 'Poppins',
-                      fontSize: 16,
-
-                      marginLeft: 4,
-                      fontWeight: '500',
-                      marginTop: 4,
-                    }}
-                  >
-                    What am I looking for{' '}
-                  </Text>
-                </View>
-                <Text
-                  style={{
-                    color: '#FFFFFF',
-                    fontFamily: 'Inter',
-                    fontSize: 14,
-                    textAlign: 'center',
-                    fontWeight: '400',
-                    marginTop: 1,
-                  }}
-                >
-                  Mentor ship {''} Get Inspired{' '}
-                </Text>
-              </View>
-
-              <View>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <ImageBackground
-                    style={{width: 20, height: 20, borderRadius: 10}}
-                    source={{
-                      uri:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                    }}
-                  ></ImageBackground>
-                  <Text
-                    style={{
-                      color: '#8AB9FF',
-                      fontFamily: 'Poppins',
-                      fontSize: 16,
-                      fontWeight: '500',
-                      marginTop: 4,
-                      marginLeft: 4,
-                    }}
-                  >
-                    Past Experience
-                  </Text>
-                </View>
-                <Text
-                  style={{
-                    color: '#FFFFFF',
-                    fontFamily: 'Inter',
-                    fontSize: 14,
-                    textAlign: 'center',
-                    fontWeight: '400',
-                    marginTop: 1,
-                  }}
-                >
-                  Amazon
-                </Text>
-              </View>
-            </View>
-            <View
-              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}
-            >
-              <View>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <ImageBackground
-                    style={{width: 20, height: 20, borderRadius: 10}}
-                    source={{
-                      uri:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                    }}
-                  ></ImageBackground>
-                  <Text
-                    style={{
-                      color: '#8AB9FF',
-                      fontFamily: 'Poppins',
-                      fontSize: 16,
-
-                      marginLeft: 4,
-                      fontWeight: '500',
-                      marginTop: 4,
-                    }}
-                  >
-                    What am I looking for{' '}
-                  </Text>
-                </View>
-                <Text
-                  style={{
-                    color: '#FFFFFF',
-                    fontFamily: 'Inter',
-                    fontSize: 14,
-                    textAlign: 'center',
-                    fontWeight: '400',
-                    marginTop: 1,
-                  }}
-                >
-                  Mentor ship {''} Get Inspired{' '}
-                </Text>
-              </View>
-
-              <View>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <ImageBackground
-                    style={{width: 20, height: 20, borderRadius: 10}}
-                    source={{
-                      uri:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                    }}
-                  ></ImageBackground>
-                  <Text
-                    style={{
-                      color: '#8AB9FF',
-                      fontFamily: 'Poppins',
-                      fontSize: 16,
-                      fontWeight: '500',
-                      marginTop: 4,
-                      marginLeft: 4,
-                    }}
-                  >
-                    Past Experience
-                  </Text>
-                </View>
-                <Text
-                  style={{
-                    color: '#FFFFFF',
-                    fontFamily: 'Inter',
-                    fontSize: 14,
-                    textAlign: 'center',
-                    fontWeight: '400',
-                    marginTop: 1,
-                  }}
-                >
-                  Amazon
-                </Text>
-              </View>
-            </View>
-            <View
-              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}
-            >
-              <View>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <ImageBackground
-                    style={{width: 20, height: 20, borderRadius: 10}}
-                    source={{
-                      uri:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                    }}
-                  ></ImageBackground>
-                  <Text
-                    style={{
-                      color: '#8AB9FF',
-                      fontFamily: 'Poppins',
-                      fontSize: 16,
-
-                      marginLeft: 4,
-                      fontWeight: '500',
-                      marginTop: 4,
-                    }}
-                  >
-                    What am I looking for{' '}
-                  </Text>
-                </View>
-                <Text
-                  style={{
-                    color: '#FFFFFF',
-                    fontFamily: 'Inter',
-                    fontSize: 14,
-                    textAlign: 'center',
-                    fontWeight: '400',
-                    marginTop: 1,
-                  }}
-                >
-                  Mentor ship {''} Get Inspired{' '}
-                </Text>
-              </View>
-
-              <View>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <ImageBackground
-                    style={{width: 20, height: 20, borderRadius: 10}}
-                    source={{
-                      uri:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                    }}
-                  ></ImageBackground>
-                  <Text
-                    style={{
-                      color: '#8AB9FF',
-                      fontFamily: 'Poppins',
-                      fontSize: 16,
-                      fontWeight: '500',
-                      marginTop: 4,
-                      marginLeft: 4,
-                    }}
-                  >
-                    Past Experience
-                  </Text>
-                </View>
-                <Text
-                  style={{
-                    color: '#FFFFFF',
-                    fontFamily: 'Inter',
-                    fontSize: 14,
-                    textAlign: 'center',
-                    fontWeight: '400',
-                    marginTop: 1,
-                  }}
-                >
-                  Amazon
-                </Text>
-              </View>
-            </View>
-          </View>
-        </TouchableOpacity>
-      );
-    } else {
-      return (
-        <TouchableOpacity
-          style={{
-            marginVertical: 12,
-            width: 150,
-            height: 43,
-            justifyContent: 'center',
-            alignSelf: 'center',
-            backgroundColor: '#2A72DE',
-            borderRadius: 11,
-          }}
-          onPress={() => setId(item.id)}
-        >
-          <Text
-            style={{
-              color: 'white',
-              fontFamily: 'Poppins',
-              fontSize: 18,
-              fontWeight: '700',
-              textAlign: 'center',
-            }}
-          >
-            {' '}
-            Tap For More
-          </Text>
-        </TouchableOpacity>
-      );
-    }
-  };
-
   const Vibes = () => {
+    const {params} = useRoute();
+    const data = 'abc';
+    // console.log('data paraams ', params);
+    const [filter, setFilter] = useState(false);
+
+    const [visible, setVisible] = useState(false);
+
+    const toggleData = () => {
+      setVisible(!visible);
+    };
+
     const navigation = useNavigation();
     const state = useSelector(state => state.UserReducer);
     const dispatch = useDispatch();
@@ -795,868 +132,1047 @@ const Vibe = () => {
     const [moreInfo, setMoreInfo] = useState(-1);
     const [bool, setBool] = useState(false);
     const [cardindex, setcardindex] = useState(0);
+    const [count, setCount] = useState(0);
 
-    const [loading, setLoading] = useState(true);
+    const [swipe, setswipe] = useState(1);
+    const [loading, setLoading] = useState(false);
     const [mainDialog, setMainDialog] = useState(false);
     const [prevDailog, setPrevDailog] = useState(false);
     const [prevData, setPrevData] = useState();
-    const [demoData, setDemoData] = useState([
-      {
-        id: '123',
-        name: 'Jatin Khurana',
-        designation: 'CEO and Fintech',
-        country: 'India',
-        city: 'Delhi',
-        image: '../../assets/images/dp.png',
-        quote:
-          "Don't ship it. Don't settle for good enough. Do better work than you did yesterday. Get out of your comfort zone and give it your all",
-      },
-    ]);
+    const [numberOfSwipsDone, setNumberOfSwipsDone] = useState();
     const [getcard, setgetcards] = useState(0);
     const [show, setshow] = useState(false);
     const [vertical, setvertical] = useState(false);
 
+    const [filters, setFilters] = useState({
+      hareFor: [],
+      yearsExperience: [],
+      howMeet: [],
+    });
+    const ageOptions = [
+      {id: '< 1', name: '< 1'},
+      {id: '1-2', name: '1-2'},
+      {id: '2-5', name: '2-5'},
+      {id: '5>', name: '5>'},
+    ];
+
+    const hareFor = [
+      {id: 'Find Investors', name: 'Find Investors'},
+      {id: 'Networking', name: 'Networking'},
+      {id: 'Hire Employees', name: 'Hire Employees'},
+      {id: 'Find Mentor', name: 'Find Mentor'},
+      {id: 'Find Cofounders', name: 'Find Cofounder'},
+    ];
+    const howMeet = [
+      {id: 'At Coffee', name: 'At Coffee'},
+      {id: 'Video Call', name: 'Video Call'},
+      {id: 'Phone Call', name: 'Phone Call'},
+    ];
+
+    const [filteringData, setFilteringData] = useState([]);
+    // console.log("🚀 ~ file: index.js:2476 ~ Vibes ~ filteringData:",JSON.stringify (filteringData))
+
+    const filterData = () => {
+      if (
+        filters.hareFor.length > 0 ||
+        filters.howMeet.length > 0 ||
+        filters.yearsExperience.length > 0
+      ) {
+        let res = cards.filter(val => {
+          if (val?.Vibe_Data?.Here_for != undefined) {
+            return filters.hareFor.every(hereFor =>
+              val.Vibe_Data.Here_for.includes(hereFor),
+            );
+          }
+        });
+
+        let res1 = res.filter(val => {
+          if (val.Vibe_Data?.How_To_Meet != undefined) {
+            return filters.howMeet.every(meeting =>
+              val.Vibe_Data.How_To_Meet.includes(meeting),
+            );
+          }
+        });
+
+        let res2 = res1.filter(val => {
+          if (val?.Vibe_Data?.Years_Of_Experience != undefined) {
+            return filters.yearsExperience.every(yearExp =>
+              val.Vibe_Data.Years_Of_Experience.includes(yearExp),
+            );
+          }
+        });
+
+        setFilteringData(res2);
+        setFilter(false);
+        // alert("Inner")
+      } else {
+        setFilteringData(cards);
+        setFilter(false);
+        // alert("Outer")
+      }
+    };
+
     const HandleShow = async () => {
-      console.log('at shoiww');
-      console.log(show);
+      // console.log('at shoiww');
+      // console.log(show);
       setshow(() => !show);
       setvertical(() => !vertical);
-      console.log('after', show);
-    };
-    const swipeLeft = async cardData => {
-      // var currCard = cards[idx];
-      dispatch(RemoveTopCard());
-
-      let CardEmail = cardData.email;
-
-      if (CardEmail) {
-        console.log('passed email is', CardEmail);
-        await firestore()
-          .collection('Users')
-          .doc(state.user.email)
-          .update({
-            Passed_Email: firestore.FieldValue.arrayUnion(CardEmail),
-          });
-      }
-      console.log(currCard.text + ' got swipped left');
-      // var docRef = firestore().collection('Users').doc(state.user.email);
-
-      // docRef
-      //   .get()
-      //   .then(doc => {
-      //     if (doc.exists) {
-      //       console.log('Document data:', doc.data().Passed_Email);
-      //       const Passed_User_array = doc.data().Passed_Email;
-      //       console.log(Passed_User_array);
-      //     } else {
-      //       // doc.data() will be undefined in this case
-      //       console.log('No such document!');
-      //     }
-      //   })
-      //   .catch(error => {
-      //     console.log('Error getting document:', error);
-      //   });
+      // console.log('after', show);
     };
 
-    const swipeRight = async data => {
-      // var currCard = cards[idx];
-      console.log('what is data', data);
-      dispatch(RemoveTopCard());
-      // console.log('stae  vibe swipe right isss', state.vibe);
-      // console.log('data is', data);
-      var Liked_Email = data.email;
+    const swipeLeft = async CurrentIndex => {
+      setCount(count + 1);
+      HandleOnSwiped(CurrentIndex);
+
+      var tempCards = filteringData.filter(
+        it => it.email != authentication().currentUser.email,
+      ).filter(
+        it => it.Vibe_Data !=undefined
+      );
+
+      var tempUser = tempCards[CurrentIndex];
+
       var My_Email = state.user.email;
-      var Liked_People = data.liked_people;
-      if (Liked_People) {
-        var check = Liked_People.includes(My_Email);
-        if (check) {
+
+      passedUsers(tempUser.email)
+      // if (!cards[cardindex]) return;
+      // const LeftSwiped = cards[CurrentIndex];
+      // // console.log("🚀 ~ file: index.js:2543 ~ swipeLeft ~ LeftSwiped:", LeftSwiped)
+      // // console.log('Left detail', LeftSwiped.id);
+      // firestore()
+      //   .collection('Users')
+      //   .doc(state.user.email)
+      //   .collection('passeduser')
+      //   .doc(LeftSwiped.id)
+      //   .set(LeftSwiped);
+    };
+
+    const Tapanywhere = cardindex => {
+      const data = cards[cardindex];
+      // console.log('Tap anywhere', data);
+      navigation.navigate('ShowMoreVibe', data);
+    };
+
+    const passedUsers = async (user) =>{
+      var My_Email = state.user.email;
+
+      await firestore()
+            .collection('Users')
+            .doc(My_Email)
+            .update({
+              passedUser: firestore.FieldValue.arrayUnion(user),
+            });
+      await firestore()
+            .collection('Users')
+            .doc(My_Email)
+            .update({
+              Last_Card_Email_Swiped: user,
+            });
+      await firestore()
+            .collection('Users')
+            .doc(My_Email)
+            .update({
+              Number_Of_Swips_Done: firebase.firestore.FieldValue.increment(1)
+            });
+
+            setNumberOfSwipsDone(prev=> prev++);
+    }
+
+    const swipeRight = async CurrentIndex => {
+
+      var tempCards = filteringData.filter(
+        it => it.email != authentication().currentUser.email,
+      ).filter(
+        it => it.Vibe_Data !=undefined
+      );
+
+      var tempUser = tempCards[CurrentIndex];
+
+      var My_Email = state.user.email;
+
+      setCount(count + 1);
+
+      HandleOnSwiped(CurrentIndex);
+      // var currCard = cards[idx];
+      
+
+      //add swiped user to passed user array of the current user
+      passedUsers(tempUser.email)
+
+      //check if the user has liked me or superliked me then match and update in both users
+      if((tempUser.liked && tempUser.liked.includes(My_Email) )||(tempUser.super_liked_people && tempUser.super_liked_people.includes(My_Email))){
+        var sup = tempUser.super_liked_people ? tempUser.super_liked_people.includes(My_Email) : false;
+        try{
+
+          if(sup){
+            await firestore()
+            .collection('Users')
+            .doc(tempUser.email)
+            .update({
+              super_liked_people: firestore.FieldValue.arrayRemove(My_Email),
+            });
+          }else{
+            await firestore()
+            .collection('Users')
+            .doc(tempUser.email)
+            .update({
+              liked: firestore.FieldValue.arrayRemove(My_Email),
+            });
+          }
           await firestore()
             .collection('Users')
-            .doc(state.user.email)
+            .doc(My_Email)
             .update({
-              Matched_People: firestore.FieldValue.arrayUnion(Liked_Email),
+              Matched_People: firestore.FieldValue.arrayUnion(tempUser.email),
             });
+            await firestore()
+            .collection('Users')
+            .doc(tempUser.email)
+            .update({
+              Matched_People: firestore.FieldValue.arrayUnion(My_Email),
+            });
+
           // action dispacthed to store matchedpeople
-          dispatch(matchedpeople(Liked_Email));
+          dispatch(matchedpeople(tempUser.email));
           // Match screen is called here
           navigation.navigate('MatchScreen', {
-            data,
+            tempUser,
           });
 
           setPrevDailog(true);
           setPrevData(prev);
         }
-      } else {
-        await firestore()
+        catch(err){
+          console.log(err)
+          // alert("Please Check your internet connection")
+        }
+      }
+      //else add likeduser's email to user's liked array
+      else{
+        try{
+          
+          await firestore()
           .collection('Users')
-          .doc(state.user.email)
+          .doc(My_Email)
           .update({
-            liked_people: firestore.FieldValue.arrayUnion(Liked_Email),
-          })
-          .then(async () => {
-            firestore()
-              .collection('Users')
-              .doc(Liked_Email)
-              .update({
-                people_liked_me: firestore.FieldValue.arrayUnion(
-                  state.user.email,
-                ),
-              });
-            console.log('userswiped');
-          })
-          .catch(err => {
-            console.log(err.message);
-            console.log('please check your internet connection');
+            liked: firestore.FieldValue.arrayUnion(tempUser.email),
           });
+
+          await firestore()
+          .collection('Users')
+          .doc(tempUser.email)
+          .update({
+            people_liked_me: firestore.FieldValue.arrayUnion(My_Email),
+          });
+        
+        }
+        catch (err){
+          console.log(err)
+          // alert("Please Check your internet connection")
+        }
+
+      }
+
+    };
+    const superLikeCenter = async CurrentIndex => {
+
+      var tempCards = filteringData.filter(
+        it => it.email != authentication().currentUser.email,
+      ).filter(
+        it => it.Vibe_Data !=undefined
+      );
+
+      var tempUser = tempCards[CurrentIndex];
+
+      var My_Email = state.user.email;
+
+      setCount(count + 1);
+
+      passedUsers(tempUser.email)
+
+      HandleOnSwiped(CurrentIndex);
+      // var currCard = cards[idx];
+
+      //check if the user has liked me or superliked me then match and update in both users
+      if((tempUser.liked && tempUser.liked.includes(My_Email) )||(tempUser.super_liked_people && tempUser.super_liked_people.includes(My_Email))){
+        var sup = tempUser.super_liked_people ? tempUser.super_liked_people.includes(My_Email) : false;
+        try{
+
+          if(sup){
+            await firestore()
+            .collection('Users')
+            .doc(tempUser.email)
+            .update({
+              super_liked_people: firestore.FieldValue.arrayRemove(My_Email),
+            });
+          }else{
+            await firestore()
+            .collection('Users')
+            .doc(tempUser.email)
+            .update({
+              liked: firestore.FieldValue.arrayRemove(My_Email),
+            });
+          }
+
+          await firestore()
+            .collection('Users')
+            .doc(My_Email)
+            .update({
+              Matched_People: firestore.FieldValue.arrayUnion(tempUser.email),
+            });
+            await firestore()
+            .collection('Users')
+            .doc(tempUser.email)
+            .update({
+              Matched_People: firestore.FieldValue.arrayUnion(My_Email),
+            });
+          // action dispacthed to store matchedpeople
+          dispatch(matchedpeople(tempUser.email));
+          // Match screen is called here
+          navigation.navigate('MatchScreen', {
+            tempUser,
+          });
+
+          setPrevDailog(true);
+          setPrevData(prev);
+        }
+        catch(err){
+          console.log(err)
+          alert("Please Check your internet connection")
+        }
+      }
+      //else add likeduser's email to user's liked array
+      else{
+        try{
+          
+          await firestore()
+          .collection('Users')
+          .doc(My_Email)
+          .update({
+            super_liked_people: firestore.FieldValue.arrayUnion(tempUser.email),
+          });
+
+          await firestore()
+          .collection('Users')
+          .doc(tempUser.email)
+          .update({
+            people_super_liked_me: firestore.FieldValue.arrayUnion(My_Email),
+          });
+        
+        }
+        catch (err){
+          console.log(err)
+          alert("Please Check your internet connection")
+        }
+
       }
     };
-
     const [cards, setcards] = useState([]);
+    // console.log('What is item dddd', cards);
+    // alert(cards);
+
     const swipedAll = () => {
       console.log('swiped all');
       setAllswiped(true);
     };
 
+    const HandleOnSwiped = async cardindex => {
+      setcardindex(prev => prev + 1);
+      setswipe(prev => prev + 1);
+
+      const Data = cards[cardindex];
+      // console.log('datattaa', Data);
+
+      await firestore().collection('Users').doc(state.user.email).update({
+        Number_Of_Swips_Done: swipe,
+      });
+
+      await firestore()
+        .collection('Users')
+        .doc(state.user.email)
+        .update({Last_Card_Email_Swiped: Data.id});
+    };
+
+    // console.log('state card is', state.vibe.length);
+    // console.log('datta coming from boarding', data);
+    const CheckIfBoarding = async () => {
+      await firestore()
+        .collection('Users')
+        .doc(state.user.email)
+        .get()
+        .then(doc => {
+          if (doc.data().Vibe_Data) {
+            console.log('Document vibe data:', doc.data().Vibe_Data);
+            setshowCards(true);
+            // console.log('yoooi');
+          } else {
+            // doc.data() will be undefined in this case
+            setshowCards(false);
+            // console.log('No such document!');
+            navigation.navigate('VibeBoarding');
+          }
+        })
+        .catch(error => {
+          console.log('Error getting document:', error);
+        });
+    };
+
+    // This will run after VibeBoarding screen
+    if (params) {
+      // console.log('after boarding screen here');
+      setshowCards(true);
+    }
+    //CHECK WHETHER USER HAS PREMIUM SUBSCRIBE FOR VIBE
     useEffect(() => {
-      setMore(false);
-
-      // var docRef = firestore().collection('Users').doc(state.user.email);
-
-      // docRef
-      //   .get()
-      //   .then(doc => {
-      //     if (doc.exists) {
-      //       if (doc.data().Vibe_Data) {
-      //         console.log('Document data:', doc.data().Vibe_Data);
-      //         console.log('yoooi');
-      //       }
-      //     } else {
-      //       // doc.data() will be undefined in this case
-      //       console.log('No such document!');
-      //       <VibeBoarding />;
-      //     }
-      //   })
-      //   .catch(error => {
-      //     console.log('Error getting document:', error);
-      //   });
-
-      // console.log('loadingCard intially');
-      if (state.vibe.length == 0 || cardindex == 0) {
-        dispatch(
-          Load_Card(
-            undefined,
-            state.user.email,
-            state.user.no_of_swipe,
-            state.passed_userArray,
-            state.Matched_userArray,
-          ),
-        );
-
-        setcards(state.vibe);
-
-        // console.log('stae  vibe 0000 isss', state.vibe);
-      }
-
-      setLoading(false);
+      const checkForVibePremium = async () => {
+        await firestore()
+          .collection('Users')
+          .doc(state.user.email)
+          .get()
+          .then(data => {
+            if (data._data.hasVibePremium) {
+              if (data._data.hasVibePremium === true) {
+                data._data.Premium.map(item => {
+                  if (item.id === 'VIBE') {
+                    if (
+                      new Date(item.DateOfExpiry.seconds * 1000) >= new Date()
+                    ) {
+                      setHasPremiumOfVibe(true);
+                    }
+                  }
+                });
+              }
+            }
+          });
+      };
+      checkForVibePremium();
     }, []);
-    useEffect(() => {
-      if (state.vibe.length == 15) {
-        setcards(state.vibe);
-      } else {
-        return;
-      }
-    }, [state.vibe.length]);
-    console.log('state card is', cards);
-    useEffect(() => {
-      console.log('state vibe chaning', state.vibe.length);
-      if (state.vibe.length === 1) {
-        setAllswiped(true);
 
-        const ExpiredDate = new Date();
-        console.log(ExpiredDate);
-        console.log(ExpiredDate.getTime());
-        const ExpiredTime = ExpiredDate.getTime();
-        const UpdatedTime = ExpiredTime + 86400000;
-        // It is 24 hrrs in milli second 86400000;86397500;
-        const ToChecKAfter = 86397500;
-        console.log('updated time', UpdatedTime);
+    // Intial setting  here
+    useEffect(() => {
+      CheckIfBoarding();
 
-        setTimeout(() => {
-          const UpdateDate = new Date();
-          const NewUpdatedTime = UpdateDate.getTime();
-          console.log('New update time', NewUpdatedTime);
-          if (UpdatedTime > NewUpdatedTime) {
-            console.log(' called here', UpdatedTime);
-            setMore(true);
-            setcards([]);
-            dispatch(
-              Load_Card(
-                state.last_card,
-                state.user.email,
-                state.user.no_of_swipe,
-                state.passed_userArray,
-                state.Matched_userArray,
-              ),
+      let Afterquery;
+      const FetchUsersCard = async () => {
+ 
+        if (state.user.AllCardsSwiped) {
+          const NewExpiredDate = new Date();
+          // console.log(NewExpiredDate);
+          // console.log('Expiredtime', NewExpiredDate.getTime());
+          const NewExpiredTime = NewExpiredDate.getTime();
+
+          if (NewExpiredTime < state.user.CardsUpdatedTime) {
+            settoshowtimer(true);
+          }else{
+
+            //Reset the user
+            await firestore()
+              .collection('Users')
+              .doc(state.user.email)
+              .update({AllCardsSwiped: false,CardsUpdatedTime:-1, CardsExpiredTime:-1,Number_Of_Swips_Done: 0});
+            settoshowtimer(false);
+            
+          }
+        }
+        // CheckIfBoarding();
+        // console.log('after boarding');
+
+        await firestore()
+          .collection('Users')
+          .doc(state.user.email)
+          .get()
+          .then(doc => {
+            if (doc.data().Vibe_Data) {
+              setTotalswipe(doc.data().Number_Of_Swips_Done);
+              // setshowCards(true);
+              // console.log('yoooi', showCards);
+            }
+          });
+        // console.log('noo');
+        // const TotalSwipe = state.user.Number_Of_Swips_Done;
+        var LastEmailSwipe = state.user.Last_Card_Email_Swiped;
+        // const To_Show_Vibe_Screen = No_Of_Swipes.data().Vibe;
+        // if (To_Show_Vibe_Screen) {
+        //   return;
+        // }
+        // console.log('what is total swipe', TotalSwipe);
+        // const passeduserdata = await firestore()
+        //   .collection('Users')
+        //   .doc(state.user.email)
+        //   .collection('passeduser')
+        //   .get()
+        //   .then(snapshot =>
+        //     snapshot.docs.map(
+        //       data => data.data().id,
+        //       setLoading(false),
+        //       //  data=>   console.log('what is .dta.', typeof(data.data().id)),
+        //     ),
+        //   );
+        // // console.log('what is passed data', passeduserdata);
+        // // alert(passeduserdata)
+
+        // const passeduserids =
+        //   passeduserdata.length > 0 ? passeduserdata : ['test'];
+        // // console.log('what is passed user ids', passeduserids);
+
+        // let tempList = passeduserids.map(item => item.email);
+
+        var passedusers = state.user.passedUser;
+
+        if(passedusers == undefined || passedusers.length==0 || passedusers == ""){
+          passedusers = ["reverr@reverr.io"] ;
+          LastEmailSwipe = "reverr@reverr.io"
+        }
+
+        passedusers = passedusers.slice(-10)
+
+        setNumberOfSwipsDone(state.user.Number_Of_Swips_Done)
+
+        let result = cards.filter(item => passedusers.includes(item.email));
+        // alert(result)
+
+        {
+          // if (passeduserids.length >= 10) {
+          //   passeduserids.splice(0, 3);
+          // }
+        }
+        // console.log('what is passed user after ids', passeduserids);
+        // const data=["rgupta.success@gmail.com",'kunnugarg2@gmail.com','kohlibhavya18@gmail.com','19103098@mail.jiit.ac.in']
+        // if (TotalSwipe == 0) {
+        // console.log('heree at 0');
+        let Intialquery = await firestore()
+          .collection('Users')
+          .where('email', 'not-in', [...passedusers]);
+
+        Intialquery.get().then(snapshot => {
+          let result = snapshot.docs
+          // like
+          // let tempList = state.user.likedDislike.map(item => item);
+          // let result = snapshot.docs.filter(item =>
+          //   (!tempList.includes(item.data().email))
+          //   // console.log("--------1222", item)
+          // )
+
+          // dislike
+          // let tempList2 = state.user.dislike.map(item => item);
+          // let result2 = result.filter(item =>
+          //   (!tempList2.includes(item.data().email))
+          // )
+          // result.map((i, index) => {
+          //   console.log(index + 1, "ifrer part", i.data().email)
+          // })
+          // console.log(result.length, '--------------------', snapshot.docs.length);
+
+          // Intialquery.onSnapshot(snapshot => {
+          // console.log('value of snap', snapshot.docs.length);
+
+          // let resultss = results.filter(o1 => !reject.some(o2 => o1.email === o2));
+
+          if (state.user.liked != undefined) {
+            // let result = snapshot.docs.filter(
+            //   o1 => !state.user.liked.some(o2 => o1.email === o2),
+            // );
+            // console.log(
+            //   '🚀 ~ file: index.js:603 ~ Intialquery.get ~ result:',
+            //   result.length,
+            // );
+
+            setcards(
+              result.map(doc => ({
+                id: doc.id,
+                ...doc.data(),
+              })),
+            );
+            setFilteringData(
+              result.map(doc => ({
+                id: doc.id,
+                ...doc.data(),
+              })),
+            );
+          } else {
+            setcards(
+              snapshot.docs
+                // .filter(doc => doc.id !== state.user.email)
+                .map(doc => ({
+                  id: doc.id,
+                  ...doc.data(),
+                })),
             );
 
-            console.log('State vibe coming from settimeout', cards);
-            setcards(state.vibe);
-          } else {
-            console.log('I am not here');
+            setFilteringData(
+              snapshot.docs
+                // .filter(doc => doc.id !== state.user.email)
+                .map(doc => ({
+                  id: doc.id,
+                  ...doc.data(),
+                })),
+            );
           }
-        }, ToChecKAfter);
-      }
-    }, [state.vibe]);
+          setshowCards(true);
+        });
+        // }
 
+        if (TotalSwipe > 0 && continueshowingcard) {
+          Afterquery = await firestore()
+            .collection('Users')
+            .orderBy('email')
+            .where('email', 'not-in', [...passedusers])
+            .startAfter(LastEmailSwipe)
+            .onSnapshot(snapshot => {
+              setcards(
+                snapshot.docs.map(doc => ({
+                  // console.log(doc.id,'doc id is')
+                  // console.log('doc new data is', doc.data());
+                  id: doc.id,
+                  ...doc.data(),
+                })),
+              );
+              setshowCards(true);
+            });
+        }
+      };
+      if (showCards) {
+        FetchUsersCard();
+      }
+      return Afterquery;
+    }, []);
+
+    //IF USER HAS VALID PREMIUM FOR VIBE
+    useEffect(() => {
+      const handleAllCardSwiped = async () => {
+        if (hasPremiumOfVibe === true) {
+          setcontinueshowingcard(true);
+          setAllswiped(false);
+          setcardindex(0);
+          settoshowtimer(false);
+          const ExpiredDate = new Date();
+          // console.log(ExpiredDate);
+          // console.log(ExpiredDate.getTime());
+          const ExpiredTime = ExpiredDate.getTime()-10000;
+          await firestore()
+            .collection('Users')
+            .doc(state.user.email)
+            .update({AllCardsSwiped: false, Number_Of_Swips_Done: 0, CardsExpiredTime:ExpiredTime});
+        }
+      };
+
+      handleAllCardSwiped();
+    }, [hasPremiumOfVibe]);
+
+    useEffect(() => {
+      // console.log('card ind q', cardindex);
+
+      if (numberOfSwipsDone >= 10) {
+        if (hasPremiumOfVibe === true) {
+          return;
+        }
+        const ExpiredDate = new Date();
+        // console.log(ExpiredDate);
+        // console.log(ExpiredDate.getTime());
+        const ExpiredTime = ExpiredDate.getTime();
+        const UpdatedTime = ExpiredTime + 86397500;
+        if(ExpiredTime > state.user.CardsUpdatedTime){
+          setcontinueshowingcard(true);
+          // console.log('card ind inside', cardindex);
+          // var DeletePassedUserReference = firestore()
+          //   .collection('Users')
+          //   .doc(state.user.email)
+          //   .collection('passeduser');
+          // DeletePassedUserReference.get().then(querysnapshot => {
+          //   Promise.all(querysnapshot.docs.map(d => d.ref.delete()));
+          // });
+          setAllswiped(false);
+    
+          const SetFirebaseswipedData = async () => {
+            await firestore().collection('Users').doc(state.user.email).update({
+              AllCardsSwiped: false,
+              numberOfSwipsDone: 0
+            });
+          };
+  
+          SetFirebaseswipedData();
+          settoshowtimer(false);
+        }
+        else{
+          setcontinueshowingcard(false);
+          // console.log('card ind inside', cardindex);
+          // var DeletePassedUserReference = firestore()
+          //   .collection('Users')
+          //   .doc(state.user.email)
+          //   .collection('passeduser');
+          // DeletePassedUserReference.get().then(querysnapshot => {
+          //   Promise.all(querysnapshot.docs.map(d => d.ref.delete()));
+          // });
+          setAllswiped(true);
+    
+          const SetFirebaseswipedData = async () => {
+            await firestore().collection('Users').doc(state.user.email).update({
+              CardsExpiredTime: UpdatedTime,
+              CardsUpdatedTime: UpdatedTime,
+              AllCardsSwiped: true,
+            });
+          };
+  
+          SetFirebaseswipedData();
+          settoshowtimer(true);
+        }
+
+        // It is 24 hrrs in milli second 86400000;86397500;
+        // const ToChecKAfter = 12000;
+        // console.log('updated time', UpdatedTime);
+
+        // setTimeout(async () => {
+        //   const UpdateDate = new Date();
+        //   const NewUpdatedTime = UpdateDate.getTime();
+        //   console.log('New update time', NewUpdatedTime);
+        //   if (UpdatedTime > NewUpdatedTime) {
+        //     console.log(' called here', UpdatedTime);
+
+        //     await firestore().collection('Users').doc(state.user.email).update({
+        //       Swipes_Finished: false,
+        //     });
+        //     setMore(true);
+        //   }
+        // }, ToChecKAfter);
+      }
+    }, [numberOfSwipsDone]);
+    // console.log('card index changing', loading);
+    // console.log(showCards);
+    // console.log(cards);
+    const vibeusers = filteringData.filter(it=> it.Vibe_Data != undefined);
+    vibeusers.map((it)=>{
+
+      // console.log( it.email  , "111111111")
+    })
+    if(vibeusers[0] )
+    console.log( vibeusers[0]  , "111111111")
     return (
-      <View style={styles.container}>
-        {allswiped ? (
+      <>
+        <View style={styles.likewrapper}>
+          <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}} onPress={() => navigation.navigate('Premium')}>
+            <Image source={Theme.hearttick} style={styles.icon} />
+            <Text style={styles.text}>view likes</Text>
+          </TouchableOpacity>
+            <TouchableOpacity onPress={() => {
+              if(hasPremiumOfVibe){
+                setFilter(true)
+              }else{
+                alert("You need Vibe Premium to use filters.")
+              }
+            }  }>
+            <Image source={Theme.filter} style={styles.icon} />
+            </TouchableOpacity>
+        </View>
+        {loading ? (
           <View>
-            <PremiumTab />
+            <Text>Loading...</Text>
           </View>
         ) : (
-          <Swiper
-            cards={cards}
-            renderCard={item => {
-              console.log('What is item dddd', item);
-              if (item && cards) {
-                return (
-                  <View style={[styles.card, {flex: 1}]}>
-                    <ScrollView>
-                      <View style={{alignSelf: 'center'}}>
-                        <Image
-                          style={{
-                            width: 160,
-                            alignSelf: 'center',
-                            height: 160,
-                            borderRadius: 100,
-                          }}
-                          source={{
-                            uri:
-                              'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
-                          }}
-                        />
-                      </View>
-
-                      <View style={{display: 'flex'}}>
-                        <View style={{marginHorizontal: 10, marginTop: 10}}>
-                          <Text
-                            style={{
-                              color: 'white',
-                              fontSize: 22,
-                              fontFamily: 'poppins',
-                              fontWeight: 'bold',
-                            }}
-                          >
-                            {item?.name}
-                          </Text>
-                          <Text
-                            style={{
-                              color: '#fff',
-                              fontSize: 14,
-                              fontWeight: '400',
-                            }}
-                          >
-                            {item.designation || demoData[0].designation}
-                          </Text>
-                          <Text
-                            style={{
-                              color: '#fff',
-                              fontSize: 14,
-                              fontWeight: '400',
-                            }}
-                          >
-                            {item?.city || demoData[0].city}
-                            {' ,'}
-                            {item?.country || demoData[0].country}
-                          </Text>
-                        </View>
-
-                        <View style={{marginTop: 25}}>
-                          <Text
-                            style={{
-                              color: '#fff',
-                              fontSize: 14,
-                              fontWeight: 'bold',
-                              marginTop: 10,
-                              marginHorizontal: 10,
-                            }}
-                          >
-                            {item?.quote || demoData[0].quote}
-                          </Text>
-                        </View>
-                      </View>
-
-                      <View style={{flex: 1}}>
-                        <View>
-                          <View>
-                            <Text
-                              style={{
-                                color: '#0077B7',
-                                fontFamily: 'Poppins',
-                                fontSize: 18,
-                                marginTop: 6,
-                                fontWeight: '700',
-                                marginLeft: 15,
-                              }}
-                            >
-                              What I am here for
-                            </Text>
-                            <View
-                              style={{
-                                marginTop: 8,
-                                flexDirection: 'row',
-                                justifyContent: 'space-evenly',
-                                flexWrap: 'wrap',
-                              }}
-                            >
-                              <View
-                                style={{
-                                  boxShadow: '4px -5px 5px 0px #00000040 inset',
-                                  height: 91,
-                                  alignItems: 'center',
-                                  justifyContent: 'center',
-                                  width: 91,
-                                  borderRadius: 91 / 2,
-                                  borderWidth: 3,
-                                  borderColor: 'white',
-                                  backgroundColor: '#0077B7',
-                                }}
-                              >
-                                <Text
-                                  style={{
-                                    color: 'white',
-                                    textAlign: 'center',
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16,
-                                    fontWeight: '500',
-                                  }}
-                                >
-                                  {item?.Here_for?.[0]} {'Find Investors'}
-                                </Text>
+          <>
+            {filteringData.length !== 0 ? (
+              <View >
+                {/* <Text style={{color: 'white'}}>HELOO</Text> */}
+                <FlatList
+                  data={filteringData.filter(
+                    it => it.email != authentication().currentUser.email,
+                  ).filter(
+                    it => it.Vibe_Data !=undefined
+                  )}
+                  extraData={filteringData}
+                  pagingEnabled
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  contentContainerStyle={{
+                    justifyContent: 'center',
+                    flexGrow: 1,
+                    width:"50%",
+                    height:"88%"
+                  }}
+                  renderItem={({item, index}) => {
+                    // console.log(item.email)
+                    if (cardindex == index ) {
+                      // console.log(item)
+                      return (
+                        <ScrollView showsVerticalScrollIndicator={false}>
+                          <LinearGradient
+                            colors={colors}
+                            style={[styles.cardWrapper, styles.shadowProp]}>
+                            <View style={styles.wrapper}>
+                              <LinearGradient
+                                colors={['#3D85E3', '#79C0F2']}
+                                style={styles.imgborder}>
+                                   {item.image ? (
+                                    <Image
+                                      style={styles.img}
+                                      source={{
+                                        uri: item.image,
+                                      }}
+                                    />
+                                  ) : (
+                                    <Image
+                                      style={styles.coverImage}
+                                      source={{
+                                        uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
+                                      }}
+                                    />
+                                  )}
+                              </LinearGradient>
+                              <View style={styles.titleWrapper}>
+                                {item.name ? <Text style={styles.usertitle}>{item.name}</Text>: null}
+                                {item.verified && <Image source={Theme.verify} style={styles.verify} />}
                               </View>
-
-                              <View
-                                style={{
-                                  boxShadow: '4px -5px 5px 0px #00000040 inset',
-                                  height: 91,
-                                  alignItems: 'center',
-                                  justifyContent: 'center',
-                                  width: 91,
-                                  borderRadius: 91 / 2,
-                                  borderWidth: 3,
-                                  borderColor: 'white',
-                                  backgroundColor: '#0077B7',
-                                }}
-                              >
-                                <Text
-                                  style={{
-                                    color: 'white',
-                                    textAlign: 'center',
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16,
-                                    fontWeight: '500',
-                                  }}
-                                >
-                                  {item?.Here_for?.[1]} {'Hire Employees'}
-                                </Text>
-                              </View>
-
-                              <View
-                                style={{
-                                  boxShadow: '4px -5px 5px 0px #00000040 inset',
-                                  height: 91,
-                                  alignItems: 'center',
-                                  justifyContent: 'center',
-                                  width: 91,
-                                  borderRadius: 91 / 2,
-                                  borderWidth: 3,
-                                  borderColor: 'white',
-                                  backgroundColor: '#0077B7',
-                                }}
-                              >
-                                <Text
-                                  style={{
-                                    color: 'white',
-                                    textAlign: 'center',
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16,
-                                    fontWeight: '500',
-                                  }}
-                                >
-                                  {item?.Here_for?.[1]} {'Find Mentors'}
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                        </View>
-                        <View>
-                          <Text
-                            style={{
-                              color: '#0077B7',
-                              fontFamily: 'Poppins',
-                              fontSize: 18,
-                              fontWeight: '700',
-                              marginTop: 6,
-                              marginLeft: 15,
-                            }}
-                          >
-                            How can we meet
-                          </Text>
-                        </View>
-                        <View
-                          style={{
-                            marginTop: 3,
-                            flexDirection: 'row',
-                            justifyContent: 'space-around',
-                          }}
-                        >
-                          <View
-                            style={{
-                              flexDirection: 'row',
-                              justifyContent: 'center',
-                              alignItems: 'center',
-                            }}
-                          >
-                            <ImageBackground
-                              style={{
-                                width: 20,
-                                height: 20,
-                                borderRadius: 10,
-                              }}
-                              source={{
-                                uri:
-                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                              }}
-                            ></ImageBackground>
-
-                            <Text
-                              style={{
-                                marginLeft: 4,
-                                color: 'white',
-                                fontFamily: 'Poppins',
-                                fontSize: 16,
-                                fontWeight: '400',
-                              }}
-                            >
-                              {item?.How_To_Meet?.[0]} {'At Coffe'}
-                            </Text>
-                          </View>
-                          <View
-                            style={{
-                              flexDirection: 'row',
-                              justifyContent: 'center',
-                              alignItems: 'center',
-                            }}
-                          >
-                            <ImageBackground
-                              style={{
-                                width: 20,
-                                height: 20,
-                                borderRadius: 10,
-                              }}
-                              source={{
-                                uri:
-                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                              }}
-                            ></ImageBackground>
-
-                            <Text
-                              style={{
-                                marginLeft: 4,
-                                color: 'white',
-                                fontFamily: 'Poppins',
-                                fontSize: 16,
-                                fontWeight: '400',
-                              }}
-                            >
-                              {item?.How_To_Meet?.[1]} {' At Local Cafe'}
-                            </Text>
-                          </View>
-                          <View
-                            style={{
-                              flexDirection: 'row',
-                              justifyContent: 'center',
-                              alignItems: 'center',
-                            }}
-                          >
-                            <ImageBackground
-                              style={{
-                                width: 20,
-                                height: 20,
-                                borderRadius: 10,
-                              }}
-                              source={{
-                                uri:
-                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                              }}
-                            ></ImageBackground>
-
-                            <Text
-                              style={{
-                                marginLeft: 4,
-                                color: 'white',
-                                fontFamily: 'Poppins',
-                                fontSize: 16,
-                                fontWeight: '400',
-                              }}
-                            >
-                              {item?.How_To_Meet?.[2]} {' Video Call'}
-                            </Text>
-                          </View>
-                        </View>
-                        <View>
-                          <Text
-                            style={{
-                              color: '#0077B7',
-                              fontFamily: 'Poppins',
-                              fontSize: 18,
-                              fontWeight: '700',
-                              marginTop: 4,
-                              marginLeft: 15,
-                            }}
-                          >
-                            About Me
-                          </Text>
-                        </View>
-
-                        <View style={{flex: 1}}>
-                          <View
-                            style={{
-                              flexDirection: 'row',
-                              justifyContent: 'space-between',
-                            }}
-                          >
-                            <View>
-                              <View
-                                style={{
-                                  flexDirection: 'row',
-                                  alignItems: 'center',
-                                  justifyContent: 'center',
-                                }}
-                              >
-                                <ImageBackground
-                                  style={{
-                                    width: 20,
-                                    height: 20,
-                                    borderRadius: 10,
-                                  }}
-                                  source={{
-                                    uri:
-                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                                  }}
-                                ></ImageBackground>
-                                <Text
-                                  style={{
-                                    color: '#8AB9FF',
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16,
-
-                                    marginLeft: 4,
-                                    fontWeight: '500',
-                                    marginTop: 4,
-                                  }}
-                                >
-                                  What am I looking for{' '}
-                                </Text>
-                              </View>
-                              <Text
-                                style={{
-                                  color: '#FFFFFF',
-                                  fontFamily: 'Inter',
-                                  fontSize: 14,
-                                  textAlign: 'center',
-                                  fontWeight: '400',
-                                  marginTop: 1,
-                                }}
-                              >
-                                Mentor ship {''} Get Inspired{' '}
-                              </Text>
+                              <Text style={styles.tag}>{item.designation ? item.designation : item.Vibe_Data.Previous_Designation} at {item.Vibe_Data.Previous_Org}</Text>
+                              {/* <Text style={styles.location}>New Delhi,India</Text> */}
                             </View>
 
-                            <View>
-                              <View
-                                style={{
-                                  flexDirection: 'row',
-                                  alignItems: 'center',
-                                  alignSelf: 'flex-start',
-                                  justifyContent: 'space-between',
+                            <AboutMeSection about={item.about?item.about:"I haven't added about section yet..."}/>
+                            
+                            <View style={styles.floatingBanner}>
+                              <TouchableOpacity style={styles.align}
+                                   onPress={() => {
+                                    // navigation.navigate('LikeMatchScreen')
+                                    // swipeLefts(index)
+                                    // setIndex(indexs+1)
+                                    swipeLeft(index);
+                                  }}
+                              >
+                                <Image source={Theme.nopenew} style={styles.btn} />
+                                <Text style={styles.btntext}>nope</Text>
+                              </TouchableOpacity>
+                              <TouchableOpacity style={styles.align}
+                                onPress={() => {
+                                  superLikeCenter(index);
                                 }}
                               >
-                                <ImageBackground
-                                  style={{
-                                    width: 20,
-                                    height: 20,
-                                    borderRadius: 10,
-                                  }}
-                                  source={{
-                                    uri:
-                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                                  }}
-                                ></ImageBackground>
-                                <Text
-                                  style={{
-                                    color: '#8AB9FF',
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16,
-                                    fontWeight: '500',
-                                    marginTop: 4,
-                                    marginLeft: 4,
-                                  }}
-                                >
-                                  Past Experience
-                                </Text>
-                              </View>
-                              <Text
-                                style={{
-                                  color: '#FFFFFF',
-                                  fontFamily: 'Inter',
-                                  fontSize: 14,
-                                  textAlign: 'center',
-                                  fontWeight: '400',
-                                  marginTop: 1,
+                                <Image source={Theme.supernew} style={styles.btn} />
+                                <Text style={styles.btntext}>superlike</Text>
+                              </TouchableOpacity>
+                              <TouchableOpacity style={styles.align}
+                                onPress={() => {
+                                  // navigation.navigate('LikeMatchScreen')
+                                  // swipeLefts(index)
+                                  swipeRight(index);
+                                  // setIndex(indexs+1)
                                 }}
                               >
-                                {item?.Prev_org} {' AMAZON'}
-                              </Text>
+                                <Image source={Theme.likenew} style={styles.btn} />
+                                <Text style={styles.btntext}>like</Text>
+                              </TouchableOpacity>
                             </View>
-                          </View>
-                          <View
-                            style={{
-                              flexDirection: 'row',
-                              justifyContent: 'space-between',
-                            }}
-                          >
-                            <View>
-                              <View
-                                style={{
-                                  flexDirection: 'row',
-                                  alignItems: 'center',
-
-                                  justifyContent: 'center',
-                                }}
-                              >
-                                <ImageBackground
-                                  style={{
-                                    width: 20,
-                                    height: 20,
-                                    borderRadius: 10,
-                                  }}
-                                  source={{
-                                    uri:
-                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                                  }}
-                                ></ImageBackground>
-                                <Text
-                                  style={{
-                                    color: '#8AB9FF',
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16,
-
-                                    marginLeft: 4,
-                                    fontWeight: '500',
-                                    marginTop: 4,
-                                  }}
-                                >
-                                  Previous Designation
-                                </Text>
-                              </View>
-                              <Text
-                                style={{
-                                  color: '#FFFFFF',
-                                  fontFamily: 'Inter',
-                                  fontSize: 14,
-                                  textAlign: 'center',
-                                  fontWeight: '400',
-                                  marginTop: 1,
-                                }}
-                              >
-                                {item?.Previous_Designation} {'SDE'}
-                              </Text>
+                            <View style={{paddingHorizontal: 20}}>
+                              <LineBar />
                             </View>
 
-                            <View>
-                              <View
-                                style={{
-                                  flexDirection: 'row',
-                                  alignItems: 'center',
-                                  justifyContent: 'center',
-                                }}
-                              >
-                                <ImageBackground
-                                  style={{
-                                    width: 20,
-                                    height: 20,
-                                    borderRadius: 10,
-                                  }}
-                                  source={{
-                                    uri:
-                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkmLFZwrtCRnxMjiv4S4V1tTsVR-FfNNgDA&usqp=CAU',
-                                  }}
-                                ></ImageBackground>
-                                <Text
-                                  style={{
-                                    color: '#8AB9FF',
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16,
-                                    fontWeight: '500',
-                                    marginTop: 4,
-                                    marginLeft: 4,
-                                  }}
-                                >
-                                  Prev. Experience
-                                </Text>
-                              </View>
-                              <Text
-                                style={{
-                                  color: '#FFFFFF',
-                                  fontFamily: 'Inter',
-                                  fontSize: 14,
-                                  textAlign: 'center',
-                                  fontWeight: '400',
-                                  marginTop: 1,
-                                }}
-                              >
-                                {item?.Previous_org_Duration?.[0]} {' 3 '}
-                              </Text>
+                            {item.Vibe_Data.Here_for && 
+                            <>
+                            <WhyHere hereFor={item.Vibe_Data.Here_for}/>
+
+                            <View style={{paddingHorizontal: 20}}>
+                              <LineBar />
                             </View>
-                          </View>
-                        </View>
-                      </View>
-                    </ScrollView>
+                            </>
+                            }
+                            <ProfileTitle
+                              title="Currently"
+                              textOne={item.designation ? item.designation : item.Vibe_Data.Previous_Designation}
+                              textTwo="Rever,Mastok"
+                            />
+
+                            <View style={{paddingHorizontal: 20}}>
+                              <LineBar />
+                            </View>
+
+                            <ProfileTitle title="Industry" textOne={item.industry?item.industry:item.Vibe_Data.Industry} />
+
+                            <View style={{paddingHorizontal: 20}}>
+                              <LineBar />
+                            </View>
+                            {item.Vibe_Data.Education ?
+                            <>
+                              <ProfileTitle
+                              title="Education"
+                              textOne={item.Vibe_Data.Education}
+                              textTwo="MBA"
+                              />
+
+                              <View style={{paddingHorizontal: 20}}>
+                                <LineBar />
+                              </View>
+                            </>: null
+                            }
+
+                            {item.Vibe_Data.How_To_Meet ? <HowToMeet htm={item.Vibe_Data.How_To_Meet} /> : null}
+
+                            <View style={{paddingHorizontal: 20}}>
+                              <LineBar />
+                            </View>
+
+                            <FindMeOn title={'Find Me On:'} linkedin={item.linkedin} phone={item.phone} email={item.email} />
+                          </LinearGradient>
+
+                          <View style={{height: 110}} />
+                          
+                        </ScrollView>
+                      );
+                      // }
+                    }
+                  }}
+                  keyExtractor={(item, index) => index.toString()}
+                />
+                
+              </View>
+            ) : (
+              <>
+                <View style={styles.loader}>
+                  <ActivityIndicator size="large" color="#8AB9FF" />
+                </View>
+              </>
+            )}
+            <Modal transparent={true} visible={filter}>
+              <View style={styles.ModelBack}>
+                <View style={styles.modelViewOne}>
+                  <View style={styles.modelViewTwo}>
+                    <Entypo
+                      onPress={() => setFilter(false)}
+                      name="cross"
+                      size={25}
+                      color="#000"></Entypo>
+                    <Text style={styles.modelText}>Filter</Text>
                   </View>
-                );
-              }
-            }}
-            onSwiped={cardindex => {
-              setcardindex(cardindex + 1);
-            }}
-            onSwipedLeft={() => swipeLeft(state?.vibe[0])}
-            onSwipedRight={() => swipeRight(state?.vibe[0])}
-            onSwipedAll={() => swipedAll()}
-            cardIndex={cardindex}
-            overlayLabels={{
-              left: {
-                title: 'NOPE',
-                style: {
-                  label: {
-                    textAlign: 'right',
-                    color: 'red',
-                    transform: [{rotate: '25deg'}],
-                  },
-                },
-              },
-
-              right: {
-                title: 'LIKE',
-
-                style: {
-                  label: {
-                    textAlign: 'left',
-                    color: 'green',
-                    transform: [{rotate: '-25deg'}],
-                  },
-                },
-              },
-            }}
-            verticalSwipe={false}
-            showSecondCard={true}
-            backgroundColor={'#000C12'}
-            stackSize={2}
-          ></Swiper>
+                  <ScrollView>
+                    <View style={{padding: 20}}>
+                      <MultiSelect
+                        items={hareFor}
+                        uniqueKey="id"
+                        displayKey="name"
+                        onSelectedItemsChange={selectedItems =>
+                          setFilters({
+                            ...filters,
+                            hareFor: selectedItems,
+                          })
+                        }
+                        editable={false}
+                        selectTextOnFocus={false}
+                        selectedItems={filters.hareFor}
+                        selectText="Here For"
+                        searchInputPlaceholderText="Search Here For"
+                        searchInputStyle={{height: 50}}
+                        styleDropdownMenu={true}
+                        styleDropdownMenuSubsection={true}
+                        styleIndicator={true}
+                        styleInputGroup={true}
+                        tagRemoveIconColor="#CCC"
+                        tagBorderColor="#CCC"
+                        tagTextColor="#CCC"
+                        selectedItemTextColor="#CCC"
+                        selectedItemIconColor="#CCC"
+                        itemTextColor="#000"
+                        searchInputTextColor="#000"
+                        hideDropdown={true}
+                        hideTags={true}
+                        hideSubmitButton={true}
+                      />
+                      <MultiSelect
+                        items={ageOptions}
+                        uniqueKey="id"
+                        displayKey="name"
+                        onSelectedItemsChange={selectedItems =>
+                          setFilters({
+                            ...filters,
+                            yearsExperience: selectedItems,
+                          })
+                        }
+                        selectedItems={filters.yearsExperience}
+                        selectText="Year Experience"
+                        searchInputPlaceholderText="Search Year Experience"
+                        tagRemoveIconColor="#CCC"
+                        tagBorderColor="#CCC"
+                        tagTextColor="#CCC"
+                        selectedItemTextColor="#CCC"
+                        selectedItemIconColor="#CCC"
+                        itemTextColor="#000"
+                        searchInputTextColor="#000"
+                        hideDropdown={true}
+                        hideTags={true}
+                        hideSubmitButton={true}
+                      />
+                      <MultiSelect
+                        items={howMeet}
+                        uniqueKey="id"
+                        displayKey="name"
+                        onSelectedItemsChange={selectedItems =>
+                          setFilters({
+                            ...filters,
+                            howMeet: selectedItems,
+                          })
+                        }
+                        selectedItems={filters.howMeet}
+                        selectText="How we Meet"
+                        searchInputPlaceholderText="How we Meet..."
+                        searchInputStyle={{height: 40}}
+                        tagRemoveIconColor="#CCC"
+                        tagBorderColor="#CCC"
+                        tagTextColor="#CCC"
+                        selectedItemTextColor="#CCC"
+                        selectedItemIconColor="#CCC"
+                        itemTextColor="#000"
+                        searchInputTextColor="#000"
+                        hideDropdown={true}
+                        hideTags={true}
+                        hideSubmitButton={true}
+                      />
+                      <Button
+                        backgroundColor={'#2A72DE'}
+                        title={'Apply Filter'}
+                        onPress={filterData}
+                        marginLeft={20}
+                        marginRight={20}
+                      />
+                    </View>
+                  </ScrollView>
+                </View>
+              </View>
+            </Modal>
+          </>
         )}
-      </View>
+      </>
     );
   };
 
-  return (
-    <IndividualHeaderLayout style={{flex: 1}}>
-      <CustomPopup
-        modalVisible={prevDailog}
-        setModalVisible={() => setPrevDailog(false)}
-      >
-        <View>
-          <Text>Prev Data Show Here</Text>
-        </View>
-      </CustomPopup>
+  const [indexs, setIndex] = useState(0);
 
-      <Vibes />
-    </IndividualHeaderLayout>
+  return (
+    <>
+      {toshowtimer ? (
+        <CountdownTimer
+          toshowtimer={toshowtimer}
+          settoshowtimer={settoshowtimer}
+          finalSetVibePremium={setHasPremiumOfVibe}
+        />
+      ) : (
+        <View style={{backgroundColor: AppColors.primarycolor, flex: 1}}>
+          <GradientHeader />
+          <CustomPopup
+            modalVisible={prevDailog}
+            setModalVisible={() => setPrevDailog(false)}>
+            <View>
+              <Text>Prev Data Show Here</Text>
+            </View>
+          </CustomPopup>
+          {/* <LikeTab /> */}
+          <Vibes />
+        </View>
+      )}
+    </>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000C12',
-  },
-  screen: {
-    flex: 1,
-    paddingHorizontal: '5%',
-    justifyContent: 'center',
-    backgroundColor: AppColors.primarycolor,
-  },
-  card: {
-    alignSelf: 'center',
-    position: 'absolute',
-    bottom: 75,
-    width: Dimensions.get('window').width / 1.15,
-    height: 550,
-    marginHorizontal: 35,
-    marginVertical: 20,
-    borderTopRightRadius: 50,
-    borderTopLeftRadius: 50,
-    borderBottomLeftRadius: 50,
-    borderBottomRightRadius: 50,
-    padding: 2,
-    backgroundColor: 'black',
-    borderWidth: 2,
-    borderColor: 'dodgerblue',
-  },
-  image: {
-    width: Dimensions.get('window').width / 1.17,
-    height: Dimensions.get('window').height / 2.5,
-    borderTopRightRadius: 50,
-    borderTopLeftRadius: 50,
-    opacity: 0.9,
-    display: 'flex',
-    justifyContent: 'flex-end',
-    resizeMode: 'cover',
-  },
-
-  heading: {
-    color: '#0077B7',
-    fontWeight: 'bold',
-    maxWidth: Dimensions.get('window').width / 1.2,
-    fontSize: 22,
-  },
-  button: {
-    backgroundColor: '#0077B7',
-    width: 300,
-    height: 60,
-    borderRadius: 25,
-    marginTop: 35,
-    marginLeft: 50,
-    alignItems: 'center',
-    alignContent: 'center',
-    display: 'flex',
-    flexDirection: 'row',
-    paddingHorizontal: 30,
-  },
-  likeContainer: {
-    left: 45,
-    top: Dimensions.get('window').height / 14,
-    position: 'absolute',
-    transform: [{rotate: '-30deg'}],
-    zIndex: 3,
-  },
-  unlikeContainer: {
-    right: 45,
-    top: Dimensions.get('window').height / 14,
-    position: 'absolute',
-    transform: [{rotate: '30deg'}],
-    zIndex: 3,
-  },
-});
+const colors = [
+  '#08096F',
+  '#0D0D0D',
+  Theme.backgroundColor,
+  Theme.backgroundColor,
+  '#1B1D8B',
+];
 
 export {Vibe};

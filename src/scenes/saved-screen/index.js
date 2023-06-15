@@ -1,12 +1,12 @@
-import {View, ScrollView, TouchableOpacity, Image, Text} from 'react-native';
+import { View, ScrollView, TouchableOpacity, Image, Text } from 'react-native';
 import React from 'react';
 
 import styles from './styles';
 
-import {YourFavMentorList} from '../../Components/YourFavMentorList';
-import {YourLibrary} from '../../Components/YourLibrary';
-import {SavedCourses} from '../../Components/SavedCourses';
-import {useNavigation} from '@react-navigation/native';
+import { YourFavMentorList } from '../../Components/YourFavMentorList';
+import { YourLibrary } from '../../Components/YourLibrary';
+import { SavedCourses } from '../../Components/SavedCourses';
+import { useNavigation } from '@react-navigation/native';
 
 export const SavedScreen = () => {
   const navigation = useNavigation();

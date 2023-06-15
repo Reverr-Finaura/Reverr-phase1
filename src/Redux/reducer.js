@@ -10,6 +10,7 @@ import {
   REFRESH_ROOMS_LIST,
   PIN_POST,
   LIKE_POST,
+  SAVE_POST,
   POST_COMMENT,
   DELETE_POST,
   DELETE_POST_ACTION,
@@ -130,6 +131,28 @@ function UserReducer(state = initialState, action) {
         console.log('Post has been removed');
       } else {
         TempRooms[index].likes = list;
+      }
+      return {
+        ...state,
+        Rooms: [...TempRooms],
+      };
+    case SAVE_POST:
+      var list = [];
+      //console.log("yoyoy")
+      var index = state.Rooms.indexOf(action.payload.post);
+      if (action.payload.post.saved.includes(state.user.email)) {
+        save = action.payload.post.saved.filter(
+          save => save != state.user.email,
+        );
+      } else {
+        list = [...action.payload.post.saved, state.user.email];
+      }
+      var TempRooms = state.Rooms;
+      //console.log(TempRooms)
+      if (index == -1) {
+        console.log('Post has been removed');
+      } else {
+        TempRooms[index].saved = list;
       }
       return {
         ...state,

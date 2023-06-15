@@ -8,20 +8,15 @@ const styles = StyleSheet.create({
   title: {
     bottom: 10,
     color: 'white',
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '600',
-    marginHorizontal: 24,
-    marginVertical: 16,
-    marginTop:10,
+    marginHorizontal: 15,
+    marginVertical: 10,
+    marginTop: 10,
   },
   subTitle: {
-    bottom: 20,
-
     color: 'white',
-    fontSize: 16,
-    marginHorizontal: 24,
-    marginVertical: 8,
-    fontWeight: '500',
+    fontSize: 12,
   },
 });
 export default styles;

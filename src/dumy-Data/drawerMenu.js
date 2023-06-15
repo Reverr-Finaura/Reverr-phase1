@@ -5,9 +5,9 @@ export const Menu = [
     path: 'EditIndivisualProfile',
   },
   {
-    title: 'Calender',
-    icon: require('../assets/images/calendarIcon.png'),
-    path: 'Calender',
+    title: 'Requests',
+    icon: require('../assets/images/req.png'),
+    path: 'Requests',
   },
   {
     title: 'Books',

@@ -18,7 +18,7 @@ const IndividualHeaderLayout = props => {
     <View style={styles.screen}>
       <Header
         onPressDp={() => {
-          navigation.openDrawer();
+          navigation?.openDrawer();
         }}
         onPressCalander={() => {
           setIsOpen(true);
@@ -31,19 +31,6 @@ const IndividualHeaderLayout = props => {
         }}
         DpUrl={state.user && state.user.image}
       />
-      {/* <CalanderScreen /> */}
-      <ModelView
-        ShowModal={isOpen}
-        onCloseModal={() => {
-          setIsOpen(false);
-        }}>
-        <CalanderScreen
-          onClose={() => {
-            setIsOpen(false);
-          }}
-          setModel={setIsOpen}
-        />
-      </ModelView>
       {props.children}
     </View>
   );

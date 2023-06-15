@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: '25%',
+    marginTop: '3%',
   },
   image: {
     width: 395,
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   chatContainer: {
-    marginHorizontal: '2.6%',
+   
     borderRadius: 10,
     overflow: 'hidden',
   },

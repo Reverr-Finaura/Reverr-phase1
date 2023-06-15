@@ -9,6 +9,7 @@ import {
 import React from 'react';
 import {AppColors} from '../../utils';
 import {useNavigation} from '@react-navigation/native';
+import {capitalizeFirstLetter} from '../../utils/Helper/helper';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
@@ -63,10 +64,16 @@ const SwipeCard = ({
                     marginTop: '30%',
                     height: '100%',
                     alignItems: 'center',
-                    paddingTop: '2%',
+                    paddingTop: '8%',
+                    paddingHorizontal: '4%',
                   }}>
-                  <Text style={{color: AppColors.FontsColor, fontSize: 17}}>
-                    {item.course}
+                  <Text
+                    style={{
+                      color: AppColors.FontsColor,
+                      fontSize: 17,
+                      textAlign: 'center',
+                    }}>
+                    {capitalizeFirstLetter(item.name)}
                   </Text>
                 </View>
               </ImageBackground>

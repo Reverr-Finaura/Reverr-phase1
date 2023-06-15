@@ -1,12 +1,12 @@
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from './styles';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import ShortUniqueId from 'short-unique-id';
 import firestore from '@react-native-firebase/firestore';
 export const MessageHeader = props => {
-  const {userData} = props;
+  const { userData } = props;
   //console.log(userData)
   const state = useSelector(state => state.UserReducer);
   const dispatch = useDispatch();
@@ -102,13 +102,25 @@ export const MessageHeader = props => {
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image source={require('../../assets/images/Back.png')} />
           </TouchableOpacity>
-
-          <Image
-            style={{marginLeft: 5, height: 30, width: 30}}
-            source={{uri: userData.image}}
-          />
-
+          <TouchableOpacity onPress={() => {
+            navigation.navigate('OthersProfile', {
+              otherUserData: userData,
+            });
+          }}
+          >
+            <Image
+              style={{ height: 30, width: 30, borderRadius: 30 }}
+              source={{ uri: userData.image }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {
+            navigation.navigate('OthersProfile', {
+              otherUserData: userData,
+            });
+          }}
+          >
           <Text style={styles.text}>{userData.name}</Text>
+          </TouchableOpacity>
         </View>
 
         <View
@@ -117,16 +129,16 @@ export const MessageHeader = props => {
             justifyContent: 'space-between',
             marginStart: '15%',
           }}>
-          <TouchableOpacity onPress={MakeCall}>
+          {/* <TouchableOpacity onPress={MakeCall}>
             <Image
               source={require('../../assets/images/Call.png')}
               style={styles.call}
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
-          <TouchableOpacity>
+          {/* <TouchableOpacity>
             <Image source={require('../../assets/images/Options.png')} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </View>
     </View>

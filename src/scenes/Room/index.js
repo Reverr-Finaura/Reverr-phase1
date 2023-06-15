@@ -108,7 +108,7 @@ const Rooms = () => {
               onPress={() => {
                 navigation.navigate('IndividualProfile');
               }}>
-              <Image style={styles.dp} source={{uri: item.postedby.image}} />
+             {item.postedby.image!==""&& <Image style={styles.dp} source={{uri: item.postedby.image}} />}
             </TouchableOpacity>
             <View style={{marginStart: '3%'}}>
               <Text style={styles.name}>{item.postedby.name}</Text>
@@ -280,7 +280,7 @@ const Rooms = () => {
               />
             </TouchableOpacity>
             <Text style={{marginStart: '8%', color: AppColors.BtnClr}}>
-              {item.likes.length} reactions
+              {item.likes.length} Likes
             </Text>
           </View>
           <View>

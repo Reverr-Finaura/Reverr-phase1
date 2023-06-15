@@ -17,6 +17,7 @@ import {
   DashBoard,
   Vibe,
 } from '../../scenes';
+import {VibeBoarding} from '../../Components/VibeBoarding';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {MentorDetails} from '../../Components';
 
@@ -26,6 +27,7 @@ export const BottomNavigate = () => {
   return (
     <Tab.Navigator
       screenOptions={{
+        lazy: true,
         headerShown: false,
         tabBarStyle: {
           borderTopWidth: 2,

@@ -9,18 +9,18 @@ import {
   Dimensions,
   ActivityIndicator,
 } from 'react-native';
-import React, {useState, useEffect, useRef} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import firestore from '@react-native-firebase/firestore';
 import LinearGradient from 'react-native-linear-gradient';
 import ShortUniqueId from 'short-unique-id';
-import {SendMessage} from '../../utils/FirebaseFunctionality';
-import {ReciveMessage} from '../../utils/FirebaseFunctionality';
-import {AppColors} from '../../utils/Constants';
-import {MessageHeader} from '../../Components/MessageHeader';
-import {useSelector, useDispatch} from 'react-redux';
+import { SendMessage } from '../../utils/FirebaseFunctionality';
+import { ReciveMessage } from '../../utils/FirebaseFunctionality';
+import { AppColors } from '../../utils/Constants';
+import { MessageHeader } from '../../Components/MessageHeader';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Width = Dimensions.get('screen').width;
 const Height = Dimensions.get('screen').height;
@@ -33,7 +33,10 @@ const ChatScreen = props => {
   const [Recive, setRecive] = useState();
   const [loading, setLoading] = useState(true);
   const navigation = useNavigation();
-  const chatRef = useRef(null);
+  const chatRef = useRef();
+  console.log("userDattttt", userData)
+
+
 
   const sendNotification = async (toemail, fromemail, messaage) => {
     const obj = {
@@ -49,7 +52,6 @@ const ChatScreen = props => {
         notifications: firestore.FieldValue.arrayUnion(obj),
       });
   };
-
   useEffect(() => {
     ReciveMessage(state.user, userData, setRecive);
     if (Recive?.length > 0) {
@@ -60,15 +62,17 @@ const ChatScreen = props => {
     }, 2000);
   }, [Recive]);
 
+  // console.log(new Date(SendMessage[0].createdAt * 1000).toDateString());
+
   return (
     <LinearGradient
       style={styles.screen}
       colors={[AppColors.infoFonts, '#012437']}
-      start={{x: 0.2, y: 1.1}}
-      end={{x: 1.3, y: 0.6}}>
+      start={{ x: 0.2, y: 1.1 }}
+      end={{ x: 1.3, y: 0.6 }}>
       <MessageHeader userData={userData} />
       <View style={styles.MessageInput}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <TextInput
             style={styles.input}
             value={message}
@@ -96,11 +100,13 @@ const ChatScreen = props => {
         </View>
       </View>
       {loading == false ? (
-        <View style={{marginBottom: 5, paddingBottom: 100}}>
+        <View style={{ marginBottom: 5, paddingBottom: 100 }}>
           <FlatList
             data={Recive}
             ref={chatRef}
-            renderItem={({item}) => (
+            inverted
+            contentContainerStyle={{ flexDirection: 'column-reverse' }}
+            renderItem={({ item }) => (
               <View
                 style={{
                   width: '100%',
@@ -110,7 +116,7 @@ const ChatScreen = props => {
                 <Text
                   style={{
                     color: item.sendBy == userData.email ? '#fff' : '#fff',
-                    width: '30%',
+                    width: '32%',
                     justifyContent: 'center',
                     borderRadius: 15,
                     padding: 10,
@@ -122,12 +128,12 @@ const ChatScreen = props => {
                 </Text>
                 <Text
                   style={{
-                    paddingStart: '2%',
                     fontSize: 7,
+                    marginTop: '1%',
                     color: '#fff',
-                    marginStart: item.sendBy == userData.email ? '2%' : '85%',
+                    marginStart: item.sendBy == userData.email ? '1%' : '85%',
                   }}>
-                  {item.createdAt}
+                  {new Date(item.createdAt * 1000).toDateString()}
                 </Text>
               </View>
             )}
@@ -196,4 +202,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {ChatScreen};
+export { ChatScreen };

@@ -6,16 +6,19 @@ import {
   ImageBackground,
   Image,
 } from 'react-native';
-import React, {useState} from 'react';
-import {Header} from '../../Components/Header';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import React, { useState } from 'react';
+import { Header } from '../../Components/Header';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const MatchScreen = () => {
   const navigation = useNavigation();
-  const {params} = useRoute();
-  const {data} = params;
+  const { params } = useRoute();
+  const { data, data2 } = params
+  
+  console.log(data)
 
-  const userimage = data.image;
+  const userimage = data2.image;
   const matchedimage = data.image;
   return (
     <View
@@ -28,7 +31,7 @@ const MatchScreen = () => {
     >
       <View style={styles.main}>
         <View>
-          <View style={{top: 306, width: '50%'}}>
+          <View style={{ top: 306, width: '50%' }}>
             <Header />
           </View>
         </View>
@@ -66,7 +69,7 @@ const MatchScreen = () => {
               top: 45,
               borderRadius: 100,
             }}
-            source={{uri: matchedimage}}
+            source={{ uri: matchedimage }}
           />
         </View>
         <View>
@@ -81,7 +84,7 @@ const MatchScreen = () => {
               top: 45,
               borderRadius: 100,
             }}
-            source={{uri: userimage}}
+            source={{ uri: userimage }}
           />
         </View>
       </View>
@@ -103,7 +106,7 @@ const MatchScreen = () => {
             color: 'white',
           }}
         >
-          You and {data.name} matched. Go send a hello !
+          You and {data.name} matched!
         </Text>
       </View>
       <View
@@ -118,19 +121,25 @@ const MatchScreen = () => {
           backgroundColor: '#2A72DE',
         }}
       >
-        <Text
-          style={{
-            fontFamily: 'Poppins',
-            fontSize: 20,
-            fontWeight: '700',
-            lineHeight: 30,
-            color: 'white',
-            letterSpacing: 0,
-            textAlign: 'center',
-          }}
-        >
-          Start messaging
-        </Text>
+        <TouchableOpacity onPress={()=> {
+          console.log("vibe")
+          navigation.navigate("Vibe")}}>
+        <View style={{ alignSelf: 'center' }}>
+          <Text
+            style={{
+              fontFamily: 'Poppins',
+              fontSize: 20,
+              fontWeight: '700',
+              lineHeight: 30,
+              color: 'white',
+              letterSpacing: 0,
+              textAlign: 'center',
+            }}
+          >
+            Okay
+          </Text>
+        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -166,4 +175,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-export {MatchScreen};
+export { MatchScreen };

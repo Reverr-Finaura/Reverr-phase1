@@ -1,3 +1,5 @@
+import Theme from '../utils/Theme';
+
 export const mentorCategory = [
   'Agriculture & Allied Industries',
   'Design',
@@ -20,24 +22,74 @@ export const mentorCategory = [
   'Waste management',
 ];
 
-export const mentorsDomains = [
-  ' Branding and Public Relations',
-  'Career Advice and Self-Mastery',
-  'Culture',
-  'Data Science and Analysis',
-  'Finance and Accounting',
-  'Human Resources and Recruiting',
-  'Leadership and Management',
-  'Legal, Risk Management and Compliance',
-  'Marketing and Growth',
-  'Product Management',
-  'Sales',
-  'Social Entrepreneurship and Charity',
-  'Software Engineering and IT',
-  'Start-up: Founding and Funding',
-  'Strategy and Business Development',
-  'Sustainability',
-  'Team Structure and Work Methodologies',
-  'Business Transformation',
-  'UX, Design and User Research',
+export const mentorsCategory = [
+  {
+    title: 'Branding and Public Relations',
+    image: Theme.branding,
+  },
+  {
+    title: 'Strategy and Business Development',
+    image: Theme.business,
+  },
+  {
+    title: 'Business Transformation',
+    image: Theme.business,
+  },
+  {
+    title: 'Career Advice and Self-Mastery',
+    image: Theme.finance,
+  },
+  {
+    title: 'Culture',
+    image: Theme.sales,
+  },
+  {
+    title: 'Data Science and Analysis',
+    image: Theme.branding,
+  },
+  {
+    title: 'Finance and Accounting',
+    image: Theme.accounting,
+  },
+  /* {
+    title: 'Human Resources and Recruiting',
+    image: require('../assets/images/mentorsCategoryImages/Branding_and_PR.jpeg'),
+  }, */
+  {
+    title: 'Leadership and Management',
+    image: Theme.sales,
+  },
+  {
+    title: 'Legal, Risk Management and Compliance',
+    image: Theme.finance,
+  },
+
+  {
+    title: 'Product Management',
+    image: Theme.marketing,
+  },
+  {
+    title: 'Sales',
+    image: Theme.finance,
+  },
+  {
+    title: 'Social Entrepreneurship and Charity',
+    image: Theme.marketing,
+  },
+  {
+    title: 'Start-up: Founding and Fundraising',
+    image: Theme.accounting,
+  },
+  {
+    title: 'Sustainability',
+    image: Theme.finance,
+  },
+  {
+    title: 'Team Structure and Work Methodologies',
+    image: Theme.business,
+  },
+  {
+    title: 'UX, Design and User Research',
+    image: Theme.finance,
+  },
 ];

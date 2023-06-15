@@ -9,6 +9,7 @@ import {
   Alert,
   Video,
   ToastAndroid,
+  ActivityIndicator,
 } from 'react-native';
 import React, {useState, useContext} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -27,6 +28,7 @@ import {
 //import {UserContext} from '../../App';
 import {BottomPopup} from '../../Components';
 import {useDispatch, useSelector} from 'react-redux';
+import axios from 'axios';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
@@ -40,6 +42,7 @@ const CreatePost = props => {
   const [imageUrl, setImageUrl] = useState('');
   const [videoUrl, setVideoUrl] = useState('');
   const [text, setText] = useState('');
+  const [mediaLoader, setMediaLoader] = useState(false);
   const navigation = useNavigation();
   const dispatch = useDispatch();
   //const {setPosts, fetchPosts2} = props.route.params;
@@ -51,11 +54,10 @@ const CreatePost = props => {
       .collection('Posts')
       .add(post)
       .then(p => {
-        console.log(p);
         //setPosts([]);
         //dispatch(add_post_to_rooms(post));
         //fetchPosts2();
-        console.log('Post Added!');
+        console.log(p, 'Post Added!');
 
         showToast('Your post has been posted.');
       })
@@ -69,14 +71,18 @@ const CreatePost = props => {
       image: imageUrl,
       comments: [],
       likes: [],
+      saved: [],
+      share: [],
       text,
-      createdat: firestore.Timestamp.fromDate(new Date()),
+      createdAt: firestore.Timestamp.fromDate(new Date()),
     };
     postData(post);
     navigation.goBack();
   };
+
+  console.log(imageUrl, 'URL');
   return (
-    <View style={styles.screen}>
+    <LinearGradient colors={['#070972', '#0C0C0D']} style={styles.screen}>
       <View style={styles.header}>
         <TouchableOpacity
           onPress={() => {
@@ -106,19 +112,35 @@ const CreatePost = props => {
               <Text style={styles.company}>{state.user.designation}</Text>
             </View>
           </View>
-          {imageUrl ? (
-            <View>
-              <Image
-                style={{
-                  width: 100,
-                  height: 100,
-                  margin: 20,
-                  resizeMode: 'cover',
-                }}
-                source={{uri: imageUrl}}
-              />
+          {mediaLoader ? (
+            <View
+              style={{
+                width: 100,
+                height: 100,
+                margin: 20,
+                backgroundColor: AppColors.BtnClr,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <ActivityIndicator />
             </View>
-          ) : null}
+          ) : (
+            <View>
+              {imageUrl !== '' && (
+                <View>
+                  <Image
+                    style={{
+                      width: 100,
+                      height: 100,
+                      margin: 20,
+                      resizeMode: 'cover',
+                    }}
+                    source={{uri: imageUrl}}
+                  />
+                </View>
+              )}
+            </View>
+          )}
           {videoUrl ? (
             <View>
               <Video
@@ -140,8 +162,8 @@ const CreatePost = props => {
               setText(e);
             }}
             placeholder="What do you want to share?"
-            numberOfLines={8}
-            maxLength={150}
+            numberOfLines={10}
+            placeholderTextColor="white"
           />
           <View
             style={{
@@ -192,11 +214,11 @@ const CreatePost = props => {
           <TouchableOpacity
             onPress={() => {
               if (image) {
-                AddCameraImage(setImageUrl);
+                AddCameraImage(setImageUrl, setMediaLoader);
                 setPopup(false);
               }
               if (video) {
-                AddCameraVideo(setVideoUrl);
+                AddCameraVideo(setVideoUrl, setMediaLoader);
                 setPopup(false);
               }
             }}
@@ -212,11 +234,11 @@ const CreatePost = props => {
           <TouchableOpacity
             onPress={() => {
               if (image) {
-                AddGalleryImage(setImageUrl);
+                AddGalleryImage(setImageUrl, setMediaLoader);
                 setPopup(false);
               }
               if (video) {
-                AddGalleryVideo(setVideoUrl);
+                AddGalleryVideo(setVideoUrl, setMediaLoader);
                 setPopup(false);
               }
             }}
@@ -233,7 +255,7 @@ const CreatePost = props => {
           </TouchableOpacity>
         </LinearGradient>
       </BottomPopup>
-    </View>
+    </LinearGradient>
   );
 };
 const styles = StyleSheet.create({
@@ -279,6 +301,7 @@ const styles = StyleSheet.create({
   dp: {
     height: 60,
     width: 60,
+    borderRadius: 60,
   },
   name: {
     color: AppColors.FontsColor,

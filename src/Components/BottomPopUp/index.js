@@ -57,15 +57,15 @@ const BottomPopup = ({
     visible ? animationStart() : animationEnd();
   }, [visible, animationStart, animationEnd]);
 
-  useEffect(() => {
-    closeOnBackButton &&
-      BackHandler.addEventListener('hardwareBackPress', onBackButtonPress);
+  // useEffect(() => {
+  //   closeOnBackButton &&
+  //     BackHandler.addEventListener('hardwareBackPress', onBackButtonPress);
 
-    return () => {
-      closeOnBackButton &&
-        BackHandler.removeEventListener('hardwareBackPress', onBackButtonPress);
-    };
-  }, [closeOnBackButton, onBackButtonPress]);
+  //   return () => {
+  //     closeOnBackButton &&
+  //       BackHandler.removeEventListener('hardwareBackPress', onBackButtonPress);
+  //   };
+  // }, [closeOnBackButton, onBackButtonPress]);
 
   const swipeConfigConcated = {...swipeConfigDefault, ...swipeConfig};
 

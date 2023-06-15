@@ -7,6 +7,7 @@ import {PlansCard} from '../../Components/PlansCard';
 
 export const Plans = () => {
   const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <Header />

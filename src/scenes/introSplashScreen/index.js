@@ -1,4 +1,11 @@
-import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Dimensions,
+  StatusBar,
+} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {AppColors} from '../../utils';
 import {useNavigation} from '@react-navigation/native';
@@ -6,6 +13,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {setUser} from '../../Redux/actions';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import LinearGradient from 'react-native-linear-gradient';
+import {setUserDetails} from '../../Redux/appSlice';
 //import { AuthContext } from '../Navigations/AuthProvider';
 
 const Height = Dimensions.get('window').height;
@@ -15,7 +24,6 @@ const IntroSplash = () => {
   const navigation = useNavigation();
   //const [user, setUser] = useState(AuthContext);
   const [initializing, setInitializing] = useState(true);
-
   const state = useSelector(state => state.UserReducer);
   const [user, setuser] = useState();
   const dispatch = useDispatch();
@@ -33,21 +41,24 @@ const IntroSplash = () => {
     //if(subscriber){
     setTimeout(() => {
       auth().onAuthStateChanged(async user => {
+        /// console.log(user,"usegsg");
         if (!user) {
-          return navigation.replace('Login');
+          return navigation.replace('login');
         } else {
           await firestore()
             .collection('Users')
             .doc(user.email)
             .get()
             .then(inst => {
-              console.log(inst);
+              //console.log(inst);
               dispatch(setUser(inst._data));
               if (inst?._data?.userType == 'Mentor') {
-                return navigation.replace("MentorBottomTab");
+                return navigation.replace('MyDrawer');
+                // return navigation.navigate('IndividualTab');
               } else {
                 //console.log(inst._data)
-                return navigation.replace('IndividualTab');
+                return navigation.replace('MyDrawer');
+                // return navigation.navigate('IndividualTab');
               }
             });
         }
@@ -75,7 +86,8 @@ const IntroSplash = () => {
   // }, 2000);
 
   return (
-    <View style={styles.Screen}>
+    <LinearGradient colors={['#070972', '#0C0C0D']} style={styles.Screen}>
+      <StatusBar backgroundColor={'#070972'} />
       <View style={styles.container}>
         <Image
           style={styles.Logo}
@@ -85,7 +97,7 @@ const IntroSplash = () => {
           <Text style={styles.logoText}>Reverr</Text>
         </View>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 
@@ -98,16 +110,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   Logo: {
-    marginTop: 100,
+    marginTop: Height / 5,
   },
   logoText: {
     color: 'gray',
     fontFamily: 'Poppins-Bold',
+    fontWeight: 'bold',
     fontSize: 35,
   },
   textContainer: {
     position: 'absolute',
-    marginTop: 320,
+    marginTop: Height / 1.4,
   },
 });
 

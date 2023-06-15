@@ -16,6 +16,8 @@ import {store} from './Redux/store';
 import {StatusBar} from 'react-native';
 import {AppLayout} from './layouts';
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+import {AppColors} from './utils';
+import Route from './routes/MainRoute';
 
 const theme = {
   ...DefaultTheme,
@@ -42,14 +44,61 @@ export default function App() {
       <Provider store={store}>
         {/* <Text>Hello</Text> */}
         <PaperProvider theme={theme}>
-          <NavigationContainer>
-            <StatusBar backgroundColor={'#000c12'} />
-            {/* <Root_Navigator/> */}
-            <StackNavigate />
-            {/* <Text>Hello World</Text> */}
-          </NavigationContainer>
+          <StatusBar backgroundColor={'#1B1D8B'} />
+          {/* <StackNavigate /> */}
+          <Route />
         </PaperProvider>
       </Provider>
     </AppLayout>
+
+    // <Provider store={store}>
+    //   <StatusBar backgroundColor={"#1B1D8B"} />
+    //   <Route/>
+    // </Provider>
   );
 }
+
+// import React, { useRef, useEffect, useState, } from 'react';
+// import { View, Image, Animated, Text, style } from 'react-native';
+
+// const FadeInOutImage = ({ source, style }) => {
+//   const fadeAnim = useRef(new Animated.Value(0)).current;
+//   const [fadeIn, setFadeIn] = useState(true);
+
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       if (fadeIn) {
+//         Animated.timing(fadeAnim, {
+//           toValue: 1,
+//           duration: 100, // Set the duration of the fade in animation
+//           useNativeDriver: true // Add this line to improve performance
+//         }).start(() => {
+//           setFadeIn(false);
+//         });
+//       } else {
+//         Animated.timing(fadeAnim, {
+//           toValue: 0,
+//           duration: 1000, // Set the duration of the fade out animation
+//           useNativeDriver: true // Add this line to improve performance
+//         }).start(() => {
+//           setFadeIn(true);
+//         });
+//       }
+//     }, 500); // Set the interval duration to 2 seconds (1000ms = 1 second)
+
+//     return () => clearInterval(interval);
+//   }, [fadeAnim, fadeIn]);
+
+//   return (
+//     <Animated.View style={{ ...style, opacity: fadeAnim }}>
+
+//       <Image style={{ alignSelf: "center", justifyContent: "center", resizeMode: "contain", width: "100%", height: "100%" }}
+//         source={require('../src/assets/images/loader.png')}
+
+//       />
+
+//     </Animated.View>
+//   );
+// };
+
+// export default FadeInOutImage;

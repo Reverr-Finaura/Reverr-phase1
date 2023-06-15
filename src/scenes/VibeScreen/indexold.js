@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState, useEffect} from 'react';
+/* import React, {useCallback, useRef, useState, useEffect} from 'react';
 import {
   View,
   StyleSheet,
@@ -11,7 +11,6 @@ import {
   Button,
   ImageBackground,
 } from 'react-native';
-
 
 // import { useNavigation } from '@react-navigation/native';
 import {FlatList} from 'react-native-gesture-handler';
@@ -54,7 +53,7 @@ const Vibeold = () => {
     setIdx(0);
     setLoading(true);
     //setIdx(0);
-    console.log(idx); 
+    console.log(idx);
     if (state.user.no_of_swipe < 15) {
       if (state.vibe.length == 0 || idx == 0) {
         dispatch(
@@ -114,45 +113,35 @@ const Vibeold = () => {
     }
     setLoading(false);
   }, [idx]);
-//To Rest No_of_swipe
-useEffect(()=>{
-console.log("I am inside no of swipe")
-if(state.user.no_of_swipe>=15){const ExpiredDate= new Date;
-  console.log(ExpiredDate)
-  console.log(ExpiredDate.getTime())
-  const ExpiredTime =ExpiredDate.getTime()
-  const UpdatedTime= ExpiredTime+86400000 
-  // It is 24 hrrs in milli second
-  const ToChecKAfter= 86397500
-  console.log("updated time",UpdatedTime)
+  //To Rest No_of_swipe
+  useEffect(() => {
+    console.log('I am inside no of swipe');
+    if (state.user.no_of_swipe >= 15) {
+      const ExpiredDate = new Date();
+      console.log(ExpiredDate);
+      console.log(ExpiredDate.getTime());
+      const ExpiredTime = ExpiredDate.getTime();
+      const UpdatedTime = ExpiredTime + 86400000;
+      // It is 24 hrrs in milli second
+      const ToChecKAfter = 86397500;
+      console.log('updated time', UpdatedTime);
 
-  setTimeout(async()=>{
-
-    const UpdateDate=new Date
-    const NewUpdatedTime =UpdateDate.getTime()
-    console.log("New update time",NewUpdatedTime)
-  if(UpdatedTime>NewUpdatedTime){
-    await firestore()
-    .collection('Users')
-    .doc(state.user.email)
-    .update({
-      no_of_swipe: 0,
-    });
-    // console.log(" called here")
-  }
-  else{
-  
-    console.log("I am not here")
-  }
-  
-  },ToChecKAfter)
-
-}
-
-
-
-},[state.user.no_of_swipe])
-console.log("no of swipe",state.user.no_of_swipe)
+      setTimeout(async () => {
+        const UpdateDate = new Date();
+        const NewUpdatedTime = UpdateDate.getTime();
+        console.log('New update time', NewUpdatedTime);
+        if (UpdatedTime > NewUpdatedTime) {
+          await firestore().collection('Users').doc(state.user.email).update({
+            no_of_swipe: 0,
+          });
+          // console.log(" called here")
+        } else {
+          console.log('I am not here');
+        }
+      }, ToChecKAfter);
+    }
+  }, [state.user.no_of_swipe]);
+  console.log('no of swipe', state.user.no_of_swipe);
 
   const [finish, setFinished] = useState(false);
   const {width, height} = Dimensions.get('window');
@@ -307,8 +296,7 @@ console.log("no of swipe",state.user.no_of_swipe)
             styles.choiceContainer,
             styles.likeContainer,
             {opacity: likeOpacity},
-          ]}
-        >
+          ]}>
           <Choice type="Like" />
         </Animated.View>
         <Animated.View
@@ -316,8 +304,7 @@ console.log("no of swipe",state.user.no_of_swipe)
             styles.choiceContainer,
             styles.unlikeContainer,
             {opacity: unlikeOpacity},
-          ]}
-        >
+          ]}>
           <Choice type="UnLike" />
         </Animated.View>
       </>
@@ -338,14 +325,12 @@ console.log("no of swipe",state.user.no_of_swipe)
     return (
       <Animated.View
         style={[styles.card, isFirst && animatedCardStyle]}
-        {...dragHandler}
-      >
+        {...dragHandler}>
         {isFirst && renderChoice()}
 
         <ImageBackground
           style={styles.image}
-          source={{uri: item.image}}
-        ></ImageBackground>
+          source={{uri: item.image}}></ImageBackground>
         <View style={{display: 'flex'}}>
           <View style={{marginHorizontal: 10, marginTop: 20}}>
             <Text
@@ -354,8 +339,7 @@ console.log("no of swipe",state.user.no_of_swipe)
                 fontSize: 22,
                 fontFamily: 'poppins',
                 fontWeight: 'bold',
-              }}
-            >
+              }}>
               {item.name}
             </Text>
             <Text
@@ -363,8 +347,7 @@ console.log("no of swipe",state.user.no_of_swipe)
                 color: '#fff',
                 fontSize: 14,
                 fontWeight: '400',
-              }}
-            >
+              }}>
               {item.designation || demoData[0].designation}
             </Text>
             <Text
@@ -372,8 +355,7 @@ console.log("no of swipe",state.user.no_of_swipe)
                 color: '#fff',
                 fontSize: 14,
                 fontWeight: '400',
-              }}
-            >
+              }}>
               {item.city || demoData[0].city}
               {' ,'}
               {item.country || demoData[0].country}
@@ -388,8 +370,7 @@ console.log("no of swipe",state.user.no_of_swipe)
                 fontWeight: 'bold',
                 marginTop: 10,
                 marginHorizontal: 10,
-              }}
-            >
+              }}>
               {item.quote || demoData[0].quote}
             </Text>
           </View>
@@ -407,8 +388,7 @@ console.log("no of swipe",state.user.no_of_swipe)
           justifyContent: 'center',
           alignItems: 'center',
           alignContent: 'center',
-        }}
-      >
+        }}>
         <Text style={styles.heading}>
           Buy Premium to connect with people who are interested in your profile.
         </Text>
@@ -418,8 +398,7 @@ console.log("no of swipe",state.user.no_of_swipe)
             marginTop: 20,
             fontSize: 16,
             fontWeight: 'bold',
-          }}
-        >
+          }}>
           Many people viewed your profile
         </Text>
         <View
@@ -430,8 +409,7 @@ console.log("no of swipe",state.user.no_of_swipe)
             marginVertical: 20,
             alignContent: 'center',
             alignItems: 'center',
-          }}
-        >
+          }}>
           <View
             style={{
               borderWidth: 2,
@@ -441,8 +419,7 @@ console.log("no of swipe",state.user.no_of_swipe)
               justifyContent: 'center',
               alignContent: 'center',
               alignItems: 'center',
-            }}
-          >
+            }}>
             <Image
               style={{width: 100, height: 100}}
               source={require('../../assets/images/MentorCard.png')}
@@ -480,8 +457,7 @@ console.log("no of swipe",state.user.no_of_swipe)
     <IndividualHeaderLayout>
       <CustomPopup
         modalVisible={prevDailog}
-        setModalVisible={() => setPrevDailog(false)}
-      >
+        setModalVisible={() => setPrevDailog(false)}>
         <View>
           <Text>Prev Data Show Here</Text>
         </View>
@@ -583,3 +559,4 @@ const styles = StyleSheet.create({
 });
 
 export {Vibeold};
+ */

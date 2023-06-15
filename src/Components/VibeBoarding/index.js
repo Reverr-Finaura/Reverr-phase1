@@ -1,148 +1,16 @@
-import {View, Text, TouchableOpacity} from 'react-native';
-import React from 'react';
-import {IndividualHeaderLayout} from '../HeaderLayout';
+import { View, Text, TouchableOpacity, Dimensions, TextInput, Image, Animated } from 'react-native';
+import React, { useRef, useEffect, useState, } from 'react';
+import { IndividualHeaderLayout } from '../HeaderLayout';
 import MultiSelect from 'react-native-multiple-select';
-import {useState} from 'react';
-import {CustomTextInput} from '../TextInput';
-import {InputField} from '../InputField';
-import {TextInput} from 'react-native-paper';
-import {AppColors} from '../../utils';
-import {ScrollView} from 'react-native-gesture-handler';
+import { CustomTextInput } from '../TextInput';
+import { InputField } from '../InputField';
+// import { TextInput } from 'react-native-paper';
+import { AppColors } from '../../utils';
+import { ScrollView } from 'react-native-gesture-handler';
 import firestore from '@react-native-firebase/firestore';
-import {useDispatch, useSelector} from 'react-redux';
-
-const K_OPTIONS = [
-  {
-    item: 'Juventus',
-    id: 'JUVE',
-  },
-  {
-    item: 'Real Madrid',
-    id: 'RM',
-  },
-  {
-    item: 'Barcelona',
-    id: 'BR',
-  },
-  {
-    item: 'PSG',
-    id: 'PSG',
-  },
-  {
-    item: 'FC Bayern Munich',
-    id: 'FBM',
-  },
-  {
-    item: 'Manchester United FC',
-    id: 'MUN',
-  },
-  {
-    item: 'Manchester City FC',
-    id: 'MCI',
-  },
-  {
-    item: 'Everton FC',
-    id: 'EVE',
-  },
-  {
-    item: 'Tottenham Hotspur FC',
-    id: 'TOT',
-  },
-  {
-    item: 'Chelsea FC',
-    id: 'CHE',
-  },
-  {
-    item: 'Liverpool FC',
-    id: 'LIV',
-  },
-  {
-    item: 'Arsenal FC',
-    id: 'ARS',
-  },
-
-  {
-    item: 'Leicester City FC',
-    id: 'LEI',
-  },
-];
-const items = [
-  {
-    id: '92iijs7yta',
-    name: 'Ondo',
-  },
-  {
-    id: 'a0s0a8ssbsd',
-    name: 'Ogun',
-  },
-  {
-    id: '16hbajsabsd',
-    name: 'Calabar',
-  },
-  {
-    id: 'nahs75a5sg',
-    name: 'Lagos',
-  },
-  {
-    id: '667atsas',
-    name: 'Maiduguri',
-  },
-  {
-    id: 'hsyasajs',
-    name: 'Anambra',
-  },
-  {
-    id: 'djsjudksjd',
-    name: 'Benue',
-  },
-  {
-    id: 'sdhyaysdj',
-    name: 'Kaduna',
-  },
-  {
-    id: 'suudydjsjd',
-    name: 'Abuja',
-  },
-];
-
-const items2 = [
-  {
-    id: '92iijs7yta',
-    name: 'Ondo',
-  },
-  {
-    id: 'a0s0a8ssbsd',
-    name: 'Ogun',
-  },
-  {
-    id: '16hbajsabsd',
-    name: 'Calabar',
-  },
-  {
-    id: 'nahs75a5sg',
-    name: 'Lagos',
-  },
-  {
-    id: '667atsas',
-    name: 'Maiduguri',
-  },
-  {
-    id: 'hsyasajs',
-    name: 'Anambra',
-  },
-  {
-    id: 'djsjudksjd',
-    name: 'Benue',
-  },
-  {
-    id: 'sdhyaysdj',
-    name: 'Kaduna',
-  },
-  {
-    id: 'suudydjsjd',
-    name: 'Abuja',
-  },
-];
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { opacity } from 'react-native-redash';
 
 const experience = [
   {
@@ -175,7 +43,7 @@ const prevduration = [
     id: '2-5',
     name: '2-5',
   },
-  {id: '>5', name: '>5'},
+  { id: '>5', name: '>5' },
 ];
 const herefor = [
   {
@@ -190,13 +58,24 @@ const herefor = [
     id: 'Find Mentors',
     name: 'Find Mentors',
   },
+  {
+    id: 'For Networking',
+    name: 'For Networking',
+  },
+  {
+    id: 'Find Cofounder',
+    name: 'Find Cofunder',
+  },
 ];
 const meetdata = [
-  {id: 'At Coffe', name: 'At Coffe'},
-  {id: 'Video Call', name: 'Video Call'},
-  {id: 'Local Cafe', name: 'Local Cafe'},
+  { id: 'At Coffee', name: 'At Coffee' },
+  { id: 'Video Call', name: 'Video Call' },
+  { id: 'Phone Call', name: 'Phone Call' },
 ];
-const VibeBoarding = ({vibeboarding},setvibeboarding) => {
+const VibeBoarding = ({ showboarding, setshowboarding }) => {
+  const navigation = useNavigation();
+  // const { params } = useRoute();
+  // console.log('paraamss is', params);
   const state = useSelector(state => state.UserReducer);
   const dispatch = useDispatch();
   const [selected, setselected] = useState([]);
@@ -207,6 +86,34 @@ const VibeBoarding = ({vibeboarding},setvibeboarding) => {
   const [prevdesignation, setprevdesignation] = useState('');
   const [industry, setindustry] = useState('');
   const [prevorg, setprevorg] = useState('');
+  const [refresh, setrefresh] = useState(true);
+  const [loader, setLoader] = useState(false)
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const [fadeIn, setFadeIn] = useState(true);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (fadeIn) {
+        Animated.timing(fadeAnim, {
+          toValue: 1,
+          duration: 100, // Set the duration of the fade in animation
+          useNativeDriver: true // Add this line to improve performance
+        }).start(() => {
+          setFadeIn(false);
+        });
+      } else {
+        Animated.timing(fadeAnim, {
+          toValue: 0,
+          duration: 1000, // Set the duration of the fade out animation
+          useNativeDriver: true // Add this line to improve performance
+        }).start(() => {
+          setFadeIn(true);
+        });
+      }
+    }, 500); // Set the interval duration to 2 seconds (1000ms = 1 second)
+
+    return () => clearInterval(interval);
+  }, [fadeAnim, fadeIn]);
+
   const onSelectedItemsChange = data => {
     console.log('here', data);
     setselected(data);
@@ -232,6 +139,8 @@ const VibeBoarding = ({vibeboarding},setvibeboarding) => {
     console.warn(selected3);
   };
   const HandleSubmit = async () => {
+    setLoader(true)
+
     console.log('at submit');
     console.log('selected is', selected);
     console.log('selected1 is', selected1);
@@ -241,84 +150,126 @@ const VibeBoarding = ({vibeboarding},setvibeboarding) => {
     console.log('predesig', prevdesignation);
     console.log('industry', industry);
     console.log('preorg', prevorg);
+    await firestore()
+      .collection('Users')
+      .doc(state.user.email)
+      .update({
+        Vibe_Data: {
+          Years_Of_Experience: selected,
+          Previous_org_Duration: selected1,
+          Education: text,
+          Previous_Designation: prevdesignation,
+          Industry: industry,
+          Previous_Org: prevorg,
+          Here_for: selected2,
+          How_To_Meet: selected3,
+        },
+      });
     await firestore().collection('Users').doc(state.user.email).update({
-    Vibe_Data: { Years_Of_Experience: selected,
-      Previous_org_Duration: selected1,
-      Education: text,
-      Previous_Designation: prevdesignation,
-      Industry: industry,
-      Previous_Org: prevorg,
-      Here_for: selected2,
-      How_To_Meet: selected3,}
-    });
-  setvibeboarding(fasle)
+      Number_Of_Swips_Done: 0,
+    }).then(() => {
+      setLoader(false)
+      setrefresh(true);
+      const inntialrefresh = true
+      navigation.navigate(
+        'Vibe',
+        inntialrefresh
+      );
+    }).catch((error) => {
+      alert(error)
+    })
+
+    // setTimeout(() => {
+    //   // navigation.navigate(
+    //   //   'Vibe',
+    //   //   inntialrefresh
+
+    //   // );
+    // }, 10);
   };
-  return (
-    <IndividualHeaderLayout>
-      <View
-        style={{
-          backgroundColor: 'white',
-          width: 380,
-          alignSelf: 'center',
-          borderRadius: 15,
-          flex: 1,
-        }}
-      >
-        <ScrollView style={{flexGrow: 1}}>
-          <View style={{flex: 1}}>
-            <View style={{alignSelf: 'center'}}>
+
+
+  if (loader) {
+    return (
+      <Animated.View style={{ flex: 1, backgroundColor: "#010C12", opacity: fadeAnim }}>
+        <Image style={{ alignSelf: "center", justifyContent: "center", resizeMode: "contain", width: "100%", height: "100%" }}
+          source={require('../../../src/assets/images/loader.png')}
+
+
+        />
+      </Animated.View >
+    )
+  }
+
+  if (loader === false) {
+    return (
+      <IndividualHeaderLayout>
+        <View
+          style={{
+            backgroundColor: 'black',
+            width: Dimensions.get('window').width / 1.1,
+            alignSelf: 'center',
+            borderRadius: 15,
+            flex: 1,
+          }}
+        >
+
+
+          <ScrollView style={{ flexGrow: 1 }}>
+            <View style={{ flex: 1 }}>
+              <View style={{ alignSelf: 'center' }}>
+                <Text
+                  style={{
+                    color: '#ffffff',
+                    fontFamily: 'Poppins',
+                    fontSize: 18,
+                    fontWeight: '700',
+                    marginTop: 4,
+                  }}
+                >
+                  Create your Vibe Profile!
+                </Text>
+              </View>
+
               <Text
                 style={{
-                  color: '#0077B7',
+                  color: '#848599',
                   fontFamily: 'Poppins',
-                  fontSize: 18,
+                  fontSize: 14,
                   fontWeight: '700',
-                  marginTop: 4,
+                  marginTop: 14,
                 }}
               >
-                Create your Vibe Profile!
+                Tell Us About Yourself
               </Text>
-            </View>
 
-            <Text
-              style={{
-                color: '#0077B7',
-                fontFamily: 'Poppins',
-                fontSize: 18,
-                fontWeight: '700',
-                marginTop: 14,
-              }}
-            >
-              Tell Us About Yourself
-            </Text>
-
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-                alignItems: 'center',
-                marginTop: 5,
-              }}
-            >
-              <Text
+              <View
                 style={{
-                  color: '#0077B7',
-                  fontFamily: 'Poppins',
-                  width: '60%',
-                  textAlign: 'left',
-                  fontSize: 16,
-                  fontWeight: '700',
+
+
+                  marginTop: 10,
                 }}
               >
-                Years of Experience
-              </Text>
-              <View style={{width: 100}}>
+                <Text
+                  style={{
+                    color: '#FFFFFF',
+                    fontFamily: 'Poppins',
+                    width: '60%',
+                    textAlign: 'left',
+                    fontSize: 16,
+                    fontWeight: '700',
+                    marginBottom: 10,
+                  }}
+                >
+                  Years of Experience
+                </Text>
+
                 <MultiSelect
                   items={experience}
                   uniqueKey="id"
                   onSelectedItemsChange={data => onSelectedItemsChange(data)}
                   selectedItems={selected}
-                  selectText="Choose"
+                  selectText="  Enter Duration"
                   searchInputPlaceholderText="Search Items..."
                   onChangeInput={text => console.log(text)}
                   tagRemoveIconColor="#CCC"
@@ -328,40 +279,37 @@ const VibeBoarding = ({vibeboarding},setvibeboarding) => {
                   selectedItemIconColor="#CCC"
                   itemTextColor="#000"
                   displayKey="name"
-                  searchInputStyle={{color: '#CCC'}}
+                  searchInputStyle={{ color: '#CCC', borderRadius: 20 }}
                   single={true}
                   submitButtonColor="#CCC"
                   submitButtonText="Submit"
                 />
               </View>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-                alignItems: 'center',
-                marginTop: 5,
-              }}
-            >
-              <Text
+              <View
                 style={{
-                  color: '#0077B7',
-                  fontFamily: 'Poppins',
-                  fontSize: 16,
-                  width: '60%',
-                  textAlign: 'left',
-                  fontWeight: '700',
+                  marginTop: 10,
                 }}
               >
-                Previous Organistation Duration
-              </Text>
-              <View style={{width: 100}}>
+                <Text
+                  style={{
+                    color: '#FFFFFF',
+                    fontFamily: 'Poppins',
+                    fontSize: 16,
+                    textAlign: 'left',
+                    fontWeight: '700',
+                    marginBottom: 10
+                  }}
+                >
+                  Experience
+                </Text>
+
                 <MultiSelect
+
                   items={prevduration}
                   uniqueKey="id"
                   onSelectedItemsChange={data => onSelectedItemsChange1(data)}
                   selectedItems={selected1}
-                  selectText="Choose Duration"
+                  selectText="Experience in Year..."
                   searchInputPlaceholderText="Search Items..."
                   onChangeInput={text => console.log(text)}
                   tagRemoveIconColor="#CCC"
@@ -371,171 +319,170 @@ const VibeBoarding = ({vibeboarding},setvibeboarding) => {
                   selectedItemIconColor="#CCC"
                   itemTextColor="#000"
                   displayKey="name"
-                  searchInputStyle={{color: '#CCC'}}
+                  searchInputStyle={{ color: '#CCC' }}
                   single={true}
                   submitButtonColor="#CCC"
                   submitButtonText="Submit"
                 />
-              </View>
-            </View>
-            <View style={{alignItems: 'stretch'}}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-around',
-                  marginTop: 3,
-                }}
-              >
-                <Text
-                  style={{
-                    color: '#0077B7',
-                    fontFamily: 'Poppins',
-                    fontSize: 16,
-                    width: '40%',
-                    textAlign: 'left',
-                    fontWeight: '700',
-                  }}
-                >
-                  Education{' '}
-                </Text>
-                <TextInput
-                  style={{
-                    height: 30,
-                    width: '45%',
-                    alignSelf: 'baseline',
-                    borderWidth: 2,
-                    borderRadius: 15,
-                    borderTopLeftRadius: 15,
-                    borderTopRightRadius: 15,
-                  }}
-                  onChangeText={text => onChangeText(text)}
-                />
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-around',
-                  marginTop: 3,
-                }}
-              >
-                <Text
-                  style={{
-                    color: '#0077B7',
-                    fontFamily: 'Poppins',
-                    fontSize: 16,
-                    width: '40%',
-                    textAlign: 'justify',
-                    fontWeight: '700',
-                  }}
-                >
-                  Previous Designation
-                </Text>
-                <TextInput
-                  style={{
-                    height: 30,
-                    width: '45%',
-                    alignSelf: 'baseline',
-                    borderWidth: 2,
-                    borderRadius: 15,
-                    borderTopLeftRadius: 15,
-                    borderTopRightRadius: 15,
-                  }}
-                  onChangeText={text => setprevdesignation(text)}
-                />
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-around',
-                  marginTop: 3,
-                }}
-              >
-                <Text
-                  style={{
-                    color: '#0077B7',
-                    fontFamily: 'Poppins',
-                    fontSize: 16,
-                    width: '40%',
-                    textAlign: 'left',
-                    fontWeight: '700',
-                  }}
-                >
-                  What Is My Industry
-                </Text>
-                <TextInput
-                  style={{
-                    height: 30,
-                    width: '45%',
-                    borderWidth: 2,
-                    borderRadius: 15,
-                    alignSelf: 'baseline',
-                    borderTopLeftRadius: 15,
-                    borderTopRightRadius: 15,
-                  }}
-                  onChangeText={text => setindustry(text)}
-                />
-              </View>
 
+              </View>
+              <View style={{ alignItems: 'stretch' }}>
+                <View
+                  style={{
+
+                    marginTop: 10,
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: '#FFFFFF',
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+                      textAlign: 'left',
+                      fontWeight: '700',
+                      marginBottom: 10
+                    }}
+                  >
+                    Education{' '}
+                  </Text>
+                  <TextInput
+                    style={{
+                      height: 40,
+                      backgroundColor: "#FFFFFF",
+                      color: '#000000',
+                      paddingLeft: 8
+
+                    }}
+                    placeholder={"Enter qualification"}
+                    placeholderTextColor={"#6B6A71"}
+                    selectionColor={"#ccc"}
+                    onChangeText={text => onChangeText(text)}
+                  />
+                </View>
+                <View
+                  style={{
+
+                    marginTop: 10,
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: '#FFFFFF',
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+                      textAlign: 'justify',
+                      fontWeight: '700',
+                      marginBottom: 10
+                    }}
+                  >
+                    Designation
+                  </Text>
+                  <TextInput
+                    style={{
+                      height: 40,
+                      backgroundColor: "#FFFFFF",
+                      color: '#000000',
+                      paddingLeft: 8
+                    }}
+                    placeholder={"Enter Designation"}
+                    placeholderTextColor={"#6B6A71"}
+                    selectionColor={"#ccc"}
+                    onChangeText={text => setprevdesignation(text)}
+                  />
+                </View>
+                <View
+                  style={{
+
+                    marginTop: 10,
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: '#FFFFFF',
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+                      textAlign: 'left',
+                      fontWeight: '700',
+                      marginBottom: 10,
+                    }}
+                  >
+                    What Is My Industry
+                  </Text>
+                  <TextInput
+                    style={{
+                      height: 40,
+                      backgroundColor: "#FFFFFF",
+                      color: "#000000",
+                      paddingLeft: 8
+                    }}
+                    onChangeText={text => setindustry(text)}
+                    placeholder={"Enter Industry"}
+
+                    placeholderTextColor={"#6B6A71"}
+                    selectionColor={"#ccc"}
+                  />
+                </View>
+
+                <View
+                  style={{
+                    marginTop: 10,
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: '#FFFFFF',
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+                      fontWeight: '700',
+                      textAlign: 'left',
+                      marginBottom: 10,
+                    }}
+                  >
+                    Organistation / Company
+                  </Text>
+                  <TextInput
+                    style={{
+                      height: 40,
+                      backgroundColor: '#ffffff',
+                      color: "#000000",
+                      paddingLeft: 8
+                    }}
+                    onChangeText={text => setprevorg(text)}
+                    placeholder={"Enter Organization / Company"}
+                    placeholderTextColor={"#6B6A71"}
+                    selectionColor={"#ccc"}
+                  />
+                </View>
+              </View>
               <View
                 style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-around',
-                  marginTop: 3,
+
+                  marginTop: 10,
                 }}
               >
                 <Text
                   style={{
-                    color: '#0077B7',
+                    color: '#FFFFFF',
                     fontFamily: 'Poppins',
                     fontSize: 16,
-                    fontWeight: '700',
-                    width: '40%',
                     textAlign: 'left',
+                    fontWeight: '700',
+                    marginBottom: 10,
                   }}
                 >
-                  Previous Organistation
+                  What I Am Here For
                 </Text>
-                <TextInput
-                  style={{
-                    height: 30,
-                    width: '45%',
-                    alignSelf: 'baseline',
-                    borderWidth: 2,
-                    borderRadius: 15,
-                    borderTopLeftRadius: 15,
-                    borderTopRightRadius: 15,
-                  }}
-                  onChangeText={text => setprevorg(text)}
-                />
-              </View>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-                alignItems: 'center',
-                marginTop: 5,
-              }}
-            >
-              <Text
-                style={{
-                  color: '#0077B7',
-                  fontFamily: 'Poppins',
-                  fontSize: 16,
-                  width: '45%',
-                  textAlign: 'left',
-                  fontWeight: '700',
-                }}
-              >
-                What I Am Here For
-              </Text>
-              <View style={{width: 150}}>
+
                 <MultiSelect
                   items={herefor}
                   uniqueKey="id"
                   onSelectedItemsChange={data => onSelectedItemsChange2(data)}
                   selectedItems={selected2}
-                  selectText="Choose"
+                  selectText="  Enter here for"
+                  tagContainerStyle={{
+                    backgroundColor: '#0077B7',
+                    width: Dimensions.get('window').width / 2.7,
+                  }}
                   searchInputPlaceholderText="Search Items..."
                   onChangeInput={text => console.log(text)}
                   tagRemoveIconColor="#CCC"
@@ -545,39 +492,35 @@ const VibeBoarding = ({vibeboarding},setvibeboarding) => {
                   selectedItemIconColor="#CCC"
                   itemTextColor="#000"
                   displayKey="name"
-                  searchInputStyle={{color: '#CCC'}}
+                  searchInputStyle={{ color: '#CCC' }}
                   submitButtonColor="#CCC"
                   submitButtonText="Submit"
                 />
+
               </View>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-                alignItems: 'center',
-                marginTop: 5,
-              }}
-            >
-              <Text
+              <View
                 style={{
-                  color: '#0077B7',
-                  fontFamily: 'Poppins',
-                  fontSize: 16,
-                  width: '45%',
-                  textAlign: 'left',
-                  fontWeight: '700',
+                  marginTop: 10,
                 }}
               >
-                How Can We Meet
-              </Text>
-              <View style={{width: 150}}>
+                <Text
+                  style={{
+                    color: '#FFFFFF',
+                    fontFamily: 'Poppins',
+                    fontSize: 16,
+                    textAlign: 'left',
+                    fontWeight: '700',
+                    marginBottom: 10
+                  }}
+                >
+                  How Can We Meet
+                </Text>
                 <MultiSelect
                   items={meetdata}
                   uniqueKey="id"
                   onSelectedItemsChange={data => onSelectedItemsChange3(data)}
                   selectedItems={selected3}
-                  selectText="Pick Locations"
+                  selectText="  Enter how to connect"
                   searchInputPlaceholderText="Search Items..."
                   onChangeInput={text => console.log(text)}
                   tagRemoveIconColor="#CCC"
@@ -587,40 +530,51 @@ const VibeBoarding = ({vibeboarding},setvibeboarding) => {
                   selectedItemIconColor="#CCC"
                   itemTextColor="#000"
                   displayKey="name"
-                  searchInputStyle={{color: '#CCC'}}
+                  tagContainerStyle={{
+                    backgroundColor: '#0077B7',
+                    width: Dimensions.get('window').width / 2.7,
+                  }}
+                  searchInputStyle={{ color: '#CCC' }}
                   submitButtonColor="#CCC"
                   submitButtonText="Submit"
                 />
               </View>
-            </View>
-            <View
-              style={{
-                marginTop: 25,
-              }}
-            >
-              <TouchableOpacity
-                onPress={() => {
-                  HandleSubmit();
+              <View
+                style={{
+                  marginTop: 25,
                 }}
               >
-                <Text
-                  style={{
-                    color: 'black',
-                    fontFamily: 'Poppins',
-                    fontSize: 20,
-                    textAlign: 'center',
-                    fontWeight: '700',
+                <TouchableOpacity
+                  onPress={() => {
+                    HandleSubmit();
                   }}
                 >
-                  Submit
-                </Text>
-              </TouchableOpacity>
+                  <Text
+                    style={{
+                      color: '#ffffff',
+                      fontFamily: 'Poppins',
+                      fontSize: 20,
+                      textAlign: 'center',
+                      fontWeight: '700',
+                      height: 50,
+                      marginBottom: 20,
+                      textAlign: "center",
+                      paddingTop: 12,
+                      borderRadius: 20,
+                      backgroundColor: "#0A73FF"
+
+                    }}
+                  >
+                    Submit
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
-        </ScrollView>
-      </View>
-    </IndividualHeaderLayout>
-  );
+          </ScrollView>
+        </View>
+      </IndividualHeaderLayout>
+    );
+  }
 };
 
-export {VibeBoarding};
+export { VibeBoarding };

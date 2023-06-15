@@ -2,6 +2,7 @@ import {firebase} from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import {Alert} from 'react-native';
+import {savePost} from '../utils/FirebaseFunctionality';
 // import { SavedCourses } from '../Components/SavedCourses';
 export const ADD_USER = 'ADD_USER';
 export const UPDATE_IMAGE = 'UPDATE_IMAGE';
@@ -12,6 +13,7 @@ export const LOAD_ROOM_DATA = 'LOAD_ROOM_DATA';
 export const ALL_LOADED = 'ALL_LOADED';
 export const REFRESH_ROOMS_LIST = 'REFRESH_ROOMS_LIST';
 export const LIKE_POST = 'LIKE_POST';
+export const SAVE_POST = 'SAVE_POST';
 export const POST_COMMENT = 'POST_COMMENT';
 export const PIN_POST = 'PIN_POST';
 export const DELETE_POST = 'DELETE_POST';
@@ -97,8 +99,6 @@ export const Load_Card = (
             payload: {list4, lastDocument: lastdoc},
           });
 
-
-       
           await firestore()
             .collection('Users')
             .doc(email)
@@ -322,7 +322,11 @@ export const refresh_rooms_list = () => {
           querySnapshot.forEach(doc => {
             let post = doc.data();
             post.id = doc.id;
-            list3.push(post);
+            if(list3.includes(post)){
+              console.log("includeds")
+            }else{
+              list3.push(post);
+            }
             //console.log(list3);
           });
           for (const post of list3) {
@@ -331,7 +335,6 @@ export const refresh_rooms_list = () => {
             response = response.data();
             delete response.password;
             post.postedby = response;
-
             if (post.comments.length > 0)
               for (var i = 0; i < post.comments.length; i++) {
                 let commentor = await post.comments[i].commentedby.get();
@@ -389,7 +392,7 @@ export const updateUserData = data => {
   }
 };
 export const update_data = data => {
-  console.log('data: ' + data.name);
+  //console.log('data: ' + data.name);
   return {
     type: 'UPDATE_USER_DATA',
     payload: data,
@@ -466,6 +469,7 @@ const deleteFirestoreData = postId => {
 
 export const deletePost = (post, postId) => {
   try {
+    console.log(post)
     return async dispatch => {
       dispatch(delete_post_from_rooms(post));
       deletePostFunction(post);
@@ -552,7 +556,7 @@ export const set_allLoaded = value => dispatch => {
     payload: value,
   });
 };
-export const load_room_data = lastDocument => {
+export const load_room_data = (lastDocument, setLastPost) => {
   try {
     var lastdoc = null;
     var obj = null;
@@ -560,7 +564,7 @@ export const load_room_data = lastDocument => {
       let list3 = [];
       let query = await firestore()
         .collection('Posts')
-        .orderBy('createdat', 'desc');
+        .orderBy('createdAt', 'desc');
       if (lastDocument !== undefined) {
         query = query.startAfter(lastDocument);
       }
@@ -570,10 +574,17 @@ export const load_room_data = lastDocument => {
         // .onSna
         .then(async querySnapshot => {
           lastdoc = querySnapshot.docs[querySnapshot.docs.length - 1];
+          if(querySnapshot.docs.length==0){
+            setLastPost(true)
+          }
           querySnapshot.forEach(doc => {
             let post = doc.data();
             post.id = doc.id;
-            list3.push(post);
+            if(list3.includes(post)){
+              console.log("includeds")
+            }else{
+              list3.push(post);
+            }
             //console.log(list3);
           });
           for (const post of list3) {
@@ -604,7 +615,7 @@ export const load_room_data = lastDocument => {
           }
         });
 
-      console.log('Hello2:' + obj);
+      // console.log('Hello2:' + obj);
     };
   } catch (e) {
     console.log('error:' + e);
@@ -635,6 +646,22 @@ export const like_post = (postId, post, email) => {
   }
 };
 
+export const save_post = (postId, post, email) => {
+  console.log(postId, 'nsankjk');
+  try {
+    return async dispatch => {
+      dispatch(save_a_single_post(postId, post));
+      savePost(postId, email);
+    };
+  } catch (e) {
+    console.log('error:' + e);
+    dispatch({
+      type: 'Error',
+      error: 'error',
+    });
+  }
+};
+
 export const setUser = data => {
   try {
     return async dispatch => {
@@ -642,7 +669,7 @@ export const setUser = data => {
       //console.log(user);
       var udata = [];
       var basket;
-      if (data.userType == 'Mentor') {
+      if (data?.userType == 'Mentor') {
         for (var i = 0; i < data?.clients?.length; i++) {
           basket = await firestore()
             .collection('Users')
@@ -651,7 +678,7 @@ export const setUser = data => {
           udata.push(basket.data());
         }
       } else {
-        for (var i = 0; i < data.mentors.length; i++) {
+        for (var i = 0; i < data?.mentors.length; i++) {
           basket = await firestore()
             .collection('Users')
             .doc(data?.mentors[i])
@@ -781,6 +808,12 @@ export const pin_an_item = item => {
 export const like_a_single_post = (postId, post) => {
   return {
     type: 'LIKE_POST',
+    payload: {postId, post},
+  };
+};
+export const save_a_single_post = (postId, post) => {
+  return {
+    type: 'SAVE_POST',
     payload: {postId, post},
   };
 };

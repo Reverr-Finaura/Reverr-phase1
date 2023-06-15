@@ -21,6 +21,9 @@ const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import {pin_post, pushComment, deleteComment} from '../../Redux/actions';
+import {GiftedChat, Send} from 'react-native-gifted-chat';
+import LinearGradient from 'react-native-linear-gradient';
+import Theme from '../../utils/Theme';
 const CommentsScreen = props => {
   //const postData = props?.route?.params?.postData;
   const state = useSelector(state => state.UserReducer);
@@ -73,8 +76,8 @@ const CommentsScreen = props => {
   const renderCard = ({item}) => {
     return (
       <View style={[styles.commentCard, {position: 'relative'}]}>
-        <Text>bfghfg{item.commentid}</Text>
-        {item.commentid == selectedOption && (
+        {/* <Text>{item.commentid}</Text> */}
+        {item.commentid === selectedOption && (
           <OptionsPopup
             modalVisible={options}
             setModalVisible={() => setOptions(false)}>
@@ -144,14 +147,18 @@ const CommentsScreen = props => {
             fontFamily: 'Poppins-Regular',
             fontSize: 10,
             marginBottom: 3,
-            marginTop: 0,
+            marginTop: -10,
             marginLeft: 45,
           }}>
           {item.commentedby.designation || state.user.designation}
         </Text>
-        <Text style={{color: '#fff', fontFamily: 'Poppins-Regular'}}>
-          {item.comment}
-        </Text>
+        <TouchableOpacity
+          onLongPress={() => setSelectedOption(item.commentid)}
+          style={{paddingVertical: '3%'}}>
+          <Text style={{color: '#fff', fontFamily: 'Poppins-Regular'}}>
+            {item.comment}
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   };
@@ -182,7 +189,7 @@ const CommentsScreen = props => {
     setRefresh(true);
   };
   return (
-    <KeyboardAvoidingView style={styles.screen}>
+    <View style={styles.screen}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <BackButton
           IconSize={30}
@@ -221,25 +228,34 @@ const CommentsScreen = props => {
           renderItem={renderCard}
         />
       )}
-      <View style={inputContainerStyle}>
-        <TextInput
-          style={styles.input}
-          placeholder="Write Your Comments "
-          value={comment}
-          onChangeText={text => setComment(text)}
-        />
-        <TouchableOpacity onPress={handleComment}>
-          <Icon name="send" color={AppColors.ActiveColor} size={28} />
-        </TouchableOpacity>
-      </View>
-    </KeyboardAvoidingView>
+      <GiftedChat
+        onInputTextChanged={c => setComment(c)}
+        onSend={handleComment}
+        placeholder="Write your comment"
+        renderSend={props => {
+          return (
+            <Send {...props}>
+              <View style={{marginRight: 10, marginBottom: 15}}>
+                <Text
+                  style={{
+                    color: AppColors.ActiveColor,
+                    fontWeight: 'bold',
+                    fontSize: 19,
+                  }}>
+                  Comment
+                </Text>
+              </View>
+            </Send>
+          );
+        }}
+      />
+    </View>
   );
 };
 const styles = StyleSheet.create({
   screen: {
-    //   flex: 1,
-    height: Height / 1.03,
-    backgroundColor: AppColors.primarycolor,
+    flex: 1,
+    backgroundColor: Theme.backgroundColor,
   },
   commentCard: {
     padding: 5,
